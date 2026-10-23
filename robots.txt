@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sevasonyshahmatov-collab.github.io/jarvibet/sitemap.xml
