@@ -1,13 +1,4 @@
 {
- "updated": "2026-10-25",
- "axes": [
-  "Атака",
-  "Защита",
-  "Вратари",
-  "Большинство",
-  "Меньшинство",
-  "Форма"
- ],
  "leagues": {
   "khl": [
    {
@@ -7231,8 +7222,33 @@
    }
   ]
  },
- "built": "2026-10-25 16:26",
- "games": [],
+ "axes": [
+  "Атака",
+  "Защита",
+  "Вратари",
+  "Большинство",
+  "Меньшинство",
+  "Форма"
+ ],
+ "updated": "2026-10-25",
+ "built": "2026-10-25 21:28",
+ "games": [
+  {
+   "lg": "khl",
+   "d": "2026-10-25 17:00",
+   "h": "Спартак",
+   "a": "Шанхайские Драконы",
+   "pick": "ИТ1Б 2.5",
+   "k": "1,73",
+   "x": [
+    1.794,
+    4.1,
+    3.7
+   ],
+   "p": 0,
+   "u": "../prognozy/2026-10-25-spartak-shanhayskie-drakony.html"
+  }
+ ],
  "schedule": [
   {
    "lg": "khl",
@@ -7302,6 +7318,26 @@
   }
  ],
  "results": [
+  {
+   "lg": "khl",
+   "d": "2026-10-25 17:00",
+   "h": "СКА",
+   "a": "ЦСКА",
+   "pick": "Тотал меньше 4.5",
+   "k": "1,88",
+   "sc": "1:3",
+   "r": "win"
+  },
+  {
+   "lg": "khl",
+   "d": "2026-10-25 17:00",
+   "h": "Локомотив",
+   "a": "Северсталь",
+   "pick": "Тотал меньше 5.5",
+   "k": "1,75",
+   "sc": "1:0",
+   "r": "win"
+  },
   {
    "lg": "nhl",
    "d": "2026-10-25 05:00",
@@ -7414,16 +7450,13 @@
   }
  ],
  "logos": {
-  "Авангард": "img/avangard.webp",
   "Автомобилист": "img/avtomobilist.webp",
   "Адмирал": "img/admiral.webp",
   "Айлендерс": "img/nhl_nyi.webp",
   "Ак Барс": "img/akbars.webp",
   "Амур": "img/amur.webp",
   "Анахайм": "img/nhl_ana.webp",
-  "Барыс": "img/barys.webp",
   "Баффало": "img/nhl_buf.webp",
-  "Бостон": "img/nhl_bos.webp",
   "Ванкувер": "img/nhl_van.webp",
   "Вашингтон": "img/nhl_wsh.webp",
   "Вегас": "img/nhl_vgk.webp",
@@ -7433,7 +7466,6 @@
   "Динамо Минск": "img/dinamo_minsk.webp",
   "Динамо Москва": "img/dinamo_msk.webp",
   "Калгари": "img/nhl_cgy.webp",
-  "Каролина": "img/nhl_car.webp",
   "Коламбус": "img/nhl_cbj.webp",
   "Колорадо": "img/nhl_col.webp",
   "Лада": "img/lada.webp",
@@ -7442,31 +7474,22 @@
   "Металлург": "img/metallurg.webp",
   "Миннесота": "img/minnesota.webp",
   "Монреаль": "img/nhl_mtl.webp",
-  "Нефтехимик": "img/neftekhimik.webp",
   "Нью-Джерси": "img/nhl_njd.webp",
   "Нэшвилл": "img/nhl_nsh.webp",
-  "Оттава": "img/nhl_ott.webp",
-  "Питтсбург": "img/nhl_pit.webp",
-  "Рейнджерс": "img/nhl_nyr.webp",
   "СКА": "img/ska.webp",
   "Салават Юлаев": "img/salavat.webp",
-  "Сан-Хосе": "img/nhl_sjs.webp",
   "Северсталь": "img/severstal.webp",
-  "Сент-Луис": "img/nhl_stl.webp",
   "Сибирь": "img/sibir.webp",
-  "Сиэтл": "img/nhl_sea.webp",
   "Сочи": "img/sochi.webp",
   "Спартак": "img/spartak.webp",
   "Тампа-Бэй": "img/nhl_tbl.webp",
   "Торонто": "img/nhl_tor.webp",
   "Торпедо": "img/torpedo.webp",
-  "Трактор": "img/traktor.webp",
   "Филадельфия": "img/nhl_phi.webp",
   "Флорида": "img/nhl_fla.webp",
   "ЦСКА": "img/cska.webp",
   "Чикаго": "img/nhl_chi.webp",
   "Шанхайские Драконы": "img/shanghai.webp",
-  "Эдмонтон": "img/nhl_edm.webp",
-  "Юта": "img/nhl_uta.webp"
+  "Эдмонтон": "img/nhl_edm.webp"
  }
 }
