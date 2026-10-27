@@ -111,6 +111,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .odd.pick{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 0 30px -8px var(--gold)}
 .odd.pick strong{color:var(--gold)}
 .prob{margin-top:16px}
+.board .prob{display:none} /* владелец 27.10: у прогноза — ставка, без «вероятности» */
 .prob-head{display:flex;justify-content:space-between;font-size:13px;color:var(--mute)}
 .prob-head b{color:var(--fg);font-family:var(--mono)}
 .meter{height:10px;border-radius:99px;background:var(--ice2);margin-top:8px;overflow:hidden}
@@ -1186,8 +1187,9 @@ for(var k=0;k<n;k++){var e=document.createElement('i'),side=k%4,c=C[k%C.length],
 var all=[].concat(T.khl||[],T.nhl||[]);if(all.some(function(m){return m.pr>0}))return;
 if(!all.length){b.hidden=true;return}
 b.setAttribute('aria-label','Матч дня');var l=b.querySelector('.board-top .live');if(l)l.textContent='Матч дня';
-var p=b.querySelector('.prob');if(p)p.hidden=true;var m=all[0],pc=m&&m.pc&&m.x;
-b.querySelectorAll('.odd').forEach(function(o,i){var t=o.querySelector('strong');if(pc&&t)t.textContent=Math.round(m.x[i]*100)+'%'});
-var s=b.querySelector('.sample');if(s)s.innerHTML=(pc?'Шансы модели в основное время. ':'')+'Прогноз дня выйдет в <a href="https://t.me/jarvibet">@jarvibet</a> за 1,5 часа до матча';})();</script>
+var p=b.querySelector('.prob');if(p)p.hidden=true;var o=b.querySelector('.odds');if(o)o.style.display='none';
+var t=/(\d\d):(\d\d)/.exec(all[0].w||''),at='за 1,5 часа до матча';
+if(t){var x=(+t[1]*60+(+t[2])-90+1440)%1440;at='в '+('0'+Math.floor(x/60)).slice(-2)+':'+('0'+x%60).slice(-2)+' МСК'}
+var s=b.querySelector('.sample');if(s)s.innerHTML='<b style="font-size:15px">Прогноз выйдет '+at+'</b><br>в канале <a href="https://t.me/jarvibet">@jarvibet</a>';})();</script>
 </body>
 </html>
