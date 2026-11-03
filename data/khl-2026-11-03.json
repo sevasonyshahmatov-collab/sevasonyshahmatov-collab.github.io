@@ -93,7 +93,7 @@
      "gd": 27
     }
    },
-   "_z": "FxaN/aqPo9O2so3WR//Htc59SGseSla56g6VgH+80SL6p8EuG7RAUR3E3EoHZjN2jY65IJ1ZFPmRDNSHnPGKJ0734Xfe0vr4H09ec4E3NdabLHAHY57PlG4GJDuhbfS5V6oaAn8MJmZ2kcjiPZQEOpIZ24CFtdxPrL1tn1rB60HING8B/6KG95pnlNbpI5EIEqaGmSshMqvjMbogCMadCYLMbFEhUNrXAQT5wnjrL2aHnP1fqpwLqPP1UAr26BtKLZ4t9ixFx8ApZfTlF2VdedCPMb1mFPZLQHXGL7AwkI6vhHnZH5XB81S7/Lc7zY4="
+   "_z": "HRNFBpZS08CaKPFfPD97ps13fd1b8W2NDkm7xuaEa1AVNFRzGNqGJiZx9YDd6ED/tIQqSehHevwLdxS3TlPgPMNYqffdnBzzTkjpl+VlbKawZ/hI/m2sgodreeswX/7oH4+8DlvOWUKtZ7fdCwU2RbPfJ35GNbwTu3+jeCB3PPw20AWM6qauIBBMoORnLkz94wn0SxFdx0ceb6zF4wVmZEIwHTcW/cDKmc6OVg066ezdsXokM+xOWO6i3boE4R8Ij+rBfo+6+IMbDdvjXoSkI1yDjMLwZkzkfL4nAQDuG5eIUNUDdvDw69tiPXd4cOUc1cqN32DByTGYdSokJDfpH9mTOZn+iU480oWwLQc="
   },
   {
    "h": "Шанхайские Драконы",
@@ -185,7 +185,35 @@
      "gd": 0
     }
    },
-   "_z": "/pY0I4t5bwuFCq+nzuRxwY/8GpI94us/LUZLM6yIFdzY6rXqzK8KJADta8jq+JXH7L6oTHy+zIjOBKFT/aoGyc99G68hrD1ek4xA51hGwZNaKJ2bRBiU2gNQNlxt3BlaL13ZCL2di+kjI/dy6l4L21uN8xvwUfDA5UeMuO1Aa2UHCYSSXXMMdQBiOfjKMqf+/CF1cjQVIeOxFnARiDdL+dOLCLCfPya7FVWPC9hyXzivluGU3H2tZaZxpqflJeKbivkoNDW09cH+fssNubJPDW7TTTpflQeEwJiITZ4IWdRQvML2XWBT3FmoyyFXF0kEpTRhCHtycvDE0RNdL/hKZVbhIpbA8x8jAHI="
+   "fact": {
+    "k": 15,
+    "n": 20,
+    "team": "Шанхайские Драконы"
+   },
+   "odds": 1.7,
+   "p": 0.5756,
+   "pick": "Тотал матча больше 4,5",
+   "sim": {
+    "hits": 5205,
+    "n": 10000,
+    "top": [
+     [
+      2,
+      2,
+      856
+     ],
+     [
+      3,
+      2,
+      583
+     ],
+     [
+      1,
+      1,
+      580
+     ]
+    ]
+   }
   },
   {
    "h": "Сочи",
