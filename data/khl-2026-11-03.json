@@ -92,7 +92,8 @@
      "place": "1 на Западе",
      "gd": 27
     }
-   }
+   },
+   "_z": "yxh2v+pN2cOPBH1TUZWaEpbZp/DHffJaMvZiYfvA7sv91e8v3dKPdEpyEypd25VF42ncSRU51s71f+zFaVyKQz273q9zwm9S0jfA8moBZ8W3j9Ysxs0ObT+VeRgicVBfD/JU6k+WQtMkNWUa9OWsR5teq2vHyLtjLQnzIYblVrBq693GNFBgBWseHQEvzQ0B05+8xP8Oe6W3jnN0c3dHS3eBX2mfYM611Ym84TOG8kFN+E9INVxk7svr6ePi4LQeeA2Jz5L/slpdfaagkdQvVpxulcSQHwnQZ4+8hMH+P1fkTaETKJRLc4wLTy92IaRj"
   },
   {
    "h": "Шанхайские Драконы",
@@ -117,40 +118,11 @@
     3.72,
     2.47
    ],
-   "pick": "Тотал матча больше 4,5",
-   "odds": 1.7,
-   "p": 0.5756,
    "p3": [
     0.462,
     0.22,
     0.318
    ],
-   "sim": {
-    "n": 10000,
-    "hits": 5205,
-    "top": [
-     [
-      2,
-      2,
-      856
-     ],
-     [
-      3,
-      2,
-      583
-     ],
-     [
-      1,
-      1,
-      580
-     ]
-    ]
-   },
-   "fact": {
-    "team": "Шанхайские Драконы",
-    "k": 15,
-    "n": 20
-   },
    "form": {
     "Шанхайские Драконы": {
      "league": "KHL",
@@ -212,7 +184,8 @@
      "place": "6 на Западе",
      "gd": 0
     }
-   }
+   },
+   "_z": "/pY0I4t5bwuFCq+nzuRxwY/8GpI94us/LUZLM6yIFdzY6rXqzK8KJADta8jq+JXH7L6oTHy+zIjOBKFT/aoGyc99G68hrD1ek4xA51hGwZNaKJ2bRBiU2gNQNlxt3BlaL13ZCL2di+kjI/dy6l4L21uN8xvwUfDA5UeMuO1Aa2UHCYSSXXMMdQBiOfjKMqf+/CF1cjQVIeOxFnARiDdL+dOLCLCfPya7FVWPC9hyXzivluGU3H2tZaZxpqflJeKbivkoNDW09cH+fssNubJPDW7TTTpflQeEwJiITZ4IWdRQvML2XWBT3FmoyyFXF0kEpTRhCHtycvDE0RNdL/hKZVbhIpbA8x8jAHI="
   },
   {
    "h": "Сочи",
@@ -303,7 +276,8 @@
      "place": "2 на Востоке",
      "gd": 9
     }
-   }
+   },
+   "_z": "8dYIRbUszyrmbySAgN9kR2bQqg4hVW3fEy3h8WUwNDIEeNKz/5TEXCt+d353BUfKQFkAxV1ZANSkiKi153fE0Y/mgX+Bn+3zSoHDcfA0LBeooQymC8UAGI0HE3QiQHDv+BkotEPrsUy1a06946ocu0+01eP6hIR7779cR3FtfFZUdy3F1/CC2XmNVLT/jv76wrBpIXrXzmFja/lb4Lv5Nl2/Br8jy13V45KSIdtG+kHgP4lYodPG1bMTMz0hnbNuDMzGlPQivSb5SXsOUiY53fceNP/VLw2vIqcRpUQtMzoxSTjsEi70ZT3rkvhRo1yHmEFUFQwVvXCp85amEUgj9MfGI9HI9UMBY24eCw=="
   }
  ],
  "all": [
