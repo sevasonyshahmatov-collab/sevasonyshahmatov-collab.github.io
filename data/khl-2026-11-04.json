@@ -1,7 +1,7 @@
 {
  "day": "2026-11-04",
  "league": "khl",
- "skipped": 0,
+ "skipped": 1,
  "matches": [
   {
    "h": "Адмирал",
@@ -114,9 +114,9 @@
     }
    },
    "x1x2": [
-    2.93,
-    3.55,
-    2.23
+    3.02,
+    3.56,
+    2.18
    ],
    "p3": [
     0.344,
@@ -185,7 +185,7 @@
      "gd": -2
     }
    },
-   "_z": "qC/XJ/PWz9oSnRVgePr2wLaDT6vvmIwaHjBQXeEz6/KW+YDngzp9FaNZSAVIJj/2vT+d2T/yKwJtXfeqVtU0xUWiuCsPVgDaazGG6cvOIVJmFLgJG3xbZjgUAS7JJ+ZBW3jW/pBrQMXvkAemaFHkqc3GNC1nmbASWQezdBJ4Or8Y7W0pbwGk+SmLSVqE+rSHWHCU5G882GaNv1rdIzfQcw5j2paBlnTOkASkwxlB38R/VUjvT5z8jF1btGrMOTMsNdyFb+za/5l9bH63jd/D6GVqbjgVG+lsGFjuSqcRtZB298fY0fi1sLeQD+DhxRuXI97JVwCxS4WpKjdLTewwNgrwOSco/GP+t9MG5tQPs+4gqQ=="
+   "_z": "bwWsBmfQfHE7RfN/fE36N6ymsr92KCKncMTJaaD/muaUC8h778R0bn2L4SIdal6t0ypOdCnucAjQ9ZCkZJv/MGbNlXfTxbLfs1f0iwH3+JlXlKhrRx02rYioU1rHHjF8vAcFpL1QM56yUqWj1WQTzDTZ4dVk4ilT615EGDC/YLlgkQ+zqxV5Y4moNp/xK4YMyN1PxxnYIP2kqCZg4TJSQFsBdm1k+wKvI2ZcvSgtNY8EqueP06NCdPtMngI8eefHsoxk+rEEKC2C6LMkCR4RH0mLbyxxIHE7/MO6+BzxX+Jf3C2RNaBBBgzvcgghdltccNFoFd21UNRzN4c1nUwD4Egg1gWJ5+ocMuO4hfjZ3Deh"
   },
   {
    "h": "Трактор",
@@ -206,9 +206,9 @@
     }
    },
    "x1x2": [
-    2.2,
-    3.68,
-    2.9
+    2.17,
+    3.7,
+    2.94
    ],
    "p3": [
     0.275,
@@ -277,7 +277,7 @@
      "gd": 14
     }
    },
-   "_z": "jvmOongjnn/GAA18LpB6gDVvryR2EguSk6C/ISfSqjlLJrs3ESWtMD1pywpmuICAiASHcigPLT1An+nCwH5m5J+HSUlLeUaJicvTBoi0BMkxMgEIEVKPHyxnwgkIGE+EW6Gbi1iTmYP8SmZKlETMpXMn/S0NS/tslugJ2xfesGvfZvxgBmm0VEOrThPhUeIsPV6p6RuJHiJqM8UX0FhbssisO6aZDq40tAqjkid65hIoPc17Nlz3xk6qQbwOZxnfzLyZlv+koiDq4IHUN691NzvFsttMwNBw4/+vmpMQmTbrhZYTqb9117LzDwwJgqM+CQIGfTomAkc/iMntnjYjTfV2sLjjxPTTAxjyN9Jn8ERn"
+   "_z": "1hn8dQntiWFYl197dPaYKa1YpqoEtoEJ4P2UxpPTKlmDTNR7uoAHh6l0iVKxrKMilCL/g3GiP7rtTM7argRgg9lvzok8cR/wT9JP42qzaLEznknk1Mglpf3oAV/enBvGyJSQayAyvaziUmQdDSsU6MKYZPXBsVLQVHeQKmiiP7CGSnNTU5KjHbf3h+0dIfeKXWDG9GXsgmXGLwcFVtQlHoFzYBRHA2uqgdyLLrv/58EbiwyiCDiUgZUm5EL8wxIHwGNBH0nqVMSrSAqrFwsF7tJCoI84hpMfmxhjd1ZwkKz8gXmJQuM0fhvNB0/CWlTf32QvBUFyF7DKM2Z7QHAXibSy6Fl7LAyby7/1/V8O2vk="
   },
   {
    "h": "Салават Юлаев",
@@ -390,9 +390,9 @@
     }
    },
    "x1x2": [
-    2.94,
-    3.58,
-    2.21
+    3.06,
+    3.6,
+    2.15
    ],
    "p3": [
     0.404,
@@ -461,7 +461,7 @@
      "gd": 19
     }
    },
-   "_z": "fFYfpbxvR4XhxuvuEQR2SXIngTQGDarLDfv91d15UKG/ZGQ4d70ILt7ESRqqrA7jAkRjw04c18Ep5eDmdh+9tbD84Y1RLUM0USsvJtdTErThR7+75ePmCZUYxiDz1veVvVU3ewDHf+8yQUlhUJ/C7hGoupz3CDlET9SMQKyS4vAWTRJM9O3WgS2fmrXDUuvFOd72T52z5E3jzpOW5OIJSgHMnwuOgNrNLjYzAJRYmTMeRDYk+iGYyVXeF1WpnhqngtFpK+bzKnqNtB3hrY5NL4a/A1TDblxcVIrX1LSdpF/8UojzXRXPlmMzILZ3+xQilnJfIzd7zim31hDAxB12h99NAYP7"
+   "_z": "cx9U09jsDtyYBLPN8NV9ed49vi9c2CfUkxTvY5GIxclb/Z/muSawV8qhMCcITXZEmrxC5mj1ZMurJCgrl93U9GfUpFuNlm6cK73FxkAf8H1MYzY/4fchSaOCXAfCmHYHc6aMqyqctaAVHd+am0EObz6YYTDxN+ydifW6ycO7EzXOyqBnOuhwddDmdQYY3J40RbFudQ798bItG9A2t6NONkN6DwtZZeBxVxGrU6S9lav2H80gs3sKRUMZtzYbF4rBqybY/HcSYJJtaEtcCdkGHV54OsxpbMzAG3h7lzUOXW2uXoedvGRxhFXUOnFo9kUw55yQhsSLintvtdhBn8iFtBgedMk2cQ=="
   }
  ],
  "all": [
