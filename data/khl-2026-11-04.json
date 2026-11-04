@@ -1,7 +1,7 @@
 {
  "day": "2026-11-04",
  "league": "khl",
- "skipped": 1,
+ "skipped": 2,
  "matches": [
   {
    "h": "Адмирал",
@@ -93,7 +93,7 @@
      "gd": 1
     }
    },
-   "_z": "cvCHfR8uFW3J3FEzczSD3QAw3bPqqPmt3vX3bh0BBt4L5fYs5Xronkgr7jR7p/HeodaRv0gIkGfBcm2koqY7DDZCpfXfJG19ORVA2fYJ3XQDXK9YQHVFUrk+rVh5Y94C437lm105DndsMiD+JKFjMnQdTCd3DBc0TIFE1j1+BirEpWqW1k3+c7LB5NLxgMM69T0XIZVixIXw3548wr0c/k2XyvX+Rrxzy/4+iYz+izJjUMlGlGnvP8ZE5xP3lL9AjbLHVAAcM1UKIThB35efqbGmQ7AX0UeEYXu/xUF5KlzsCPF2Qdzsj8xvck1J"
+   "_z": "2aqvITtMmGCY+/KVrsBmdoqIiCQOw2/6s1RQUpkFTlMKUHELBNYtdZyg/6Cs96TwxDQertp9N3WecTKHbCwvKN4LabO1/O3IodZuI0AKyA+7gt0IZP3TAvBGh5YRfucIwIj68z+InDf4vsGFUnzdl9eQF+jA+f1/537xWZKH7G/pxPLlEdbw6Aj+IVeIRc8pQSBWkmZKzrMBJ6zUcnciegQCvMYjTEieTHI9faMeVA1IsrWQpEyodkc7HAtXe2DcQhiyhRcpPSFDhpYUCG2VPs4BTt2CsxQcvKxwWDWqCMCDa3S00GL9E4kFXvHmbmzGD0JUrPg64owbeoWznY5pHpxPf3sdKer2cMvB+Q=="
   },
   {
    "h": "Сибирь",
@@ -280,98 +280,6 @@
    "_z": "1hn8dQntiWFYl197dPaYKa1YpqoEtoEJ4P2UxpPTKlmDTNR7uoAHh6l0iVKxrKMilCL/g3GiP7rtTM7argRgg9lvzok8cR/wT9JP42qzaLEznknk1Mglpf3oAV/enBvGyJSQayAyvaziUmQdDSsU6MKYZPXBsVLQVHeQKmiiP7CGSnNTU5KjHbf3h+0dIfeKXWDG9GXsgmXGLwcFVtQlHoFzYBRHA2uqgdyLLrv/58EbiwyiCDiUgZUm5EL8wxIHwGNBH0nqVMSrSAqrFwsF7tJCoI84hpMfmxhjd1ZwkKz8gXmJQuM0fhvNB0/CWlTf32QvBUFyF7DKM2Z7QHAXibSy6Fl7LAyby7/1/V8O2vk="
   },
   {
-   "h": "Салават Юлаев",
-   "a": "Лада",
-   "d": "2026-11-04 14:30",
-   "arena": {
-    "id": 291,
-    "capacity": 8522,
-    "phone": "+7 (347) 276-16-00",
-    "website": "http://www.hcsalavat.ru/infrastructure/",
-    "name": "УСА «Уфа-Арена»",
-    "address": "450006, Республика Башкортостан, г. Уфа, ул. Ленина, д. 114",
-    "city": "Уфа",
-    "image": "https://www.khl.ru/images/arenas/25/1.jpg",
-    "geo": {
-     "lat": 54.739588,
-     "long": 55.956302
-    }
-   },
-   "x1x2": [
-    1.637,
-    4.05,
-    4.68
-   ],
-   "p3": [
-    0.598,
-    0.188,
-    0.215
-   ],
-   "form": {
-    "Салават Юлаев": {
-     "league": "KHL",
-     "last3": [
-      {
-       "date": "01.11",
-       "opp": "Шанхайские Драконы",
-       "home": false,
-       "score": "2:3",
-       "res": "П"
-      },
-      {
-       "date": "27.10",
-       "opp": "Сочи",
-       "home": true,
-       "score": "1:2",
-       "res": "П"
-      },
-      {
-       "date": "25.10",
-       "opp": "Ак Барс",
-       "home": true,
-       "score": "1:2",
-       "res": "П"
-      }
-     ],
-     "points": 21,
-     "games": 22,
-     "place": "9 на Востоке",
-     "gd": -6
-    },
-    "Лада": {
-     "league": "KHL",
-     "last3": [
-      {
-       "date": "02.11",
-       "opp": "Локомотив",
-       "home": false,
-       "score": "1:0",
-       "res": "В"
-      },
-      {
-       "date": "30.10",
-       "opp": "Авангард",
-       "home": true,
-       "score": "3:2 ОТ",
-       "res": "В"
-      },
-      {
-       "date": "27.10",
-       "opp": "Адмирал",
-       "home": true,
-       "score": "1:3",
-       "res": "П"
-      }
-     ],
-     "points": 13,
-     "games": 22,
-     "place": "11 на Западе",
-     "gd": -38
-    }
-   },
-   "_z": "+eJzcSYL2+iPXo7abHC4Xmo6NANIE7Zjq+/T4I61REKCyAbrLAFZk910n92/Oaf69QucvWofHBlBp4CJe8YYLIaW8Nk+DU07gA6l2Tll0k0luO9ZJI5ECO2XfRvAwaJLVhs+kipH1pYpPqswM1NMxpM+1wWwKREum1u4aRavFHuwnWpR1w/MstoImj60GCMnv97o9sQykdOUSFt8n7AKKccLH1d524gKp60ZeEcKImdU4iaymmBtlcJJBMWbKb0RFwL4gKCMMqIXpwpNZlVEsMQF/WJlnTlDcKWNbhsiDzpkLC7aMclaU1T95oKMBMacTA=="
-  },
-  {
    "h": "Спартак",
    "a": "Локомотив",
    "d": "2026-11-04 17:00",
@@ -390,14 +298,14 @@
     }
    },
    "x1x2": [
-    3.06,
-    3.6,
-    2.15
+    3.02,
+    3.57,
+    2.17
    ],
    "p3": [
-    0.404,
-    0.243,
-    0.352
+    0.407,
+    0.242,
+    0.351
    ],
    "form": {
     "Спартак": {
@@ -461,7 +369,99 @@
      "gd": 19
     }
    },
-   "_z": "cx9U09jsDtyYBLPN8NV9ed49vi9c2CfUkxTvY5GIxclb/Z/muSawV8qhMCcITXZEmrxC5mj1ZMurJCgrl93U9GfUpFuNlm6cK73FxkAf8H1MYzY/4fchSaOCXAfCmHYHc6aMqyqctaAVHd+am0EObz6YYTDxN+ydifW6ycO7EzXOyqBnOuhwddDmdQYY3J40RbFudQ798bItG9A2t6NONkN6DwtZZeBxVxGrU6S9lav2H80gs3sKRUMZtzYbF4rBqybY/HcSYJJtaEtcCdkGHV54OsxpbMzAG3h7lzUOXW2uXoedvGRxhFXUOnFo9kUw55yQhsSLintvtdhBn8iFtBgedMk2cQ=="
+   "_z": "PuMzUEObZTWEQLkKZG1ayY00AvUJV6scuoJWV+xm2fdLUyWQH7vbDPsmCrEjScxZhCHJiw9rDnzHXL/TMwnrMkFDSrTIurWsFK0cg05HJsA61TSYeirgHGph0E/ao5lQknOTopcYk+PsrLvrpGbjYo36SXr7Fje69ZXl6gAGHMkK5Bg/vU+4UsCfCFIZi+Yr+IDthIJNXgOYOXdmw5YYNoiTOs+c/F6Ix1s3eSjhVKdoYEiKHRavRRJSQKeTsAkt6TNvGjWemkc8MoUvHozECqQwQo5mcEgKtDPTvxMYnIUhc7/M1URRG9KfxaIl3ohVg5S9M35wpFAbHZ/SB+LXtG/YUS6vw3iiy5x3/kY08TKk2Gib"
+  },
+  {
+   "h": "Салават Юлаев",
+   "a": "Лада",
+   "d": "2026-11-04 17:00",
+   "arena": {
+    "id": 291,
+    "capacity": 8522,
+    "phone": "+7 (347) 276-16-00",
+    "website": "http://www.hcsalavat.ru/infrastructure/",
+    "name": "УСА «Уфа-Арена»",
+    "address": "450006, Республика Башкортостан, г. Уфа, ул. Ленина, д. 114",
+    "city": "Уфа",
+    "image": "https://www.khl.ru/images/arenas/25/1.jpg",
+    "geo": {
+     "lat": 54.739588,
+     "long": 55.956302
+    }
+   },
+   "x1x2": [
+    1.565,
+    4.33,
+    4.98
+   ],
+   "p3": [
+    0.601,
+    0.186,
+    0.213
+   ],
+   "form": {
+    "Салават Юлаев": {
+     "league": "KHL",
+     "last3": [
+      {
+       "date": "01.11",
+       "opp": "Шанхайские Драконы",
+       "home": false,
+       "score": "2:3",
+       "res": "П"
+      },
+      {
+       "date": "27.10",
+       "opp": "Сочи",
+       "home": true,
+       "score": "1:2",
+       "res": "П"
+      },
+      {
+       "date": "25.10",
+       "opp": "Ак Барс",
+       "home": true,
+       "score": "1:2",
+       "res": "П"
+      }
+     ],
+     "points": 21,
+     "games": 22,
+     "place": "9 на Востоке",
+     "gd": -6
+    },
+    "Лада": {
+     "league": "KHL",
+     "last3": [
+      {
+       "date": "02.11",
+       "opp": "Локомотив",
+       "home": false,
+       "score": "1:0",
+       "res": "В"
+      },
+      {
+       "date": "30.10",
+       "opp": "Авангард",
+       "home": true,
+       "score": "3:2 ОТ",
+       "res": "В"
+      },
+      {
+       "date": "27.10",
+       "opp": "Адмирал",
+       "home": true,
+       "score": "1:3",
+       "res": "П"
+      }
+     ],
+     "points": 13,
+     "games": 22,
+     "place": "11 на Западе",
+     "gd": -38
+    }
+   },
+   "_z": "omQaat13GSaqF52nAPM+Vm6rlKWhH6GFFAnNeI1ymDRmi6IL1CfauhXAwaPRx3gJT58lSkMjAKE3BvqCunRwgs47pa2NBZmK0W0b0X8jVz7cmzrw51WBsGF7Y2EV0hNF8GwyF67ocbS2ZOhNCpyhxyzN2DYLYMpBsLgj65RJT8RzlCAVOhAxDilBQ42zbne2RCgqffq71aUHZMODr4+XyTggNyLwfvIdhrlupVCyuTX9tfsyrHjPL/41Ah0tWH++lBBs1Z22Y3qoMNgmmBIPwlXisobiA4UNHADhN9Pc/KlXDhilz7SAH4Y79Zg/hDuh"
   }
  ],
  "all": [

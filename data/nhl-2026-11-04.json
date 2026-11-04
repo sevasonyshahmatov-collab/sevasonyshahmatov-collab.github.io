@@ -9,9 +9,9 @@
    "d": "2026-11-05 03:30",
    "arena": "",
    "x1x2": [
-    2.23,
-    4.26,
-    2.68
+    2.25,
+    4.24,
+    2.65
    ],
    "p3": [
     0.378,
@@ -88,9 +88,9 @@
    "d": "2026-11-05 03:30",
    "arena": "",
    "x1x2": [
-    1.694,
-    4.53,
-    4.07
+    1.676,
+    4.54,
+    4.16
    ],
    "p3": [
     0.609,
@@ -159,7 +159,7 @@
      "gd": -25
     }
    },
-   "_z": "5Ip93eKGgSe2CvnlB+YkuY510pTwWv+rh8jlQAChBrG/tqfGJgbYmJNVWqX81Lm0dlT/vUd9OY84XSEMxHhq5ezgAFwlb72u0LgtQyU+oiJYlgvkkuxXCdP2tVJx/PCVU06Dw9DpWQjYCAG5fs54QMQEzZMLnaVTKr+mISM4IEcAco9mP0ksbSX7Y0S+Eexfe6DIXxjZr8qJywlkKHwNJZNgCZXya8OmC1jRJH5bRqL6YPfZ0YuW6gucob/WLVIGnOdZxjELsknpHFepDHLPwXAX1YwzCcvyd/dn8iyEINOkxU4Z5DO6JO4="
+   "_z": "07CUwdD8iWXYX3u+kILqT5+h2MGM+xYPd49b6xVnW9951334cqxlAoJTTW+kjztTsDt8+R0eqb8prjZ7Y15UU3CMU+vP1KVtRiu3Y3+r5ouymGpQ4Gb6XFHdFAsDp/gyEjAobJcxmoBzp9e1lcjBi7CzjmPT7IH4IP1cvPhCtSyQB7EXh/VCbzTsyRbgrL94amUjrdu9WAVz+9G7jg6pluuSd5nQLfsibi/QNf15ZAsPvnLzUPeCijGOSNF7Of3T4VZSH5vBglD/oruSfOU/FK7ublVCj9sBmq2ROmXncmazvua5CvctVGjS"
   },
   {
    "h": "Лос-Анджелес",
@@ -167,9 +167,9 @@
    "d": "2026-11-05 06:00",
    "arena": "",
    "x1x2": [
-    2.01,
-    4.25,
-    3.07
+    2.02,
+    4.22,
+    3.06
    ],
    "p3": [
     0.448,
@@ -238,7 +238,7 @@
      "gd": -12
     }
    },
-   "_z": "hZAluloABcn20bMalSeRwKj1ss5lvk/D84dvq3IhTfRR9D2aWC1w2Dnbhs/9N+OlRXYOeKzkl+OJld4q6DUBBXtN+CxiWa77QjqO2FuQwf8uWYu3gCejsPwKS6PBCK+wMSWx4Trq6CIw6+suYXRvl4O05yIwYi2fdwFHVxo+wRKY+uximTM9sVbfyOykZDxATTJWfk4bZwjs3bvsBQIYDkfifyyzgG/iYBL4tObBg5AsO2FVnB5maCTGOFRFYDfEgtQvTl2deYWiHfxvUsWeqrKVyQoqXAZkm2HiuZh4IEN2BCJfMtq4Y8DwG8W+ucEGFxyh55CK+NdKZupAio0XD6P+t6dCa38/XawtQGVSNK8yorpech7KtJqgH+T1X7I="
+   "_z": "SORbrV/5r9OxfaAUBevv/4SZmD4Xui+AYM7zS9euRT1K3GmiEsPNlJvjB+scDfM2MX+WjZwOz6+PjUj3QHoCUx8+b7e7s3a6EHEu+a90c0Kh3VQHXvCCFZ69Km374nCD2rL1lEFC5sKLBWvHzQDU+wWu2ZFfbEW7RfygZQuJUukqj4uAKrP/AhqCw7oV5UV8tNhMeVWQshK9IeWKvzkegG+Vtd95Z3PRrrEH2x1RLNxbRnyLi4lqaLD/O+3E3At0MzRBsLSKPkfcMlje0PLcRCamm2TNrYSO+16wS+ORWfmgEmx351Llz1fHhtrAnAK4CqVHP0hffNDolfkxWTumocsNzxqvPKgeBrSjvzR1fDGMhRnEcL2B6c9KgnSRplE="
   },
   {
    "h": "Сиэтл",
@@ -246,9 +246,9 @@
    "d": "2026-11-05 06:00",
    "arena": "",
    "x1x2": [
-    2.17,
-    4.23,
-    2.78
+    2.18,
+    4.2,
+    2.77
    ],
    "p3": [
     0.529,
