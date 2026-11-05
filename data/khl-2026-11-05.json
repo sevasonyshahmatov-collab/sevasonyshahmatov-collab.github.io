@@ -22,9 +22,9 @@
     }
    },
    "x1x2": [
-    2.89,
-    3.54,
-    2.26
+    2.99,
+    3.56,
+    2.19
    ],
    "p3": [
     0.199,
@@ -93,7 +93,7 @@
      "gd": 31
     }
    },
-   "_z": "iQC7P9qIkajbKAKGZGEFRufoxfWgyLpI3u5Qv1ELjkkPXwDn/IeCjsHpdSyfyChqfbtUpfT2XZ+CgquAfngIru3b9IqHa9JWDQQXvmFiaZu/bsoSS3GNDE/84W4kTtX5LlohI2++ez2XioUVewSX+UhcRjIJ8r7d9Y6yvqoXp7qXUgghgepY+tEYqBqjsezqwBFyVgf5zxaeJAmllrgf4K+ujx15NtYhwzHfbaOzMViIwAokLdx7YtqpO6EoWZX5r/UE0OPGrlIuS3EYKP/gXuN4zu1cj+Ytc8KoR72UZGtloKhQP/Hrvg7js4ZAwKPR"
+   "_z": "KupmhOsCd+0d0jDBkSpQjUUD4p+Wp/z22T03Lz/8XuTq2HCi03ep+fHQArGqHGfwsiy1oUsPhkwB83PPuUMskvdj73lhf8ycyNMq+8t1xxDmT7CQwe/i8v1WcqznQ/0IhlhBcBbPWjwNlrxpxV8LRqvLR1/ZVSbSle6HTV0m/8I4nO3wbkQafm/VNyAS3ANSglSwrDsQ55+XzafGobdosKALAaRJVTRpDcmzuevZPuSmKvqGLMAYFr/QY/37Rja5gO/8qAIcqS3+267/XasZqNqh6jHGeJisFkjJugbcDNM1xmVl35ysuNj56oswuUyn"
   },
   {
    "h": "Металлург",
@@ -114,9 +114,9 @@
     }
    },
    "x1x2": [
-    1.676,
-    4.01,
-    4.44
+    1.68,
+    3.99,
+    4.43
    ],
    "p3": [
     0.46,
@@ -185,7 +185,7 @@
      "gd": 10
     }
    },
-   "_z": "8Kf40+n2WOXM9YD1rhLHuEZYZDxzFw1UXtD2nowIrvXXKCOgX6k6T/YnNYgVqEddeJf6Qr3mpeJ47flY4H/Mj6HtrM7w2jopRSypw0NocZEUzlXiRykeMX/ofZRde+q1/PgKrQiby9Xn/P/ZEmVnGOt69AdbILa+SsfxHtLFqnm0FeWLc9HukIYo3VBvACPYqQ5MxAMdPs7h1cLQbbpgVG9Wb9p9KUl+6feX9nu+jt6gKybKtVNWN3Q/oro6cOwABykEaj5kDtPxs4cdg9TxByAGinR0kn7U/x8VPm6USlS4bQasQbDr0CaVhKxDq3SNASzQ5BsccyLvHA=="
+   "_z": "vpI/Ua7UobsT2sMVNZyCMd8DBCCrIx2Zy+3T5vnUWx1aQY/CVujFGnCU2CXs7Uu8Exho5Puf6kb4GXvsvCiAq1YIld+RQLBPVVtrlzgSpmx3QDvL0EDIScOhQbH0pswkiNUZViMG81yYVnDlnk6zGetw9HLnSCHL3jn8B460Y/odBlUYWSu0eUOjYtEblEWM8fAeGmKMUSuBILbpx2TpZ083Zsm5m7iWDpl7MVixSlV3jurCvaMW0/ATsv4d8vNYrQx6P213tlW4w+6YaSIn1xR38e5V3dhzjWcyJBeD3TP8GTz60+sbYXus2JFomFTFs/daycr11KofwQ=="
   },
   {
    "h": "Сочи",
@@ -207,8 +207,8 @@
    },
    "x1x2": [
     3.76,
-    3.81,
-    1.84
+    3.78,
+    1.847
    ],
    "p3": [
     0.211,
@@ -277,7 +277,7 @@
      "gd": -2
     }
    },
-   "_z": "R9t93F3ZF+GCqNNBIgG7KzqrqIvTPzmWWFpMYS4byPhc95hVVAhcdYzVMgmPpHW5v/Y7Bwpa0PlEY1hsFRUows64XN+89I9jkKmoT0Qm+6/isUWgCyBnXAdJWo9r5jC5mMDQ2TM0k1lkyEcQo5oKuYb8uSk2LKlSI4LY5YyxEDDgF+dHH6+MmX23vZB+i95VyXJWHwv6nRTBV10CYfcKW1mh511B6fB4Mhw++xnCGcSWbApHGfvzNsgP4uMLWHR4bdXEKReuD4TSq/PHoRKqdtLGGVvUI/+0sHvbGcKpg3+oj0Ukf2cKA9ZZ4wx0IiYXKZ0tzLHaJfsB+H2j"
+   "_z": "eOCm8Ye9/zmp9OOlkwjP3fslUwZlZ83XxzTZCCCe1aWoyW953jDNN9wnDemAMnPEh8tY31+ezA91Pg37dUcS5MR6J/1GiUPTjnARHd0le2q+PXxf0PPBvPi/jhVXmtFXBbsnTT3z96wqTbajADqpL8g0N4d57RXxO4cEuWMXe1uhd41YlWGgAbeIscfvmJMr5MC4jab0b+zs5ntdQs8/j+3i/COPPkJqJz1YxD4lMwbpWH5RJ1GgsKbfVS5moq9cnEzofcA13tmPY+8NBG+fkH6oCeaQzUGXrlQyzrbm8uirz/YrfDtx5O3LlUqbIFzY5N/t7R0L1ldWyrdd5O5AISXpMeBALOgOcfA="
   },
   {
    "h": "Шанхайские Драконы",
@@ -298,9 +298,9 @@
     }
    },
    "x1x2": [
-    2.44,
-    3.71,
-    2.56
+    2.37,
+    3.74,
+    2.62
    ],
    "p3": [
     0.554,
@@ -369,7 +369,7 @@
      "gd": -12
     }
    },
-   "_z": "RnlF6o4Qm7gbe5eH30Bv9TNuaES2N8JB60PgHvfvKxrOQ9kLH5Q4VYmgOmexCah157TA3OReRFjX63/ghVgBBf5rQajjIMtS3IKcJPzuJWAkW5PEEkPlrptqjWeqa8rRa66ZJOSKaFLNiE+Q3sWFrtxYN3puba/ER3ztx1obFhEFeXQ/kNBXohC6n208zKYUgic3TMKeDTyVqgJAxCpHJUs93NXqp3/wMxa9r+qNwqKehHFm5hy9PCUXKLC2Qti8KaMepjgJEMIdBNOVywFPm22yEemOLIM8Zc+Kw+HY1jcqgqmnrsikNPSdSrzjki/DjDLy958wm+QTch0+n3QpjWMtoqvpDsIZPGEQPQpGY0IM7J773p9mcpWHQs2sVfmcOoh6sjBNAlc="
+   "_z": "kvCIkRfGw0sQDoa7R0ESy13Z3p8j7NleXhkijzqE79al/PBzpjAuEYpoKDC0/4AIHSq8LKbiqi1vUPLQo5BaAYzHyJMXe5RNbwSCL8QkrlsOBbc2HvJ0rywvSN7/VowxD4hCrsL/kWT8RDwk4O/k3FmZsPlyFb1NWw2aAb67NynHzzwENQLEzQ7r8dPefMzJWQ5LsYxrqV6l9heDaSXpCml7mhJj6O92Y9GurwQMZFVxXOBde5YNrq6d5ZGh8dVehpsTH8xGzw0p2SXsBr7AEb9nUCPwd95YpHzBpDBVJVqmw3ivtNfq3ZfyKeBKc4xV5dKmqlPUb8ajXZn079bE162ZtZgd8GxigRsHdgk5befs1j97Q7kfc0jaLdZl5WCVLoNNNmO8X/8="
   }
  ],
  "all": [
