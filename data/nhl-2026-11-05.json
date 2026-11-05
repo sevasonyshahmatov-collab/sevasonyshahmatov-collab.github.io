@@ -9,9 +9,9 @@
    "d": "2026-11-06 03:00",
    "arena": "",
    "x1x2": [
-    2.62,
+    2.6,
     4.19,
-    2.29
+    2.3
    ],
    "p3": [
     0.452,
@@ -80,7 +80,7 @@
      "gd": 3
     }
    },
-   "_z": "41fAYPnwyPFoqa7PydCAmWFXw7h7Zt74ZyLhiKlaLyFyW9WfwfhhCRJZ8d2xc62GfEO/KDtPR2gD2Qs1ibJpi7Lcf7NJtfgkMVxFR+hRNW18LHCVeQBhwe6OUSteeid97OYMBiHQMew+QzOpc3JC/QqB/08ra4TnY7mS4Z02S94+l5r/BL0dJVKTlNduxhkGyJwPEESnHXXk47qiqesNbtsWnokDQXO32zHs6aUCVFk5nSknMbLh3cQg6MDR17Rx/U5M9wqRs5ZrI84DkTR5uABA7RYaXBoHaz/3igLyj8H7ETcC59XBRApiTLU3bQ=="
+   "_z": "s1eQQ1ddqpRdSret5q4CN6Ze4EHwzgfn08c/4trDl2rqfFQbYOlIriMH34dKgirMdrWYIXCQvIO8EGkPCwJ/9F4w1ixXzEvvvF5lx/hXqbI7g4yAZC13DueSzO+Q9qTwG1sNbuiyNvjPqLwB32AC9OqZyuRZByYZSMGcz/5oUnAhvSZS+jTc4BPydcKS+OE3OH2DF3JX0AUwgYO08teURG4V2wyQ9P+lkVxQPvofc21SYnX9ZECMvFPNQjNEFQ7MqqJcSaI/HYGmXXWyQhglEP4jTeAYeH26IdvVsEXmcCrKEMARi755TKskalXC"
   },
   {
    "h": "Детройт",
@@ -88,9 +88,9 @@
    "d": "2026-11-06 03:00",
    "arena": "",
    "x1x2": [
-    2.89,
-    4.15,
-    2.13
+    2.97,
+    4.16,
+    2.08
    ],
    "p3": [
     0.35,
@@ -159,7 +159,7 @@
      "gd": 9
     }
    },
-   "_z": "B/LKC+wuGsluS66q8wk+0G3rfqAE6V7S9z9eVOR4AjO9r6oXr1LCkNp9meTP01qHZqmHk4No3Fa/GIN8axBIzm+lKavw6V5ST9Xv2n20Yt6Nmwu/IpnrFY/XnOW+T7KqhgOIOTyFyqIm3+4mCXJq0nEDZpZNQXLt02bkZLf1IfqqJM5Zmbhvz6vTr5N4ewPhB5VzPZRM7Fg9+3EFxZyFOHTP7jeckKtJWBRBd0BInr/sEYXTLC+S9RIwR8X+MSNQ+dlPrnlTib2ujayrEAQPAu3Sqek/ebgt41zf1pNa2y+1dIEdkSBbf7qdAL/tD92W+JDAR6ovfM7ubmqRIspsuHgzdWi/mlvlSd2YUWMXdMnaYLIKog=="
+   "_z": "8rd++J1XMrGtZ3358fQmV6luCHpgrqaFCu6vAAwMgPPevMY9PbFUZ/8/MlMAo12dVLmN1T3DO/nmo3/tvbf1T5wOGxuomTxdnwdHAEckbdy3/br7h4Qx/nleMSV1cXOt/TrFju3PbJArE3zHmOf1Tjp28E7TjVWPyu+9rWrSE90fbp2ssEZ891IIxMbQ3/NfNX7CzFYOAXJEBhgk086nKlXwgsaZqV8nkU4rue3P+sCTgmQpxz6uo0gc4rWShlQvVe+0A2tGjbPGaMVYfpSMnQ8Y/xA8qPZeUASfFEPmDb9cYqBcLfgseAMtO86Jd7M6OGv7k6D7+WKu4sC8ST3ejKyDXCXU8EauxAGO7j/2/9fiDyK2/w=="
   },
   {
    "h": "Тампа-Бэй",
@@ -167,9 +167,9 @@
    "d": "2026-11-06 03:00",
    "arena": "",
    "x1x2": [
-    1.437,
-    5.41,
-    5.67
+    1.452,
+    5.32,
+    5.54
    ],
    "p3": [
     0.669,
@@ -238,7 +238,7 @@
      "gd": -25
     }
    },
-   "_z": "/JroeQGVp9NU3KaJZipmOC2U3xUKJ+O9ynl832cubiu+kYxR/Kytedc0adNVW3PHk7pSda+0UF1apoFtusJ7e1eouukRX+HdQu88SAbj61lKIi8CMO42QfaIxIupxuTy0o43+E7SEX1JwUFb276nKs/sCpxC7Cl+ImBk58NfCst3CLZjjKvDscV1kDTj33E6CANZ7EP77NPm9rZQFYBjiBg/ms6P2amTN3FQrTSZ3XtNQ+fOmVaMG7jEhcpDmhnfIkKN5+OA6mUBvGUd+nbEG/XgG1IHeQdRIrAAUEQFkqNy3xcv6Mtoglr41szT"
+   "_z": "7mYksEVH17irmgn+uaJIEHTEwkw1mnHSUye/lBBjQonWh+j2vhvSjEv8D5IjDRK4pFQhzzvvfYTdwfe74wmKL3jZa4JvBleTKoudN6iCkiU9L1rKVUftB2yyER/RLWhq2AetwGB1kWHSQJMaGO61VAM67ydq+8Rlcfs32iomR08WltAXjWqYy4VjeOINfOJyVEE3Fc/2Gjfm8huBXPhrABH2Ur4UigAcKgUygxBVNpAnb5bZLHOGXaL1kgiAoSMr5VjCAstklT9WTy6AHxGHNwe56wmwCGMaoz3iNhI14SuQsQe6/RyfGWpz+DT2"
   },
   {
    "h": "Нью-Джерси",
@@ -246,9 +246,9 @@
    "d": "2026-11-06 03:00",
    "arena": "",
    "x1x2": [
-    1.885,
-    4.28,
-    3.4
+    1.917,
+    4.22,
+    3.36
    ],
    "p3": [
     0.449,
@@ -317,7 +317,7 @@
      "gd": 0
     }
    },
-   "_z": "JLMgR0vWgfqC7VKhp/SW+kEkBJQkSJoRAR374xwSJhQLqEqW3daQnl570wi3y1N8Jn8cC+sAyKInC6wtgDA6tmLztLtlrwuBC+vrx6T0//soeFmnCMA8NzFmC4JX1ip8TUYlacdQdDY0L77G/+otjlXYo4MgqVQoMY9HA6W5ySgQSUZ0Hbe6KSV1aBoUYFYxma+Ygx2xoN8iUB5rjp0mTZhwk46V60l/lwjt9N2weivFdiIlgSWM7ngPgtV6aCNaN+brW5e9v9S6r6quumzU1BEapVeLh0FGExXOz08kRG10nCjLGsoa4O6/qxHgv5d9rkKzEA=="
+   "_z": "ppR6ztdA/gHwP/5cqZjhuBKS5FiJRXEAGNpx2hbV8bs7Sf/e7tTcrTvGfanTrxO8Tpdr6Jmr4zUrBanaq8wjHJTKnX1S0gURajUP52BgwrKxc8gFABea/0tOqZ7Gd7OFbcrudLWaxMW3ClQijyinoPQDPH1NROmb3I4T8kvjwFzNaD3LU3/LJGF1k412/SJVLvniU2KzLRmVRQrpGHydDE0JAfmE5/lb36IDXUFZEXW/Qle3ho0RhTgqKCmrCRI0/DPKAdl1U/arpBSaFs23sknirx4aTShNBI2TSyJxI62iiO5bbSFhdYe323g0moDzuuCuC/F52fk4Lg4="
   },
   {
    "h": "Айлендерс",
@@ -404,9 +404,9 @@
    "d": "2026-11-06 03:00",
    "arena": "",
    "x1x2": [
-    2.1,
-    4.19,
-    2.91
+    2.08,
+    4.18,
+    2.97
    ],
    "p3": [
     0.535,
@@ -475,7 +475,7 @@
      "gd": -21
     }
    },
-   "_z": "/1xatY9OSI3RykN+cKmm0WTWdTe2tl/Z+Z6oCuthM493HIG7FjXbK4RVm7pbEfHz+kT9kMM5YtDwPEHhnbN9Qxe1z3G8ecm2czWqcZJ7INOUctOBUBTHJki4Qz3q8SW1d4jT3IpdrB6tUNzp5t4IuGcEt0vzYWzvThm2z/nwEU3NJZH+u1JIhqu83PVBdi4IUXrG3ZqDQ7y45p4JFwuU1nT0k9D2Ua0CvzgC3TPG6iDUb3jhQWp06uAtYpxrTesGSQ3KS44AQuNzkMG3ngakTwGqa2GM90agIU3l5szb7Y6YsShxgr1ZDl5sj9cCosL3Ls28JUs1G4iIhEa8E+J18AkCLn9Ls0oF"
+   "_z": "5wGkXbICdC4FOPo/p3vwfrgUJLENQ1cydxIIo8sMJC6cgIXv/RcAP79bUKGiEIlvaqHExqpRFsA7WCSlurwIARYWY3VRwAHS9g/MdjkPAIYB/C1ZTKJzPnjOWvce+ZgCVlJRMhfHcouXMjEWnzg5CkkVlhB2Vn3jkN8AkSI01funDx/F8WAdZNez1s9xL2z/0xyGWwRuniWt6L+szEIrLcvLj0xxnDL/ggRV+EA6qEx4XsrkE7iP4ikNHAX5NG9b6LKpRRcdyy3BoQfIF+iAQAVVEgzHH2HzzuVbadBVDCxKpI2qXUqdQfR0l1UNbIhyCm/sOuJdNzFqpGnJRZEW9OKfAPjP3A0D"
   },
   {
    "h": "Питтсбург",
@@ -483,9 +483,9 @@
    "d": "2026-11-06 03:00",
    "arena": "",
    "x1x2": [
-    2.47,
-    4.18,
-    2.42
+    2.42,
+    4.19,
+    2.47
    ],
    "p3": [
     0.271,
@@ -554,7 +554,7 @@
      "gd": 20
     }
    },
-   "_z": "6A1m6SwyDwVncLqTb3SXkkyAHM73iipuf1LBz+YPYkmDdKHTVPhBg34NPPgR/nwmS2CiKS999AcsFBflUSvyrac2kchQPUgJGUWKfRskUhZruWU/aGS+i98oDEjIXsQmLyQp6nL1uxQ+TiUXlkq/BKTW7Bs5At6FKZk/OsqrfmvrFIgAmRpG3Gl/CG0PVUKzft2Y9yuCAHLEAHgoqXSnA3bfoBm2sUq1rm+nNgv+Ov/7GcX4OAzGGvJK/QDC5eMgQ1vbIRCwaxl/FdCn7H89d+0Hir2hzmjgHQ75c0M1ikg++dGNw8WAuhxkWfii4VbmA76Sk49td0gg"
+   "_z": "AMnEyo2xOEipFT7LjaVzAo1ygR6hw83q3mBvTVKmmJJ0sMjBB80v0JtONUvHYWeZynhYVT47APn0yKip97sLh7eXCpt6EGNoKvH6/RoVT21gTo+0wlYMbm7+SvGYDOwgfH94PmDB2HRxi+3/Xne+Ta8WyRJf8ESweGs3FnjWL/9L/PI5x7iHwH5vqWZ8lXhYCB3Q4Ol8o+Xw7qdstcGMUb5JHN2mjPFgX+yA9ln1RAoni1X41YLHy5rWa7DDO2wWepHVaz+k/Ouf/VREvCyzUR2I8AgTC7/XXXBihJVkHq3jMpu1ToWZvc00MPRa3TNv/eLrSIRpcu4j"
   },
   {
    "h": "Коламбус",
@@ -562,9 +562,9 @@
    "d": "2026-11-06 03:00",
    "arena": "",
    "x1x2": [
-    2.72,
-    4.08,
-    2.25
+    2.69,
+    4.09,
+    2.27
    ],
    "p3": [
     0.296,
@@ -641,9 +641,9 @@
    "d": "2026-11-06 03:00",
    "arena": "",
    "x1x2": [
-    1.787,
-    4.49,
-    3.63
+    1.833,
+    4.36,
+    3.53
    ],
    "p3": [
     0.457,
@@ -712,7 +712,7 @@
      "gd": -26
     }
    },
-   "_z": "tnR/xN0Rr6hnrbsWpMNtBR/ZFhwPSOgDM3gdptNbHE6pD2Ww67B+GVFFsvTQGhwSflVdDwXzT0rPIaYT7oNlPP8AogalH/eT5QD16JJY/tN1Ntv4mW5aq99DuuDYmclS7vpVVTvGf0nwj+ZeVBaW/+5bIfC/Bhmr6FA73ZqcZIlfXPUcxJFjLG8Y06ZsD5DtboWFHsaSG8DjCRbJ24ONIhgSwWWBsPEqNl03Kt5rDxW3hfhzhhRwo/PDn0EtgKpG0q84JPUv4XjRfWnCfMGtn0to1D2YY2soIqG6iNNUR8HSuXLYpPe6uWfeqxBbG8dnXT4="
+   "_z": "E+eHOHQyAWBccLQeuZaygfcM/7n+c3PKU30HQ3Df3gt5bNdKZsSGcv+z6q9Qsp/I2a6Kap+XaRJPnAVc+Eoaj4tmn1Cl96QkXfpWebGVcocM3OVVdof9AfTzxD5z0M6matIL4pkR4uYEwlYRqF1QMIeuG5Q4vSBUibRwA/eik6ofu7PEm8ZD2R66NSsCj8/25SyrOZfybfwlKjT4yYmjN+8Q3rPltME4v5H9Q1OlHE4VjN5QHI7fSfk53EnR3dxowWa2BMMujkasS6o+L+i0EKvhAQm0yHCRhORugMrfyPgKHXaQ9oPGzuR26fxb8nBaFOQ="
   },
   {
    "h": "Эдмонтон",
@@ -720,9 +720,9 @@
    "d": "2026-11-06 04:00",
    "arena": "",
    "x1x2": [
-    1.901,
-    4.47,
-    3.24
+    1.926,
+    4.39,
+    3.22
    ],
    "p3": [
     0.593,
@@ -799,9 +799,9 @@
    "d": "2026-11-06 05:30",
    "arena": "",
    "x1x2": [
-    1.781,
-    4.47,
-    3.66
+    1.758,
+    4.54,
+    3.73
    ],
    "p3": [
     0.496,
@@ -870,7 +870,7 @@
      "gd": -2
     }
    },
-   "_z": "6BLyaJa82m0FbG91FZEOpT3D4GAk9PihFaTB0J4+vKQVE8G93IZKrEEBM6bdCENWZo3s4J6DiBqxluIp6wSeGToxlEQ8rTl75ePO5GBQF6BWVZ7WPM9fMnBYz1sVXc/oEzCqOznVPt9v+CJwMwdyCqT7K+RkiqpdkIl1Dn0vTeX9PSQ/C3LGTu59mcwf/xw2CtJsBUp4ICY9wF5gZmegB9iSNL58yC2cSWkrFfOXTrSa7PmnnUjvWDNggfwwl8rnAWVZvOreE+bqjokG5mEanVUwr5kwDRtsbfOOsiCBVro20nFlYkkm/KFhz0od+IRk4YerZn0sLA=="
+   "_z": "E9mdpprMBDm3tvwYj4j0hZ/iLNBKNnzlTuKteC697xXq1reJHdSs5or2Nzb791VOAD34/zv+F4POmL9F3Gm5NMRMbt7psd13UTNKmClopVQ6nuTkkvG6jVsW9G31TU0/ZKt6oZXRJFZermRFQtpFFqEhU1KXqVQ5IM44tte3lts5ML5lZm63GUpQZO6K1lwYj9SsewSM27raJmUQM2s47xrvILp5wnrJRz/h3tU2T9wMn2P4Y7paJvIAuW970UsLVNmoNAoSlSSDbTmG0FcjZVncE6eRCd1V+EQr/K36WptoIvMqDqgB3aOstzhHZw=="
   }
  ],
  "all": [
