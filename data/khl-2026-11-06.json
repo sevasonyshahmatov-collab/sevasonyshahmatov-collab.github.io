@@ -1,7 +1,7 @@
 {
  "day": "2026-11-06",
  "league": "khl",
- "skipped": 0,
+ "skipped": 1,
  "matches": [
   {
    "h": "Амур",
@@ -212,8 +212,8 @@
    ],
    "p3": [
     0.387,
-    0.242,
-    0.372
+    0.241,
+    0.373
    ],
    "form": {
     "Трактор": {
@@ -277,7 +277,7 @@
      "gd": -4
     }
    },
-   "_z": "/khjFLl/jTLpDB9TDxM2cxpbV4HZ7WR3nN1led50fyUJaRwMs30ytf0bTgEheCw4p9Rjh88m/ops2jGZ0IrjVJU/qVs3f9ns06ZUdatODdYEfuOusi28DeJlph0pfe8De5/yC+f3CUleBfSaJHYZPWltydtAN30nhY0y5BEEy+q419dKYV0hS9uqKTejXaE4bScK4ZLQfk1ruDBk1QHOx1AoteBAfLea8rAX718cW6e5WQvQI0Mb8Cm6PjRXIhu/mpgoWMlaUd+hFiI9AsTcxe1traqce7xG/dBAk6ukGGti+P9TANZaG3npmhCdstzfKaBf8zI="
+   "_z": "nsRtjixZFpvNdHXqhN+SF8/OjyGVXpPRqA+faMf4rpvM4Dz6a9YKFRhZDRs+OTBwe60PgvdcL8ZgNd9Msz2uG/rkpN3cn+Zksc3q+INpZJs1/ykjislwAfouImgvvJVTzV37hMf4QDFk2J1g95QPDLiwZg6s96IMB4DyLS+J/cIifkHNJ2JBo2KmdeKD4gBn3VTN0SvSlkPgNdmMa7lgAzins73yuCmQk9BVPf0g1l8fx2l7+6LJ1+KRuZVtscOZJqIIbBf+jBXlWuV3qIuM7/VWpycMtdy7RHFRcNHiJmmM9hwRhoSaXrOQFg8qHLG+Gg7JF5Y="
   },
   {
    "h": "Салават Юлаев",
@@ -298,14 +298,14 @@
     }
    },
    "x1x2": [
-    2.57,
-    3.62,
-    2.46
+    2.62,
+    3.6,
+    2.42
    ],
    "p3": [
-    0.376,
-    0.199,
-    0.426
+    0.375,
+    0.198,
+    0.427
    ],
    "form": {
     "Салават Юлаев": {
@@ -369,7 +369,7 @@
      "gd": 4
     }
    },
-   "_z": "EjFRKInJ3YFpb3fez5l0G21UZH98YuIZzXBKUtjYv3rM8vmH1zFmfaFJiwejAEXI/fD4hZLI1cNg+YmjknUzPTzTjcc3HNDZ5x5CBh9VQJy8lZj7MSIcJB/fSeSNqQK8G7eY7NigauKcEWkXMJ+ZWFI+7y2KQCWB6V3180eLYEA8PNbegsO3kFEULShDHbyAlosBUAQ5BemWNcVPLgR934wMPA13B4kaZJlEv+38HH622R99LXzp5RVUbmD1FPUP+ttyiThOKq5WoNz0rj76AIQxxTxEpwOLO5SjR5kliM33A5GPTJTW29u3gQFVmdds0ICudzz46e45W/TY2oMpF0Y="
+   "_z": "qn7kPtmyScR7IcMa0nCwRNUOxBaFMzjiMA6p5eFPsDJM0DuY6TYjy6qOuU1glAPeUHiiwtMCPyVb3fo2OlTOTaM3pXZa40WDzHzwi9hxyOwyxoGqwn9gX2qt+oE9t2PjQRLZIK1MYtSYnwzUSAIvCA9htsw9BLFsm9/U7TWUeLJsuvq2DXVWeSwOlg/+25y2lJFlekjJPNMnP8J0tlp0ky+iKwU1JCkkM7D+LtjhuFYQYFudsp2omc3VVaqQczLPemgznGYt6Hi2q8ujAWnogrX3m3FMK46VKjkKi0YbU8u2luveNy+IoZgQd0IHwgC2CZTTA6epuRCmv8RgF2dTrRo="
   },
   {
    "h": "Лада",
@@ -390,14 +390,14 @@
     }
    },
    "x1x2": [
-    5.57,
-    4.2,
-    1.529
+    5.92,
+    4.3,
+    1.493
    ],
    "p3": [
     0.121,
-    0.164,
-    0.715
+    0.163,
+    0.716
    ],
    "form": {
     "Лада": {
@@ -461,7 +461,7 @@
      "gd": 22
     }
    },
-   "_z": "BtGA3q1utbX4zR4XF3DXAygifE4FiXcy++haWNkm+JgIcKR6ijN41AmP01RACB3gnfxAWpjmo8QUu9gYpY5riBR8DXGLcfzlKext3FVJ2wTDkjjA+wUzhvgHUhUBxmE+UW2UfUVvImkISXIkcDUrpxXcRc+AXu9jyRaH8wZ47Qco9SWexZEaIsFUrRZ/UgFSRiRp3NRWSaopTNNpdTZzlkbpnCz7T+Vl1RwqSNIfHnRI+v/ylTyFvPjCTqJSZBSM2WHE7+KBef0i2DHXnrr7HL+qcC6d0QHLg85b768qwMn2EnojBzJSvWy7"
+   "_z": "f1sADDpZq3gcyg3VET8MMf2uzPr2GscCkFEXCjOlH2AOQp6tbmBGJEBfCxTQvhnvFdBn+gNqFZ8JQeb4rY8SX+KdStzpejSdJSVm+Dzur7SUFzUvT/lYsKVlFU6IC+owO73VIDl4VA4S7fvbHCeWCwbA/fRZZQZXPzVOmz+0KaDpbBGlpBRbuQz/tf4Hqi+0sr5UfcfHDnC+W56Znt7THDtLJ5hIrKIMnsXiBlU7gDkmKGb7JqK8yFeHELjvbK5W/+pUGTuP9XCtMo2I0jC7VBAyfsA7FH4+PVfR9L4jtzfy7sKIKjDvGZtO"
   },
   {
    "h": "Спартак",
@@ -482,14 +482,14 @@
     }
    },
    "x1x2": [
-    2.04,
-    3.71,
-    3.21
+    2.02,
+    3.77,
+    3.2
    ],
    "p3": [
     0.581,
-    0.198,
-    0.221
+    0.197,
+    0.222
    ],
    "form": {
     "Спартак": {
@@ -553,7 +553,7 @@
      "gd": -15
     }
    },
-   "_z": "X4OucwxWy25MswbMJA/pHX+H8/7mi4Yp6iA7zHiFEy8vJy0TQYQSdvYqQNfkMt20HdU1SaQ2xG655IWVlcnGjmwSvBTel9Zu7LhU/m0POA7fZbXlCn0ZxExyLJOhRWJ/eOxugprM0ZMH3FplZl5JALxE2lN+26lJDydJ7DxNVbNiGBQjzaFPi3v0sRDwGVVO0B6zVMvyEPUjmFn21rkaJ74jExKrnusWHJMInqnFyWFeQphoC3KFqfnKKJkTSBEOLkRqJK0txyUh5l+5gYQpGFP9n9CAI7CJxlydLBO3UvkMIag+vMxgVOzRy6eMJ2yVhwKplc4iY7g/SQ+UFMtbmsxHGC7xuIk="
+   "_z": "HQSRGiF6Xv8TS020uDvFCZh6/9R6aBlXfcybOejJ0UQshEZHzEWuN7jKWc7HRD5rgIoAeRHiyRUT5Ky+kX2Ugb94OA8Tj6ymHn9HfWJO8DEnsuLbZja4PAs2Ql71Xvd3XTZGIFXop+J4HW7XofqRtMIcaS55rdj9FBUAYnQ5rsdbMEvZ1kMOybS6YN2S9M+YLqWAOW2urD9Rn5xwBAq583eOIbxs5xd/NqH3zxPlAcZeI8fJeahX3ltj/Cz9u/G+q3NajDIgY5Zo1ueMVwxTtwaboQjWOqQzjcS/imKXShnVEmL3DnXx0OVVDMgewCoXCMUJH7pEJWtRtBJAlPEvgVbb28A8UrM="
   }
  ],
  "all": [
