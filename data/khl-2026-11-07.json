@@ -1,7 +1,7 @@
 {
  "day": "2026-11-07",
  "league": "khl",
- "skipped": 0,
+ "skipped": 1,
  "matches": [
   {
    "h": "Авангард",
@@ -114,9 +114,9 @@
     }
    },
    "x1x2": [
-    2.18,
-    3.58,
-    2.99
+    2.17,
+    3.54,
+    3.04
    ],
    "p3": [
     0.558,
@@ -185,7 +185,7 @@
      "gd": -11
     }
    },
-   "_z": "p+zm4fU/zOd4rPPup6T00ATzsF9csWjdnzpEpspZL25rSPeA12eX9+uLnwy1yjqZh+GpzB+ZYnmF7uChAt+tArNrUrKpHKEFc19ELlOcL4mVQFFnYDW2negBDtTuJ/UbrKXrU+eRjnp4gn2cGrWOWMkyRYkd6obiv8z9+sDUGXrxnl7Fq+Baz6R8+X87+7El591/40/+oR5Gogr5qa1V2IiQmN9naWU2+lSfntnTFiHTSrIt8j6lEjgs6LC4SCap4WpIYp1N1BMAijqdgPMxG/WkoQuxSHgyfCk0zfVowX7P3yIJQHQKsua6971P8Ecbt7ZSGN5DM5C2UHbS"
+   "_z": "LWatMBBQ7NbHiJy5k4J+Ow2yGOIVO+i+MJz3w29xnCAbAEwjRa3GqW1ME3ovKfesHO2563Z8Uooi5KgpH8UnqEtkFL29jfKqQvkYZSHHGdRgfoR0eg+dcgi4RmtbJkhcFpHLCDNbVsulXo064YGVHj3FZjjtyIVGaWXqr/gkM4webEObezBPTMFeaV0mkDS4pxIG6kEp5zcd/TH3J2fzSIjTKEAAocnEx2UE/ceEH4dFZ1SMy1TLdMGetywNRUh7rn67ijOXGPTDPwkHNzFhp978k3RTS8Ez9uXVeo+0QHzxH2FIi1yrPdHDZ3YmABn8D0OSFB5zl/QPgWsg"
   }
  ],
  "all": [
