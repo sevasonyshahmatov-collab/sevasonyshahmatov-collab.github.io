@@ -1,7 +1,7 @@
 {
  "day": "2026-11-08",
  "league": "khl",
- "skipped": 0,
+ "skipped": 2,
  "matches": [
   {
    "h": "Амур",
@@ -93,7 +93,7 @@
      "gd": 12
     }
    },
-   "_z": "PRC21Ib8MsZ9BMk6cKFt4sdCGpPpG0w+O0zcE/tFoLDnJt6RwlU06LaONGaz+OpuHU2CtH1I+Sib8a17cAYVucdrtRYFG1ODTUuthnpI72XoGTxaYzQSbmSVoPwcJyD7csRZ15j8Lsd3FdCk5TbXrPIm5oaIVQkfJlfS4FXs3qiMcFt5mJ1zd8hnwc9AwUT1djgBsxsLRf0ZhYtpChVxm1X0q9L1e9Hur7trGIL+Ddz8ux29P2f/eaejV6fIaX1ZMsv7Hw/VvwNn9bHhTXmXOsj8CZnX9dTuIfnjc9MKgbQLf/op8Ng7C9YTxkIIFLIEl+ofISf82tuu2XS/xySGit+IBBvwMKi/LMtcDC8="
+   "_z": "FZLUsMpVTBdgnEAG7HPxwi9rYS+34N6sDZXO0gPfk8Ip5TNxxf0YD5nVANhryiPYWfd6ptvfY/ULCLYvw0RymVEPKy5lceeEl+fqjkctkG7/wuz937khH9bRjOIbkPxptFRfqY/9HqykauA3pCzrT/jgcgN5aIaw0gNMkGHi6g+++UaVjSHiWXffUu43utDcqW+0+A6BIs7CrmuX2hnANlpJ3OxxPFgtf06EcO7BIYN1NN5CyaZAGFrBmjBvwvDtkGgWXtCnJEGGyZi8VLTUgtS3Rkd/yLiR1k8OJNiKgvaasakR2MXcGdiKcepirRAkylBCkUNW1Ed2VhTWx/m1zgzSAFxXe8+dwfb+a7Pk7v1Yr+zi3tyb/smtS/rXGNXW/G/T6Og5eMJhghV8"
   },
   {
    "h": "Нефтехимик",
@@ -298,13 +298,13 @@
     }
    },
    "x1x2": [
-    3.97,
-    4.05,
-    1.746
+    3.91,
+    3.98,
+    1.775
    ],
    "p3": [
-    0.244,
-    0.201,
+    0.246,
+    0.2,
     0.555
    ],
    "form": {
@@ -369,7 +369,7 @@
      "gd": -17
     }
    },
-   "_z": "KJqtOVeSyOO5j5RwHnDGGIpTlSWHx7S4m4dDTK5KPJ4HIwvPvaFp35CcH9zAyRevB7tGBMp+MhX6tx7/WNqBcYcExeRQhmLBnaSQ91VpIM9X/DDtTQSLc3+dfRAG9imM8ZPNm9gezhJKp/FR8kDey/bIvTwfvoejPPvhw5jP8FQq4ycIfih86UgQKTCca7yqI0faspiyzxg33JmFadwlEH3y8D0dE3HV5cQ+APAvqpXNXfpB0Uaaf7ad33fXpMsPZJ3uZiR+eAFBSwD2WI6mqN+QEstAJj4+FrCtyKKmv02xv4SAC4Z13lWuwNZU7OU="
+   "_z": "qaM4QizTjOOQ4CrcuUeo4WQTi4LUXHfRSDIOwTH3acXrSyd/jDeHqaYXZLSYI8/hvcH5Dnm+2SZ6X787NdCntnMFWshIetBLF9m9j+reX48vFSmrbkiSolGuli08VElNJfMzhNbNyXvG1sxF8EdHqRvNeMrZrgK4+bEeD9oyU/RWbdE75PMpyFJPcu44EhviDrpEHbBieM6zjL1AWsw1r1jHW3bwvS9Ut6I8jYH/46xzfKdrHL2u2D6TbNfQ2pIedMYaRM0PmbT8Er7uMTrHxDeKMIe+DaCYpg3FPAdxhfawUGj5d1q9qIUtA57kbuE="
   }
  ],
  "all": [
