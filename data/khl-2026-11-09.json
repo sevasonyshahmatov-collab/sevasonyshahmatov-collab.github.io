@@ -93,7 +93,7 @@
      "gd": 16
     }
    },
-   "_z": "85epnO4DHGHZ4IpCntRb7ZE4i5lxuQeARiygopYFZgyiEFhcYFc9jUD0Edb480vAW6nY/8j+5lmyj75Y8KbPW4b+15FjRweoBGhHIYciGIu/xaqNyVsVuVTPCqTDABSckx5LBctXY+Wkfye1NAUyZPaE6Idu3SWqtcZ3WC9wFifAshjybqZcvXrmBb4hF0myDsNbzVAVV3RhvzK5opfPxxmapE+Aj7sDbFhtcybyP22r3XQx3st0nnbky5L1B9L7b2P7u1XsZH8LfTFZSLOD6wvP7JRO7ZX/e7soW8XpYhOu5lTxCVSnZYT9QS/EBhWaLeYvgHwSeQ4AnAwk"
+   "_z": "z/XqyzrmM0km3CG2M4G1pzAM+vswIj9tqCDx+usg7qqTwFb+mMzT/MGcSoLDtYu079VNo8sjLIZLRsU0VVboiGd93CXTBdKQjbH06nZmMmG6PQdl8/Xk7sgAD677BQq+xjooyAh7IYw/XLmSwziSnm62xd2n+OcBZdcpvggiivnxhAYfe8/5+PgjnWjLO7pyUfdcrgyjA6/zzV8l6eR8klJQ9sd/YWfB2fo0M7cF79c/WF+3fgqMZJRPheOqrbei6cU+fkx2hDPF9l4vrmr2XT5Ny9xFudMDzo80vYzL6Xb2b24OpkIFTtcMcusXRo8qMEDUeJ2urWh0ui8bbW8/m6dyBrlPYzXHKjUDPRPaKCZX5rzFEqafCzaYhw=="
   },
   {
    "h": "Северсталь",
@@ -185,7 +185,7 @@
      "gd": -42
     }
    },
-   "_z": "eHTi8wgKr2jG8lkZ4s6BtjV5x8LB5SAGDIRIdfmEqKR0YKNW/qvW53ukP0cZXA/N7RVbTWHvDwy0hVbeFxJ2lYwh3f2NMCTr/VbvbCSDyDcoEJjWPz7KDJQXLca5iMAGHhWeRqVSgDCeN0BVmCFaVWavbzJxkIOqimBbhcU1uZuOVEaOvo/PlUOFXaNKabwMczwRQJdkJoh32EAX+5HfJ/j+mAW0A3VsQThmrIda7vENy2MXzKSt6fYdh3bkQAzf9dY5TobZsJk/lgaB6q6J8y9L7fu2V3RM6vp5LpfGudyTwrqgT6J2J+6shnw="
+   "_z": "GFzVfb+vZRk5lVulYeIKNGFk96uzz052s+KDoIZN2ecrnF+QBazzFqB0sN4xmD7xS6WHveATZHPxUIBvrwVR/u0kxONTtR2nVtSOG1YydZRVYa7pi/m6tcxcJa4kRR57mApBjHS387OkiRT/SsgGiR7l3IkK2kHxNU9W2SdRMtQ5M4xyCQ+nmUdN2W6a/B8DiJ62mI+ddt3HYTI88SIdpmGRQd1i6CuLAqICgky1Pqx1ZV11yp3mOU8ElyAkTBd4lGqFnaX8w9FoEnPCF9eQCsrIOXtPG4+QKv6paGoqH8/PLKhfubCWDgtcxRk8hfdQmnphqmd8aZGc8yhMUBoSgM0yEy0TDMnhAuA="
   },
   {
    "h": "ЦСКА",
@@ -277,7 +277,7 @@
      "gd": -16
     }
    },
-   "_z": "XUSz77w2D5ZunqiObRuywxkMZoJC731IhU53NNFqfLjM6oPcNAq3l0WxV8qfd4SGqbM2v1ehyzCRZNsGYmYVYjgyD0xfAqjJM05r+XUOdgHL0YTL2nzfI6eE+cIB7sf6aEu6xu9gWIggO+jV5ZZ+2uU7xNXxwv9Abpn/qAr92csiF0C9VkSbW7wDHpfMt6OHF0vGeUNjBAvxUMllITx3s7+Zw/TJ7dvMjOOwstz+Z1XUAjQOs/Ezp16HgY9UyWA39v62uqQiXfBI8gj8VzlUnxqfnYwBlvAWC/VTFv9J7XxTLpDZ3Bs2ZHYO9KWrlJxM"
+   "_z": "4M6gwiqnIR0sMVn76zkEXei9CR0ok8Bn1UTZpSR5YlO3tdmBzCY9NmEBe9XUsnVgd0yCPynGkrsc3bg+g8OlUYq2FtmDuOumVvABVZggFDhNPISA+56eNg/HVc4WYl5sRQmtTqDaqqxv+S+gD1B38IXKHYukQO/MMvK8KB7tmMyxHBU8F65WLaDN/T07nY/NaTljaDuXFQWgzDVToXZfRQa+CHMtmAKobGZyvVvh/B6HZ1xOk4SG9qqN0kr0awzdWdnkha1oYJoOZmfQWz9tY36AX9Yk5/+TSc6bqiL+izNUuC0p1UPAvrePvHpNnC9QwwEIeQTlCtaoVyqqEYgVv27CAasBhMd9Wbt3VOz1"
   },
   {
    "h": "СКА",
@@ -369,7 +369,37 @@
      "gd": 16
     }
    },
-   "_z": "Tnvj2T4LnnhJjJLpLco1yA36CnFQyV9uNV72h7xzrhR1K67sJC+LBL+0ef1G1pp6gTS2X7EzPdZwFjvgkPN7tCaUqswEm9LMHWz3DsOlvwrb4sFFDg4ff+DJhl4jEqCakdzvLcenqxeuNrSgGivJU48e/XZP/tLMMMKCM/8XrdkwvHbVX7Ehs7wigWK/+hoLPW9tucC7yRZApH2VenQVMOpV9ozMmYQ/JdeO3lEoSpQWHJr9Blot5u5EEZxaS/g2CPMLPpUIO65iv9Ap4496PbplEUdSyP6fbV0rCw52oOl8ro5nXeIU4yStyjKTRw=="
+   "fact": {
+    "k": 14,
+    "n": 22,
+    "team": "СКА"
+   },
+   "odds": 1.71,
+   "p": 0.5895,
+   "pick": "Тотал матча больше 4,5",
+   "sim": {
+    "hits": 6241,
+    "n": 10000,
+    "top": [
+     [
+      2,
+      2,
+      690
+     ],
+     [
+      2,
+      3,
+      570
+     ],
+     [
+      3,
+      3,
+      539
+     ]
+    ]
+   },
+   "res": "win",
+   "score": "7:1"
   }
  ],
  "all": [
