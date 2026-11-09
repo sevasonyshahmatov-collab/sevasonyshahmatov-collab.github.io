@@ -9,14 +9,14 @@
    "d": "2026-11-10 04:00",
    "arena": "",
    "x1x2": [
-    2.05,
-    4.28,
-    2.97
+    2.01,
+    4.3,
+    3.05
    ],
    "p3": [
-    0.524,
+    0.522,
     0.211,
-    0.266
+    0.268
    ],
    "form": {
     "Эдмонтон": {
@@ -80,18 +80,22 @@
      "gd": 3
     }
    },
-   "_z": "N7lOznB+KuMjUhrY5YDaE0ahOirCJFge1S0gcQjWSjtJZNKgzVHlKLoj3PUcXVeZ3xJabsGwPyRJTv5h+ivorCs1r+TceC6FH7JpUFNV7RKV4F2c2M3CDBSdVuQCj+tnkfpqqI5G7lUjKtNyGYT+xErmPZ5nu6sZlYw+WShmgjbkJ+9yw2eNYJ0XMfgZkd8XNBwJnOT34O1AwafHwQ0IpgArpC9CrEFMkNANeK5/Cb5cUeG0sqvOkriSXRSkfFvATSHquFIFoecFBY5FjeFG7oxx7LAkhxkxQdr2zTQytVcvU+UWyJfQdezwVyzuvUkRc6jvbJyqM6csI10ev2TlmQT/"
+   "_z": "Js3s14Hap3NO18IXI13NxAHKKmSpFFLZFmR/g+9g10MWmhGgi1ObgItNWStsikkCzG2RNLQKoj3LEeWupN9sstxHRlXawvteRB7Cnte6aTIHAkP3gHoGaChuD1HK8YOQ42Re/qN+5cFTUqMsXUDfE8T7uJdOlBNtjAYg5Udxnf/cZcmyKcku7qqn1BkTie9bdy0RUvAffR2JbeYPRr7SRU/0U7DbMqH+fiXegrHPFBDzDz6leXmbhr2n+5kw/n+NFZGDqSWqJvnF7xmATaZhPaP05/oeH5ievT2Bs9fI8avSOLei9WIl2wucrOYTX3PpXlpDXzQpCswNy4VBbv0f74aS"
   },
   {
    "h": "Ванкувер",
    "a": "Филадельфия",
    "d": "2026-11-10 05:30",
    "arena": "",
-   "x1x2": null,
+   "x1x2": [
+    2.75,
+    4.18,
+    2.2
+   ],
    "p3": [
-    0.374,
-    0.229,
-    0.397
+    0.367,
+    0.228,
+    0.405
    ],
    "form": {
     "Ванкувер": {
@@ -155,7 +159,7 @@
      "gd": -22
     }
    },
-   "_z": "zZrjKtMYA+X45lcHzhFhxTfOfaML+32S7MmqAcCKj4N9aGmbrXx9eDXLxvgEXYN6udhhja2RS8mzoUub4iO1czzpgXXWXQpZKusf+NmA/nTpt6Lx7gaXw4PDBk3AaWq47+Vt++9vwJnYvJU6ymYEkwSSJYtW6le/IL3l5LBOl6IQiMMfWEwpEY2oLJoiURl1oQXQaMkzUaerRZ/1qwK+qefjOtRlYpTcLNy+V6/ZO/tq1rY1vgDapIClUXEDBgYquC38wZ/nFEHXwH8qXwe05DFHX/TqdWrTEX3dBPRMw6o+hZvcDc1Xhfn0MOcHI7VZwPKv4iEYzTCaEvBEFe0Of6CWKRP+c5jD"
+   "_z": "PN6QVPxGELw9SlrfbG9K8Nrm3WwJMXo0fSAyE/Lu3NtOJm2X3e4P3Rx2sm3X8YWE9mOuFqEsTwho9eNVO3D3+D7Fo0AWu9I1AgouBWkKzjUU20nOfJh76VHxzKuE7FyO6Wpy081FpLLGPFWjkgLxkQmdGuK8RhNj7VVSkTXivPmyI4StuwhSrbwmoDFkeDDeB25adKC7KtqyLRnUhagOoh+fj6Q/iOH/m8N5rNwoXmiXLyeGBNlafQcUwvBmgKzvbOnxYdMWr8LuitpDSHAVVmFsa//b2tcpHZeh4uiQJl6irMXjP3i6QwcfxZqrud2zJfxkkfuGEw=="
   },
   {
    "h": "Сан-Хосе",
@@ -163,14 +167,14 @@
    "d": "2026-11-10 06:00",
    "arena": "",
    "x1x2": [
-    2.75,
+    2.81,
     4.17,
-    2.2
+    2.17
    ],
    "p3": [
-    0.282,
-    0.233,
-    0.485
+    0.28,
+    0.232,
+    0.488
    ],
    "form": {
     "Сан-Хосе": {
@@ -234,7 +238,7 @@
      "gd": -2
     }
    },
-   "_z": "dn9UNnOJ1eb64vNcjjLIU/tOs6Zmf0oPYQwxpYfPVGfG7Tml1wEWwqd8qJXMlX/3pJjt8xh23cSdI9KPc+VbS/sNXzWUq321gWZN7um61gIWZqTqowjErZ0ClTwGH35BlK2leUB0eU5SuDtyK8y5iL2mCBS3Lcq8M5wSPCGf4BALz2ydMwXyTVBFS6u2T9xAR2+0/dyqr89UNVegAyx8uQDUDReHhRxOdyFAbLj6GtIUV1fOKJGW0FLY5/RM8nvWq10Q4vDEZhsgG7FGLkLUEgiEhevEYXzdYoeadBWbyXPjecB5p/NwuJKKVd36+9YSYYZ0jv6j65IIpPtuZoTbbVHFsbF4fBOr4kX5YMj5jTNBybppEON13bKI"
+   "_z": "2dX7wBgIzWGluBgoBfzJlnX+hTFiAK1R65pKxOvqkeUyhBy+hGwv96SbA2466vSIkZQBJApFFGzddCm3kXewAWr+/HKGinhyILauGQfMdoLCjTbw/lsnLt6HEgL0oGaN6qORTgEeyPK/wr6rOML+jla+xsR5kivTdiCJLyEET+sCFo5Vno/zqHOrHl952aaixNTx6nPFulCS9OO8gwbK+ePv1g7AjdcEI3MpxROgB2dI3P228hsSaU57SyK94KboDZFH4uog6BNtfWA36psQvF/f5oY4xN9cQlf1S9qsVOi/ovtBT55Kv+NCl1TTjBxRl42EBuo7RdpQf3D2SQ9vbj20HclFcCI5X0ce5L9270hPTN7zecQlTaNY"
   }
  ],
  "all": [
@@ -320,6 +324,12 @@
    "h": "Бостон",
    "a": "Флорида",
    "sc": "4:1"
+  },
+  {
+   "d": "2026-11-08 23:30",
+   "h": "Баффало",
+   "a": "Вегас",
+   "sc": "1:4"
   }
  ]
 }
