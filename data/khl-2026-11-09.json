@@ -22,9 +22,9 @@
     }
    },
    "x1x2": [
-    2.56,
-    3.56,
-    2.5
+    2.59,
+    3.6,
+    2.46
    ],
    "p3": [
     0.262,
@@ -93,7 +93,7 @@
      "gd": 16
     }
    },
-   "_z": "5I1cpQFxSl8cwJek5tua2hz96PzQnUzEc8e34TeffCe78UNkdMj/n9aRppa85RIv1cgFZDt4k0pmbiFVzuav2AYz880oGNpJeoZu5cmgLYIROVn5gxS6m5PTDq08rdXNnfYav6WY23P8q/Za5QtV1+Vf1bCFomDnLOH3niO2+kr576VJ3z+HXVmZwt3VfC7/LH5dLFWGgKM252AciyCIvYn1ZrNMwDTVHbGta4VVGZkR8RiNluaW4RmVXvM/JmW1ZxhdwUBDg+VW6U4tZvGI6AESKdWRwzG/3OvBy22cqNqTMJ9yAKw5AQB0EckNXWCwFQ3oQxV6thfITBN/"
+   "_z": "85epnO4DHGHZ4IpCntRb7ZE4i5lxuQeARiygopYFZgyiEFhcYFc9jUD0Edb480vAW6nY/8j+5lmyj75Y8KbPW4b+15FjRweoBGhHIYciGIu/xaqNyVsVuVTPCqTDABSckx5LBctXY+Wkfye1NAUyZPaE6Idu3SWqtcZ3WC9wFifAshjybqZcvXrmBb4hF0myDsNbzVAVV3RhvzK5opfPxxmapE+Aj7sDbFhtcybyP22r3XQx3st0nnbky5L1B9L7b2P7u1XsZH8LfTFZSLOD6wvP7JRO7ZX/e7soW8XpYhOu5lTxCVSnZYT9QS/EBhWaLeYvgHwSeQ4AnAwk"
   },
   {
    "h": "Северсталь",
@@ -114,9 +114,9 @@
     }
    },
    "x1x2": [
-    1.602,
-    4.17,
-    4.82
+    1.606,
+    4.16,
+    4.79
    ],
    "p3": [
     0.625,
@@ -206,9 +206,9 @@
     }
    },
    "x1x2": [
-    1.532,
-    4.47,
-    5.13
+    1.535,
+    4.46,
+    5.12
    ],
    "p3": [
     0.648,
@@ -277,7 +277,7 @@
      "gd": -16
     }
    },
-   "_z": "7UcBfvPwDmWdwmTReEWdVP5AbvVn6KuDxctGPAFQOn/q3aefCabcyDlT5BFBXuf1MY5bK/UzJr0tJQ7Qism4vVcYyHWuVthP465vaiVqYuYPJK9B28fx235DAbRI9gHIyVeB5WaeXTm6i5grVptgJN9HhDfiEVyijLtbn/KO/WYE10+uur4QraNS5Ycf0OTdxIhqiH+UWLqN3mm04LVEUzSfB3uDC1g0FODsEUrctvNXEUERzpzP/PSONIZ2ly0Kmu2T1bBXWRhTtssiao6TCM43MKupFJv2SdP/Jdnh5gB/vPhoOqbowLpEBR2IuDp9"
+   "_z": "XUSz77w2D5ZunqiObRuywxkMZoJC731IhU53NNFqfLjM6oPcNAq3l0WxV8qfd4SGqbM2v1ehyzCRZNsGYmYVYjgyD0xfAqjJM05r+XUOdgHL0YTL2nzfI6eE+cIB7sf6aEu6xu9gWIggO+jV5ZZ+2uU7xNXxwv9Abpn/qAr92csiF0C9VkSbW7wDHpfMt6OHF0vGeUNjBAvxUMllITx3s7+Zw/TJ7dvMjOOwstz+Z1XUAjQOs/Ezp16HgY9UyWA39v62uqQiXfBI8gj8VzlUnxqfnYwBlvAWC/VTFv9J7XxTLpDZ3Bs2ZHYO9KWrlJxM"
   },
   {
    "h": "СКА",
@@ -298,9 +298,9 @@
     }
    },
    "x1x2": [
-    2.57,
-    3.75,
-    2.41
+    2.55,
+    3.67,
+    2.46
    ],
    "p3": [
     0.274,
@@ -369,7 +369,7 @@
      "gd": 16
     }
    },
-   "_z": "6cB04RMrH8ZEnvwy1knSsQXRnMshFrzbS812ENUi0AHG/gQe22ZxqHR3fJKGwNnHvO6VvG9WE6+8xh3vLiNhc8GZL0HNowMlO95oanUdBYWD0L9jXYH9PMF28sednGwMqbUZQw6MGj+VAjaDH1hReIvIXslaNfl5VIx8fuvhah/rnM43WZk72ceG8CflMPTS6QyZ8K/malCk+oz41P0TE/x39I1JYbHW04TpGthCrgYNiYK4402Y33NAztB7gQLdH3mqLOGtMkZK5HRTWacOdECF4Dhorsd6kXXOqVypHiWOt8aagk5AMFHkHf8t"
+   "_z": "Tnvj2T4LnnhJjJLpLco1yA36CnFQyV9uNV72h7xzrhR1K67sJC+LBL+0ef1G1pp6gTS2X7EzPdZwFjvgkPN7tCaUqswEm9LMHWz3DsOlvwrb4sFFDg4ff+DJhl4jEqCakdzvLcenqxeuNrSgGivJU48e/XZP/tLMMMKCM/8XrdkwvHbVX7Ehs7wigWK/+hoLPW9tucC7yRZApH2VenQVMOpV9ozMmYQ/JdeO3lEoSpQWHJr9Blot5u5EEZxaS/g2CPMLPpUIO65iv9Ap4496PbplEUdSyP6fbV0rCw52oOl8ro5nXeIU4yStyjKTRw=="
   }
  ],
  "all": [

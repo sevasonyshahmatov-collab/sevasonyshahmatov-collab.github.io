@@ -9,9 +9,9 @@
    "d": "2026-11-10 04:00",
    "arena": "",
    "x1x2": [
-    2.01,
+    2.03,
     4.3,
-    3.05
+    3.0
    ],
    "p3": [
     0.522,
@@ -80,7 +80,7 @@
      "gd": 3
     }
    },
-   "_z": "Js3s14Hap3NO18IXI13NxAHKKmSpFFLZFmR/g+9g10MWmhGgi1ObgItNWStsikkCzG2RNLQKoj3LEeWupN9sstxHRlXawvteRB7Cnte6aTIHAkP3gHoGaChuD1HK8YOQ42Re/qN+5cFTUqMsXUDfE8T7uJdOlBNtjAYg5Udxnf/cZcmyKcku7qqn1BkTie9bdy0RUvAffR2JbeYPRr7SRU/0U7DbMqH+fiXegrHPFBDzDz6leXmbhr2n+5kw/n+NFZGDqSWqJvnF7xmATaZhPaP05/oeH5ievT2Bs9fI8avSOLei9WIl2wucrOYTX3PpXlpDXzQpCswNy4VBbv0f74aS"
+   "_z": "3axWkvux8lzmZYOvWd36X/lCbuk46X7WdNjlf/T3cU1c7oEq7iSyBMJf5oTCw1uRnV841OZH0yoXqiHlNtfQTYVRe/GqJAwZELam1lsvrBMiSA1DwSHSfEXxtoJcf/6WisDJzXFf3Lw0yEAvRg1o9ZFh2FmzAncu6ChLNb8ViETWj8147jTnNcwsjsIvB8P5NggpECWSV63IdA+B9RTuQRelTeY0PQSkiLZPfBsckLvYn2pNWlBTTeTRLQQmvPHNuM+4Zoa2tTQL8e/127bFkL/8G3gzTaYlj/jNgzJAqkXeAlvqeogXIOKB+Cl+aifvt2rE3B8opkXeBLkTCq6il4pS"
   },
   {
    "h": "Ванкувер",
@@ -89,8 +89,8 @@
    "arena": "",
    "x1x2": [
     2.75,
-    4.18,
-    2.2
+    4.2,
+    2.19
    ],
    "p3": [
     0.367,
@@ -167,7 +167,7 @@
    "d": "2026-11-10 06:00",
    "arena": "",
    "x1x2": [
-    2.81,
+    2.8,
     4.17,
     2.17
    ],
