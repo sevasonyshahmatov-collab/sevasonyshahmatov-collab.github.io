@@ -88,9 +88,9 @@
    "d": "2026-11-11 03:00",
    "arena": "",
    "x1x2": [
-    2.62,
+    2.63,
     4.15,
-    2.3
+    2.29
    ],
    "p3": [
     0.308,
@@ -159,7 +159,7 @@
      "gd": 20
     }
    },
-   "_z": "wZeik9kwbDiZPxV7mZh5x7iwbJjvrcOxlmAuubZDtCuuqDaaMgf36uBWSWvk4SkRVYMBhRAZrIpbFS790twcEVTnZuAtsDt7H7LoS34dIHgeNRBvkHsgH7O90c9wRYguS+XNh4+x47aI0LAXVXJD1ks7tNMFeIBaDCZ9rv5V3yqK2pDT04elEsPdhtrMPDFM0QWTihe7U/KVZ0ZOQke2XItlAkITRoYBl6/d7FYjhMKWjmRFoaVY5BuBne2qNsUgcL+db2cFeySkiSEppMk3Yct3BOkCSYpMsL9X5/GSD+ssOgt3ymWl8gqDgMOS8uiXRgjmUdvrkccckHShtNK4woegSGeQZxao3VHyutdQW/jLdZPRJ7w+NqOqyRnRVouJgg=="
+   "_z": "t0ehQdXLsnOKKnG1u7wOj/xlJ/GsnoNVeKB+nevHq0kFllzluwA8YYro8v7ZQc70xaDkqz5N7bwFBAfgcCRoFHGVvfTCLlSrxzNl9HDISK077GNZgj7ycMEeEXRIg4GITFqHDqbycn5SP9FZKrmo8p5qH26QorP7EKrkjR544Fr+1TzGmD7AjXiozOvFn4ZrnkIQsk7wHVu7N+MSeANsulOsFTNFzR8TR9FYPo/J4iyQhU3tBI4L8P38gbvw/6wSOWj7yGwIKNnNAsGUvjgkyf9a0yJ5MYBPWX14C1Mqkt2Cai/TaltXkzCf2p6QRPlmmPBf7b0l21AEwEbRT4qiL2+zBU9NNcBMfwKNounCsprg2nsFjyVdDCg="
   },
   {
    "h": "Оттава",
@@ -167,9 +167,9 @@
    "d": "2026-11-11 03:00",
    "arena": "",
    "x1x2": [
-    2.27,
-    4.16,
-    2.66
+    2.34,
+    4.08,
+    2.6
    ],
    "p3": [
     0.437,
@@ -238,7 +238,7 @@
      "gd": 2
     }
    },
-   "_z": "atsxawt9PDKhUajH69z0kxDYgi/Q9Si7GbB0iqjvr6Lj1lhIWKZWr9R1xDeW4oSq69nDmK2z+73C5S2FJEim/FDrm99cpXqDa+tSNXF+ICREaikhPz191ICH2U801ByQXVaayjQZ4/fIDjwgxCXOswD5yCPHQm8Y+JzXumW8T9/oGkjo1gZyzvA4U3m94TH0fw7leTeKSXDlS3GKdtq2y2a0zM6b1pp6WcQ4e6rA0NeB8eOPcwhxjYbqiCWTlpPcDpZYZRvletZ205Ja0gPeOnnScH16l6e6f8E4VnQNM9yXLOToRnYlDgs0Mgfr5LmM1VqKdbjOMhUWjQ=="
+   "_z": "bCS0Nnx8Zn8KDDYZ1N2aXyRQPNJmfkCBUQ0MBvzWwUN+0gdWPIXZYbdqGcZz18ARLHz8cH3xQszQtJFC8+DXEiEC03BXnzow+f1hhPkjg2h8BDal4afiHd1K0oSHXgRR2GmmGumHmv3639BijjAxJOY9W6RBjerGyWAw4duIjZ7Eqhy0A0Z34gfQDH9U+Uzk+3upKNhrRpjGkKSpudq7J80s1xNNrZPGleOmd6gvB881iAZPOQo82NWE1ivjJiyhGotlBfP5R5j5FJ+gO5Mkym+lT4I04HimAvdvenSoAqHIKrpNEc7EQAeHbMJyu8jbc2lT+7KmCfmoVA=="
   },
   {
    "h": "Виннипег",
@@ -247,7 +247,7 @@
    "arena": "",
    "x1x2": [
     3.01,
-    4.2,
+    4.21,
     2.05
    ],
    "p3": [
@@ -396,7 +396,7 @@
      "gd": 1
     }
    },
-   "_z": "b/o7PT32piER3plA+e2pc7r3mjAMGsE2rHtH97RxXuHs0hwxfayR3G4ZUmAffJYhGBJTF5dE1wBCK/8+M4E7CITVPh/4837vs7bZc/+nCI+jaOcWoq0oqsAwgqI40fbgIOtS45TF81QP0M13p7Wm5z8g0KEuR9TeuPEaIk33sXIABapjUzDe0SXI3szLfsv9UGBbfJUhC8MVUSEFmEBD8mZHmOeeCh66lIM0xeRf7Xz50Hlf01ZSqckua09u34i5Hs56qBOE8HntVWb3AcFw0gxPfptJOUY/SLxWAUQePPyT+DmAQBe1Mwf+HFQD6JISC+BbtXv2q4PGHq/posEe4WniqX2MY5MhVqblqdZ+JIUsStEmdKLF"
+   "_z": "Tf9UFCHyyQ0YAWVboIqtZlnHHIYibimbfdKtITgOnrkUqctASasU92zVDVLshCcoQ8ZpqqKBy8gR5yWxyhxb1fCDZYYMLOtwEPpnullfrETOUrzch4m28Fxcps+aVkMH7JgYzmxNjFwNWiI9LaCoXuMTgIuTSnhEDpY/jgNyID8ONnzy2MAyNSwnDqQJyuZJiIyA8UjLStSU3bP3h9aLrhUGtTBMgFPN7GuXYHfn3E7CcBkMrsmZy80JF55C0GhWgV0bCn/MIcL1X/M7OQXTTP2MQI3EfqSB6G33pxg1VbFpg22sRB5kF5VJSqy8mV0slYqsfiMNmuMNg0kUoIEcyHdnDwyPaMNT7qLQmxWV4c68qOs9tNpB+EWY"
   },
   {
    "h": "Сент-Луис",
@@ -404,9 +404,9 @@
    "d": "2026-11-11 04:00",
    "arena": "",
    "x1x2": [
-    2.19,
+    2.17,
     4.16,
-    2.78
+    2.81
    ],
    "p3": [
     0.444,
@@ -475,7 +475,7 @@
      "gd": -7
     }
    },
-   "_z": "TQXual+xh8CPOz4LBOEXxCF5/l8vIQA0HVOLN7M/uu9vBZSNVg4Jo1D3pPk+qEbRpIVeXwcaMWlK0/8KOCQu5pQlQXFvJfaDCwgFGzpBObZ2NTPX6K8ssnU20pLousqrZ9L053AUCU8+45bwOO4f7r9WnynM5jre83IW9puXfFbYEJ9CjFULr8EZnAZsf2exMymM/2YTk3O1UIZW/NhxH19qVmMb4Cki/OqfSbYXBCbIoqB/xsopAhnZaTv64MeVemR2SxrDgM15vnO2AyFeuJhJCV3YZ20dASSSdsCzgcP5b5be8m0+4Dofg28IGKKpk52duvOXUn+yt7HX2wFGsaGxcA6Ehc7BJsNw7A4JTgKFFzMRD26icUdiL1mibw=="
+   "_z": "0MbPDhu94ybP/XeCps+yevVPYHdrOZn7/WXWtL5hKhVb6uTiSOgH8i3LDPz0awhFJ0PcYfMlkK3KGgte5KiOh7NEzud7NynQ8VbiwwFP6YRequ96B/DFPfxOGlQaU5dLokQwy0L+qy4tW8Vuha8aVNg9T8lqgdXx5OiNQiJkXwUBPrdfNibcbdr3ivqZg8IRj/og0sJkae5UbTsOcF5LHii+1UUPJKfcbDT6/y4nvQZGidEFQ2tuKDSlV3bx8TIOwvy90YjHYKSDw8ITc4C7aGtNZ4brxapanU66trLCSZKTTjuENVffRQU1xbvq1iy814Q8A2958EXrxgNzHogYfxirWn2EUGkvHEt9tEiDP4XjYqOkjZpKclxHQ58w5w=="
   },
   {
    "h": "Лос-Анджелес",
@@ -483,9 +483,9 @@
    "d": "2026-11-11 06:00",
    "arena": "",
    "x1x2": [
-    2.19,
+    2.17,
     4.16,
-    2.78
+    2.81
    ],
    "p3": [
     0.343,
@@ -554,7 +554,7 @@
      "gd": 1
     }
    },
-   "_z": "AGqF/N95KUHud9fWIn/mKWMA6H1Re3s5S4dmppGrAPTZbph+glnuC1oykBAVhoI01M0wKMShJA5T4QQWLsaWf8yselR4DW+BZXkzKp+lhr1QFhfCVEI9q+KKlZF9TqnUWVany9RY3Ibg8cqTEHTfmmnNJiKYJzWWaw4ziJrD49xXR8HqE7xKikEpEoW+BAXrWvTDUB+rK1LC2oAoZsqEpYI+uKgOdxq7Ud5Lf3/99lzPra1ozXs5XeR+N4//W9b2c0UI4FnCiBM65SFdZP61pTdE9Jv5rQX5ehPimaHqzaSIaVKFvmiHf4AmfTQwxQOmLG1XalnI3B+0Tx6jeBhMs+9sUKJubzQ5UPzxQsyzpPyPaj6HzvElP+njznAQzg=="
+   "_z": "IslxkA8YfD9UPPM4Q7/Q5dDDlTzn5lGYMxHkePSCbKQw+iDWQ6rillWgxDFi7csyNBIMTTTAbS6qvmvvOgRqeY5C0Wqj/u+klmmoC0LWVejkVsqVeifUXqofAMiHAgbqxHLx7p0GOaYf2Cih0xW+y0uQhMCoYJSdbLw2JOf3AfoeMarOUFHKCM0b4dCa+TYZxjzp2vebDuWwaSxoqnakzWvyk/sq6h1l3wC56CEUqi1+Ys1SSkeC8TuDQYvEeOk91YZDddFtSK0WPoTdY5rmACp7M9OQauDmaV+dajkjTm/vPLBqAxgvm+es//CZPRnvWM4R4UcClsMNpH4HhhY1QrmnbWh3h7p8CwP792zdI/KVjB81lecn8O2qEINi+w=="
   }
  ],
  "all": [
