@@ -14,9 +14,9 @@
     2.22
    ],
    "p3": [
-    0.323,
+    0.319,
     0.223,
-    0.455
+    0.458
    ],
    "form": {
     "Баффало": {
@@ -46,7 +46,7 @@
      ],
      "points": 19,
      "games": 17,
-     "place": "9 на Востоке",
+     "place": "10 на Востоке",
      "gd": -7
     },
     "Тампа-Бэй": {
@@ -80,7 +80,7 @@
      "gd": 10
     }
    },
-   "_z": "0zQefcC1qZbxUAa4dL5CByV63y34y6Ja0F6VruGL3acGFZLTkKibmzpKHURkew21X7/i5zPOfWNk3ndTXsSVnFQKmqyBTtJdWIpNV9cqsOOJ4Bu0I3IUyTf7wNpI4ctrxIfw7WmIRp/E9tCglJC+6LY/NRVgs1IXNRvLM0zLga7JRjfeQiLYxphzKANdTaB518iwNOdiOM98vPLy+Iz8gsCXANUHMR4z2IOa78ukCAimGs+FyihDBga9IO6X4gK8EJIjXPYLHKHULrRUb3Di0iBQcwAFjqW2ob0O9B7r6a+Flnop1AwdfhVCKRbKjtoQDpqRdf5Rn66I9WIiuiZpQpBManJvgdPvkaRfpVdj8d+Wgg3s+a6ZXcU="
+   "_z": "qFEFvEhvhhcsT7c+0zL4EdRAO9QnoambuQDTInxkPJUHj7rYcDAt5gPwk5WSGIs5hHn20L4hbFKusDwr7wcRPkDstXEjY3Eo81zhXnjIVEDxGh45USNPNSTR3kqFuQDl9rBKyjyL2VUSRkcQ9UFX1+aB11WpydfVj6EBbxvlpSqWKG4rbF7adfwljeihVYDj0FDy6+n0pPx+7+2BAwxDcfXxuZtCJchaVAITsc8BasF08aHfEELsDjZCzYuzjvga4SZAP2FKJrvmhUlMvkY6/nCwYOdqae/ABPa7jnAHh6PQuaja+GMiCi5p6mAgqeMd5JKdO9ZswQTESENzrT5bGNMs5S2iX/4LB+69HOhIf+nAaCWBcSH32Ho="
   },
   {
    "h": "Калгари",
@@ -88,14 +88,14 @@
    "d": "2026-11-12 03:30",
    "arena": "",
    "x1x2": [
-    2.88,
+    2.92,
     4.15,
-    2.13
+    2.11
    ],
    "p3": [
-    0.303,
+    0.3,
     0.233,
-    0.464
+    0.468
    ],
    "form": {
     "Калгари": {
@@ -125,7 +125,7 @@
      ],
      "points": 17,
      "games": 18,
-     "place": "10 на Западе",
+     "place": "12 на Западе",
      "gd": -17
     },
     "Рейнджерс": {
@@ -155,11 +155,11 @@
      ],
      "points": 21,
      "games": 19,
-     "place": "7 на Востоке",
+     "place": "8 на Востоке",
      "gd": 1
     }
    },
-   "_z": "K3zQ60S6XN9oHuVc/p/wS9TBxu7fEEK6JLOG5rhI9RtMfovXmCmT8MFTvDT/5UErFtUeeZpXpAHlFoDXl2xM4nOlHPQ9/L5qW5f+Qer9uYm4SWaTiC6HdiLI1UT7298ISygZ0Ix8zBg07QjWaGC2Biz6KWv15MPAE1YedXD3NmpXyus/RCiEuhkxcsFPVrqCvfV/dQnbzkhq7WugrJPyryTaKbjRRvRqoxyJWk7RDrXOgvR2eJGol2UOsOSeGt8h+E/DoaasqITGIUrklvC9KSAIWUmfsQayAs0z2y58fnzeyHT+YEof3Mdx4jLCkDTfHo2MBSYNxEtwKvgo1a4/hk8/mIQc32m1JsZ0YlRyg4zETA9St/n0oR5jbSk4RYhqkg=="
+   "_z": "vfXW7z7BPgAvU99NeQJmP+svJhrxqwZt2yP8+sSj0MsFJTweoUwSlMY3XKW+VYuMyppa7oW1o6sKFywPGj0Yk/sZdsDk6YUZMvvQiPuG3/+Vv9dY/mQ9oBpeyKuSJnm9AROIj1nVEUa4FbggJn/+H2k8OVw9v5+XGCswzV+DH/OTmTaqF3uOCxRsKxYdTe7E0Wu5CsaXCqvRvv4+fFgxr4BqDO4tP+s8hI4y30mPoRPC738XGN6gwOR4/2z6F9qwVzLs6c+cJH8+plB1NKvhcl8pqL/lQ70BByv5TvlOGKShvwkAyct/fxduiFST8Z6Qm9pI8jSje7rOWaOPPG+O/qYIxiiVSrLqIYvPizQg/3P/fRYZ"
   },
   {
    "h": "Эдмонтон",
@@ -167,14 +167,14 @@
    "d": "2026-11-12 05:00",
    "arena": "",
    "x1x2": [
-    1.82,
-    4.41,
-    3.56
+    1.855,
+    4.34,
+    3.47
    ],
    "p3": [
-    0.644,
-    0.187,
-    0.169
+    0.641,
+    0.189,
+    0.171
    ],
    "form": {
     "Эдмонтон": {
@@ -204,7 +204,7 @@
      ],
      "points": 29,
      "games": 19,
-     "place": "1 на Западе",
+     "place": "2 на Западе",
      "gd": 22
     },
     "Филадельфия": {
@@ -238,7 +238,7 @@
      "gd": -21
     }
    },
-   "_z": "EEpKfWHVpefvFisUKfsr2HQHElkdG/PU6GEJ4zmfD+G7ySir57G0bPPAbhBDriF2h8+xzA95hggwqecBW4hCvIdtRLbMWLX7m3IzH3CibAKtIDPhbi9XZkSqe8TMhsPjSZIi6g0XDA+yCX4sTJYbtTjmavXq5DE98wO/tt/hZkha2sFKsc6TQPIN0JgGMEOdcy53ncT7tFDTmSUPx+Bb0KKK3oUz7Ai7MT0ZTT2aZdeKAoeZ0sG8ENy/v6n3mY/s6HquW9c4UvKJWkS+bUW2iiEZJs8bRvf84BXWxYUi/Q0RCrKixFGcuW41f/dQZkUKejIgOy31RQwOfKhwXaS0zNNwUcjCq3wweDyhcFEtyq4="
+   "_z": "5Ex2/dL5EsP/uVMHksKAPE+y2UA5cwqOSw5D0f6+cvmyIJ9bFc7pX6Sn67jx7DHU9RlWlqz7hHkzBoT6dy7ewR3QWFn8bRRAfKD1BW2revKGK5lq8b0VzGsMYCcsTVDz8uJfhuZsNtWnpxhknFxzGKuSWf6bKsTX8RggmPHFF05y94UWDWFxWjCPHzViWSKQy8uVmMT5mqaIgQlt71H6XwERXY3m2FZVKZtjRYwT5pAa68JhYzT/cMvpkffD9IETAtSSrXQnC4BfkYNjNrA04S9fHm/8Q3jvb0BMCV5ceRpx4+bsVSmngWJ3ksom1hO00YhGT7YGc4if7dT3hSTC4VgUrobknM3UkyiXvUNwL8RgK62JeM58zO3rI8fek+1i7nMJl1J/IVkI"
   },
   {
    "h": "Вегас",
@@ -251,9 +251,9 @@
     2.63
    ],
    "p3": [
-    0.512,
-    0.214,
-    0.274
+    0.508,
+    0.215,
+    0.277
    ],
    "form": {
     "Вегас": {
@@ -317,7 +317,7 @@
      "gd": 0
     }
    },
-   "_z": "2GPS33EK6I7H0bgA1ICuqzRMXAffYXJsnl7A0yUqSWr2bT84t/BTd9sVgXWlVXZJGxiEK8GVj9ijh0iIcV4cFiP5A7z/CGTELk8e5sDhGFqH3rfi/bazwTX+e10Rx0u/xHS10q2sjOVarJ4FoUsqTfXlznYP7/dD/crgmt2Gtn9pF3/QHMlkBRw/AY/VNOTQAWuh+JYl+wjhnkAgP/MjzOD6upiB1nSeaT48L4sK+ZyLb/G6+461FncFxKaB8DJ8WAFRJnd/vH66SaaosI7hoRUg/ClNETfmq5WZzFR0p9bWm85M1CgvMbTVGzNpYg=="
+   "_z": "IkirMfnlRrcgClxXWn6A15sQF7lgGXSSyZAlQooqrjdj80vKFvSvAHNK46Wj26gwnVbM3v3U5/Co27Jk0fu0cgnZWM44Qdxw3DRcmW17DG7gxANK6di75J15xqrObiu2tbDzSUAKI+K5fUw6O+XT94KjxgZCWrADBaYJgmWEjboOEzvNdNUw+gHFFu3IYR6iXVV4vJjaYqzHmNNfEu684GKod4UyPEH55KqdDc3ZEEyhSENJjN8JenOCJgyNta8JrtIHgibFMckglhXIb2UO+xzjdVD3H0cZDKaM3KJks+Y4QWoTTnvdfo/jPcKSpQ=="
   },
   {
    "h": "Анахайм",
@@ -326,9 +326,9 @@
    "arena": "",
    "x1x2": null,
    "p3": [
-    0.413,
-    0.22,
-    0.366
+    0.388,
+    0.224,
+    0.389
    ],
    "form": {
     "Анахайм": {
@@ -388,11 +388,11 @@
      ],
      "points": 21,
      "games": 17,
-     "place": "6 на Западе",
+     "place": "5 на Западе",
      "gd": 1
     }
    },
-   "_z": "Lf6+4gKbFsUFGN7B9xcEc6KXxZyzie+hCZ/1CpfanMmZFsgPNfnAzgweRGkCIMpzDAWkI6RuTWVXh427avRvle1c4PPOgFEbDxBe91RNKfPPW2ROUSifikRO15FaaO4axZgXxriYbrNl2E4gvye0M7S/8FtHvq3Wl+pLUPFUuJJ9W2R+kHtXhv0xKlow5m2xnwW3UUylaaB+cXV6OR4B/KIHBlwKnc8D1NlzdKuHYOhM9FSOAYWXc/vkn1Sxpld5GC/sy8+xyklgMMofiPlTyHy2enrqyTLNmaLkv1FIhQfscZNTxjmc7LrJiDmEoDD8Yo//U6EdeoK3gxZfpQ=="
+   "_z": "ZAzQUMnwV/AUu9VllzEBafT9PhRkvuKUAJkCU5LSvP0iUzlRxOO5RkKeKRYCmWlN/7GjNdMnYxAToEaIu3m1RuSLnYmAyjTF21hMkYVWzpVlUGyjkpqfk596NDQgSUcKfQK9IdxxzWEj4JAy2jrNYjaFKDgnX3K3RNtsDhTYdlvBPcFf9mlou53y4d/lI8QnzBkmJ+qI/niqtUa5luHY08wUUiHAK4ebpbav83oqoN7xZRlsDr4L/CAZmLbwOiODQhtjN4ctH5xOQgDAvk/LVa8uhAyb57oxXuxtw9KS1DPpGvJopk3BjYN/P336lF7+ArOExNAEQmVK93abdKE="
   },
   {
    "h": "Сан-Хосе",
@@ -400,14 +400,14 @@
    "d": "2026-11-12 06:00",
    "arena": "",
    "x1x2": [
-    2.86,
-    4.3,
-    2.1
+    2.81,
+    4.25,
+    2.14
    ],
    "p3": [
-    0.319,
+    0.315,
     0.228,
-    0.454
+    0.457
    ],
    "form": {
     "Сан-Хосе": {
@@ -437,7 +437,7 @@
      ],
      "points": 17,
      "games": 20,
-     "place": "12 на Западе",
+     "place": "13 на Западе",
      "gd": -20
     },
     "Питтсбург": {
@@ -471,7 +471,7 @@
      "gd": -7
     }
    },
-   "_z": "CaWMFFDISbror97Ddkh8bYdp0Ag4x0tfc2l43oxknlFURvuSn2c7HdZGB9pE+6XA7HFIARQ0m4W3gPSkzFoDjihwZJ6xxOc8Lhw6fwERoHiASlupPBaBx+wz/GZ7vrBktbCatmzVI3yNJ5E0VYs3JbkI0I8f6TMzjjPo9SSGBANyY/pD71XhTORwV2h0D7xxmpRZvtpa0+R9Ui3NMPHUHO6//unHfNGCPaUSkHv/Pr17CpAkVPFKQ0soQs7BqAuyahgAuE2oXWaGxxu0xqqqIXj3gopvkVQJpI1M8UFKhYqK/lzEOP2cmZ/42dRZyYoMp3fHcxxDp9qSGRwHChkBktIKq7iHyrp37sL16t8YZ6pBHzC1Qn1UUhyO"
+   "_z": "w0ygv9uIrVHs4HOApKgECPga4751TPQ48GeaA58ufE+/13pk0mkJpJS21R7emckmkZdUomeglSH35N59FTpoEZBJypI0SKHzt1BsDbXFlW2Nx+pSBoPyKI8nf4/ohETS8NV5xpdIRg5MiTKPxvX8yn+X6KcU+jYzt/KILqSe/DxO9yICWFz/9gznS0chjwTsLMLPool14a3UOd0Jd7zdG/8ZnuNXRsN2pO7vxEtJZOiT0klz4YhQrJeuglN9q2NGN1BIOdVGzWnxluFjcK4GnnwbAXqWeDnq7T3ZbWxd4PZUmkzC/8l6LHeqgRKL7cJKjuIuNRTqcxbK4n0hjLj9DuxmM/SsCAabouBQu2mnuxNS7nPSLrCTjw2y"
   }
  ],
  "all": [
