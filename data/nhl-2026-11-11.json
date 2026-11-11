@@ -9,9 +9,9 @@
    "d": "2026-11-12 03:00",
    "arena": "",
    "x1x2": [
-    2.69,
+    2.67,
     4.25,
-    2.22
+    2.23
    ],
    "p3": [
     0.319,
@@ -80,7 +80,7 @@
      "gd": 10
     }
    },
-   "_z": "qFEFvEhvhhcsT7c+0zL4EdRAO9QnoambuQDTInxkPJUHj7rYcDAt5gPwk5WSGIs5hHn20L4hbFKusDwr7wcRPkDstXEjY3Eo81zhXnjIVEDxGh45USNPNSTR3kqFuQDl9rBKyjyL2VUSRkcQ9UFX1+aB11WpydfVj6EBbxvlpSqWKG4rbF7adfwljeihVYDj0FDy6+n0pPx+7+2BAwxDcfXxuZtCJchaVAITsc8BasF08aHfEELsDjZCzYuzjvga4SZAP2FKJrvmhUlMvkY6/nCwYOdqae/ABPa7jnAHh6PQuaja+GMiCi5p6mAgqeMd5JKdO9ZswQTESENzrT5bGNMs5S2iX/4LB+69HOhIf+nAaCWBcSH32Ho="
+   "_z": "/kd/gjCoHjGlzzLHc3QyIwtRCFu4kaCMcTiFkrV17kpFQu0ff+oVagaLRm8EkX+DtwuZBzZzhQQjjMa2aESi222mjxdsNWJotyWRnJj/vh17k1Cql3vz41M7uvKvD02g2e3s2GzeCm3OnIkwxU0NzSfYrKVAKOEEwqGLCeguOLtYTO5uDIq7C2Bi6jllXOpXvYfdgajNRNCAIdHiIXGct2rPXHBKHnX5m/fdhyf8rOt5uLygeKS3seDTzDKsKywa/cU156aza/8dwq3GdGLPWMqi46j40H9gjXGnGDH9hRZk7frexRIERsQ1z84i4WRjD13W116f7gOXUEd0wq9CRKc04QXcBuRxLwFOVRAeecMJPhk2X35O9qc="
   },
   {
    "h": "Калгари",
@@ -88,9 +88,9 @@
    "d": "2026-11-12 03:30",
    "arena": "",
    "x1x2": [
-    2.92,
-    4.15,
-    2.11
+    2.95,
+    4.2,
+    2.08
    ],
    "p3": [
     0.3,
@@ -159,7 +159,7 @@
      "gd": 1
     }
    },
-   "_z": "vfXW7z7BPgAvU99NeQJmP+svJhrxqwZt2yP8+sSj0MsFJTweoUwSlMY3XKW+VYuMyppa7oW1o6sKFywPGj0Yk/sZdsDk6YUZMvvQiPuG3/+Vv9dY/mQ9oBpeyKuSJnm9AROIj1nVEUa4FbggJn/+H2k8OVw9v5+XGCswzV+DH/OTmTaqF3uOCxRsKxYdTe7E0Wu5CsaXCqvRvv4+fFgxr4BqDO4tP+s8hI4y30mPoRPC738XGN6gwOR4/2z6F9qwVzLs6c+cJH8+plB1NKvhcl8pqL/lQ70BByv5TvlOGKShvwkAyct/fxduiFST8Z6Qm9pI8jSje7rOWaOPPG+O/qYIxiiVSrLqIYvPizQg/3P/fRYZ"
+   "_z": "2fox6Be1xe+8rhTXj41uB9k8S/jgXkV00dMutjcpV/5dLlPpJ7faXD3q4xePZbPmx59rO/tYjr9SFC4PPCVa+TO7UscLeG/qFgVLKYE3K9t+9dvPS6LSYqtf4wvM7ORMKt0ary/LlhVf4cT3h067hu9bNYpgNJ3Fk2b6hKg13VLZcQLcTuMd3s0G2fS7ZPbVKzlmHjKHsJ4+zwuWllR+yQu4PCruBhGp65WprhI0AJZG1Isw6xeUTuJuOJswow+i8KTt9tqlK1E1gFFsomLtLM/6IDJfZZfMrzG+1H6qMwOsczHz8E9ngk10qVtqjZpy7TGpKUrOg00DQzTC6rn6Or2Do1ODr8ZVJTmTUES8uL19ql8+"
   },
   {
    "h": "Эдмонтон",
@@ -167,9 +167,9 @@
    "d": "2026-11-12 05:00",
    "arena": "",
    "x1x2": [
-    1.855,
-    4.34,
-    3.47
+    1.794,
+    4.37,
+    3.7
    ],
    "p3": [
     0.641,
@@ -238,7 +238,7 @@
      "gd": -21
     }
    },
-   "_z": "5Ex2/dL5EsP/uVMHksKAPE+y2UA5cwqOSw5D0f6+cvmyIJ9bFc7pX6Sn67jx7DHU9RlWlqz7hHkzBoT6dy7ewR3QWFn8bRRAfKD1BW2revKGK5lq8b0VzGsMYCcsTVDz8uJfhuZsNtWnpxhknFxzGKuSWf6bKsTX8RggmPHFF05y94UWDWFxWjCPHzViWSKQy8uVmMT5mqaIgQlt71H6XwERXY3m2FZVKZtjRYwT5pAa68JhYzT/cMvpkffD9IETAtSSrXQnC4BfkYNjNrA04S9fHm/8Q3jvb0BMCV5ceRpx4+bsVSmngWJ3ksom1hO00YhGT7YGc4if7dT3hSTC4VgUrobknM3UkyiXvUNwL8RgK62JeM58zO3rI8fek+1i7nMJl1J/IVkI"
+   "_z": "SYrlAPfJ5w1hYMj+Bh2DCe+ArcYf+M6Ri7hgYRhiiPfA6OWQ+ogPsATWzsFRUhlU8gKWJQXs8i9YexGPJ2Hxtl/R/vyubVybR0dflHmZVnkf2z+JgrTLMn+Ozrg11jMr30rteCbwDTjJ3LGwo92uaerYMW0ItqaA/snIrFblEt5M3QeWbloYHfP3t+zHGc3yPIh6sj9p99F+OABNgE4qe8s27jGtdJlkT4OBoDpiQDyo4C71FCXyMv1frCNd8SBTEw41rBntF12OE219ITnggpJw0TVHnREH//7tyeBkYiNbtq2WFF3zRQ0xJ7RT0AItc4cyAXezS6OdcTbHdXNyNrRcZywQ0dkIqQJDjGFs7GvP1EIC77tTe6rT2moqbkDjRzcI3SqYxOHT"
   },
   {
    "h": "Вегас",
@@ -246,9 +246,9 @@
    "d": "2026-11-12 05:30",
    "arena": "",
    "x1x2": [
-    2.28,
+    2.27,
     4.2,
-    2.63
+    2.65
    ],
    "p3": [
     0.508,
@@ -400,9 +400,9 @@
    "d": "2026-11-12 06:00",
    "arena": "",
    "x1x2": [
-    2.81,
-    4.25,
-    2.14
+    2.79,
+    4.27,
+    2.15
    ],
    "p3": [
     0.315,
