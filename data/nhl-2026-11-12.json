@@ -10,7 +10,7 @@
    "arena": "",
    "x1x2": [
     4.48,
-    5.05,
+    5.06,
     1.571
    ],
    "p3": [
@@ -88,9 +88,9 @@
    "d": "2026-11-13 03:00",
    "arena": "",
    "x1x2": [
-    2.28,
-    4.2,
-    2.62
+    2.25,
+    4.21,
+    2.66
    ],
    "p3": [
     0.522,
@@ -159,7 +159,7 @@
      "gd": 7
     }
    },
-   "_z": "MriVxJN/v3AvVSkUKoH1KiHe1o0dFwLiOXqzONJQDlGgmVr2WqAW3Jf1PH+P3R8Y6kFjrJRpsHfjGBBNH1/B+SkFapTKqyuI+Nw7+TMpA34vJTihm52Zh/+oE5Vh1XximnjRqAX1+FZjtlPkZ1Fp5inoLw4t097Bt7MpJFH0ymulq4bFbQQUhBMcO3t1Ly4/8CKKMAaScdwmMklsnnKWbhWp0LIjTfH4afG9XkcZIU09HFXYPvdTpEB2Lh8/9DX9DZSIIyLMiVv0/JWazdLh+qBtVpE2Ox8gr8A8s+dPmHq12l0h5MlvnL9QpAzPIoJ3CTzg6YiBJyi9YXYLzJDFP24cYd9Eh8Px8h7EwMDYU+m/CzuZTLNl"
+   "_z": "wYHZiw6h4Ehp6uKZtCxeBoZv1TbE1+sC/xPPJt14g6tFyeRW4teA1KMCTpbxGD2/xiJB9K5Ewe78vcT996DubjftQWRegzZqZ5Vsy4cr8K6buhfzJxgwWBH+KMdOzZb5mtAjqnF1Y6Lxq4aBe3K6SW+Xvj8A7P1+49KqPY0OyCpiTZgYZXXveUdMVjNEXdQaLVXq/b50TY4fUkG1hmzV+0nz6pd9kB0GCTeQyKp9TuBv4nVD+uubIMnl1o+HMoo6CQqRvchfHKChYvhmWVb8uCA7BfqsgzCIarYicykwbeohRHXq+PP1buOu4/m3Ozko89pxYS9oiPM="
   },
   {
    "h": "Торонто",
@@ -167,9 +167,9 @@
    "d": "2026-11-13 03:00",
    "arena": "",
    "x1x2": [
-    3.11,
-    4.35,
-    1.98
+    3.14,
+    4.33,
+    1.971
    ],
    "p3": [
     0.257,
@@ -246,9 +246,9 @@
    "d": "2026-11-13 03:00",
    "arena": "",
    "x1x2": [
-    2.56,
-    4.18,
-    2.34
+    2.54,
+    4.19,
+    2.35
    ],
    "p3": [
     0.322,
@@ -325,9 +325,9 @@
    "d": "2026-11-13 03:00",
    "arena": "",
    "x1x2": [
-    2.06,
-    4.23,
-    2.97
+    2.1,
+    4.18,
+    2.93
    ],
    "p3": [
     0.458,
@@ -396,14 +396,18 @@
      "gd": 3
     }
    },
-   "_z": "+KrRKQskOZm0d112IC1fxxwJBUW/d93dwjiYhYgmeJW5dZI5ZrZBCp2j4EdeJ6BM/dMZjfSBIf/VC+AmGsTo/6+q8i58YbcthXkg5jkefYtDZlrFkowHGZSYhNl11XOaDFVcGispSzxvC7AX2Je/A5eepdnHrOtq3bHEpGYsFZOO4ADJVh9N9TcNSo0Wmm0yhg/vXzD3n20d3sjrq2C2Q80J8aM0o0mzMJGqesqQ1qjPAYw30FvSJPomYhacLWmRG4TVn6fLPbE8kbCD7BXUkkjp7W26aek/e0274+aDhnoSfTvL8TmSdloOLlTr7INZVaudj9BycCoX"
+   "_z": "PW6QLftMiHs7uQltzmLBsJ5sdViHb4+HOktzAomRIEBGNiKQITIhLG9AjTweWo0DXlIPpV7LqkZEoRse05iQ5hNQchVCbyxRuFw/t5w7oGdf5fnulh/AITMvCNR+2HHWfT1gCbVuCP4bOFpnsUukoFkwq45xiytYpcw5qQk6G6jTX2Cxz2YfLjpJ0ttDv4qtGI+f3HrI3R+1EApVdDodduImuJhVdhL1NeuOpVXcVzPK11Q+p8hFOfeTSgpAGGvKjXb3CE9/Fi6eew2exP4Puk2XbEOL5XaimBFtY8jbnBD7pk1s8GfRebDXnGBkymGNhGPpuj9AxV8="
   },
   {
    "h": "Коламбус",
    "a": "Тампа-Бэй",
    "d": "2026-11-13 03:00",
    "arena": "",
-   "x1x2": null,
+   "x1x2": [
+    2.5,
+    4.19,
+    2.39
+   ],
    "p3": [
     0.233,
     0.213,
@@ -471,7 +475,7 @@
      "gd": 10
     }
    },
-   "_z": "P5moEja5Se3gaViL1lEQOzNnzD6sPLptEKuZx+9e2wDjuj+kV28MPFwusjBThbhhXetvXI6ulFno41b6xVuYrJ6qme3POLAYBpmAqVrDj3xHfE38DxbzbB1t5vBfC4AWmxS9lObgLvHJRnWA1bAmsctKo9t7MoQQrwwFGB+4tzO+2E9kJtrxXM8YnDUSAxa4d4xY3ALL1Z9MKcyUDGw2eqaPFnIMzZiGjjq8HGoH0iKVpToprfmMtfR3UMwio8Q/mCYH0Xn4lVqLJOTvKgA7OUYTR27Sr3BzVRtm0URwP7aS5EZ8S90hkhI9GMN+9xTPbL1Bi8KIVuKJ5cw="
+   "_z": "BZP+0xLKdZXMHX5YJPivhLjWYqO5MmtSqS7cp+grCzh2zFKwWe1vAaq/A4rV2wA2Ta21b02bBtxc/GMD56Ohp+sDELC5sJaVufs0YpErkGEuzWAlps+55UeL8MENeTnyODMusFRma5FPKE/W8jaHqBjJfpoRkUYWcdv2vMxXkhkcr7ok9JGrjhP/jfGNqBPcsWK/miEe++F16h2Ishz+UDw5sfVC2jRfTQAp5PBvmaqEvNcNKTjlVwczEilSjm3C/YhyfZZyXQFZotwROPOo+ZqSrVkAxb561gcfz/xBvpEvx5A7vyf4r3OAlXaQLXKGitrVHyAzLFMd"
   },
   {
    "h": "Флорида",
@@ -479,9 +483,9 @@
    "d": "2026-11-13 03:30",
    "arena": "",
    "x1x2": [
-    1.98,
-    4.23,
-    3.17
+    2.0,
+    4.17,
+    3.14
    ],
    "p3": [
     0.468,
@@ -550,14 +554,18 @@
      "gd": -8
     }
    },
-   "_z": "dpqIjvl5uEwhmHiKbsoxNdqWoYgijYOerpWFK5fZNYIIjOTYWEPZEtT/tObwjgLeEtBxjDrf+ergqKdPFvGsbOaQzf/hpQArSMOs+IQPuTu9UgMCn/+wNoL3iq2Xlhf1ziDXWuDpFeEWmVZnnMFUXjDyXNKlfxoO6eSZF8dV+6M4NPVLbc+TKW5FoDdRAa7+LJ3fZ0URXB6TkC9HN3Qm+VWc2Vk6uMHtSMShcNFvBJC5F6KFI0HX/F+y3oLrfAW2h2ht8cg102T0JeRpaPRM3OUBrAtfyzKDLcHar3h0JbJA/rdvsqIZmJyt3mk1hlMLoa8eqo7vpkVUwlA="
+   "_z": "Fl3/vEmXEXzJquJp4qdJt02d0SDxtLQNwNDBQ7YJi1ZLvGSSStcnPbAEq/mmdqja8/XaFQpPk/gdO92rux40JtHEQcBo9/ni4ibla39QkvOBMVutaC1R88ztpo7ChzYkpn4mRYBiB8PXlgOD4hWOYQdn/RuBezMb74RvewTHoCcMkM/Lap+orp7aFOX5UTXB3B55JT8GmLb1b2oVcBzb2Do1K5MiwICJma3IRw124oKd0Y7NS7fMFkc0//Xl+dvKTEZU3tRqBc6sHHJp1Dlu1PnE187tQuN4swumsRGQdFSJoHltx29XoS2YZy6pLd2EmGvEY0roqX8u44wD"
   },
   {
    "h": "Чикаго",
    "a": "Баффало",
    "d": "2026-11-13 04:00",
    "arena": "",
-   "x1x2": null,
+   "x1x2": [
+    3.07,
+    4.28,
+    2.01
+   ],
    "p3": [
     0.26,
     0.218,
@@ -625,7 +633,7 @@
      "gd": -7
     }
    },
-   "_z": "9ZE5fKH1OXMGha/SyDXUekNISCZq1itgHV01ZmDLCviQfWRNJkpcEu3fOPblmAyqWq0XQh3TskeA3PFKYg9lMzOAGdhqZ2v62k3XjxwaiDWdKKZki5yiKrvLf+dAHHuyFJeTL+vE00lmoUxVWWUlkzFl7wGUMdT/6LWL8SYUoljJyJzlJXQEDt+1V34jwMSeFRRk+cWKFrLdmkh9kJb0qHmC6HRR/e8TuPFujDQR18N+slMjqbf2dLHVi62gwUdoAd6vUprY9QPdS/rNP3N5cX+/RiZDNv0kj0yl5TIa+P61l7QHH5Ko7kGUNNFTRFyv7T/WmAQ1nY3IMA=="
+   "_z": "cffVKhhitbWkdXpU9unJ/ndemojQzJGCzWvFxOYWLqJB+PWsmKdIvxaWWf3jFPBqsu9zDIgTPSGbErjZSE1NcsPDPf1fJ26KsMkZg01Boe8apnuFch6SHnRLqcABR8S/kfp+lZxCVy3BdbYrm6G2YJh7SwXuTsog2CsWYURvWethq+WfFXRd/nwy3yLAAbPWHXluLCom8WKloTzOxITKWBFhhpwsC9RicfTLhRmgAIlBPV5h2yF7kCoXngFZ32DGAyICCNrzM6WxqXUluV4nyULgi2ckfa1wE0fR7z+7wrxYqsjq9xZz/s6aF8YWBlNf5ZlZ"
   },
   {
    "h": "Даллас",
@@ -711,7 +719,11 @@
    "a": "Сент-Луис",
    "d": "2026-11-13 05:00",
    "arena": "",
-   "x1x2": null,
+   "x1x2": [
+    2.31,
+    4.17,
+    2.6
+   ],
    "p3": [
     0.397,
     0.226,
@@ -779,7 +791,7 @@
      "gd": -2
     }
    },
-   "_z": "8ADvUkkrakvVDhnrOLFzmJzHzyh4VLwKVMOomA6M3TIRE5gD/GhrzMamHtvmgQbaCUN16Ee3+6mrIIqXZLD5E76HUcsad+Fn24HkiWB22hFI2Kv6ZLG+cc4InZVZ8xYB43aqXnOhWPIFM7kaudXY2Bs0GPG/1FbdzkZP10qQ7OVdI5ukmtX6RNlCFAR9WYgzJonWZYe4Ogf2Z605DVimOldOxiLtVbD7qPaU6TzOwvjkjO5f6vzRLV0AZHyf39PDwEeHX5NQkr0ANwoodIoXjtwJ6Kk987MXZgOaPyUxC2VBi/ZB70alYXPMmfx/+zs026vm4fgM"
+   "_z": "NXUItYQDGUvReEt605YFDB1APoqriPorfk32itD3ST10S7dT10XbAg8OGpn+kc/QH/Nw/pKC3TSCw6QX/AXHSAtZmb9MvQhiPqLzWGHJflTteEBEhkLVwYCUoCK5T/UbCxFumac/GXOByeqA1JssoFI1xRxhykByY4ymfj3c6KLh4Ft0YWEyYizVvN+GyYRVRBFKarQ4ItQ39DsLQHeOUS9O8kyjewH3U0NXIsMXkfa90q1aDr0NuBFQzhP8INk0GmUb5A0yoUSl25VG0CJQnjQJft73VWoIujSq9Pcm8KiewLUb45JFkM6bjO3Fy4kMBn3HWfsqr8GOmun5pgQBQ2uAHSdvhGse8g=="
   },
   {
    "h": "Лос-Анджелес",
@@ -787,9 +799,9 @@
    "d": "2026-11-13 06:00",
    "arena": "",
    "x1x2": [
-    2.29,
+    2.28,
     4.11,
-    2.65
+    2.66
    ],
    "p3": [
     0.346,
