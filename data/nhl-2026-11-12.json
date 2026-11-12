@@ -9,14 +9,14 @@
    "d": "2026-11-12 20:00",
    "arena": "",
    "x1x2": [
-    4.47,
-    4.99,
-    1.578
+    4.48,
+    5.05,
+    1.571
    ],
    "p3": [
-    0.221,
-    0.195,
-    0.584
+    0.217,
+    0.196,
+    0.587
    ],
    "form": {
     "Сиэтл": {
@@ -80,7 +80,7 @@
      "gd": 33
     }
    },
-   "_z": "i7E0i2IhphyFY2hAPgYwqKzKHijXaa9Uiop0zaXaqcKpVym+eQRhJdx/4cSY0Xz8Jm2Lx7eVVjMXbn21QzECwTt+fMRRXwe3UtMalexusaul9EEpFaxBLjOqK47uUa0agsMBXI7rSxkVFTkCmtwIoVNNo+A1BGlDQ/YIwKIJC5fsBsIe5KrW6ERl+qFBJvf51fXXCkO+AVZq/UF/HcpWCXd5hO8FEKJe8fTLoEH1kjUG24gxw/916ry4yMUm1iqhbrvwdmK7dnHsjp96kfvJ2LyhaEc7LfV0NGiT37ObEMEFBjiEG90="
+   "_z": "d+ywusNXt2jve5Re//7UYV6EQ6wXvMLSJ9nXNZKLi+AYTNGMRo8GiplrOM/uoVHASPrvGza6lifabtiqFhKIV5kxtjaAHewAdXGabGULE/VMRk3qgwP6X1YLB4TSOvHKW7iOVpIv/3A2cl6Xvf1B3mMSVjcx54UI+LsK0b+7eoDCaQ4BXD5pNaxofsDOYI7p+pN6oKEdgp57+xfjWrlTe5DrcMQcWx82uJg6RuojeQy8citYuC0pK225baRRZhEpWXD9sA/9n5TwSwTTCcR4HsNfpRNFmD4RS7dDfipUgj9cpgfApPQ="
   },
   {
    "h": "Бостон",
@@ -88,14 +88,14 @@
    "d": "2026-11-13 03:00",
    "arena": "",
    "x1x2": [
-    2.29,
-    4.18,
+    2.28,
+    4.2,
     2.62
    ],
    "p3": [
-    0.528,
-    0.221,
-    0.251
+    0.522,
+    0.224,
+    0.254
    ],
    "form": {
     "Бостон": {
@@ -155,11 +155,11 @@
      ],
      "points": 26,
      "games": 18,
-     "place": "3 на Востоке",
+     "place": "4 на Востоке",
      "gd": 7
     }
    },
-   "_z": "N2XLv+/NhZeThu7zT8A+pRlpVPZCZwuAchpRSV0xL5jUtBi4MHcQro51cqFVU8t81EGCMyZPP0Jaa4c3S94FH7l79ORHfRyG41aQTekkX7uvLseSMhKmSTPRP13iWbhsB96cAufhltjb4FJtskR0L/ClLmYaX8ThiwY7zaXtY/z2mzd5Kdgn0G68/tSn3c4jmX2P8j2NuWfwS0eMfRKTmZqewFJ2iEi93HFF1l0Z2yDjWhKc+Mr5e/btwHGJONMODp4b2wXInXWKuEOabtw2c/9xffAoNs1gNv4Huzo1mFiSS4FE6v5ulcMe4IN8YzMh+JfnMnRZhTPMxwi4RWfvRauxIdWjecBbu0uwgb2faWA7iPCe0N/x"
+   "_z": "MriVxJN/v3AvVSkUKoH1KiHe1o0dFwLiOXqzONJQDlGgmVr2WqAW3Jf1PH+P3R8Y6kFjrJRpsHfjGBBNH1/B+SkFapTKqyuI+Nw7+TMpA34vJTihm52Zh/+oE5Vh1XximnjRqAX1+FZjtlPkZ1Fp5inoLw4t097Bt7MpJFH0ymulq4bFbQQUhBMcO3t1Ly4/8CKKMAaScdwmMklsnnKWbhWp0LIjTfH4afG9XkcZIU09HFXYPvdTpEB2Lh8/9DX9DZSIIyLMiVv0/JWazdLh+qBtVpE2Ox8gr8A8s+dPmHq12l0h5MlvnL9QpAzPIoJ3CTzg6YiBJyi9YXYLzJDFP24cYd9Eh8Px8h7EwMDYU+m/CzuZTLNl"
   },
   {
    "h": "Торонто",
@@ -167,14 +167,14 @@
    "d": "2026-11-13 03:00",
    "arena": "",
    "x1x2": [
-    3.17,
-    4.32,
-    1.962
+    3.11,
+    4.35,
+    1.98
    ],
    "p3": [
-    0.261,
-    0.224,
-    0.515
+    0.257,
+    0.226,
+    0.517
    ],
    "form": {
     "Торонто": {
@@ -234,11 +234,11 @@
      ],
      "points": 30,
      "games": 20,
-     "place": "1 на Западе",
+     "place": "2 на Западе",
      "gd": 21
     }
    },
-   "_z": "y7Hi5QpuoJ0B/1HpzlXJDkynY3YrQAFwIzCrniIMQy9pCLuaev9bkycCEbgr+l5WXvWMmvspK0rA+Pryl1uA2bl95aUdWlS9LWhQXhQ73FyZYWu8ZufNr4Ee1w6BMVuvN6QgI77xiM9dOHekQSWHkWYfsu+mPcDpyTpxi1Tp+w/PFfSTM2PF2h6K7stYj9G0y65uEFUnmcFheyH71K8g42c7y8/uCwIihmAwUFqS+yJAtzxeH6rQ+ZHDYzTMTN4j29AhiatkR3Yk481GQFcQjKtVcE0kzCD67vvEy3vm8PIibxMzPGZj1kmeBJ1J2S5317xfAW4="
+   "_z": "q3sWjS78SVsPKW9zWcYGuCPBCTAZEmTeCDzYEzlBcl/FJgHVidNLrXPgDkTCKBb5BPXzxBvWuKLPJn1iNxTr65JhZicLGTnOZgREBkuNOqhV9WfhJ8gjKJHdYUMA7cQTFeISom6rC346E3BF4ILmgQbvHEwisFQCu9mrlKxQHCalYEIYul4TIwaaONGlaozmCJQ53PpeVI08T7P9leZXFjaoMO4BwJMelAUmp7uMYfpQgho+uBhjWgaxQDyLpuYgcf/VfvwXcQesIToETP0vDQdApVMkzVdFLe+zpeCu7fBNUd1EFLQ9j05Hhb7BOUXT0tO4gzVPlF97c//M83ZLvgiI"
   },
   {
    "h": "Оттава",
@@ -251,9 +251,9 @@
     2.34
    ],
    "p3": [
-    0.327,
-    0.218,
-    0.455
+    0.322,
+    0.22,
+    0.458
    ],
    "form": {
     "Оттава": {
@@ -313,11 +313,11 @@
      ],
      "points": 24,
      "games": 19,
-     "place": "4 на Западе",
+     "place": "5 на Западе",
      "gd": 19
     }
    },
-   "_z": "QwIHbsYxX9ycSmsWKgAw7wvYoqeCcAHrTq5m/LYbKQItVMEAiKvBzl8VO7uZRWH7Rokf9QLFtfy7eEXrGcnOql4/30ArqTqd5zy+wF9068pqVQYQ8XrYU/ZEUOpORc3fGz2TVb0soudVG6BJrxBvOxnDelWwjtFS1d9jF3ZzRCBgKTZ4h+zvjWnpA/czSSVXKcc+p2Gvq8fgYzeKXwA3C5971bJxil64z0nH6ohysQQDaQ8wRPrWVh+51ZhYN5M42czA7li1whsSNN5kqz/IkVVhBJxoohCMv8rQjAmx/ZomTh6sn+S2bfUlBDdCSUBZFCjxMNmNCahhTIAp8jqWZnYhJFBtnzTcT/mcpYhKdyau0o1DKHGHOQfa+gJe"
+   "_z": "OXdbvjZV+zC7V4QvtHj2xeTpph3zJ3t1n+9T7e8eNbb8NHPupC1pmBG0uJQCk9qSFQEJ7BTDLwFprkmtgsKZBrRyY481poHSW2a8PLlvqWKv1bUu3mJpj6OhIB6Kew7X+R8eZ+4KK4cwFACQlXdAgWNBHlAIw+BhIwtTmgTJiCN6Kt61FJ9Dsk+U7cy3RkuE6H3WP48X1vp3HGNYca0raoGo47DAWWc6QzEaO77xlI4ltk/WGdxsKRrLEZ1NtSaNoHSDOlSsYU6PpKGqfycAwXHWfnsJ5S5zIh15LX3uoEvari6zr+CFvmjOsmzjdG+KGIg6wFWdAu4="
   },
   {
    "h": "Нью-Джерси",
@@ -325,14 +325,14 @@
    "d": "2026-11-13 03:00",
    "arena": "",
    "x1x2": [
-    2.11,
-    4.19,
-    2.9
+    2.06,
+    4.23,
+    2.97
    ],
    "p3": [
-    0.463,
-    0.218,
-    0.318
+    0.458,
+    0.221,
+    0.321
    ],
    "form": {
     "Нью-Джерси": {
@@ -362,7 +362,7 @@
      ],
      "points": 26,
      "games": 19,
-     "place": "4 на Востоке",
+     "place": "5 на Востоке",
      "gd": 13
     },
     "Вашингтон": {
@@ -396,7 +396,7 @@
      "gd": 3
     }
    },
-   "_z": "umTBvteX7JWGXnR39Hz2u6xmY4BSITLntpQzEJLGY3dvvmV8dI0aejLEE89s4yth4uRxc7DiRJx9xGu86G4Hx0RzCk6ipCo+CmD8ldbyTvnDMADno00lFNA+HTvffJ6fpR2kPn7QOIR3yfZ/dY+YXtDNGHaUVF74tcFMydg3Wlxt8n2nrkR1jAEsFKkuM/uSJP/jN86/7uFK6x9UICcWrSeai13m9WCAs368qh91cREAvhBbPsWPcytlMKDHbuUxT42PDjuZLNwWu9EMbLD8kPTMm11q6ONVeLCPtyLkpIjK9n/rHi2tw62GvK+YYwzn2ddy6jQrZeY8"
+   "_z": "+KrRKQskOZm0d112IC1fxxwJBUW/d93dwjiYhYgmeJW5dZI5ZrZBCp2j4EdeJ6BM/dMZjfSBIf/VC+AmGsTo/6+q8i58YbcthXkg5jkefYtDZlrFkowHGZSYhNl11XOaDFVcGispSzxvC7AX2Je/A5eepdnHrOtq3bHEpGYsFZOO4ADJVh9N9TcNSo0Wmm0yhg/vXzD3n20d3sjrq2C2Q80J8aM0o0mzMJGqesqQ1qjPAYw30FvSJPomYhacLWmRG4TVn6fLPbE8kbCD7BXUkkjp7W26aek/e0274+aDhnoSfTvL8TmSdloOLlTr7INZVaudj9BycCoX"
   },
   {
    "h": "Коламбус",
@@ -405,9 +405,9 @@
    "arena": "",
    "x1x2": null,
    "p3": [
-    0.257,
-    0.22,
-    0.523
+    0.233,
+    0.213,
+    0.554
    ],
    "form": {
     "Коламбус": {
@@ -437,7 +437,7 @@
      ],
      "points": 14,
      "games": 16,
-     "place": "15 на Востоке",
+     "place": "16 на Востоке",
      "gd": -10
     },
     "Тампа-Бэй": {
@@ -467,11 +467,11 @@
      ],
      "points": 24,
      "games": 17,
-     "place": "5 на Востоке",
+     "place": "3 на Востоке",
      "gd": 10
     }
    },
-   "_z": "418RB3Mmo6TiCow8tW/mt+rO7B8VnhpfVc35d07qtffDUVLMo7emKv/KN9J9ICJISbIB6BZ96pjGIKmpqs6nA7e+3zn4tFzepIZRd7ZWp/YVZc+69hL55adnP0fbI+MZ2jdEhtPGG3ipRLz/OoW/sx61jOXL0LJOyjzUa9+TYu6OCc/D9CKMJ8h4tVKkcNgYLF7OmHplqZdgMKv6UGWTiYnC/ha4uhbqQk8zHlTQbEjUrvLNdVkoXYKAcIbC0vYCjyhDF5fA2iVS7PYDpFYpsvu/yn7KzqpzCLvbdsjN/Aqi7nz2Pzr50UlT27UibOoGMrcmi+2gyC9wMJI="
+   "_z": "P5moEja5Se3gaViL1lEQOzNnzD6sPLptEKuZx+9e2wDjuj+kV28MPFwusjBThbhhXetvXI6ulFno41b6xVuYrJ6qme3POLAYBpmAqVrDj3xHfE38DxbzbB1t5vBfC4AWmxS9lObgLvHJRnWA1bAmsctKo9t7MoQQrwwFGB+4tzO+2E9kJtrxXM8YnDUSAxa4d4xY3ALL1Z9MKcyUDGw2eqaPFnIMzZiGjjq8HGoH0iKVpToprfmMtfR3UMwio8Q/mCYH0Xn4lVqLJOTvKgA7OUYTR27Sr3BzVRtm0URwP7aS5EZ8S90hkhI9GMN+9xTPbL1Bi8KIVuKJ5cw="
   },
   {
    "h": "Флорида",
@@ -484,9 +484,9 @@
     3.17
    ],
    "p3": [
-    0.474,
-    0.236,
-    0.291
+    0.468,
+    0.239,
+    0.293
    ],
    "form": {
     "Флорида": {
@@ -516,7 +516,7 @@
      ],
      "points": 22,
      "games": 19,
-     "place": "7 на Востоке",
+     "place": "8 на Востоке",
      "gd": 4
     },
     "Детройт": {
@@ -550,7 +550,7 @@
      "gd": -8
     }
    },
-   "_z": "950nq5onGQKru/R4hXuX/GWILcSbJdmZgle3sR3nxYlWfbREQ1PwzIAqs9xrZ7rwRhFVj6mz5WGPNVStNfnAxLgsyUgmtw/DifGX/3nwWGnFZ/8G3nwDOKy48JjQtbRqLLoBnczVVNLxAvL0eLxmAwqFxnNOt+MYbn1BfnY6vrVFJs6arGHqj5v1BS0U/jpW2Rz0umtoJnwNNgSHi7g6+3WdUfvK0l+mTJl8VU3hz8YYift5bbD+Mop0UOcvPHqtCnS6dQJreVtJGe7sy5+s8toEu5zpsel/Yf1QUZKPSRvI9WS1pz+O7WBvem34vYJSPbQWsZSoDlwcK/Y="
+   "_z": "dpqIjvl5uEwhmHiKbsoxNdqWoYgijYOerpWFK5fZNYIIjOTYWEPZEtT/tObwjgLeEtBxjDrf+ergqKdPFvGsbOaQzf/hpQArSMOs+IQPuTu9UgMCn/+wNoL3iq2Xlhf1ziDXWuDpFeEWmVZnnMFUXjDyXNKlfxoO6eSZF8dV+6M4NPVLbc+TKW5FoDdRAa7+LJ3fZ0URXB6TkC9HN3Qm+VWc2Vk6uMHtSMShcNFvBJC5F6KFI0HX/F+y3oLrfAW2h2ht8cg102T0JeRpaPRM3OUBrAtfyzKDLcHar3h0JbJA/rdvsqIZmJyt3mk1hlMLoa8eqo7vpkVUwlA="
   },
   {
    "h": "Чикаго",
@@ -559,9 +559,9 @@
    "arena": "",
    "x1x2": null,
    "p3": [
-    0.242,
-    0.215,
-    0.543
+    0.26,
+    0.218,
+    0.522
    ],
    "form": {
     "Чикаго": {
@@ -625,7 +625,7 @@
      "gd": -7
     }
    },
-   "_z": "S+VTjVqXeD6ee/SGtWgt1Ssmeq1fXhNAMUlX/ShGnswQAHmv+Ls5FqXEl6FLjHtRamy/12aWDgxjTr3NRdonbXavPX5ATlbJwu7bLcyp5j3rg3cHLPJ+0BRePEkK+X3EnhTpv97EfTHNdYmLsEcMeU8dUCZC8qFkOZFOHY1XA+AFU0hqa2FMS4yX+WVgs3W9qKNKBXmzfjgzat6bPrFKz9QeK7iWCMTRD8cNRtkpkP4t5HNG6MTD4MjIjflHU021AvrrXmqmYj1/80zVN4lMRAqe5L1hS9l4AZFDWb6Zsy9LXPPLgSFqtONo2qfYmRF6xCbZUt20uumdBQ=="
+   "_z": "9ZE5fKH1OXMGha/SyDXUekNISCZq1itgHV01ZmDLCviQfWRNJkpcEu3fOPblmAyqWq0XQh3TskeA3PFKYg9lMzOAGdhqZ2v62k3XjxwaiDWdKKZki5yiKrvLf+dAHHuyFJeTL+vE00lmoUxVWWUlkzFl7wGUMdT/6LWL8SYUoljJyJzlJXQEDt+1V34jwMSeFRRk+cWKFrLdmkh9kJb0qHmC6HRR/e8TuPFujDQR18N+slMjqbf2dLHVi62gwUdoAd6vUprY9QPdS/rNP3N5cX+/RiZDNv0kj0yl5TIa+P61l7QHH5Ko7kGUNNFTRFyv7T/WmAQ1nY3IMA=="
   },
   {
    "h": "Даллас",
@@ -634,13 +634,13 @@
    "arena": "",
    "x1x2": [
     1.962,
-    4.24,
-    3.2
+    4.22,
+    3.23
    ],
    "p3": [
-    0.508,
-    0.235,
-    0.256
+    0.503,
+    0.239,
+    0.259
    ],
    "form": {
     "Даллас": {
@@ -704,7 +704,7 @@
      "gd": -12
     }
    },
-   "_z": "l4b4BShztvKntvdG0iF4tiMSMTvkG9o764PoKW2sYzwoZaAbEkyvF4WXJS9fPrKqPArj8GqQTKeirRYUZat1lUc5v7Dzb59yJT8DnzUjBWyYDOqmIHeL54wqHKchasQm8a9QRbOuOWm14CnBqG33IfFFmoEkOkVTaNBoX/19wPfnhVQsQsSS5OiU1fxt6mxnZ44RVu/baGcvycPyqGLelT/of9caFO2X2UY46biu87ZzqB4RDZcndp1d2WEoC9bf0dKiMWQFTP/9vPQ1VaR6tVQiWgfoRJBUWTyWnTRugksMHSeQEBuQJGfzZKLjAY8hcvLCKdMH60G3h0f9+eLCLSrTsre52moctNhPSDXHctF92aoTJQ=="
+   "_z": "XsFMjV+2G6yMt9Q9Ik09IVu09rnYgt4JJMhNG8UBYRbQS11W4aRmctRypKdvF8eOeHZawRItP5j5oKhX8BskvqvuVyi+WivlydeQ9jQ6+FJ6JLfAdjMTXOFTMKkKMD97f8fEJ6pnh5qooi/Vj8IS26i4s6ilq69p8w1WkKJ662Zzsb4PZUYi0ocZUDRIh8NvqWntWBBIjr26x0i2xbRSvUNl64DhOnUY7qmSwxCNrbbRlDewPdzAGz2LyZacuRB4rG01/wYd2wlaebw/2PE+JdsGtYHpnxbXIIXCPtB2x9juM1CnWvl2Nud2Zj23G/6xSaZl6Q21tZt04x38UgPQ6rxRxP9kCKYkLgErXM7wkyz0NC7gafbtTnkb"
   },
   {
    "h": "Юта",
@@ -713,9 +713,9 @@
    "arena": "",
    "x1x2": null,
    "p3": [
-    0.413,
-    0.224,
-    0.363
+    0.397,
+    0.226,
+    0.377
    ],
    "form": {
     "Юта": {
@@ -779,7 +779,7 @@
      "gd": -2
     }
    },
-   "_z": "ING0yCSjrpjJTyFisVp11wZVsHH5pVnFYl4uIABQKEQiMycE032grRSh1UbMeiyr7h5XJurl8e0XvlgP5pqfqP7zKPd6rJB6v5Va5Q9iPPvJmyQgi5Y2N5mvxK18ateV4/M75qbGXS6kEmzlimrlX6BrUXA4Wuj2+HSc1HWTIG8jtQ0TnNxca2JYJ1G5Sk22JNUkA5gOqBT8CyR2tpIxE9f+06mkZylLaXvSMAL6Gsg9OfK68t66oxKSb3iOUxYWsyATstCWAaoVhNyhj0bn5+A85tmb1W8ktJAYgr6iB5bJEa7ljowG8E4sHkk="
+   "_z": "8ADvUkkrakvVDhnrOLFzmJzHzyh4VLwKVMOomA6M3TIRE5gD/GhrzMamHtvmgQbaCUN16Ee3+6mrIIqXZLD5E76HUcsad+Fn24HkiWB22hFI2Kv6ZLG+cc4InZVZ8xYB43aqXnOhWPIFM7kaudXY2Bs0GPG/1FbdzkZP10qQ7OVdI5ukmtX6RNlCFAR9WYgzJonWZYe4Ogf2Z605DVimOldOxiLtVbD7qPaU6TzOwvjkjO5f6vzRLV0AZHyf39PDwEeHX5NQkr0ANwoodIoXjtwJ6Kk987MXZgOaPyUxC2VBi/ZB70alYXPMmfx/+zs026vm4fgM"
   },
   {
    "h": "Лос-Анджелес",
@@ -792,9 +792,9 @@
     2.65
    ],
    "p3": [
-    0.351,
-    0.239,
-    0.409
+    0.346,
+    0.242,
+    0.412
    ],
    "form": {
     "Лос-Анджелес": {
@@ -858,7 +858,7 @@
      "gd": -3
     }
    },
-   "_z": "ALRsTiclpyEJMNdyTEufRWvVYLmCu2F8zCp7UyjH0YW3J1DMHRkLe9zPaP2E4AsMcHWvunWbGYzcaraUG9hBjrxL9UXUK/2V126x7lw/zjD5+2g5MEYNNneaVAIUnB00ooytztV6EW7oTpOKK4UDPi5rSNfv6f4OXWRvD1HzoJluf85CquKR0eOR3mES3m12WkmnK2UezEuxTfYgBUnsXRctKiLzowiGN6cDEBfIbue8L7KCunFuq1RI/lnaEvK1gOaPS51SlRTYl314/7g5wN5eIB5h3HVrNmo93t89r4dJufce5emvZ1emOt2JawBTVI7GGUZ0mzX3OwgQajEgOip/LtxN7t+2ryfTjZyhUgI+Kl8gVJpzBJjCmeFLcyS+yQ=="
+   "_z": "ovjtBzvV8hXysx4/U7WaqQw2BZSgYEbX/NVwxI1p/bdSfrA9ykY578HWMP25wrckK2uSAEFNU7YXHmH6RZV0+CC1fCNGSbzeuv+kFL39kcSzv+hOIznwjtG0vj822x+lhRYt6JUp2tDrpkgxYc8GxU7261wrp7QAoS8/6sB3DinLRplP2s6xuG01CYlanwHfKJg0uGtb57z9RzEqW7DYEQUbSZRrtDqyCDOD4hd9+Nabg4PVxI0Vzk0g5D5MDmj4HakvngPBVdF9KvYl9owFngS8jip9hyAapXgFpR5D+XzK7ES4dC8hpCR/Eso98LnmTyDkCEzZRgtDk/Em1rXFbQ5FfbMlrLTg3Ipov5o3BRMPId1LkFeH+j2kQI3qr/lW"
   }
  ],
  "all": [
