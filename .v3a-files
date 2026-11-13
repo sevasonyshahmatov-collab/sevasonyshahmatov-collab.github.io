@@ -659,10 +659,6 @@ data/deckbg/khl_2026-11-14_sochi_amur-m.webp
 data/deckbg/khl_2026-11-14_sochi_amur.webp
 data/deckbg/khl_2026-11-14_spartak_admiral-m.webp
 data/deckbg/khl_2026-11-14_spartak_admiral.webp
-data/deckbg/nhl_2026-11-13_nhl_lak_nhl_nyi-m.webp
-data/deckbg/nhl_2026-11-13_nhl_lak_nhl_nyi.webp
-data/deckbg/nhl_2026-11-13_nhl_uta_nhl_stl-m.webp
-data/deckbg/nhl_2026-11-13_nhl_uta_nhl_stl.webp
 data/deckbg/nhl_2026-11-14_nhl_car_nhl_sea-m.webp
 data/deckbg/nhl_2026-11-14_nhl_car_nhl_sea.webp
 data/deckbg/nhl_2026-11-14_nhl_chi_nhl_wpg-m.webp
@@ -5447,6 +5443,7 @@ hockey/data/pp/nhl/8477935.json
 hockey/data/pp/nhl/8477938.json
 hockey/data/pp/nhl/8477939.json
 hockey/data/pp/nhl/8477940.json
+hockey/data/pp/nhl/8477942.json
 hockey/data/pp/nhl/8477946.json
 hockey/data/pp/nhl/8477948.json
 hockey/data/pp/nhl/8477949.json
@@ -5725,12 +5722,14 @@ hockey/data/pp/nhl/8481604.json
 hockey/data/pp/nhl/8481605.json
 hockey/data/pp/nhl/8481606.json
 hockey/data/pp/nhl/8481607.json
+hockey/data/pp/nhl/8481609.json
 hockey/data/pp/nhl/8481617.json
 hockey/data/pp/nhl/8481618.json
 hockey/data/pp/nhl/8481624.json
 hockey/data/pp/nhl/8481641.json
 hockey/data/pp/nhl/8481655.json
 hockey/data/pp/nhl/8481656.json
+hockey/data/pp/nhl/8481708.json
 hockey/data/pp/nhl/8481711.json
 hockey/data/pp/nhl/8481716.json
 hockey/data/pp/nhl/8481719.json
@@ -5741,6 +5740,7 @@ hockey/data/pp/nhl/8481732.json
 hockey/data/pp/nhl/8481754.json
 hockey/data/pp/nhl/8481789.json
 hockey/data/pp/nhl/8481806.json
+hockey/data/pp/nhl/8481827.json
 hockey/data/pp/nhl/8481848.json
 hockey/data/pp/nhl/8482055.json
 hockey/data/pp/nhl/8482062.json
@@ -5933,6 +5933,7 @@ hockey/data/pp/nhl/8484158.json
 hockey/data/pp/nhl/8484160.json
 hockey/data/pp/nhl/8484164.json
 hockey/data/pp/nhl/8484166.json
+hockey/data/pp/nhl/8484177.json
 hockey/data/pp/nhl/8484180.json
 hockey/data/pp/nhl/8484185.json
 hockey/data/pp/nhl/8484186.json
