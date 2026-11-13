@@ -1,0 +1,169 @@
+/* Игроки в цветах клуба (06.11). Класс .k и переменные --kb/--kbm/--ks/--kt/--ko/--ko2/--kx/--kp ставит hockey-players.js из club/jersey.js.
+   Форма у всех одна, меняется только раскраска: диагональный градиент основного цвета, «рукав» из полос слева, эмблема-водяной знак,
+   номер контуром, портрет на подложке второго цвета. Цвет текста (--ko) выбран по яркости фона, контраст ≥ 4.5. */
+.pr.k{position:relative;overflow:hidden;isolation:isolate;border:0;color:var(--ko);padding:12px 112px 12px 44px;
+  background:
+    linear-gradient(112deg,transparent 0 70%,color-mix(in srgb,var(--ks) 16%,transparent) 70% 78%,transparent 78%),
+    linear-gradient(100deg,var(--kb) 0,var(--kb) 52%,var(--kbm) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 12px 24px -18px rgba(0,0,0,.9)}
+.pr.k::before{content:"";position:absolute;z-index:-1;left:-10px;top:-4px;bottom:-4px;width:40px;transform:skewX(-9deg);
+  background:linear-gradient(90deg,var(--ks) 0 15px,var(--kt) 15px 19px,var(--ks) 19px 23px,transparent 23px);transition:filter .2s}
+.pr.k .wm{position:absolute;z-index:-1;display:block;right:116px;top:50%;width:150px;height:150px;margin-top:-75px;pointer-events:none;opacity:.3;
+  object-fit:contain;filter:saturate(1.1) drop-shadow(0 6px 18px rgba(0,0,0,.25));transform:rotate(-8deg)}
+.pr.k .no{position:absolute;z-index:-1;right:14px;bottom:-10px;font:900 88px/1 var(--display);letter-spacing:-.03em;color:transparent;
+  -webkit-text-stroke:1.5px var(--kx);opacity:.6;pointer-events:none;transition:opacity .2s}
+.pr.k .rk,.pr.k .nm span,.pr.k .hit b small,.pr.k .strip small,.pr.k .ha,.pr.k .nx{color:var(--ko2)}
+.pr.k .nm b,.pr.k .hit b,.pr.k .strip small b,.pr.k .ha b,.pr.k .nx b{color:var(--ko)}
+.pr.k .bar{background:color-mix(in srgb,var(--ko) 24%,transparent)}
+.pr.k .bar i{background:var(--kx)}
+.pr.k .strip .bars{border-bottom-color:color-mix(in srgb,var(--ko) 38%,transparent)}
+.pr.k .strip .bars i{background:color-mix(in srgb,var(--ko) 26%,transparent)}
+.pr.k .strip .bars i.g{background:var(--kx)}
+.pr.k .strip .bars i b,.pr.k .strip .bars i.g b{color:var(--ko)}
+.pr.k .nx img{background:#fff;padding:2px}
+.pr.k .av{background:radial-gradient(circle at 50% 22%,color-mix(in srgb,var(--kp) 72%,#fff),var(--kp) 72%);
+  box-shadow:0 0 0 2px var(--kt),0 0 0 5px color-mix(in srgb,var(--kx) 55%,transparent)}
+.pr.k .av span{color:var(--kpo);text-shadow:none}
+.pr.k .av .ph{background:transparent}
+.pr.k .av .bd{box-shadow:0 0 0 2px var(--kb)}
+/* топ-3: металлическая кромка (1 — золото, 2 — серебро, 3 — бронза) */
+.pr.k.t1,.pr.k.t2,.pr.k.t3{border:2px solid transparent;padding:10px 110px 10px 42px;
+  background:
+    linear-gradient(112deg,transparent 0 70%,color-mix(in srgb,var(--ks) 16%,transparent) 70% 78%,transparent 78%) padding-box,
+    linear-gradient(100deg,var(--kb) 0,var(--kb) 52%,var(--kbm) 100%) padding-box,
+    var(--mt) border-box}
+.pr.k.t1{--mt:linear-gradient(135deg,#fff1ad,#d9a82b 26%,#fff6c9 48%,#a97a14 74%,#f4d975);box-shadow:0 0 0 1px rgba(255,226,130,.25),0 14px 28px -16px rgba(255,200,60,.55)}
+.pr.k.t2{--mt:linear-gradient(135deg,#f4f7fa,#a9b3bd 30%,#eef2f6 52%,#7d8791 78%,#dfe5ea)}
+.pr.k.t3{--mt:linear-gradient(135deg,#f1c9a1,#b0703a 30%,#f0cfae 52%,#7f4b22 78%,#dba878)}
+.pr.k.t1 .rk{font-size:22px}
+@media (hover:hover){
+  .pr.k:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 16px 28px -16px color-mix(in srgb,var(--kx) 70%,#000)}
+  .pr.k:hover::before{filter:brightness(1.18) saturate(1.2)}
+  .pr.k:hover .no{opacity:.95}
+}
+@media (prefers-reduced-motion:no-preference){.pr.k{transition:transform .18s ease,box-shadow .18s ease}}
+@media (max-width:900px){
+  .pr.k{padding-left:34px;padding-right:14px}
+  .pr.k.t1,.pr.k.t2,.pr.k.t3{padding-left:32px;padding-right:12px}
+  .pr.k .nx{padding-right:60px}
+  .pr.k::before{width:30px;background:linear-gradient(90deg,var(--ks) 0 11px,var(--kt) 11px 14px,var(--ks) 14px 17px,transparent 17px)}
+  .pr.k .no{font-size:62px;right:8px;bottom:-4px}
+  .pr.k .wm{width:130px;height:130px;margin-top:-65px;right:-10px}
+}
+
+/* Белый фон разделов игроков (владелец 06.11): html[data-white] — тема «c» с чисто белой бумагой */
+html[data-white]{--paper:#ffffff;--paper-2:#f2f5f9;--paper-3:#e6ecf3;--card:#f6f8fb;--card-hi:#ffffff;--rule:#dde4ec;--grain-op:0}
+html[data-white] body{background:#fff}
+
+/* без инициалов: нет фото — в круге эмблема клуба (владелец 06.11) */
+.av>span{display:none}
+.av:not(:has(.ph)){background:#fff!important}
+.av:not(:has(.ph)) .bd,.pr.k .av:not(:has(.ph)) .bd{position:static;width:66%;height:66%;padding:0;background:none;box-shadow:none;border-radius:0}
+
+/* Упрощённая строка (владелец 06.11): без «n из N», полос, дом/выезд и «Далее». Ранг, фото, имя, клуб; справа — фото игрока
+   крупно на фоне цветного номера. */
+.pr.k{grid-template-columns:28px 84px minmax(0,1fr);grid-template-areas:none;min-height:118px;padding-right:300px}
+.pr.k.t1,.pr.k.t2,.pr.k.t3{padding-right:298px}
+.pr.k .nm b{font-size:22px}
+.pr.k .no{right:18px;bottom:-14px;font-size:118px;color:var(--kx);-webkit-text-stroke:0;opacity:.92;
+  text-shadow:0 2px 0 color-mix(in srgb,var(--kt) 55%,transparent)}
+.pr.k .wm{right:auto;left:52%;opacity:.22}
+.pr.k .cut{position:absolute;z-index:0;right:96px;bottom:0;height:112%;width:auto;max-width:210px;object-fit:contain;object-position:50% 100%;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent),linear-gradient(to right,transparent,#000 22%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom,#000 70%,transparent),linear-gradient(to right,transparent,#000 22%);mask-composite:intersect;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.35));transition:transform .25s cubic-bezier(.23,1,.32,1)}
+@media (hover:hover){.pr.k:hover .cut{transform:translateY(-4px) scale(1.03)}}
+@media (max-width:900px){
+  .pr.k,.pr.k.t1,.pr.k.t2,.pr.k.t3{grid-template-columns:20px 56px minmax(0,1fr);grid-template-areas:none;min-height:96px;padding-right:92px}
+  .pr.k .av{grid-area:auto;width:52px;height:52px}.pr.k .rk,.pr.k .nm{grid-area:auto}
+  .pr.k .nm b{font-size:17px;white-space:normal}
+  .pr.k .no{font-size:76px;right:6px;bottom:-8px}
+  .pr.k .cut{right:28px;max-width:120px}
+  .pr.k .wm{display:none}
+}
+
+/* Логотип того же цвета, что фон (Тампа, Торонто, Динамо Москва…): белая обводка-«наклейка», чуть заметнее (владелец 07.11) */
+.pr.k .wm[src*="/nhl_tbl."],.pr.k .wm[src*="/dinamo_msk."],.pr.k .wm[src*="/shanghai."],.pr.k .wm[src*="/nhl_tor."],.pr.k .wm[src*="/nhl_cgy."],.pr.k .wm[src*="/nhl_van."],.pr.k .wm[src*="/minnesota."],.pr.k .wm[src*="/sochi."],.pr.k .wm[src*="/nhl_buf."]{opacity:.55;filter:drop-shadow(1.5px 0 0 #fff) drop-shadow(-1.5px 0 0 #fff) drop-shadow(0 1.5px 0 #fff) drop-shadow(0 -1.5px 0 #fff) drop-shadow(0 6px 14px rgba(0,0,0,.3))}
+
+/* Очки «9+31=40» у всех игроков (владелец 07.11) */
+.pr.k{grid-template-columns:28px 84px minmax(0,1fr) auto}
+.pr.k .pts{text-align:right;white-space:nowrap;position:relative;z-index:1}
+.pr.k .pts b{display:block;font:900 30px/1 var(--display);letter-spacing:-.01em;color:var(--ko)}
+.pr.k .pts small{display:block;margin-top:4px;font:600 11px/1.2 var(--display);text-transform:uppercase;letter-spacing:.06em;color:var(--ko2)}
+@media (max-width:900px){
+  .pr.k,.pr.k.t1,.pr.k.t2,.pr.k.t3{grid-template-columns:20px 56px minmax(0,1fr)}
+  .pr.k .pts{grid-column:3;text-align:left;margin-top:-4px}
+  .pr.k .pts b{font-size:20px}.pr.k .pts small{display:none}
+}
+#lg[hidden]{display:none!important}
+/* Очки без подписи, крупно на фоне слева от логотипа клуба (владелец 07.11) */
+.pr.k{grid-template-columns:28px 84px minmax(0,1fr)}
+.pr.k .pts{position:absolute;z-index:0;right:auto;left:calc(52% - 300px);width:290px;top:50%;transform:translateY(-50%);text-align:right;pointer-events:none}
+.pr.k .pts b{font-size:46px;opacity:.9;letter-spacing:-.02em}
+@media (max-width:900px){
+  .pr.k .pts{position:static;transform:none;width:auto;text-align:left;margin-top:-2px}
+  .pr.k .pts b{font-size:20px;opacity:1}
+}
+/* Очки — тем же начертанием и цветом, что номер игрока, но приглушённо (владелец 07.11) */
+.pr.k .pts b{font:900 50px/1 var(--display);letter-spacing:-.03em;color:var(--kx);opacity:.6;
+  text-shadow:0 2px 0 color-mix(in srgb,var(--kt) 40%,transparent)}
+@media (max-width:900px){.pr.k .pts b{font-size:22px;opacity:.75}}
+
+/* Отдельная плашка справа: очки (Гол+пас), голы (Гол) или передачи (Пас) — владелец 07.11 */
+.pr.k .tot{position:absolute;z-index:2;left:calc(52% + 168px);top:50%;transform:translateY(-50%);min-width:68px;padding:10px 14px;border-radius:var(--rc,14px);
+  font:900 34px/1 var(--display);letter-spacing:-.02em;text-align:center;color:var(--ko);
+  background:color-mix(in srgb,var(--kb) 70%,#000);box-shadow:inset 0 0 0 2px var(--kx),0 8px 18px -10px rgba(0,0,0,.6)}
+@media (max-width:900px){.pr.k .tot{left:auto;right:10px;top:10px;transform:none;min-width:0;padding:6px 9px;border-radius:var(--rc,10px);font-size:20px}}
+
+/* «9+31» — отдельной плашкой справа от строки (владелец 07.11, рисунок); внутри строки на компьютере не показываем */
+.pl-list.two{grid-template-columns:minmax(0,1fr) 150px;align-items:stretch;column-gap:12px}
+.pl-list.two>.pl-more{grid-column:1/-1}
+.ga{display:grid;place-items:center;border-radius:var(--rc,16px);font:900 34px/1 var(--display);letter-spacing:-.02em;white-space:nowrap;
+  color:var(--ink);background:var(--card-hi,#fff);border:2px solid var(--rule)}
+.ga.k{color:var(--kb);border-color:var(--kb);background:color-mix(in srgb,var(--kb) 7%,#fff);box-shadow:0 10px 22px -16px var(--kb)}
+.pr.k .pts.pin{display:none}
+@media (max-width:900px){
+  .pl-list.two{grid-template-columns:minmax(0,1fr)}
+  .ga{display:none}
+  .pr.k .pts.pin{display:block}
+}
+
+/* Г и П над плашкой (владелец 07.11, рисунок) */
+.ga,.gah{grid-template-columns:1fr 18px 1fr;column-gap:2px;padding:0 10px}
+.ga{display:grid;place-items:center stretch}
+.ga span{text-align:center}.ga i{font-style:normal;text-align:center;opacity:.6}
+.gah{display:grid;align-self:end;font:800 15px/1 var(--display);color:var(--ink-3);letter-spacing:.04em}
+.gah span{text-align:center}
+.gah0{height:0}
+@media (max-width:900px){.gah,.gah0{display:none}}
+/* «+» строго по центру плашки при любом числе цифр (владелец 07.11) */
+.pl-list.two{grid-template-columns:minmax(0,1fr) 176px}
+.ga,.gah{grid-template-columns:minmax(0,1fr) 26px minmax(0,1fr);column-gap:0;padding:0 12px}
+.ga span:first-child{text-align:right}.ga span:last-child{text-align:left}
+.ga i{text-align:center}
+.gah span:first-child{text-align:right;padding-right:10px}.gah span:last-child{text-align:left;padding-left:10px}
+.ga i{padding:0 3px}
+/* Ровно: число–плюс–число одной группой по центру, равные отступы, цифры одинаковой ширины (владелец 07.11) */
+.ga{display:flex;justify-content:center;align-items:center;gap:7px;padding:0 10px;font-variant-numeric:tabular-nums lining-nums}
+.ga span:first-child,.ga span:last-child{text-align:center}
+.ga i{padding:0;line-height:1;transform:translateY(-.04em)}
+/* Плюс закреплён по центру во всех плашках; голы прижаты к нему справа, пасы слева, зазоры равные (владелец 07.11) */
+.pl-list.two{grid-template-columns:minmax(0,1fr) 210px}
+.ga{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);column-gap:10px;justify-content:stretch;padding:0 14px;font-variant-numeric:tabular-nums lining-nums}
+.ga span:first-child{text-align:right}.ga span:last-child{text-align:left}
+.ga i{padding:0}
+.gah{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);column-gap:10px;padding:0 14px}
+.gah i{width:.6em}
+.gah span:first-child{text-align:right;padding-right:.35em}.gah span:last-child{text-align:left;padding-left:.35em}
+/* Телефон: плашка «Г+П» внутри строки, отдельной колонки нет — иначе строка сжимается и пропадает имя (аудит 08.11) */
+@media (max-width:900px){
+  .pl-list.two{grid-template-columns:minmax(0,1fr)}
+  .ga,.gah,.gah0{display:none}
+  .pr.k .no{opacity:.28}
+  .pr.k .pts.pin b{opacity:1}
+}
+/* Телефон: «Г+П» слева под именем, номер бледнее — цифры очков не ложатся поверх номера (12.11) */
+@media (max-width:900px){
+  .pr.k .pts.pin{text-align:left;justify-self:start}
+  .pr.k .no{opacity:.16}
+}

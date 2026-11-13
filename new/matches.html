@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru" data-theme="a" data-v="1">
+<head>
+<meta charset="utf-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Колода матчей дня: КХЛ, НХЛ и футбол | JARVIS</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a1220">
+<script>/* вид спорта для шапки: ?s=h (хоккей) | ?s=f (футбол) */
+(()=>{const s=new URLSearchParams(location.search).get('s');if(s==='h'||s==='f')document.documentElement.dataset.sport=s==='h'?'hockey':'football'})();</script>
+<link rel="stylesheet" href="assets/v3a.css">
+<link rel="stylesheet" href="assets/nav.css">
+<link rel="stylesheet" href="assets/deck.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<script src="assets/efir/efir-loader.js"></script>
+<script src="assets/palettes.js"></script>
+<link rel="stylesheet" href="assets/live.css">
+<link rel="preload" as="fetch" crossorigin href="data/deckbg/index.json">   <!-- фон матча — запрос сразу (09.11, скорость) -->
+<!--seo:begin-->
+<meta name="description" content="Матчи ближайших дней карточками: время, клубы, вероятности исходов по модели. Листайте колоду по лигам.">
+<link rel="canonical" href="https://jarvibet.example/matches.html">
+<meta property="og:url" content="https://jarvibet.example/matches.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="JARVIS"><meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Колода матчей дня: КХЛ, НХЛ и футбол | JARVIS"><meta property="og:description" content="Матчи ближайших дней карточками: время, клубы, вероятности исходов по модели. Листайте колоду по лигам.">
+<meta property="og:image" content="https://jarvibet.example/assets/og/og-matches.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Колода матчей дня: КХЛ, НХЛ и футбол | JARVIS"><meta name="twitter:description" content="Матчи ближайших дней карточками: время, клубы, вероятности исходов по модели. Листайте колоду по лигам."><meta name="twitter:image" content="https://jarvibet.example/assets/og/og-matches.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Колода матчей дня: КХЛ, НХЛ и футбол | JARVIS","description":"Матчи ближайших дней карточками: время, клубы, вероятности исходов по модели. Листайте колоду по лигам.","inLanguage":"ru","isPartOf":{"@id":"https://jarvibet.example/#site"},"url":"https://jarvibet.example/matches.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://jarvibet.example/index.html"},{"@type":"ListItem","position":2,"name":"Матчи дня","item":"https://jarvibet.example/matches.html"}]},{"@type":"ItemList","name":"Ближайшие матчи","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"SportsEvent","name":"Юта — Сент-Луис","startDate":"2026-11-13T05:00:00+03:00","eventStatus":"https://schema.org/EventScheduled","sport":"Ice hockey","homeTeam":{"@type":"SportsTeam","name":"Юта","url":"https://jarvibet.example/nhl/utah/"},"awayTeam":{"@type":"SportsTeam","name":"Сент-Луис","url":"https://jarvibet.example/nhl/st-louis/"},"url":"https://jarvibet.example/matches.html#m-nhl-2026-11-13-nhl-uta-nhl-stl"}},{"@type":"ListItem","position":2,"item":{"@type":"SportsEvent","name":"Лос-Анджелес — Айлендерс","startDate":"2026-11-13T06:00:00+03:00","eventStatus":"https://schema.org/EventScheduled","sport":"Ice hockey","homeTeam":{"@type":"SportsTeam","name":"Лос-Анджелес","url":"https://jarvibet.example/nhl/los-angeles/"},"awayTeam":{"@type":"SportsTeam","name":"Айлендерс","url":"https://jarvibet.example/nhl/islanders/"},"url":"https://jarvibet.example/matches.html#m-nhl-2026-11-13-nhl-lak-nhl-nyi"}},{"@type":"ListItem","position":3,"item":{"@type":"SportsEvent","name":"Северсталь — Трактор","startDate":"2026-11-13T19:00:00+03:00","eventStatus":"https://schema.org/EventScheduled","sport":"Ice hockey","homeTeam":{"@type":"SportsTeam","name":"Северсталь","url":"https://jarvibet.example/khl/severstal/"},"awayTeam":{"@type":"SportsTeam","name":"Трактор","url":"https://jarvibet.example/khl/traktor/"},"url":"https://jarvibet.example/matches.html#m-khl-2026-11-13-severstal-traktor","location":{"@type":"Place","name":"МАУ «Ледовый Дворец»","address":"162609, Вологодская обл., г. Череповец, Октябрьский пр-кт, д. 70"}}},{"@type":"ListItem","position":4,"item":{"@type":"SportsEvent","name":"Торпедо — Лада","startDate":"2026-11-13T19:00:00+03:00","eventStatus":"https://schema.org/EventScheduled","sport":"Ice hockey","homeTeam":{"@type":"SportsTeam","name":"Торпедо","url":"https://jarvibet.example/khl/torpedo/"},"awayTeam":{"@type":"SportsTeam","name":"Лада","url":"https://jarvibet.example/khl/lada/"},"url":"https://jarvibet.example/matches.html#m-khl-2026-11-13-torpedo-lada","location":{"@type":"Place","name":"VOLGA Арена","address":"603086, г. Нижний Новгород, Стрелка, 11"}}},{"@type":"ListItem","position":5,"item":{"@type":"SportsEvent","name":"СКА — Динамо Минск","startDate":"2026-11-13T19:30:00+03:00","eventStatus":"https://schema.org/EventScheduled","sport":"Ice hockey","homeTeam":{"@type":"SportsTeam","name":"СКА","url":"https://jarvibet.example/khl/ska/"},"awayTeam":{"@type":"SportsTeam","name":"Динамо Минск","url":"https://jarvibet.example/khl/dinamo-minsk/"},"url":"https://jarvibet.example/matches.html#m-khl-2026-11-13-ska-dinamo-minsk","location":{"@type":"Place","name":"«СКА Арена»","address":"196105, г. Санкт-Петербург, пр-кт Гагарина, д. 8"}}},{"@type":"ListItem","position":6,"item":{"@type":"SportsEvent","name":"Ванкувер — Рейнджерс","startDate":"2026-11-14T05:00:00+03:00","eventStatus":"https://schema.org/EventScheduled","sport":"Ice hockey","homeTeam":{"@type":"SportsTeam","name":"Ванкувер","url":"https://jarvibet.example/nhl/vancouver/"},"awayTeam":{"@type":"SportsTeam","name":"Рейнджерс","url":"https://jarvibet.example/nhl/rangers/"},"url":"https://jarvibet.example/matches.html#m-nhl-2026-11-14-nhl-van-nhl-nyr"}},{"@type":"ListItem","position":7,"item":{"@type":"SportsEvent","name":"Вегас — Нэшвилл","startDate":"2026-11-14T06:00:00+03:00","eventStatus":"https://schema.org/EventScheduled","sport":"Ice hockey","homeTeam":{"@type":"SportsTeam","name":"Вегас","url":"https://jarvibet.example/nhl/vegas/"},"awayTeam":{"@type":"SportsTeam","name":"Нэшвилл","url":"https://jarvibet.example/nhl/nashville/"},"url":"https://jarvibet.example/matches.html#m-nhl-2026-11-14-nhl-vgk-nhl-nsh"}},{"@type":"ListItem","position":8,"item":{"@type":"SportsEvent","name":"Нефтехимик — Авангард","startDate":"2026-11-14T14:00:00+03:00","eventStatus":"https://schema.org/EventScheduled","sport":"Ice hockey","homeTeam":{"@type":"SportsTeam","name":"Нефтехимик","url":"https://jarvibet.example/khl/neftekhimik/"},"awayTeam":{"@type":"SportsTeam","name":"Авангард","url":"https://jarvibet.example/khl/avangard/"},"url":"https://jarvibet.example/matches.html#m-khl-2026-11-14-neftekhimik-avangard","location":{"@type":"Place","name":"ЛД «Нефтехим Арена»","address":"423570, Республика Татарстан, г. Нижнекамск, ул. 30 лет Победы, д. 8"}}},{"@type":"ListItem","position":9,"item":{"@type":"SportsEvent","name":"Автомобилист — Ак Барс","startDate":"2026-11-14T14:30:00+03:00","eventStatus":"https://schema.org/EventScheduled","sport":"Ice hockey","homeTeam":{"@type":"SportsTeam","name":"Автомобилист","url":"https://jarvibet.example/khl/avtomobilist/"},"awayTeam":{"@type":"SportsTeam","name":"Ак Барс","url":"https://jarvibet.example/khl/akbars/"},"url":"https://jarvibet.example/matches.html#m-khl-2026-11-14-avtomobilist-akbars","location":{"@type":"Place","name":"«УГМК Арена»","address":"620063, Свердловская обл., г. Екатеринбург,  ул. Степан Разина, д. 15"}}},{"@type":"ListItem","position":10,"item":{"@type":"SportsEvent","name":"Спартак — Адмирал","startDate":"2026-11-14T16:30:00+03:00","eventStatus":"https://schema.org/EventScheduled","sport":"Ice hockey","homeTeam":{"@type":"SportsTeam","name":"Спартак","url":"https://jarvibet.example/khl/spartak/"},"awayTeam":{"@type":"SportsTeam","name":"Адмирал","url":"https://jarvibet.example/khl/admiral/"},"url":"https://jarvibet.example/matches.html#m-khl-2026-11-14-spartak-admiral","location":{"@type":"Place","name":"ДС «Мегаспорт»","address":"125252, г. Москва, Ходынский б-р, д. 3"}}},{"@type":"ListItem","position":11,"item":{"@type":"SportsEvent","name":"Локомотив — Шанхайские Драконы","startDate":"2026-11-14T17:00:00+03:00","eventStatus":"https://schema.org/EventScheduled","sport":"Ice hockey","homeTeam":{"@type":"SportsTeam","name":"Локомотив","url":"https://jarvibet.example/khl/lokomotiv/"},"awayTeam":{"@type":"SportsTeam","name":"Шанхайские Драконы","url":"https://jarvibet.example/khl/shanghai/"},"url":"https://jarvibet.example/matches.html#m-khl-2026-11-14-lokomotiv-shanghai","location":{"@type":"Place","name":"УКРК «Арена-2000-Локомотив»","address":"150023, Ярославская обл., г. Ярославль, ул. Гагарина, д. 15"}}},{"@type":"ListItem","position":12,"item":{"@type":"SportsEvent","name":"Сочи — Амур","startDate":"2026-11-14T17:00:00+03:00","eventStatus":"https://schema.org/EventScheduled","sport":"Ice hockey","homeTeam":{"@type":"SportsTeam","name":"Сочи","url":"https://jarvibet.example/khl/sochi/"},"awayTeam":{"@type":"SportsTeam","name":"Амур","url":"https://jarvibet.example/khl/amur/"},"url":"https://jarvibet.example/matches.html#m-khl-2026-11-14-sochi-amur","location":{"@type":"Place","name":"ДС «Большой»","address":"354340, Краснодарский край, ФТ Сириус, пгт Сириус, Олимпийский пр-кт, д. 7"}}},{"@type":"ListItem","position":13,"item":{"@type":"SportsEvent","name":"Каролина — Сиэтл","startDate":"2026-11-14T21:00:00+03:00","eventStatus":"https://schema.org/EventScheduled","sport":"Ice hockey","homeTeam":{"@type":"SportsTeam","name":"Каролина","url":"https://jarvibet.example/nhl/carolina/"},"awayTeam":{"@type":"SportsTeam","name":"Сиэтл","url":"https://jarvibet.example/nhl/seattle/"},"url":"https://jarvibet.example/matches.html#m-nhl-2026-11-14-nhl-car-nhl-sea"}},{"@type":"ListItem","position":14,"item":{"@type":"SportsEvent","name":"Чикаго — Виннипег","startDate":"2026-11-14T23:30:00+03:00","eventStatus":"https://schema.org/EventScheduled","sport":"Ice hockey","homeTeam":{"@type":"SportsTeam","name":"Чикаго","url":"https://jarvibet.example/nhl/chicago/"},"awayTeam":{"@type":"SportsTeam","name":"Виннипег","url":"https://jarvibet.example/nhl/winnipeg/"},"url":"https://jarvibet.example/matches.html#m-nhl-2026-11-14-nhl-chi-nhl-wpg"}}]}]}</script>
+<!--seo:end-->
+</head>
+<body class="dk-page">
+<a class="skip" href="#main">К содержанию</a>
+<header class="hd" id="hd">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="JARVIS, главная">JAR<i>V</i>IS</a>
+    <nav class="seg" aria-label="Вид спорта">
+      <a href="hockey/index.html">Хоккей</a>
+      <a href="football/index.html">Футбол</a>
+    </nav>
+    <a class="btn btn-tg" href="https://t.me/jarvibet" target="_blank" rel="noopener"><span>Получать прогнозы — бесплатно</span></a>
+  </div>
+</header>
+
+<main id="main" class="dk">
+  <div class="dk-bgfx" aria-hidden="true">
+    <div class="dk-bg"><div class="fl"><i></i><i></i><i></i><i></i></div></div>
+    <div class="dk-bg"><div class="fl"><i></i><i></i><i></i><i></i></div></div>
+    <div class="dk-tx"></div>
+  </div>
+  <div class="wrap dk-wrap">
+    <div class="dk-top">
+      <div>
+        <h1 class="dk-h1">Матчи дня</h1>
+        <p class="dk-sub" id="dk-sub"></p>
+      </div>
+      <div class="dk-side">
+      <div class="dk-filter" role="group" aria-label="Вид спорта" id="dk-filter">
+        <button type="button" data-f="all" aria-pressed="true">Все <small></small></button>
+        <button type="button" data-f="hockey" aria-pressed="false">Хоккей <small></small></button>
+        <button type="button" data-f="football" aria-pressed="false">Футбол <small></small></button>
+      </div>
+      </div>
+    </div>
+
+    <div class="dk-grid">
+      <section class="dk-main" id="dk-main" aria-label="Колода матчей">
+        <div class="dk-stage" id="dk-stage" tabindex="0" aria-roledescription="карусель" aria-label="Матчи: листайте колесом мыши, свайпом или стрелками ← →">
+          <ol class="dk-deck" id="dk-deck"></ol>
+        </div>
+      <button type="button" class="dk-arr dk-l" id="dk-prev" aria-label="Предыдущий матч"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button type="button" class="dk-arr dk-r" id="dk-next" aria-label="Следующий матч"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+
+      </section>
+      <aside class="dk-info" id="dk-info" aria-live="polite" aria-label="О встрече"></aside>
+    </div>
+    <script>/* размер карточки — сразу, до загрузки данных (как measure() в assets/deck.js), чтобы колода не сдвигалась (CLS, 09.11) */
+    (function(){try{var st=document.getElementById('dk-stage'),r=document.querySelector('.dk'),mob=matchMedia('(max-width: 980px)').matches,
+      byH=Math.floor((innerHeight-(mob?330:350))/1.61),W=mob?Math.max(220,Math.min(320,document.documentElement.clientWidth-96)):Math.max(270,Math.min(410,Math.round(st.clientWidth*.66),byH));
+      r.style.setProperty('--W',W+'px')}catch(e){}})();</script>
+
+    <div class="dk-ctl" id="dk-ctl">
+      <div class="dk-count" aria-live="polite"><b id="dk-cur">01</b><span> / </span><span id="dk-tot">01</span></div>
+      <div class="dk-prog" aria-hidden="true"><i id="dk-bar"></i></div>
+    </div>
+  </div>
+</main>
+
+<div class="dk-scrim" id="dk-scrim" hidden></div>
+<aside class="dk-drawer" id="dk-drawer" role="dialog" aria-modal="true" aria-labelledby="dk-dh" inert>
+  <header class="dk-dhead">
+    <div><p class="dk-dk">Подробная статистика</p><h2 id="dk-dh"></h2></div>
+    <button type="button" class="dk-x" id="dk-x" aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  </header>
+  <div class="dk-dbody" id="dk-dbody"></div>
+</aside>
+
+<script src="assets/nav.js"></script>
+<script src="assets/footer.js"></script>
+<script src="data/today.js"></script>
+<script src="data/lines.js"></script>
+<script src="data/model.js"></script>
+<script src="data/matchlinks.js"></script>
+<script src="assets/lines.js"></script>
+<script src="assets/data/teams-lite.js"></script>
+<script src="football/data/football-lite.js"></script>
+<script src="assets/data/clubs.js"></script>
+<script src="assets/deck.js"></script>
+<script src="assets/live.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+/* Палитры 60/30/10 (владелец 05.11, v2 «энергия»): тёмный фон с жизнью (60) + второй цвет в карточках, полосах, графиках (30) + акцент ТОЛЬКО на нажимаемом (10).
+   Включаются ?pal=stadium|ice|volt|royal (assets/palettes.js), без параметра сайт как раньше.
+   --pal (заливка), --pal-ink (текст на ней), --pal-t (акцент как текст/линия) — акцент. --e2/--e2b — второй цвет и пара для полос, --e2t — второй цвет как текст,
+   --glow/--glow2 — rgb-тройки для свечений. Правила «энергии» — assets/pal/energy.css. */
+html[data-pal="stadium"],html[data-pal="stadium"] body.md,html[data-pal="stadium"] body.fc,html[data-pal="stadium"] body.tr{
+  --paper:#0b1026; --paper-2:#111a3f; --paper-3:#1a2a66; --card:#111a40; --card-hi:#1a2860;
+  --ink:#ffffff; --ink-2:#cfd8f7; --ink-3:#9eabd8; --rule:#1f2d66; --rule-2:#35479c;
+  --board:#060a1c; --flap:#12205a; --flap-2:#0c1640; --flap-ink:#ffffff;
+  --pal:#ff5a1f; --pal-ink:#190802; --pal-t:#ff7d4a;
+  --e1:#0b1026; --e2:#2f6bff; --e2b:#1fc4ff; --e2t:#7ea3ff; --glow:47,107,255; --glow2:31,196,255;
+  --signal:#7ea3ff; --signal-ink:#0b1026;
+  --ice:#7ea3ff; --pitch:#7ea3ff; --sport:#7ea3ff; --sport-ink:#0b1026;
+  --red:#ff4d63; --win:#25d07a; --win-ink:#04140c; --loss-ink:#1a0408; --draw:#8a96c4;
+  --puck:#060a1c; --puck-rim:#ffffff;
+  --khl:#2f6bff; --khl-2:#7ea3ff; --nhl:#1fc4ff; --nhl-2:#7ea3ff;
+  --conf-hi:#ffffff; --conf-mid:#cfd8f7; --conf-lo:#9eabd8;
+  --crest-bg:#f2f2f6; --crest-pad:1;
+  --shadow:rgba(2,5,20,.7); --bgc:#0b1026; --lit:0;
+  --fld:rgba(47,107,255,.22); --fld-2:rgba(47,107,255,.10); --fld-pitch:transparent;
+  --fld-red:rgba(31,196,255,.26); --fld-blue:rgba(47,107,255,.26); --fld-run:rgba(47,107,255,.2); --fld-run2:rgba(31,196,255,.2);
+  --acc:#7ea3ff;
+  color-scheme:dark;}
+html[data-pal="stadium"] body.fc .hd,html[data-pal="stadium"] body.tr .hd{--paper:#0b1026}
+html[data-pal="ice"],html[data-pal="ice"] body.md,html[data-pal="ice"] body.fc,html[data-pal="ice"] body.tr{
+  --paper:#06121f; --paper-2:#0a1d31; --paper-3:#0f2d4a; --card:#0a1c2f; --card-hi:#102a46;
+  --ink:#ffffff; --ink-2:#d0eaf6; --ink-3:#93b6cb; --rule:#12304a; --rule-2:#1f4e73;
+  --board:#030b14; --flap:#0c2640; --flap-2:#081a2e; --flap-ink:#ffffff;
+  --pal:#e5173f; --pal-ink:#ffffff; --pal-t:#ff5f7e;
+  --e1:#06121f; --e2:#34d6ff; --e2b:#2f7bff; --e2t:#6fe3ff; --glow:52,214,255; --glow2:47,123,255;
+  --signal:#6fe3ff; --signal-ink:#06121f;
+  --ice:#6fe3ff; --pitch:#6fe3ff; --sport:#6fe3ff; --sport-ink:#06121f;
+  --red:#ff4d63; --win:#22d3a0; --win-ink:#04140c; --loss-ink:#1a0408; --draw:#7f9db3;
+  --puck:#030b14; --puck-rim:#ffffff;
+  --khl:#34d6ff; --khl-2:#6fe3ff; --nhl:#2f7bff; --nhl-2:#6fe3ff;
+  --conf-hi:#ffffff; --conf-mid:#d0eaf6; --conf-lo:#93b6cb;
+  --crest-bg:#f2f2f6; --crest-pad:1;
+  --shadow:rgba(0,6,14,.7); --bgc:#06121f; --lit:0;
+  --fld:rgba(52,214,255,.22); --fld-2:rgba(52,214,255,.10); --fld-pitch:transparent;
+  --fld-red:rgba(47,123,255,.26); --fld-blue:rgba(52,214,255,.26); --fld-run:rgba(52,214,255,.2); --fld-run2:rgba(47,123,255,.2);
+  --acc:#6fe3ff;
+  color-scheme:dark;}
+html[data-pal="ice"] body.fc .hd,html[data-pal="ice"] body.tr .hd{--paper:#06121f}
+html[data-pal="volt"],html[data-pal="volt"] body.md,html[data-pal="volt"] body.fc,html[data-pal="volt"] body.tr{
+  --paper:#111317; --paper-2:#1b1424; --paper-3:#2a1735; --card:#1a161f; --card-hi:#271a31;
+  --ink:#ffffff; --ink-2:#e3dcec; --ink-3:#aea3bb; --rule:#2c2236; --rule-2:#4a3560;
+  --board:#08090b; --flap:#26172f; --flap-2:#1a111f; --flap-ink:#ffffff;
+  --pal:#d4ff3a; --pal-ink:#10130a; --pal-t:#d4ff3a;
+  --e1:#111317; --e2:#c026d3; --e2b:#7c3cff; --e2t:#e57cf2; --glow:192,38,211; --glow2:124,60,255;
+  --signal:#e57cf2; --signal-ink:#111317;
+  --ice:#e57cf2; --pitch:#e57cf2; --sport:#e57cf2; --sport-ink:#111317;
+  --red:#ff4d63; --win:#2fdc7a; --win-ink:#04140c; --loss-ink:#1a0408; --draw:#9a8fa8;
+  --puck:#08090b; --puck-rim:#ffffff;
+  --khl:#c026d3; --khl-2:#e57cf2; --nhl:#7c3cff; --nhl-2:#e57cf2;
+  --conf-hi:#ffffff; --conf-mid:#e3dcec; --conf-lo:#aea3bb;
+  --crest-bg:#f2f2f6; --crest-pad:1;
+  --shadow:rgba(6,2,10,.7); --bgc:#111317; --lit:0;
+  --fld:rgba(192,38,211,.22); --fld-2:rgba(192,38,211,.10); --fld-pitch:transparent;
+  --fld-red:rgba(124,60,255,.26); --fld-blue:rgba(192,38,211,.26); --fld-run:rgba(192,38,211,.2); --fld-run2:rgba(124,60,255,.2);
+  --acc:#e57cf2;
+  color-scheme:dark;}
+html[data-pal="volt"] body.fc .hd,html[data-pal="volt"] body.tr .hd{--paper:#111317}
+html[data-pal="royal"],html[data-pal="royal"] body.md,html[data-pal="royal"] body.fc,html[data-pal="royal"] body.tr{
+  --paper:#1a0b3b; --paper-2:#25104f; --paper-3:#33187a; --card:#220f4a; --card-hi:#301870;
+  --ink:#ffffff; --ink-2:#e1d8fa; --ink-3:#b3a4dd; --rule:#38207a; --rule-2:#5b3fb5;
+  --board:#110626; --flap:#2c1466; --flap-2:#200e4d; --flap-ink:#ffffff;
+  --pal:#ffe14d; --pal-ink:#1a0b3b; --pal-t:#ffe14d;
+  --e1:#1a0b3b; --e2:#3b2bff; --e2b:#9a63ff; --e2t:#9aa0ff; --glow:59,43,255; --glow2:154,99,255;
+  --signal:#9aa0ff; --signal-ink:#1a0b3b;
+  --ice:#9aa0ff; --pitch:#9aa0ff; --sport:#a9a4ff; --sport-ink:#1a0b3b;
+  --red:#ff4d6a; --win:#2fdc86; --win-ink:#04140c; --loss-ink:#1a0408; --draw:#a091cf;
+  --puck:#110626; --puck-rim:#ffffff;
+  --khl:#3b2bff; --khl-2:#9aa0ff; --nhl:#9a63ff; --nhl-2:#9aa0ff;
+  --conf-hi:#ffffff; --conf-mid:#e1d8fa; --conf-lo:#b3a4dd;
+  --crest-bg:#f2f2f6; --crest-pad:1;
+  --shadow:rgba(8,2,24,.7); --bgc:#1a0b3b; --lit:0;
+  --fld:rgba(59,43,255,.22); --fld-2:rgba(59,43,255,.10); --fld-pitch:transparent;
+  --fld-red:rgba(154,99,255,.26); --fld-blue:rgba(59,43,255,.26); --fld-run:rgba(59,43,255,.2); --fld-run2:rgba(154,99,255,.2);
+  --acc:#9aa0ff;
+  color-scheme:dark;}
+html[data-pal="royal"] body.fc .hd,html[data-pal="royal"] body.tr .hd{--paper:#1a0b3b}
+
+/* ── акцент только на нажимаемом ───────────────────────────────────────────── */
+html[data-pal] ::selection{background:var(--pal);color:var(--pal-ink)}
+html[data-pal] :focus-visible{outline-color:var(--pal-t)}
+html[data-pal] .btn-tg,html[data-pal] .mpanel .mtg,html[data-pal] .tgbar,html[data-pal] .dk-more,html[data-pal] .pp-cta a,
+html[data-pal] .favbtn[aria-pressed=true],html[data-pal] .pp-tabs button[aria-pressed=true],html[data-pal] .pl-tabs button[aria-pressed=true],
+html[data-pal] .pager button[aria-pressed="true"]{background:var(--pal);border-color:var(--pal);color:var(--pal-ink)}
+html[data-pal] .favbtn:hover{border-color:var(--pal-t);color:var(--pal-t)}
+html[data-pal] .hd .hd-me:hover,html[data-pal] .hd .hd-me[aria-current],html[data-pal] .mpanel .mme svg,html[data-pal] .pp-err a,
+html[data-pal] .tab[aria-selected="true"] .c,html[data-pal] .me-tm:hover b,html[data-pal] .dk-mpage,html[data-pal] .me-pb i{color:var(--pal-t)}
+html[data-pal] .me-pb:hover,html[data-pal] .me-card:hover,html[data-pal] .me-m:hover{border-color:var(--pal-t)}
+html[data-pal] .dk-ql span.fav,html[data-pal] .hm-q i.fav{border-color:var(--pal-t);outline-color:var(--pal-t);background:color-mix(in srgb,var(--pal) 18%,transparent);box-shadow:none}
+html[data-pal][data-v="2"] .hm-q i.fav{background:var(--pal);color:var(--pal-ink)}
+html[data-pal] .dk-ql span.fav small{color:var(--pal-t)}
+html[data-pal] .me-star{background:color-mix(in srgb,var(--pal) 14%,transparent)}
+html[data-pal] .me-star svg{stroke:var(--pal-t)}
+html[data-pal] .me-in input:focus{border-color:var(--pal-t);box-shadow:0 0 0 3px color-mix(in srgb,var(--pal) 25%,transparent)}
+html[data-pal] .sp-top:focus-within{box-shadow:inset 0 -2px 0 var(--pal-t)}
+html[data-pal] .sp-i.on{box-shadow:inset 3px 0 0 var(--ink-2)}
+
+/* ── некликабельное: не акцент, а обычный цвет ─────────────────────────────── */
+html[data-pal] .hm-q i.fav small,html[data-pal] .me-top h1 span,html[data-pal] .hero h1 em,html[data-pal] h1 em{color:var(--ink-2)}
+html[data-pal] .hm-date span::before,html[data-pal] .me-kick::before,html[data-pal] .board-top .lamp,html[data-pal] .ticker li::after{background:var(--ink-3)}
+html[data-pal] .jvf-logo span::after{background:var(--ink-3)}
+html[data-pal] .jvf-cols div b,html[data-pal] .hd .logo.lg2 em{color:var(--ink-2)!important}
+html[data-pal] .mt-form .r-d b{background:var(--ink-3)}
+html[data-pal] .mt-form .r-w b{background:var(--win)}html[data-pal] .mt-form .r-l b{background:var(--red)}
+html[data-pal] .bet.lv-hi{--lv:var(--ink)}html[data-pal] .bet.lv-mid{--lv:var(--ink-2)}html[data-pal] .bet.lv-lo{--lv:var(--ink-3)}
+html[data-pal] .nf small{color:var(--ink-2)}
+html[data-pal] .nf-links a{border-color:var(--rule-2)}
+html[data-pal] .hero .board .face .vs time{border-color:var(--rule-2)}
+/* декоративные «свечения» из золота — тише и без цвета */
+html[data-pal] [data-v="1"] .hm-bg{background:radial-gradient(60% 55% at 12% -8%,color-mix(in srgb,var(--ink-2) 9%,transparent),transparent 70%),
+  linear-gradient(180deg,color-mix(in srgb,var(--paper) 88%,#fff),var(--paper) 90%)}
+html[data-pal] .hm-bg .hb1,html[data-pal] .hm-bg .hb3{opacity:.2}
+html[data-pal] .arena-bg{background:linear-gradient(180deg,color-mix(in srgb,var(--paper) 80%,#fff),var(--paper) 70%)}
+html[data-pal] .arena-bg .bm{display:none}
+
+/* ── плашка переключателя ──────────────────────────────────────────────────── */
+.pal-bar{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);z-index:9999;display:flex;gap:2px;padding:4px;border-radius:var(--rp,999px);
+  background:rgba(10,10,10,.88);border:1px solid rgba(255,255,255,.18);box-shadow:0 8px 24px -8px rgba(0,0,0,.6);max-width:calc(100vw - 16px)}
+.pal-bar button{font:600 12px/1 system-ui,sans-serif;color:#eee;background:transparent;border:0;border-radius:var(--rp,999px);padding:9px 10px;cursor:pointer;white-space:nowrap}
+.pal-bar button[aria-pressed=true]{background:#fff;color:#000}
+html[data-pal] body.md,html[data-pal] body.fc,html[data-pal] body.tr{background:var(--paper);color:var(--ink)}

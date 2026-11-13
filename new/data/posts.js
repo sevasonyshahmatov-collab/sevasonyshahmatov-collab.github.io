@@ -1,0 +1,1 @@
+window.JV_POSTS={};

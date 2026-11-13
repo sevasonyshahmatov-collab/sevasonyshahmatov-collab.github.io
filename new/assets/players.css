@@ -1,0 +1,74 @@
+/* Раздел «Игроки» (прототип 03.11) — только классы pl-*, общие стили v3a не трогает */
+body{background:var(--paper);color:var(--ink)}
+.pl{padding-top:clamp(20px,4vw,48px);padding-bottom:64px}
+.pl-kicker{font:700 14px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin:0 0 8px}
+.pl-hero h1{font:900 clamp(48px,9vw,104px)/.9 var(--display);margin:0 0 12px;letter-spacing:-.01em}
+.pl-lead{font:400 17px/1.5 var(--text);color:var(--ink-2);max-width:62ch;margin:0 0 24px}
+.pl-ctrl{display:grid;gap:12px;margin-bottom:12px}
+.pl-tabs,.pl-chips{display:flex;flex-wrap:wrap;gap:6px}
+.pl-tabs button,.pl-chips button{font:700 16px/1 var(--display);padding:10px 16px;border-radius:var(--rp,999px);border:1px solid var(--rule-2);background:var(--card);color:var(--ink-2);cursor:pointer}
+.pl-tabs button[aria-pressed=true]{background:var(--signal);color:var(--signal-ink);border-color:var(--signal)}
+.pl-chips button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pl-row{display:flex;flex-wrap:wrap;gap:10px 16px}
+.pl-row label{display:flex;flex-direction:column;gap:4px;font:600 13px/1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3)}
+.pl-row select,.pl-row input{font:600 16px/1 var(--display);padding:9px 10px;border-radius:var(--rc,10px);border:1px solid var(--rule-2);background:var(--card);color:var(--ink);min-width:150px}
+.pl-q{flex:1;min-width:160px}
+.pl-meta{font:600 14px/1.4 var(--display);color:var(--ink-3);margin:8px 0}
+.pl-list{display:grid;gap:8px}
+.pr{display:grid;grid-template-columns:28px 56px minmax(0,1.6fr) 120px minmax(0,1.3fr) 108px minmax(0,1fr);align-items:center;gap:12px;
+  padding:10px 14px;border-radius:var(--rc,14px);background:var(--card);border:1px solid var(--rule)}
+.pr .rk{font:800 18px/1 var(--display);color:var(--ink-3);text-align:right}
+.pr .cr{width:40px;height:40px;object-fit:contain;background:var(--crest-bg);border-radius:var(--rc,10px);padding:calc(var(--crest-pad)*4px)}
+.pr .nm{text-align:left;min-width:0}
+.av{position:relative;width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 50% 30%,color-mix(in srgb,var(--c) 85%,#fff),var(--c));display:grid;place-items:center;overflow:visible}
+.av span{font:800 18px/1 var(--display);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.4)}
+.av .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 15%;border-radius:50%;background:var(--c)}
+[data-sport=football] .av .ph{object-position:50% 100%;object-fit:cover}
+.av .bd{position:absolute;right:-4px;bottom:-4px;width:22px;height:22px;object-fit:contain;background:var(--crest-bg,#fff);border-radius:50%;padding:2px;box-shadow:0 0 0 2px var(--card)}
+.pr .nm b{display:block;text-align:left;font:800 19px/1.1 var(--display);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pr .nm span{font:500 14px/1.3 var(--display);color:var(--ink-3)}
+.hit{display:grid;gap:5px}
+.hit b{font:900 24px/1 var(--display)} .hit b small{font:700 14px var(--display);color:var(--ink-3);margin-left:4px}
+.bar{height:6px;border-radius:3px;background:var(--paper-3);overflow:hidden}.bar i{display:block;height:100%;background:var(--pitch)}
+.pl[data-m=cr] .bar i{background:var(--signal)}
+.strip{display:flex;gap:3px}
+.strip i{flex:1;max-width:22px;height:26px;border-radius:5px;background:var(--paper-3);font:800 12px/26px var(--display);text-align:center;font-style:normal;color:var(--ink-3)}
+.strip i.g{background:var(--pitch);color:var(--sport-ink)} .strip i.c{background:var(--signal);color:var(--signal-ink)}
+.ha{font:600 14px/1.5 var(--display);color:var(--ink-2)} .ha b{color:var(--ink)}
+.nx{display:flex;align-items:center;gap:8px;font:600 14px/1.25 var(--display);color:var(--ink-2)}
+.nx img{width:26px;height:26px;object-fit:contain;background:var(--crest-bg);border-radius:6px}
+.nx b{color:var(--ink)}
+.pl-more{display:block;margin:16px auto 0;font:700 17px/1 var(--display);padding:12px 22px;border-radius:var(--rp,999px);border:1px solid var(--rule-2);background:var(--card);color:var(--ink);cursor:pointer}
+.pl-note{font:400 14px/1.5 var(--text);color:var(--ink-3);margin-top:24px;max-width:70ch}
+@media (max-width:900px){
+  .pr{grid-template-columns:24px 48px minmax(0,1fr) 96px;grid-template-areas:"rk cr nm hit" "st st st st" "ha ha nx nx";row-gap:10px}
+  .pr .rk{grid-area:rk}.pr .av{grid-area:cr;width:44px;height:44px}.pr .nm{grid-area:nm}.pr .hit{grid-area:hit}
+  .pr .strip{grid-area:st}.pr .ha{grid-area:ha}.pr .nx{grid-area:nx;justify-content:flex-end}
+  .strip i{max-width:none}
+}
+/* хоккей и футбол: портреты одного размера и вида: клубный цвет, портрет снизу (владелец 03.11) */
+/* хоккей: портреты крупнее (владелец 03.11) */
+[data-sport] .pr{grid-template-columns:28px 84px minmax(0,1.6fr) 120px minmax(0,1.3fr) 108px minmax(0,1fr)}
+[data-sport] .av{width:76px;height:76px}
+[data-sport] .av span{font-size:24px}
+[data-sport] .av .bd{width:28px;height:28px}
+@media (max-width:900px){
+  [data-sport] .pr{grid-template-columns:20px 62px minmax(0,1fr) 78px;column-gap:10px}
+  [data-sport] .pr .av{width:58px;height:58px}
+  .pr .nm b{white-space:normal;font-size:18px}
+}
+/* форма: мини-график последних 10 матчей (вместо квадратиков, владелец 03.11) */
+.strip{display:grid;gap:6px;align-content:center}
+.strip .bars{display:flex;align-items:flex-end;gap:4px;height:46px;padding-top:14px;border-bottom:1px solid var(--rule-2)}
+.strip .bars i{flex:1;max-width:20px;height:calc(var(--h)*100%);min-height:3px;border-radius:4px 4px 0 0;background:var(--paper-3);position:relative;font-style:normal}
+.strip .bars i.g{background:var(--pitch)}
+.pl[data-m=cr] .strip .bars i.g{background:var(--signal)}
+.strip .bars i b{position:absolute;bottom:100%;left:0;right:0;text-align:center;font:700 11px/14px var(--display);color:var(--ink-3)}
+.strip .bars i.g b{color:var(--ink)}
+.strip small{font:600 13px/1.2 var(--display);color:var(--ink-3)} .strip small b{color:var(--ink)}
+@media (max-width:900px){.strip .bars i{max-width:none}}
+.strip .bars i.x{opacity:.45;min-height:2px}
+
+.av.lite span{color:#10161f;text-shadow:none}
+.av.lite{box-shadow:inset 0 0 0 1px rgba(16,22,31,.15)}
+.pr .nm b a{color:inherit;text-decoration:none}.pr .nm b a:hover,.pr .nm b a:focus-visible{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}

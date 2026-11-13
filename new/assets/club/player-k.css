@@ -1,0 +1,117 @@
+/* Профиль игрока в цветах клуба (06.11). Класс .k на .pp и переменные --kb/--kbm/--ks/--kt/--ko/--ko2/--kx/--kp/--kg ставит player.js из club/jersey.js.
+   Шапка — свитер: основной цвет слева, диагональные полосы рукава (второй цвет и кромка) справа, номер контуром, портрет на подложке.
+   Графики и акценты ниже — в --kg: цвет клуба, подобранный по контрасту к фону страницы. Без .k (нет цвета клуба) всё как раньше. */
+.pp.k .pp-hero{--bp:66%;color:var(--ko);
+  background:
+    linear-gradient(0deg,rgba(0,0,0,.18),transparent 45%),
+    linear-gradient(114deg,var(--kb) 0 var(--bp),var(--kt) var(--bp) calc(var(--bp) + 1.2%),var(--ks) calc(var(--bp) + 1.2%) calc(var(--bp) + 17%),var(--kt) calc(var(--bp) + 17%) calc(var(--bp) + 18%),var(--kbm) calc(var(--bp) + 18%) 100%)}
+.pp.k .pp-hero::before{background:radial-gradient(60% 90% at 90% 0%,rgba(255,255,255,.14),transparent 60%);z-index:-1}
+.pp.k .pp-no{color:transparent;-webkit-text-stroke:2px var(--kt);opacity:.55;right:clamp(8px,2vw,28px)}
+.pp.k .pp-crumbs a{color:var(--ko);background:rgba(0,0,0,.3);border-color:color-mix(in srgb,var(--ko) 35%,transparent)}
+.pp.k.lt .pp-crumbs a{background:rgba(255,255,255,.4)}
+.pp.k .pp-crumbs a:hover,.pp.k .pp-crumbs a:focus-visible{background:rgba(0,0,0,.5)}
+.pp.k.lt .pp-crumbs a:hover,.pp.k.lt .pp-crumbs a:focus-visible{background:rgba(255,255,255,.65)}
+.pp.k .pp-pos,.pp.k .pp-sub{color:var(--ko2);opacity:1}
+.pp.k h1{color:var(--ko);opacity:1;text-shadow:none}
+.pp.k .pp-photo::before{content:"";position:absolute;left:16%;right:16%;bottom:0;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 50% 28%,color-mix(in srgb,var(--kp) 70%,#fff),var(--kp) 72%);
+  box-shadow:0 0 0 3px var(--kt),0 0 0 8px color-mix(in srgb,var(--kb) 70%,transparent),0 18px 30px -12px rgba(0,0,0,.55);transform:translateY(8%)}
+.pp.k .pp-photo img.ph{position:relative;filter:drop-shadow(0 8px 14px rgba(0,0,0,.4))}
+.pp.k .pp-ini{color:var(--kpo);opacity:.55;z-index:1}
+.pp.k .pp-hero{overflow:hidden}
+/* акценты ниже шапки */
+.pp.k .pp-sec>h2{display:flex;align-items:center;gap:10px}
+.pp.k .pp-sec>h2::before{content:"";flex:none;width:6px;height:.9em;border-radius:2px;background:linear-gradient(180deg,var(--kg) 0 62%,var(--kt) 62% 74%,var(--kg) 74%);transform:skewX(-12deg)}
+.pp.k .pp-tile{border-top:3px solid var(--kg)}
+.pp.k .pp-tabs button[aria-pressed=true]{background:var(--kg);color:var(--kgo);border-color:var(--kg)}
+.pp.k .pp-mk .mb i{background:var(--kg)}
+.pp.k .pp-col .bar.g{background:var(--kg)}
+.pp.k .pp-col .bar.g b{color:var(--kgo)}
+.pp.k .pp-gm .pt b.g{background:var(--kg);color:var(--kgo)}
+.pp.k .pp-nx{border-left:4px solid var(--kg)}
+@media (hover:hover){.pp.k .pp-tile{transition:transform .18s ease}.pp.k .pp-tile:hover{transform:translateY(-2px)}}
+@media (max-width:720px){
+  .pp.k .pp-hero{--bp:60%}
+  .pp.k .pp-photo::before{left:2%;right:2%}
+}
+
+/* Белый фон разделов игроков (владелец 06.11): html[data-white] — тема «c» с чисто белой бумагой */
+html[data-white]{--paper:#ffffff;--paper-2:#f2f5f9;--paper-3:#e6ecf3;--card:#f6f8fb;--card-hi:#ffffff;--rule:#dde4ec;--grain-op:0}
+html[data-white] body{background:#fff}
+
+.pp-ini{display:none!important}
+
+/* Объёмная шапка (player-tilt.js): наклон, блик, слои; цветной номер (владелец 06.11) */
+.pp-hero{transform-origin:50% 50%;will-change:transform;transition:box-shadow .3s;box-shadow:0 30px 60px -36px rgba(10,20,40,.55)}
+.pp-hero:hover{box-shadow:0 40px 70px -34px rgba(10,20,40,.6)}
+.pp-hero .pp-no,.pp-hero .pp-txt,.pp-hero .pp-photo{will-change:translate}
+
+.pp.k .pp-no{color:var(--kx);-webkit-text-stroke:0;opacity:.95;text-shadow:0 3px 0 color-mix(in srgb,var(--kt) 50%,transparent)}
+/* Таблица матчей игрока — крупнее текст и цифры (владелец 07.11) */
+.pp-gm th{font-size:14px;padding:12px}
+.pp-gm td{font-size:20px;padding:13px 12px}
+.pp-gm .op{gap:12px}
+.pp-gm .op img{width:34px;height:34px}
+.pp-gm .op small{font-size:14px;margin-top:2px}
+.pp-gm .pt b{font-size:20px;padding:5px 10px;border-radius:9px;min-width:2.4em}
+@media (max-width:620px){
+  .pp-gm td{font-size:16px;padding:10px 6px}.pp-gm th{font-size:12px;padding:9px 6px}
+  .pp-gm .op img{width:26px;height:26px}.pp-gm .op small{font-size:12px}.pp-gm .pt b{font-size:16px}
+}
+
+/* Таблица матчей: Г+П по центру, слева результат В/П, справа счёт (владелец 07.11) */
+.pp-gm .ct{text-align:center}
+.pp-gm .res{width:44px;padding-right:0;text-align:center}
+.pp-gm .res b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:8px;font:900 17px/1 var(--display);color:#fff}
+.pp-gm .res b.w{background:#0c8a4a}.pp-gm .res b.l{background:#c8102e}
+.pp-gm .sc{white-space:nowrap;font-weight:800}
+.pp-gm .sc small{margin-left:5px;font:700 13px/1 var(--display);color:var(--ink-3)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:620px){.pp-gm .res{width:30px}.pp-gm .res b{width:24px;height:24px;font-size:14px}.pp-gm .sc small{display:none}}
+@media (max-width:620px){.pp-gm .tm{display:none}.pp-gm td,.pp-gm th{padding-left:5px;padding-right:5px}}
+@media (max-width:620px){.pp-gm .br{display:none}.pp-gm .op img{width:22px;height:22px}.pp-gm .op{gap:7px}}
+
+/* Выравнивание (владелец 07.11): результат и дата на одной линии; счёт по двоеточию, ОТ/Б перед счётом в своём столбике */
+.pp-gm td,.pp-gm th{vertical-align:middle}
+.pp-gm .res b{vertical-align:middle;margin-top:0}
+.pp-gm th.res{padding-left:12px}
+.pp-gm .sc .sg{display:inline-grid;grid-template-columns:2.2em 1.6ch auto 1.6ch;align-items:baseline;font-variant-numeric:tabular-nums}
+.pp-gm .sc .sg small{margin:0;text-align:left;font:700 13px/1 var(--display);color:var(--ink-3)}
+.pp-gm .sc .sg i{font-style:normal}.pp-gm .sc .sg i:first-of-type{text-align:right}.pp-gm .sc .sg i:last-of-type{text-align:left}
+.pp-gm .sc .sg u{text-decoration:none;padding:0 .08em}
+@media (max-width:620px){.pp-gm .sc .sg{grid-template-columns:1.8em 1.6ch auto 1.6ch}.pp-gm .sc .sg small{display:block;font-size:11px}}
+.pp-gm .res b{display:grid;margin:0 auto}
+.pp-gm .sc .sg{grid-template-columns:auto 1.6ch auto 1.6ch}.pp-gm .sc .sg small{min-width:1.9em;text-align:right;padding-right:6px}
+@media (max-width:620px){.pp-gm td,.pp-gm th{padding-left:4px;padding-right:4px}.pp-gm .pt b{font-size:15px;padding:4px 7px;min-width:0}.pp-gm .sc .sg small{min-width:1.2em;padding-right:3px;font-size:10px}.pp-gm .res{width:28px}.pp-gm td{font-size:15px}}
+/* Номер на фоне шапки игрока — белый у всех (владелец 07.11) */
+.pp.k .pp-no{color:#fff;-webkit-text-stroke:0;opacity:.92;text-shadow:0 4px 18px rgba(0,0,0,.18)}
+
+/* Длинная фамилия не рвётся посреди слова — шрифт уменьшается под длину (07.11) */
+.pp h1 b{overflow-wrap:normal;word-break:keep-all;font-size:calc(clamp(44px,9vw,110px)*var(--fz,1))}
+@media (max-width:620px){.pp h1 b{font-size:calc(clamp(26px,7.2vw,60px)*var(--fz,1))}}
+
+/* Навыки — шестиугольник / пятиугольник (владелец 07.11) */
+.pp-sk{max-width:560px;margin:6px auto 0}
+.pp-sk svg{width:100%;height:auto;display:block;overflow:visible}
+.pp-sk .gr{fill:none;stroke:var(--rule);stroke-width:1}
+.pp-sk polygon.gr:last-of-type{stroke:var(--rule-2,#c9d3df)}
+.pp-sk .vv{fill:color-mix(in srgb,var(--kg,#0a5bc4) 26%,transparent);stroke:var(--kg,#0a5bc4);stroke-width:3;stroke-linejoin:round;
+  transform-origin:170px 170px;animation:skin .9s cubic-bezier(.23,1,.32,1) both}
+.pp-sk .dt{fill:#fff;stroke:var(--kg,#0a5bc4);stroke-width:3;animation:skdot .9s cubic-bezier(.23,1,.32,1) both}
+.pp-sk .ax{font:700 13px/1 var(--display);fill:var(--ink-3);text-transform:uppercase;letter-spacing:.04em}
+.pp-sk .vl{font:900 20px/1 var(--display);fill:var(--ink)}
+@keyframes skin{from{transform:scale(.2);opacity:0}to{transform:none;opacity:1}}
+@keyframes skdot{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.pp-sk .vv,.pp-sk .dt{animation:none}}
+/* цвет фигуры — основной цвет клуба (акцент у части клубов белый и пропадал на белом фоне) */
+.pp-sk .vv{fill:color-mix(in srgb,var(--kb,#0a5bc4) 24%,transparent);stroke:var(--kb,#0a5bc4)}
+.pp-sk .dt{stroke:var(--kb,#0a5bc4)}
+@media (max-width:620px){.pp-sk .ax{font-size:15px}.pp-sk .vl{font-size:22px}}
+@media (max-width:620px){.pp-sk .ax{font-size:17px}.pp-sk .vl{font-size:24px}}
+/* Фото уходит под нижний край шапки с запасом: при наклоне (фото сдвигается вверх до ~13 px) снизу нет пустоты (владелец 07.11) */
+.pp-hero .pp-photo{margin-bottom:-30px}
+.pp-hero .pp-photo img.ph{transform:scale(1.06);transform-origin:50% 100%}
+
+/* 12.11: номер не срезается верхним краем шапки; у игрока без фото в круге — инициалы, а не пустота */
+.pp-no{top:.1em}
+.pp-photo.nop .pp-ini{display:grid!important;opacity:.9}
