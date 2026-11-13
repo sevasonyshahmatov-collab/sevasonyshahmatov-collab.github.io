@@ -39,7 +39,7 @@ function wm(q,w){
 let IDX=null,loading=null;
 const SP={h:'Хоккей',f:'Футбол'};
 const pg=(c)=>c.s==='h'?'team/index.html?id='+encodeURIComponent(c.id):'football/team.html?id='+encodeURIComponent(c.id);
-const crest=c=>U((c.s==='h'?'assets/em/':'assets/fc/')+c.id+'.webp');
+const crest=c=>U((c.s==='h'?'assets/em/s/':'assets/fc/')+c.id+'.webp');
 function load(){
   if(IDX)return Promise.resolve(IDX);
   if(loading)return loading;
@@ -158,5 +158,5 @@ addEventListener('keydown',e=>{
   else if(e.key==='Tab'){const f=[...box.querySelectorAll('input,button')].filter(x=>x.offsetParent);if(f.length){const i=f.indexOf(document.activeElement);if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus()}}}
 });
 /* адрес вида ?q=… (SearchAction в разметке главной): открыть поиск с этим запросом */
-try{const qq=new URLSearchParams(location.search).get('q');if(qq){inp.value=qq.slice(0,80);open()}}catch(e){}
+try{const qq=new URLSearchParams(location.search).get('q');if(qq!==null){inp.value=qq.slice(0,80);open()}}catch(e){}
 })();
