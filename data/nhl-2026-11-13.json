@@ -9,14 +9,14 @@
    "d": "2026-11-14 05:00",
    "arena": "",
    "x1x2": [
-    3.69,
-    4.51,
-    1.769
+    3.74,
+    4.57,
+    1.752
    ],
    "p3": [
-    0.225,
-    0.202,
-    0.573
+    0.219,
+    0.203,
+    0.578
    ],
    "form": {
     "Ванкувер": {
@@ -76,11 +76,11 @@
      ],
      "points": 23,
      "games": 20,
-     "place": "7 на Востоке",
+     "place": "8 на Востоке",
      "gd": 3
     }
    },
-   "_z": "cqwYWzkVCtMTB2qA2g9kdj24ZknTg13X+2pbgXCICW75PUyaVJgMI6gS5ayDJaP7H60pnJqdj3cDPWCHTMmK/GFFbrXSh8PWiNhrupH2euEc3LrCpDbrt1k0If1DPEfuZukQgRLsfnfpcz+7VaMhb4VrqpWFxcBa5LprZDhdY4QBHt6JNmfh/r0APj3Oi55js8Fl9RczvV7tJ8NnIxuiRs0disUijvtcoM/prtrP7IUq1Wf3w6QZEjITrvX+MTfapssU/CesksJtpCldZM7WEgmtvuDz7SwymgdC51Xih5qECIIhcNlWi6+YlEiBjwZpotfKVc3DlF1DwpKCKhxw4UdiabTFk8PtvZP8LC1hDEw="
+   "_z": "Pdmh3dtQgnNavCKckHAbL5pmUvMBbSZT1XmC0Ig8uJsknr0UvjSfRAmOUHTWnqec9KchzDqRj9TEadBtxAg3O+2vsf1Hy8uJRxJTpOLNxtNhRB7OfUoHP88BnqeoRW6cxUaZuvzI/kSWZd9wx6N74jy657/AoEP+YsnLs7hi+kq/kdVkKV2BMiWr5vqjray7xoVCLtnXXDI5bClUxa7sNhN9Si08UWJazPoPxPcBuUj3huLm8dxZ/qOMXZnbOevth7EIji9cU6//CuCigMWTny3/7H64wi7w0yvE/Ku2WouRVXMS6sJ26j6qAEzpFnQu9hvlNvaIuxmG9FZjs3wET0UbfJlZAPYEU/i5lLhSDss="
   },
   {
    "h": "Вегас",
@@ -88,14 +88,14 @@
    "d": "2026-11-14 06:00",
    "arena": "",
    "x1x2": [
-    1.917,
-    4.3,
-    3.29
+    1.901,
+    4.33,
+    3.32
    ],
    "p3": [
-    0.429,
-    0.242,
-    0.328
+    0.422,
+    0.245,
+    0.333
    ],
    "form": {
     "Вегас": {
@@ -159,7 +159,7 @@
      "gd": 6
     }
    },
-   "_z": "zoqq/8qeUbHv6uE1s8DQU6p1k9EY+7Qnds8c9VQfp3teGDAPgj6WaLGHcOUvsAnerwZ2o4yqO8y2+S7B4Q5MsiLv0jzfeI9VjOEr/4Lb2NxoGa6SUADCINKJMs2SO99Cm16gs/sZqUCulOvnQnXI3fSCM4yT8Sk6OHdNEebV7rA7hNK8m0Juzhj4wdlzCB8+DZ6pppYtnbmrOaDmwBv9y2VhqbBInIrQZ18wROHZ0URiNiogS8FiTareX1NV/ZxlUepl4uAS01dsKe4IiVAu+vvJxvyiXnuS+41BcIyvd/Z7r9//ImKQaYGLLeiMGg=="
+   "_z": "B5Sq5j7mIHqgsUYRAiyGS+S8UGodtbvvaMqQsdz05M4iihQ1yulfHoiLjpQ2jvwRSF2QS6iRtN/KvWLFwG26ok+UPUcaQP5JaM30R1JJzMDEPHa4VzNkDRfm5+1pf3VP6W+zyOoAmaD+KiXEt4P3CPKtUvY28RTHDnGuGxPCXfQRYxsAS/YyHKXe27rOtII9w9LBQ7l3t3qcFQf3Iq5ahQ8Fv0btwcyt2+32Px3V1iyd4gbKdU/BGpCAjy/bPLa6rmJ/jBeeNcDFpwNY68TBZ6AMF+iJ+2YCclyR/fLPw9sEW9AppYqV4F24Kfj3nQ=="
   }
  ],
  "all": [
