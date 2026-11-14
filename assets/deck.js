@@ -1,3 +1,5 @@
+/* фото КХЛ без белого фона (черновик 14.11): адрес khl.ru -> hockey/data/kph/<папка>_<номер>.webp (hockey/khl_cut.py) */
+window.JV_KPH=window.JV_KPH||(S=>u=>{if(!window.JV_KPH_ON)return u;const m=/khl\.ru\/img\/teamplayers_db\/(\d+)\/(\d+)\.jpg/.exec(u||'');return m&&S?new URL('../hockey/data/kph/'+m[1]+'_'+m[2]+'.webp',S).href:u})(document.currentScript&&document.currentScript.src);
 /* JARVIS v3a — «Колода матчей» (matches.html).
    Данные: data/today.js, lines.js, model.js (через assets/lines.js → window.JVL), клубы: assets/data/teams-lite.js (хоккей) и football/data/football-lite.js (футбол);
    подробности клуба (игроки, личные встречи) подгружаются при открытии панели: assets/data/club/<slug>.js, football/data/club/<id>.js.
@@ -100,7 +102,8 @@ function layout(){
   $('dk-cur').textContent=D2(n?cur+1:0);$('dk-tot').textContent=D2(n);
   $('dk-bar').parentNode.style.setProperty('--p',n>1?'1':'1');
   $('dk-bar').style.setProperty('--p',n?((cur+1)/n):0);
-  $('dk-prev').disabled=cur<=0;$('dk-next').disabled=cur>=n-1;
+  $('dk-prev').disabled=n<2;$('dk-next').disabled=n<2;   /* по кругу: после последнего — первый (владелец 14.11) */
+  {const pk=document.getElementById('dk-puck');if(pk)pk.style.left=(n>1?cur/(n-1)*100:0)+'%'}
 }
 function build(){
   measure();
@@ -220,10 +223,10 @@ try{fetch('data/deckbg/index.json').then(r=>r.ok?r.json():null).then(j=>{if(j&&j
 /* ── переключение ── */
 let lockUntil=0;
 function go(to,opt={}){const n=list.length;if(!n)return;to=Math.max(0,Math.min(n-1,to));if(to===cur)return false;
-  const dir=to>cur?1:-1;cur=to;layout();renderInfo(true);applyBg(dir);
+  const dir=opt.dir||(to>cur?1:-1);cur=to;layout();renderInfo(true);applyBg(dir);
   try{const u=new URL(location.href);u.searchParams.set('k',list[cur].key);history.replaceState(null,'',u)}catch(e){}
   lockUntil=performance.now()+(root.classList.contains('rm')?0:520);return true}
-const step=d=>go(cur+d);
+const step=d=>{const n=list.length;if(n<2)return false;return go((cur+d+n)%n,{dir:d})};
 
 /* колесо мыши / тачпад: накопление, блокировка на время анимации, инерцию тачпада не считаем за новый жест */
 let acc=0,lastT=0,quiet=false,lastAbs=0;
@@ -251,6 +254,17 @@ addEventListener('keydown',e=>{
   else if(e.key==='End'&&e.target===stage){e.preventDefault();go(list.length-1)}
 });
 $('dk-prev').onclick=()=>step(-1);$('dk-next').onclick=()=>step(1);
+/* шайба на жёлтой линии (компьютер, владелец 14.11): тащить или нажать на линию — переключает матчи */
+{const pr=document.querySelector('.dk-prog');
+ if(pr&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+  const pk=document.createElement('b');pk.id='dk-puck';pk.className='dk-puck';pk.setAttribute('aria-hidden','true');pr.appendChild(pk);pr.classList.add('has-puck');
+  const at=x=>{const r=pr.getBoundingClientRect(),n=list.length;if(n<2)return 0;return Math.round(Math.max(0,Math.min(1,(x-r.left)/r.width))*(n-1))};
+  let dn=false;
+  pr.addEventListener('pointerdown',e=>{if(e.button!==0)return;dn=true;pr.classList.add('drag');try{pr.setPointerCapture(e.pointerId)}catch(_){}const i=at(e.clientX);if(i!==cur)go(i);e.preventDefault()});
+  pr.addEventListener('pointermove',e=>{if(!dn)return;const i=at(e.clientX);if(i!==cur){lockUntil=0;go(i)}});
+  const up=()=>{dn=false;pr.classList.remove('drag')};pr.addEventListener('pointerup',up);pr.addEventListener('pointercancel',up);
+  const n=list.length;pk.style.left=(n>1?cur/(n-1)*100:0)+'%';
+ }}
 
 /* перетаскивание: верхняя карточка идёт за пальцем с поворотом; дальше порога — улетает, иначе пружинит назад */
 let sx=0,sy=0,sid=null,moved=false,drag=false,topEl=null,t0=0;
@@ -347,7 +361,7 @@ function leadersOf(m,s,ph){
   return sc.slice(0,3).map(p=>({n:p.n,sub:p.p?`${p.p} с пенальти`:'',v:p.g,u:'голов'}))}
 function leadersHtml(m,d){
   const A=leadersOf(m,m.h,d.ph[0]),B=leadersOf(m,m.a,d.ph[1]);if(!A&&!B)return '';
-  const col=(s,n,L,c)=>L?`<div><h4 style="--c:${c}"><i></i>${esc(n)}</h4><ul class="dk-ld">${L.map(p=>`<li>${p.img?`<img src="${esc(p.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML='<span class=ph></span>'">`:`<span class="ph">${esc(p.n.split(/\s+/).map(w=>w[0]).slice(0,2).join(''))}</span>`}<div><b>${esc(p.n)}</b>${p.sub?`<small>${esc(p.sub)}</small>`:''}</div><strong title="${p.u}">${p.v}</strong></li>`).join('')}</ul></div>`:'';
+  const col=(s,n,L,c)=>L?`<div><h4 style="--c:${c}"><i></i>${esc(n)}</h4><ul class="dk-ld">${L.map(p=>`<li>${p.img?`<img src="${esc(JV_KPH(p.img))}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML='<span class=ph></span>'">`:`<span class="ph">${esc(p.n.split(/\s+/).map(w=>w[0]).slice(0,2).join(''))}</span>`}<div><b>${esc(p.n)}</b>${p.sub?`<small>${esc(p.sub)}</small>`:''}</div><strong title="${p.u}">${p.v}</strong></li>`).join('')}</ul></div>`:'';
   return `<section class="dk-sec"><h3>${isH(m)?'Лидеры по очкам (гол + передача)':'Лучшие бомбардиры клуба в лиге'}</h3><div class="dk-two">${col(m.h,m.hn,A,'var(--dk-ca,#ffc21a)')}${col(m.a,m.an,B,isH(m)?'var(--dk-cb,#4cc2ff)':'var(--dk-cb,#3dd68c)')}</div></section>`}
 
 /* последние 5 матчей */

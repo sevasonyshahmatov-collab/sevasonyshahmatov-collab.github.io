@@ -1,3 +1,10 @@
+/* Фото игроков КХЛ с www.khl.ru — на белом фоне. Владелец 14.11: «чтобы ни у кого сзади не было белого фона». Вырезать фон у себя
+   нельзя (khl.ru не отдаёт фото нашим серверам), поэтому белое делается прозрачным прямо при показе: SVG-фильтр #jvko
+   (CSS в v3a.css: img[src*="khl.ru/img/teamplayers_db"]). Пиксели не читаются скриптом — работает и с чужими картинками. */
+(()=>{const add=()=>{if(document.getElementById('jvko'))return;const d=document.createElement('div');d.setAttribute('aria-hidden','true');
+ d.style.cssText='position:absolute;width:0;height:0;overflow:hidden';
+ d.innerHTML='<svg width="0" height="0" focusable="false"><filter id="jvko" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 8.4 0"/><feComponentTransfer><feFuncA type="linear" slope="1.6" intercept="-.15"/></feComponentTransfer></filter></svg>';
+ document.body.appendChild(d)};document.body?add():document.addEventListener('DOMContentLoaded',add)})();
 /* JARVIS v3a — общая шапка для всех страниц. Подключается ПЕРЕД v3a.js.
    Рисует: логотип, переключатель Хоккей/Футбол, разделы вида спорта, Telegram, кнопку «Меню» (телефон).
    Меню-якоря страницы (.nav внутри <header id="hd">) переносит во вторую полосу под шапкой.
@@ -101,6 +108,8 @@ document.addEventListener('click',e=>{if(!e.target.closest('.gdd'))hd.querySelec
 /* поиск (assets/search.js + search.css) — единственная точка подключения */
 try{const l=document.createElement('link');l.rel='stylesheet';l.href=new URL('search.css',SRC).href;document.head.appendChild(l);
   const s=document.createElement('script');s.src=new URL('search.js',SRC).href;s.defer=true;document.head.appendChild(s)}catch(e){}
+/* нижняя панель разделов на телефоне + «одна жёлтая кнопка» (assets/tabbar.js, 14.11) — тоже одна точка подключения */
+try{const s=document.createElement('script');s.src=new URL('tabbar.js',SRC).href;document.head.appendChild(s)}catch(e){}
 
 /* вторая полоса — якоря страницы */
 let sub=null;
@@ -130,6 +139,19 @@ addEventListener('resize',()=>{if(innerWidth>1100&&!pn.hidden)setOpen(false)});
 
 /* страницы без v3a.js: тень шапки при прокрутке */
 if(!window.JV){const on=()=>hd.classList.toggle('stuck',scrollY>8);addEventListener('scroll',on,{passive:true});on()}
+/* строки вкладок, которые не влезают по ширине (14.11, п. 3): затухание у края, где ещё есть вкладки, и прокрутка к активной.
+   Любая полоса с прокруткой вбок: подменю страницы, вкладки лиг, переключатели — находим сами, пересчитываем при изменениях. */
+{const SEL='.subbar .nav,[role="tablist"],.tabs,.lg-tabs,.chips';
+ const mark=el=>{const ov=el.scrollWidth>el.clientWidth+2;el.classList.toggle('xf',ov);if(!ov){el.classList.remove('xf-l','xf-r');return}
+  el.classList.toggle('xf-l',el.scrollLeft>4);el.classList.toggle('xf-r',el.scrollLeft+el.clientWidth<el.scrollWidth-4)};
+ const toAct=el=>{const a=el.querySelector('[aria-current="page"],[aria-current="true"],[aria-selected="true"],a.on,.on');if(!a||el.scrollWidth<=el.clientWidth+2)return;
+  const l=a.offsetLeft-el.offsetLeft;if(l<el.scrollLeft+8||l+a.offsetWidth>el.scrollLeft+el.clientWidth-40)el.scrollLeft=Math.max(0,l-(el.clientWidth-a.offsetWidth)/2)};
+ const scan=first=>document.querySelectorAll(SEL).forEach(el=>{const ox=getComputedStyle(el).overflowX;if(ox!=='auto'&&ox!=='scroll')return;
+  if(!el.dataset.xf){el.dataset.xf=1;el.addEventListener('scroll',()=>mark(el),{passive:true});first=true}if(first)toAct(el);mark(el)});
+ let t=0;const later=()=>{clearTimeout(t);t=setTimeout(()=>scan(false),120)};
+ addEventListener('load',()=>scan(true));addEventListener('resize',later);document.addEventListener('DOMContentLoaded',()=>scan(true));
+ if('MutationObserver' in window)new MutationObserver(later).observe(document.documentElement,{subtree:true,childList:true});
+ setTimeout(()=>scan(true),900)}
 /* активная вкладка подменю — в видимую часть */
 addEventListener('load',()=>{const a=hd.querySelector('.subbar a.on');if(a&&a.scrollIntoView)try{a.scrollIntoView({block:'nearest',inline:'center'})}catch(e){}});
 })();
