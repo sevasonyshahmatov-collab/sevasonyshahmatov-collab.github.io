@@ -248,6 +248,31 @@
   .kp-m.v4::before,.kp-m.v4::after{bottom:auto;height:84px;-webkit-mask-image:linear-gradient(90deg,#000 0,#000 36%,transparent 70%);mask-image:linear-gradient(90deg,#000 0,#000 36%,transparent 70%)}
 }
 
+.l5 .kp-set,.l6 .kp-set,.l7 .kp-set{gap:8px}
+/* 5 — приглушённый: градиент на всю строку, но темнее */
+.kp-m.v5{background:linear-gradient(180deg,rgba(7,18,37,.58),rgba(7,18,37,.7)),linear-gradient(100deg,var(--h1) 0%,var(--hm) 50%,var(--h2) 100%)}
+.kp-m.v5::before{opacity:.55}
+.kp-m.v5::after{opacity:.2}
+/* 6 — цвет при выборе: все строки тёмные; в цвета клубов окрашивается строка под курсором, с выбранным событием или раскрытая */
+.kp-m.v6{transition:border-color .2s ease}
+.kp-m.v6:not(.has):not(.open){background:var(--card);border-color:var(--rule)}
+.kp-m.v6:not(.has):not(.open)::before,.kp-m.v6:not(.has):not(.open)::after{opacity:0}
+.kp-m.v6::before,.kp-m.v6::after{transition:opacity .25s ease}
+.kp-m.v6:not(.has):not(.open) .kp-o:not(.on){background:var(--paper);border-color:var(--rule-2)}
+.kp-m.v6:not(.has):not(.open) .kp-more{background:var(--paper);border-color:var(--rule-2)}
+.kp-m.v6:not(.has):not(.open) .kp-lg{background:var(--paper-3)}
+@media (hover:hover){
+  .kp-m.v6:not(.has):not(.open):hover{background:linear-gradient(180deg,rgba(4,8,18,.1),rgba(4,8,18,.36)),linear-gradient(100deg,var(--h1) 0%,var(--hm) 50%,var(--h2) 100%);border-color:var(--hm)}
+  .kp-m.v6:not(.has):not(.open):hover::before{opacity:1}
+  .kp-m.v6:not(.has):not(.open):hover::after{opacity:.34}
+  .kp-m.v6:not(.has):not(.open):hover .kp-o:not(.on),.kp-m.v6:not(.has):not(.open):hover .kp-more{background:rgba(4,9,20,.66);border-color:rgba(255,255,255,.18)}
+}
+/* 7 — по группам: цвет на всю строку, но список разбит подзаголовками «лига · время начала» */
+.kp-grp{font:700 14px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin:14px 0 2px;display:flex;align-items:center;gap:12px}
+.kp-grp::after{content:"";flex:1;height:1px;background:var(--rule-2)}
+.kp-set>.kp-grp:first-child{margin-top:0}
+.kp-m.v7 .kp-when{display:none}
+
 /* 3 — спокойный: тёмная плашка, цвет клубов только полосой слева, на кнопке одна цифра */
 .kp-m.v3{background:var(--card);border-color:var(--rule);padding-left:22px}
 .kp-m.v3::before{mix-blend-mode:normal;right:auto;width:6px;background:linear-gradient(180deg,var(--h1),var(--h2))}
