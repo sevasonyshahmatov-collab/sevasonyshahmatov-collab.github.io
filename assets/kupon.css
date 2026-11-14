@@ -26,7 +26,8 @@
 
 /* матчи */
 .kp-day{font:800 clamp(20px,2.2vw,26px)/1.1 var(--display);margin:28px 0 12px}
-.kp-list{display:grid;gap:12px}
+.kp-list{display:block}
+.kp-set{display:grid;gap:12px}
 .kp-empty{padding:28px 20px;border-radius:12px;background:var(--card);border:1px solid var(--rule);color:var(--ink-2);text-align:center}
 .kp-m{padding:16px 18px 6px;border-radius:12px;background:var(--card);border:1px solid var(--rule);transition:border-color .2s ease}
 .kp-m.has{border-color:var(--acc)}
@@ -193,3 +194,74 @@
 .kp-m .kp-more,.kp-m .kp-all{border-color:rgba(255,255,255,.2)}
 .kp-m .kp-more{color:#eaf3ff}
 .kp-m .kp-em{filter:drop-shadow(0 2px 4px rgba(0,0,0,.45))}
+
+/* ---------- варианты оформления списка (переключатель «Вид») ---------- */
+.kp-looks{align-items:center;margin-left:auto}
+.kp-looks span{font:600 14px/1 var(--display);color:var(--ink-3);margin-right:4px}
+.kp-m.v{padding:14px 16px}
+.kp-m.v .kp-hd{display:flex;align-items:center;gap:16px;min-width:0}
+.kp-m.v .kp-when{display:flex;flex-direction:column;align-items:center;gap:7px;flex:none;width:62px}
+.kp-m.v .kp-when time{font:800 20px/1 var(--display)}
+.kp-m.v .kp-t{display:flex;align-items:center;gap:10px;min-width:0}
+.kp-m.v .kp-t b{font:800 17px/1.15 var(--display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kp-m.v .kp-tms{display:grid;gap:8px;min-width:0}
+.kp-m.v .kp-more{width:auto;margin:0;padding:10px 12px;border:1px solid rgba(255,255,255,.22);border-radius:9px;gap:8px;white-space:nowrap;background:rgba(4,9,20,.35)}
+.kp-m.v .kp-more:hover{background:rgba(4,9,20,.6)}
+.kp-m.v .kp-more em{font:800 12px/1 var(--display);font-style:normal;min-width:20px;padding:4px 6px;border-radius:999px;background:var(--acc);color:var(--signal-ink,#1a1400);text-align:center}
+.kp-m.v .kp-all{grid-column:1/-1;margin-top:12px;padding:2px 0 0;border-top:1px solid rgba(255,255,255,.2)}
+.kp-m.v .kp-x3 .kp-o{min-height:60px}
+
+/* 1 и 3 — строки: клубы слева, П1 · Х · П2 справа */
+.kp-m.v1,.kp-m.v3{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,330px) auto;gap:0 18px;align-items:center}
+.l1 .kp-set,.l3 .kp-set{gap:8px}
+
+/* 3 — спокойный: тёмная плашка, цвет клубов только полосой слева, на кнопке одна цифра */
+.kp-m.v3{background:var(--card);border-color:var(--rule);padding-left:22px}
+.kp-m.v3::before{mix-blend-mode:normal;right:auto;width:6px;background:linear-gradient(180deg,var(--h1),var(--h2))}
+.kp-m.v3::after{display:none}
+.kp-m.v3.has{border-color:var(--acc)}
+.kp-m.v3 .kp-o:not(.on){background:var(--paper);border-color:var(--rule-2)}
+.kp-m.v3 .kp-o:not(.on):hover{background:var(--paper-2);border-color:var(--ink-3)}
+.kp-m.v3 .kp-o{min-height:54px;flex-direction:row;gap:10px}
+.kp-m.v3 .kp-o i{font-size:13px}
+.kp-m.v3 .kp-more{background:none;border-color:var(--rule-2)}
+.kp-m.v3 .kp-all{border-color:var(--rule)}
+.kp-m.v3 .kp-mk h4,.kp-m.v3 header{text-shadow:none}
+
+/* 2 — плитки: квадратные карточки, эмблемы крупно */
+.l2 .kp-set{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.kp-m.v2{display:flex;flex-direction:column;gap:14px;padding:14px}
+.kp-m.v2.open{grid-column:1/-1}
+.kp-m.v2 .kp-hd{flex-direction:column;gap:14px}
+.kp-m.v2 .kp-when{flex-direction:row;width:100%;justify-content:space-between}
+.kp-m.v2 .kp-duo{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:start;gap:6px;width:100%}
+.kp-m.v2 .kp-duo s{text-decoration:none;color:rgba(240,246,255,.8);font:800 18px/64px var(--display)}
+.kp-m.v2 .kp-t{flex-direction:column;gap:10px;text-align:center}
+.kp-m.v2 .kp-t b{font-size:15.5px;white-space:normal;max-width:100%}
+.kp-m.v2 .kp-em{width:64px;height:64px}
+.kp-m.v2 .kp-more{width:100%}
+.kp-m.v2 .kp-all{margin-top:0}
+.kp-m.v2.open .kp-hd,.kp-m.v2.open .kp-x3,.kp-m.v2.open .kp-more{max-width:420px;width:100%;margin-left:auto;margin-right:auto}
+
+@media (max-width:760px){
+  .kp-looks{margin-left:0;width:100%}
+  .kp-m.v1,.kp-m.v3{grid-template-columns:minmax(0,1fr) auto;gap:12px 10px}
+  .kp-m.v1 .kp-hd,.kp-m.v3 .kp-hd{grid-column:1/-1}
+  .kp-m.v .kp-more span{display:none}
+  .kp-m.v2 .kp-more span{display:inline}
+  .kp-m.v .kp-more{padding:0 12px;align-self:stretch}
+  .kp-m.v2 .kp-more{padding:11px 12px}
+  .l2 .kp-set{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .kp-m.v2{padding:10px;gap:10px}
+  .kp-m.v2 .kp-em{width:48px;height:48px}
+  .kp-m.v2 .kp-duo s{line-height:48px}
+  .kp-m.v2 .kp-t b{font-size:13.5px}
+  .kp-m.v2 .kp-x3{gap:4px}
+  .kp-m.v2 .kp-x3 .kp-o{padding:6px 2px;min-height:56px}
+  .kp-m.v2 .kp-x3 .kp-o b{font-size:16px}
+  .kp-m.v2:not(.open) .kp-x3 .kp-o small{display:none}
+  .kp-m.v2 .kp-duo{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px}
+  .kp-m.v2 .kp-duo s{display:none}
+  .kp-m.v2 .kp-t b{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .kp-m.v2 .kp-when time{font-size:17px}
+}

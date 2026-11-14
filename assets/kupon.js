@@ -144,7 +144,10 @@ function markets(m){
 
 /* ---------- состояние ---------- */
 const BY={};T.matches.forEach(m=>BY[m.key]=m);
-const S={legs:[],odds:{},stake:'1000',mode:'x',lg:'',day:'',open:{},sheet:false};
+const S={legs:[],odds:{},stake:'1000',mode:'x',lg:'',day:'',open:{},sheet:false,look:0};
+/* варианты оформления списка матчей (выбор владельца): 0 — подробные плашки, 1 — строки, 2 — плитки, 3 — спокойный */
+const LOOKS=['Подробный','Строки','Плитки','Спокойный'];
+try{const q=new URLSearchParams(location.search).get('look'),v=q!==null?q:localStorage.getItem('jv_kupon_look');if(/^[0-3]$/.test(v||''))S.look=+v}catch(e){}
 function load(src){try{
   const d=typeof src==='string'?JSON.parse(src):src;if(!d)return;
   S.legs=(d.legs||[]).filter(l=>BY[l.k]&&grid(l.k)&&typeof l.o==='string');
@@ -187,9 +190,20 @@ function calc(){const G=byMatch(),n=G.length,stake=Math.max(0,num(S.stake)||0);
 const emb=id=>'<img class="kp-em" src="../assets/em/'+esc(id)+'.webp" alt="" width="28" height="28" loading="lazy" onerror="this.style.visibility=\'hidden\'">';
 function btn(m,id){const p=prob(m.key,[id]),lo=lineOdd(m.key,id),on=has(m.key,id),val=lo&&p*lo>=1.03;
   return '<button type="button" class="kp-o'+(on?' on':'')+(val?' val':'')+'" data-k="'+esc(m.key)+'" data-o="'+id+'" aria-pressed="'+on+'"'+(p<=0?' disabled':'')+
-    ' title="'+esc(full(id,m))+'"><i>'+short(id)+'</i><b>'+fp(p)+'</b><small>'+(lo?'линия '+fk(lo):p>0?'≈ '+fk(Math.min(999,1/p)):'—')+'</small></button>'}
+    ' title="'+esc(full(id,m))+'"><i>'+short(id)+'</i><b>'+fp(p)+'</b>'+(S.look===3?'':'<small>'+(lo?'линия '+fk(lo):p>0?'≈ '+fk(Math.min(999,1/p)):'—')+'</small>')+'</button>'}
 function mkt(m,g){return '<div class="kp-mk"><h4>'+esc(g.n)+'</h4><div class="kp-os'+(g.c?' c'+g.c:' c'+g.o.length)+'">'+g.o.map(id=>btn(m,id)).join('')+'</div></div>'}
-function card(m){const mk=markets(m),open=!!S.open[m.key],cnt=S.legs.filter(l=>l.k===m.key).length,mod=MODEL[m.key];
+const CHEV='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+/* компактные виды: на карточке только клубы и П1 · Х · П2, остальные события — по кнопке */
+function card2(m){const mk=markets(m),open=!!S.open[m.key],legs=S.legs.filter(l=>l.k===m.key),hid=legs.filter(l=>l.o.slice(0,2)!=='r:').length,L=S.look;
+  const c=cols(m),tm=(id,n)=>'<div class="kp-t">'+emb(id)+'<b>'+esc(n)+'</b></div>';
+  const more='<button type="button" class="kp-more" data-more="'+esc(m.key)+'" aria-expanded="'+open+'"><span>'+(open?'Свернуть':'Все события')+'</span>'+(hid&&!open?'<em>'+hid+'</em>':'')+CHEV+'</button>';
+  const head=L===2?
+    '<div class="kp-hd"><div class="kp-when"><span class="kp-lg">'+LG[m.lg]+'</span><time>'+hm(m)+' <small>МСК</small></time></div><div class="kp-duo">'+tm(m.h,m.hn)+'<s>—</s>'+tm(m.a,m.an)+'</div></div>':
+    '<div class="kp-hd"><div class="kp-when"><time>'+hm(m)+'</time><span class="kp-lg">'+LG[m.lg]+'</span></div><div class="kp-tms">'+tm(m.h,m.hn)+tm(m.a,m.an)+'</div></div>';
+  return '<article class="kp-m v v'+L+(legs.length?' has':'')+(open?' open':'')+'" data-key="'+esc(m.key)+'" style="--h1:'+c[0]+';--h2:'+c[1]+';--hm:'+c[2]+'">'+
+    head+'<div class="kp-os c3 kp-x3">'+mk.main[0].o.map(id=>btn(m,id)).join('')+'</div>'+more+
+    (open?'<div class="kp-all">'+mk.main.slice(1).concat(mk.more).map(g=>mkt(m,Object.assign({c:2},g))).join('')+'</div>':'')+'</article>'}
+function card(m){if(S.look)return card2(m);const mk=markets(m),open=!!S.open[m.key],cnt=S.legs.filter(l=>l.k===m.key).length,mod=MODEL[m.key];
   return '<article class="kp-m'+(cnt?' has':'')+'" data-key="'+esc(m.key)+'" style="--h1:'+cols(m)[0]+';--h2:'+cols(m)[1]+';--hm:'+cols(m)[2]+'">'+
     '<header><span class="kp-lg">'+LG[m.lg]+'</span><time>'+hm(m)+' <small>МСК</small></time>'+
       '<div class="kp-tm">'+emb(m.h)+'<b>'+esc(m.hn)+'</b><s>—</s><b>'+esc(m.an)+'</b>'+emb(m.a)+'</div>'+
@@ -209,7 +223,10 @@ function paintList(){
   $('kp-filt').innerHTML=(lgs.length>1?'<div>'+chip('lg','','Все лиги',S.lg)+lgs.map(l=>chip('lg',l,LG[l],S.lg)).join('')+'</div>':'')+
     (days.length>1?'<div>'+chip('day','','Все дни',S.day)+days.map(d=>chip('day',d,dayName(d).split(',')[0],S.day)).join('')+'</div>':'');
   const vis=visible();let h='',cur='';
-  vis.forEach(m=>{const d=gameDay(m);if(d!==cur){cur=d;h+='<h3 class="kp-day">'+dayName(d)+'</h3>'}h+=card(m)});
+  vis.forEach(m=>{const d=gameDay(m);if(d!==cur){h+=(cur?'</div>':'')+'<h3 class="kp-day">'+dayName(d)+'</h3><div class="kp-set">';cur=d}h+=card(m)});
+  if(cur)h+='</div>';
+  $('kp-list').className='kp-list l'+S.look;
+  $('kp-filt').insertAdjacentHTML('beforeend','<div class="kp-looks"><span>Вид:</span>'+LOOKS.map((n,i)=>'<button type="button" data-look="'+i+'" aria-pressed="'+(S.look===i)+'">'+n+'</button>').join('')+'</div>');
   $('kp-list').innerHTML=h||'<p class="kp-empty">'+(all.length?'По этому фильтру матчей нет.':'Ближайшие матчи уже начались. Новые появятся после обновления данных — обычно утром и днём.')+'</p>';
   $('kp-auto').hidden=!all.length;
 }
@@ -320,6 +337,7 @@ document.addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;const d=b.dataset;
   if(d.o&&d.k){toggle(d.k,d.o);return}
   if(d.more){S.open[d.more]=!S.open[d.more];paintList();return}
+  if('look' in d){S.look=+d.look;try{localStorage.setItem('jv_kupon_look',d.look)}catch(x){}paintList();return}
   if('lg' in d){S.lg=d.lg;paintList();return}
   if('day' in d){S.day=d.day;paintList();return}
   if(d.auto){auto(+d.auto);return}
