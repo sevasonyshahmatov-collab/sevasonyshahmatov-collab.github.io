@@ -1,0 +1,239 @@
+/* JARVIS v3a — общая шапка (assets/nav.js) */
+.hd .wrap.hdrow{display:flex;align-items:center;gap:clamp(10px,1.8vw,24px);height:64px}
+.hd .logo{min-height:44px}
+.gnav{display:flex;gap:2px;margin-left:auto;align-items:center}
+.gnav-sp{margin-left:auto}
+.gnav a{font:600 16px/1 var(--display);text-decoration:none;color:var(--ink-2);padding:14px 10px;border-radius:var(--rp,999px);white-space:nowrap;position:relative;transition:color .2s ease}
+.gnav a:hover{color:var(--ink)}
+.gnav a[aria-current]{color:var(--ink)}
+.gnav a[aria-current]::after{content:"";position:absolute;left:10px;right:10px;bottom:6px;height:3px;border-radius:2px;background:var(--sport)}
+.hd .btn-tg{flex:none}
+.mbtn{display:none;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:var(--rp,999px);border:0;cursor:pointer;
+  background:var(--paper-2);color:var(--ink);font:700 15px/1 var(--display);letter-spacing:.01em}
+.mbtn .mi{width:18px;height:12px;background:linear-gradient(currentColor 0 0) 0 0/100% 2px,linear-gradient(currentColor 0 0) 0 5px/100% 2px,linear-gradient(currentColor 0 0) 0 10px/100% 2px;background-repeat:no-repeat}
+.mpanel{position:absolute;left:0;right:0;top:100%;background:var(--paper);color:var(--ink);box-shadow:0 18px 30px -18px var(--shadow);
+  padding:8px max(16px,env(safe-area-inset-left)) 16px;max-height:calc(100vh - 80px);overflow:auto;border-top:1px solid var(--rule)}
+.mpanel[hidden]{display:none}
+.mgrp{display:flex;flex-direction:column}
+.mgrp b{font:800 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding:14px 0 4px}
+.mpanel a{display:flex;align-items:center;min-height:48px;padding:0 4px;font:700 19px/1 var(--display);text-decoration:none;color:var(--ink);border-bottom:1px solid var(--rule)}
+.mpanel a[aria-current]{color:var(--ink);box-shadow:inset 3px 0 0 var(--sport)}
+.mpanel .mtg{margin-top:12px;gap:10px;border:0;border-radius:var(--rp,999px);justify-content:center;background:var(--signal);color:var(--signal-ink)}
+.mpanel .mtg svg{width:18px;height:18px}
+.hd{position:sticky}
+/* вторая полоса: якоря страницы */
+.subbar{border-top:1px solid color-mix(in srgb,var(--rule) 70%,transparent)}
+.subbar[hidden]{display:none}
+.subbar .wrap{display:block;height:auto}
+.subbar .nav{display:flex;margin-left:0;gap:2px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.subbar .nav::-webkit-scrollbar{display:none}
+.subbar .nav a{flex:none;font:600 15px/1 var(--display);padding:15px 12px;white-space:nowrap}
+.subbar .nav a[hidden]{display:none}
+.subbar .nav .bar{bottom:4px}
+@media (max-width:1100px){
+  .gnav{display:none}.mbtn{display:inline-flex}.hd .btn-tg{margin-left:auto}
+  .hd .btn-tg + .mbtn{margin-left:0}
+}
+@media (max-width:760px){
+  .hd .wrap.hdrow{gap:8px}
+  .hd .seg a{min-height:44px;display:inline-flex;align-items:center;padding:0 12px}
+  .hd .seg{padding:2px}
+  .subbar .nav a{min-height:44px;display:inline-flex;align-items:center;padding:0 14px}
+}
+/* кнопка подписки в шапке: полная подпись только на широком экране, иначе «Получать прогнозы» */
+.hd .btn-tg{white-space:nowrap}.hd .btn-tg span{display:inline}
+@media (max-width:1600px){.hd .btn-tg .tl{display:none}.hd .btn-tg{padding:11px 14px;gap:8px;font-size:15px}.hd .btn-tg svg{width:18px;height:18px}.hd .wrap.hdrow{gap:14px}}
+.mseg,.msearch{display:none}
+/* телефон: в шапке — логотип, кнопка подписки и меню; переключатель Хоккей/Футбол и поиск — в меню */
+@media (max-width:480px){
+  .hd .seg,.hd .sbtn{display:none!important}
+  .hd .btn-tg{margin-left:auto;min-height:44px;padding:0 12px;gap:7px;font-size:14px}
+  .hd .mbtn{flex:none}.hd .wrap.hdrow{gap:8px}.gnav-sp{display:none}
+  .hd .btn-tg svg{width:18px;height:18px}
+  .mseg{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 0 4px}
+  .mpanel .mseg a{justify-content:center;border:0;border-radius:var(--rc,12px);background:var(--paper-2);font-size:18px}
+  .msearch{display:flex;align-items:center;width:100%;min-height:48px;padding:0 4px;border:0;border-bottom:1px solid var(--rule);background:none;color:var(--ink);font:700 19px/1 var(--display);text-align:left;cursor:pointer}
+}
+@media (max-width:420px){
+  .hd .logo{font-size:26px}.hd .logo i{width:19px;height:25px;font-size:17px}
+  .hd .seg a{padding:0 9px;font-size:14px}.mbtn{padding:0 10px}.mbtn .mt{font-size:14px}
+}
+/* узкий телефон: «Меню» — только значок (подпись остаётся для скринридера), иначе шапка шире экрана и появляется горизонтальная прокрутка (04.11) */
+@media (max-width:430px){
+  .hd .mbtn{gap:0;padding:0;width:44px;justify-content:center}
+  .hd .mbtn .mt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+}
+/* страница не шире экрана (метки времени, подложки арены), якоря не прячутся под двухстрочной шапкой */
+html{scroll-padding-top:116px}
+.arena-bg{overflow:hidden}
+/* телефон: цели нажатия не меньше 44 px */
+@media (max-width:760px){
+  .tab,.tstep,.lglink,.lglnk,.crumb,.follow,a.op,a.cl,.pl-more,.tr-em,.chips a,.skip:focus{min-height:44px}
+  .tab,.tstep,.lglink,.lglnk,.crumb,.follow,a.op,a.cl,.tr-em,.chips a{display:inline-flex;align-items:center}
+  .seg button,.tmtop .follow{min-height:44px}
+  nav[aria-label="Подвал"] a{display:inline-flex;align-items:center;min-height:44px}
+  /* ссылки в ячейках таблиц и мелкие кнопки: зона нажатия шире видимой */
+  td>a,.tr-t>a,.pager button{position:relative}
+  td>a::after,.tr-t>a::after,.pager button::after{content:"";position:absolute;left:-6px;right:-6px;top:50%;height:44px;transform:translateY(-50%)}
+  /* 13.11: остальные мелкие ссылки (списки матчей, лидеры, тренды, словарь, подписи) — невидимая область 44 px по высоте, вид не меняется */
+  :is(.lgm,.resl li)>a.t,.who>a,.pc a,.tr-m a,.tc-w a,.lcard .open,.lc-credit a,.pl-note a,.fc-crumbs a,.gl-t h3>a,.pr .nm a,.fc-how p>a,details>p>a{position:relative}
+  :is(.lgm,.resl li)>a.t::after,.who>a::after,.pc a::after,.tr-m a::after,.tc-w a::after,.lcard .open::after,.lc-credit a::after,.pl-note a::after,.fc-crumbs a::after,.gl-t h3>a::after,.pr .nm a::after,.fc-how p>a::after,details>p>a::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;transform:translateY(-50%)}
+  .gl-t h3>a::after{left:-14px;right:-14px}
+  .gl-toc a{position:relative}.gl-toc a::after{content:"";position:absolute;inset:-4px}
+  footer .jvf-cols div{gap:4px}.jvf-cols a{display:flex;align-items:center;min-height:44px}
+  main .pr .nm b{overflow:visible;overflow-wrap:anywhere}
+  td:has(>a){height:42px}
+  .lcard .cg a{position:relative}.lcard .cg a::after{content:"";position:absolute;inset:-3px}
+  main.pl button{min-height:44px}
+  select,input[type=search],input[type=text]{min-height:44px}
+}
+/* резерв высоты под списки, которые строятся после загрузки данных (CLS) */
+.pl-list:empty{min-height:70vh}
+@media (max-width:350px){.hd .logo{font-size:22px}.hd .logo i{display:none}.hd .seg a{padding:0 7px;font-size:13px}.hd .wrap.hdrow{gap:6px}}
+
+/* логотип «JARVIS | раздел» — как на баннерах Telegram (владелец 04.11) */
+.hd .logo.lg2{display:inline-flex;align-items:center;gap:0;font:800 22px/1 var(--display);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.hd .logo.lg2 .lw{letter-spacing:.2em;margin-right:-.2em}
+.hd .logo.lg2 a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;transition:opacity .2s ease}.hd .logo.lg2 a:hover{opacity:.8}
+.hd .logo.lg2 s{text-decoration:none;font-weight:300;opacity:.35;margin:0 .55em 0 .6em;letter-spacing:0}
+.hd .logo.lg2 em{font-style:normal;letter-spacing:.16em;margin-right:-.16em;color:#5ab8ff}
+.hd .logo.lg2 em.ls-khl{color:#ffc21a}.hd .logo.lg2 em.ls-f,.hd .logo.lg2 em.ls-ucl{color:#3dd68c}.hd .logo.lg2 em.ls-ucl{color:#7aa7ff}
+@media (max-width:1180px){.hd .logo.lg2{font-size:19px}}
+@media (max-width:560px){.hd .logo.lg2{font-size:17px;letter-spacing:.14em}.hd .logo.lg2 .lw{letter-spacing:.14em;margin-right:-.14em}.hd .logo.lg2 s,.hd .logo.lg2 em,.hd .logo.lg2 s+a{display:none}}
+
+/* «Мой JARVIS» (этап B кабинета): в шапке на широком экране, в меню — на узком */
+.hd .hd-me{display:inline-flex;align-items:center;gap:7px;flex:none;min-height:44px;padding:0 8px;border-radius:var(--rp,999px);text-decoration:none;color:var(--ink-2);font:600 16px/1 var(--display);white-space:nowrap;transition:color .2s ease}
+.hd .hd-me svg{width:18px;height:18px;flex:none}
+.hd .hd-me:hover,.hd .hd-me[aria-current]{color:var(--signal)}
+.hd .hd-me:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+@media (max-width:1500px){.hd .hd-me span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.hd .hd-me{padding:0 10px}}
+@media (max-width:1100px){.hd .hd-me{display:none}}
+.mpanel .mme{gap:10px}.mpanel .mme svg{width:20px;height:20px;flex:none;color:var(--signal)}
+/* Шапка не шире экрана (аудит 08.11): до 1366 px верхний ряд ссылок — в меню ☰ (те же пункты есть во второй строке шапки),
+   1367–1500 px — ряд плотнее; до 860 px у «Меню» только значок */
+@media (max-width:1366px){
+  .gnav{display:none}.mbtn{display:inline-flex}.hd .btn-tg{margin-left:auto}
+  .hd .btn-tg + .mbtn{margin-left:0}
+}
+@media (min-width:1367px) and (max-width:1500px){
+  .gnav a{padding:14px 7px;font-size:15px}
+  .gnav a[aria-current]::after{left:7px;right:7px}
+  .hd .wrap.hdrow{gap:10px}
+}
+@media (max-width:860px){
+  .hd .mbtn{gap:0;padding:0;width:44px;justify-content:center}
+  .hd .mbtn .mt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+}
+
+/* Открытое меню ☰ (аудит 08.11, п.10): вторая строка шапки и нижняя плашка Telegram прячутся, остальная страница затемнена —
+   пункты и кнопка Telegram видны один раз */
+html.menu-open .hd .subbar,html.menu-open .tgbar{display:none}
+html.menu-open body::after{content:"";position:fixed;inset:0;z-index:39;background:rgba(3,8,18,.72)}
+/* Резерв места под табло прогноза дня до загрузки данных (CLS ≈ 0,25 → < 0,1, аудит 08.11 п.10) */
+html[data-sport="hockey"] .mstage{min-height:350px}
+html[data-sport="football"] .mstage{min-height:430px}
+@media (max-width:760px){
+  html[data-sport="hockey"] .mstage{min-height:302px}
+  html[data-sport="football"] .mstage{min-height:402px}
+}
+.cdown{min-height:45px}
+
+/* кнопка поиска — стили здесь, чтобы шапка не сдвигалась, пока грузится search.css (CLS, 09.11) */
+.hd .sbtn{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;height:44px;padding:0 12px;border:0;border-radius:var(--rp,999px);cursor:pointer;background:var(--paper-2);color:var(--ink);font:700 14px/1 var(--display)}
+.hd .sbtn svg{width:20px;height:20px}
+.hd .sbtn kbd{font:600 12px/1 var(--display);padding:3px 6px;border-radius:5px;border:1px solid var(--rule-2);color:var(--ink-3)}
+.hd .sbtn:hover{background:var(--paper-3)}
+@media (min-width:1101px){.hd .sbtn{margin-left:4px}.gnav-sp + .sbtn{margin-left:auto}}
+@media (max-width:1100px){.hd .sbtn{margin-left:auto}.hd .sbtn ~ .btn-tg,.hd .sbtn ~ .mbtn{margin-left:0}.hd .sbtn kbd{display:none}.hd .sbtn{padding:0;width:44px}}
+/* вторая полоса меню до работы nav.js: место под неё сразу (CLS, 09.11) */
+.hd:not(:has(.hdrow)):has(.nav){min-height:110px}
+
+/* шапка в одну строку на любой ширине (assets/nav.js, 09.11): шире на больших экранах; hd-c1/2/3 — шаги сжатия, если не влезает */
+@media (min-width:1600px){.hd .wrap.hdrow{max-width:calc(var(--max) + 240px)}}
+.hd .hdrow.hd-c1 .btn-tg .tl{display:none}
+.hd .hdrow.hd-c1 .hd-me span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.hd .hdrow.hd-c1 .hd-me{padding:0 10px}
+.hd .hdrow.hd-c1{gap:10px}
+.hd .hdrow.hd-c1 .gnav a{padding:14px 7px}.hd .hdrow.hd-c1 .gnav a[aria-current]::after{left:7px;right:7px}
+.hd .hdrow.hd-c2 .logo.lg2{font-size:19px}
+.hd .hdrow.hd-c2 .gnav a{font-size:15px;padding:14px 5px}.hd .hdrow.hd-c2 .gnav a[aria-current]::after{left:5px;right:5px}
+.hd .hdrow.hd-c3 .gnav,.hd .hdrow.hd-c3 .hd-me{display:none}
+.hd .hdrow.hd-c3 .mbtn{display:inline-flex}.hd .hdrow.hd-c3 .btn-tg{margin-left:auto}
+/* ЛЧ: длинная строка лиги над табло переносится на вторую строку — место под неё с первого кадра (аудит 09.11b, CLS на компьютере 0,1) */
+body[data-only="ucl"] .board-top{min-height:45px}
+@media (min-width:1025px){body[data-only="ucl"] .cdown{min-height:53px}}
+@media (min-width:1300px){body[data-only="ucl"] .cdown{min-height:56px}}
+
+/* 10.11: вторая полоса на телефоне — край затухает, видно, что её можно листать; поиск — первым в меню, полем */
+@media (max-width:760px){
+  .subbar .nav{padding-right:36px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 44px),transparent)}
+  .msearch{gap:10px;min-height:50px;margin:4px 0 10px;padding:0 16px;border:1px solid var(--rule);border-radius:var(--rc,12px);background:color-mix(in srgb,var(--ink) 6%,transparent);color:var(--ink-2);font:600 16px/1 var(--display)}
+  .msearch svg{width:20px;height:20px;flex:none}
+}
+/* ?nav=2 — группы с выпадающим списком (assets/nav.js, владелец 10.11) */
+.gdd{position:relative;display:flex;align-items:center}
+.gdd>a{display:inline-flex;align-items:center;gap:4px}
+.hd .gdd .cr{width:12px;height:12px;min-width:12px;flex:none;opacity:.7;transition:transform .2s ease}
+.gdd:hover .cr,.gdd:focus-within .cr,.gdd.open .cr{transform:rotate(180deg)}
+.gdd-m{position:absolute;top:calc(100% - 4px);left:0;min-width:240px;display:flex;flex-direction:column;padding:8px;border-radius:var(--rc,14px);
+  background:var(--paper-2,#14264a);border:1px solid var(--rule);box-shadow:0 18px 40px -16px var(--shadow,rgba(0,0,0,.6));
+  opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .15s ease,transform .15s ease,visibility 0s .15s;z-index:60}
+.gdd:hover .gdd-m,.gdd:focus-within .gdd-m,.gdd.open .gdd-m{opacity:1;visibility:visible;transform:none;transition:opacity .15s ease,transform .15s ease}
+.gnav .gdd-m a{padding:12px 12px;border-radius:var(--rc,10px);font-size:15px}
+.gnav .gdd-m a:hover{background:var(--paper-3,#1e3460)}
+.gnav .gdd-m a[aria-current]::after{display:none}
+.gnav .gdd-m a[aria-current]{box-shadow:inset 3px 0 0 var(--sport)}
+.gdd.on>a{color:var(--ink)}
+.gdd.on>a::after{content:"";position:absolute;left:10px;right:26px;bottom:6px;height:3px;border-radius:2px;background:var(--sport)}
+.hd .hdrow.hd-c1 .gdd.on>a::after{left:7px;right:23px}.hd .hdrow.hd-c2 .gdd.on>a::after{left:5px;right:21px}
+/* пунктов меньше — ряд ссылок виден и на 1101–1366 px (прежняя шапка там уходила в ☰); не влезет — hd-c3 */
+@media (min-width:1101px) and (max-width:1366px){html.nav2 .hd .hdrow:not(.hd-c3) .gnav{display:flex}html.nav2 .hd .hdrow:not(.hd-c3) .mbtn{display:none}html.nav2 .hd .hdrow:not(.hd-c3) .btn-tg{margin-left:0}}
+.mpanel .msub{display:flex;flex-direction:column;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.mpanel .msub a{padding-left:16px;font-size:17px;min-height:44px;border-bottom:0}
+.mpanel .msub b{padding-top:16px}
+/* ?nav=2 (2): «Лиги» — колонки КХЛ и НХЛ со своими разделами; футбольные лиги — в 2 столбца */
+.gdd-m.wide{min-width:440px}
+.gcols{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding-bottom:6px;margin-bottom:6px;border-bottom:1px solid var(--rule)}
+.gcol{display:flex;flex-direction:column}
+.gnav .gcol a{padding:8px 12px;font-size:14px;color:var(--ink-2)}
+.gnav .gcol a.gch{font-size:16px;font-weight:800;color:var(--ink);padding:10px 12px 6px}
+.gdd-m.grid{display:grid;grid-template-columns:1fr 1fr;min-width:340px}
+/* 12.11 (владелец): на телефоне одна жёлтая кнопка — когда снизу выехала полоса «Получать прогнозы», кнопка в шапке прячется */
+@media (max-width:760px){html:has(.tgbar.on):not(.menu-open) .hd .btn-tg{display:none}html:has(.tgbar.on):not(.menu-open) .hd .mbtn{margin-left:auto}}
+
+/* ── полоса матча при прокрутке (assets/stickbar.js) ── */
+.mbar{position:fixed;left:0;right:0;top:var(--hdh,64px);z-index:39;color:#fff;overflow:hidden;
+  background:linear-gradient(90deg,color-mix(in srgb,var(--hc,#285abe) 78%,#05080f) 0 calc(50% - 14px),#05080f calc(50% - 14px) calc(50% + 14px),color-mix(in srgb,var(--ac,#46aae6) 78%,#05080f) calc(50% + 14px) 100%);
+  background:linear-gradient(100deg,color-mix(in srgb,var(--hc,#285abe) 70%,#05080f) 0 38%,#0b0c0e 38% 62%,color-mix(in srgb,var(--ac,#46aae6) 70%,#05080f) 62% 100%);
+  transform:translateY(-110%);visibility:hidden;transition:transform .28s cubic-bezier(.23,1,.32,1),visibility 0s .28s}
+.mbar.on{transform:none;visibility:visible;transition:transform .28s cubic-bezier(.23,1,.32,1)}
+.mbar .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;height:56px;position:relative}
+.mbar .mb-t{display:flex;align-items:center;gap:10px;min-width:0;color:inherit;text-decoration:none;font:800 18px/1 var(--display)}
+.mbar .mb-t.a{flex-direction:row-reverse;text-align:right}
+.mbar .mb-t b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 2px rgba(0,0,0,.45)}
+.mbar .mb-t img{flex:none;width:38px;height:38px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+.mbar .mb-mid{display:grid;justify-items:center;gap:3px;padding:0 18px;font-variant-numeric:tabular-nums}
+.mbar .mb-mid b{font:900 24px/1 var(--display);letter-spacing:.01em;white-space:nowrap}
+.mbar .mb-mid small{font:700 10px/1 var(--display);letter-spacing:.09em;text-transform:uppercase;opacity:.75;white-space:nowrap}
+.mbar nav{display:none}
+@media (min-width:1500px){
+  .mbar .wrap{grid-template-columns:1fr auto 1fr}
+}
+@media (max-width:620px){.mbar .wrap{height:50px;gap:8px}.mbar .mb-t{font-size:14px;gap:7px}.mbar .mb-t img{width:30px;height:30px}.mbar .mb-mid{padding:0 6px}.mbar .mb-mid b{font-size:19px}}
+@media (prefers-reduced-motion:reduce){.mbar,.mbar.on{transition:none}}
+/* ── клуб во второй полосе шапки ── */
+.subbar .wrap.has-id{display:flex;align-items:center;gap:0}
+.subbar .wrap.has-id .nav{flex:1;min-width:0}
+.sb-id{display:flex;align-items:center;gap:9px;flex:none;max-width:0;opacity:0;overflow:hidden;color:inherit;text-decoration:none;white-space:nowrap;
+  transition:max-width .35s cubic-bezier(.23,1,.32,1),opacity .25s ease,padding .35s cubic-bezier(.23,1,.32,1),margin .35s cubic-bezier(.23,1,.32,1);border-right:1px solid transparent}
+.hd.sb-on .sb-id{max-width:360px;opacity:1;padding-right:14px;margin-right:6px;border-right-color:color-mix(in srgb,currentColor 25%,transparent)}
+.sb-id img{width:30px;height:30px;object-fit:contain;flex:none}
+.sb-id b{font:900 17px/1 var(--display)}
+.sb-id small{font:600 12px/1 var(--display);opacity:.75}
+@media (max-width:720px){.sb-id small{display:none}.hd.sb-on .sb-id{max-width:190px;padding-right:10px}.sb-id b{font-size:15px;overflow:hidden;text-overflow:ellipsis}}
+@media (prefers-reduced-motion:reduce){.sb-id{transition:none}}
+
+/* строки вкладок с прокруткой вбок (nav.js, 14.11, п. 3): затухание у края — видно, что дальше есть ещё вкладки */
+.xf.xf-r{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 56px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 56px),transparent)}
+.xf.xf-l{-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px);mask-image:linear-gradient(90deg,transparent,#000 40px)}
+.xf.xf-l.xf-r{-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 56px),transparent);mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 56px),transparent)}

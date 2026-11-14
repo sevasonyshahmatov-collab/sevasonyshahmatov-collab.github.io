@@ -1,0 +1,83 @@
+/* Карточки лиг (КХЛ, НХЛ) для раздела «Лиги и клубы»: горизонтальные 3:2, вдвоём на всю ширину колонки контента.
+   3D-наклон, слои по глубине, игрок выступает из рамки сверху, переворот по нажатию. Без стекла и без пятна света у курсора:
+   фольга сдержанная и зависит от угла наклона. Размеры — в cqw (доля ширины карточки). */
+.lc-deck{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3.4vw,48px);margin:clamp(88px,8.4vw,124px) 0 0;padding:0}
+.lc-credit{margin:22px 0 0;max-width:62ch;text-align:left;font:400 12px/1.5 var(--text);color:var(--ink-3)}
+.lc-credit a{color:inherit;text-underline-offset:2px}
+
+.lcard{--rx:0;--ry:0;--hi:.3;--fx:50;--s:1;--c1:#d6001c;--c2:#0a2a5e;--ac:#e31e32;
+  position:relative;width:100%;aspect-ratio:3/2;container-type:inline-size;perspective:1400px;color:#fff;
+  -webkit-tap-highlight-color:transparent;touch-action:pan-y;cursor:pointer;outline-offset:8px;user-select:none;-webkit-user-select:none}
+.lcard.nhl{--c1:#c8102e;--c2:#111;--ac:#c8102e}
+.lcard:focus-visible{outline:3px solid var(--signal,#ffd54d)}
+.lcard .tilt,.lcard .flip{position:absolute;inset:0;transform-style:preserve-3d}
+.lcard .tilt{transform:rotateX(calc(var(--rx)*1deg)) rotateY(calc(var(--ry)*1deg)) scale(var(--s));will-change:transform}
+.lcard .flip{transition:transform .7s cubic-bezier(.6,0,.2,1)}
+.lcard.is-flip .flip{transform:rotateY(180deg)}
+.lcard .shd{position:absolute;left:6%;right:6%;bottom:-4%;height:10%;border-radius:50%;background:rgba(0,0,0,.55);filter:blur(18px);
+  transform:translate(calc(var(--ry)*-1.4px),calc(var(--rx)*1.2px));opacity:.8;pointer-events:none}
+.lcard .face{position:absolute;inset:0;transform-style:preserve-3d;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:3.2cqw}
+.lcard .face.back{transform:rotateY(180deg)}
+.lcard .face *{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.lcard .art{position:absolute;inset:0;border-radius:3.2cqw;overflow:hidden;isolation:isolate;transform:translateZ(0);box-shadow:0 2cqw 6cqw -2cqw rgba(0,0,0,.7);
+  background:linear-gradient(110deg,var(--c2) 0%,color-mix(in srgb,var(--c2) 70%,var(--c1)) 55%,var(--c1) 100%)}
+.lcard .art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,10,20,.55) 0,rgba(5,10,20,0) 58%)}
+.lcard .tex{position:absolute;inset:-3%;width:106%;height:106%;display:block;transform:translate(calc(var(--ry)*-.35cqw),calc(var(--rx)*.35cqw))}
+.lcard .holo{position:absolute;inset:0;display:block;mix-blend-mode:color-dodge;opacity:calc(.07 + var(--hi)*.16);z-index:1;
+  background:repeating-linear-gradient(115deg,#ff8ad0 0%,#ffe58a 7%,#8affd0 14%,#8ac4ff 21%,#c98aff 28%,#ff8ad0 35%);background-size:260% 260%;
+  background-position:calc(var(--fx)*1%) calc(var(--fx)*.6%)}
+/* игрок: низ у нижней кромки, голова выступает над рамкой */
+.lcard .pl{position:absolute;display:block;max-width:none;height:86cqw;width:auto;left:69%;bottom:-6cqw;clip-path:inset(-30% -30% 6cqw -30%);
+  transform:translateZ(46px) translate(calc(-50% + var(--ry)*.25cqw),calc(var(--rx)*-.25cqw));
+  filter:drop-shadow(0 1.6cqw 2.4cqw rgba(0,0,0,.45));pointer-events:none;user-select:none}
+.lcard .pl.emb{height:auto;width:34cqw;left:73%;bottom:auto;top:12cqw;clip-path:none;filter:drop-shadow(0 1.6cqw 3cqw rgba(0,0,0,.5))}
+.lcard .frame{position:absolute;inset:0;border-radius:3.2cqw;padding:.8cqw;transform:translateZ(24px);pointer-events:none;
+  background:linear-gradient(calc(120deg + var(--ry)*3deg),#e9eef7 0%,#8795ad 22%,#f4f7fc 45%,#7d8aa3 68%,#dfe6f2 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.lcard .top{position:absolute;left:5cqw;top:4.4cqw;transform:translateZ(34px);pointer-events:none}
+.lcard .top .lgl{display:block;height:7.6cqw;width:auto;filter:drop-shadow(0 1px 5px rgba(0,0,0,.5))}
+.lcard .txt{position:absolute;left:5cqw;bottom:5cqw;width:48cqw;transform:translateZ(56px);text-align:left}
+.lcard .txt h3{margin:0;font:900 max(40px,17cqw)/.88 var(--display);letter-spacing:-.01em;text-transform:uppercase;color:#fff}
+.lcard .txt .cn{margin:2cqw 0 0;font:700 max(13px,2.9cqw)/1.2 var(--display);color:rgba(255,255,255,.92)}
+.lcard .open{display:inline-flex;align-items:center;gap:1.2cqw;margin-top:2.6cqw;padding:1.7cqw 2.8cqw;border-radius:var(--rp,99px);background:var(--signal,#ffd54d);color:var(--signal-ink,#111);
+  font:800 max(12px,2.6cqw)/1 var(--display);text-decoration:none;cursor:pointer;white-space:nowrap}
+.lcard .open svg{width:2.8cqw;height:2.8cqw;min-width:11px;min-height:11px}
+.lcard .open:hover,.lcard .open:focus-visible{background:#ffe27d}
+/* одна жёлтая кнопка на экране (14.11, п. 2): кнопки карточек лиг — белые, жёлтая только по наведению */
+.lcard .open{background:#fff;color:#0b1220}
+.lcard .open:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* оборот: слева название и кнопка, справа сетка эмблем клубов лиги */
+.lcard .bk{position:absolute;inset:0;border-radius:3.2cqw;overflow:hidden;display:grid;grid-template-columns:27cqw minmax(0,1fr);gap:5cqw;padding:5cqw 5.4cqw;
+  background:repeating-linear-gradient(45deg,color-mix(in srgb,var(--c2) 80%,#000) 0 2cqw,color-mix(in srgb,var(--c2) 62%,#000) 2cqw 4cqw);
+  box-shadow:inset 0 0 0 .8cqw #8795ad,inset 0 0 0 1.5cqw #0a1220,0 2cqw 6cqw -2cqw rgba(0,0,0,.7)}
+.lcard .bh{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.lcard .bh img{height:7.6cqw;width:auto;display:block}
+.lcard .bh b{margin-top:2.6cqw;font:900 max(24px,8cqw)/.9 var(--display);text-transform:uppercase}
+.lcard .bh span{margin-top:1.6cqw;font:600 max(12px,2.5cqw)/1.2 var(--display);color:rgba(255,255,255,.78)}
+.lcard .bh .open{margin-top:auto}
+.lcard .cg{align-self:center;display:grid;grid-template-columns:repeat(var(--n,8),minmax(0,1fr));gap:1.2cqw}
+.lcard .cg a{display:grid;place-items:center;aspect-ratio:1;border-radius:1.2cqw;background:rgba(255,255,255,.92);padding:.5cqw;
+  transition:transform .2s cubic-bezier(.23,1,.32,1)}
+.lcard .cg img{width:100%;height:100%;object-fit:contain;display:block}
+.lcard .cg a:hover,.lcard .cg a:focus-visible{transform:scale(1.14);position:relative;z-index:2}
+.lcard .cg a:focus-visible{outline:2px solid var(--signal,#ffd54d)}
+.lcard.nhl .bk{background:repeating-linear-gradient(45deg,#220b11 0 2cqw,#150609 2cqw 4cqw)}
+
+@media (max-width:600px){.lc-deck{grid-template-columns:minmax(0,1fr);gap:76px}.lcard .pl:not(.emb){left:75%;height:80cqw;bottom:-5cqw;clip-path:inset(-30% -30% 5cqw -30%)}
+ .lcard .txt{width:54cqw}.lcard .txt h3{font-size:max(44px,18cqw)}.lcard .cn{font-size:max(13px,3.4cqw)}.lcard .open{font-size:max(12px,3cqw);padding:2cqw 3.2cqw}
+ /* оборот на телефоне (список 13.11, п. 5): шапка строкой сверху, ниже значки 40 px по центру; не влезли — прокрутка внутри карточки */
+ .lcard .bk{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:2.4cqw;padding:4.2cqw 4.2cqw 3cqw}
+ .lcard .bh{flex-direction:row;align-items:center;gap:2.4cqw}
+ .lcard .bh img{height:7cqw}
+ .lcard .bh b{margin:0;font-size:max(20px,6.4cqw)}
+ .lcard .bh span{margin:0;white-space:nowrap}
+ .lcard .bh .open{margin:0 0 0 auto;font-size:max(11px,2.8cqw);padding:1.8cqw 2.6cqw;white-space:nowrap}
+ .lcard .cg{align-self:stretch;display:flex;flex-wrap:wrap;justify-content:center;align-content:flex-start;gap:6px;
+  min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:3px 0 10px;touch-action:pan-y}
+ .lcard .cg::-webkit-scrollbar{display:none}
+ .lcard .cg.more{-webkit-mask-image:linear-gradient(#000 calc(100% - 22px),transparent);mask-image:linear-gradient(#000 calc(100% - 22px),transparent)}
+ .lcard .cg a{flex:0 0 40px;height:40px;border-radius:6px;padding:4px}
+ .lcard .cg a:hover,.lcard .cg a:focus-visible{transform:none}
+ .lcard .cg a:focus-visible{outline-offset:-2px}}
+@media (prefers-reduced-motion:reduce){.lcard .flip{transition:none}.lcard .tilt{will-change:auto}}

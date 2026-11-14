@@ -1,0 +1,407 @@
+/* Страница матча, вид 2 (09.11): двухцветное поле в цвета клубов (--hc хозяева, --ac гости), вероятности полосой в тех же цветах,
+   форма кружками, личные встречи карточками. Подключается из seo/build_match.py при V2=True. */
+
+/* ── первый экран ── */
+.mx-hero{position:relative;padding:0 0 clamp(18px,3vw,32px)}
+.mx-crumbs{padding-top:clamp(14px,2vw,24px)}
+.mx-crumbs .crumbs,.mx-crumbs nav{margin:0}
+.mx-field{position:relative;margin-top:clamp(12px,2vw,22px);isolation:isolate;overflow:hidden;color:#fff;
+  background:linear-gradient(105deg,var(--hc) 0 49.6%,rgba(255,255,255,.18) 49.6% 50.4%,var(--ac) 50.4% 100%)}
+/* глубина: темнее к краям и к низу, лёгкая фактура — поле, а не плашка */
+.mx-field::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 0%,rgba(255,255,255,.10),transparent 60%),linear-gradient(180deg,transparent 40%,rgba(0,0,0,.38))}
+.mx-stage{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:clamp(12px,3vw,48px);
+  padding-top:clamp(26px,4.5vw,64px);padding-bottom:clamp(24px,4vw,56px)}
+
+.mx-team{display:grid;justify-items:center;gap:10px;text-align:center;text-decoration:none;min-width:0}
+.mx-crest{display:grid;place-items:center;width:clamp(92px,13vw,176px);aspect-ratio:1;border-radius:50%;background:#f3f6fb;
+  box-shadow:0 0 0 4px rgba(255,255,255,.22),0 22px 44px -18px rgba(0,0,0,.65)}
+.mx-crest img{width:72%;height:72%;object-fit:contain}
+.mx-team b{font:800 clamp(20px,2.6vw,38px)/1.05 var(--display);letter-spacing:-.01em;overflow-wrap:normal;max-width:100%}
+.mx-team small{font:600 clamp(12px,1.1vw,15px)/1.2 var(--display);color:rgba(255,255,255,.78)}
+.mx-team:hover b{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px}
+.mx-team:focus-visible{outline:2px solid #fff;outline-offset:6px;border-radius:var(--rc,12px)}
+
+.mx-mid{display:grid;justify-items:center;gap:6px;text-align:center;min-width:clamp(96px,14vw,220px)}
+.mx-time{font:800 clamp(40px,6.4vw,92px)/.9 var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.mx-score{font:800 clamp(56px,9vw,132px)/.85 var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.03em;white-space:nowrap}
+.mx-score i{font-style:normal;opacity:.6;margin:0 .06em}
+.mx-when{font:600 clamp(13px,1.2vw,16px)/1.25 var(--display);color:rgba(255,255,255,.85)}
+.mx-cd{font:700 clamp(13px,1.2vw,16px)/1.2 var(--display);padding:5px 12px;border-radius:var(--rp,999px);background:rgba(0,0,0,.32);font-variant-numeric:tabular-nums}
+.mx-cd:empty{display:none}
+.mx-mid .lv-box{margin:4px 0 0}
+
+.mx-head{padding-top:clamp(18px,2.4vw,28px)}
+.mx-h1{font:800 clamp(22px,2.4vw,34px)/1.12 var(--display);margin:0;letter-spacing:-.01em}
+.mx-h1 span{color:var(--ink-3)}
+.mx-facts{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 28px}
+.mx-facts li{display:grid;gap:2px}
+.mx-facts small{font:600 12px/1.2 var(--display);color:var(--ink-3)}
+.mx-facts b{font:700 15px/1.3 var(--display)}
+
+/* ── расчёт модели: одна полоса в цветах клубов ── */
+.mx-bar{display:flex;gap:3px;height:clamp(64px,7vw,84px);border-radius:var(--rc,14px);overflow:hidden;margin-top:6px}
+.mx-bar i{position:relative;display:flex;flex-direction:column;justify-content:center;padding:0 14px;min-width:0;color:#fff;font-style:normal}
+.mx-bar .mx-sh{background:var(--hc,#2b4a8a)}
+.mx-bar .mx-sa{background:var(--ac,#6b2b3a);text-align:right;align-items:flex-end}
+.mx-bar .mx-sx{background:#3a4458;align-items:center;text-align:center}
+.mx-bar b{font:800 clamp(20px,2.4vw,32px)/1 var(--display);font-variant-numeric:tabular-nums}
+.mx-bar small{font:600 12px/1.25 var(--display);opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.mx-bar i.on::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--signal,#ffc21a)}
+.mx-stats{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.mx-stats li{display:grid;gap:2px;padding:12px 16px;border-radius:var(--rc,12px);background:var(--card);min-width:150px}
+.mx-stats b{font:800 24px/1.05 var(--display);font-variant-numeric:tabular-nums}
+.mx-stats span{font:600 13px/1.25 var(--display);color:var(--ink-3)}
+
+/* ── форма: кружки В / Н / П, свежие справа ── */
+.mx-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px 28px}
+.mx-fc h3{font:800 18px/1.2 var(--display);margin:0 0 10px}
+.mx-fc h3 small{font:600 13px/1 var(--display);color:var(--ink-3);margin-left:6px}
+.mx-dots{list-style:none;margin:0;padding:0;display:flex;gap:10px}
+.mx-dots li{display:grid;justify-items:center;gap:5px}
+.mx-dots b{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;font:800 16px/1 var(--display);color:#fff}
+.mx-dots .r-w b{background:#1d8a52}.mx-dots .r-d b{background:#68758c}.mx-dots .r-l b{background:#c4303b}
+.mx-dots span{font:700 13px/1 var(--display);color:var(--ink-2);font-variant-numeric:tabular-nums}
+
+/* ── личные встречи: карточки, победитель выделен ── */
+.mx-h2h{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:10px}
+.mx-h2h li{display:grid;grid-template-columns:1fr auto 1fr;grid-template-areas:"t t t" "h s a";align-items:center;gap:6px 12px;padding:12px 16px;border-radius:var(--rc,12px);background:var(--card)}
+.mx-h2h time{grid-area:t;font:600 12px/1 var(--display);color:var(--ink-3)}
+.mx-h2h span{font:600 15px/1.2 var(--display);color:var(--ink-2);min-width:0}
+.mx-h2h span:last-of-type{text-align:right}
+.mx-h2h span.w{color:var(--ink);font-weight:800}
+.mx-h2h b{grid-area:s;font:800 22px/1 var(--display);font-variant-numeric:tabular-nums;display:grid;justify-items:center}
+.mx-h2h b small{font:600 11px/1 var(--display);color:var(--ink-3);margin-top:3px}
+
+/* ── телефон ── */
+@media (max-width:620px){
+  .mx-field{background:linear-gradient(112deg,var(--hc) 0 49.4%,rgba(255,255,255,.18) 49.4% 50.6%,var(--ac) 50.6% 100%)}
+  .mx-stage{gap:8px;padding-left:12px;padding-right:12px}
+  .mx-team b{font-size:17px}
+  .mx-team small{font-size:11px}
+  .mx-crest{width:84px}
+  .mx-mid{min-width:84px}
+  .mx-time{font-size:36px}
+  .mx-score{font-size:48px}
+  .mx-when{font-size:12px}
+  .mx-bar{height:auto;min-height:66px}
+  .mx-bar i{padding:10px 10px}
+  .mx-bar b{font-size:20px}
+  .mx-bar small{font-size:11px;white-space:normal}
+  .mx-dots{gap:7px}
+  .mx-dots b{width:38px;height:38px;font-size:14px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .mx-crest{animation:mxIn .7s cubic-bezier(.2,.8,.2,1) both}
+  .mx-a .mx-crest{animation-delay:.08s}
+  @keyframes mxIn{from{transform:scale(.86);opacity:0}to{transform:none;opacity:1}}
+}
+/* центр поля: мягкая тень, чтобы время и счёт читались поверх стыка цветов */
+.mx-mid{position:relative}
+.mx-mid::before{content:"";position:absolute;inset:-28% -40%;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(6,12,24,.45),transparent)}
+.mx-time,.mx-score{text-shadow:0 2px 18px rgba(0,0,0,.35)}
+/* телефон: ссылки «Напомнить» — плотно в строку */
+@media (max-width:620px){.mx-info .mt-rem{gap:6px 16px}.mx-info .mt-rem .mt-rem-b{flex-basis:100%;justify-content:center}.mx-info .mt-rem .mt-rem-l{min-height:36px;font-size:14px}}
+/* буквы на поле: белые на тёмных цветах клуба, тёмные на светлых (жёлтый, золото) */
+.mx-hero .mx-team.mx-h,.mx-hero .mx-team.mx-h small{color:var(--hi,#fff)}
+.mx-hero .mx-team.mx-a,.mx-hero .mx-team.mx-a small{color:var(--ai,#fff)}
+.mx-h small,.mx-a small{opacity:.82}
+.mx-bar .mx-sh{color:var(--hi,#fff)}
+.mx-bar .mx-sa{color:var(--ai,#fff)}
+
+/* форма (09.11): в кружке — эмблема соперника, рамка цвета результата, буква В/Н/П в углу (как на странице клуба) */
+.mx-dots b{position:relative;background:#f3f6fb!important;box-shadow:inset 0 0 0 3px var(--rc);width:48px;height:48px}
+.mx-dots .r-w{--rc:#1d8a52}.mx-dots .r-d{--rc:#68758c}.mx-dots .r-l{--rc:#c4303b}
+.mx-dots b img{width:30px;height:30px;object-fit:contain}
+.mx-dots b i{font:800 13px/1 var(--display);font-style:normal;color:#24304a}
+.mx-dots b em{position:absolute;right:-4px;bottom:-4px;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;
+  font:800 11px/1 var(--display);font-style:normal;color:#fff;background:var(--rc);box-shadow:0 0 0 2px var(--paper,#0b1424)}
+@media (max-width:620px){.mx-dots b{width:42px;height:42px}.mx-dots b img{width:26px;height:26px}}
+
+/* ── живой фон поля (09.11): плывущая фактура, луч прожектора, дыхание стыка. Двигаются только слои (transform/opacity) ── */
+.mx-fx,.mx-sheen,.mx-seam{position:absolute;pointer-events:none;z-index:-1}
+.mx-fx{inset:-10% -40%;background:repeating-linear-gradient(105deg,rgba(255,255,255,.045) 0 2px,transparent 2px 22px)}
+.mx-sheen{top:-20%;bottom:-20%;left:0;width:38%;opacity:0;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.07) 40%,rgba(255,255,255,.16) 50%,rgba(255,255,255,.07) 60%,transparent)}
+.mx-seam{top:-10%;bottom:-10%;left:50%;width:14px;margin-left:-7px;transform:skewX(-15deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);opacity:.25;filter:blur(2px)}
+@media (max-width:620px){.mx-seam{transform:skewX(-22deg)}}
+@media (prefers-reduced-motion:no-preference){
+  .mx-fx{animation:mxDrift 26s linear infinite}
+  .mx-sheen{animation:mxSheen 7.5s cubic-bezier(.45,0,.25,1) 1.2s infinite}
+  .mx-seam{animation:mxSeam 3.6s ease-in-out infinite}
+  @keyframes mxDrift{from{transform:translateX(0)}to{transform:translateX(22.8px)}}
+  @keyframes mxSheen{0%{transform:translateX(-110%);opacity:0}12%{opacity:1}55%{opacity:1}70%,100%{transform:translateX(290%);opacity:0}}
+  @keyframes mxSeam{0%,100%{opacity:.18}50%{opacity:.5}}
+}
+
+/* фон как у баннеров Telegram и «Матчей дня» (bg.webp рядом со страницей): медленно «дышит»; буквы белые с тенью */
+.mx-field.has-bg{background:#0d1626}
+.mx-field.has-bg .mx-fx{inset:-4%;background-position:center;background-size:cover;background-repeat:no-repeat}
+.mx-field.has-bg .mx-fm{display:none}
+.mx-field.has-bg .mx-seam{display:none}
+.mx-field.has-bg::before{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.30))}
+.mx-field.has-bg .mx-team,.mx-field.has-bg .mx-team small{color:#fff!important;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+@media (max-width:620px){.mx-field.has-bg .mx-fd{display:none}.mx-field.has-bg .mx-fm{display:block}}
+/* «дыхание» картинки убрано: растяжение тоже тащит ступеньки градиента (линии) */
+.mx-field.has-bg .mx-fx{animation:none}
+/* ФЛАГ без WebGL (владелец 09.11: у него WebGL не запускался, шейдер он не видел). Только CSS, одинаково у всех.
+   Картинка стоит на месте (её ступеньки градиента не ползут). По ней ходят два слоя мягкого света/тени с плавным
+   (косинусным, 24 точки) профилем — без острых гребней, которые и давали «линии» у старых полос; сдвиг — transform,
+   плавно на любой частоте экрана. Верх и низ полотна колышутся маской-волной. «Уменьшить движение» — всё стоит. */
+.mx-field.has-bg .mx-sheen,.mx-field.has-bg .mx-seam{display:block;opacity:1;top:0;bottom:0;margin:0;mix-blend-mode:soft-light;will-change:transform}
+.mx-field.has-bg .mx-sheen{left:-25%;width:calc(150% + 900px);transform:skewX(-14deg);background:repeating-linear-gradient(90deg,rgb(174,174,174) 0.0px,rgb(172,172,172) 37.5px,rgb(168,168,168) 75.0px,rgb(161,161,161) 112.5px,rgb(151,151,151) 150.0px,rgb(140,140,140) 187.5px,rgb(128,128,128) 225.0px,rgb(116,116,116) 262.5px,rgb(105,105,105) 300.0px,rgb(95,95,95) 337.5px,rgb(88,88,88) 375.0px,rgb(84,84,84) 412.5px,rgb(82,82,82) 450.0px,rgb(84,84,84) 487.5px,rgb(88,88,88) 525.0px,rgb(95,95,95) 562.5px,rgb(105,105,105) 600.0px,rgb(116,116,116) 637.5px,rgb(128,128,128) 675.0px,rgb(140,140,140) 712.5px,rgb(151,151,151) 750.0px,rgb(161,161,161) 787.5px,rgb(168,168,168) 825.0px,rgb(172,172,172) 862.5px,rgb(174,174,174) 900.0px)}
+.mx-field.has-bg .mx-seam{left:-25%;width:calc(150% + 1500px);transform:skewX(10deg);opacity:.75;background:repeating-linear-gradient(90deg,rgb(168,168,168) 0.0px,rgb(167,167,167) 62.5px,rgb(163,163,163) 125.0px,rgb(156,156,156) 187.5px,rgb(148,148,148) 250.0px,rgb(138,138,138) 312.5px,rgb(128,128,128) 375.0px,rgb(118,118,118) 437.5px,rgb(108,108,108) 500.0px,rgb(100,100,100) 562.5px,rgb(93,93,93) 625.0px,rgb(89,89,89) 687.5px,rgb(88,88,88) 750.0px,rgb(89,89,89) 812.5px,rgb(93,93,93) 875.0px,rgb(100,100,100) 937.5px,rgb(108,108,108) 1000.0px,rgb(118,118,118) 1062.5px,rgb(128,128,128) 1125.0px,rgb(138,138,138) 1187.5px,rgb(148,148,148) 1250.0px,rgb(156,156,156) 1312.5px,rgb(163,163,163) 1375.0px,rgb(167,167,167) 1437.5px,rgb(168,168,168) 1500.0px)}
+.mx-field.has-bg{-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 100' preserveAspectRatio='none'%3E%3Cpath d='M0 1.60 L12 1.76 L25 1.91 L38 2.06 L50 2.21 L62 2.35 L75 2.49 L88 2.62 L100 2.73 L112 2.84 L125 2.93 L138 3.01 L150 3.08 L162 3.13 L175 3.17 L188 3.19 L200 3.20 L212 3.19 L225 3.17 L238 3.13 L250 3.08 L262 3.01 L275 2.93 L288 2.84 L300 2.73 L312 2.62 L325 2.49 L338 2.35 L350 2.21 L362 2.06 L375 1.91 L388 1.76 L400 1.60 L412 1.44 L425 1.29 L438 1.14 L450 0.99 L462 0.85 L475 0.71 L488 0.58 L500 0.47 L512 0.36 L525 0.27 L538 0.19 L550 0.12 L562 0.07 L575 0.03 L588 0.01 L600 0.00 L612 0.01 L625 0.03 L638 0.07 L650 0.12 L662 0.19 L675 0.27 L688 0.36 L700 0.47 L712 0.58 L725 0.71 L738 0.85 L750 0.99 L762 1.14 L775 1.29 L788 1.44 L800 1.60 L812 1.76 L825 1.91 L838 2.06 L850 2.21 L862 2.35 L875 2.49 L888 2.62 L900 2.73 L912 2.84 L925 2.93 L938 3.01 L950 3.08 L962 3.13 L975 3.17 L988 3.19 L1000 3.20 L1012 3.19 L1025 3.17 L1038 3.13 L1050 3.08 L1062 3.01 L1075 2.93 L1088 2.84 L1100 2.73 L1112 2.62 L1125 2.49 L1138 2.35 L1150 2.21 L1162 2.06 L1175 1.91 L1188 1.76 L1200 1.60 L1212 1.44 L1225 1.29 L1238 1.14 L1250 0.99 L1262 0.85 L1275 0.71 L1288 0.58 L1300 0.47 L1312 0.36 L1325 0.27 L1338 0.19 L1350 0.12 L1362 0.07 L1375 0.03 L1388 0.01 L1400 0.00 L1412 0.01 L1425 0.03 L1438 0.07 L1450 0.12 L1462 0.19 L1475 0.27 L1488 0.36 L1500 0.47 L1512 0.58 L1525 0.71 L1538 0.85 L1550 0.99 L1562 1.14 L1575 1.29 L1588 1.44 L1600 1.60 L1600 96.86 L1588 96.91 L1575 96.97 L1562 97.05 L1550 97.14 L1538 97.24 L1525 97.36 L1512 97.48 L1500 97.61 L1488 97.75 L1475 97.90 L1462 98.05 L1450 98.21 L1438 98.36 L1425 98.52 L1412 98.67 L1400 98.83 L1388 98.98 L1375 99.12 L1362 99.26 L1350 99.39 L1338 99.50 L1325 99.61 L1312 99.71 L1300 99.79 L1288 99.86 L1275 99.92 L1262 99.96 L1250 99.99 L1238 100.00 L1225 100.00 L1212 99.98 L1200 99.94 L1188 99.89 L1175 99.83 L1162 99.75 L1150 99.66 L1138 99.56 L1125 99.44 L1112 99.32 L1100 99.19 L1088 99.05 L1075 98.90 L1062 98.75 L1050 98.59 L1038 98.44 L1025 98.28 L1012 98.13 L1000 97.97 L988 97.82 L975 97.68 L962 97.54 L950 97.41 L938 97.30 L925 97.19 L912 97.09 L900 97.01 L888 96.94 L875 96.88 L862 96.84 L850 96.81 L838 96.80 L825 96.80 L812 96.82 L800 96.86 L788 96.91 L775 96.97 L762 97.05 L750 97.14 L738 97.24 L725 97.36 L712 97.48 L700 97.61 L688 97.75 L675 97.90 L662 98.05 L650 98.21 L638 98.36 L625 98.52 L612 98.67 L600 98.83 L588 98.98 L575 99.12 L562 99.26 L550 99.39 L538 99.50 L525 99.61 L512 99.71 L500 99.79 L488 99.86 L475 99.92 L462 99.96 L450 99.99 L438 100.00 L425 100.00 L412 99.98 L400 99.94 L388 99.89 L375 99.83 L362 99.75 L350 99.66 L338 99.56 L325 99.44 L312 99.32 L300 99.19 L288 99.05 L275 98.90 L262 98.75 L250 98.59 L238 98.44 L225 98.28 L212 98.13 L200 97.97 L188 97.82 L175 97.68 L162 97.54 L150 97.41 L138 97.30 L125 97.19 L112 97.09 L100 97.01 L88 96.94 L75 96.88 L62 96.84 L50 96.81 L38 96.80 L25 96.80 L12 96.82 L0 96.86Z'/%3E%3C/svg%3E") 0 0/1600px 100% repeat-x;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 100' preserveAspectRatio='none'%3E%3Cpath d='M0 1.60 L12 1.76 L25 1.91 L38 2.06 L50 2.21 L62 2.35 L75 2.49 L88 2.62 L100 2.73 L112 2.84 L125 2.93 L138 3.01 L150 3.08 L162 3.13 L175 3.17 L188 3.19 L200 3.20 L212 3.19 L225 3.17 L238 3.13 L250 3.08 L262 3.01 L275 2.93 L288 2.84 L300 2.73 L312 2.62 L325 2.49 L338 2.35 L350 2.21 L362 2.06 L375 1.91 L388 1.76 L400 1.60 L412 1.44 L425 1.29 L438 1.14 L450 0.99 L462 0.85 L475 0.71 L488 0.58 L500 0.47 L512 0.36 L525 0.27 L538 0.19 L550 0.12 L562 0.07 L575 0.03 L588 0.01 L600 0.00 L612 0.01 L625 0.03 L638 0.07 L650 0.12 L662 0.19 L675 0.27 L688 0.36 L700 0.47 L712 0.58 L725 0.71 L738 0.85 L750 0.99 L762 1.14 L775 1.29 L788 1.44 L800 1.60 L812 1.76 L825 1.91 L838 2.06 L850 2.21 L862 2.35 L875 2.49 L888 2.62 L900 2.73 L912 2.84 L925 2.93 L938 3.01 L950 3.08 L962 3.13 L975 3.17 L988 3.19 L1000 3.20 L1012 3.19 L1025 3.17 L1038 3.13 L1050 3.08 L1062 3.01 L1075 2.93 L1088 2.84 L1100 2.73 L1112 2.62 L1125 2.49 L1138 2.35 L1150 2.21 L1162 2.06 L1175 1.91 L1188 1.76 L1200 1.60 L1212 1.44 L1225 1.29 L1238 1.14 L1250 0.99 L1262 0.85 L1275 0.71 L1288 0.58 L1300 0.47 L1312 0.36 L1325 0.27 L1338 0.19 L1350 0.12 L1362 0.07 L1375 0.03 L1388 0.01 L1400 0.00 L1412 0.01 L1425 0.03 L1438 0.07 L1450 0.12 L1462 0.19 L1475 0.27 L1488 0.36 L1500 0.47 L1512 0.58 L1525 0.71 L1538 0.85 L1550 0.99 L1562 1.14 L1575 1.29 L1588 1.44 L1600 1.60 L1600 96.86 L1588 96.91 L1575 96.97 L1562 97.05 L1550 97.14 L1538 97.24 L1525 97.36 L1512 97.48 L1500 97.61 L1488 97.75 L1475 97.90 L1462 98.05 L1450 98.21 L1438 98.36 L1425 98.52 L1412 98.67 L1400 98.83 L1388 98.98 L1375 99.12 L1362 99.26 L1350 99.39 L1338 99.50 L1325 99.61 L1312 99.71 L1300 99.79 L1288 99.86 L1275 99.92 L1262 99.96 L1250 99.99 L1238 100.00 L1225 100.00 L1212 99.98 L1200 99.94 L1188 99.89 L1175 99.83 L1162 99.75 L1150 99.66 L1138 99.56 L1125 99.44 L1112 99.32 L1100 99.19 L1088 99.05 L1075 98.90 L1062 98.75 L1050 98.59 L1038 98.44 L1025 98.28 L1012 98.13 L1000 97.97 L988 97.82 L975 97.68 L962 97.54 L950 97.41 L938 97.30 L925 97.19 L912 97.09 L900 97.01 L888 96.94 L875 96.88 L862 96.84 L850 96.81 L838 96.80 L825 96.80 L812 96.82 L800 96.86 L788 96.91 L775 96.97 L762 97.05 L750 97.14 L738 97.24 L725 97.36 L712 97.48 L700 97.61 L688 97.75 L675 97.90 L662 98.05 L650 98.21 L638 98.36 L625 98.52 L612 98.67 L600 98.83 L588 98.98 L575 99.12 L562 99.26 L550 99.39 L538 99.50 L525 99.61 L512 99.71 L500 99.79 L488 99.86 L475 99.92 L462 99.96 L450 99.99 L438 100.00 L425 100.00 L412 99.98 L400 99.94 L388 99.89 L375 99.83 L362 99.75 L350 99.66 L338 99.56 L325 99.44 L312 99.32 L300 99.19 L288 99.05 L275 98.90 L262 98.75 L250 98.59 L238 98.44 L225 98.28 L212 98.13 L200 97.97 L188 97.82 L175 97.68 L162 97.54 L150 97.41 L138 97.30 L125 97.19 L112 97.09 L100 97.01 L88 96.94 L75 96.88 L62 96.84 L50 96.81 L38 96.80 L25 96.80 L12 96.82 L0 96.86Z'/%3E%3C/svg%3E") 0 0/1600px 100% repeat-x}
+@media (max-width:620px){.mx-field.has-bg{-webkit-mask-size:800px 100%;mask-size:800px 100%}}
+@media (prefers-reduced-motion:no-preference){
+  .mx-field.has-bg .mx-sheen{animation:mxLight1 11s linear infinite}
+  .mx-field.has-bg .mx-seam{animation:mxLight2 17s linear infinite}
+  .mx-field.has-bg{animation:mxEdge 9s linear infinite}
+  @keyframes mxLight1{from{transform:skewX(-14deg) translateX(-900px)}to{transform:skewX(-14deg) translateX(0)}}
+  @keyframes mxLight2{from{transform:skewX(10deg) translateX(0)}to{transform:skewX(10deg) translateX(-1500px)}}
+  @keyframes mxEdge{from{-webkit-mask-position:0 0;mask-position:0 0}to{-webkit-mask-position:-1600px 0;mask-position:-1600px 0}}
+}
+@media (prefers-reduced-motion:no-preference) and (max-width:620px){
+  @keyframes mxEdge{from{-webkit-mask-position:0 0;mask-position:0 0}to{-webkit-mask-position:-800px 0;mask-position:-800px 0}}
+}
+
+/* «Другие матчи в этот день» — эмблемы клубов (владелец 09.11) */
+.mt-oth a{align-items:center;justify-content:flex-start}
+.mt-oth a b{flex:1;min-width:0}
+.mt-oe{display:flex;flex:none}
+.mt-oe img,.mt-oe0{width:36px;height:36px;border-radius:50%;background:#f3f5f8;padding:4px;object-fit:contain;box-shadow:0 0 0 2px var(--card)}
+.mt-oe>*+*{margin-left:-8px}
+.mt-oe0{display:grid;place-items:center;font:800 12px/1 var(--display);color:#0d1626;font-style:normal}
+@media (max-width:620px){.mt-oe img,.mt-oe0{width:30px;height:30px}}
+.mt-oth a b span{display:inline-block;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom}   /* длинное название — на свою строку, не на время (аудит 09.11b) */
+.mt-oth a small{flex:none}
+
+/* ── расчёт сразу под заголовком, справка о матче — отдельным блоком ниже (владелец 10.11) ── */
+.mx-hero{padding-bottom:0}
+.mx-hero+.mx-model{padding-top:clamp(14px,2vw,24px)}
+.mx-hero+.mx-model h2{font-size:clamp(15px,1.3vw,18px);letter-spacing:.06em;color:var(--ink-3);margin-bottom:8px}
+.mx-info .mx-facts{margin-top:0}
+.mx-info .mt-rem{margin-top:16px}
+.mx-stub{padding:16px 18px;border-radius:var(--rc,14px);background:var(--card);border-left:4px solid var(--signal,#ffc21a)}
+.mx-stub b{display:block;font:800 clamp(17px,1.6vw,21px)/1.2 var(--display)}
+.mx-stub p{margin:6px 0 0;color:var(--ink-2);max-width:62ch}
+.mt-totn{margin-top:8px}
+
+/* «Коротко о матче» списком */
+.mx-sum{list-style:none;margin:0;padding:0;display:grid;gap:10px;max-width:72ch}
+.mx-sum li{position:relative;padding-left:22px;font-size:18px;line-height:1.5;color:var(--ink-2)}
+.mx-sum li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--signal,#ffc21a)}
+@media (max-width:620px){.mx-sum li{font-size:17px}}
+/* «Поделиться матчем» (assets/nav.js, 11.11) */
+.mt-rem .mt-share{display:inline-flex;align-items:center;gap:9px;min-height:46px;padding:0 20px;border-radius:var(--rp,999px);border:1.5px solid var(--ink);background:none;color:var(--ink);font:700 16px/1 var(--display);cursor:pointer}
+.mt-rem .mt-share svg{width:19px;height:19px;flex:none}
+.mt-rem .mt-share:hover{background:var(--ink);color:var(--paper,#fff)}
+.mt-rem .mt-share:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+@media (max-width:620px){.mx-info .mt-rem .mt-share{flex-basis:100%;justify-content:center}}
+
+/* ══════════ вид 3 (владелец 11.11: «плоско, не хочется читать») — всё, что ниже баннера; сам баннер не меняется ══════════
+   Фон — свет в цветах клубов и разметка площадки; цифры — крупными плитками; «Коротко» — нумерованные карточки;
+   форма, очные встречи, таблица — панели с цветом хозяев слева и гостей справа. Цвета клубов --hc/--ac на <main>
+   ставит assets/nav.js (и сборщик); без них — синий по умолчанию. */
+main:has(>.mx-hero){position:relative;isolation:isolate;overflow:clip;--hc:#285abe;--ac:#78a0ff;
+  --hcs:color-mix(in srgb,var(--hc) 62%,#7fa8ff);--acs:color-mix(in srgb,var(--ac) 62%,#7fa8ff)}
+main:has(>.mx-hero)::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  -webkit-mask-image:linear-gradient(180deg,transparent 420px,#000 640px,#000 calc(100% - 320px),transparent);mask-image:linear-gradient(180deg,transparent 420px,#000 640px,#000 calc(100% - 320px),transparent);background:
+  radial-gradient(circle at 88% 1250px,transparent 0 258px,rgba(160,200,255,.07) 259px 261px,transparent 262px),
+  radial-gradient(circle at 88% 1250px,rgba(160,200,255,.10) 0 5px,transparent 6px),
+  linear-gradient(90deg,transparent calc(88% - 1px),rgba(160,200,255,.05) calc(88% - 1px) calc(88% + 1px),transparent calc(88% + 1px)),
+  radial-gradient(70vw 760px at -12% 640px,color-mix(in srgb,var(--hcs) 30%,transparent),transparent 70%),
+  radial-gradient(70vw 820px at 112% 1150px,color-mix(in srgb,var(--acs) 26%,transparent),transparent 70%),
+  radial-gradient(70vw 820px at -12% 2050px,color-mix(in srgb,var(--hcs) 20%,transparent),transparent 70%),
+  radial-gradient(70vw 820px at 112% 2800px,color-mix(in srgb,var(--acs) 18%,transparent),transparent 70%)}
+/* заголовки разделов — с жёлтой «клюшкой» */
+.mx-hero~.fc-sec:not(.mx-model) h2{display:flex;align-items:center;gap:14px}
+.mx-hero~.fc-sec:not(.mx-model) h2::before{content:"";flex:none;width:9px;height:.82em;border-radius:2px;background:var(--signal,#ffc21a);transform:skewX(-16deg)}
+.mx-hero~.fc-sec{padding-top:clamp(30px,4vw,56px)}
+.mx-hero+.mx-model{padding-top:clamp(14px,2vw,24px)}
+
+/* ── расчёт модели: полоса как была; ниже слева — плитки цифр, справа — кэфы плитками в цветах сторон ── */
+.mx-bar{box-shadow:0 18px 44px -22px color-mix(in srgb,var(--hc) 70%,#000),0 0 0 1px rgba(255,255,255,.06)}
+.mx-stats li{position:relative;overflow:hidden;padding:18px 20px;border-radius:var(--rc,16px);border:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(135deg,color-mix(in srgb,var(--hcs) 26%,var(--card)),var(--card) 70%)}
+.mx-stats li:nth-child(2){background:linear-gradient(135deg,color-mix(in srgb,var(--signal,#ffc21a) 20%,var(--card)),var(--card) 70%)}
+.mx-stats li:nth-child(2) b{color:var(--signal,#ffc21a)}
+.mx-stats b{font-size:clamp(30px,3vw,44px)}
+.mx-stats span{font-size:14px;color:var(--ink-2)}
+.mt-odds-wrap{margin-top:12px;padding:20px 22px;border-radius:var(--rc,18px);border:1px solid rgba(255,255,255,.09);
+  background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015)),var(--card);box-shadow:0 24px 50px -30px #000}
+.mt-odds-wrap h3{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+.mt-odds.fc-nums{gap:10px;margin-top:0}
+.mt-odds.fc-nums li{padding:14px 16px;border-radius:var(--rc,14px);border-top:3px solid #5b6a86;background:rgba(255,255,255,.05);gap:6px}
+.mt-odds.fc-nums li:first-child{border-top-color:var(--hcs);background:color-mix(in srgb,var(--hcs) 22%,transparent)}
+.mt-odds.fc-nums li:last-child{border-top-color:var(--acs);background:color-mix(in srgb,var(--acs) 22%,transparent)}
+.mt-odds.fc-nums small{font-size:13px;letter-spacing:.06em}
+.mt-odds.fc-nums b,.mt-odds.fc-nums li:first-child b,.mt-odds.fc-nums li:last-child b{font-size:clamp(26px,2.6vw,36px);color:var(--ink)}
+.mt-odds-wrap .fc-ext{margin-top:14px;font-size:15px}
+@media (min-width:900px){
+  .mx-model>.wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);column-gap:14px;align-items:stretch}
+  .mx-model>.wrap>*{grid-column:1/-1}
+  .mx-model>.wrap>.mx-stats{grid-column:1;margin-top:14px;flex-direction:column;flex-wrap:nowrap}
+  .mx-model>.wrap>.mx-stats li{flex:1;align-content:center}
+  .mx-model>.wrap>.mx-stats+.mt-odds-wrap{grid-column:2;margin-top:14px}
+}
+@media (max-width:899px){.mx-stats li{flex:1}}
+
+/* ── о матче: одна цветная панель — слева арена и турнир, ниже кнопки ── */
+.mx-info>.wrap{position:relative;z-index:0;padding-top:22px;padding-bottom:20px}
+.mx-info>.wrap::before{content:"";position:absolute;z-index:-1;inset:0 var(--m);border-radius:var(--rc,20px);border:1px solid rgba(255,255,255,.09);
+  background:linear-gradient(100deg,color-mix(in srgb,var(--hcs) 30%,var(--card)),var(--card) 38% 62%,color-mix(in srgb,var(--acs) 30%,var(--card)))}
+.mx-info>.wrap>*{margin-left:clamp(16px,2vw,26px);margin-right:clamp(16px,2vw,26px)}
+.mx-info .mx-facts b{font-size:17px}
+.mx-info .fc-upd{font-size:13px}
+
+/* ── коротко о матче: нумерованные карточки ── */
+.mx-sum{max-width:none;counter-reset:s;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:12px}
+.mx-sum li{counter-increment:s;padding:18px 20px 18px 66px;border-radius:var(--rc,16px);border:1px solid rgba(255,255,255,.08);font-size:17px;line-height:1.45;color:var(--ink);
+  background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015)),var(--card)}
+.mx-sum li::before{content:counter(s);left:18px;top:16px;width:34px;height:34px;display:grid;place-items:center;border-radius:var(--rc,11px);
+  font:800 17px/1 var(--display);color:#071225;background:var(--signal,#ffc21a)}
+.mx-sum li:last-child:nth-child(odd){grid-column:1/-1;background:linear-gradient(100deg,color-mix(in srgb,var(--signal,#ffc21a) 16%,var(--card)),var(--card) 60%)}
+@media (max-width:620px){.mx-sum li{font-size:16px;padding:14px 16px 14px 58px}.mx-sum li::before{left:14px;top:13px;width:32px;height:32px}}
+
+/* ── форма: панель на команду, сверху полоса цвета клуба ── */
+.mx-form{gap:14px}
+.mx-fc{padding:20px 22px 22px;border-radius:var(--rc,18px);border:1px solid rgba(255,255,255,.08);border-top:4px solid var(--hcs);
+  background:linear-gradient(180deg,color-mix(in srgb,var(--hcs) 20%,var(--card)),var(--card) 62%)}
+.mx-fc+.mx-fc{border-top-color:var(--acs);background:linear-gradient(180deg,color-mix(in srgb,var(--acs) 20%,var(--card)),var(--card) 62%)}
+.mx-fc h3{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;font-size:21px;margin-bottom:16px}
+.mx-fc h3 small{margin:0;padding:5px 10px;border-radius:var(--rp,999px);background:rgba(255,255,255,.09);color:var(--ink-2)}
+.mx-dots{gap:clamp(8px,1.6vw,18px)}
+.mx-dots span{font-size:14px;color:var(--ink)}
+.mx-dots b em{box-shadow:0 0 0 2px #0f1d38}
+@media (min-width:900px){.mx-dots b{width:58px;height:58px}.mx-dots b img{width:36px;height:36px}.mx-dots b em{width:23px;height:23px;font-size:12px}}
+
+/* ── личные встречи: счёт — в плашке, победитель — с жёлтой меткой ── */
+.mx-h2h{gap:12px}
+.mx-h2h li{padding:14px 16px 16px;border-radius:var(--rc,16px);border:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015)),var(--card)}
+.mx-h2h b{padding:8px 12px;border-radius:var(--rc,11px);background:rgba(0,0,0,.34);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.mx-h2h span{color:var(--ink-3)}
+.mx-h2h span.w{color:var(--ink)}
+.mx-h2h span.w{position:relative;padding-left:15px}
+.mx-h2h span.w::before{content:"";position:absolute;left:0;top:.42em;width:8px;height:8px;border-radius:50%;background:var(--signal,#ffc21a)}
+.mx-h2h span.w:last-of-type{padding-left:0;padding-right:15px}
+.mx-h2h span.w:last-of-type::before{left:auto;right:0}
+
+/* ── таблица: строки с цветом клуба, очки — крупно ── */
+.mt-tw{border-radius:var(--rc,18px);border-color:rgba(255,255,255,.09);background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.012)),var(--card)}
+.mt-tab{font:600 16px/1.2 var(--display);font-variant-numeric:tabular-nums}
+.mt-tab th,.mt-tab td{padding:15px 18px;border-bottom-color:rgba(255,255,255,.07)}
+.mt-tab thead th{background:rgba(0,0,0,.22)}
+.mt-tab tbody th{font-weight:800;font-size:17px;box-shadow:inset 5px 0 0 var(--hcs)}
+.mt-tab tbody tr+tr th{box-shadow:inset 5px 0 0 var(--acs)}
+.mt-tab tbody td:nth-child(2){font-weight:800}
+.mt-tab td:last-child{font-weight:800;font-size:19px;color:var(--signal,#ffc21a)}
+
+/* ── другие матчи дня: карточки в два столбца, время — в плашке ── */
+.mt-oth.fc-hub{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:12px}
+.mt-oth.fc-hub a{padding:16px 18px;border-radius:var(--rc,16px);border-color:rgba(255,255,255,.08);background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015)),var(--card);transition:transform .18s,border-color .18s}
+.mt-oth.fc-hub a:hover{transform:translateY(-2px);border-color:var(--signal,#ffc21a)}
+.mt-oth.fc-hub a small{padding:7px 11px;border-radius:var(--rp,999px);background:rgba(255,255,255,.08);color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.mt-oth.fc-hub a{transition:none}.mt-oth.fc-hub a:hover{transform:none}}
+
+/* ── статистика сыгранного матча (11.11): пары цифр хозяева — гости, полоса в цветах клубов ── */
+.mx-msb{padding:clamp(16px,2vw,26px);border-radius:var(--rc,20px);border:1px solid rgba(255,255,255,.09);
+  background:linear-gradient(100deg,color-mix(in srgb,var(--hcs) 22%,var(--card)),var(--card) 34% 66%,color-mix(in srgb,var(--acs) 22%,var(--card)))}
+.mx-msh{display:flex;justify-content:space-between;gap:16px;margin-bottom:14px;font:800 clamp(16px,1.6vw,21px)/1.2 var(--display)}
+.mx-msh b:last-child{text-align:right}
+.mx-msl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:14px clamp(20px,3vw,44px)}
+.mx-msl li{display:grid;grid-template-columns:minmax(64px,auto) 1fr minmax(64px,auto);align-items:baseline;gap:6px 10px}
+.mx-msl span{text-align:center;font:600 14px/1.25 var(--display);color:var(--ink-2)}
+.mx-msl b{font:800 clamp(20px,2vw,26px)/1 var(--display);font-variant-numeric:tabular-nums;color:var(--ink-2);white-space:nowrap}
+.mx-msl b:last-of-type{text-align:right}
+.mx-msl b.on{color:var(--signal,#ffc21a)}
+.mx-msl i{grid-column:1/-1;display:flex;gap:4px;height:8px}
+.mx-msl u{border-radius:var(--rp,999px);background:var(--hcs);min-width:6px}
+.mx-msl u+u{background:var(--acs)}
+/* эмблема клуба у названия (правило владельца 11.11): форма, статистика матча, таблица */
+.mx-em{display:inline-block;flex:none;border-radius:50%;background:#f3f5f8;padding:3px;object-fit:contain;vertical-align:middle}
+.mx-fc h3{align-items:center}
+.mx-fc h3 .mx-em{margin-right:2px}
+.mx-msh b{display:inline-flex;align-items:center;gap:9px}
+.mt-tab tbody th .mx-em{margin:-4px 10px -4px 0}
+
+/* ── правки владельца 11.11 (2): форма — кружки на всю ширину панели по центру; «Коротко» — связный текст; низ — плитки ── */
+.mx-dots{justify-content:space-around;gap:6px}
+.mx-fc h3{justify-content:center}
+@media (min-width:900px){.mx-dots b{width:68px;height:68px}.mx-dots b img{width:42px;height:42px}.mx-dots b em{width:25px;height:25px;font-size:13px}.mx-dots span{font-size:16px}}
+.mx-text{position:relative;max-width:none;padding:clamp(20px,2.6vw,34px) clamp(18px,2.8vw,40px);border-radius:var(--rc,20px);border:1px solid rgba(255,255,255,.09);
+  border-left:4px solid var(--signal,#ffc21a);background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015)),var(--card)}
+.mx-text p{margin:0;max-width:78ch;font-size:clamp(17px,1.25vw,19px);line-height:1.62;color:var(--ink-2)}
+.mx-text p+p{margin-top:.9em}
+.mx-text p:first-child{font-size:clamp(19px,1.6vw,23px);line-height:1.45;color:var(--ink)}
+@media (min-width:1100px){.mx-text{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.4em clamp(28px,4vw,64px)}.mx-text p:first-child{grid-column:1/-1;margin-bottom:.5em}.mx-text p+p{margin-top:0}
+  .mx-text p:last-child:nth-child(2){grid-column:1/-1}}
+.mx-end h2{margin-bottom:16px}
+.mx-go{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px}
+.mx-go a{display:grid;gap:8px;height:100%;padding:16px 18px;border-radius:var(--rc,16px);border:1px solid rgba(255,255,255,.08);text-decoration:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015)),var(--card);transition:transform .18s,border-color .18s}
+.mx-go a:hover{transform:translateY(-2px);border-color:var(--signal,#ffc21a)}
+.mx-go small{font:600 12px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.mx-go b{display:flex;align-items:center;gap:9px;font:800 18px/1.2 var(--display);color:var(--ink)}
+.mx-tg{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px;margin-top:14px;padding:clamp(18px,2.2vw,28px) clamp(18px,2.6vw,34px);border-radius:var(--rc,20px);
+  border:1px solid color-mix(in srgb,var(--signal,#ffc21a) 40%,transparent);background:linear-gradient(100deg,color-mix(in srgb,var(--signal,#ffc21a) 18%,var(--card)),var(--card) 62%)}
+.mx-tg div{display:grid;gap:6px;min-width:0}
+.mx-tg b{font:800 clamp(20px,2vw,27px)/1.15 var(--display)}
+.mx-tg span{color:var(--ink-2);font-size:16px}
+.mx-tg .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;white-space:nowrap}
+.mx-tg .btn svg{width:20px;height:20px}
+body.fc .mx-tg .btn,body.fc .mx-tg .btn span{color:#071225;font-weight:800;font-size:17px}
+.mx-end .fc-legal{margin:18px 0 0;max-width:none}
+@media (max-width:620px){.mx-tg .btn{flex:1;justify-content:center}.mx-go{grid-template-columns:repeat(2,minmax(0,1fr))}.mx-go b{font-size:16px}}
+@media (prefers-reduced-motion:reduce){.mx-go a{transition:none}.mx-go a:hover{transform:none}}
+@media (max-width:620px){.mx-go li:last-child:nth-child(odd){grid-column:1/-1}}
+
+/* ── удаления по минутам (11.11): лента по времени — хозяева слева, гости справа, цвет клуба у строки ── */
+.mx-pen{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.09)}
+.mx-pen summary{cursor:pointer;font:800 clamp(16px,1.5vw,19px)/1.2 var(--display);list-style:none;display:flex;align-items:center;gap:10px}
+.mx-pen summary::-webkit-details-marker{display:none}
+.mx-pen summary::after{content:"";width:9px;height:9px;margin-left:2px;border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);transform:rotate(-135deg) translate(-2px,-2px)}
+.mx-pen:not([open]) summary::after{transform:rotate(45deg) translate(-2px,-2px)}
+.mx-pen summary small{padding:4px 9px;border-radius:var(--rp,999px);background:rgba(255,255,255,.09);font:700 13px/1 var(--display);color:var(--ink-2)}
+.mx-pen ol{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px clamp(14px,2.4vw,36px)}
+.mx-pen li{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"t n m" "t w m";align-items:center;gap:1px 12px;padding:9px 12px;border-radius:var(--rc,12px);background:rgba(255,255,255,.045)}
+.mx-pen li.ph{grid-column:1;border-left:4px solid var(--hcs)}
+.mx-pen li.pa{grid-column:2;border-right:4px solid var(--acs);grid-template-columns:auto 1fr auto;grid-template-areas:"m n t" "m w t";text-align:right}
+.mx-pen li.pp{grid-column:1/-1;display:block;padding:8px 0 0;background:none;text-align:center;font:700 12px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.mx-pen time{grid-area:t;font:800 17px/1 var(--display);font-variant-numeric:tabular-nums;color:var(--ink)}
+.mx-pen b{grid-area:n;font:700 15px/1.25 var(--display);min-width:0}
+.mx-pen li span{grid-area:w;font:500 13px/1.3 var(--display);color:var(--ink-2)}
+.mx-pen em{grid-area:m;font:700 12px/1 var(--display);font-style:normal;white-space:nowrap;padding:5px 8px;border-radius:var(--rp,999px);background:rgba(0,0,0,.3);color:var(--ink-2)}
+@media (max-width:620px){.mx-pen ol{grid-template-columns:1fr;gap:6px}.mx-pen li.ph,.mx-pen li.pa{grid-column:1}.mx-pen li.pa{margin-left:22px}.mx-pen li.ph{margin-right:22px}}
+
+/* «Сравнение команд» на странице матча (assets/mc.js). Цвета клубов — --hc / --ac с баннера (nav.js переносит их на <main>).
+   Прямые углы, тонкие линейки, встречные полосы со скошенным стыком — без «плиток-таблеток». */
+.mc{border-top:3px solid var(--ink);border-bottom:1px solid var(--rule-2,var(--ink-3))}
+.mc-head{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--rule-2,var(--ink-3))}
+.mc-head span{display:flex;align-items:center;gap:10px;min-width:0;font:800 clamp(16px,1.9vw,22px)/1.1 var(--display)}
+.mc-head .a{justify-content:flex-end;text-align:right}
+.mc-head .mid{font:700 12px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.mc-head small{font:600 13px/1.2 var(--display);color:var(--ink-3);white-space:nowrap}
+.mc-head img{flex:none;width:40px;height:40px;object-fit:contain}
+.mc-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:4px 14px;padding:16px 0 14px;border-bottom:1px solid color-mix(in srgb,var(--ink) 14%,transparent)}
+.mc-row:last-child{border-bottom:0}
+.mc-n{font:600 15px/1.2 var(--display);color:var(--ink-2);text-align:center;padding-bottom:5px}
+.mc-v{font:800 clamp(24px,3vw,34px)/1 var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.01em;color:var(--ink-2)}
+.mc-v.a{text-align:right}
+.mc-v small{display:block;margin-top:6px;font:600 12px/1 var(--display);letter-spacing:.02em;color:var(--ink-3)}
+.mc-row.wh .mc-v.h,.mc-row.wa .mc-v.a{color:var(--ink)}
+.mc-bar{grid-column:1/-1;display:flex;height:9px;margin-top:8px;gap:0}
+.mc-bar i{display:block;height:100%;background:var(--hc,#285abe);clip-path:polygon(0 0,100% 0,calc(100% - 9px) 100%,0 100%);opacity:.45}
+.mc-bar i+i{flex:1;background:var(--ac,#46aae6);clip-path:polygon(9px 0,100% 0,100% 100%,0 100%);margin-left:-3px}
+.mc-row.wh .mc-bar i:first-child,.mc-row.wa .mc-bar i+i{opacity:1}
+.mc-row:not(.wh):not(.wa) .mc-bar i{opacity:.75}
+.mc-note{margin:12px 0 0;font:500 13px/1.5 var(--display);color:var(--ink-3)}
+@media (max-width:620px){
+  .mc-head .mid{display:none}.mc-head{grid-template-columns:1fr 1fr}
+  .mc-head span{flex-wrap:wrap;gap:4px 8px}.mc-head img{width:30px;height:30px}
+  .mc-head small{flex-basis:100%}.mc-head .a small{order:3}
+  .mc-row{grid-template-columns:auto 1fr auto;padding:13px 0 12px}
+  .mc-n{font-size:13px}
+}
