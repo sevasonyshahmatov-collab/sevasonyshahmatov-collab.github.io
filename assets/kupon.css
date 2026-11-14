@@ -454,3 +454,37 @@
 
 /* гости с эмблемой-лицом, смотрящим влево (Чикаго, Миннесота, Анахайм, Флорида): эмблема гостей поверх хозяев */
 .kp-m.v1 .kp-logos.aw img:first-child{z-index:1}
+
+/* ---------- раскрытая линия матча: плашки рынков и таблицы ---------- */
+.kp-m.v .kp-pan{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start;padding:14px 0 2px!important;margin-top:12px}
+.kp-m.v1 .kp-pan{margin-left:16px}
+.kp-pan>div{display:grid;gap:12px;min-width:0}
+.kp-sec{background:rgba(5,11,24,.86);border:1px solid rgba(255,255,255,.14);border-radius:12px;overflow:hidden;min-width:0}
+.kp-sec h4{margin:0;padding:11px 14px;font:800 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:#eaf3ff;background:rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.12);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:none}
+.kp-tr{display:grid;grid-template-columns:minmax(0,1.15fr) repeat(var(--n),minmax(0,1fr));gap:6px;align-items:center;padding:5px 8px 5px 14px}
+.kp-tr.nl{grid-template-columns:repeat(var(--n),minmax(0,1fr));padding-left:8px}
+.kp-tr+.kp-tr{border-top:1px solid rgba(255,255,255,.07)}
+.kp-tr:nth-child(even):not(.kp-th){background:rgba(255,255,255,.025)}
+.kp-th{padding-top:9px;padding-bottom:7px;border-top:0!important}
+.kp-th>span{font:700 11.5px/1.1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kp-th>.kp-tl{text-align:left}
+.kp-tl{font:700 14.5px/1.2 var(--display);color:#eaf3ff;min-width:0}
+.kp-tl em{font:700 10px/1 var(--display);font-style:normal;letter-spacing:.05em;text-transform:uppercase;margin-left:8px;padding:3px 5px;border-radius:4px;background:rgba(255,255,255,.12);color:var(--ink-2);vertical-align:2px}
+.kp-m .kp-o.kp-c{min-height:46px;padding:5px 4px;gap:3px;border-radius:8px}
+.kp-m .kp-o.kp-c:not(.on){background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
+.kp-m .kp-o.kp-c:not(.on):hover{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.4)}
+.kp-c>span{display:flex;align-items:baseline;gap:6px}
+.kp-c b{font-size:16.5px}
+.kp-c i{font-size:12px}
+.kp-c small{font-size:11.5px}
+.e4 .kp-m.v1 .kp-pan,.e6 .kp-m.v1 .kp-pan,.e9 .kp-m.v1 .kp-pan{margin-left:0}
+@media (max-width:760px){
+  .kp-m.v .kp-pan{grid-template-columns:minmax(0,1fr);gap:10px}
+  .kp-m.v1 .kp-pan{margin-left:12px}
+  .kp-pan>div{gap:10px}
+  .kp-tr{padding-left:12px}
+  .kp-tl{font-size:13.5px}
+}
+/* раскрытая строка: крупные эмблемы не заходят под плашки рынков */
+.kp-m.v1.open .kp-logos{overflow:hidden;margin:-14px 0 0;height:108px;align-self:flex-start}
+@media (max-width:760px){.kp-m.v1.open .kp-logos{margin:0;height:84px}}

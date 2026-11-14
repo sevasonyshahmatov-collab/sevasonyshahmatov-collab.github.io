@@ -124,8 +124,10 @@ function cols(m){if(COLS[m.key])return COLS[m.key];
   return COLS[m.key]=[rgb(A1),rgb(B1),rgb(A1.map((v,i)=>Math.round((v+B1[i])/2)))]}
 
 /* ---------- рынки матча ---------- */
+/* Правило владельца 14.11: в НХЛ минимальный тотал матча, который дают взять, — 4,5 (больше или меньше); 3,5 не бывает. В КХЛ линия идёт с 3,5. */
+const totalLines=m=>m.lg==='nhl'?[4.5,5.5,6.5,7.5]:[3.5,4.5,5.5,6.5,7.5];
 function markets(m){
-  const L=LINES[m.key]||{},base=L.tot!=null&&L.tot%1!==0?+L.tot:5.5,tl=[3.5,4.5,5.5,6.5,7.5];
+  const L=LINES[m.key]||{},base=L.tot!=null&&L.tot%1!==0?+L.tot:5.5,tl=totalLines(m);
   const tot=l=>['t:o:'+l,'t:u:'+l];
   return {
     main:[{n:'Основное время',o:['r:1','r:x','r:2']},{n:'Победа с ОТ и буллитами',o:['w:1','w:2']},{n:'Тотал голов',o:tot(base)}],
@@ -201,6 +203,23 @@ function btn(m,id){const p=prob(m.key,[id]),lo=lineOdd(m.key,id),on=has(m.key,id
 function mkt(m,g){return '<div class="kp-mk"><h4>'+esc(g.n)+'</h4><div class="kp-os'+(g.c?' c'+g.c:' c'+g.o.length)+'">'+g.o.map(id=>btn(m,id)).join('')+'</div></div>'}
 const CHEV='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 /* компактные виды: на карточке только клубы и П1 · Х · П2, остальные события — по кнопке */
+/* раскрытая линия матча: рынки по плашкам, внутри — таблицы «линия · больше · меньше» (подпись линии один раз слева, в ячейке — шанс и кэф) */
+function cell(m,id,lab){const p=prob(m.key,[id]),lo=lineOdd(m.key,id),on=has(m.key,id),val=lo&&p*lo>=1.03;
+  return '<button type="button" class="kp-o kp-c'+(on?' on':'')+(val?' val':'')+'" data-k="'+esc(m.key)+'" data-o="'+id+'" aria-pressed="'+on+'"'+(p<=0?' disabled':'')+
+    ' title="'+esc(full(id,m))+'"><span>'+(lab?'<i>'+lab+'</i>':'')+'<b>'+fp(p)+'</b></span><small>'+(lo?'линия '+fk(lo):p>0?'≈ '+fk(Math.min(999,1/p)):'—')+'</small></button>'}
+function panel(m){const L=LINES[m.key]||{},base=L.tot!=null&&L.tot%1!==0?+L.tot:5.5;
+  const row=(lab,ids,labs)=>'<div class="kp-tr'+(lab===null?' nl':'')+'" style="--n:'+ids.length+'">'+(lab===null?'':'<span class="kp-tl">'+lab+'</span>')+ids.map((id,i)=>cell(m,id,labs&&labs[i])).join('')+'</div>';
+  const head=(lab,cols)=>'<div class="kp-tr kp-th'+(lab===null?' nl':'')+'" style="--n:'+cols.length+'">'+(lab===null?'':'<span class="kp-tl">'+lab+'</span>')+cols.map(c=>'<span>'+esc(c)+'</span>').join('')+'</div>';
+  const sec=(t,body)=>'<section class="kp-sec"><h4>'+esc(t)+'</h4>'+body+'</section>';
+  const ou=['Больше','Меньше'],it=t=>head('Линия',ou)+[1.5,2.5,3.5,4.5].map(l=>row(fl(l),['it:'+t+':o:'+l,'it:'+t+':u:'+l])).join('');
+  return '<div class="kp-all kp-pan"><div>'+
+    sec('Исход матча',row('Победа с ОТ и буллитами',['w:1','w:2'],['П1','П2'])+row('Двойной шанс',['dc:1x','dc:12','dc:x2'],['1Х','12','Х2']))+
+    sec('Тотал матча',head('Линия',ou)+totalLines(m).map(l=>row(fl(l)+(l===base?'<em>осн.</em>':''),['t:o:'+l,'t:u:'+l])).join(''))+
+    sec('Ещё',head('',['Да','Нет'])+row('Обе забьют',['b:y','b:n'])+row('Овертайм',['ot:y','ot:n'])+head('',['Чёт','Нечет'])+row('Тотал матча',['eo:e','eo:o']))+
+    '</div><div>'+
+    sec('Фора',head(null,[m.hn,m.an])+[[-2.5,2.5],[-1.5,1.5],[1.5,-1.5],[2.5,-2.5]].map(([a,b])=>row(null,['f:1:'+a,'f:2:'+b],[fs(a),fs(b)])).join(''))+
+    sec('Голы: '+m.hn,it(1))+sec('Голы: '+m.an,it(2))+
+    '</div></div>'}
 function card2(m){const mk=markets(m),open=!!S.open[m.key],legs=S.legs.filter(l=>l.k===m.key),hid=legs.filter(l=>l.o.slice(0,2)!=='r:').length,L=S.look;
   const c=cols(m),tm=(id,n)=>'<div class="kp-t">'+emb(id)+'<b>'+esc(n)+'</b></div>';
   const more='<button type="button" class="kp-more" data-more="'+esc(m.key)+'" aria-expanded="'+open+'" title="'+(open?'Свернуть':'Все события матча')+'"><span>'+(open?'Свернуть':'Все события')+'</span>'+(hid&&!open?'<em>'+hid+'</em>':'')+CHEV+'</button>';
@@ -209,7 +228,7 @@ function card2(m){const mk=markets(m),open=!!S.open[m.key],legs=S.legs.filter(l=
   if(L===1||L>=4)return '<article class="kp-m v v1'+(L>=4?' v'+L+(L===8?' v6':''):'')+(legs.length?' has':'')+(open?' open':'')+'" data-key="'+esc(m.key)+'" style="--h1:'+c[0]+';--h2:'+c[1]+';--hm:'+c[2]+'">'+
     '<div class="kp-hd"><div class="kp-logos'+(FACE_LEFT[m.a]?' aw':'')+'" aria-hidden="true">'+big(m.a)+big(m.h)+'</div><div class="kp-tms"><b>'+emb(m.h)+esc(m.hn)+'</b><b>'+emb(m.a)+esc(m.an)+'</b></div><div class="kp-when"><time>'+hm(m)+'</time><span class="kp-lg">'+LG[m.lg]+'</span></div></div>'+
     '<div class="kp-os c3 kp-x3">'+mk.main[0].o.map(id=>btn(m,id)).join('')+'</div>'+more+
-    (open?'<div class="kp-all">'+mk.main.slice(1).concat(mk.more).map(g=>mkt(m,Object.assign({c:2},g))).join('')+'</div>':'')+'</article>';
+    (open?panel(m):'')+'</article>';
   const head=L===2?
     '<div class="kp-hd"><div class="kp-when"><span class="kp-lg">'+LG[m.lg]+'</span><time>'+hm(m)+' <small>МСК</small></time></div><div class="kp-duo">'+tm(m.h,m.hn)+'<s>—</s>'+tm(m.a,m.an)+'</div></div>':
     '<div class="kp-hd"><div class="kp-when"><time>'+hm(m)+'</time><span class="kp-lg">'+LG[m.lg]+'</span></div><div class="kp-tms">'+tm(m.h,m.hn)+tm(m.a,m.an)+'</div></div>';
