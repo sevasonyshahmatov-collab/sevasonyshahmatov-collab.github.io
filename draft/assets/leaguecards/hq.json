@@ -1,78 +1,41 @@
 {
- "cut": {
-  "nhl-makar": {
-   "t": "File:Gourde makar during October 22, 2024 Colorado Avalanche at Seattle Kraken game (54091511706).jpg",
-   "box": [
-    0.06,
-    0.1,
-    0.52,
-    1
-   ]
-  },
-  "nhl-ovechkin": {
-   "t": "File:Alexander Ovechkin in 2026.jpg",
-   "box": [
-    0,
-    0.06,
-    1,
-    1
-   ]
-  },
-  "nhl-ovi2": {
-   "t": "File:Ovi2026.jpg",
-   "box": [
-    0,
-    0,
-    1,
-    1
-   ]
-  },
-  "nhl-malkin": {
-   "t": "File:Evgeni Malkin 2018-03-03 1.jpg",
-   "box": [
-    0,
-    0.02,
-    1,
-    1
-   ]
-  },
-  "nhl-malkin2": {
-   "t": "File:Evgeni Malkin 2016-04-28 2.JPG",
-   "box": [
-    0.18,
-    0.03,
-    0.82,
-    1
-   ]
-  },
-  "mcd-evans": {
-   "t": "File:Evans mcdavid 10 2 (53232495354).jpg",
-   "box": [
-    0.47,
-    0.04,
-    0.8,
-    1
+ "discover": {
+  "khlpl": {
+   "cats": [],
+   "qs": [
+    "SKA Saint Petersburg player",
+    "CSKA Moscow hockey player",
+    "Ak Bars Kazan player",
+    "Avangard Omsk player",
+    "Metallurg Magnitogorsk player",
+    "Dynamo Moscow hockey player",
+    "Traktor Chelyabinsk player",
+    "Lokomotiv Yaroslavl player",
+    "Spartak Moscow hockey player",
+    "Salavat Yulaev player",
+    "Sibir Novosibirsk player",
+    "Torpedo Nizhny Novgorod player",
+    "Severstal Cherepovets player",
+    "Avtomobilist player",
+    "Neftekhimik player",
+    "Barys Astana player",
+    "Dinamo Minsk player",
+    "Amur Khabarovsk player",
+    "Admiral Vladivostok player",
+    "Kunlun Red Star player",
+    "KHL game player",
+    "KHL hockey 2023",
+    "KHL hockey 2024",
+    "KHL hockey 2025",
+    "Kontinental Hockey League",
+    "Gagarin Cup",
+    "КХЛ хоккеист",
+    "хоккеист КХЛ матч"
    ],
-   "savecrop": 1
-  },
-  "mcd-skate": {
-   "t": "File:Connor McDavid of the Edmonton Oilers.jpg",
-   "box": [
-    0.22,
-    0.22,
-    0.68,
-    0.98
-   ]
-  },
-  "khl-face": {
-   "t": "File:Andrei Nikitenko wins face off.jpg",
-   "box": [
-    0.3,
-    0.12,
-    0.62,
-    1
-   ],
-   "savecrop": 1
+   "min": 2200,
+   "filter": "KHL|КХЛ|SKA|СКА|CSKA|ЦСКА|Lokomotiv|Локомотив|Ak Bars|Ак Барс|Avangard|Авангард|Metallurg|Металлург|Dynamo|Dinamo|Динамо|Traktor|Трактор|Spartak|Спартак|Torpedo|Торпедо|Sibir|Сибирь|Salavat|Салават|Barys|Барыс|Severstal|Северсталь|Neftekhimik|Нефтехимик|Avtomobilist|Автомобилист|Amur|Амур|Admiral|Адмирал|Kunlun|Lada|Лада|Gagarin Cup|Кубок Гагарина",
+   "maxt": 700,
+   "max": 144
   }
  }
 }

@@ -114,9 +114,9 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
 
 <section class="sec" id="leagues" data-zone="p2">
   <div class="wrap">
-    <div class="sec-head" data-rv><h2>Лиги и клубы</h2></div>
+    <h2 class="sr-only">Лиги и клубы</h2>  <!-- заголовок убран по просьбе владельца 14.11, оставлен для экранного диктора -->
     <div class="lc-deck" id="lcdeck" data-rv></div>
-    <p class="lc-credit" id="lccredit">Фото НХЛ (Кейл Макар): <a href="https://commons.wikimedia.org/wiki/File:Gourde_makar_during_October_22,_2024_Colorado_Avalanche_at_Seattle_Kraken_game_(54091511706).jpg" target="_blank" rel="noopener">Jenn G from Seattle, WA, CC BY-SA 2.0</a>, Wikimedia Commons; фон удалён.</p>
+    <p class="lc-credit" id="lccredit">Фото НХЛ (Евгений Малкин): <a href="https://commons.wikimedia.org/wiki/File:Evgeni_Malkin_2018-03-03_1.jpg" target="_blank" rel="noopener">Michael Miller, CC BY-SA 4.0</a>, Wikimedia Commons; фон удалён.</p>
   </div>
 </section>
 
@@ -222,7 +222,7 @@ const chev='<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-wi
 
 /* карточка на табло: ближайшие матчи — эмблемы, исход, который модель считает самым вероятным, линия и ожидаемые голы.
    Без табло split-flap: обычные табличные цифры, секунда сменяется лёгким сдвигом. */
-const picks=(D.filter(m=>JV.left(m.t)>0&&m.md).length?D.filter(m=>JV.left(m.t)>0&&m.md):D).slice(0,5);
+const picks=(D.filter(m=>JV.left(m.t)>0&&m.md).length?D.filter(m=>JV.left(m.t)>0&&m.md):D).slice(0,6);  /* 6 — чётное число (владелец 14.11) */
 window.__heroPicks=picks; /* для афиши (assets/hero3/hero3.js): два следующих матча */
 const mcard=document.getElementById('mcard'),cdv=document.getElementById('cdv');
 const lvl=p=>p>=.45?'hi':p>=.38?'mid':'lo';
@@ -326,7 +326,7 @@ function row(m){const L=LG[m.lg];
   <span class="chev">${chev}</span></button>
   <div class="mbody"><div>${''}</div></div></li>`}
 /* ближайшие 5, остальные — по кнопке «Показать все N матчей» (задание 14.11, п. 4) */
-const LIM=5;let shownN=LIM,curL='all';const moreB=document.getElementById('moreM');
+const LIM=6;let shownN=LIM,curL='all';const moreB=document.getElementById('moreM');
 moreB.addEventListener('click',()=>{shownN=1e9;render(curL,true)});
 function render(l,more){if(!more)shownN=LIM;curL=l;const sel=(l==='all'?D:D.filter(m=>m.lg===l)).slice(0,shownN),all=(l==='all'?D:D.filter(m=>m.lg===l)).length;
  moreB.hidden=all<=shownN;moreB.textContent=`Показать все ${all} ${plural(all,'матч','матча','матчей')}`;
@@ -347,8 +347,8 @@ render('all');setInterval(tick,1000);
 
 /* лиги и клубы: две коллекционные карточки (assets/leaguecards), на обороте — эмблемы клубов */
 const TQ=(t=>/^(arena|a|b|c)$/.test(t||'')?'&theme='+t:'')(new URLSearchParams(location.search).get('theme'));
-/* черновик 14.11: КХЛ — эмблема крупнее (свободных фото игроков «Локомотива» нет), НХЛ — Макар; выбор владельца — vote/leaguecards.html */
-const LCP={khl:{photo:null,photoCls:'big',club:'../assets/em/lokomotiv.webp',cols:8},nhl:{photo:'../assets/leaguecards/var/nhl-makar.webp',photoCls:'',club:'../assets/em/nhl_col.webp',cols:8}};
+/* черновик 14.11: КХЛ — эмблема крупнее (свободных фото игроков «Локомотива» нет), НХЛ — Малкин (выбор владельца 14.11: НХЛ-2) */
+const LCP={khl:{photo:null,photoCls:'big',club:'../assets/em/lokomotiv.webp',cols:8},nhl:{photo:'../assets/leaguecards/var/nhl-malkin.webp',photoCls:'',club:'../assets/em/nhl_pit.webp',cols:8}};
 LeagueCards.mount(document.getElementById('lcdeck'),Object.entries(LG).map(([id,l])=>{const n=cnt(id),list=id==='khl'?KHL_CLUBS:NHL_CLUBS;
  return {id,name:l.name,cnt:`${n} ${plural(n,'матч','матча','матчей')} в ближайшие дни`,href:`league.html?lg=${id}${TQ}`,logo:LGI(id),...LCP[id],
   pl:k=>plural(k,'клуб','клуба','клубов'),clubs:list.map(([cn,slug])=>({n:cn,src:`../assets/em/s/${slug}.webp`,href:`../team/index.html?id=${slug}${TQ}`}))}}));
