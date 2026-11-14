@@ -334,3 +334,6 @@
   .kp-m.v2 .kp-t b{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .kp-m.v2 .kp-when time{font-size:17px}
 }
+
+/* белая рамка у строк матчей (владелец 14.11); у строки с выбранным событием — жёлтая */
+.kp-list .kp-m.v1:not(.has){border-color:rgba(255,255,255,.9)}
