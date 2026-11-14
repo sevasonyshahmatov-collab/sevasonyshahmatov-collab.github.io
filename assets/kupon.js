@@ -147,8 +147,8 @@ const BY={};T.matches.forEach(m=>BY[m.key]=m);
 const S={legs:[],odds:{},stake:'1000',mode:'x',lg:'',day:'',open:{},sheet:false,look:0};
 /* варианты оформления списка матчей (выбор владельца): 0 — подробные плашки, 1 — строки, 2 — плитки, 3 — спокойный */
 const LOOKS=['Подробный','Строки','Плитки','Спокойный','Цвет слева','Приглушённый','Цвет при выборе','По группам','Группы + цвет при выборе'];
-const EMBS=['Внахлёст','Лицом к лицу','С наклоном','Крупно, с обрезкой','Фоном'];S.emb=0;
-try{const v=new URLSearchParams(location.search).get('emb')||localStorage.getItem('jv_kupon_emb');if(/^[0-4]$/.test(v||''))S.emb=+v}catch(e){}
+const EMBS=['Внахлёст','Лицом к лицу','С наклоном','Крупно, с обрезкой','Фоном','В кругах','Столкновение','По краям строки','Ступенькой','В столбик'];S.emb=0;
+try{const v=new URLSearchParams(location.search).get('emb')||localStorage.getItem('jv_kupon_emb');if(/^[0-9]$/.test(v||''))S.emb=+v}catch(e){}
 try{const q=new URLSearchParams(location.search).get('look'),v=q!==null?q:localStorage.getItem('jv_kupon_look');if(/^[0-8]$/.test(v||''))S.look=+v}catch(e){}
 function load(src){try{
   const d=typeof src==='string'?JSON.parse(src):src;if(!d)return;

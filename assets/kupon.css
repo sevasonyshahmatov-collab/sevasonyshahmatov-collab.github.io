@@ -385,3 +385,69 @@
   .e4 .kp-m.v1 .kp-logos img:first-child{left:120px}
   .e4 .kp-m.v1 .kp-x3{margin-left:0}
 }
+
+/* 5 — в кругах: эмблемы на светлых кругах, как на карточках «Выбрать матч» */
+.e5 .kp-m.v1 .kp-logos{width:184px;margin:0}
+.e5 .kp-m.v1 .kp-logos img{width:86px;height:86px;box-sizing:border-box;padding:13px;border-radius:50%;background:#eef3fa;filter:none;box-shadow:0 6px 16px rgba(0,0,0,.45),0 0 0 3px rgba(7,18,37,.9)}
+.e5 .kp-m.v1 .kp-logos img:last-child{left:16px}
+.e5 .kp-m.v1 .kp-logos img:first-child{left:88px}
+/* 6 — столкновение: названия по краям, эмблемы сходятся в центре */
+.e6 .kp-m.v1{padding-left:16px}
+.e6 .kp-m.v1 .kp-logos,.e6 .kp-m.v1 .kp-tms{display:contents}
+.e6 .kp-m.v1 .kp-hd{gap:0}
+.e6 .kp-m.v1 .kp-tms b{flex:1 1 0;min-width:0}
+.e6 .kp-m.v1 .kp-tms b:first-child{order:0;text-align:right;padding-right:10px}
+.e6 .kp-m.v1 .kp-logos img{position:static;transform:none;flex:none;width:112px;height:112px;margin:-12px 0}
+.e6 .kp-m.v1 .kp-logos img:last-child{order:1;position:relative;top:auto;left:auto;z-index:1}
+.e6 .kp-m.v1 .kp-logos img:first-child{order:2;margin-left:-26px}
+.e6 .kp-m.v1 .kp-tms b:last-child{order:3;padding-left:10px}
+.e6 .kp-m.v1 .kp-when{order:4}
+.e6 .kp-m.v1.open .kp-hd{align-self:start;height:92px}
+.e6 .kp-m.v1 .kp-all{padding-left:0}
+/* 7 — по краям строки: хозяева наполовину за левым краем, гости — за правым */
+.e7 .kp-m.v1{padding-right:104px}
+.e7 .kp-m.v1>.kp-hd{position:static;padding-left:128px}
+.e7 .kp-m.v1 .kp-logos{position:absolute;left:0;right:0;top:0;height:92px;width:auto;margin:0;z-index:0}
+.e7 .kp-m.v1.open .kp-logos{height:92px}
+.e7 .kp-m.v1 .kp-logos img{width:156px;height:156px}
+.e7 .kp-m.v1 .kp-logos img:last-child{left:-46px}
+.e7 .kp-m.v1 .kp-logos img:first-child{left:auto;right:-50px}
+.e7 .kp-m.v1 .kp-all{margin-right:-88px}
+/* 8 — ступенькой: хозяева выше, гости ниже */
+.e8 .kp-m.v1 .kp-logos{width:176px}
+.e8 .kp-m.v1 .kp-logos img{width:104px;height:104px}
+.e8 .kp-m.v1 .kp-logos img:last-child{left:2px;top:30%}
+.e8 .kp-m.v1 .kp-logos img:first-child{left:72px;top:70%}
+/* 9 — в столбик: небольшие эмблемы у названий, как в таблице */
+.e9 .kp-m.v1{padding-left:18px;min-height:0}
+.e9 .kp-m.v1 .kp-logos{display:none}
+.e9 .kp-m.v1 .kp-tms{gap:6px}
+.e9 .kp-m.v1 .kp-tms .kp-em{display:inline-block;vertical-align:middle;margin-right:14px;width:40px;height:40px}
+.e9 .kp-m.v1 .kp-all{padding-left:0}
+@media (max-width:760px){
+  .e5 .kp-m.v1 .kp-logos{width:150px;height:84px}
+  .e5 .kp-m.v1 .kp-logos img{width:68px;height:68px;padding:10px}
+  .e5 .kp-m.v1 .kp-logos img:last-child{left:12px}
+  .e5 .kp-m.v1 .kp-logos img:first-child{left:68px}
+  .e6 .kp-m.v1{padding-left:12px}
+  .e6 .kp-m.v1 .kp-logos img{width:84px;height:84px;margin:0}
+  .e6 .kp-m.v1 .kp-logos img:first-child{margin-left:-20px}
+  .e6 .kp-m.v1 .kp-tms b{font-size:14.5px;padding:0 4px!important}
+  .e6 .kp-m.v1 .kp-x3{margin-left:0}
+  .e7 .kp-m.v1{padding-right:12px}
+  .e7 .kp-m.v1>.kp-hd{padding:0 84px;justify-content:center}
+  .e7 .kp-m.v1 .kp-tms{justify-items:center;text-align:center}
+  .e7 .kp-m.v1 .kp-logos{height:84px}
+  .e7 .kp-m.v1 .kp-logos img{width:124px;height:124px}
+  .e7 .kp-m.v1 .kp-logos img:last-child{left:-40px}
+  .e7 .kp-m.v1 .kp-logos img:first-child{right:-40px}
+  .e7 .kp-m.v1 .kp-all{margin-right:0}
+  .e8 .kp-m.v1 .kp-logos{width:136px}
+  .e8 .kp-m.v1 .kp-logos img{width:84px;height:84px}
+  .e8 .kp-m.v1 .kp-logos img:last-child{left:0;top:34%}
+  .e8 .kp-m.v1 .kp-logos img:first-child{left:52px;top:66%}
+  .e9 .kp-m.v1{padding:12px}
+  .e9 .kp-m.v1 .kp-hd{height:auto;margin-bottom:10px}
+  .e9 .kp-m.v1 .kp-x3{margin-left:0}
+  .e9 .kp-m.v1 .kp-tms .kp-em{width:32px;height:32px;margin-right:10px}
+}
