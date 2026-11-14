@@ -230,6 +230,24 @@
 .kp-m.v1 .kp-more span{display:none}
 .kp-m.v1 .kp-more{padding:0 13px;align-self:stretch;margin:2px 0}
 
+/* 4 — строки, цвет клубов только слева под эмблемами: правая часть у всех строк одинаково тёмная, цифры на спокойном фоне */
+.l4 .kp-set{gap:8px}
+.kp-m.v4{border-color:var(--rule-2);background:linear-gradient(90deg,var(--h1) 0,var(--hm) 13%,var(--h2) 24%,rgba(15,29,56,0) 50%) 0 0/100% 92px no-repeat,var(--card)}
+.kp-m.v4::before,.kp-m.v4::after{bottom:auto;height:92px;-webkit-mask-image:linear-gradient(90deg,#000 0,#000 22%,transparent 48%);mask-image:linear-gradient(90deg,#000 0,#000 22%,transparent 48%)}
+.kp-m.v4.has{border-color:var(--acc)}
+.kp-m.v4 .kp-o:not(.on){background:var(--paper);border-color:var(--rule-2)}
+.kp-m.v4 .kp-o:not(.on):hover{background:var(--paper-2);border-color:var(--ink-3)}
+.kp-m.v4 .kp-o:not(.on) i,.kp-m.v4 .kp-o:not(.on) small{color:var(--ink-2)}
+.kp-m.v4 .kp-o.val:not(.on) small{color:var(--acc)}
+.kp-m.v4 .kp-more{background:var(--paper);border-color:var(--rule-2)}
+.kp-m.v4 .kp-lg{background:var(--paper-3)}
+.kp-m.v4 .kp-all{border-color:var(--rule)}
+.kp-m.v4 .kp-mk h4{color:var(--ink-3);text-shadow:none}
+@media (max-width:760px){
+  .kp-m.v4{background:linear-gradient(90deg,var(--h1) 0,var(--hm) 22%,var(--h2) 40%,rgba(15,29,56,0) 72%) 0 0/100% 84px no-repeat,var(--card)}
+  .kp-m.v4::before,.kp-m.v4::after{bottom:auto;height:84px;-webkit-mask-image:linear-gradient(90deg,#000 0,#000 36%,transparent 70%);mask-image:linear-gradient(90deg,#000 0,#000 36%,transparent 70%)}
+}
+
 /* 3 — спокойный: тёмная плашка, цвет клубов только полосой слева, на кнопке одна цифра */
 .kp-m.v3{background:var(--card);border-color:var(--rule);padding-left:22px}
 .kp-m.v3::before{mix-blend-mode:normal;right:auto;width:6px;background:linear-gradient(180deg,var(--h1),var(--h2))}
