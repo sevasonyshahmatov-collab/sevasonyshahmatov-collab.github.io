@@ -337,3 +337,51 @@
 
 /* белая рамка у строк матчей (владелец 14.11); у строки с выбранным событием — жёлтая */
 .kp-list .kp-m.v1:not(.has){border-color:rgba(255,255,255,.9)}
+
+/* ---------- расположение эмблем в строках (переключатель «Эмблемы») ---------- */
+.kp-m.v1 .kp-tms .kp-em{display:none}
+.kp-looks+.kp-looks{margin-left:auto}
+/* 1 — лицом к лицу: эмблемы по обе стороны от названий */
+.e1 .kp-m.v1 .kp-logos{display:contents}
+.e1 .kp-m.v1 .kp-logos img{position:static;transform:none;flex:none;width:116px;height:116px;margin:-14px 0}
+.e1 .kp-m.v1 .kp-logos img:last-child{order:0;margin-left:-16px}
+.e1 .kp-m.v1 .kp-tms{order:1;justify-items:center;text-align:center}
+.e1 .kp-m.v1 .kp-tms b{max-width:100%}
+.e1 .kp-m.v1 .kp-logos img:first-child{order:2}
+.e1 .kp-m.v1 .kp-when{order:3}
+.e1 .kp-m.v1.open .kp-hd{align-self:start;height:92px}
+/* 2 — с наклоном: эмблемы внахлёст, развёрнуты друг к другу */
+.e2 .kp-m.v1 .kp-logos{width:196px}
+.e2 .kp-m.v1 .kp-logos img:last-child{transform:translateY(-50%) rotate(-12deg);left:-6px}
+.e2 .kp-m.v1 .kp-logos img:first-child{transform:translateY(-46%) rotate(12deg);left:84px}
+/* 3 — крупно, с обрезкой: эмблемы больше строки, хозяева уходят за левый край */
+.e3 .kp-m.v1 .kp-logos{width:252px}
+.e3 .kp-m.v1 .kp-logos img{width:176px;height:176px}
+.e3 .kp-m.v1 .kp-logos img:last-child{left:-52px}
+.e3 .kp-m.v1 .kp-logos img:first-child{left:78px}
+/* 4 — фоном: огромные полупрозрачные эмблемы под названиями, рядом с названиями — маленькие чёткие */
+.e4 .kp-m.v1{padding-left:16px}
+.e4 .kp-m.v1 .kp-logos{position:absolute;left:-16px;top:0;bottom:0;right:0;width:auto;margin:-14px 0;opacity:.2;-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent);mask-image:linear-gradient(90deg,#000 55%,transparent)}
+.e4 .kp-m.v1 .kp-logos img{width:230px;height:230px;filter:none}
+.e4 .kp-m.v1 .kp-logos img:last-child{left:-30px}
+.e4 .kp-m.v1 .kp-logos img:first-child{left:170px}
+.e4 .kp-m.v1 .kp-tms .kp-em{display:inline-block;vertical-align:middle;margin-right:12px;width:34px;height:34px}
+.e4 .kp-m.v1 .kp-all{padding-left:0}
+@media (max-width:760px){
+  .kp-looks+.kp-looks{margin-left:0}
+  .e1 .kp-m.v1 .kp-logos img{width:96px;height:96px;margin:0}
+  .e1 .kp-m.v1 .kp-logos img:last-child{margin-left:-14px}
+  .e1 .kp-m.v1 .kp-logos img:first-child{margin-right:-14px}
+  .e1 .kp-m.v1 .kp-tms b{font-size:15px}
+  .e2 .kp-m.v1 .kp-logos{width:148px}
+  .e2 .kp-m.v1 .kp-logos img:first-child{left:58px}
+  .e3 .kp-m.v1 .kp-logos{width:170px}
+  .e3 .kp-m.v1 .kp-logos img{width:140px;height:140px}
+  .e3 .kp-m.v1 .kp-logos img:last-child{left:-44px}
+  .e3 .kp-m.v1 .kp-logos img:first-child{left:50px}
+  .e4 .kp-m.v1{padding-left:12px}
+  .e4 .kp-m.v1 .kp-logos{left:-12px;height:auto;margin:0}
+  .e4 .kp-m.v1 .kp-logos img{width:170px;height:170px}
+  .e4 .kp-m.v1 .kp-logos img:first-child{left:120px}
+  .e4 .kp-m.v1 .kp-x3{margin-left:0}
+}

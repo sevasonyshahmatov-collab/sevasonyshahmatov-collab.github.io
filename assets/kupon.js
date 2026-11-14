@@ -147,6 +147,8 @@ const BY={};T.matches.forEach(m=>BY[m.key]=m);
 const S={legs:[],odds:{},stake:'1000',mode:'x',lg:'',day:'',open:{},sheet:false,look:0};
 /* варианты оформления списка матчей (выбор владельца): 0 — подробные плашки, 1 — строки, 2 — плитки, 3 — спокойный */
 const LOOKS=['Подробный','Строки','Плитки','Спокойный','Цвет слева','Приглушённый','Цвет при выборе','По группам','Группы + цвет при выборе'];
+const EMBS=['Внахлёст','Лицом к лицу','С наклоном','Крупно, с обрезкой','Фоном'];S.emb=0;
+try{const v=new URLSearchParams(location.search).get('emb')||localStorage.getItem('jv_kupon_emb');if(/^[0-4]$/.test(v||''))S.emb=+v}catch(e){}
 try{const q=new URLSearchParams(location.search).get('look'),v=q!==null?q:localStorage.getItem('jv_kupon_look');if(/^[0-8]$/.test(v||''))S.look=+v}catch(e){}
 function load(src){try{
   const d=typeof src==='string'?JSON.parse(src):src;if(!d)return;
@@ -200,7 +202,7 @@ function card2(m){const mk=markets(m),open=!!S.open[m.key],legs=S.legs.filter(l=
   /* строки: крупные эмблемы во всю высоту строки, внахлёст, обрезаются краем плашки; у названий эмблемы не повторяем */
   const big=id=>'<img src="../assets/em/'+esc(id)+'.webp" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">';
   if(L===1||L>=4)return '<article class="kp-m v v1'+(L>=4?' v'+L+(L===8?' v6':''):'')+(legs.length?' has':'')+(open?' open':'')+'" data-key="'+esc(m.key)+'" style="--h1:'+c[0]+';--h2:'+c[1]+';--hm:'+c[2]+'">'+
-    '<div class="kp-hd"><div class="kp-logos" aria-hidden="true">'+big(m.a)+big(m.h)+'</div><div class="kp-tms"><b>'+esc(m.hn)+'</b><b>'+esc(m.an)+'</b></div><div class="kp-when"><time>'+hm(m)+'</time><span class="kp-lg">'+LG[m.lg]+'</span></div></div>'+
+    '<div class="kp-hd"><div class="kp-logos" aria-hidden="true">'+big(m.a)+big(m.h)+'</div><div class="kp-tms"><b>'+emb(m.h)+esc(m.hn)+'</b><b>'+emb(m.a)+esc(m.an)+'</b></div><div class="kp-when"><time>'+hm(m)+'</time><span class="kp-lg">'+LG[m.lg]+'</span></div></div>'+
     '<div class="kp-os c3 kp-x3">'+mk.main[0].o.map(id=>btn(m,id)).join('')+'</div>'+more+
     (open?'<div class="kp-all">'+mk.main.slice(1).concat(mk.more).map(g=>mkt(m,Object.assign({c:2},g))).join('')+'</div>':'')+'</article>';
   const head=L===2?
@@ -233,7 +235,8 @@ function paintList(){
     if(S.look>=7){const g=LG[m.lg]+' · начало в '+hm(m);if(g!==grp){grp=g;h+='<h4 class="kp-grp">'+g+' МСК</h4>'}}
     h+=card(m)});
   if(cur)h+='</div>';
-  $('kp-list').className='kp-list l'+S.look;
+  $('kp-list').className='kp-list l'+S.look+' e'+S.emb;
+  if(S.look===1||S.look>=4)$('kp-filt').insertAdjacentHTML('beforeend','<div class="kp-looks"><span>Эмблемы:</span>'+EMBS.map((n,i)=>'<button type="button" data-emb="'+i+'" aria-pressed="'+(S.emb===i)+'">'+n+'</button>').join('')+'</div>');
   $('kp-filt').insertAdjacentHTML('beforeend','<div class="kp-looks"><span>Вид:</span>'+LOOKS.map((n,i)=>'<button type="button" data-look="'+i+'" aria-pressed="'+(S.look===i)+'">'+n+'</button>').join('')+'</div>');
   $('kp-list').innerHTML=h||'<p class="kp-empty">'+(all.length?'По этому фильтру матчей нет.':'Ближайшие матчи уже начались. Новые появятся после обновления данных — обычно утром и днём.')+'</p>';
   $('kp-auto').hidden=!all.length;
@@ -346,6 +349,7 @@ document.addEventListener('click',e=>{
   if(d.o&&d.k){toggle(d.k,d.o);return}
   if(d.more){S.open[d.more]=!S.open[d.more];paintList();return}
   if('look' in d){S.look=+d.look;try{localStorage.setItem('jv_kupon_look',d.look)}catch(x){}paintList();return}
+  if('emb' in d){S.emb=+d.emb;try{localStorage.setItem('jv_kupon_emb',d.emb)}catch(x){}paintList();return}
   if('lg' in d){S.lg=d.lg;paintList();return}
   if('day' in d){S.day=d.day;paintList();return}
   if(d.auto){auto(+d.auto);return}
