@@ -451,3 +451,6 @@
   .e9 .kp-m.v1 .kp-x3{margin-left:0}
   .e9 .kp-m.v1 .kp-tms .kp-em{width:32px;height:32px;margin-right:10px}
 }
+
+/* гости с эмблемой-лицом, смотрящим влево (Чикаго, Миннесота, Анахайм, Флорида): эмблема гостей поверх хозяев */
+.kp-m.v1 .kp-logos.aw img:first-child{z-index:1}
