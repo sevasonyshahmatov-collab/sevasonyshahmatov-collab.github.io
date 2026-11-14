@@ -101,12 +101,30 @@ function lineOdd(key,id){const L=LINES[key];if(!L)return null;const a=id.split('
   else if(a[0]==='t'&&L.tot!=null&&+a[2]===+L.tot&&L.tot%1!==0)v=a[1]==='o'?L.over:L.under;
   return typeof v==='number'&&v>1?v:null}
 
+/* ---------- фон карточки: цвета клубов, как у карточек «Выбрать матч» (assets/deck.js pickPair) ---------- */
+const hex2rgb=h=>{h=String(h).replace('#','');if(h.length===3)h=h.replace(/./g,'$&$&');const n=parseInt(h,16);return isNaN(n)||h.length!==6?null:[n>>16&255,n>>8&255,n&255]};
+function rgb2hsl(r,g,b){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b),l=(mx+mn)/2;let h=0,s=0;
+  if(mx!==mn){const d=mx-mn;s=l>.5?d/(2-mx-mn):d/(mx+mn);h=mx===r?(g-b)/d+(g<b?6:0):mx===g?(b-r)/d+2:(r-g)/d+4;h*=60}return [h,s,l]}
+const hsl2css=(h,s,l)=>'hsl('+(((h%360)+360)%360).toFixed(0)+' '+(s*100).toFixed(0)+'% '+(l*100).toFixed(0)+'%)';
+const hueD=(a,b)=>{const d=Math.abs(a-b)%360;return d>180?360-d:d};
+const cands=id=>((window.JV_CLUBS||{})[id]||[]).map(hex2rgb).filter(Boolean).map(c=>rgb2hsl(c[0],c[1],c[2]));
+const cnorm=([h,s,l])=>[h,Math.min(.85,Math.max(.55,s)),Math.min(.40,Math.max(.30,l))];
+const cscore=([h,s,l])=>s>=.25&&l>.1&&l<.93?s*(1-Math.abs(l-.42)):-1;
+const COLS={};
+function cols(m){if(COLS[m.key])return COLS[m.key];
+  const A=cands(m.h).sort((x,y)=>cscore(y)-cscore(x)),B=cands(m.a).sort((x,y)=>cscore(y)-cscore(x));
+  let a=A[0]&&cscore(A[0])>0?A[0]:[218,.3,.34],b=B[0]&&cscore(B[0])>0?B[0]:[222,.3,.26];
+  if(hueD(a[0],b[0])<32&&Math.abs(a[2]-b[2])<.2){const alt=B.find(c=>cscore(c)>0&&hueD(a[0],c[0])>=40);b=alt||[b[0]+34,b[1],b[2]+.1]}
+  a=cnorm(a);b=cnorm(b);
+  if(Math.abs(a[2]-b[2])<.05&&hueD(a[0],b[0])<50){a[2]=Math.max(.28,a[2]-.04);b[2]=Math.min(.42,b[2]+.05)}
+  return COLS[m.key]=[hsl2css(a[0],a[1],a[2]),hsl2css(b[0],b[1],b[2])]}
+
 /* ---------- рынки матча ---------- */
 function markets(m){
   const L=LINES[m.key]||{},base=L.tot!=null&&L.tot%1!==0?+L.tot:5.5,tl=[3.5,4.5,5.5,6.5,7.5];
   const tot=l=>['t:o:'+l,'t:u:'+l];
   return {
-    main:[{n:'Основное время',o:['r:1','r:x','r:2']},{n:'Победа в матче, с ОТ и буллитами',o:['w:1','w:2']},{n:'Тотал голов',o:tot(base)}],
+    main:[{n:'Основное время',o:['r:1','r:x','r:2']},{n:'Победа с ОТ и буллитами',o:['w:1','w:2']},{n:'Тотал голов',o:tot(base)}],
     more:[
       {n:'Двойной шанс',o:['dc:1x','dc:12','dc:x2']},
       {n:'Тотал голов, другие линии',o:tl.filter(l=>l!==base).flatMap(tot),c:2},
@@ -168,7 +186,7 @@ function btn(m,id){const p=prob(m.key,[id]),lo=lineOdd(m.key,id),on=has(m.key,id
     ' title="'+esc(full(id,m))+'"><i>'+short(id)+'</i><b>'+fp(p)+'</b><small>'+(lo?'линия '+fk(lo):p>0?'≈ '+fk(Math.min(999,1/p)):'—')+'</small></button>'}
 function mkt(m,g){return '<div class="kp-mk"><h4>'+esc(g.n)+'</h4><div class="kp-os'+(g.c?' c'+g.c:' c'+g.o.length)+'">'+g.o.map(id=>btn(m,id)).join('')+'</div></div>'}
 function card(m){const mk=markets(m),open=!!S.open[m.key],cnt=S.legs.filter(l=>l.k===m.key).length,mod=MODEL[m.key];
-  return '<article class="kp-m'+(cnt?' has':'')+'" data-key="'+esc(m.key)+'">'+
+  return '<article class="kp-m'+(cnt?' has':'')+'" data-key="'+esc(m.key)+'" style="--h1:'+cols(m)[0]+';--h2:'+cols(m)[1]+'">'+
     '<header><span class="kp-lg">'+LG[m.lg]+'</span><time>'+hm(m)+' <small>МСК</small></time>'+
       '<div class="kp-tm">'+emb(m.h)+'<b>'+esc(m.hn)+'</b><s>—</s><b>'+esc(m.an)+'</b>'+emb(m.a)+'</div>'+
       (mod?'<span class="kp-xg" title="Ожидаемые голы по модели">ожидаемые голы '+fl(mod.lam[0].toFixed(1))+' : '+fl(mod.lam[1].toFixed(1))+'</span>':'')+'</header>'+

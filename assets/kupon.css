@@ -165,3 +165,19 @@
 }
 @media (max-width:420px){.kp-bar span:nth-child(3){display:none}}
 @media (prefers-reduced-motion:reduce){.kp-slip,.kp-o,.kp-toast,.kp-meter i{transition:none}}
+
+/* фон матча — цвета клубов: слева хозяева, справа гости (как карточки «Выбрать матч», deck.css) */
+.kp-m{border-color:color-mix(in srgb,var(--h1) 45%,var(--h2) 45%);background:
+  linear-gradient(180deg,rgba(4,8,18,.36),rgba(4,8,18,.6)),
+  repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 1px,transparent 1px 3px),
+  repeating-linear-gradient(-45deg,rgba(0,0,0,.1) 0 1px,transparent 1px 3px),
+  linear-gradient(100deg,var(--h1) 0%,color-mix(in srgb,var(--h1) 50%,var(--h2)) 50%,var(--h2) 100%)}
+.kp-m.has{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)}
+.kp-m .kp-o:not(.on){background:rgba(4,9,20,.6);border-color:rgba(255,255,255,.16)}
+.kp-m .kp-o:not(.on):hover{background:rgba(4,9,20,.42);border-color:rgba(255,255,255,.4)}
+.kp-m .kp-o:not(.on) i,.kp-m .kp-o:not(.on) small:not(.x),.kp-m .kp-mk h4,.kp-m .kp-xg,.kp-m time small,.kp-m .kp-tm s{color:rgba(234,243,255,.78)}
+.kp-m .kp-o.val:not(.on) small{color:var(--acc)}
+.kp-m .kp-lg{background:rgba(4,9,20,.5);color:#eaf3ff}
+.kp-m .kp-more,.kp-m .kp-all{border-color:rgba(255,255,255,.16)}
+.kp-m .kp-more{color:rgba(234,243,255,.86)}
+.kp-m .kp-em{filter:drop-shadow(0 2px 4px rgba(0,0,0,.45))}
