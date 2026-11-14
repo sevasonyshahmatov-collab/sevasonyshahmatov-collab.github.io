@@ -105,7 +105,10 @@ function lineOdd(key,id){const L=LINES[key];if(!L)return null;const a=id.split('
 const hex2rgb=h=>{h=String(h).replace('#','');if(h.length===3)h=h.replace(/./g,'$&$&');const n=parseInt(h,16);return isNaN(n)||h.length!==6?null:[n>>16&255,n>>8&255,n&255]};
 function rgb2hsl(r,g,b){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b),l=(mx+mn)/2;let h=0,s=0;
   if(mx!==mn){const d=mx-mn;s=l>.5?d/(2-mx-mn):d/(mx+mn);h=mx===r?(g-b)/d+(g<b?6:0):mx===g?(b-r)/d+2:(r-g)/d+4;h*=60}return [h,s,l]}
-const hsl2css=(h,s,l)=>'hsl('+(((h%360)+360)%360).toFixed(0)+' '+(s*100).toFixed(0)+'% '+(l*100).toFixed(0)+'%)';
+/* цвета отдаём готовыми rgb(), середину перелива считаем здесь: без color-mix() и новой записи hsl() — их нет в старых браузерах телефонов */
+function hsl2rgb(h,s,l){h=(((h%360)+360)%360)/360;const q=l<.5?l*(1+s):l+s-l*s,p=2*l-q,f=t=>{t=(t+1)%1;return t<1/6?p+(q-p)*6*t:t<.5?q:t<2/3?p+(q-p)*(2/3-t)*6:p};
+  return [f(h+1/3),f(h),f(h-1/3)].map(v=>Math.round(v*255))}
+const rgb=c=>'rgb('+c.join(',')+')';
 const hueD=(a,b)=>{const d=Math.abs(a-b)%360;return d>180?360-d:d};
 const cands=id=>((window.JV_CLUBS||{})[id]||[]).map(hex2rgb).filter(Boolean).map(c=>rgb2hsl(c[0],c[1],c[2]));
 const cnorm=([h,s,l])=>[h,Math.min(.85,Math.max(.55,s)),Math.min(.40,Math.max(.30,l))];
@@ -117,7 +120,8 @@ function cols(m){if(COLS[m.key])return COLS[m.key];
   if(hueD(a[0],b[0])<32&&Math.abs(a[2]-b[2])<.2){const alt=B.find(c=>cscore(c)>0&&hueD(a[0],c[0])>=40);b=alt||[b[0]+34,b[1],b[2]+.1]}
   a=cnorm(a);b=cnorm(b);
   if(Math.abs(a[2]-b[2])<.05&&hueD(a[0],b[0])<50){a[2]=Math.max(.28,a[2]-.04);b[2]=Math.min(.42,b[2]+.05)}
-  return COLS[m.key]=[hsl2css(a[0],a[1],a[2]),hsl2css(b[0],b[1],b[2])]}
+  const A1=hsl2rgb(a[0],a[1],a[2]),B1=hsl2rgb(b[0],b[1],b[2]);
+  return COLS[m.key]=[rgb(A1),rgb(B1),rgb(A1.map((v,i)=>Math.round((v+B1[i])/2)))]}
 
 /* ---------- рынки матча ---------- */
 function markets(m){
@@ -186,7 +190,7 @@ function btn(m,id){const p=prob(m.key,[id]),lo=lineOdd(m.key,id),on=has(m.key,id
     ' title="'+esc(full(id,m))+'"><i>'+short(id)+'</i><b>'+fp(p)+'</b><small>'+(lo?'линия '+fk(lo):p>0?'≈ '+fk(Math.min(999,1/p)):'—')+'</small></button>'}
 function mkt(m,g){return '<div class="kp-mk"><h4>'+esc(g.n)+'</h4><div class="kp-os'+(g.c?' c'+g.c:' c'+g.o.length)+'">'+g.o.map(id=>btn(m,id)).join('')+'</div></div>'}
 function card(m){const mk=markets(m),open=!!S.open[m.key],cnt=S.legs.filter(l=>l.k===m.key).length,mod=MODEL[m.key];
-  return '<article class="kp-m'+(cnt?' has':'')+'" data-key="'+esc(m.key)+'" style="--h1:'+cols(m)[0]+';--h2:'+cols(m)[1]+'">'+
+  return '<article class="kp-m'+(cnt?' has':'')+'" data-key="'+esc(m.key)+'" style="--h1:'+cols(m)[0]+';--h2:'+cols(m)[1]+';--hm:'+cols(m)[2]+'">'+
     '<header><span class="kp-lg">'+LG[m.lg]+'</span><time>'+hm(m)+' <small>МСК</small></time>'+
       '<div class="kp-tm">'+emb(m.h)+'<b>'+esc(m.hn)+'</b><s>—</s><b>'+esc(m.an)+'</b>'+emb(m.a)+'</div>'+
       (mod?'<span class="kp-xg" title="Ожидаемые голы по модели">ожидаемые голы '+fl(mod.lam[0].toFixed(1))+' : '+fl(mod.lam[1].toFixed(1))+'</span>':'')+'</header>'+

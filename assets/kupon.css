@@ -168,10 +168,10 @@
 
 /* фон матча — «шёлк» цветов клубов: слева хозяева, справа гости (как фон «Выбрать матч», deck.css .dk-bg/.dk-tx):
    перелив цветов, складки ткани (свет и тень), диагональные нити, зерно */
-.kp-m{position:relative;overflow:hidden;isolation:isolate;border-color:color-mix(in srgb,var(--h1) 55%,var(--h2) 45%);
-  background:linear-gradient(100deg,var(--h1) 0%,color-mix(in srgb,var(--h1) 50%,var(--h2)) 50%,var(--h2) 100%)}
+.kp-m{position:relative;overflow:hidden;isolation:isolate;border-color:var(--hm);
+  background:linear-gradient(100deg,var(--h1) 0%,var(--hm) 50%,var(--h2) 100%)}
 .kp-m>*{position:relative;z-index:1}
-.kp-m::before,.kp-m::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none}
+.kp-m::before,.kp-m::after{content:"";position:absolute;left:0;top:0;right:0;bottom:0;z-index:0;pointer-events:none}
 /* складки: широкие косые полосы света и тени */
 .kp-m::before{mix-blend-mode:soft-light;background:
   linear-gradient(112deg,transparent 2%,rgba(255,255,255,.5) 11%,transparent 21%,rgba(0,0,0,.5) 31%,transparent 41%,rgba(255,255,255,.38) 52%,transparent 61%,rgba(0,0,0,.55) 72%,transparent 82%,rgba(255,255,255,.42) 92%,transparent 100%),
