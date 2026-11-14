@@ -169,19 +169,20 @@
 /* фон матча — «шёлк» цветов клубов: слева хозяева, справа гости (как фон «Выбрать матч», deck.css .dk-bg/.dk-tx):
    перелив цветов, складки ткани (свет и тень), диагональные нити, зерно */
 .kp-m{position:relative;overflow:hidden;isolation:isolate;border-color:var(--hm);
-  background:linear-gradient(100deg,var(--h1) 0%,var(--hm) 50%,var(--h2) 100%)}
+  background:linear-gradient(180deg,rgba(4,8,18,.1),rgba(4,8,18,.36)),linear-gradient(100deg,var(--h1) 0%,var(--hm) 50%,var(--h2) 100%)}
 .kp-m>*{position:relative;z-index:1}
 .kp-m::before,.kp-m::after{content:"";position:absolute;left:0;top:0;right:0;bottom:0;z-index:0;pointer-events:none}
-/* складки: широкие косые полосы света и тени */
+/* складки ткани: мягкие размытые пятна света и тени, без резких полос (как на баннерах матчей) */
 .kp-m::before{mix-blend-mode:soft-light;background:
-  linear-gradient(112deg,transparent 2%,rgba(255,255,255,.5) 11%,transparent 21%,rgba(0,0,0,.5) 31%,transparent 41%,rgba(255,255,255,.38) 52%,transparent 61%,rgba(0,0,0,.55) 72%,transparent 82%,rgba(255,255,255,.42) 92%,transparent 100%),
-  linear-gradient(74deg,rgba(0,0,0,.35) 0%,transparent 24%,rgba(255,255,255,.28) 46%,transparent 66%,rgba(0,0,0,.4) 100%)}
-/* нити, зерно и затемнение под цифры */
-.kp-m::after{background:
-  linear-gradient(180deg,rgba(4,8,18,.2),rgba(4,8,18,.46)),
-  repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 1px,transparent 1px 3px),
-  repeating-linear-gradient(-45deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px),
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  radial-gradient(60% 130% at 30% 18%,rgba(255,255,255,.62),transparent 70%),
+  radial-gradient(46% 120% at 4% 78%,rgba(0,0,0,.6),transparent 72%),
+  radial-gradient(52% 140% at 60% 96%,rgba(0,0,0,.5),transparent 70%),
+  radial-gradient(48% 120% at 80% 8%,rgba(255,255,255,.5),transparent 72%),
+  radial-gradient(40% 110% at 100% 88%,rgba(0,0,0,.5),transparent 72%),
+  linear-gradient(118deg,transparent 30%,rgba(255,255,255,.22) 44%,transparent 58%)}
+/* мелкая фактура полотна: серый шум в режиме overlay — не линии и не «молоко» поверх цвета */
+.kp-m::after{mix-blend-mode:overlay;opacity:.34;background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95 .62' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='2.4' intercept='-.7'/%3E%3CfeFuncG type='linear' slope='2.4' intercept='-.7'/%3E%3CfeFuncB type='linear' slope='2.4' intercept='-.7'/%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .kp-m.has{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)}
 .kp-m .kp-o:not(.on){background:rgba(4,9,20,.66);border-color:rgba(255,255,255,.18)}
 .kp-m .kp-o:not(.on):hover{background:rgba(4,9,20,.48);border-color:rgba(255,255,255,.45)}
