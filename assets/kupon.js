@@ -146,8 +146,8 @@ function markets(m){
 const BY={};T.matches.forEach(m=>BY[m.key]=m);
 const S={legs:[],odds:{},stake:'1000',mode:'x',lg:'',day:'',open:{},sheet:false,look:0};
 /* варианты оформления списка матчей (выбор владельца): 0 — подробные плашки, 1 — строки, 2 — плитки, 3 — спокойный */
-const LOOKS=['Подробный','Строки','Плитки','Спокойный','Цвет слева','Приглушённый','Цвет при выборе','По группам'];
-try{const q=new URLSearchParams(location.search).get('look'),v=q!==null?q:localStorage.getItem('jv_kupon_look');if(/^[0-7]$/.test(v||''))S.look=+v}catch(e){}
+const LOOKS=['Подробный','Строки','Плитки','Спокойный','Цвет слева','Приглушённый','Цвет при выборе','По группам','Группы + цвет при выборе'];
+try{const q=new URLSearchParams(location.search).get('look'),v=q!==null?q:localStorage.getItem('jv_kupon_look');if(/^[0-8]$/.test(v||''))S.look=+v}catch(e){}
 function load(src){try{
   const d=typeof src==='string'?JSON.parse(src):src;if(!d)return;
   S.legs=(d.legs||[]).filter(l=>BY[l.k]&&grid(l.k)&&typeof l.o==='string');
@@ -199,7 +199,7 @@ function card2(m){const mk=markets(m),open=!!S.open[m.key],legs=S.legs.filter(l=
   const more='<button type="button" class="kp-more" data-more="'+esc(m.key)+'" aria-expanded="'+open+'" title="'+(open?'Свернуть':'Все события матча')+'"><span>'+(open?'Свернуть':'Все события')+'</span>'+(hid&&!open?'<em>'+hid+'</em>':'')+CHEV+'</button>';
   /* строки: крупные эмблемы во всю высоту строки, внахлёст, обрезаются краем плашки; у названий эмблемы не повторяем */
   const big=id=>'<img src="../assets/em/'+esc(id)+'.webp" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">';
-  if(L===1||L>=4)return '<article class="kp-m v v1'+(L>=4?' v'+L:'')+(legs.length?' has':'')+(open?' open':'')+'" data-key="'+esc(m.key)+'" style="--h1:'+c[0]+';--h2:'+c[1]+';--hm:'+c[2]+'">'+
+  if(L===1||L>=4)return '<article class="kp-m v v1'+(L>=4?' v'+L+(L===8?' v6':''):'')+(legs.length?' has':'')+(open?' open':'')+'" data-key="'+esc(m.key)+'" style="--h1:'+c[0]+';--h2:'+c[1]+';--hm:'+c[2]+'">'+
     '<div class="kp-hd"><div class="kp-logos" aria-hidden="true">'+big(m.a)+big(m.h)+'</div><div class="kp-tms"><b>'+esc(m.hn)+'</b><b>'+esc(m.an)+'</b></div><div class="kp-when"><time>'+hm(m)+'</time><span class="kp-lg">'+LG[m.lg]+'</span></div></div>'+
     '<div class="kp-os c3 kp-x3">'+mk.main[0].o.map(id=>btn(m,id)).join('')+'</div>'+more+
     (open?'<div class="kp-all">'+mk.main.slice(1).concat(mk.more).map(g=>mkt(m,Object.assign({c:2},g))).join('')+'</div>':'')+'</article>';
@@ -230,7 +230,7 @@ function paintList(){
     (days.length>1?'<div>'+chip('day','','Все дни',S.day)+days.map(d=>chip('day',d,dayName(d).split(',')[0],S.day)).join('')+'</div>':'');
   const vis=visible();let h='',cur='',grp='';
   vis.forEach(m=>{const d=gameDay(m);if(d!==cur){h+=(cur?'</div>':'')+'<h3 class="kp-day">'+dayName(d)+'</h3><div class="kp-set">';cur=d;grp=''}
-    if(S.look===7){const g=LG[m.lg]+' · начало в '+hm(m);if(g!==grp){grp=g;h+='<h4 class="kp-grp">'+g+' МСК</h4>'}}
+    if(S.look>=7){const g=LG[m.lg]+' · начало в '+hm(m);if(g!==grp){grp=g;h+='<h4 class="kp-grp">'+g+' МСК</h4>'}}
     h+=card(m)});
   if(cur)h+='</div>';
   $('kp-list').className='kp-list l'+S.look;

@@ -271,7 +271,8 @@
 .kp-grp{font:700 14px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin:14px 0 2px;display:flex;align-items:center;gap:12px}
 .kp-grp::after{content:"";flex:1;height:1px;background:var(--rule-2)}
 .kp-set>.kp-grp:first-child{margin-top:0}
-.kp-m.v7 .kp-when{display:none}
+.kp-m.v7 .kp-when,.kp-m.v8 .kp-when{display:none}
+.l8 .kp-set{gap:8px}
 
 /* 3 — спокойный: тёмная плашка, цвет клубов только полосой слева, на кнопке одна цифра */
 .kp-m.v3{background:var(--card);border-color:var(--rule);padding-left:22px}
