@@ -196,7 +196,13 @@ const CHEV='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" f
 /* компактные виды: на карточке только клубы и П1 · Х · П2, остальные события — по кнопке */
 function card2(m){const mk=markets(m),open=!!S.open[m.key],legs=S.legs.filter(l=>l.k===m.key),hid=legs.filter(l=>l.o.slice(0,2)!=='r:').length,L=S.look;
   const c=cols(m),tm=(id,n)=>'<div class="kp-t">'+emb(id)+'<b>'+esc(n)+'</b></div>';
-  const more='<button type="button" class="kp-more" data-more="'+esc(m.key)+'" aria-expanded="'+open+'"><span>'+(open?'Свернуть':'Все события')+'</span>'+(hid&&!open?'<em>'+hid+'</em>':'')+CHEV+'</button>';
+  const more='<button type="button" class="kp-more" data-more="'+esc(m.key)+'" aria-expanded="'+open+'" title="'+(open?'Свернуть':'Все события матча')+'"><span>'+(open?'Свернуть':'Все события')+'</span>'+(hid&&!open?'<em>'+hid+'</em>':'')+CHEV+'</button>';
+  /* строки: крупные эмблемы во всю высоту строки, внахлёст, обрезаются краем плашки; у названий эмблемы не повторяем */
+  const big=id=>'<img src="../assets/em/'+esc(id)+'.webp" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">';
+  if(L===1)return '<article class="kp-m v v1'+(legs.length?' has':'')+(open?' open':'')+'" data-key="'+esc(m.key)+'" style="--h1:'+c[0]+';--h2:'+c[1]+';--hm:'+c[2]+'">'+
+    '<div class="kp-hd"><div class="kp-logos" aria-hidden="true">'+big(m.a)+big(m.h)+'</div><div class="kp-tms"><b>'+esc(m.hn)+'</b><b>'+esc(m.an)+'</b></div><div class="kp-when"><time>'+hm(m)+'</time><span class="kp-lg">'+LG[m.lg]+'</span></div></div>'+
+    '<div class="kp-os c3 kp-x3">'+mk.main[0].o.map(id=>btn(m,id)).join('')+'</div>'+more+
+    (open?'<div class="kp-all">'+mk.main.slice(1).concat(mk.more).map(g=>mkt(m,Object.assign({c:2},g))).join('')+'</div>':'')+'</article>';
   const head=L===2?
     '<div class="kp-hd"><div class="kp-when"><span class="kp-lg">'+LG[m.lg]+'</span><time>'+hm(m)+' <small>МСК</small></time></div><div class="kp-duo">'+tm(m.h,m.hn)+'<s>—</s>'+tm(m.a,m.an)+'</div></div>':
     '<div class="kp-hd"><div class="kp-when"><time>'+hm(m)+'</time><span class="kp-lg">'+LG[m.lg]+'</span></div><div class="kp-tms">'+tm(m.h,m.hn)+tm(m.a,m.an)+'</div></div>';

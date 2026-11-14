@@ -215,6 +215,21 @@
 .kp-m.v1,.kp-m.v3{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,330px) auto;gap:0 18px;align-items:center}
 .l1 .kp-set,.l3 .kp-set{gap:8px}
 
+/* 1 — строки: крупные эмблемы внахлёст, чуть выходят за края строки (обрезаются плашкой) */
+.kp-m.v1{padding-left:0;min-height:92px}
+.kp-m.v1 .kp-hd{align-self:stretch;gap:14px}
+.kp-m.v1 .kp-logos{position:relative;flex:none;width:186px;align-self:stretch;margin:-14px 0}
+.kp-m.v1 .kp-logos img{position:absolute;top:50%;width:124px;height:124px;object-fit:contain;transform:translateY(-50%);filter:drop-shadow(0 6px 14px rgba(0,0,0,.5))}
+.kp-m.v1 .kp-logos img:first-child{left:76px}
+.kp-m.v1 .kp-logos img:last-child{left:-10px}
+.kp-m.v1.open .kp-logos{align-self:flex-start;height:92px}
+.kp-m.v1 .kp-tms{gap:9px;flex:1}
+.kp-m.v1 .kp-tms b{font:800 18px/1.1 var(--display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+.kp-m.v1 .kp-all{padding-left:16px}
+.kp-m.v1{grid-template-columns:minmax(0,1fr) 300px auto;gap:0 12px}
+.kp-m.v1 .kp-more span{display:none}
+.kp-m.v1 .kp-more{padding:0 13px;align-self:stretch;margin:2px 0}
+
 /* 3 — спокойный: тёмная плашка, цвет клубов только полосой слева, на кнопке одна цифра */
 .kp-m.v3{background:var(--card);border-color:var(--rule);padding-left:22px}
 .kp-m.v3::before{mix-blend-mode:normal;right:auto;width:6px;background:linear-gradient(180deg,var(--h1),var(--h2))}
@@ -247,6 +262,16 @@
   .kp-looks{margin-left:0;width:100%}
   .kp-m.v1,.kp-m.v3{grid-template-columns:minmax(0,1fr) auto;gap:12px 10px}
   .kp-m.v1 .kp-hd,.kp-m.v3 .kp-hd{grid-column:1/-1}
+  .kp-m.v1{padding:0 12px 12px 0;min-height:0}
+  .kp-m.v1 .kp-hd{height:84px;gap:10px}
+  .kp-m.v1 .kp-logos{width:142px;margin:0;height:84px}
+  .kp-m.v1 .kp-logos img{width:104px;height:104px}
+  .kp-m.v1 .kp-logos img:first-child{left:54px}
+  .kp-m.v1 .kp-logos img:last-child{left:-12px}
+  .kp-m.v1 .kp-tms b{font-size:16px}
+  .kp-m.v1 .kp-when{width:auto}
+  .kp-m.v1 .kp-x3{margin-left:12px}
+  .kp-m.v1 .kp-all{padding-left:12px}
   .kp-m.v .kp-more span{display:none}
   .kp-m.v2 .kp-more span{display:inline}
   .kp-m.v .kp-more{padding:0 12px;align-self:stretch}
