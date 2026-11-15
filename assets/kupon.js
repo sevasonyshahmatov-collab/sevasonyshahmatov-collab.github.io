@@ -197,9 +197,11 @@ function calc(){const G=byMatch(),n=G.length,stake=Math.max(0,num(S.stake)||0);
 
 /* ---------- отрисовка ---------- */
 const emb=id=>'<img class="kp-em" src="../assets/em/'+esc(id)+'.webp" alt="" width="28" height="28" loading="lazy" onerror="this.style.visibility=\'hidden\'">';
+/* на кнопке крупно кэф (владелец 15.11), мелко — шанс модели; кэф из линии — как есть, расчётный по модели — со знаком ≈ */
+const KF=(p,lo)=>lo?fk(lo):p>0?'<s>≈</s>'+fk(Math.min(999,1/p)):'—';
 function btn(m,id){const p=prob(m.key,[id]),lo=lineOdd(m.key,id),on=has(m.key,id),val=lo&&p*lo>=1.03;
   return '<button type="button" class="kp-o'+(on?' on':'')+(val?' val':'')+'" data-k="'+esc(m.key)+'" data-o="'+id+'" aria-pressed="'+on+'"'+(p<=0?' disabled':'')+
-    ' title="'+esc(full(id,m))+'"><i>'+short(id)+'</i><b>'+fp(p)+'</b>'+(S.look===3?'':'<small>'+(lo?'линия '+fk(lo):p>0?'≈ '+fk(Math.min(999,1/p)):'—')+'</small>')+'</button>'}
+    ' title="'+esc(full(id,m))+'"><i>'+short(id)+'</i>'+(S.look===3?'<b>'+fp(p)+'</b>':'<b>'+KF(p,lo)+'</b><small>шанс '+fp(p)+'</small>')+'</button>'}
 function mkt(m,g){return '<div class="kp-mk"><h4>'+esc(g.n)+'</h4><div class="kp-os'+(g.c?' c'+g.c:' c'+g.o.length)+'">'+g.o.map(id=>btn(m,id)).join('')+'</div></div>'}
 const CHEV='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 /* компактные виды: на карточке только клубы и П1 · Х · П2, остальные события — по кнопке */
@@ -208,7 +210,7 @@ const CHEV='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" f
 const FOLD={};
 function cell(m,id,lab){const p=prob(m.key,[id]),lo=lineOdd(m.key,id),on=has(m.key,id),val=lo&&p*lo>=1.03;
   return '<button type="button" class="kp-o kp-c'+(on?' on':'')+(val?' val':'')+'" data-k="'+esc(m.key)+'" data-o="'+id+'" aria-pressed="'+on+'"'+(p<=0?' disabled':'')+
-    ' title="'+esc(full(id,m))+'"><i>'+(Array.isArray(lab)?'<u>'+esc(lab[0])+'</u><em>'+esc(lab[1])+'</em>':esc(lab))+'</i><span><b>'+fp(p)+'</b><small>'+(lo?'линия '+fk(lo):p>0?'≈ '+fk(Math.min(999,1/p)):'—')+'</small></span></button>'}
+    ' title="'+esc(full(id,m))+'"><i>'+(Array.isArray(lab)?'<u>'+esc(lab[0])+'</u><em>'+esc(lab[1])+'</em>':esc(lab))+'</i><span><b>'+KF(p,lo)+'</b><small>'+fp(p)+'</small></span></button>'}
 function panel(m){
   const sec=(id,t,sub,body)=>{const f=!!FOLD[id];return '<section class="kp-sec'+(f?' fold':'')+'"><button type="button" class="kp-sh2" data-fold="'+id+'" aria-expanded="'+!f+'"><span><b>'+esc(t)+'</b><small>'+sub+'</small></span>'+CHEV+'</button>'+(f?'':'<div class="kp-rows">'+body+'</div>')+'</section>'};
   const pair=(a,la,b,lb)=>'<div class="kp-tr n2">'+cell(m,a,la)+cell(m,b,lb)+'</div>';

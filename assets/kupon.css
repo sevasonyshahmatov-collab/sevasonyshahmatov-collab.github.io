@@ -528,3 +528,9 @@
 .kp-m .kp-o.kp-c>i{flex:1 1 auto;text-align:left}
 .kp-tr.n2 .kp-o.kp-c:has(u){padding-left:11px;padding-right:11px;gap:6px}
 .kp-tr.n2 .kp-o.kp-c>i:has(u){gap:4px}
+
+/* кэф крупно, шанс мелко (владелец 15.11) */
+.kp-o b s{text-decoration:none;font-weight:600;font-size:.72em;opacity:.6;margin-right:3px}
+.kp-m .kp-o.val:not(.on) small,.kp-m .kp-o.kp-c.val:not(.on) small{color:rgba(240,246,255,.86)}
+.kp-m .kp-o.kp-c.val:not(.on) small{color:var(--ink-3)}
+.kp-m .kp-o.val:not(.on) b{color:var(--acc)}
