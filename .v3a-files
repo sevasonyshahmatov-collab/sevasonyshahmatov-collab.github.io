@@ -7736,6 +7736,8 @@ sw.js
 team/h2h.json
 team/index.html
 team/season.json
+tools/check_ellipsis.js
+tools/check_fontsize.js
 tools/check_padding.js
 ucl/2026-11-03-atletico-madrid-bayern-munich/.bgv
 ucl/2026-11-03-atletico-madrid-bayern-munich/bg-m.webp
