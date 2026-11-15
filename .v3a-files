@@ -678,10 +678,6 @@ bundesliga/union-berlin/index.html
 bundesliga/werder-bremen/index.html
 data/daily_log.json
 data/deckbg/index.json
-data/deckbg/khl_2026-11-15_barys_metallurg-m.webp
-data/deckbg/khl_2026-11-15_barys_metallurg.webp
-data/deckbg/khl_2026-11-15_sibir_dinamo_msk-m.webp
-data/deckbg/khl_2026-11-15_sibir_dinamo_msk.webp
 data/deckbg/khl_2026-11-15_ska_traktor-m.webp
 data/deckbg/khl_2026-11-15_ska_traktor.webp
 data/deckbg/khl_2026-11-15_torpedo_dinamo_minsk-m.webp
@@ -6377,11 +6373,6 @@ khl/2026-11-14-spartak-admiral/bg-m.webp
 khl/2026-11-14-spartak-admiral/bg.webp
 khl/2026-11-14-spartak-admiral/index.html
 khl/2026-11-14-spartak-admiral/og.jpg
-khl/2026-11-15-barys-metallurg/.bgv
-khl/2026-11-15-barys-metallurg/bg-m.webp
-khl/2026-11-15-barys-metallurg/bg.webp
-khl/2026-11-15-barys-metallurg/index.html
-khl/2026-11-15-barys-metallurg/og.jpg
 khl/2026-11-15-sibir-dinamo-msk/.bgv
 khl/2026-11-15-sibir-dinamo-msk/bg-m.webp
 khl/2026-11-15-sibir-dinamo-msk/bg.webp
