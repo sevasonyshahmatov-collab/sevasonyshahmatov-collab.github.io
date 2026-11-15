@@ -677,3 +677,13 @@ body.kb4{background:#07102a}
 .kp-want .btn{font-size:16px}
 .kp-auto{margin-bottom:6px}
 @media (max-width:760px){.kp-want input{flex:1;width:auto;min-width:0}}
+
+/* из каких лиг собирать купон: ничего не нажато — обе */
+.kp-want{flex-wrap:wrap;justify-content:flex-end;max-width:420px}
+.kp-alg{display:flex;align-items:center;gap:6px;width:100%}
+.kp-alg button{font:800 13px/1 var(--display);letter-spacing:.04em;padding:8px 13px;border:1px solid var(--rule-2);border-radius:999px;background:none;color:var(--ink-2)}
+.kp-alg button:hover{border-color:var(--ink-3);color:var(--ink)}
+.kp-alg button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:var(--signal-ink,#1a1400)}
+.kp-alg small{font:500 13px/1.2 var(--text);color:var(--ink-3);margin-left:4px}
+.kp-want input{flex:1 1 150px;width:auto;min-width:0}
+@media (max-width:760px){.kp-want{max-width:none}}

@@ -328,16 +328,18 @@ function paint(){paintList();paintSlip()}
 const POOL=['r:1','r:2','w:1','w:2','dc:1x','dc:x2','dc:12','t:o:4.5','t:u:4.5','t:o:5.5','t:u:5.5','t:o:6.5','t:u:6.5','f:1:1.5','f:2:1.5','f:1:-1.5','f:2:-1.5','f:1:2.5','f:2:2.5',
   'it:1:o:1.5','it:2:o:1.5','it:1:o:2.5','it:2:o:2.5','it:1:u:2.5','it:2:u:2.5','it:1:u:3.5','it:2:u:3.5','b:y','ot:n'];
 function auto(target){
-  const ms=visible();if(!ms.length){toast('Нет матчей для подбора');return}
+  const ms=visible().filter(m=>!S.alg||m.lg===S.alg);if(!ms.length){toast(S.alg?'Сейчас нет матчей '+LG[S.alg]+' для подбора':'Нет матчей для подбора');return}
   const opts=m=>POOL.map(id=>{const p=prob(m.key,[id]);return p>.03&&p<.97?{k:m.key,o:id,p,odd:lineOdd(m.key,id)||1/p}:null}).filter(Boolean);
   const all=ms.map(opts).filter(a=>a.length),maxOdd=o=>Math.max(...o.map(x=>x.odd));
   let n=Math.max(1,Math.min(all.length,8,Math.round(Math.log(target)/Math.log(1.5))));
   while(n<Math.min(all.length,8)&&Math.pow(target,1/n)>3.2)n++;
   const leg=Math.pow(target,1/n),legs=[];let k=1;
-  const rest=all.map(o=>({o,best:o.reduce((a,b)=>Math.abs(Math.log(b.odd/leg))<Math.abs(Math.log(a.odd/leg))?b:a)})).sort((a,b)=>Math.abs(Math.log(a.best.odd/leg))-Math.abs(Math.log(b.best.odd/leg)));
+  /* среди событий с подходящим кэфом берём самое вероятное по модели, а не просто ближайшее по кэфу */
+  const near=(o,t,lo,hi)=>{const ok=o.filter(x=>x.odd>=t*lo&&x.odd<=t*hi);return ok.length?ok.reduce((a,b)=>b.p>a.p?b:a):o.reduce((a,b)=>Math.abs(Math.log(b.odd/t))<Math.abs(Math.log(a.odd/t))?b:a)};
+  const rest=all.map(o=>({o,best:near(o,leg,.9,1.12)})).sort((a,b)=>Math.abs(Math.log(a.best.odd/leg))-Math.abs(Math.log(b.best.odd/leg)));
   for(let i=0;i<n-1;i++){const r=rest.shift();legs.push(r.best);k*=r.best.odd}
   /* последнее событие: любое из оставшихся матчей, чтобы общий кэф встал ближе всего к желаемому */
-  let last=null;rest.forEach(r=>r.o.forEach(x=>{const d=Math.abs(Math.log(k*x.odd/target));if(!last||d<last.d)last={x,d}}));
+  let last=null;rest.forEach(r=>{const x=near(r.o,target/k,.96,1.1),in1=x.odd>=target/k*.96&&x.odd<=target/k*1.1,d=in1?-x.p:1+Math.abs(Math.log(k*x.odd/target));if(!last||d<last.d)last={x,d}});
   if(last){legs.push(last.x);k*=last.x.odd}
   S.legs=legs.map(l=>({k:l.k,o:l.o}));S.odds={};S.mode='x';keep();paint();
   toast(k<target*.9?'Матчей мало: получился кэф '+fk(k)+' вместо '+fk(target):'Собран '+(legs.length>1?'экспресс из '+legs.length+' '+plural(legs.length,'события','событий','событий'):'ординар')+' с кэфом '+fk(k));
@@ -405,6 +407,7 @@ document.addEventListener('click',e=>{
   if('lg' in d){S.lg=d.lg;paintList();return}
   if('day' in d){S.day=d.day;paintList();return}
   if(d.act==='auto'){autoGo();return}
+  if(d.alg){S.alg=S.alg===d.alg?'':d.alg;document.querySelectorAll('[data-alg]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.alg===S.alg));$('kp-alg-n').textContent=S.alg?'только '+LG[S.alg]:'КХЛ и НХЛ вместе';return}
   if(d.mode){S.mode=d.mode;keep();paintSlip();return}
   if(d.load){const s=saved()[+d.load];if(s){load(s.data);keep();paint();toast(S.legs.length?'Купон загружен':'Матчи этого купона уже сыграны')}return}
   if(d.del){const sv=saved();sv.splice(+d.del,1);try{localStorage.setItem(LS_SAVED,JSON.stringify(sv))}catch(x){}paintSlip();return}
