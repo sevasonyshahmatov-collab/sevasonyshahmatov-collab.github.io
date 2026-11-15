@@ -667,3 +667,13 @@ body.kb4{background:#07102a}
 .kt4 .kp-big div:last-child b{font-size:46px}
 .kt4 .kp-meter{display:none}
 .kt4 .kp-win b{font-size:30px;color:var(--acc)}
+
+/* подбор по желаемому кэфу */
+.kp-filt[hidden]{display:none}
+.kp-want{display:flex;gap:8px;align-items:stretch}
+.kp-want input{width:170px;font-size:20px;padding:12px 14px;background:var(--paper);border:2px solid var(--rule-2)}
+.kp-want input:focus{border-color:var(--acc);outline:0}
+.kp-want input::placeholder{font-weight:600;font-size:15px;color:var(--ink-3)}
+.kp-want .btn{font-size:16px}
+.kp-auto{margin-bottom:6px}
+@media (max-width:760px){.kp-want input{flex:1;width:auto;min-width:0}}

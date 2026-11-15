@@ -154,8 +154,8 @@ const EMBS=['Внахлёст','Лицом к лицу','С наклоном','�
 const VARIANTS=/[?&]variants=1(?:&|$)/.test(location.search);
 /* варианты на выбор владельцу (15.11): оформление купона и фон страницы. Временный переключатель на странице; ?slip=0…3, ?bg=0…4 */
 const SLIPS=['Как сейчас','Билет','В цветах клубов','Светлый чек','Стекло','Жёлтая рамка'],SUMS=['Как сейчас','Жёлтая плашка','Табло','Итог сверху','Круг шанса'],BGS=['Как сейчас','Лёд','Свет арены','Графит','Глубокий синий'];
-S.slip=0;S.bg=0;S.sum=0;
-try{const q=new URLSearchParams(location.search);[['slip',5],['bg',4],['sum',4]].forEach(([k,mx])=>{const v=q.get(k)!==null?q.get(k):localStorage.getItem('jv_kupon_'+k);if(/^\d$/.test(v||'')&&+v<=mx)S[k]=+v})}catch(e){}
+S.slip=3;S.bg=2;S.sum=3; /* выбор владельца 15.11: купон «Светлый чек», итог сверху, фон «Свет арены»; остальное — по ?variants=1 */
+try{const q=new URLSearchParams(location.search);[['slip',5],['bg',4],['sum',4]].forEach(([k,mx])=>{const v=q.get(k);if(/^\d$/.test(v||'')&&+v<=mx)S[k]=+v})}catch(e){}
 function skin(){const b=document.body;b.className=b.className.replace(/\s*\b(kb|ks|kt)\d\b/g,'')+' kb'+S.bg+' ks'+S.slip+' kt'+S.sum;
   if(!$('kp-bgfx'))b.insertAdjacentHTML('afterbegin','<div class="kp-bgfx" id="kp-bgfx" aria-hidden="true"></div>')}
 /* Правило владельца 14.11: у этих клубов эмблема — лицо, которое смотрит влево. Когда они в гостях (эмблема справа), она ложится ПОВЕРХ эмблемы хозяев,
@@ -276,9 +276,9 @@ function paintList(){
   if(VARIANTS&&(S.look===1||S.look>=4))$('kp-filt').insertAdjacentHTML('beforeend','<div class="kp-looks"><span>Эмблемы:</span>'+EMBS.map((n,i)=>'<button type="button" data-emb="'+i+'" aria-pressed="'+(S.emb===i)+'">'+n+'</button>').join('')+'</div>');
   if(VARIANTS)$('kp-filt').insertAdjacentHTML('beforeend','<div class="kp-looks"><span>Вид:</span>'+LOOKS.map((n,i)=>'<button type="button" data-look="'+i+'" aria-pressed="'+(S.look===i)+'">'+n+'</button>').join('')+'</div>');
   const sw=(t,k,arr)=>'<div class="kp-looks kp-sw"><span>'+t+'</span>'+arr.map((n,i)=>'<button type="button" data-skin="'+k+'" data-v="'+i+'" aria-pressed="'+(S[k]===i)+'">'+n+'</button>').join('')+'</div>';
-  $('kp-filt').insertAdjacentHTML('beforeend',sw('Купон:','slip',SLIPS)+sw('Итог купона:','sum',SUMS)+sw('Фон:','bg',BGS));
+  if(VARIANTS)$('kp-filt').insertAdjacentHTML('beforeend',sw('Купон:','slip',SLIPS)+sw('Итог купона:','sum',SUMS)+sw('Фон:','bg',BGS));
   $('kp-list').innerHTML=h||'<p class="kp-empty">'+(all.length?'По этому фильтру матчей нет.':'Ближайшие матчи уже начались. Новые появятся после обновления данных — обычно утром и днём.')+'</p>';
-  $('kp-auto').hidden=!all.length;
+  $('kp-auto').hidden=!all.length;$('kp-filt').hidden=!VARIANTS;
 }
 const TG='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 3.2 2.9 10.4c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5ZM8.3 13.2l9.6-6c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-5Z"/></svg>';
 function paintSlip(){
@@ -323,18 +323,29 @@ function paintSum(c){c=c||calc();const el=$('kp-sum');if(!el)return;el.style.set
 function paint(){paintList();paintSlip()}
 
 /* ---------- «собрать за меня» ---------- */
+/* подбор купона под желаемый кэф (владелец 15.11): чем меньше событий и чем они вероятнее, тем лучше, поэтому берём
+   n ≈ ln(кэф)/ln(1,5) событий с шансом около кэф^(−1/n) — по одному на матч; последнее событие добирает кэф как можно ближе к цели */
+const POOL=['r:1','r:2','w:1','w:2','dc:1x','dc:x2','dc:12','t:o:4.5','t:u:4.5','t:o:5.5','t:u:5.5','t:o:6.5','t:u:6.5','f:1:1.5','f:2:1.5','f:1:-1.5','f:2:-1.5','f:1:2.5','f:2:2.5',
+  'it:1:o:1.5','it:2:o:1.5','it:1:o:2.5','it:2:o:2.5','it:1:u:2.5','it:2:u:2.5','it:1:u:3.5','it:2:u:3.5','b:y','ot:n'];
 function auto(target){
-  const leg={2:.76,4:.66,8:.57}[target]||.66,pool=['r:1','r:2','w:1','w:2','dc:1x','dc:x2','t:o:4.5','t:u:5.5','t:o:5.5','t:u:6.5','f:1:1.5','f:2:1.5','f:1:-1.5','f:2:-1.5','it:1:o:1.5','it:2:o:1.5','it:1:o:2.5','it:2:o:2.5','b:y'];
-  const cand=visible().map(m=>{let best=null;
-    pool.forEach(id=>{const p=prob(m.key,[id]),d=Math.abs(p-leg)-(lineOdd(m.key,id)?.02:0);if(p>0&&(!best||d<best.d))best={k:m.key,o:id,p,d}});return best})
-    .filter(Boolean).sort((a,b)=>a.d-b.d);
-  if(!cand.length){toast('Нет матчей для подбора');return}
-  const legs=[];let k=1;
-  for(const c of cand){if(legs.length>=6||k>=target*.93)break;legs.push({k:c.k,o:c.o});k*=1/c.p}
-  S.legs=legs;S.odds={};S.mode='x';keep();paint();
-  toast('Собран экспресс из '+legs.length+' '+plural(legs.length,'события','событий','событий'));
+  const ms=visible();if(!ms.length){toast('Нет матчей для подбора');return}
+  const opts=m=>POOL.map(id=>{const p=prob(m.key,[id]);return p>.03&&p<.97?{k:m.key,o:id,p,odd:lineOdd(m.key,id)||1/p}:null}).filter(Boolean);
+  const all=ms.map(opts).filter(a=>a.length),maxOdd=o=>Math.max(...o.map(x=>x.odd));
+  let n=Math.max(1,Math.min(all.length,8,Math.round(Math.log(target)/Math.log(1.5))));
+  while(n<Math.min(all.length,8)&&Math.pow(target,1/n)>3.2)n++;
+  const leg=Math.pow(target,1/n),legs=[];let k=1;
+  const rest=all.map(o=>({o,best:o.reduce((a,b)=>Math.abs(Math.log(b.odd/leg))<Math.abs(Math.log(a.odd/leg))?b:a)})).sort((a,b)=>Math.abs(Math.log(a.best.odd/leg))-Math.abs(Math.log(b.best.odd/leg)));
+  for(let i=0;i<n-1;i++){const r=rest.shift();legs.push(r.best);k*=r.best.odd}
+  /* последнее событие: любое из оставшихся матчей, чтобы общий кэф встал ближе всего к желаемому */
+  let last=null;rest.forEach(r=>r.o.forEach(x=>{const d=Math.abs(Math.log(k*x.odd/target));if(!last||d<last.d)last={x,d}}));
+  if(last){legs.push(last.x);k*=last.x.odd}
+  S.legs=legs.map(l=>({k:l.k,o:l.o}));S.odds={};S.mode='x';keep();paint();
+  toast(k<target*.9?'Матчей мало: получился кэф '+fk(k)+' вместо '+fk(target):'Собран '+(legs.length>1?'экспресс из '+legs.length+' '+plural(legs.length,'события','событий','событий'):'ординар')+' с кэфом '+fk(k));
   if(matchMedia('(max-width:1023px)').matches){S.sheet=true;paintSlip()}
 }
+function autoGo(){const i=$('kp-want'),v=num(i.value);
+  if(!(v>=1.2&&v<=500)){toast('Введите кэф от 1,2 до 500');i.focus();return}
+  auto(v)}
 const plural=(n,a,b,c)=>n%10===1&&n%100!==11?a:n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?b:c;
 
 /* ---------- текст, картинка, отправка ---------- */
@@ -393,7 +404,7 @@ document.addEventListener('click',e=>{
   if('emb' in d){S.emb=+d.emb;try{localStorage.setItem('jv_kupon_emb',d.emb)}catch(x){}paintList();return}
   if('lg' in d){S.lg=d.lg;paintList();return}
   if('day' in d){S.day=d.day;paintList();return}
-  if(d.auto){auto(+d.auto);return}
+  if(d.act==='auto'){autoGo();return}
   if(d.mode){S.mode=d.mode;keep();paintSlip();return}
   if(d.load){const s=saved()[+d.load];if(s){load(s.data);keep();paint();toast(S.legs.length?'Купон загружен':'Матчи этого купона уже сыграны')}return}
   if(d.del){const sv=saved();sv.splice(+d.del,1);try{localStorage.setItem(LS_SAVED,JSON.stringify(sv))}catch(x){}paintSlip();return}
@@ -411,7 +422,7 @@ function refreshNumbers(c){const st=$('kp-stake'),pos=st&&document.activeElement
   paintSum(c);if(pos!==null){const n=$('kp-stake');n.focus();try{n.setSelectionRange(pos,pos)}catch(e){}}
   c.G.forEach(g=>{const i=document.querySelector('input[data-odd="'+CSS.escape(g.key)+'"]'),s=i&&i.closest('li').querySelector('.kp-src');
     if(s)s.textContent=g.user?'ваш кэф':g.isLine?'кэф из линии':'расчётный кэф по модели — впишите свой'})}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&S.sheet){S.sheet=false;paintSlip()}});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='kp-want'){autoGo();return}if(e.key==='Escape'&&S.sheet){S.sheet=false;paintSlip()}});
 
 /* ---------- запуск ---------- */
 try{load(localStorage.getItem(LS_CUR))}catch(e){}
