@@ -534,3 +534,5 @@
 .kp-m .kp-o.val:not(.on) small,.kp-m .kp-o.kp-c.val:not(.on) small{color:rgba(240,246,255,.86)}
 .kp-m .kp-o.kp-c.val:not(.on) small{color:var(--ink-3)}
 .kp-m .kp-o.val:not(.on) b{color:var(--acc)}
+.kp-tr.n2 .kp-o.kp-c>i:has(u){font-size:13.5px}
+.kp-tr.n2 .kp-o.kp-c:has(u){padding-left:10px;padding-right:10px}
