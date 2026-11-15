@@ -152,6 +152,12 @@ const LOOKS=['Подробный','Строки','Плитки','Спокойн�
 const EMBS=['Внахлёст','Лицом к лицу','С наклоном','Крупно, с обрезкой','Фоном','В кругах','Столкновение','По краям строки','Ступенькой','В столбик'];S.emb=3;
 /* Выбор владельца 14.11: вид «Группы + цвет при выборе», эмблемы «Крупно, с обрезкой». Остальные варианты — только по адресу ?variants=1 (&look=0…8, &emb=0…9). */
 const VARIANTS=/[?&]variants=1(?:&|$)/.test(location.search);
+/* варианты на выбор владельцу (15.11): оформление купона и фон страницы. Временный переключатель на странице; ?slip=0…3, ?bg=0…4 */
+const SLIPS=['Как сейчас','Билет','В цветах клубов','Светлый чек'],BGS=['Как сейчас','Лёд','Свет арены','Графит','Глубокий синий'];
+S.slip=0;S.bg=0;
+try{const q=new URLSearchParams(location.search);[['slip',3],['bg',4]].forEach(([k,mx])=>{const v=q.get(k)!==null?q.get(k):localStorage.getItem('jv_kupon_'+k);if(/^\d$/.test(v||'')&&+v<=mx)S[k]=+v})}catch(e){}
+function skin(){const b=document.body;b.className=b.className.replace(/\s*\b(kb|ks)\d\b/g,'')+' kb'+S.bg+' ks'+S.slip;
+  if(!$('kp-bgfx'))b.insertAdjacentHTML('afterbegin','<div class="kp-bgfx" id="kp-bgfx" aria-hidden="true"></div>')}
 /* Правило владельца 14.11: у этих клубов эмблема — лицо, которое смотрит влево. Когда они в гостях (эмблема справа), она ложится ПОВЕРХ эмблемы хозяев,
    иначе хозяева обрезают лицо. Чикаго, Миннесота, Анахайм, Флорида. */
 const FACE_LEFT={nhl_chi:1,minnesota:1,nhl_ana:1,nhl_fla:1};
@@ -269,6 +275,8 @@ function paintList(){
   $('kp-list').className='kp-list l'+S.look+' e'+S.emb;
   if(VARIANTS&&(S.look===1||S.look>=4))$('kp-filt').insertAdjacentHTML('beforeend','<div class="kp-looks"><span>Эмблемы:</span>'+EMBS.map((n,i)=>'<button type="button" data-emb="'+i+'" aria-pressed="'+(S.emb===i)+'">'+n+'</button>').join('')+'</div>');
   if(VARIANTS)$('kp-filt').insertAdjacentHTML('beforeend','<div class="kp-looks"><span>Вид:</span>'+LOOKS.map((n,i)=>'<button type="button" data-look="'+i+'" aria-pressed="'+(S.look===i)+'">'+n+'</button>').join('')+'</div>');
+  const sw=(t,k,arr)=>'<div class="kp-looks kp-sw"><span>'+t+'</span>'+arr.map((n,i)=>'<button type="button" data-skin="'+k+'" data-v="'+i+'" aria-pressed="'+(S[k]===i)+'">'+n+'</button>').join('')+'</div>';
+  $('kp-filt').insertAdjacentHTML('beforeend',sw('Купон:','slip',SLIPS)+sw('Фон:','bg',BGS));
   $('kp-list').innerHTML=h||'<p class="kp-empty">'+(all.length?'По этому фильтру матчей нет.':'Ближайшие матчи уже начались. Новые появятся после обновления данных — обычно утром и днём.')+'</p>';
   $('kp-auto').hidden=!all.length;
 }
@@ -282,7 +290,7 @@ function paintSlip(){
   }else{
     if(c.n>1)h+='<div class="kp-mode" role="group" aria-label="Тип ставки"><button type="button" data-mode="x" aria-pressed="'+(S.mode==='x')+'">Экспресс</button><button type="button" data-mode="s" aria-pressed="'+(S.mode==='s')+'">Ординары</button></div>';
     h+='<ol class="kp-legs">'+c.G.map(g=>{const m=g.m;
-      return '<li'+(g.p<=0?' class="bad"':'')+'><div class="kp-lm"><span>'+LG[m.lg]+' · '+dm(m)+' '+hm(m)+'</span><b>'+esc(m.hn)+' — '+esc(m.an)+'</b></div>'+
+      return '<li'+(g.p<=0?' class="bad"':'')+' style="--h1:'+cols(m)[0]+';--h2:'+cols(m)[1]+';--hm:'+cols(m)[2]+'"><div class="kp-lm"><span>'+LG[m.lg]+' · '+dm(m)+' '+hm(m)+'</span><b>'+esc(m.hn)+' — '+esc(m.an)+'</b></div>'+
         '<ul>'+g.ids.map(id=>'<li><span>'+esc(full(id,m))+'</span><button type="button" data-k="'+esc(g.key)+'" data-o="'+id+'" data-rm aria-label="Убрать событие">×</button></li>').join('')+'</ul>'+
         (g.live?'<p class="kp-warn">Матч уже начался.</p>':'')+
         (g.p<=0?'<p class="kp-warn">Эти события не могут сыграть вместе. Уберите одно из них.</p>':
@@ -378,6 +386,7 @@ function save(){const c=calc(),sv=saved(),d=new Date();
 document.addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;const d=b.dataset;
   if(d.o&&d.k){toggle(d.k,d.o);return}
+  if(d.skin){S[d.skin]=+d.v;try{localStorage.setItem('jv_kupon_'+d.skin,d.v)}catch(x){}skin();paintList();return}
   if(d.fold){FOLD[d.fold]=!FOLD[d.fold];paintList();return}
   if(d.more){S.open[d.more]=!S.open[d.more];paintList();return}
   if('look' in d){S.look=+d.look;try{localStorage.setItem('jv_kupon_look',d.look)}catch(x){}paintList();return}
@@ -408,6 +417,6 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&S.sheet){S.sheet=fa
 try{load(localStorage.getItem(LS_CUR))}catch(e){}
 if(fromHash()){keep();history.replaceState(null,'',location.pathname+location.search)}
 if(T.built)$('kp-upd').textContent='Данные обновлены '+T.built.slice(8,10)+'.'+T.built.slice(5,7)+' в '+T.built.slice(11)+' МСК.';
-paint();
+skin();paint();
 setInterval(()=>{if(!document.hidden&&!document.activeElement.matches('input'))paint()},6e4);
 })();

@@ -536,3 +536,73 @@
 .kp-m .kp-o.val:not(.on) b{color:var(--acc)}
 .kp-tr.n2 .kp-o.kp-c>i:has(u){font-size:13.5px}
 .kp-tr.n2 .kp-o.kp-c:has(u){padding-left:10px;padding-right:10px}
+
+/* ================= варианты на выбор: фон страницы (body.kb1…4) и купон (body.ks1…3) ================= */
+.kp-sw{width:100%;margin-left:0!important}
+.kp-bgfx{position:fixed;inset:0;z-index:-1;pointer-events:none}
+/* 1 — лёд: разметка площадки под страницей */
+body.kb1{background:#06142a}
+.kb1 .kp-bgfx{background:
+  radial-gradient(60% 40% at 50% 0,rgba(62,224,255,.16),transparent 70%),
+  radial-gradient(circle at 50% 46%,transparent 0 158px,rgba(62,160,255,.22) 158px 161px,transparent 161px),
+  linear-gradient(90deg,transparent calc(50% - 2px),rgba(255,59,92,.3) calc(50% - 2px) calc(50% + 2px),transparent calc(50% + 2px)),
+  linear-gradient(90deg,transparent calc(28% - 3px),rgba(62,160,255,.28) calc(28% - 3px) calc(28% + 3px),transparent calc(28% + 3px)),
+  linear-gradient(90deg,transparent calc(72% - 3px),rgba(62,160,255,.28) calc(72% - 3px) calc(72% + 3px),transparent calc(72% + 3px)),
+  repeating-linear-gradient(115deg,rgba(255,255,255,.022) 0 1px,transparent 1px 46px),
+  repeating-linear-gradient(64deg,rgba(255,255,255,.018) 0 1px,transparent 1px 71px),
+  linear-gradient(180deg,#0a2140,#06142a 60%,#040d1c)}
+/* 2 — свет арены: лучи прожекторов сверху */
+body.kb2{background:#050b18}
+.kb2 .kp-bgfx{background:
+  conic-gradient(from 168deg at 18% -6%,transparent 0,rgba(120,190,255,.2) 9deg,transparent 20deg),
+  conic-gradient(from 160deg at 50% -8%,transparent 0,rgba(255,230,170,.16) 12deg,transparent 26deg),
+  conic-gradient(from 172deg at 84% -6%,transparent 0,rgba(120,190,255,.2) 9deg,transparent 20deg),
+  radial-gradient(70% 45% at 50% 0,rgba(70,130,220,.28),transparent 72%),
+  radial-gradient(120% 90% at 50% 40%,transparent 50%,rgba(0,0,0,.55) 100%),
+  linear-gradient(180deg,#0b1a36,#050b18 55%)}
+/* 3 — графит: нейтральный тёмно-серый, цвет дают только клубы и жёлтый акцент */
+body.kb3{--paper:#0d0e11;--paper-2:#1d1f24;--paper-3:#2b2e35;--card:#16181c;--card-hi:#1e2126;--ink-2:#c3c7cf;--ink-3:#8b919c;--rule:#272a30;--rule-2:#383c44;background:#0d0e11}
+body.kb3 .hd{--paper:#0d0e11}
+.kb3 .kp-sec{background:rgba(14,15,18,.92)}
+/* 4 — глубокий синий: перелив от синего к бирюзовому с зерном */
+body.kb4{background:#07102a}
+.kb4 .kp-bgfx{background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+  radial-gradient(70% 60% at 0 0,rgba(64,92,255,.42),transparent 70%),
+  radial-gradient(60% 60% at 100% 30%,rgba(0,190,200,.26),transparent 70%),
+  radial-gradient(70% 60% at 30% 100%,rgba(140,60,220,.25),transparent 70%),
+  #07102a}
+.kb1 .kp-auto,.kb2 .kp-auto,.kb4 .kp-auto,.kb1 .kp-m.v6:not(.has):not(.open),.kb2 .kp-m.v6:not(.has):not(.open),.kb4 .kp-m.v6:not(.has):not(.open){background-color:rgba(12,24,48,.78);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+
+/* --- купон: общее для новых вариантов — компактная строка события --- */
+.ks1 .kp-src,.ks2 .kp-src,.ks3 .kp-src{display:none}
+.ks1 .kp-legs,.ks2 .kp-legs,.ks3 .kp-legs{gap:0}
+/* 1 — билет: жёлтая шапка, события через пунктир, цветная полоса клубов слева, отрывной край перед итогом */
+.ks1 .kp-slip{padding:0 0 18px;border:0;background:#0f1d38;border-radius:16px}
+.ks1 .kp-sh{margin:0;padding:16px 18px;background:var(--acc);color:var(--signal-ink,#1a1400);border-radius:16px 16px 0 0}
+.ks1 .kp-sh em{background:var(--signal-ink,#1a1400);color:var(--acc)}
+.ks1 .kp-sh button{color:inherit;opacity:.75}
+.ks1 .kp-mode,.ks1 .kp-hint{margin:14px 18px 6px}
+.ks1 .kp-legs>li{border:0;border-radius:0;background:none;padding:14px 18px 14px 26px;position:relative;border-bottom:1px dashed rgba(255,255,255,.22)}
+.ks1 .kp-legs>li::before{content:"";position:absolute;left:12px;top:14px;bottom:14px;width:5px;border-radius:3px;background:linear-gradient(180deg,var(--h1),var(--h2))}
+.ks1 .kp-sum{position:relative;margin:0;padding:18px 18px 0}
+.ks1 .kp-sum::before,.ks1 .kp-sum::after{content:"";position:absolute;top:-12px;width:22px;height:22px;border-radius:50%;background:var(--paper)}
+.ks1 .kp-sum::before{left:-11px}.ks1 .kp-sum::after{right:-11px}
+.ks1 .kp-act,.ks1 .kp-saved{margin-left:18px;margin-right:18px}
+/* 2 — в цветах клубов: каждое событие на «шёлке» своего матча */
+.ks2 .kp-legs{gap:8px}
+.ks2 .kp-legs>li{border:0;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(4,8,18,.18),rgba(4,8,18,.5)),linear-gradient(100deg,var(--h1),var(--hm) 50%,var(--h2))}
+.ks2 .kp-legs>li .kp-lm span,.ks2 .kp-lk,.ks2 .kp-lk label{color:rgba(240,246,255,.85)}
+.ks2 .kp-lk b{color:#fff}
+.ks2 .kp-legs input{background:rgba(4,9,20,.6);border-color:rgba(255,255,255,.25)}
+.ks2 .kp-legs ul button{color:rgba(255,255,255,.8)}
+.ks2 .kp-big div{background:linear-gradient(160deg,#16284a,#0b1730)}
+/* 3 — светлый чек: бумажный купон на тёмной странице */
+.ks3 .kp-slip{--paper:#eef1f6;--paper-2:#dfe4ec;--paper-3:#cfd6e2;--card:#fff;--ink:#0d1626;--ink-2:#3b4658;--ink-3:#66728a;--rule:#d5dbe6;--rule-2:#bcc5d4;--ice:#0a62c4;background:#fff;color:#0d1626;border:0;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.ks3 .kp-legs>li{border:0;border-radius:0;background:none;padding:12px 0;border-bottom:1px dashed #bcc5d4;border-left:5px solid var(--h1);padding-left:12px}
+.ks3 .kp-legs>li:first-child{border-top:1px dashed #bcc5d4}
+.ks3 .kp-big div:last-child b{color:#b07a00}
+.ks3 .kp-ev.up{color:#0c7a43}
+.ks3 .kp-act div button,.ks3 .kp-mode button{background:#e3e8f0;color:#0d1626}
+.ks3 .kp-mode button[aria-pressed="true"]{background:#0d1626;color:#fff}
+.ks3 .kp-saved li button:first-child{background:#eef1f6;color:#0d1626}
