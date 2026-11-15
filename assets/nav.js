@@ -34,6 +34,8 @@ const SECTIONS={};
   SECTIONS.hockey=[['m','Матчи','hockey/index.html',[['m','Ближайшие матчи','hockey/index.html'],['fc','Прогноз на сегодня — списком','hockey/forecast-khl.html']]],
     ['lg','Лиги','hockey/league.html?lg=khl',[['khl','КХЛ','hockey/league.html?lg=khl',LS('khl','hockey/league.html?lg=')],['nhl','НХЛ','hockey/league.html?lg=nhl',LS('nhl','hockey/league.html?lg=')]]],
     ['tr','Тренды','hockey/trends.html'],['deck','Выбрать матч','matches.html?s=h']];
+  /* предпросмотр для владельца: пункт «Купон» виден только после захода по адресу с ?kupon=1 (выключить — ?kupon=0) */
+  if((function(){try{if(/[?&]kupon=1(?:&|$)/.test(location.search))localStorage.setItem('jv_kupon_preview','1');if(/[?&]kupon=0(?:&|$)/.test(location.search))localStorage.removeItem('jv_kupon_preview');return localStorage.getItem('jv_kupon_preview')==='1'}catch(e){return false}})())SECTIONS.hockey.push(['kup','Купон','hockey/kupon.html']);
   SECTIONS.football=[['m','Матчи','football/index.html',[['m','Ближайшие матчи','football/index.html'],['fc','Прогноз на сегодня — списком','football/forecast-epl.html']]],
     ['lg','Лиги','football/league.html?lg=epl',[...FL.map(([k,n])=>['lg-'+k,n,'football/league.html?lg='+k]),['ucl','Лига чемпионов','football/ucl.html'],['pl','Игроки','football/players.html']]],
     ['tr','Тренды','football/trends.html'],['deck','Выбрать матч','matches.html?s=f']];
@@ -46,6 +48,7 @@ function active(){
     return T&&T.lg==='nhl'||/^nhl_/.test(id)?'nhl':'khl'}
   if(file==='team.html')return 'lg';
   if(file==='matches.html')return 'deck';
+  if(file==='kupon.html')return 'kup';
   if(/^forecast-/.test(file))return 'fc';   /* «Прогноз на сегодня» в меню разделов (владелец 09.11: «как туда попасть?») */
   if(file==='index.html')return 'm';
   if(file==='ucl.html')return 'ucl';
