@@ -463,6 +463,10 @@ assets/hockey-players.js
 assets/home-slim.css
 assets/home.css
 assets/home.js
+assets/kupon-link.css
+assets/kupon-link.js
+assets/kupon.css
+assets/kupon.js
 assets/league-foot.js
 assets/league-hockey.js
 assets/league.css
@@ -6108,6 +6112,7 @@ hockey/data/pp/nhl/8486189.json
 hockey/forecast-khl.html
 hockey/forecast-nhl.html
 hockey/index.html
+hockey/kupon.html
 hockey/league.html
 hockey/player.html
 hockey/players.html
