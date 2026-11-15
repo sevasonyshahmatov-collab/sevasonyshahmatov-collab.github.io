@@ -203,22 +203,27 @@ function btn(m,id){const p=prob(m.key,[id]),lo=lineOdd(m.key,id),on=has(m.key,id
 function mkt(m,g){return '<div class="kp-mk"><h4>'+esc(g.n)+'</h4><div class="kp-os'+(g.c?' c'+g.c:' c'+g.o.length)+'">'+g.o.map(id=>btn(m,id)).join('')+'</div></div>'}
 const CHEV='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 /* компактные виды: на карточке только клубы и П1 · Х · П2, остальные события — по кнопке */
-/* раскрытая линия матча: рынки по плашкам, внутри — таблицы «линия · больше · меньше» (подпись линии один раз слева, в ячейке — шанс и кэф) */
+/* раскрытая линия матча — роспись плашками (владелец 15.11, по образцу росписи букмекера): у плашки заголовок, подпись «основное время» и сворачивание;
+   строка тотала — «Меньше · линия · Больше»; в ячейке слева название исхода, справа шанс модели и кэф */
+const FOLD={};
 function cell(m,id,lab){const p=prob(m.key,[id]),lo=lineOdd(m.key,id),on=has(m.key,id),val=lo&&p*lo>=1.03;
   return '<button type="button" class="kp-o kp-c'+(on?' on':'')+(val?' val':'')+'" data-k="'+esc(m.key)+'" data-o="'+id+'" aria-pressed="'+on+'"'+(p<=0?' disabled':'')+
-    ' title="'+esc(full(id,m))+'"><span>'+(lab?'<i>'+lab+'</i>':'')+'<b>'+fp(p)+'</b></span><small>'+(lo?'линия '+fk(lo):p>0?'≈ '+fk(Math.min(999,1/p)):'—')+'</small></button>'}
-function panel(m){const L=LINES[m.key]||{},base=L.tot!=null&&L.tot%1!==0?+L.tot:5.5;
-  const row=(lab,ids,labs)=>'<div class="kp-tr'+(lab===null?' nl':'')+'" style="--n:'+ids.length+'">'+(lab===null?'':'<span class="kp-tl">'+lab+'</span>')+ids.map((id,i)=>cell(m,id,labs&&labs[i])).join('')+'</div>';
-  const head=(lab,cols)=>'<div class="kp-tr kp-th'+(lab===null?' nl':'')+'" style="--n:'+cols.length+'">'+(lab===null?'':'<span class="kp-tl">'+lab+'</span>')+cols.map(c=>'<span>'+esc(c)+'</span>').join('')+'</div>';
-  const sec=(t,body)=>'<section class="kp-sec"><h4>'+esc(t)+'</h4>'+body+'</section>';
-  const ou=['Больше','Меньше'],it=t=>head('Линия',ou)+[1.5,2.5,3.5,4.5].map(l=>row(fl(l),['it:'+t+':o:'+l,'it:'+t+':u:'+l])).join('');
+    ' title="'+esc(full(id,m))+'"><i>'+(Array.isArray(lab)?'<u>'+esc(lab[0])+'</u><em>'+esc(lab[1])+'</em>':esc(lab))+'</i><span><b>'+fp(p)+'</b><small>'+(lo?'линия '+fk(lo):p>0?'≈ '+fk(Math.min(999,1/p)):'—')+'</small></span></button>'}
+function panel(m){
+  const sec=(id,t,sub,body)=>{const f=!!FOLD[id];return '<section class="kp-sec'+(f?' fold':'')+'"><button type="button" class="kp-sh2" data-fold="'+id+'" aria-expanded="'+!f+'"><span><b>'+esc(t)+'</b><small>'+sub+'</small></span>'+CHEV+'</button>'+(f?'':'<div class="kp-rows">'+body+'</div>')+'</section>'};
+  const pair=(a,la,b,lb)=>'<div class="kp-tr n2">'+cell(m,a,la)+cell(m,b,lb)+'</div>';
+  const ou=(pre,lines)=>lines.map(l=>'<div class="kp-tr ou">'+cell(m,pre+'u:'+l,'Меньше')+'<span class="kp-ln">'+fl(l)+'</span>'+cell(m,pre+'o:'+l,'Больше')+'</div>').join('');
+  const RT='Основное время',il=[1.5,2.5,3.5,4.5];
   return '<div class="kp-all kp-pan"><div>'+
-    sec('Исход матча',row('Победа с ОТ и буллитами',['w:1','w:2'],['П1','П2'])+row('Двойной шанс',['dc:1x','dc:12','dc:x2'],['1Х','12','Х2']))+
-    sec('Тотал матча',head('Линия',ou)+totalLines(m).map(l=>row(fl(l)+(l===base?'<em>осн.</em>':''),['t:o:'+l,'t:u:'+l])).join(''))+
-    sec('Ещё',head('',['Да','Нет'])+row('Обе забьют',['b:y','b:n'])+row('Овертайм',['ot:y','ot:n'])+head('',['Чёт','Нечет'])+row('Тотал матча',['eo:e','eo:o']))+
+    sec('w','Победа в матче','С овертаймом и буллитами',pair('w:1',m.hn,'w:2',m.an))+
+    sec('dc','Двойной шанс',RT,'<div class="kp-tr n3">'+cell(m,'dc:1x','1Х')+cell(m,'dc:12','12')+cell(m,'dc:x2','Х2')+'</div>')+
+    sec('t','Тотал',RT,ou('t:',totalLines(m)))+
+    sec('b','Обе забьют',RT,pair('b:y','Да','b:n','Нет'))+
+    sec('ot','Овертайм','Ничья в основное время',pair('ot:y','Будет','ot:n','Не будет'))+
+    sec('eo','Чёт / нечет',RT,pair('eo:e','Чёт','eo:o','Нечет'))+
     '</div><div>'+
-    sec('Фора',head(null,[m.hn,m.an])+[[-2.5,2.5],[-1.5,1.5],[1.5,-1.5],[2.5,-2.5]].map(([a,b])=>row(null,['f:1:'+a,'f:2:'+b],[fs(a),fs(b)])).join(''))+
-    sec('Голы: '+m.hn,it(1))+sec('Голы: '+m.an,it(2))+
+    sec('f','Фора',RT,[[-2.5,2.5],[-1.5,1.5],[1.5,-1.5],[2.5,-2.5]].map(([a,b])=>pair('f:1:'+a,[m.hn,'('+fs(a)+')'],'f:2:'+b,[m.an,'('+fs(b)+')'])).join(''))+
+    sec('i1','Тотал '+m.hn,RT,ou('it:1:',il))+sec('i2','Тотал '+m.an,RT,ou('it:2:',il))+
     '</div></div>'}
 function card2(m){const mk=markets(m),open=!!S.open[m.key],legs=S.legs.filter(l=>l.k===m.key),hid=legs.filter(l=>l.o.slice(0,2)!=='r:').length,L=S.look;
   const c=cols(m),tm=(id,n)=>'<div class="kp-t">'+emb(id)+'<b>'+esc(n)+'</b></div>';
@@ -371,6 +376,7 @@ function save(){const c=calc(),sv=saved(),d=new Date();
 document.addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;const d=b.dataset;
   if(d.o&&d.k){toggle(d.k,d.o);return}
+  if(d.fold){FOLD[d.fold]=!FOLD[d.fold];paintList();return}
   if(d.more){S.open[d.more]=!S.open[d.more];paintList();return}
   if('look' in d){S.look=+d.look;try{localStorage.setItem('jv_kupon_look',d.look)}catch(x){}paintList();return}
   if('emb' in d){S.emb=+d.emb;try{localStorage.setItem('jv_kupon_emb',d.emb)}catch(x){}paintList();return}
