@@ -153,10 +153,10 @@ const EMBS=['Внахлёст','Лицом к лицу','С наклоном','�
 /* Выбор владельца 14.11: вид «Группы + цвет при выборе», эмблемы «Крупно, с обрезкой». Остальные варианты — только по адресу ?variants=1 (&look=0…8, &emb=0…9). */
 const VARIANTS=/[?&]variants=1(?:&|$)/.test(location.search);
 /* варианты на выбор владельцу (15.11): оформление купона и фон страницы. Временный переключатель на странице; ?slip=0…3, ?bg=0…4 */
-const SLIPS=['Как сейчас','Билет','В цветах клубов','Светлый чек'],BGS=['Как сейчас','Лёд','Свет арены','Графит','Глубокий синий'];
-S.slip=0;S.bg=0;
-try{const q=new URLSearchParams(location.search);[['slip',3],['bg',4]].forEach(([k,mx])=>{const v=q.get(k)!==null?q.get(k):localStorage.getItem('jv_kupon_'+k);if(/^\d$/.test(v||'')&&+v<=mx)S[k]=+v})}catch(e){}
-function skin(){const b=document.body;b.className=b.className.replace(/\s*\b(kb|ks)\d\b/g,'')+' kb'+S.bg+' ks'+S.slip;
+const SLIPS=['Как сейчас','Билет','В цветах клубов','Светлый чек','Стекло','Жёлтая рамка'],SUMS=['Как сейчас','Жёлтая плашка','Табло','Итог сверху','Круг шанса'],BGS=['Как сейчас','Лёд','Свет арены','Графит','Глубокий синий'];
+S.slip=0;S.bg=0;S.sum=0;
+try{const q=new URLSearchParams(location.search);[['slip',5],['bg',4],['sum',4]].forEach(([k,mx])=>{const v=q.get(k)!==null?q.get(k):localStorage.getItem('jv_kupon_'+k);if(/^\d$/.test(v||'')&&+v<=mx)S[k]=+v})}catch(e){}
+function skin(){const b=document.body;b.className=b.className.replace(/\s*\b(kb|ks|kt)\d\b/g,'')+' kb'+S.bg+' ks'+S.slip+' kt'+S.sum;
   if(!$('kp-bgfx'))b.insertAdjacentHTML('afterbegin','<div class="kp-bgfx" id="kp-bgfx" aria-hidden="true"></div>')}
 /* Правило владельца 14.11: у этих клубов эмблема — лицо, которое смотрит влево. Когда они в гостях (эмблема справа), она ложится ПОВЕРХ эмблемы хозяев,
    иначе хозяева обрезают лицо. Чикаго, Миннесота, Анахайм, Флорида. */
@@ -276,7 +276,7 @@ function paintList(){
   if(VARIANTS&&(S.look===1||S.look>=4))$('kp-filt').insertAdjacentHTML('beforeend','<div class="kp-looks"><span>Эмблемы:</span>'+EMBS.map((n,i)=>'<button type="button" data-emb="'+i+'" aria-pressed="'+(S.emb===i)+'">'+n+'</button>').join('')+'</div>');
   if(VARIANTS)$('kp-filt').insertAdjacentHTML('beforeend','<div class="kp-looks"><span>Вид:</span>'+LOOKS.map((n,i)=>'<button type="button" data-look="'+i+'" aria-pressed="'+(S.look===i)+'">'+n+'</button>').join('')+'</div>');
   const sw=(t,k,arr)=>'<div class="kp-looks kp-sw"><span>'+t+'</span>'+arr.map((n,i)=>'<button type="button" data-skin="'+k+'" data-v="'+i+'" aria-pressed="'+(S[k]===i)+'">'+n+'</button>').join('')+'</div>';
-  $('kp-filt').insertAdjacentHTML('beforeend',sw('Купон:','slip',SLIPS)+sw('Фон:','bg',BGS));
+  $('kp-filt').insertAdjacentHTML('beforeend',sw('Купон:','slip',SLIPS)+sw('Итог купона:','sum',SUMS)+sw('Фон:','bg',BGS));
   $('kp-list').innerHTML=h||'<p class="kp-empty">'+(all.length?'По этому фильтру матчей нет.':'Ближайшие матчи уже начались. Новые появятся после обновления данных — обычно утром и днём.')+'</p>';
   $('kp-auto').hidden=!all.length;
 }
@@ -308,7 +308,7 @@ function paintSlip(){
   if(c.n)bar.innerHTML='<span><b>Купон</b><em>'+c.events+'</em></span>'+(c.bad?'<span class="w">проверьте события</span>':S.mode==='x'?'<span>шанс <b>'+fp(c.p)+'</b></span><span>кэф <b>'+fk(c.k)+'</b></span>':'<span>ординары: <b>'+c.n+'</b></span>')+'<i>Открыть</i>';
   document.documentElement.classList.toggle('kp-open',S.sheet&&!!c.n);if(!c.n)S.sheet=false;
 }
-function paintSum(c){c=c||calc();const el=$('kp-sum');if(!el)return;
+function paintSum(c){c=c||calc();const el=$('kp-sum');if(!el)return;el.style.setProperty('--p',Math.round((S.mode==='s'&&c.n>1?c.sAny:c.p)*100));
   const stake='<label class="kp-stake"><span>Сумма'+(S.mode==='s'&&c.n>1?' на каждую':'')+'</span><input type="text" inputmode="decimal" id="kp-stake" value="'+esc(S.stake)+'" aria-label="Сумма ставки"></label>';
   if(c.bad){el.innerHTML='<p class="kp-warn">В купоне есть события, которые исключают друг друга.</p>';return}
   const evp=v=>'<p class="kp-ev '+(v>=0?'up':'dn')+'">'+(v>=0?'По расчёту модели кэф выше шанса: +':'По расчёту модели кэф ниже шанса: −')+Math.abs(Math.round(v*100))+' %</p>';

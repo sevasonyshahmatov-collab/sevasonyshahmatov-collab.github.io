@@ -606,3 +606,64 @@ body.kb4{background:#07102a}
 .ks3 .kp-act div button,.ks3 .kp-mode button{background:#e3e8f0;color:#0d1626}
 .ks3 .kp-mode button[aria-pressed="true"]{background:#0d1626;color:#fff}
 .ks3 .kp-saved li button:first-child{background:#eef1f6;color:#0d1626}
+
+/* --- купон: ещё два варианта --- */
+/* 4 — стекло: полупрозрачный купон, сквозь него виден фон страницы */
+.ks4 .kp-slip{background:rgba(16,30,58,.55);-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);border-color:rgba(255,255,255,.22);box-shadow:0 24px 60px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.14)}
+.ks4 .kp-legs>li{background:rgba(4,9,20,.45);border-color:rgba(255,255,255,.1);border-left:4px solid var(--h1)}
+.ks4 .kp-src{display:none}
+/* 5 — жёлтая рамка: купон обведён акцентом, шапка — вкладкой */
+.ks5 .kp-slip{border:2px solid var(--acc);box-shadow:0 0 0 6px rgba(255,194,26,.1),0 24px 60px rgba(0,0,0,.5);padding-top:0}
+.ks5 .kp-sh{margin:0 -18px 14px;padding:14px 18px;background:rgba(255,194,26,.14);border-bottom:1px solid rgba(255,194,26,.4)}
+.ks5 .kp-legs>li{border-left:4px solid var(--h1)}
+.ks5 .kp-src{display:none}
+
+/* ================= итог купона: варианты (body.kt1…4) ================= */
+/* 1 и 2 — итог закреплён у нижнего края купона и виден всегда */
+.kt1 .kp-sum,.kt2 .kp-sum{position:sticky;bottom:0;z-index:3;margin:14px -8px 0;padding:14px;border-radius:14px}
+.kt1 .kp-sum::before,.kt1 .kp-sum::after,.kt2 .kp-sum::before,.kt2 .kp-sum::after{display:none}
+.kt1 .kp-ev:not(.up):not(.dn),.kt2 .kp-ev:not(.up):not(.dn){display:none}
+.ks1.kt1 .kp-sum,.ks1.kt2 .kp-sum{margin:14px 10px 0}
+/* 1 — жёлтая плашка */
+.kt1 .kp-sum{background:var(--acc);color:#1a1400;box-shadow:0 -14px 30px rgba(0,0,0,.55)}
+.kt1 .kp-big div{background:rgba(26,20,0,.1)}
+.kt1 .kp-big span,.kt1 .kp-big small,.kt1 .kp-stake,.kt1 .kp-win,.kt1 .kp-tot,.kt1 .kp-sum dt{color:rgba(26,20,0,.78)}
+.kt1 .kp-big b,.kt1 .kp-big div:first-child b,.kt1 .kp-big div:last-child b,.kt1 .kp-win b,.kt1 .kp-sum dd{color:#1a1400}
+.kt1 .kp-big b{font-size:40px}
+.kt1 .kp-meter{background:rgba(26,20,0,.18)}.kt1 .kp-meter i{background:#1a1400}
+.kt1 .kp-sum input{background:#fff7dc;border-color:rgba(26,20,0,.3);color:#1a1400}
+.kt1 .kp-sum dl div{background:rgba(26,20,0,.1)}
+.kt1 .kp-ev{background:rgba(26,20,0,.1);color:#1a1400}
+.kt1 .kp-warn{color:#7a0010}
+/* 2 — табло: чёрный экран со светящимися цифрами */
+.kt2 .kp-sum{background:#02050b;border:1px solid rgba(62,224,255,.45);box-shadow:0 0 0 5px rgba(62,224,255,.07),0 -14px 34px rgba(0,0,0,.6),0 0 40px -10px rgba(62,224,255,.5)}
+.kt2 .kp-big div{background:none;padding:6px 4px}
+.kt2 .kp-big div+div{border-left:1px solid rgba(255,255,255,.14);border-radius:0}
+.kt2 .kp-big b{font-size:44px;letter-spacing:.02em}
+.kt2 .kp-big div:first-child b{color:#3ee0ff;text-shadow:0 0 18px rgba(62,224,255,.7)}
+.kt2 .kp-big div:last-child b{color:#ffc21a;text-shadow:0 0 18px rgba(255,194,26,.6)}
+.kt2 .kp-win{padding-top:12px;border-top:1px solid rgba(255,255,255,.14)}
+.kt2 .kp-win b{font-size:32px;color:#fff;text-shadow:0 0 14px rgba(255,255,255,.4)}
+/* 3 — итог сверху: сразу под шапкой, события ниже */
+.kt3 .kp-slip{display:flex;flex-direction:column}
+.kt3 .kp-slip>*{flex:none}
+.kt3 .kp-sh{order:0}.kt3 .kp-mode{order:1}.kt3 .kp-sum{order:2;margin:0 0 14px;padding:14px;border-radius:14px;background:linear-gradient(160deg,#1c3566,#0d1c3c);border:1px solid rgba(62,224,255,.35)}
+.kt3 .kp-legs{order:3}.kt3 .kp-act{order:4}.kt3 .kp-saved{order:5}.kt3 .kp-hint{order:3}
+.kt3 .kp-sum::before,.kt3 .kp-sum::after{display:none}
+.kt3 .kp-big div{background:rgba(4,9,20,.5)}
+.kt3 .kp-big b{font-size:40px}
+.ks1.kt3 .kp-sum{margin:14px 18px}
+.ks3.kt3 .kp-sum{background:#eaf1fb;border-color:#9fb6d8}.ks3.kt3 .kp-big div{background:#fff}
+/* 4 — круг шанса: шанс кольцом, рядом кэф и выигрыш */
+.kt4 .kp-sum{margin-top:14px;padding:16px 14px;border-radius:14px;background:var(--paper);border:1px solid var(--rule-2)}
+.kt4 .kp-sum::before,.kt4 .kp-sum::after{display:none}
+.kt4 .kp-big{grid-template-columns:128px minmax(0,1fr);gap:14px;align-items:center}
+.kt4 .kp-big div:first-child{width:128px;height:128px;padding:0;justify-content:center;gap:4px;border-radius:50%;
+  background:radial-gradient(closest-side,var(--paper) 80%,transparent 81%),conic-gradient(var(--ice) calc(var(--p)*1%),var(--paper-3) 0)}
+.kt4 .kp-big div:first-child span{font-size:9.5px;letter-spacing:.04em}
+.kt4 .kp-big div:first-child small{display:none}
+.kt4 .kp-big div:first-child b{font-size:32px}
+.kt4 .kp-big div:last-child{background:none;align-items:flex-start;text-align:left;padding:0}
+.kt4 .kp-big div:last-child b{font-size:46px}
+.kt4 .kp-meter{display:none}
+.kt4 .kp-win b{font-size:30px;color:var(--acc)}
