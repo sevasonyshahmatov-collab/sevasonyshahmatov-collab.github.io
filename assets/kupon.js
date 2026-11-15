@@ -431,6 +431,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='kp-wa
 try{load(localStorage.getItem(LS_CUR))}catch(e){}
 if(fromHash()){keep();history.replaceState(null,'',location.pathname+location.search)}
 if(T.built)$('kp-upd').textContent='Данные обновлены '+T.built.slice(8,10)+'.'+T.built.slice(5,7)+' в '+T.built.slice(11)+' МСК.';
+/* в поле кэфа — случайный пример, новый при каждом открытии страницы (владелец 15.11) */
+try{$('kp-want').placeholder=fk([1.6,1.8,2,2.2,2.4,2.7,3,3.5,4,4.5,5,6,7.5][Math.floor(Math.random()*13)]).replace(/,00$/,'').replace(/(,\d)0$/,'$1')}catch(e){}
 skin();paint();
 setInterval(()=>{if(!document.hidden&&!document.activeElement.matches('input'))paint()},6e4);
 })();

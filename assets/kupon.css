@@ -687,3 +687,10 @@ body.kb4{background:#07102a}
 .kp-alg small{font:500 13px/1.2 var(--text);color:var(--ink-3);margin-left:4px}
 .kp-want input{flex:1 1 150px;width:auto;min-width:0}
 @media (max-width:760px){.kp-want{max-width:none}}
+
+/* поле кэфа — узкое, под одно-два числа */
+.kp-want{max-width:none;flex-wrap:nowrap;align-items:center;gap:10px}
+.kp-alg{width:auto;flex:none}
+.kp-want input{flex:none;width:92px;font-size:22px;padding:11px 8px}
+.kp-want input::placeholder{font-weight:800;font-size:22px;color:var(--ink-3);opacity:.7}
+@media (max-width:760px){.kp-want{flex-wrap:wrap}.kp-alg{width:100%}.kp-want input{flex:none;width:92px}.kp-want .btn{flex:1;justify-content:center}}
