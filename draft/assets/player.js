@@ -6,7 +6,7 @@ window.JV_KPH=window.JV_KPH||(S=>u=>{if(!window.JV_KPH_ON)return u;const m=/khl\
 (()=>{
 const Q=new URLSearchParams(location.search),LG=Q.get('lg')==='khl'?'khl':'nhl',ID=(Q.get('id')||'').replace(/\D/g,'').slice(0,9);
 const MAIN=document.getElementById('main');
-const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const TT=(window.JV_TEAMS&&JV_TEAMS.teams)||{};
 const tn=s=>(TT[s]&&TT[s].name)||s;
 const em=s=>`../assets/em/${encodeURIComponent(s)}.webp`;
@@ -56,7 +56,7 @@ fetch(`data/pp/${LG}/${ID}.json`).then(r=>{if(!r.ok)throw 0;return r.json()}).th
  tiles.push(tile('Штраф, мин',pim));
  const lgName=nhl?'НХЛ':'КХЛ';
  const teamHref=`../team/index.html?id=${encodeURIComponent(P.t)}`;
- const photo=P.img?`<img class="ph" src="${esc(JV_KPH(P.img))}" alt="${esc(P.n)}" onerror="this.parentNode.classList.add('nop');this.remove()">`:'';
+ const photo=P.img?`<img class="ph" src="${esc(JV_KPH(P.img))}" referrerpolicy="no-referrer" alt="${esc(P.n)}" onerror="this.parentNode.classList.add('nop');this.remove()">`:'';
  let html=`<article class="pp-hero" aria-label="${esc(P.n)}">
   ${P.no!=null?`<span class="pp-no" aria-hidden="true">${esc(P.no)}</span>`:''}
   <span class="pp-wm" aria-hidden="true">${esc(tn(P.t))}</span><img class="pp-ghost" src="${em(P.t)}" alt="" aria-hidden="true" onerror="this.remove()">
@@ -70,7 +70,7 @@ fetch(`data/pp/${LG}/${ID}.json`).then(r=>{if(!r.ok)throw 0;return r.json()}).th
   </div>
   <div class="pp-photo${P.img?'':' nop'}"><span class="pp-ini" aria-hidden="true">${esc(ini)}</span>${photo}</div>
  </article>
- <section class="pp-sec" id="s-season" aria-labelledby="h-s"><h2 id="h-s">Сезон</h2><div class="pp-tiles">${tiles.join('')}</div></section>${radar(P.sk)}
+ <section class="pp-sec" id="s-season" aria-labelledby="h-s"><h2 id="h-s">Сезон</h2><div class="pp-tiles">${tiles.join('')}</div></section>${radar(P.sk)}${window.JV_PCT?JV_PCT.block(P,LG):''}
  ${N?`<section class="pp-sec" id="s-l5" aria-labelledby="h-5"><h2 id="h-5">Последние ${Math.min(5,N)} ${pl(Math.min(5,N),'матч','матча','матчей')}</h2>
   <div class="pp-wrap"><table class="pp-t5"><thead><tr><th scope="col">Дата</th><th scope="col">Матч</th><th scope="col" class="n">Г</th><th scope="col" class="n">П</th><th scope="col" class="n">О</th>${nhl?'<th scope="col" class="n br">Бр</th><th scope="col" class="n tm">Время</th>':''}<th scope="col" class="n">Счёт</th></tr></thead><tbody>
   ${log.slice(-5).reverse().map(r=>{const sc=r[8],w=sc&&sc[0]>sc[1];return `<tr><td class="d">${ddmm(r[0])}</td><td><a class="op" href="../team/index.html?id=${encodeURIComponent(r[1])}"><img src="${em(r[1])}" alt="" loading="lazy" onerror="this.remove()"><span>${r[2]?'':''}${esc(tn(r[1]))}</span></a></td><td class="n">${r[3]}</td><td class="n">${r[4]}</td><td class="n"><b>${r[3]+r[4]}</b></td>${nhl?`<td class="n br">${r[5]??'—'}</td><td class="n tm">${mmss(r[6])}</td>`:''}<td class="n sc">${sc?`<span class="sc5"><i class="${w?'w':'l'}">${w?'В':'П'}</i><b>${sc[0]}:${sc[1]}</b><small>${sc[2]?esc(sc[2]):''}</small></span>`:'—'}</td></tr>`}).join('')}
@@ -103,7 +103,7 @@ fetch(`data/pp/${LG}/${ID}.json`).then(r=>{if(!r.ok)throw 0;return r.json()}).th
  {const hero=MAIN.querySelector('.pp-hero'),hd=document.getElementById('hd'),bar=document.createElement('div');
   bar.className='pp-stick';bar.setAttribute('aria-hidden','true');
   ['--kb','--ko','--ko2','--ks','--kt'].forEach(v=>{const x=MAIN.style.getPropertyValue(v);if(x)bar.style.setProperty(v,x)});
-  bar.innerHTML=`<div class="wrap"><span class="pps-wm">${esc(tn(P.t))}</span>${P.img?`<img class="pps-ph" src="${esc(JV_KPH(P.img))}" alt="" onerror="this.remove()">`:''}
+  bar.innerHTML=`<div class="wrap"><span class="pps-wm">${esc(tn(P.t))}</span>${P.img?`<img class="pps-ph" src="${esc(JV_KPH(P.img))}" referrerpolicy="no-referrer" alt="" onerror="this.remove()">`:''}
    <div class="pps-who"><b>${esc(P.n)}</b><span>${P.no!=null?'#'+esc(P.no)+' · ':''}${esc(POS[P.pos]||P.pos||'')} · ${esc(tn(P.t))}</span></div>
    <div class="pps-st"><div><b>${gp}</b><span>игр</span></div><div><b>${G}</b><span>голы</span></div><div><b>${A}</b><span>пас</span></div><div><b>${G+A}</b><span>очки</span></div></div>
    <nav><a href="#s-season" tabindex="-1">Сезон</a><a href="#s-l5" tabindex="-1">Последние 5</a><a href="#s-mk" tabindex="-1">Рынки</a><a href="#s-form" tabindex="-1">Форма</a><a href="#s-next" tabindex="-1">Следующий матч</a><a href="#s-games" tabindex="-1">Матчи</a></nav>

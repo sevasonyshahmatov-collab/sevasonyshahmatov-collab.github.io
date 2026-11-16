@@ -4,9 +4,9 @@
 (()=>{
 'use strict';
 const D=window.JV_TEAMS||{teams:{},names:{},axes:[]};
-const P=new URLSearchParams(location.search),ID=(P.get('id')||window.JV_TEAM_ID||'').toLowerCase(),THEME=P.get('theme');
+const P=new URLSearchParams(location.search),ID=(x=>/^[a-z0-9_]{1,40}$/.test(x)?x:'')((window.JV_TEAM_ID||P.get('id')||'').toLowerCase()),THEME=P.get('theme');
 const T=Object.hasOwn(D.teams,ID)?D.teams[ID]:undefined;
-const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
 const f=(v,d=2)=>(+v).toFixed(d).replace('.',',');
 const plural=(n,a,b,c)=>{const k=n%100,j=n%10;return k>10&&k<20?c:j===1?a:j>1&&j<5?b:c};
 const LG={khl:{name:'КХЛ'},nhl:{name:'НХЛ'}};
@@ -53,7 +53,7 @@ if(!T){
  document.getElementById('hero').innerHTML=`<header class="tmid tmnone" data-rv>
    <a class="crumb" href="${BACK('khl')}"><span aria-hidden="true">←</span> Лиги и клубы</a>
    <h1>Такой команды нет</h1>
-   <p class="lead">${ID?`По адресу «${esc(ID)}» клуба не нашлось.`:'В адресе не указан клуб.'} Выберите команду на стене эмблем — там все 54 клуба КХЛ и НХЛ.</p>
+   <p class="lead">Такого клуба нет. Выберите команду на стене эмблем — там все 54 клуба КХЛ и НХЛ.</p>
    <div class="hero-cta"><a class="btn btn-tg" href="${BACK('khl')}">Клубы КХЛ</a><a class="btn btn-line" href="${BACK('nhl')}">Клубы НХЛ</a></div></header>`;
  ['table','games','players','picks'].forEach(id=>{const e=document.getElementById(id);e.hidden=true;e.removeAttribute('data-zone')}); // скрытые зоны сбивают «свет» арены
  document.documentElement.classList.add('tm-none');
@@ -112,7 +112,7 @@ const streak=(()=>{const a=played.slice().sort((x,y)=>String(x.d).localeCompare(
 const streakHtml=streak.n>=3?`<p class="tmstreak ${streak.win?'w':'l'}" aria-label="${streak.win?'Серия побед':'Серия поражений'}: ${streak.n}"><span class="sk">${streak.win?'Серия побед':'Серия поражений'}:</span><b class="num">${streak.n}</b><span class="dots" aria-hidden="true">${streak.last.slice(-10).map(x=>`<i class="${x?'w':'l'}"></i>`).join('')}</span></p>`:'';
 const TGICO='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 3.2 2.9 10.4c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.9.8 1.4.4l2.6-2.2 4.8 3.5c.6.4 1.4.1 1.6-.7l3.1-15.1c.2-1-.7-1.7-1.6-1.3z"/></svg>';
 /* «Следить за командой»: старт бота с параметром follow_<id> (подписку на команду в боте делают отдельно) */
-const followBtn=(cls='')=>`<a class="follow ${cls}" href="https://t.me/jarvibet?start=follow_${esc(ID)}" target="_blank" rel="noopener" title="Прогноз и итог матча — в Telegram">${TGICO}<span>Прогнозы на матчи клуба — в Telegram</span></a>`;
+const followBtn=(cls='')=>`<a class="follow ${cls}" href="https://t.me/jarvibet" target="_blank" rel="noopener" title="Канал @jarvibet в Telegram">${TGICO}<span>Подписаться на канал</span></a>`;
 const hasSample=T.games.some(g=>g.s),hasEst=T.games.some(g=>g.ks);
 const otl=Math.max(0,(T.pts||0)-2*(T.w||0));
 const confRows=Object.entries(D.teams).filter(([,x])=>x.lg===lg&&x.conf===conf).sort((a,b)=>a[1].place-b[1].place);
@@ -185,7 +185,7 @@ document.getElementById('tableBox').innerHTML=`
     ${tile('Дома · в гостях',hm?`${hm[0]}–${hm[1]}`:'—',aw?` · ${aw[0]}–${aw[1]}`:'',null,'победы–поражения дома и на выезде')}
    </div>
    <div class="formbox"><span class="sl">Форма — последние 5 игр</span>
-    <ol class="frm" aria-label="Последние 5 игр, слева раньше">${last5.map(g=>{const t=formTitle(g);return `<li class="${RL[res(g)][1]}" title="${esc(t)}" aria-label="${esc(t)}"><b><img src="../assets/em/s/${esc(g.o)}.webp" alt="" loading="lazy"></b><span>${g.gf}:${g.ga}${g.x?' '+g.x:''}</span></li>`}).join('')}</ol>
+    <ol class="frm" aria-label="Последние 5 игр, слева раньше">${last5.map(g=>{const t=formTitle(g);return `<li class="${RL[res(g)][1]}" title="${esc(t)}" aria-label="${esc(t)}"><b><img src="../assets/em/s/${esc(g.o)}.webp" alt="" loading="lazy"></b><span>${g.gf}:${g.ga}${g.x?' '+esc(g.x):''}</span></li>`}).join('')}</ol>
     <p class="ss">За последние 10 игр — <b>${esc(T.l10s||T.l10+' '+plural(T.l10,'очко','очка','очков'))}</b>.</p></div>
    ${plCard()}
   </div>
