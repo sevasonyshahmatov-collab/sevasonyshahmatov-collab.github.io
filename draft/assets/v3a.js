@@ -13,7 +13,7 @@ JV.atMs=t=>Date.parse(t.replace(' ','T')+':00+03:00');
 JV.left=t=>{const s=Math.round((JV.atMs(t)-Date.now())/1000);return s};
 JV.hms=s=>s>0?`${JV.two(Math.floor(s/3600))}:${JV.two(Math.floor(s%3600/60))}:${JV.two(s%60)}`:(s>-7200?'ИДЁТ':'ФИНАЛ');
 /* статус по времени: до 2 ч после старта — «идёт», до суток — «завершён», дальше — дата матча (устаревшие примеры не выдаём за «только что завершён») */
-JV.over=s=>{if(s>-12600)return 'идёт';   /* 3,5 ч: хоккей с ОТ и буллитами и задержками идёт дольше 2 ч (владелец 15.11: «ещё играют, а написано завершён») */if(s>-86400)return 'завершён';const d=new Date(Date.now()+s*1000+3*3600e3).toISOString();return 'матч '+d.slice(8,10)+'.'+d.slice(5,7)};
+JV.over=s=>{if(s>-7200)return 'идёт';if(s>-86400)return 'завершён';const d=new Date(Date.now()+s*1000+3*3600e3).toISOString();return 'матч '+d.slice(8,10)+'.'+d.slice(5,7)};
 JV.inMin=s=>{const m=Math.floor(s/60);return s<=0?JV.over(s):m<60?`через ${m} мин`:m<2880?`через ${Math.floor(m/60)} ч ${m%60} мин`:`через ${Math.floor(m/1440)} дн ${Math.floor(m%1440/60)} ч`};
 
 /* Крупные заголовки: самое длинное слово целиком в колонке — иначе шрифт меньше ровно настолько, чтобы влезло
@@ -194,8 +194,7 @@ function chrome(){
 
 /* ── шторка при переходе между страницами ───────────────────── */
 function wipe(){
-  /* телефон и планшет — без шторки (владелец 15.11: чёрный экран на iPhone после «назад», переходы медленнее на 0,56 с) */
-  if(RM||matchMedia('(max-width:900px),(pointer:coarse)').matches){try{sessionStorage.removeItem('jv-wipe')}catch(e){}return}
+  if(RM)return;
   const w=document.createElement('div');w.className='wipe';w.setAttribute('aria-hidden','true');w.innerHTML=Array.from({length:6},(_,i)=>`<i style="--i:${i}"></i>`).join('');document.body.appendChild(w);
   let came=false;try{came=sessionStorage.getItem('jv-wipe')==='1';sessionStorage.removeItem('jv-wipe')}catch(e){}
   if(came){w.querySelectorAll('i').forEach(i=>i.style.transform='scaleY(1)');requestAnimationFrame(()=>requestAnimationFrame(()=>{w.querySelectorAll('i').forEach(i=>i.style.transform='');w.classList.add('reveal')}))}
