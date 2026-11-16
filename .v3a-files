@@ -533,6 +533,8 @@ assets/pal/hockey.css
 assets/palettes.css
 assets/palettes.js
 assets/particles.js
+assets/pct.css
+assets/pct.js
 assets/player.css
 assets/player.js
 assets/players.css
@@ -8110,7 +8112,3 @@ uel/sparta-prague/index.html
 uel/torreense/index.html
 uel/union-st-gilloise/index.html
 uel/viktoria-plzen/index.html
-vote/anim-football.mp4
-vote/anim-hockey.mp4
-vote/leaguecards.html
-vote/profile-anim.html
