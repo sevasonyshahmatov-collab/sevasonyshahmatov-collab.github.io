@@ -680,10 +680,6 @@ bundesliga/union-berlin/index.html
 bundesliga/werder-bremen/index.html
 data/daily_log.json
 data/deckbg/index.json
-data/deckbg/khl_2026-11-16_cska_amur-m.webp
-data/deckbg/khl_2026-11-16_cska_amur.webp
-data/deckbg/khl_2026-11-16_lokomotiv_sochi-m.webp
-data/deckbg/khl_2026-11-16_lokomotiv_sochi.webp
 data/deckbg/khl_2026-11-17_akbars_dinamo_msk-m.webp
 data/deckbg/khl_2026-11-17_akbars_dinamo_msk.webp
 data/deckbg/khl_2026-11-17_avtomobilist_spartak-m.webp
@@ -4775,6 +4771,7 @@ hockey/data/pp/khl/19233.json
 hockey/data/pp/khl/1928.json
 hockey/data/pp/khl/2065.json
 hockey/data/pp/khl/21137.json
+hockey/data/pp/khl/21161.json
 hockey/data/pp/khl/21169.json
 hockey/data/pp/khl/21225.json
 hockey/data/pp/khl/21329.json
