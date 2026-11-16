@@ -4,7 +4,7 @@
 (()=>{
 const SRC=(document.currentScript&&document.currentScript.src)||new URL('assets/footer.js',location.href).href;
 const U=p=>new URL('../'+p,SRC).href;
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
 try{const l=document.createElement('link');l.rel='stylesheet';l.href=new URL('footer.css',SRC).href;document.head.appendChild(l)}catch(e){}
 /* соцсети (Telegram, YouTube, Instagram) — адреса в одном файле assets/social.js, плитки появятся сами (14.11, п. 7) */
 if(!window.JV_SOCIAL&&!document.querySelector('script[src*="social.js"]'))try{const s=document.createElement('script');s.src=new URL('social.js',SRC).href;s.defer=true;document.head.appendChild(s)}catch(e){}
@@ -28,7 +28,6 @@ f.innerHTML=`<div class="wrap"><div class="jvf-top">
   <nav class="jvf-mini" aria-label="Главные ссылки">${MINI.map(l=>`<a href="${esc(U(l[1]))}">${esc(l[0])}</a>`).join('')}</nav>
   <nav class="jvf-cols" aria-label="Разделы сайта">${COLS.map(c=>`<div><b>${esc(c[0])}</b>${c[1].map(l=>`<a href="${esc(U(l[1]))}">${esc(l[0])}</a>`).join('')}</div>`).join('')}</nav>
  </div>
- <div class="jvf-safe"><p><b>Единственный канал — @jarvibet.</b> Платных подписок, VIP и «договорных матчей» нет. Мы не пишем первыми в личные сообщения и не просим денег.</p><p>18+. Аналитика, не призыв делать ставки. Выигрыш не гарантирован.</p><p class="jvf-fake" hidden></p></div>
  <div class="jvf-bot"><p class="jvf-data">Данные: ESPN, НХЛ, приложение КХЛ. Линии и расчёт обновляются дважды в день.</p><span class="jvf-slot"></span><span class="jvf-age" title="Сайт только для совершеннолетних">18+</span></div></div>`;
 if(keep){keep.className='jvf-note';f.querySelector('.jvf-slot').replaceWith(keep)}
 if(old)old.replaceWith(f);else document.body.appendChild(f);

@@ -8,8 +8,7 @@ const sport=document.documentElement.dataset.sport||'';
 // раздел сайта: на хоккейных страницах ищем только хоккей, на футбольных — только футбол, на главной — всё (владелец 04.11)
 const ZONE=sport==='hockey'?'h':sport==='football'?'f':'';
 const mine=x=>!ZONE||x.s===ZONE;
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
-const safeUrl=u=>{u=String(u||'');return /^[a-z][a-z0-9+.-]*:/i.test(u.trim())&&!/^https:\/\//.test(u)?'#':u};   /* свои страницы и https, без javascript: и т.п. */
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
 
 /* ---- нормализация: латиница и кириллица сводятся к одному «скелету» ---- */
 const CY={а:'a',б:'b',в:'v',г:'g',д:'d',е:'e',ё:'e',ж:'zh',з:'z',и:'i',й:'i',к:'k',л:'l',м:'m',н:'n',о:'o',п:'p',р:'r',с:'s',т:'t',у:'u',ф:'f',х:'h',ц:'c',ч:'ch',ш:'sh',щ:'sh',ъ:'',ы:'i',ь:'',э:'e',ю:'u',я:'a'};
@@ -107,7 +106,7 @@ const dt=d=>{const t=NOW().slice(0,10),y=new Date(Date.now()+(new Date().getTime
 const img=c=>`<img src="${esc(crest(c))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`;
 const tcode=p=>!p.c?'':p.lg==='khl'?p.c.id:p.c.id==='minnesota'?'MIN':p.c.id==='dallas'?'DAL':p.c.id.replace(/^nhl_/,'').toUpperCase();
 const LGN={khl:'КХЛ',nhl:'НХЛ',epl:'АПЛ',laliga:'Ла Лига',seriea:'Серия А',bundesliga:'Бундеслига',ligue1:'Лига 1',rpl:'РПЛ',ucl:'ЛЧ',uel:'ЛЕ'};
-const li=(href,html,cls)=>`<a class="sp-i ${cls||''}" role="option" id="spo${items.push(href)-1}" href="${esc(safeUrl(href))}" tabindex="-1">${html}</a>`;
+const li=(href,html,cls)=>`<a class="sp-i ${cls||''}" role="option" id="spo${items.push(href)-1}" href="${esc(href)}" tabindex="-1">${html}</a>`;
 function draw(r){
   items=[];cur=-1;
   const g=(t,a,f)=>a.length?`<div class="sp-g" role="group" aria-label="${t}"><h3>${t}</h3>${a.map(f).join('')}</div>`:'';
@@ -115,7 +114,7 @@ function draw(r){
    +g('Матчи',r.matches,m=>li(U(pg(m.h)),`<span class="sp-vs">${img(m.h)}${img(m.a)}</span><span class="sp-t"><b>${esc(m.h.ru)} — ${esc(m.a.ru)}</b><small>${esc(dt(m.d))} МСК${m.sc?' · '+esc(m.sc):''}${m.cup?' · '+esc(LGN[m.cup]||m.cup):''} · ${SP[m.s]}</small></span>`))
    +g('Лиги',r.leagues,l=>li(U(l.url),`<span class="sp-lg">${l.s==='h'?'ХК':'ФК'}</span><span class="sp-t"><b>${esc(l.ru)}</b><small>${SP[l.s]} · таблица и матчи</small></span>`))
    +g('Игроки',r.players,p=>li(U(p.id!=null?'hockey/player.html?lg='+p.lg+'&id='+encodeURIComponent(p.id):(p.lg==='nhl'?'hockey/players.html':'hockey/players_khl.html')+'?team='+encodeURIComponent(tcode(p))+'&q='+encodeURIComponent(p.n)),`<span class="sp-lg">${esc(p.n.split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase())}</span><span class="sp-t"><b>${esc(p.n)}</b><small>${esc(p.c?p.c.ru:'')} · ${p.lg==='nhl'?'НХЛ':'КХЛ'}</small></span>`));
-  res.innerHTML=out||`<p class="sp-empty">Ничего не нашли. Попробуйте название клуба или лиги.</p>`;
+  res.innerHTML=out||`<p class="sp-empty">Ничего не нашли по «${esc(inp.value.trim())}». Попробуйте название клуба или лиги.</p>`;
 }
 function idle(){
   items=[];cur=-1;const r=recent();
@@ -159,6 +158,5 @@ addEventListener('keydown',e=>{
   else if(e.key==='Tab'){const f=[...box.querySelectorAll('input,button')].filter(x=>x.offsetParent);if(f.length){const i=f.indexOf(document.activeElement);if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus()}}}
 });
 /* адрес вида ?q=… (SearchAction в разметке главной): открыть поиск с этим запросом */
-/* открываем, только если по запросу что-то есть: иначе чужой текст из ссылки повис бы на настоящем сайте (проверка безопасности 16.11) */
-try{const qq=(new URLSearchParams(location.search).get('q')||'').slice(0,80);if(words(qq).length)load().then(()=>{const r=search(qq);if(Object.values(r).some(a=>Array.isArray(a)&&a.length)){inp.value=qq;open()}}).catch(()=>{})}catch(e){}
+try{const qq=new URLSearchParams(location.search).get('q');if(qq!==null){inp.value=qq.slice(0,80);open()}}catch(e){}
 })();

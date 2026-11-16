@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru" data-sport="hockey"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><title>Выбор фото для карточек лиг — черновик</title>
+<link rel="stylesheet" href="../assets/v3a.css"><link rel="stylesheet" href="../assets/leaguecards/lc.css">
+<style>
+body{background:var(--paper);color:var(--ink)}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 80px}
+h1{font:800 clamp(26px,4vw,40px)/1.1 var(--display);text-transform:none;margin:0 0 12px}
+.lead{font:500 16px/1.5 var(--display);color:var(--ink-2);max-width:70ch;margin:0 0 8px}
+h2{font:800 clamp(22px,3vw,30px)/1.1 var(--display);margin:48px 0 16px;text-transform:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:64px 28px;padding-top:48px}
+.v{display:grid;gap:14px;align-content:start}
+.v .lc-deck{display:block}
+.cap{text-align:center;font:600 14px/1.45 var(--display);color:var(--ink-2)}
+.cap b{display:block;font:900 22px/1.1 var(--display);color:var(--ink);margin-bottom:4px}
+.cap a{color:inherit}
+.cap strong{color:var(--ink)}
+.cap i{display:block;font-style:normal;color:var(--ink-3);font-size:13px}
+.ask{margin:32px 0 0;padding:18px 20px;border-radius:12px;background:var(--card);border:1px solid var(--rule-2);font:600 16px/1.5 var(--display)}
+</style></head><body>
+<main class="wrap">
+<h1>Карточки лиг в «Хоккее»: какого игрока ставим</h1>
+<p class="lead">Все фото — со свободной лицензией (Wikimedia Commons), автор подписан под карточкой, как на сайте. Ответьте в боте одним словом,
+например: <b>КХЛ-2, НХЛ-1</b>. Пока выбора нет, на странице «Хоккей» в черновике стоит вариант, отмеченный «сейчас в черновике».</p>
+<p class="lead"><b>НХЛ:</b> поставлен ваш выбор — Малкин (НХЛ-2). <b>КХЛ:</b> нашлись свежие свободные фото игроков (2023–2026 гг.) — «Локомотива» среди них нет, поэтому другие клубы. Ответьте одним словом, например «КХЛ-1».</p>
+<div id="out"></div>
+<p class="ask">Ответ: «КХЛ-…, НХЛ-…» (и «Главная-…» для карточки «Хоккей» на главной, если меняем фото Макдэвида).</p>
+</main>
+<script src="../assets/leaguecards/lc.js"></script>
+<script>
+const V=[{"code": "КХЛ-1", "lg": "khl", "photo": "../assets/leaguecards/var/khl-alistrov.webp", "cls": "half", "club": "../assets/em/dinamo_minsk.webp", "player": "Владимир Алистров (Динамо Минск), 2023 — крупно, лучшее качество <strong>(сейчас в черновике)</strong>", "credit": "пресс-служба ХК «Динамо-Минск», CC BY-SA 4.0", "page": "https://commons.wikimedia.org/wiki/File:Vladimiralistrovdynamominsk.jpg", "src": "3924x2616", "cutsz": "1932x1800", "note": ""}, {"code": "КХЛ-2", "lg": "khl", "photo": "../assets/leaguecards/var/khl-vinogradov.webp", "cls": "", "club": "../assets/em/torpedo.webp", "player": "Егор Виноградов (Торпедо), плей-офф 2026 — в движении", "credit": "33korovbl, CC BY-SA 4.0", "page": "https://commons.wikimedia.org/wiki/File:Egor_Vinogradov_Torpedo_vs_Severstal_Gagarin_Cup_Playoffs_2026.jpg", "src": "2247x1498", "cutsz": "703x1163", "note": "фото небольшое — на большом экране чуть мягче"}, {"code": "КХЛ-3", "lg": "khl", "photo": "../assets/leaguecards/var/khl-popugayev.webp", "cls": "", "club": "../assets/em/severstal.webp", "player": "Никита Попугаев (Северсталь), октябрь 2026", "credit": "LxUnder88, CC0", "page": "https://commons.wikimedia.org/wiki/File:Nikita_Popugayev_Severstal.jpg", "src": "1052x2280", "cutsz": "638x1279", "note": ""}, {"code": "КХЛ-4", "lg": "khl", "photo": null, "cls": "big", "club": "../assets/em/lokomotiv.webp", "player": "Без игрока: эмблема «Локомотива»", "credit": "эмблема клуба", "page": "", "src": "", "cutsz": "", "note": ""}],SEC=[["khl", "КХЛ — игрок на карточку"]];
+const out=document.getElementById('out');
+for(const [lg,title] of SEC){
+ const vs=V.filter(v=>v.lg===lg);if(!vs.length)continue;
+ const h=document.createElement('h2');h.textContent=title;out.appendChild(h);
+ const g=document.createElement('div');g.className='grid';out.appendChild(g);
+ vs.forEach(v=>{const w=document.createElement('div');w.className='v';const d=document.createElement('div');d.className='lc-deck';w.appendChild(d);
+  const id=lg==='home'?'nhl':lg;
+  LeagueCards.mount(d,[{id,name:id==='khl'?'КХЛ':'НХЛ',cnt:'Вариант '+v.code,href:'#',logo:'../assets/lg/'+id+'.webp',club:v.club,photo:v.photo,photoCls:v.cls,cols:8,pl:()=>'клубов',clubs:[]}]);
+  const c=document.createElement('p');c.className='cap';
+  c.innerHTML=`<b>${v.code}</b>${v.player}<br>${v.page?`Фото: <a href="${v.page}" target="_blank" rel="noopener">${v.credit}</a>`:v.credit}${v.src?`<i>исходник ${v.src} px · вырезка ${v.cutsz} px</i>`:''}${v.note?`<i>${v.note}</i>`:''}`;
+  w.appendChild(c);g.appendChild(w)})}
+</script>
+</body></html>

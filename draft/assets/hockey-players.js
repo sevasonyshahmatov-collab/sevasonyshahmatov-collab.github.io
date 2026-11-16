@@ -8,7 +8,7 @@ const TMK={"dinamo_msk":["Динамо Москва","#003da5"],"avangard":["А�
 const TMN={"CAR":["Каролина","#cc0000"],"EDM":["Эдмонтон","#ff4c00"],"BOS":["Бостон","#ffb81c"],"MTL":["Монреаль","#af1e2d"],"VGK":["Вегас","#b4975a"],"OTT":["Оттава","#c8102e"],"TBL":["Тампа-Бэй","#123e8c"],"NJD":["Нью-Джерси","#ce1126"],"FLA":["Флорида","#c8102e"],"UTA":["Юта","#71afe5"],"TOR":["Торонто","#103c8c"],"COL":["Колорадо","#822d48"],"SEA":["Сиэтл","#006080"],"BUF":["Баффало","#003087"],"WSH":["Вашингтон","#c8102e"],"NYI":["Айлендерс","#00539b"],"STL":["Сент-Луис","#002f87"],"DET":["Детройт","#ce1126"],"NSH":["Нэшвилл","#ffb81c"],"NYR":["Рейнджерс","#0038a8"],"SJS":["Сан-Хосе","#006d75"],"ANA":["Анахайм","#f47a38"],"CGY":["Калгари","#d2001c"],"PIT":["Питтсбург","#fcb514"],"PHI":["Филадельфия","#f74902"],"WPG":["Виннипег","#16386e"],"CBJ":["Коламбус","#143c82"],"LAK":["Лос-Анджелес","#828c91"],"CHI":["Чикаго","#cf0a2c"],"VAN":["Ванкувер","#003e82"],"DAL":["Даллас","#006847"],"MIN":["Миннесота","#154734"]};
 const TM=LG==='khl'?TMK:TMN;let JY=window.JV_JERSEY;
 const $=id=>document.getElementById(id);
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const em=ab=>(ab=String(ab??'').replace(/[^\w-]/g,''),LG==='khl'?`../assets/em/${ab}.webp`:ab==='MIN'?'../assets/em/minnesota.webp':ab==='DAL'?'../assets/em/dallas.webp':`../assets/em/nhl_${ab.toLowerCase()}.webp`);
 const ini=n=>n.split(/\s+/).filter(Boolean).map(w=>w[0]).slice(0,2).join('').toUpperCase();
 const tn=ab=>(TM[ab]||[ab])[0];
@@ -41,10 +41,10 @@ fetch(`data/plite_${LG}.json`).then(r=>r.json()).then(D=>{
    const nx=D.next[p.t];
    const jk=JY?JY.key(LG,p.t):'',jv=JY&&JY.vars(jk),lt=jv&&JY.calc(jk).lt;
    return `<article class="pr${jv?' k'+(lt?' lt':'')+(i<3?' t'+(i+1):''):''}" role="listitem"${jv?` style="${jv}"`:''}>${jv?`<img class="wm" src="${em(p.t)}" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">${p.no!=null?`<span class="no" aria-hidden="true">${esc(p.no)}</span>`:''}`:''}<span class="rk">${i+1}</span>
-    <div class="av" style="--c:${c}">${p.img?`<img class="ph" src="${esc(JV_KPH(p.img))}" referrerpolicy="no-referrer" alt="" loading="lazy" onerror="this.remove()">`:''}<img class="bd" src="${em(p.t)}" alt="" loading="lazy" onerror="this.remove()"></div>
+    <div class="av" style="--c:${c}">${p.img?`<img class="ph" src="${esc(JV_KPH(p.img))}" alt="" loading="lazy" onerror="this.remove()">`:''}<img class="bd" src="${em(p.t)}" alt="" loading="lazy" onerror="this.remove()"></div>
     <div class="nm"><b>${p.id!=null?`<a href="player.html?lg=${LG}&id=${p.id}" title="Профиль игрока">${esc(p.n)}</a>`:esc(p.n)}</b><span>${esc(tn(p.t))} · ${p.pos==='D'?'защитник':'нападающий'}</span></div>
     ${st.m==='pt'?`<div class="pts pin" aria-hidden="true"><b>${p.G}+${p.A}</b></div>`:''}<div class="tot" aria-label="${st.m==='g'?'голов':st.m==='a'?'передач':'очков'}: ${tot(p)}">${tot(p)}</div>
-    ${p.img?`<img class="cut" src="${esc(JV_KPH(p.img))}" referrerpolicy="no-referrer" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">`:''}
+    ${p.img?`<img class="cut" src="${esc(JV_KPH(p.img))}" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">`:''}
    </article>${st.m==='pt'?`<div class="ga${jv?' k':''}"${jv?` style="${jv}"`:''} aria-label="${p.G} голов и ${p.A} передач"><span>${p.G}</span><i>+</i><span>${p.A}</span></div>`:''}`}).join('');
   $('list').classList.toggle('two',st.m==='pt');
   $('more').hidden=L.length<=st.lim}

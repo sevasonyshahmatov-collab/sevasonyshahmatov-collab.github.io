@@ -15,6 +15,7 @@ document.querySelector('meta[name=theme-color]').content={a:'#0a1220',b:'#0b2a84
 <link rel="stylesheet" href="assets/home.css">
 <link rel="stylesheet" href="assets/obj.css">
 <link rel="stylesheet" href="proto/home/cards/cards.css">
+<link rel="stylesheet" href="proto/home/cards/fx.css">
 <link rel="stylesheet" href="proto/home/merge/merge.css">
 <link rel="stylesheet" href="proto/home/merge/mtoday.css">
 <link rel="stylesheet" href="assets/live.css">
@@ -111,7 +112,6 @@ document.querySelector('meta[name=theme-color]').content={a:'#0a1220',b:'#0b2a84
   <div class="face back"><div class="bk"><b>JAR<i>V</i>IS</b><span>Футбол</span><em>Открываем раздел…</em></div></div>
  </div></div>
 </a></div>
-     <p class="mg-credit">Фото: Connor McDavid — <a href="https://commons.wikimedia.org/wiki/File:Connor_McDavid_of_the_Edmonton_Oilers.jpg" target="_blank" rel="noopener">All-Pro Reels, CC BY-SA 2.0</a>; Kylian Mbappé — Bryan Berlin, CC BY-SA 4.0; Wikimedia Commons, фон удалён</p>
     </div>
   </div>
 </section>
@@ -189,6 +189,8 @@ document.querySelector('meta[name=theme-color]').content={a:'#0a1220',b:'#0b2a84
 
 <a class="tgbar" id="tgbar" href="https://t.me/jarvibet" target="_blank" rel="noopener"><span>Получать прогнозы — бесплатно</span><span aria-hidden="true">›</span></a>
 
+<!-- 16.11 (владелец): подпись авторов фото — не на первом экране, а в подвале (footer.js переносит #foot в нижнюю строку) -->
+<footer><p id="foot">Фото на главной: Connor McDavid — <a href="https://commons.wikimedia.org/wiki/File:Connor_McDavid_of_the_Edmonton_Oilers.jpg" target="_blank" rel="noopener">All-Pro Reels, CC BY-SA 2.0</a>; Kylian Mbappé — Bryan Berlin, CC BY-SA 4.0; Wikimedia Commons, фон удалён, цвет изменён</p></footer>
 <script src="assets/nav.js"></script>
 <script src="assets/footer.js"></script>
 <script>window.JV_ROOT=""</script>
@@ -201,6 +203,7 @@ document.querySelector('meta[name=theme-color]').content={a:'#0a1220',b:'#0b2a84
 <script src="proto/home/common.js"></script>
 <script src="proto/home/cards/vendor/gsap.min.js"></script>
 <script src="proto/home/merge/merge.js"></script>
+<script src="proto/home/cards/fx.js"></script>
 <script src="proto/home/merge/mtoday.js"></script>
 <script src="assets/live.js"></script>
 <script src="data/results-lite.js"></script>
