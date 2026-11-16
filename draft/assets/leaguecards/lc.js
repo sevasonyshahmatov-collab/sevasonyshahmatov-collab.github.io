@@ -5,7 +5,7 @@
 'use strict';
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const MAX=14,clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ARROW='<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M3 10h13M11 4l6 6-6 6"/></svg>';
 /* фактура: наклонные полосы цветов клуба; у Локомотива — красная диагональ с белой кромкой, у Каролины — красная с серебряной */
 const TEX=id=>`<svg class="tex" viewBox="0 0 150 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M58 105 L112 -5 L155 -5 L155 105Z" fill="${id==='khl'?'#d6001c':'#c8102e'}"/><path d="M58 105 L112 -5 L119 -5 L65 105Z" fill="${id==='khl'?'#fff':'#a2aaad'}" opacity=".92"/><path d="M72 105 L126 -5 L129 -5 L75 105Z" fill="${id==='khl'?'#fff':'#a2aaad'}" opacity=".5"/></svg>`;
@@ -67,10 +67,11 @@ function mount(el,leagues){
  addEventListener('scroll',()=>S.forEach(s=>{s.rect=null}),{passive:true});
  /* крутим кадры только пока карточки на экране */
  let run=false;
+ const TOUCHJV=matchMedia('(hover:none),(pointer:coarse)').matches;
  const frame=t=>{
   S.forEach(s=>{
    let tx=s.tx,ty=s.ty;
-   if(!s.ptr){const a=t/1000;ty=Math.sin(a*.8+s.ph)*5;tx=Math.cos(a*.6+s.ph)*3.5}
+   if(!s.ptr){if(TOUCHJV){tx=0;ty=0;if(Math.abs(s.rx)<.02&&Math.abs(s.ry)<.02&&Math.abs(s.s-s.ts)<.002)return}else{const a=t/1000;ty=Math.sin(a*.8+s.ph)*5;tx=Math.cos(a*.6+s.ph)*3.5}}   /* телефон: без покачивания (15.11) */
    const k=s.ptr?.14:.07;
    s.rx+=(tx-s.rx)*k;s.ry+=(ty-s.ry)*k;s.s+=(s.ts-s.s)*.12;
    const st=s.c.style;
