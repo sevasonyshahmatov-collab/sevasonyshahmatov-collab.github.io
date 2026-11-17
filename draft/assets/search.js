@@ -83,7 +83,7 @@ function search1(raw){
 }
 
 /* ---- интерфейс ---- */
-const LUPA='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>';
+const LUPA='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/> <path d="M21 21l-6 -6"/></svg>';
 const row=hd.querySelector('.hdrow');if(!row)return;
 /* кнопку рисует nav.js сразу (без сдвига шапки); если её нет — создаём */
 let sb=row.querySelector('.sbtn');

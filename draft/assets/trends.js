@@ -295,7 +295,7 @@ function render(){
       if(ST.type!=='all'&&ST.type!==c[0])continue;
       const L=list.filter(t=>t.cat===c[0]&&!used.has(t.id));if(!L.length)continue;
       const all=ST.type!=='all'||ST.open[c[0]]||L.length<=PER+1,shown=all?L:L.slice(0,PER);
-      html+=`<li class="tsec c-${c[0]}" id="t-${c[0]}"><div class="tsec-h"><h2>${esc(c[1])}<span class="num">${L.length}</span></h2><p>${esc(c[2])}</p></div>
+      html+=`<li class="tsec c-${c[0]}" id="t-${c[0]}"><div class="tsec-h"><h2>${(window.JVI||(()=>''))(c[0],'tsi')}${esc(c[1])}<span class="num">${L.length}</span></h2><p>${esc(c[2])}</p></div>
 <ul class="tlist">${shown.map(t=>row(t,false)).join('')}</ul>${L.length>shown.length?`<button type="button" class="tsec-more" data-open="${c[0]}">Ещё ${L.length-shown.length} · ${esc(c[1].toLowerCase())}</button>`:''}</li>`;
     }
     $('#more').hidden=true;

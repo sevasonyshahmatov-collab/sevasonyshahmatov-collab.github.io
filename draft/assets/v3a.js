@@ -66,7 +66,7 @@ JV.ics=(title,t,min)=>{const st=new Date(Date.parse(String(t).slice(0,16).replac
  const s=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//JARVIS//match//RU','BEGIN:VEVENT','UID:'+f(st)+'-'+title.length+'@jarvis','DTSTAMP:'+f(st),'DTSTART:'+f(st),'DTEND:'+f(en),
   'SUMMARY:'+title,'DESCRIPTION:Расчёт модели — на сайте JARVIS. Прогнозы дня — в Telegram @jarvibet.','BEGIN:VALARM','TRIGGER:-PT15M','ACTION:DISPLAY','DESCRIPTION:'+title,'END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
  return 'data:text/calendar;charset=utf-8,'+encodeURIComponent(s)};
-JV.BELL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>';
+JV.BELL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"/> <path d="M9 17v1a3 3 0 0 0 6 0v-1"/></svg>';
 
 /* ── split-flap ─────────────────────────────────────────────── */
 const CH='АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЭЮЯ0123456789';
