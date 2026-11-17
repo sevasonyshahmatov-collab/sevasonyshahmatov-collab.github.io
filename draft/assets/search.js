@@ -88,7 +88,7 @@ const row=hd.querySelector('.hdrow');if(!row)return;
 /* кнопку рисует nav.js сразу (без сдвига шапки); если её нет — создаём */
 let sb=row.querySelector('.sbtn');
 if(!sb){sb=document.createElement('button');sb.type='button';sb.className='sbtn';sb.setAttribute('aria-label','Поиск по сайту');sb.setAttribute('aria-haspopup','dialog');sb.setAttribute('aria-expanded','false');
-sb.innerHTML=LUPA+'<kbd aria-hidden="true">/</kbd>';
+sb.innerHTML=LUPA+'<span class="sb-t">Поиск</span><kbd aria-hidden="true">/</kbd>';
 const anchor=row.querySelector('.btn-tg')||row.querySelector('.mbtn');row.insertBefore(sb,anchor)}
 
 const box=document.createElement('div');box.className='jsq';box.hidden=true;box.setAttribute('role','dialog');box.setAttribute('aria-modal','true');box.setAttribute('aria-label','Поиск');
@@ -133,12 +133,43 @@ function mark(i){
   cur=(i+all.length)%all.length;all.forEach((a,k)=>a.classList.toggle('on',k===cur));
   inp.setAttribute('aria-activedescendant',all[cur].id);all[cur].scrollIntoView({block:'nearest'});
 }
+
+/* ---- «Command button» (по мотивам DesignBookmark Motion, 17.11): кнопка в шапке пружинисто раскрывается в поле поиска,
+   подписи сменяются через размытие, результаты выпадают под полем. Только широкий экран; на телефоне — прежний полноэкранный поиск. ---- */
+const WIDE=()=>matchMedia('(min-width:761px)').matches,CALM=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
+const form=box.querySelector('form'),fLupa=form.querySelector('svg');
+const cbx=document.createElement('div');cbx.className='cbx';cbx.hidden=true;
+cbx.innerHTML=`<span class="cbx-a" aria-hidden="true">${LUPA}<span>Поиск</span><kbd>/</kbd></span><span class="cbx-b">${LUPA}<span class="cbx-in"></span><button type="button" class="cbx-esc" aria-label="Закрыть поиск">Esc</button></span>`;
+document.body.appendChild(cbx);
+let inl=false,raf=0;
+function spring(from,to,done){cancelAnimationFrame(raf);
+  if(CALM()){cbx.style.width=to+'px';done&&done();return}
+  let x=from,v=0,last=performance.now();const K=420,C=30;   /* жёсткость/затухание: ~0,4 с, перелёт ~1 % */
+  const tick=t=>{let dt=Math.min(.032,(t-last)/1000);last=t;
+    for(let i=0;i<4;i++){const a=-K*(x-to)-C*v;v+=a*dt/4;x+=v*dt/4}
+    cbx.style.width=x.toFixed(2)+'px';
+    if(Math.abs(x-to)<.3&&Math.abs(v)<4){cbx.style.width=to+'px';done&&done();return}
+    raf=requestAnimationFrame(tick)};raf=requestAnimationFrame(tick)}
+function inlineOpen(){
+  const r=sb.getBoundingClientRect();if(!r.width)return false;
+  inl=true;box.classList.add('inl');
+  const W=Math.max(r.width,Math.min(460,r.right-24));
+  Object.assign(cbx.style,{top:r.top+'px',right:(innerWidth-r.right)+'px',height:r.height+'px',width:r.width+'px'});
+  const pn=box.querySelector('.sp-pn');Object.assign(pn.style,{top:(r.bottom+10)+'px',right:(innerWidth-r.right)+'px',width:Math.min(560,r.right-24)+'px'});
+  cbx.querySelector('.cbx-in').appendChild(inp);cbx.hidden=false;sb.style.visibility='hidden';
+  requestAnimationFrame(()=>cbx.classList.add('on'));spring(r.width,W);return true}
+function inlineClose(){
+  if(!inl)return;inl=false;box.classList.remove('inl');cbx.classList.remove('on');
+  const r=sb.getBoundingClientRect();
+  spring(parseFloat(cbx.style.width)||r.width,r.width,()=>{if(inl)return;cbx.hidden=true;sb.style.visibility='';fLupa.after(inp)})}
+cbx.addEventListener('click',e=>{if(e.target.closest('.cbx-esc')){close();return}if(!inl)return;inp.focus()});
+addEventListener('resize',()=>{if(inl)close(false)});
 function open(){
   if(!box.hidden)return;opener=document.activeElement;box.hidden=false;sb.setAttribute('aria-expanded','true');
-  document.documentElement.classList.add('sp-lock');load().catch(()=>{});run();setTimeout(()=>{inp.focus();inp.select()},0);
+  if(!(WIDE()&&inlineOpen()))document.documentElement.classList.add('sp-lock');load().catch(()=>{});run();setTimeout(()=>{inp.focus();inp.select()},0);
 }
 function close(back){
-  if(box.hidden)return;box.hidden=true;sb.setAttribute('aria-expanded','false');document.documentElement.classList.remove('sp-lock');
+  if(box.hidden)return;box.hidden=true;sb.setAttribute('aria-expanded','false');document.documentElement.classList.remove('sp-lock');inlineClose();
   try{if(box.contains(document.activeElement))document.activeElement.blur();if(back!==false&&opener&&opener!==document.body&&opener.focus)opener.focus()}catch(e){}
 }
 sb.addEventListener('click',e=>{e.stopPropagation();box.hidden?open():close()});
@@ -148,6 +179,7 @@ box.addEventListener('click',e=>{
   const a=e.target.closest('a.sp-i');if(a)remember(inp.value);
 });
 inp.addEventListener('input',run);
+inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&inl){e.preventDefault();form.requestSubmit?form.requestSubmit():form.dispatchEvent(new Event('submit',{cancelable:true}))}});
 box.querySelector('form').addEventListener('submit',e=>{e.preventDefault();const a=res.querySelectorAll('a.sp-i')[cur<0?0:cur];if(a){remember(inp.value);location.href=a.href}});
 addEventListener('keydown',e=>{
   const t=e.target,typing=t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.tagName==='SELECT'||t.isContentEditable);
@@ -156,7 +188,7 @@ addEventListener('keydown',e=>{
   if(e.key==='Escape'){e.preventDefault();close()}
   else if(e.key==='ArrowDown'){e.preventDefault();mark(cur+1)}
   else if(e.key==='ArrowUp'){e.preventDefault();mark(cur<0?-1:cur-1)}
-  else if(e.key==='Tab'){const f=[...box.querySelectorAll('input,button')].filter(x=>x.offsetParent);if(f.length){const i=f.indexOf(document.activeElement);if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus()}}}
+  else if(e.key==='Tab'){const f=[...cbx.querySelectorAll('input,button'),...box.querySelectorAll('input,button')].filter(x=>x.offsetParent);if(f.length){const i=f.indexOf(document.activeElement);if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus()}}}
 });
 /* адрес вида ?q=… (SearchAction в разметке главной): открыть поиск с этим запросом */
 /* открываем, только если по запросу что-то есть: иначе чужой текст из ссылки повис бы на настоящем сайте (проверка безопасности 16.11) */
