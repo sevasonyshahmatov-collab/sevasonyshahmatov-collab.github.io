@@ -1,8 +1,9 @@
 /* 17.11 — фото игроков КХЛ, вырезанные заранее (hockey/data/kph/<папка>_<номер>.webp, без белого фона и каймы; список готовых — kph/index.js).
-   Есть готовый файл — показываем его, нет (новый игрок) — как раньше: фото с khl.ru и фильтр #jvko. Определяем раньше остальных скриптов страницы. */
+   Есть готовый файл — показываем его, нет (новый игрок) — как раньше: фото с khl.ru и фильтр #jvko. Определяем раньше остальных скриптов страницы.
+   ?v=N — при переобработке фото номер увеличиваем: sw.js хранит картинки «навсегда» по адресу, без смены адреса посетитель увидит старую копию. */
 (()=>{const S=document.currentScript&&document.currentScript.src;if(!S||document.documentElement.dataset.sport==='football')return;
  try{if(document.readyState==='loading')document.write('<script src="'+new URL('../hockey/data/kph/index.js',S).href+'"><\/script>')}catch(e){}
- window.JV_KPH=u=>{const m=/khl\.ru\/img\/teamplayers_db\/(\d+)\/(\d+)\.jpg/.exec(u||''),I=window.JV_KPH_IDX;return m&&I&&I[m[1]+'_'+m[2]]?new URL('../hockey/data/kph/'+m[1]+'_'+m[2]+'.webp',S).href:u}})();
+ window.JV_KPH=u=>{const m=/khl\.ru\/img\/teamplayers_db\/(\d+)\/(\d+)\.jpg/.exec(u||''),I=window.JV_KPH_IDX;return m&&I&&I[m[1]+'_'+m[2]]?new URL('../hockey/data/kph/'+m[1]+'_'+m[2]+'.webp?v=2',S).href:u}})();
 /* Фото игроков КХЛ с www.khl.ru — на белом фоне. Владелец 14.11: «чтобы ни у кого сзади не было белого фона». Вырезать фон у себя
    нельзя (khl.ru не отдаёт фото нашим серверам), поэтому белое делается прозрачным прямо при показе: SVG-фильтр #jvko
    (CSS в v3a.css: img[src*="khl.ru/img/teamplayers_db"]). Пиксели не читаются скриптом — работает и с чужими картинками. */
