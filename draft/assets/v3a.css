@@ -1269,3 +1269,9 @@ html body .pp-ln>div{padding-bottom:14px}
 .hgo{display:flex;justify-content:center;margin:10px 0 0}
 .hgo .xgo{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 18px;border-radius:999px;background:linear-gradient(180deg,#fff,#dfe8ff);color:#060b1a;font:700 14px/1 var(--display);text-decoration:none;transition:transform .15s ease}
 .hgo .xgo svg{width:16px;height:16px}.hgo .xgo:hover{transform:translateX(2px)}.hgo .xgo:active{transform:scale(.97)}
+
+/* «Свернуть матч» внизу раскрытой карточки (17.11) */
+.xd>.xclose{grid-column:1/-1;justify-self:center;display:inline-flex;align-items:center;gap:6px;min-height:40px;margin-top:4px;padding:0 18px;border:0;border-radius:999px;cursor:pointer;background:#e9eef7;color:#0b1220;font:700 14px/1 var(--display);transition:background .15s ease,transform .15s ease}
+.xd>.xclose:hover{background:#dde5f2}.xd>.xclose:active{transform:scale(.97)}
+.xd>.xclose .jvi{width:16px;height:16px}
+.xd>.xclose:focus-visible{outline:2px solid var(--signal,#2563eb);outline-offset:2px}

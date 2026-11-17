@@ -51,6 +51,10 @@ JV.NHL_FULL={nhl_car:'Каролина|Харрикейнз',minnesota:'Минн
 {const NHL_EN={"nhl_car":"carolina","nhl_edm":"edmonton","minnesota":"minnesota","nhl_bos":"boston","nhl_vgk":"vegas","nhl_mtl":"montreal","nhl_tbl":"tampa-bay","nhl_njd":"new-jersey","nhl_uta":"utah","dallas":"dallas","nhl_col":"colorado","nhl_ott":"ottawa","nhl_fla":"florida","nhl_tor":"toronto","nhl_sea":"seattle","nhl_buf":"buffalo","nhl_nsh":"nashville","nhl_nyr":"rangers","nhl_det":"detroit","nhl_wsh":"washington","nhl_nyi":"islanders","nhl_stl":"st-louis","nhl_ana":"anaheim","nhl_sjs":"san-jose","nhl_cgy":"calgary","nhl_wpg":"winnipeg","nhl_cbj":"columbus","nhl_pit":"pittsburgh","nhl_phi":"philadelphia","nhl_lak":"los-angeles","nhl_chi":"chicago","nhl_van":"vancouver"};
  JV.mslug=(lg,id)=>lg==='nhl'?(NHL_EN[id]||String(id).replace(/^nhl_/,'').replace(/_/g,'-')):String(id).replace(/_/g,'-');
  JV.matchPage=(root,lg,day,h,a)=>`${root}${lg}/${String(day).slice(0,10)}-${JV.mslug(lg,h)}-${JV.mslug(lg,a)}/index.html`;}
+
+/* «Свернуть матч» внизу раскрытой карточки (17.11): закрывает карточку и возвращает к её началу, если оно ушло вверх */
+document.addEventListener('click',e=>{const x=e.target.closest&&e.target.closest('.xclose');if(!x)return;const li=x.closest('.match'),h=li&&li.querySelector('.mhead');if(!h)return;
+ li.classList.remove('open');h.setAttribute('aria-expanded','false');const r=h.getBoundingClientRect();if(r.top<70)h.scrollIntoView({behavior:JV.RM?'auto':'smooth',block:'center'});h.focus({preventScroll:true})});
 /* ссылка на страницу матча (17.11): в черновике страница может ещё не существовать — тогда открываем её на основном сайте */
 {const VROOT=new URL('../',(document.currentScript&&document.currentScript.src)||location.href).href,SROOT=location.origin+'/';
  JV.matchHref=(lg,day,h,a)=>JV.matchPage(VROOT,lg,day,h,a);

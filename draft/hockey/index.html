@@ -322,7 +322,7 @@ function back(m){const {A,B,h2h}=det(m);
   <section class="xb x-h2h">${h2hHTML}</section>
   <section class="xb x-stat"><h4>Статистика команды <span class="note">сезон 2026/27</span></h4><table class="st"><thead><tr><th></th><th>${CS(A.slug)}<span>${esc(A.name)}</span></th><th>${CS(B.slug)}<span>${esc(B.name)}</span></th></tr></thead>
    <tbody>${A.st.map((r,i)=>`<tr><td>${r[0]}</td><td class="num">${r[1]}</td><td class="num">${B.st[i]?B.st[i][1]:'—'}</td></tr>`).join('')}</tbody></table></section>
-  </div>`}
+  <button type="button" class="xclose">${(window.JVI||(()=>''))('up')}Свернуть матч</button></div>`}
 function row(m){const L=LG[m.lg];
  return `<li class="match ${m.lg}"><button class="mhead" type="button" aria-expanded="false">
   <div class="mt"><time>${esc(m.t.slice(11))}</time><span class="cd" data-t="${esc(m.t)}"></span><span class="lvslot" data-lv data-lv-lg="${esc(m.lg)}" data-lv-t="${esc(m.t.replace(' ','T'))}:00+03:00" data-lv-h="${esc(m.h)}" data-lv-a="${esc(m.a)}" data-lv-hn="${esc(m.hn)}" data-lv-an="${esc(m.an)}"></span></div>
@@ -332,9 +332,9 @@ function row(m){const L=LG[m.lg];
   <div class="mbody"><div>${''}</div></div></li>`}
 /* ближайшие 5, остальные — по кнопке «Показать все N матчей» (задание 14.11, п. 4) */
 const LIM=6;let shownN=LIM,curL='all';const moreB=document.getElementById('moreM');
-moreB.addEventListener('click',()=>{shownN=1e9;render(curL,true)});
+moreB.addEventListener('click',()=>{if(shownN>=1e9){render(curL);document.getElementById('matches').scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});return}shownN=1e9;render(curL,true)});
 function render(l,more){if(!more)shownN=LIM;curL=l;const sel=(l==='all'?D:D.filter(m=>m.lg===l)).slice(0,shownN),all=(l==='all'?D:D.filter(m=>m.lg===l)).length;
- moreB.hidden=all<=shownN;moreB.textContent=`Показать все ${all} ${plural(all,'матч','матча','матчей')}`;
+ moreB.hidden=all<=LIM;moreB.textContent=shownN>=all?'Свернуть список':`Показать все ${all} ${plural(all,'матч','матча','матчей')}`;
  ltabs.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.l===l));
  let html='',prev='';sel.forEach(m=>{const d=JVL.gday(m.t);if(d!==prev){prev=d;html+=`<li class="dayh" aria-hidden="true">${dayLabel(d)}</li>`}html+=row(m)});
  list.innerHTML=html||'<li class="note" style="padding:18px 4px">Матчей в этой лиге нет.</li>';

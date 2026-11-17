@@ -121,7 +121,7 @@ function back(m){const {A,B,h}=det(m),nA=nm(m.h),nB=nm(m.a);
    ${row('Место в таблице',TA.place,TB.place)}${row('Очки',TA.pts,TB.pts)}${row('Победы — ничьи — поражения',`${TA.w} — ${TA.d} — ${TA.l}`,`${TB.w} — ${TB.d} — ${TB.l}`)}
    ${row('Мячи за игру',f1(A.st.gf),f1(B.st.gf))}${row('Пропущено за игру',f1(A.st.ga),f1(B.st.ga))}${row('Удары за игру',f1(A.st.sh),f1(B.st.sh))}${row('Угловые за игру',f1(A.st.cor),f1(B.st.cor))}
    ${row('Матчей с тоталом больше 2,5',p0(A.st.ov),p0(B.st.ov))}${row('Матчей, где забили обе',p0(A.st.bt),p0(B.st.bt))}</tbody></table></section>
-</div>`}
+<button type="button" class="xclose">${(window.JVI||(()=>''))('up')}Свернуть матч</button></div>`}
 /* «Последние матчи» и личные встречи: сколько строк влезает рядом с расчётом модели (на узком экране — 5), как у хоккея (владелец 09.11) */
 function fitLast(root){root.querySelectorAll('.x-last .l3 ul, .x-h2h .h2l').forEach(ul=>{const box=ul.closest('.xb'),wide=getComputedStyle(box).contain.includes('size'),ls=[...ul.children];
  ls.forEach((l,k)=>l.hidden=!wide&&k>=5);if(!wide)return;const lim=box.getBoundingClientRect().bottom-parseFloat(getComputedStyle(box).paddingBottom)+1;ls.forEach(l=>{if(l.getBoundingClientRect().bottom>lim)l.hidden=true})})}
@@ -143,10 +143,10 @@ function render(l,more){if(!more){curTab=l;shownN=LIM}
    if(body.innerHTML)return open();loadXY().then(()=>{vis[i].det=null;body.innerHTML=back(vis[i]);open()})})});
  if(!RM&&!more)list.querySelectorAll('.match').forEach((li,i)=>li.animate([{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'none'}],{duration:500,delay:Math.min(i,10)*55,easing:'cubic-bezier(.23,1,.32,1)',fill:'backwards'}));
  requestAnimationFrame(()=>list.querySelectorAll('.match').forEach(li=>li.classList.add('in')));
- moreB.hidden=sel.length<=shownN;moreB.textContent=`Показать все ${sel.length} ${plural(sel.length,'матч','матча','матчей')}`;tick()}
+ moreB.hidden=sel.length<=LIM;moreB.textContent=shownN>=sel.length?'Свернуть список':`Показать все ${sel.length} ${plural(sel.length,'матч','матча','матчей')}`;tick()}
 function tick(){document.querySelectorAll('.cd[data-t]').forEach(e=>e.textContent=JV.inMin(JV.left(e.dataset.t)));if(window.__cdPick)window.__cdPick()}
 ltabs.addEventListener('click',e=>{const t=e.target.closest('.tab');if(t)render(t.dataset.l)});
-moreB.addEventListener('click',()=>{shownN=sel.length;render(curTab,true)});
+moreB.addEventListener('click',()=>{if(shownN>=sel.length){render(curTab);document.getElementById('matches')?.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});return}shownN=sel.length;render(curTab,true)});
 render('all');setInterval(tick,1000);
 
 /* ── лиги и клубы: плашки-переключатели, эмблемы клубов лиги целиком, таблица ── */
