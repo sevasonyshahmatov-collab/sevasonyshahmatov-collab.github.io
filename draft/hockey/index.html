@@ -163,10 +163,10 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
 <script src="../assets/titles.js" defer></script>
 <script src="../assets/data/teams-lite.js"></script>
 <script src="../assets/em/plates.js"></script>
-<script src="../data/today.js"></script>
-<script src="../data/lines.js"></script>
-<script src="../data/model.js"></script>
-<script src="../data/posts.js"></script>
+<script src="/data/today.js"></script>
+<script src="/data/lines.js"></script>
+<script src="/data/model.js"></script>
+<script src="/data/posts.js"></script>
 <script src="../assets/lines.js"></script>
 <script>
 (()=>{
@@ -245,7 +245,7 @@ const card=m=>{const md=m.md,ln=m.ln,mo=md?[md.p1,md.x,md.p2]:null,i=mo?mo.index
  return `<div class="face">${tm(m.h,m.hn,'хозяева')}<div class="vs"><span aria-hidden="true">—</span><time>${esc(m.t.slice(11))}</time></div>${tm(m.a,m.an,'гости')}</div>
  ${md?`<div class="bet lv-${lvl(p)}"><span class="bl">Расчёт модели</span><strong>${esc(word)}</strong><span class="k num" aria-label="${kk?'кэф линии':'линии нет'}">${kk?f1(kk,2):'—'}</span>
   <span class="pm"><em><i style="--w:${Math.round(p*100)}%"></i></em><b class="num">${Math.round(p*100)} % по модели</b></span></div>`:'<div class="bet lv-lo"><span class="bl">Расчёт модели</span><strong>Расчёта на этот матч пока нет</strong></div>'}
- <p class="why">${why.map(x=>`<span>${esc(x)}</span>`).join(' ')}</p>`};
+ <p class="why">${why.map(x=>`<span>${esc(x)}</span>`).join(' ')}</p><p class="hgo">${JV.matchLink(m.lg,m.t,m.h,m.a,'Разбор матча')}</p>`};
 /* отсчёт: «32 ч 44 мин 05 с»; меняется только та часть, что изменилась */
 cdv.innerHTML=['h','m','s'].map((u,i)=>`<span class="cu" data-u="${u}"><b></b><small>${['ч','мин','с'][i]}</small></span>`).join('');
 const cu=[...cdv.querySelectorAll('.cu b')],cdWord=document.createElement('b');cdWord.className='cdw';cdv.appendChild(cdWord);
@@ -317,7 +317,7 @@ function back(m){const {A,B,h2h}=det(m);
  const last=t=>`<div class="l3"><h5>${CS(t.slug)}${esc(t.name)}</h5><ul>${t.g.slice(0,12).map(g=>{const r=rOf(g),wl=g.gf>g.ga?'w':'l',xt=g.x==='Б'?'по буллитам':'в овертайме';return `<li><b class="rs ${wl}${g.x?' x':''}" title="${g.x?(wl==='w'?'победа ':'поражение ')+xt:RESF[r]}">${wl==='w'?'В':'П'}</b><span class="op">${CS(g.o)}${esc(nmS(g.o))}</span><span class="sc num"><b>${g.gf}:${g.ga}</b><small>${g.x?esc(g.x):''}</small></span><span class="d">${dd(g.d)}</span></li>`}).join('')||'<li class="none">Нет данных</li>'}</ul></div>`;
  const form=t=>`<div class="fm"><span>${CS(t.slug)}${esc(t.name)}</span><span class="dots" aria-label="форма: ${esc(t.g.slice(0,5).reverse().map(g=>(rOf(g)==='w'?'победа над ':'поражение от ')+nmS(g.o)+' '+g.gf+':'+g.ga).join(', '))}">${t.g.slice(0,5).reverse().map(g=>{const r=rOf(g),o=nmS(g.o),sc=`${g.gf}:${g.ga}`,ex=g.x?(g.x==='Б'?' по буллитам':' в овертайме'):'',tt=r==='w'?`Победа над ${o} ${sc}${ex}`:`Поражение от ${o} ${sc}${ex}`;return `<i class="${r}" title="${esc(tt)}"><img src="../assets/em/s/${esc(g.o)}.webp" alt="" loading="lazy"></i>`}).join('')}</span></div>`;
  const h2hHTML=h2hBox(m);
- return `<div class="xd">${JVL.why(m)}
+ return `<div class="xd">${JV.matchLink(m.lg,m.t,m.h,m.a)}${JVL.why(m)}
   <section class="xb x-last"><h4>Последние матчи</h4><div class="two">${last(A)}${last(B)}</div></section>
   <section class="xb x-h2h">${h2hHTML}</section>
   <section class="xb x-stat"><h4>Статистика команды <span class="note">сезон 2026/27</span></h4><table class="st"><thead><tr><th></th><th>${CS(A.slug)}<span>${esc(A.name)}</span></th><th>${CS(B.slug)}<span>${esc(B.name)}</span></th></tr></thead>
@@ -339,7 +339,7 @@ function render(l,more){if(!more)shownN=LIM;curL=l;const sel=(l==='all'?D:D.filt
  let html='',prev='';sel.forEach(m=>{const d=JVL.gday(m.t);if(d!==prev){prev=d;html+=`<li class="dayh" aria-hidden="true">${dayLabel(d)}</li>`}html+=row(m)});
  list.innerHTML=html||'<li class="note" style="padding:18px 4px">Матчей в этой лиге нет.</li>';
  list.querySelectorAll('.match').forEach((li,i)=>{const b=li.querySelector('.mhead'),body=li.querySelector('.mbody>div');
-  b.addEventListener('click',e=>{const tl=e.target.closest('.tl[data-href]');if(tl){location.href=tl.dataset.href;return}if(!body.innerHTML)body.innerHTML=back(sel[i]);requestAnimationFrame(()=>{const o=li.classList.toggle('open');b.setAttribute('aria-expanded',o);if(o){fitLast(li);loadH2H(li,sel[i])}})})});
+  b.addEventListener('click',e=>{const tl=e.target.closest('.tl[data-href]');if(tl&&e.target!==tl){location.href=tl.dataset.href;return}if(!body.innerHTML)body.innerHTML=back(sel[i]);requestAnimationFrame(()=>{const o=li.classList.toggle('open');b.setAttribute('aria-expanded',o);if(o){fitLast(li);loadH2H(li,sel[i])}})})});
  if(!RM&&!more)list.querySelectorAll('.match').forEach((li,i)=>li.animate([{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'none'}],{duration:500,delay:Math.min(i,12)*55,easing:'cubic-bezier(.23,1,.32,1)',fill:'backwards'}));
  requestAnimationFrame(()=>list.querySelectorAll('.match').forEach(li=>li.classList.add('in')));tick()}
 /* «Последние матчи»: столько строк, сколько влезает в квадрат рядом с расчётом модели (на узком экране — 5) */
@@ -363,7 +363,7 @@ LeagueCards.mount(document.getElementById('lcdeck'),Object.entries(LG).map(([id,
 })();
 </script>
 <script src="../assets/live.js" defer></script>
-<script src="../data/results-lite.js"></script>
+<script src="/data/results-lite.js"></script>
 <script src="../assets/results-strip.js"></script>
 </body>
 </html>

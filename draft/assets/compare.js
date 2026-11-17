@@ -31,7 +31,7 @@ const far=(x,y)=>{const d=Math.abs(hsl(x)[0]-hsl(y)[0]);return Math.min(d,360-d)
 function sideColors(ta,tb){const ca=cands(ta)[0]||'#5ab8ff',cb=cands(tb).find(c=>far(c,ca));return[lit(ca),cb?lit(cb):'#e9eef7']}
 const paint=(ta,tb)=>{const c=sideColors(ta,tb);OUT.style.setProperty('--ca',c[0]);OUT.style.setProperty('--cb',c[1])};
 const LGN=FB?Object.fromEntries(Object.entries(JF.leagues||{}).map(([k,v])=>[k,v.name||k])):{khl:'КХЛ',nhl:'НХЛ'};
-let IDX=null;const index=()=>IDX||(IDX=fetch('../data/search.json').then(r=>r.json()).catch(()=>({c:[],p:[]})));
+let IDX=null;const index=()=>IDX||(IDX=fetch('/data/search.json').then(r=>r.json()).catch(()=>({c:[],p:[]})));
 /* клубы сравниваем только внутри одной лиги (владелец 11.11); исключение — футбол: участники Лиги чемпионов между собой */
 const pairOk=(a,b)=>{const A=TT[a],B=TT[b];return !!A&&!!B&&(A.lg===B.lg||(FB&&A.ucl&&B.ucl))};
 const mate=a=>{const A=TT[a];return Object.keys(TT).filter(k=>k!==a&&TT[k].lg===A.lg).sort((x,y)=>TT[x].place-TT[y].place||TT[y].pts-TT[x].pts)[0]||''};

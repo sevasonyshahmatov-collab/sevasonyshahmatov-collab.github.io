@@ -61,7 +61,7 @@ const card=({m,b})=>{const A=T[m.h],B=T[m.a];
  <div class="bet lv-${lvl(b.p)}"><span class="bl">Расчёт модели</span><strong>${esc(b.t)}</strong><span class="k num" aria-label="${b.k?'коэффициент':'линии пока нет'}">${b.k?fx(b.k,2):'—'}</span>
   <span class="pm"><em><i style="--w:${Math.round(b.p*100)}%"></i></em><b class="num">${Math.round(b.p*100)} % по модели</b></span></div>
  <div class="mk3"><span>1Х2<b class="num">${m.pr.map(v=>Math.round(v*100)).join(' · ')}</b><em>П1 · Х · П2, %</em></span><span>Тотал ${fx(m.ot,1)}<b class="num">${Math.round(m.ov*100)} %</b><em>больше</em></span><span>Обе забьют<b class="num">${Math.round(m.bt*100)} %</b><em>да</em></span></div>
- <p class="why"><b>Почему:</b> ожидаемые голы ${fx(m.xg[0],1)} : ${fx(m.xg[1],1)}. В таблице: ${esc(A.n)} — ${A.place}, ${esc(B.n)} — ${B.place}.</p>`};
+ <p class="why"><b>Почему:</b> ожидаемые голы ${fx(m.xg[0],1)} : ${fx(m.xg[1],1)}. В таблице: ${esc(A.n)} — ${A.place}, ${esc(B.n)} — ${B.place}.</p><p class="hgo">${JV.matchLink(m.lg,m.t,m.h,m.a,'Разбор матча')}</p>`};
 cdv.innerHTML=['h','m','s'].map((u,i)=>`<span class="cu" data-u="${u}"><b></b><small>${['ч','мин','с'][i]}</small></span>`).join('');
 const cu=[...cdv.querySelectorAll('.cu b')],cdWord=document.createElement('b');cdWord.className='cdw';cdv.appendChild(cdWord);
 function cdSet(sec){const on=sec>0;cdv.classList.toggle('over',!on);
@@ -114,7 +114,7 @@ function back(m){const {A,B,h}=det(m),nA=nm(m.h),nB=nm(m.a);
  const h2hHTML=h.length?`<p class="h2t"><span>${CI(m.h)}${esc(nA)}</span><b class="num">${wA} — ${dr} — ${wB}</b><span>${esc(nB)}${CI(m.a)}</span></p><ul class="h2l">${h.slice(0,12).map(g=>{const home=g.h,away=g.h===m.h?m.a:m.h;
    return `<li><span class="d">${dd(g.d)}${g.d.slice(0,7)<'2026-07'?`<small>.${g.d.slice(2,4)}</small>`:''}</span><span class="pp">${CI(home)}<span class="${g.hs>g.as?'wn':''}">${esc(nm(home))}</span></span><span class="sc num"><b class="${g.hs>g.as?'wn':''}">${g.hs}</b>:<b class="${g.as>g.hs?'wn':''}">${g.as}</b></span><span class="pp aw">${CI(away)}<span class="${g.as>g.hs?'wn':''}">${esc(nm(away))}</span></span></li>`}).join('')}</ul>`
   :`<p class="none">Эти клубы ещё не встречались в лиге в сезонах 2025/26 и 2026/27.</p>`;
- return `<div class="xd">${JVL.why(m)}
+ return `<div class="xd">${JV.matchLink(m.lg,m.t,m.h,m.a)}${JVL.why(m)}
   <section class="xb x-last"><h4>Последние матчи</h4><div class="two">${last(A)}${last(B)}</div></section>
   <section class="xb x-h2h"><h4>Личные встречи <span class="note">лига, два сезона</span></h4>${h2hHTML}</section>
   <section class="xb x-stat"><h4>Статистика команды <span class="note">сезон 2026/27</span></h4><table class="st"><thead><tr><th></th><th>${CI(m.h)}<span>${esc(nA)}</span></th><th>${CI(m.a)}<span>${esc(nB)}</span></th></tr></thead><tbody>
@@ -139,7 +139,7 @@ function render(l,more){if(!more){curTab=l;shownN=LIM}
  vis.forEach(m=>{const dk=m.t.slice(0,10);if(dk!==prev){prev=dk;const d=day(m.t);html+=`<li class="dayh" aria-hidden="true">${d.wd}, ${d.d} ${d.mon}${dk===today?' · сегодня':''}</li>`}html+=rowHTML(m)});
  list.innerHTML=html||'<li class="note" style="padding:18px 4px">В этой лиге ближайших матчей пока нет.</li>';
  list.querySelectorAll('.match').forEach((li,i)=>{const b=li.querySelector('.mhead'),body=li.querySelector('.mbody>div');
-  b.addEventListener('click',e=>{const tl=e.target.closest('.tl[data-href]');if(tl){location.href=tl.dataset.href;return}const open=()=>requestAnimationFrame(()=>{const o=li.classList.toggle('open');b.setAttribute('aria-expanded',o);if(o)fitLast(li)});
+  b.addEventListener('click',e=>{const tl=e.target.closest('.tl[data-href]');if(tl&&e.target!==tl){location.href=tl.dataset.href;return}const open=()=>requestAnimationFrame(()=>{const o=li.classList.toggle('open');b.setAttribute('aria-expanded',o);if(o)fitLast(li)});
    if(body.innerHTML)return open();loadXY().then(()=>{vis[i].det=null;body.innerHTML=back(vis[i]);open()})})});
  if(!RM&&!more)list.querySelectorAll('.match').forEach((li,i)=>li.animate([{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'none'}],{duration:500,delay:Math.min(i,10)*55,easing:'cubic-bezier(.23,1,.32,1)',fill:'backwards'}));
  requestAnimationFrame(()=>list.querySelectorAll('.match').forEach(li=>li.classList.add('in')));

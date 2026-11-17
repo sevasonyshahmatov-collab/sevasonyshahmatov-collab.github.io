@@ -123,7 +123,7 @@ cl.addEventListener('click',()=>{
 });
 
 /* ── загрузка данных ── */
-fetch('../data/search.json',{cache:'default'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(D=>{
+fetch('/data/search.json',{cache:'default'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(D=>{
   D.c.forEach(r=>{C[r[1]+':'+r[0]]={id:r[0],s:r[1],lg:r[2],ru:r[3],en:r[4],al:r[5]||''}});
   M=D.m.map(r=>{const h=C[r[1]+':'+r[2]],a=C[r[1]+':'+r[3]];return h&&a?{ms:ms(r[0]),h,a,sc:r[4]||'',cup:r[5]||''}:null}).filter(Boolean);
   ready=true;draw();document.dispatchEvent(new Event('jv:rows'));

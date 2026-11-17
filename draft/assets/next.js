@@ -25,6 +25,6 @@ function draw(){
   <a class="nxs-f" href="${esc(U(fc))}"><small>Списком</small><b>Прогноз на сегодня</b><span>все матчи дня с выводом модели →</span></a></div></div>`;
  const f=document.querySelector('footer.jvf')||document.querySelector('footer');(f&&f.parentNode?f.parentNode.insertBefore(s,f):document.body.appendChild(s))}
 try{const l=document.createElement('link');l.rel='stylesheet';l.href=new URL('next.css',SRC).href;document.head.appendChild(l)}catch(e){}
-const go=()=>{if(window.JV_TODAY)return draw();const sc=document.createElement('script');sc.src=U('data/today.js');sc.onload=sc.onerror=draw;document.head.appendChild(sc)};
+const go=()=>{if(window.JV_TODAY)return draw();const sc=document.createElement('script');sc.src='/data/today.js';sc.onload=sc.onerror=draw;document.head.appendChild(sc)};
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',go):go();
 })();

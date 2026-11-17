@@ -144,7 +144,7 @@ function nextMatch(P){
  if(past(nx)){
   const T=((window.JV_TODAY||{}).matches||[]).filter(m=>(m.h===P.t||m.a===P.t)&&Date.parse(m.t.replace(' ','T')+':00+03:00')>Date.now()-3*3600e3).sort((a,b)=>a.t<b.t?-1:1)[0];
   if(T){nextMatch(Object.assign({},P,{nx:{d:T.t,h:T.h===P.t,o:T.h===P.t?T.a:T.h}}));return}
-  if(!window.JV_TODAY&&!P._lt){const s=document.createElement('script');s.src='../data/today.js';s.onload=s.onerror=()=>nextMatch(Object.assign({},P,{_lt:1}));document.head.appendChild(s);return}
+  if(!window.JV_TODAY&&!P._lt){const s=document.createElement('script');s.src='/data/today.js';s.onload=s.onerror=()=>nextMatch(Object.assign({},P,{_lt:1}));document.head.appendChild(s);return}
   nx=null;
  }
  if(!nx){box.innerHTML='<p class="hint" style="margin:0">Ближайший матч клуба пока не объявлен.</p>';return}
@@ -153,9 +153,9 @@ function nextMatch(P){
  box.innerHTML=`<div class="vs"><a class="cl" href="../team/index.html?id=${encodeURIComponent(nx.o)}"><img src="${em(nx.o)}" alt="" onerror="this.remove()"></a>
   <a class="cl" href="../team/index.html?id=${encodeURIComponent(nx.o)}"><b>${nx.h?'Дома':'В гостях'} — ${esc(tn(nx.o))}</b><span>${when}</span></a></div><div id="nxl"></div>`;
  const load=src=>new Promise(ok=>{const s=document.createElement('script');s.src=src;s.onload=s.onerror=()=>ok();document.head.appendChild(s)});
- load('../data/today.js').then(()=>{
+ load('/data/today.js').then(()=>{
   const m=((window.JV_TODAY||{}).matches||[]).find(x=>x.key===key);if(!m)return;
-  return Promise.all([load('../data/lines.js'),load('../data/model.js')]).then(()=>{
+  return Promise.all([load('/data/lines.js'),load('/data/model.js')]).then(()=>{
    const ln=(window.JV_LINES||{})[key],md=(window.JV_MODEL||{})[key];if(!ln&&!md)return;
    const f2=v=>v==null?'—':(+v).toFixed(2),pc=v=>v==null?'—':Math.round(v*100)+'%';
    const hn=tn(hs),an=tn(as);let h='';

@@ -44,7 +44,7 @@ const crest=c=>U((c.s==='h'?'assets/em/s/':'assets/fc/')+c.id+'.webp');
 function load(){
   if(IDX)return Promise.resolve(IDX);
   if(loading)return loading;
-  loading=fetch(U('data/search.json'),{cache:'default'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(D=>{
+  loading=fetch('/data/search.json',{cache:'default'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(D=>{
     const W=(ru,en,al)=>{const o=[];for(const x of words(ru))o.push([x,0]);for(const x of words(en))o.push([x,1]);for(const x of words(al))o.push([x,2]);return o};
     const C={};const clubs=D.c.map(r=>{const c={id:r[0],s:r[1],lg:r[2],ru:r[3],en:r[4],w:W(r[3],r[4],r[5])};C[r[1]+r[0]]=c;return c});
     const leagues=D.l.map(r=>({s:r[0],id:r[1],ru:r[2],en:r[3],url:r[5],w:W(r[2],r[3],r[4])}));
@@ -107,12 +107,14 @@ const dt=d=>{const t=NOW().slice(0,10),y=new Date(Date.now()+(new Date().getTime
 const img=c=>`<img src="${esc(crest(c))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`;
 const tcode=p=>!p.c?'':p.lg==='khl'?p.c.id:p.c.id==='minnesota'?'MIN':p.c.id==='dallas'?'DAL':p.c.id.replace(/^nhl_/,'').toUpperCase();
 const LGN={khl:'КХЛ',nhl:'НХЛ',epl:'АПЛ',laliga:'Ла Лига',seriea:'Серия А',bundesliga:'Бундеслига',ligue1:'Лига 1',rpl:'РПЛ',ucl:'ЛЧ',uel:'ЛЕ'};
-const li=(href,html,cls)=>`<a class="sp-i ${cls||''}" role="option" id="spo${items.push(href)-1}" href="${esc(safeUrl(href))}" tabindex="-1">${html}</a>`;
+const li=(href,html,cls,ml)=>`<a class="sp-i ${cls||''}" role="option" id="spo${items.push(href)-1}" href="${esc(safeUrl(href))}"${ml?` data-ml="${esc(safeUrl(ml))}"`:''} tabindex="-1">${html}</a>`;
+/* матч ведёт на страницу матча (17.11); в черновике её может не быть — data-ml: та же страница на основном сайте */
+const mpage=m=>{const lg=m.cup||m.h.lg,J=window.JV;if(!J||!J.matchPage)return null;const rel=J.matchPage('',lg,m.d,m.h.id,m.a.id);return{href:U(rel),ml:location.origin+'/'+rel}};
 function draw(r){
   items=[];cur=-1;
   const g=(t,a,f)=>a.length?`<div class="sp-g" role="group" aria-label="${t}"><h3>${t}</h3>${a.map(f).join('')}</div>`:'';
   const out=g('Клубы',r.clubs,c=>li(U(pg(c)),`${img(c)}<span class="sp-t"><b>${esc(c.ru)}</b><small>${esc(c.en&&c.en!==c.ru?c.en+' · ':'')}${SP[c.s]} · ${esc(LGN[c.lg]||c.lg)}</small></span>`))
-   +g('Матчи',r.matches,m=>li(U(pg(m.h)),`<span class="sp-vs">${img(m.h)}${img(m.a)}</span><span class="sp-t"><b>${esc(m.h.ru)} — ${esc(m.a.ru)}</b><small>${esc(dt(m.d))} МСК${m.sc?' · '+esc(m.sc):''}${m.cup?' · '+esc(LGN[m.cup]||m.cup):''} · ${SP[m.s]}</small></span>`))
+   +g('Матчи',r.matches,m=>{const P=mpage(m);return li(P?P.href:U(pg(m.h)),`<span class="sp-vs">${img(m.h)}${img(m.a)}</span><span class="sp-t"><b>${esc(m.h.ru)} — ${esc(m.a.ru)}</b><small>${esc(dt(m.d))} МСК${m.sc?' · '+esc(m.sc):''}${m.cup?' · '+esc(LGN[m.cup]||m.cup):''} · ${SP[m.s]}</small></span>`,'',P&&P.ml)})
    +g('Лиги',r.leagues,l=>li(U(l.url),`<span class="sp-lg">${l.s==='h'?'ХК':'ФК'}</span><span class="sp-t"><b>${esc(l.ru)}</b><small>${SP[l.s]} · таблица и матчи</small></span>`))
    +g('Игроки',r.players,p=>li(U(p.id!=null?'hockey/player.html?lg='+p.lg+'&id='+encodeURIComponent(p.id):(p.lg==='nhl'?'hockey/players.html':'hockey/players_khl.html')+'?team='+encodeURIComponent(tcode(p))+'&q='+encodeURIComponent(p.n)),`<span class="sp-lg">${esc(p.n.split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase())}</span><span class="sp-t"><b>${esc(p.n)}</b><small>${esc(p.c?p.c.ru:'')} · ${p.lg==='nhl'?'НХЛ':'КХЛ'}</small></span>`));
   res.innerHTML=out||`<p class="sp-empty">Ничего не нашли. Попробуйте название клуба или лиги.</p>`;
@@ -180,7 +182,7 @@ box.addEventListener('click',e=>{
 });
 inp.addEventListener('input',run);
 inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&inl){e.preventDefault();form.requestSubmit?form.requestSubmit():form.dispatchEvent(new Event('submit',{cancelable:true}))}});
-box.querySelector('form').addEventListener('submit',e=>{e.preventDefault();const a=res.querySelectorAll('a.sp-i')[cur<0?0:cur];if(a){remember(inp.value);location.href=a.href}});
+box.querySelector('form').addEventListener('submit',e=>{e.preventDefault();const a=res.querySelectorAll('a.sp-i')[cur<0?0:cur];if(a){remember(inp.value);if(a.dataset.ml&&window.fetch)fetch(a.href,{method:'HEAD'}).then(r=>{location.href=r.ok?a.href:a.dataset.ml}).catch(()=>{location.href=a.dataset.ml});else location.href=a.href}});
 addEventListener('keydown',e=>{
   const t=e.target,typing=t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.tagName==='SELECT'||t.isContentEditable);
   if((e.key==='k'||e.key==='K'||e.key==='л'||e.key==='Л')&&(e.ctrlKey||e.metaKey)){e.preventDefault();box.hidden?open():close();return}

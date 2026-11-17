@@ -51,9 +51,15 @@ JV.NHL_FULL={nhl_car:'Каролина|Харрикейнз',minnesota:'Минн
 {const NHL_EN={"nhl_car":"carolina","nhl_edm":"edmonton","minnesota":"minnesota","nhl_bos":"boston","nhl_vgk":"vegas","nhl_mtl":"montreal","nhl_tbl":"tampa-bay","nhl_njd":"new-jersey","nhl_uta":"utah","dallas":"dallas","nhl_col":"colorado","nhl_ott":"ottawa","nhl_fla":"florida","nhl_tor":"toronto","nhl_sea":"seattle","nhl_buf":"buffalo","nhl_nsh":"nashville","nhl_nyr":"rangers","nhl_det":"detroit","nhl_wsh":"washington","nhl_nyi":"islanders","nhl_stl":"st-louis","nhl_ana":"anaheim","nhl_sjs":"san-jose","nhl_cgy":"calgary","nhl_wpg":"winnipeg","nhl_cbj":"columbus","nhl_pit":"pittsburgh","nhl_phi":"philadelphia","nhl_lak":"los-angeles","nhl_chi":"chicago","nhl_van":"vancouver"};
  JV.mslug=(lg,id)=>lg==='nhl'?(NHL_EN[id]||String(id).replace(/^nhl_/,'').replace(/_/g,'-')):String(id).replace(/_/g,'-');
  JV.matchPage=(root,lg,day,h,a)=>`${root}${lg}/${String(day).slice(0,10)}-${JV.mslug(lg,h)}-${JV.mslug(lg,a)}/index.html`;}
+/* ссылка на страницу матча (17.11): в черновике страница может ещё не существовать — тогда открываем её на основном сайте */
+{const VROOT=new URL('../',(document.currentScript&&document.currentScript.src)||location.href).href,SROOT=location.origin+'/';
+ JV.matchHref=(lg,day,h,a)=>JV.matchPage(VROOT,lg,day,h,a);
+ JV.matchLink=(lg,day,h,a,txt)=>`<a class="xgo" href="${JV.matchPage(VROOT,lg,day,h,a)}" data-ml="${JV.matchPage(SROOT,lg,day,h,a)}">${txt||'Страница матча'}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>`;
+ if(VROOT!==SROOT)document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[data-ml]');if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey)return;
+  e.preventDefault();fetch(a.href,{method:'HEAD'}).then(r=>{location.href=r.ok?a.href:a.dataset.ml}).catch(()=>{location.href=a.dataset.ml})})}
 /* есть ли страница матча: по списку data/matchlinks.js (его пишет seo/build_match.py), без пробного запроса — раньше HEAD давал 404 в консоли (11.11) */
 JV.matchPageOk=(root,href)=>new Promise(res=>{const ok=()=>res(Object.values(window.JV_MATCHLINKS||{}).includes(String(href).slice(root.length)));
- if(window.JV_MATCHLINKS)return ok();const s=document.createElement('script');s.src=root+'data/matchlinks.js';s.onload=ok;s.onerror=()=>res(false);document.head.appendChild(s)});
+ if(window.JV_MATCHLINKS)return ok();const s=document.createElement('script');s.src='/data/matchlinks.js';s.onload=ok;s.onerror=()=>res(false);document.head.appendChild(s)});
 /* «Напомнить о матче»: событие для календаря телефона (.ics, сигнал за 15 мин); t — «ГГГГ-ММ-ДД ЧЧ:ММ» МСК (09.11) */
 JV.ics=(title,t,min)=>{const st=new Date(Date.parse(String(t).slice(0,16).replace(' ','T')+':00+03:00'));if(isNaN(st))return '';
  const f=d=>d.toISOString().replace(/[-:]/g,'').slice(0,15)+'Z',en=new Date(st.getTime()+(min||150)*6e4);
