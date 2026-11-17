@@ -117,6 +117,8 @@ try{const l=document.createElement('link');l.rel='stylesheet';l.href=new URL('se
   const s=document.createElement('script');s.src=new URL('search.js',SRC).href;s.defer=true;document.head.appendChild(s)}catch(e){}
 /* нижняя панель разделов на телефоне + «одна жёлтая кнопка» (assets/tabbar.js, 14.11) — тоже одна точка подключения */
 try{const s=document.createElement('script');s.src=new URL('tabbar.js',SRC).href;document.head.appendChild(s)}catch(e){}
+/* движение плашек и активных кнопок (assets/motion.js, 17.11) — одна точка подключения */
+try{const s=document.createElement('script');s.src=new URL('motion.js',SRC).href;document.head.appendChild(s)}catch(e){}
 
 /* вторая полоса — якоря страницы */
 let sub=null;
