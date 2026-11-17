@@ -59,7 +59,7 @@ fetch((window.JVD||(u=>u))(`data/pp/${LG}/${ID}.json`)).then(r=>{if(!r.ok)throw 
  const photo=P.img?`<img class="ph" src="${esc(JV_KPH(P.img))}" referrerpolicy="no-referrer" alt="${esc(P.n)}" onerror="this.parentNode.classList.add('nop');this.remove()">`:'';
  let html=`<article class="pp-hero" aria-label="${esc(P.n)}">
   ${P.no!=null?`<span class="pp-no" aria-hidden="true">${esc(P.no)}</span>`:''}
-  <span class="pp-wm" aria-hidden="true">${esc(tn(P.t))}</span><img class="pp-ghost" src="${em(P.t)}" alt="" aria-hidden="true" onerror="this.remove()">
+  <span class="pp-wm" aria-hidden="true">${esc(tn(P.t))}</span><span class="pp-wm pp-wm-line" aria-hidden="true">${esc(tn(P.t))}</span><img class="pp-ghost" src="${em(P.t)}" alt="" aria-hidden="true" onerror="this.remove()">
   <div class="pp-txt">
    <p class="pp-crumbs"><a href="${teamHref}" title="Страница клуба"><img src="${em(P.t)}" alt="" onerror="this.remove()"><span>${esc(tn(P.t))}</span></a><a class="lg" href="league.html?lg=${LG}" title="Страница лиги">${lgName}</a><a class="lg" href="compare.html?t=players&a=${LG}-${ID}" title="Сравнить с другим игроком">Сравнить</a></p>
    <p class="pp-pos">${esc(POS[P.pos]||P.pos||'')}${P.no!=null?' · №'+esc(P.no):''}</p>
