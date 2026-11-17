@@ -74,6 +74,16 @@ function build(SE,PL){
   $('tbKey').innerHTML=mode==='conf'?'<li><i style="background:#0d7a48"></i>Плей-офф</li>':''};
  $('tbSw').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b||b.dataset.m===mode)return;mode=b.dataset.m;$('tbSw').querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===b));draw()});draw();
 
+ /* 17.11 — «Клубы»: плитки в цветах клуба (assets/club/jersey.js), по местам в лиге; ведут на страницу клуба */
+ {const JY=window.JV_JERSEY,all=TM.slice().sort((a,b)=>b.pts-a.pts||b.w-a.w||a.gp-b.gp||(b.gf-b.ga)-(a.gf-a.ga));
+  const fm=t=>String(t.form||'').slice(-5).split('').map(c=>`<i class="${c==='В'?'w':c==='П'?'l':'d'}"></i>`).join('');
+  $('clubsBox').innerHTML=`<div class="sec-head" data-rv><h2>Клубы</h2></div>
+   <ul class="clubs">${all.map((t,i)=>{const v=JY&&JY.vars(t.id)||`--kb:${esc((t.colors||[])[0]||'#1d2a44')};--kbm:${esc((t.colors||[])[0]||'#1d2a44')};--ks:#fff;--kt:#fff;--ko:#fff;--ko2:rgba(255,255,255,.78);--kx:#fff`;
+    return `<li><a class="clb" href="${thref(t.id)}" style="${v}"><img class="wm" src="../assets/em/s/${esc(t.id)}.webp" alt="" aria-hidden="true" loading="lazy">
+     <span class="cpl"><b>${i+1}</b><small>${esc(t.conf||'')}</small></span><span class="cem"><img src="../assets/em/s/${esc(t.id)}.webp" alt="" loading="lazy" width="64" height="64"></span>
+     <b class="cnm">${esc(t.name)}</b><span class="cst"><b>${t.pts}</b> ${plural(t.pts,'очко','очка','очков')} · ${t.gp} ${plural(t.gp,'игра','игры','игр')}</span>
+     <span class="cfm" aria-label="Последние матчи">${fm(t)}</span></a></li>`}).join('')}</ul>`}
+
  /* строки матчей */
  const row=(m,fut)=>{const hw=!fut&&m.gf>m.ga,aw=!fut&&m.ga>m.gf,left=fut?JV.left(m.t):0;
   const when=fut?`${esc(m.t.slice(11))}${left<=0?'<small class="live">идёт</small>':''}`:`${dd(m.d)}<small>${esc(m.d.slice(11))}</small>`;
@@ -111,6 +121,8 @@ function build(SE,PL){
  if(!matchMedia('(prefers-reduced-motion:reduce)').matches)document.querySelectorAll('#hero .facts b.num').forEach(b=>{const n=b.firstChild;if(!n||n.nodeType!==3)return;const to=parseInt(n.nodeValue,10);if(!(to>0))return;
   const t0=performance.now(),D=900;const tick=t=>{const k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);n.nodeValue=String(Math.round(to*e));if(k<1)requestAnimationFrame(tick)};n.nodeValue='0';requestAnimationFrame(tick)});
  JV.reveal();JV.fitWords('.lgname h1,.sec-head h2');
+ /* страница строится после загрузки данных — якорь из адреса (#clubs, #next…) докручиваем сами */
+ if(location.hash.length>1){const t=document.getElementById(location.hash.slice(1));if(t)setTimeout(()=>t.scrollIntoView(),60)}
 }
 fetch('data/lgp_'+LG+'.json').then(r=>r.json()).then(d=>build({[LG]:d.se},d))
  .catch(e=>{console.error(e);$('hero').innerHTML='<p class="lgempty">Данные загрузить не удалось.</p>'});

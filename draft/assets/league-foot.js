@@ -66,6 +66,16 @@ function rowsFor(mode){
    o.gp++;o.gf+=g.gf;o.ga+=g.ga;if(g.gf>g.ga){o.w++;o.pts+=3}else if(g.gf===g.ga){o.d++;o.pts++}else o.l++});return o});
  r.sort((a,b)=>b.pts-a.pts||(b.gf-b.ga)-(a.gf-a.ga)||b.gf-a.gf||(T[a.id].n<T[b.id].n?-1:1));
  r.forEach((o,i)=>o.place=i+1);return r}
+/* 17.11 — «Клубы»: плитки в цветах клуба (цвета из данных), по местам; ведут на страницу клуба */
+{const hx=c=>/^#?[0-9a-f]{6}$/i.test(String(c||''))?'#'+String(c).replace('#',''):'',lum=h=>{const n=parseInt(h.slice(1),16);return .299*(n>>16)+.587*(n>>8&255)+.114*(n&255)};
+ const rows=ids.map(s=>({...(plRow[s]||{place:99,gp:0,pts:0}),id:s})).sort((a,b)=>a.place-b.place);
+ const fm=s=>(T[s]?T[s].games:[]).filter(g=>sel(g)&&played(g)).slice(-5).map(g=>`<i class="${g.gf>g.ga?'w':g.gf<g.ga?'l':'d'}"></i>`).join('');
+ $('clubsBox').innerHTML=`<div class="sec-head" data-rv><h2>Клубы</h2></div>
+  <ul class="clubs">${rows.map(t=>{const c=(T[t.id]||{}).c||[],kb=hx(c[0])||'#1d2a44',ks=hx(c[1])||'#ffffff',lt=lum(kb)>165,ko=lt?'#10161f':'#ffffff';
+   return `<li><a class="clb" href="${tref(t.id)}" style="--kb:${kb};--kbm:color-mix(in srgb,${kb} 74%,#000);--ks:${ks};--kt:${ko};--ko:${ko};--ko2:${lt?'rgba(16,22,31,.72)':'rgba(255,255,255,.8)'};--kx:${ks}"><img class="wm" src="../assets/fc/${encodeURIComponent(t.id)}.webp" alt="" aria-hidden="true" loading="lazy">
+    <span class="cpl"><b>${t.place<99?t.place:'—'}</b><small>место</small></span><span class="cem"><img src="../assets/fc/${encodeURIComponent(t.id)}.webp" alt="" loading="lazy" width="64" height="64"></span>
+    <b class="cnm">${esc(nm(t.id))}</b><span class="cst"><b>${t.pts}</b> ${plural(t.pts,'очко','очка','очков')} · ${t.gp} ${plural(t.gp,'матч','матча','матчей')}</span>
+    <span class="cfm" aria-label="Последние матчи">${fm(t.id)}</span></a></li>`}).join('')}</ul>`}
 let mode='all';
 const MODES=[['all','Общая'],['home','Дома'],['away','В гостях']];
 $('tableBox').innerHTML=`

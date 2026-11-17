@@ -1,3 +1,8 @@
+/* 17.11 — фото игроков КХЛ, вырезанные заранее (hockey/data/kph/<папка>_<номер>.webp, без белого фона и каймы; список готовых — kph/index.js).
+   Есть готовый файл — показываем его, нет (новый игрок) — как раньше: фото с khl.ru и фильтр #jvko. Определяем раньше остальных скриптов страницы. */
+(()=>{const S=document.currentScript&&document.currentScript.src;if(!S||document.documentElement.dataset.sport==='football')return;
+ try{if(document.readyState==='loading')document.write('<script src="'+new URL('../hockey/data/kph/index.js',S).href+'"><\/script>')}catch(e){}
+ window.JV_KPH=u=>{const m=/khl\.ru\/img\/teamplayers_db\/(\d+)\/(\d+)\.jpg/.exec(u||''),I=window.JV_KPH_IDX;return m&&I&&I[m[1]+'_'+m[2]]?new URL('../hockey/data/kph/'+m[1]+'_'+m[2]+'.webp',S).href:u}})();
 /* Фото игроков КХЛ с www.khl.ru — на белом фоне. Владелец 14.11: «чтобы ни у кого сзади не было белого фона». Вырезать фон у себя
    нельзя (khl.ru не отдаёт фото нашим серверам), поэтому белое делается прозрачным прямо при показе: SVG-фильтр #jvko
    (CSS в v3a.css: img[src*="khl.ru/img/teamplayers_db"]). Пиксели не читаются скриптом — работает и с чужими картинками. */
@@ -29,7 +34,7 @@ const SECTIONS={};
   document.documentElement.classList.add('nav2');
   /* «Игроки» — отдельная страница всех игроков лиги, а не прокрутка к блоку на странице лиги (владелец 13.11) */
   const PLP={khl:'hockey/players_khl.html',nhl:'hockey/players.html'};
-  const LS=(lg,base)=>[['Таблица и клубы','#table'],['Матчи','#next'],['Результаты','#results'],['Игроки','#players'],['Статистика','#stats']].map(([n,h])=>['',n,h==='#players'&&PLP[lg]?PLP[lg]:base+lg+h]);
+  const LS=(lg,base)=>[['Клубы','#clubs'],['Матчи','#next'],['Результаты','#results'],['Игроки','#players'],['Статистика','#stats']].map(([n,h])=>['',n,h==='#players'&&PLP[lg]?PLP[lg]:base+lg+h]);
   const FL=[['epl','АПЛ'],['laliga','Ла Лига'],['seriea','Серия А'],['bundesliga','Бундеслига'],['ligue1','Лига 1'],['rpl','РПЛ']];
   SECTIONS.hockey=[['m','Матчи','hockey/index.html',[['m','Ближайшие матчи','hockey/index.html'],['fc','Прогноз на сегодня — списком','hockey/forecast-khl.html']]],
     ['lg','Лиги','hockey/league.html?lg=khl',[['khl','КХЛ','hockey/league.html?lg=khl',LS('khl','hockey/league.html?lg=')],['nhl','НХЛ','hockey/league.html?lg=nhl',LS('nhl','hockey/league.html?lg=')]]],
