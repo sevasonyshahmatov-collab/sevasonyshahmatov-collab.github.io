@@ -61,6 +61,8 @@ fetch(`data/plite_${LG}.json`).then(r=>r.json()).then(D=>{
     <span class="c hm">${p.gp}</span><span class="c${key==='g'?' on':''}">${p.G}</span><span class="c${key==='a'?' on':''}">${p.A}</span>${SH?`<span class="c hm${key==='s'?' on':''}">${p.S}</span>`:''}<span class="c pt${key==='p'?' on':''}">${p.G+p.A}</span></article>`}).join('');
   $('list').innerHTML=(podN?`<div class="podium">${pod}</div>`:'')+(rows?`<div class="lb${SH?' sh':''}"><div class="lrh" aria-hidden="true"><span>#</span><span></span><span>Игрок</span><span class="fh">Последние 10 матчей</span>${th('gp','И','Игры')}${th('g','Г','Голы')}${th('a','П','Передачи')}${SH?th('s','Бр','Броски в створ').replace('class="c','class="c hm'):''}${th('p','О','Очки')}</div>${rows}</div>`:'');
   $('list').classList.remove('two');
+  /* появление карточек анимируем только при первом показе, а не на каждый ввод в поиске или смену фильтра (ревью анимаций 17.11) */
+  $('list').classList.toggle('first',!render.shown);render.shown=1;
   $('more').hidden=L.length<=st.lim}
  $('mk').onclick=e=>{const b=e.target.closest('button');if(!b)return;st.m=b.dataset.m;st.lim=30;$('mk').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()};
  $('lg').onclick=e=>{const b=e.target.closest('button');if(!b)return;st.pos=b.dataset.l;st.lim=30;$('lg').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()};

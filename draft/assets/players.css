@@ -205,3 +205,26 @@ body{background:var(--paper);color:var(--ink)}
   .pod2 .wms{animation-delay:.7s}.pod3 .wms{animation-delay:1.4s}
 }
 @keyframes wmShine{0%{background-position:130% 0}55%,100%{background-position:-40% 0}}
+
+/* ══ 17.11 — правки по ревью анимаций (.claude/skills/review-animations) ══
+   1) блик — сдвигом (transform) полосы внутри маски, а не background-position: не перерисовывает слой каждый кадр;
+   2) появление тройки — только при первом показе (.pl-list.first), короче: 450/500 мс;
+   3) отклик на нажатие у вкладок; наведение — только для мыши; полоска строки — scaleY вместо top/bottom */
+:root{--ease-out:cubic-bezier(.23,1,.32,1)}
+.pod .wms,.clb .wms{background:none;animation:none;overflow:hidden}
+.pod .wms::before,.clb .wms::before{content:"";position:absolute;top:0;bottom:0;left:0;width:55%;transform:translateX(-120%);will-change:transform;
+  background:linear-gradient(105deg,transparent 0,rgba(255,255,255,.2) 28%,rgba(255,255,255,.95) 50%,rgba(255,255,255,.2) 72%,transparent 100%)}
+.pod,.pod .cut{animation:none}
+@media (prefers-reduced-motion:no-preference){
+  .pod .wms::before{animation:wmSweep 4.2s cubic-bezier(.4,0,.2,1) infinite}
+  .pod2 .wms::before{animation-delay:.7s}.pod3 .wms::before{animation-delay:1.4s}
+  .pl-list.first .pod{animation:podIn .45s var(--ease-out) both}
+  .pl-list.first .pod2{animation-delay:.06s}.pl-list.first .pod3{animation-delay:.12s}
+  .pl-list.first .pod .cut{animation:podCut .5s var(--ease-out) both;animation-delay:inherit}
+}
+@keyframes wmSweep{0%{transform:translateX(-120%)}55%,100%{transform:translateX(300%)}}
+.lr::before{top:0;bottom:0;transform:scaleY(.7);transition:transform .15s var(--ease-out)}
+.lr:hover{background:none}.lr:hover::before{top:0;bottom:0;transform:scaleY(.7)}
+@media (hover:hover) and (pointer:fine){.lr:hover{background:color-mix(in srgb,var(--kb) 7%,transparent)}.lr:hover::before{transform:none}}
+.pl-tabs button,.pl-lgsw a,.pl-chips button{transition:background .18s ease,color .18s ease,transform .16s var(--ease-out)}
+.pl-tabs button:active,.pl-lgsw a:active,.pl-chips button:active,.pl-more:active{transform:scale(.97)}

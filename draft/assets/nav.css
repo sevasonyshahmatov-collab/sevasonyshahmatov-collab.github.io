@@ -310,3 +310,9 @@ body[data-only="ucl"] .board-top{min-height:45px}
 .mpanel .mtg{justify-content:center;min-height:50px;font-size:17px}
 @media (prefers-reduced-motion:reduce){.gnav a,.gdd-m,.gdd-m a,.gdd-m a::after{transition:none}}
 @media (max-width:1100px){.hd .sbtn ~ .btn-tg{margin-left:0}}
+
+/* 17.11 — ревью анимаций: выпадающий список раскрывается «от пункта» сильной ease-out кривой, отклик на нажатие у пунктов */
+.gdd-m{transform-origin:16% 0;transform:translateY(-6px) scale(.98);transition:opacity .18s cubic-bezier(.23,1,.32,1),transform .18s cubic-bezier(.23,1,.32,1),visibility 0s .18s}
+.gdd:hover .gdd-m,.gdd:focus-within .gdd-m,.gdd.open .gdd-m{transform:none;transition:opacity .18s cubic-bezier(.23,1,.32,1),transform .18s cubic-bezier(.23,1,.32,1)}
+.gnav>a:active,.gnav .gdd>a:active,.hd .sbtn:active,.hd .hd-me:active,.hd .btn-tg:active{transform:scale(.97)}
+.gnav>a,.gnav .gdd>a{transition:background .18s ease,color .18s ease,transform .16s cubic-bezier(.23,1,.32,1)}

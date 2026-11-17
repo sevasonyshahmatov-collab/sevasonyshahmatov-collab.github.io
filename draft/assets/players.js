@@ -80,6 +80,7 @@ function render(){
       <div class="ha">${LU?`Дома <b>${p.mh[st.m][0]}/${p.mh[st.m][1]}</b> · В гостях <b>${p.ma[st.m][0]}/${p.ma[st.m][1]}</b>`:st.m==='sg'?`Дома <b>${p.home[0]}/${p.home[1]}</b> · В гостях <b>${p.away[0]}/${p.away[1]}</b>`:`Карточка в ${pc}% матчей`}</div>
       <div class="nx">${nx?`<img src="${crest(p.nx.o)}" alt="" loading="lazy"><span>Далее: <b>${esc(nx.n)}</b><br>${p.nx.h?'дома':'в гостях'}, ${p.nx.d.slice(8,10)}.${p.nx.d.slice(5,7)}</span>`:''}</div>
     </article>`}).join('');
+  $('list').classList.toggle('first',!render.shown);render.shown=1;   /* появление — только при первом показе (ревью анимаций 17.11) */
   $('more').hidden=L.length<=st.lim}
 $('mk').onclick=e=>{const b=e.target.closest('button');if(!b)return;st.m=b.dataset.m;st.lim=30;
   $('mk').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));$('ha').disabled=!LU&&st.m==='cr';render()};

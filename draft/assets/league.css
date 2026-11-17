@@ -275,7 +275,7 @@ html[data-sport="football"][data-lg] .lghero::after{background:linear-gradient(1
 @keyframes lgSlide{0%{transform:translate3d(-6%,0,0)}100%{transform:translate3d(6%,0,0)}}
 @keyframes lgFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(-1.2deg)}}
 @keyframes lgPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-@keyframes lgShine{0%,55%{left:-60%}85%,100%{left:130%}}
+@keyframes lgShine{0%,55%{transform:translateX(-160%) skewX(-20deg)}85%,100%{transform:translateX(330%) skewX(-20deg)}}
 @keyframes lgBar{from{transform:scaleX(0)}to{transform:none}}
 
 /* ══ 17.11 — раздел «Клубы»: плитки в цветах клуба ══ */
@@ -342,3 +342,26 @@ html[data-sport="football"][data-lg] .lghero::after{background:linear-gradient(1
 .clb .wm,.clb .wms{top:auto;right:-34px;bottom:-34px;width:200px;height:200px}
 .clb::after{background:linear-gradient(to top,color-mix(in srgb,var(--kb) 82%,transparent) 0,color-mix(in srgb,var(--kb) 45%,transparent) 22%,transparent 46%)}
 @media (max-width:620px){.clb .wm,.clb .wms{top:auto;right:-26px;bottom:-26px;width:150px;height:150px}}
+
+/* ══ 17.11 — правки по ревью анимаций (.claude/skills/review-animations) ══
+   блик эмблемы лиги и плиток — transform вместо left/background-position; на плитках блик не крутится постоянно у всех 20–32 штук,
+   а пробегает при наведении (на сенсорных экранах — редкий фоновый); наведение — только для мыши; отклик на нажатие */
+:root{--ease-out:cubic-bezier(.23,1,.32,1)}
+.lgbig::after{left:0;transform:translateX(-160%) skewX(-20deg);will-change:transform}
+.lghero .facts .fbar i{animation-duration:.6s}
+.lghero .facts li:hover{transform:none;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 12%,transparent)}
+.clb .wms{animation:none}
+.clb:hover .wms{animation:none}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .lghero .facts li:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--lga,var(--sport)) 55%,transparent),0 18px 30px -22px rgba(0,0,0,.7)}
+  .clb:hover .wms::before{transform:translateX(300%);transition:transform .7s var(--ease-out)}
+}
+@media (hover:none) and (prefers-reduced-motion:no-preference){
+  .clb .wms::before{animation:wmSweepT 9s cubic-bezier(.4,0,.2,1) infinite}
+  .clubs li:nth-child(3n+2) .wms::before{animation-delay:3s}.clubs li:nth-child(3n) .wms::before{animation-delay:6s}
+}
+@keyframes wmSweepT{0%{transform:translateX(-120%)}22%,100%{transform:translateX(300%)}}
+.clb{transition:transform .2s var(--ease-out),box-shadow .2s ease}
+.clb:active{transform:scale(.98)}
+.lgsw .tab{transition:background .18s ease,color .18s ease,transform .16s var(--ease-out)}
+.lgsw .tab:active,.lghero .chips a:active{transform:scale(.97)}
