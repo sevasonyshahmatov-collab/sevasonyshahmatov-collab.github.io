@@ -239,3 +239,41 @@ html[data-lg="khl"] .lghero::before{background:
 html[data-lg="khl"] .lghero::after{background:linear-gradient(115deg,transparent 0 61%,rgba(255,255,255,.07) 61% 61.5%,transparent 61.5% 64%,rgba(226,30,54,.20) 64% 67%,transparent 67%)}
 html[data-lg] .lghero .facts li::before,html[data-lg] .lghero .facts .fbar i{background:var(--lga)}
 html[data-lg] .lgname .tmlg{color:var(--lga)}
+
+/* 17.11 — футбольные лиги: фон шапки в цветах лиги (league-foot.js ставит <html data-lg>) */
+html[data-lg="epl"] .lghero{--c1:#3d195b;--c2:#00ff85}
+html[data-lg="laliga"] .lghero{--c1:#3a1418;--c2:#ff4b44}
+html[data-lg="seriea"] .lghero{--c1:#0f3d91;--c2:#2fb8ff}
+html[data-lg="bundesliga"] .lghero{--c1:#8f0c16;--c2:#ffffff}
+html[data-lg="ligue1"] .lghero{--c1:#0b1d3f;--c2:#dae025}
+html[data-lg="rpl"] .lghero{--c1:#12306f;--c2:#e8452c}
+html[data-lg="ucl"] .lghero{--c1:#06164a;--c2:#7fb2ff}
+html[data-lg="uel"] .lghero{--c1:#3a2206;--c2:#ff8a1f}
+html[data-sport="football"][data-lg] .lghero{--lga:var(--c2)}
+html[data-sport="football"][data-lg] .lghero::before{background:
+  radial-gradient(55% 95% at 92% 6%,color-mix(in srgb,var(--c2) 30%,transparent),transparent 62%),
+  radial-gradient(60% 90% at 4% 96%,color-mix(in srgb,var(--c1) 85%,transparent),transparent 64%),
+  linear-gradient(120deg,color-mix(in srgb,var(--c1) 70%,rgba(5,8,15,.9)),rgba(6,10,20,.80) 60%,color-mix(in srgb,var(--c1) 45%,rgba(5,8,15,.92)))}
+html[data-sport="football"][data-lg] .lghero::after{background:linear-gradient(115deg,transparent 0 61%,rgba(255,255,255,.06) 61% 61.5%,transparent 61.5% 64%,color-mix(in srgb,var(--c2) 16%,transparent) 64% 67%,transparent 67%)}
+/* 17.11 — движение в шапке лиги: свет на фоне медленно «дышит», полосы плывут, эмблема лиги парит и по ней пробегает блик */
+.lghero{overflow:hidden}
+.lgbig{position:relative;overflow:hidden}
+.lgbig::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:45%;transform:skewX(-20deg);pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent)}
+.lgbig img{position:relative}
+@media (prefers-reduced-motion:no-preference){
+  html[data-lg] .lghero::before{inset:-8%;animation:lgGlow 14s ease-in-out infinite alternate}
+  html[data-lg] .lghero::after{inset:0 -20%;animation:lgSlide 18s linear infinite alternate}
+  .lgbig{animation:lgFloat 5.5s ease-in-out infinite}
+  .lgbig::after{animation:lgShine 5.5s ease-in-out infinite}
+  .lgbig img{animation:lgPulse 5.5s ease-in-out infinite}
+  .lghero .facts .fbar i{transform-origin:0 50%;animation:lgBar 1.1s cubic-bezier(.23,1,.32,1) .25s both}
+  .lghero .facts li{transition:transform .2s ease,box-shadow .2s ease}
+  .lghero .facts li:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--lga,var(--sport)) 55%,transparent),0 18px 30px -22px rgba(0,0,0,.7)}
+}
+@keyframes lgGlow{0%{transform:translate3d(-2%,-1%,0) scale(1)}100%{transform:translate3d(3%,2%,0) scale(1.08)}}
+@keyframes lgSlide{0%{transform:translate3d(-6%,0,0)}100%{transform:translate3d(6%,0,0)}}
+@keyframes lgFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(-1.2deg)}}
+@keyframes lgPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes lgShine{0%,55%{left:-60%}85%,100%{left:130%}}
+@keyframes lgBar{from{transform:scaleX(0)}to{transform:none}}

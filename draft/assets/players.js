@@ -56,7 +56,17 @@ function render(){
   const val=x=>st.so==='n'?x.h[0]:st.so==='G'?tot(x.p):x.h[0]/x.h[1];
   L.sort((a,b)=>val(b)-val(a)||b.h[0]-a.h[0]||a.p.n.localeCompare(b.p.n));
   $('meta').textContent=`${L.length} игроков${['ucl','uel'].includes(st.lg)?' · «n из N» по всем турнирам сезона':''} · данные на ${(b=>{const m=/(\d{4})-(\d\d)-(\d\d)[ T](\d\d:\d\d)/.exec(String(b||''));return m?+m[3]+' '+['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'][+m[2]-1]+', '+m[4]+' МСК':String(b||'')})(D.built)}`;
-  $('list').innerHTML=L.slice(0,st.lim).map((x,i)=>{const p=x.p,T=D.teams[p.t]||{},h=x.h,pc=Math.round(100*h[0]/h[1]);
+  /* 17.11: тройка лидеров крупными карточками в цвете клуба (как в хоккее), остальные — прежними строками */
+  const view=L.slice(0,st.lim),podN=view.length>=3?3:0,MKN={sg:'Забивал',st:'В створ',s2:'2+ удара',ga:'Гол+пас',cr:'Карточка'};
+  const pod=view.slice(0,podN).map((x,i)=>{const p=x.p,T=D.teams[p.t]||{},h=x.h,c=col(T),hex=/^#/.test(c)?c:'#1d2a44',lt=lite(hex);
+    const extra=st.m==='cr'?[['Жёлтые',p.y],['Красные',p.r||0]]:st.m==='st'||st.m==='s2'?[['Удары',p.S],['В створ',p.SoT]]:[['Голы',p.G],...(LU?[['Пасы',p.A]]:[])];
+    return `<article class="pod fb pod${i+1}" role="listitem" style="--kb:${hex};--ko:${lt?'#10161f':'#fff'};--ko2:${lt?'rgba(16,22,31,.72)':'rgba(255,255,255,.78)'}"><img class="wm" src="${crest(p.t)}" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">
+      ${photo(p.id)?`<img class="cut" src="${photo(p.id)}" alt="" loading="lazy" onerror="this.remove()">`:''}
+      <span class="prk"><b>${i+1}</b><small>место</small></span>
+      <div class="pnm"><b><a href="player.html?id=${encodeURIComponent(p.id)}" title="Профиль игрока">${esc(p.n)}</a></b><span><img class="te" src="${crest(p.t)}" alt="" loading="lazy" onerror="this.remove()">${esc(T.n||'')}${p.pos?' · '+esc(p.pos):''}</span></div>
+      <dl class="pst"><div class="on"><dt>${MKN[st.m]||''}</dt><dd>${h[0]}<small style="font-size:.5em;font-weight:700;opacity:.6"> из ${h[1]}</small></dd></div>${extra.filter(e=>e[1]!=null).map(e=>`<div><dt>${e[0]}</dt><dd>${e[1]}</dd></div>`).join('')}</dl>
+    </article>`}).join('');
+  $('list').innerHTML=(podN?`<div class="podium">${pod}</div>`:'')+view.slice(podN).map((x,i0)=>{const i=i0+podN,p=x.p,T=D.teams[p.t]||{},h=x.h,pc=Math.round(100*h[0]/h[1]);
     const F=[...(LU?p.ff[st.m]:p.f)],ok=c=>LU?c==='1':st.m==='cr'?c==='c':c==='g',F5=F.slice(-5),pl_=F.filter(c=>c!=='x').length;
     const strip=`<div class="bars">${F.map((c,j)=>{const o=D.teams[p.fo[j]];const t=(o?o.n:'')+(c==='x'?' — не играл':ok(c)?' — '+(MN[st.m]).replace(/^\S+/,'да'):' — нет');
       return `<i class="${ok(c)?'g':c==='x'?'x':''}" style="--h:${ok(c)?1:c==='x'?.04:.08}" title="${esc(t)}"></i>`}).join('')}</div><small>5 матчей: <b>${F5.filter(ok).length}/${F5.length}</b> · 10: <b>${F.filter(ok).length}/${LU?pl_:F.length}</b></small>`;
