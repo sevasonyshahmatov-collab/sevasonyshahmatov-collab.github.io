@@ -122,8 +122,8 @@ hd.innerHTML=`<div class="wrap hdrow">
 hd.querySelectorAll('.gdd>a').forEach(a=>a.addEventListener('click',e=>{if(matchMedia('(hover:none)').matches){const g=a.parentNode;if(!g.classList.contains('open')){e.preventDefault();hd.querySelectorAll('.gdd.open').forEach(x=>x.classList.remove('open'));g.classList.add('open')}}}));
 document.addEventListener('click',e=>{if(!e.target.closest('.gdd'))hd.querySelectorAll('.gdd.open').forEach(x=>x.classList.remove('open'))});
 /* поиск (assets/search.js + search.css) — единственная точка подключения */
-try{const l=document.createElement('link');l.rel='stylesheet';l.href=new URL('search.css',SRC).href;document.head.appendChild(l);
-  const s=document.createElement('script');s.src=new URL('search.js',SRC).href;s.defer=true;document.head.appendChild(s)}catch(e){}
+try{const l=document.createElement('link');l.rel='stylesheet';l.href=new URL('search.css?v=3',SRC).href;document.head.appendChild(l);
+  const s=document.createElement('script');s.src=new URL('search.js?v=3',SRC).href;s.defer=true;document.head.appendChild(s)}catch(e){}
 /* нижняя панель разделов на телефоне + «одна жёлтая кнопка» (assets/tabbar.js, 14.11) — тоже одна точка подключения */
 try{const s=document.createElement('script');s.src=new URL('tabbar.js',SRC).href;document.head.appendChild(s)}catch(e){}
 /* движение плашек и активных кнопок (assets/motion.js, 17.11) — одна точка подключения */
