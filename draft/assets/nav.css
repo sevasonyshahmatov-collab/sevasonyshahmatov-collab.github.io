@@ -527,9 +527,20 @@ html[data-bg="n"] .subbar{border:0!important;background:none!important}
 html[data-bg="n"] #subscribe.sub{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--sport,#3b6cff) 10%,transparent) 30%,color-mix(in srgb,var(--sport,#3b6cff) 10%,transparent) 70%,transparent)!important;border:0!important;box-shadow:none!important}
 html[data-bg="n"] .jvf{background:linear-gradient(180deg,transparent,rgba(4,8,20,.75) 160px,rgba(4,8,20,.9))!important;border-top:0!important}
 html[data-bg="n"] .hd,html[data-bg="n"][data-theme="arena"] .hd{background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important}
-html[data-bg="n"] .hd::after{content:"";position:absolute;left:0;right:0;top:0;height:calc(100% + 28px);z-index:-1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(6,11,28,.8),rgba(6,11,28,.6) calc(100% - 28px),rgba(6,11,28,0));
+html[data-bg="n"] .hd::after{content:"";position:absolute;left:0;right:0;top:0;height:calc(100% + 56px);z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(6,11,28,.8),rgba(6,11,28,.6) calc(100% - 56px),rgba(6,11,28,0));
   -webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);
-  -webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - 28px),transparent)}
+  -webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 56px),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - 56px),transparent)}
 html[data-bg="n"] .hd::before{background:rgba(6,11,28,.8)!important}
 html[data-bg="n"] .h3bg{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 110px,#000 72%,transparent)!important;mask-image:linear-gradient(180deg,transparent 0,#000 110px,#000 72%,transparent)!important}
+
+/* Ночная арена (17.11, владелец: «никаких стыков нигде — только плавный градиент»): у разделов нет своего фона и подложек;
+   цвет страницы задаёт один общий градиент body::before. Карточки, фото и шапки лиг — как были. */
+html[data-bg="n"] :is([data-zone],section,.sec,.lgsec,.tmsec,.nxs,.sub,.jvf,main,.wrap-bg,.more2,.mt-all,.tbl-link,.pf-sec,.hero:not(.lghero):not(.tmhero)){background:transparent!important;background-image:none!important;border-top-color:transparent!important;border-bottom-color:transparent!important;box-shadow:none!important}
+html[data-bg="n"] :is([data-zone],section,.sec,.lgsec,.tmsec,.nxs,.sub,.jvf):not(.lghero):not(.tmhero)::before,
+html[data-bg="n"] :is([data-zone],section,.sec,.lgsec,.tmsec,.nxs,.sub,.jvf):not(.lghero):not(.tmhero)::after{background:none!important;background-image:none!important;-webkit-mask:none!important;mask:none!important;box-shadow:none!important;border:0!important}
+html[data-bg="n"] .tmhero{background-color:transparent!important;-webkit-mask-image:linear-gradient(180deg,#000 75%,transparent);mask-image:linear-gradient(180deg,#000 75%,transparent)}
+html[data-bg="n"] #honest .wrap.n-dark,html[data-bg="n"] #honest .n-dark.wrap{border-radius:24px;border:1px solid rgba(160,190,255,.12)}
+html[data-bg="n"] .dk-bgfx{-webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 70%,transparent);mask-image:linear-gradient(180deg,transparent,#000 12%,#000 70%,transparent)}
+html[data-bg="n"] .mx-field{-webkit-mask-image:linear-gradient(180deg,transparent,#000 14%,#000 82%,transparent);mask-image:linear-gradient(180deg,transparent,#000 14%,#000 82%,transparent)}
+html[data-bg="n"] .pp-stick{-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
