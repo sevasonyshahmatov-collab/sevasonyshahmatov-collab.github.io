@@ -111,7 +111,7 @@ JV.ticker=function(el,items){
 /* ── фон: разметка поля и льда на canvas ────────────────────── */
 JV.field=function(kind){
   /* 17.11 — варианты фона (?bg=a|b|c, ставит nav.js): a и b — без разметки на canvas; c — разметка чёткая (до 2,5× плотности), статичная, без пунктиров и сетки */
-  const BG=doc.dataset.bg||'';if(BG==='a'||BG==='b')return;
+  const BG=doc.dataset.bg||'';if(BG==='a'||BG==='b'||BG==='n')return;
   const cv=document.createElement('canvas');cv.id='field';cv.setAttribute('aria-hidden','true');document.body.prepend(cv);
   const g=cv.getContext('2d');let W=0,H=0,D=1,raf=0,last=0;
   const size=()=>{D=Math.min(BG==='c'?2.5:1.5,devicePixelRatio||1);W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;g.setTransform(D,0,0,D,0,0);draw(performance.now())};
@@ -220,6 +220,7 @@ function arena(){
   const BG=doc.dataset.bg||'';   /* 17.11 — варианты фона: a — чистый светлый, b — тёмная арена на всю страницу, c — светлый лёд */
   if(BG==='a')Z.p1=Z.p2=Z.p2b=Z.p3=[244,246,250];
   if(BG==='b'){Z.p1=[9,20,40];Z.p2=Z.p2b=[7,16,32];Z.p3=[10,22,44]}
+  if(BG==='n')Z.arena=Z.p1=Z.p2=Z.p2b=Z.p3=[5,9,20];   /* «Ночная арена»: фон рисует nav.css слоями света, цвет страницы один */
   if(BG==='c'){Z.p1=Z.p2b=[232,240,248];Z.p2=[240,244,249];Z.p3=[236,241,247]}
   if(doc.dataset.col==='1'){Z.p1=Z.p2b=Z.p3=Z.p2}   /* вариант 1: после первого экрана один светлый фон */
   if(doc.dataset.hero==='2')Z.arena=Z.p1;   /* афиша (hero3): у неё свой тёмный фон, который сам растворяется книзу — общий фон страницы не мигает из тёмного в светлый */
@@ -236,7 +237,7 @@ function arena(){
     if(i===0)lit=dn<Wn?.5-dn/Wn*.5:0;else if(i===1&&up<Wu)lit=.5+up/Wu*.5;else lit=1;
     if(i===0&&lit>0){const g=Math.min(1,scrollY/(vh*.25));lit*=g;col=mix(Z.arena,col,g)}  /* черновик 14.11: пока не прокрутили — первый экран чёткий (на большом мониторе лига/клуб открывались «мутными», --lit ≈ .36) */
     if(RM)lit=lit<.5?0:1,col=lit?col:Z.arena;
-    if(BG==='b')lit=0;
+    if(BG==='b'||BG==='n')lit=0;
     lit=Math.round(lit*100)/100;JV.lit=lit;
     const cs=`rgb(${col.join(',')})`;if(cs!==lastC){doc.style.setProperty('--bgc',cs);lastC=cs}
     if(lit!==lastLit){doc.style.setProperty('--lit',lit);doc.classList.toggle('lit',lit>=.5);lastLit=lit}

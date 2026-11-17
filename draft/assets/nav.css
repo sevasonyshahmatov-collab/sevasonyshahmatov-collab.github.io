@@ -367,3 +367,90 @@ html[data-bg="b"][data-theme="arena"] [data-zone] .match:hover{background:var(--
 html[data-bg="b"] [data-zone] :is(.ltab,.lgconf,.lgm,.lgst li,.lgbar,.lgbar li,.sec-head h2,.lgempty){color:var(--ink)}
 html[data-bg="b"] [data-zone] :is(.ltab th,.lgst span,.lgst em,.lgm .when small){color:var(--ink-3)}
 html[data-bg="b"] [data-zone] .ltab thead th{border-bottom-color:rgba(255,255,255,.35)}
+
+/* ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+   17.11 — «НОЧНАЯ АРЕНА» (?bg=n) — новая визуальная система вместо плоских светлых заливок.
+   Идея: страница — это арена ночью. Глубина строится светом, а не линиями:
+   1) дальний слой — поля насыщенного света (ультрамарин льда, циан табло, красный фонарь за воротами, фиолет трибун);
+      он чуть «отстаёт» от прокрутки (scroll-driven CSS), поэтому панели читаются как висящие над ним;
+   2) мелкий неподвижный шум поверх — убирает ступеньки на тёмных градиентах (то, что на мониторе выглядит как «пиксели»);
+   3) у каждого раздела свой цвет света сверху и светящаяся кромка;
+   4) содержимое — на стеклянных панелях: полупрозрачная заливка, блик по верхней грани, цветная тень в глубину.
+   Футбол — та же система в зелёно-изумрудном свете. Разметка льда на canvas и «плёночное» зерно выключены (v3a.js).
+   ══════════════════════════════════════════════════════════════════════════════════════════════════════════════ */
+html[data-bg="n"]{--n-base:#050914;--n-a:#1a3cff;--n-b:#22e1ff;--n-c:#ff2e4d;--n-d:#7a3cff;--n-sport:#22e1ff}
+html[data-bg="n"][data-sport="football"]{--n-a:#00a862;--n-b:#3df5a6;--n-c:#ffb400;--n-d:#0b6cff;--n-sport:#3df5a6}
+html[data-bg="n"],html[data-bg="n"] [data-zone],html[data-bg="n"] .hero,html[data-bg="n"] .hd,html[data-bg="n"] .nxs,html[data-bg="n"] main.pl{
+  --paper:#060b1a;--paper-2:#101b3d;--paper-3:#1a2a5c;--card:#0e1734;--card-hi:#152250;
+  --ink:#f2f6ff;--ink-2:#bcc8ec;--ink-3:#8796c6;--rule:rgba(160,185,255,.14);--rule-2:rgba(160,185,255,.28);
+  --ice:var(--n-b);--sport:var(--n-sport);--crest-bg:#eef3fa;--shadow:rgba(0,4,24,.7);color:var(--ink)}
+html[data-bg="n"] body,html[data-bg="n"][data-theme] body,html[data-bg="n"][data-white] body{background:var(--n-base)!important;color:var(--ink)}
+/* 1) свет */
+html[data-bg="n"] body::before{content:"";position:fixed;left:0;right:0;top:-12vh;height:136vh;z-index:-4;pointer-events:none;opacity:1;
+  background:
+   radial-gradient(58% 46% at 10% 6%,color-mix(in srgb,var(--n-a) 70%,transparent),transparent 72%),
+   radial-gradient(40% 36% at 98% 20%,color-mix(in srgb,var(--n-b) 30%,transparent),transparent 72%),
+   radial-gradient(52% 44% at 94% 96%,color-mix(in srgb,var(--n-c) 34%,transparent),transparent 72%),
+   radial-gradient(50% 48% at 2% 86%,color-mix(in srgb,var(--n-d) 44%,transparent),transparent 72%),
+   radial-gradient(36% 30% at 52% 52%,color-mix(in srgb,var(--n-a) 16%,transparent),transparent 74%),
+   linear-gradient(180deg,#091238,#050914 52%,#03050d)}
+@supports (animation-timeline:scroll()){@media (prefers-reduced-motion:no-preference){
+  html[data-bg="n"] body::before{animation:nDrift linear both;animation-timeline:scroll(root)}}}
+@keyframes nDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,-10vh,0)}}
+/* 2) шум против полос */
+html[data-bg="n"] body::after{content:""!important;display:block!important;position:fixed!important;inset:0!important;z-index:-3!important;pointer-events:none;animation:none!important;transform:none!important;opacity:.55!important;mix-blend-mode:soft-light;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/240px 240px!important}
+html[data-bg="n"][data-theme="arena"] .arena-bg{position:absolute;height:118vh;opacity:.9;background:none;mix-blend-mode:screen;-webkit-mask-image:linear-gradient(#000 62%,transparent);mask-image:linear-gradient(#000 62%,transparent)}
+/* шапка — стекло */
+html[data-bg="n"] .hd,html[data-bg="n"][data-theme="arena"] .hd{background:rgba(6,11,28,.62)!important;-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);border-bottom-color:rgba(160,190,255,.14);box-shadow:0 18px 40px -30px rgba(0,6,40,.9)}
+html[data-bg="n"] .subbar{background:rgba(120,150,255,.05)}
+/* 3) разделы: свой свет сверху и светящаяся кромка */
+html[data-bg="n"] [data-zone],html[data-bg="n"][data-theme="arena"] :is(.lghero,.tmhero)+.sec{--zc:var(--n-a);
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--zc) 60%,#fff) 30%,color-mix(in srgb,var(--zc) 60%,#fff) 70%,transparent) top/100% 1px no-repeat,
+   radial-gradient(46% 100% at 22% 0%,color-mix(in srgb,var(--zc) 30%,transparent),transparent 74%) top/100% 620px no-repeat!important}
+html[data-bg="n"] [data-zone="p2"],html[data-bg="n"] [data-zone="p2b"]{--zc:var(--n-d)}
+html[data-bg="n"] [data-zone="p3"]{--zc:var(--n-c)}
+html[data-bg="n"] .nxs{border-top:0;background:linear-gradient(90deg,transparent,rgba(170,195,255,.4) 30%,rgba(170,195,255,.4) 70%,transparent) top/100% 1px no-repeat}
+html[data-bg="n"][data-theme="arena"] #matches .wrap>:not(.period),html[data-bg="n"][data-theme="arena"] .hero+.sec:not(#matches)>.wrap{opacity:1!important}
+html[data-bg="n"] .lghero::before,html[data-bg="n"] .lghero::after{-webkit-mask-image:linear-gradient(#000 64%,transparent);mask-image:linear-gradient(#000 64%,transparent)}
+html[data-bg="n"] .sec-head h2,html[data-bg="n"] .pl-hero h1,html[data-bg="n"] .nxs h2{color:var(--ink);text-shadow:0 0 44px color-mix(in srgb,var(--zc,var(--n-a)) 70%,transparent)}
+/* 4) стеклянные панели */
+html[data-bg="n"] :is(.lgtbl,.lgm,.lgst li,.match,.nxs-g a,.lb,.pl-ctrl,.lgbar){
+  background:linear-gradient(158deg,rgba(150,180,255,.115),rgba(150,180,255,.04) 60%)!important;border:0!important;color:var(--ink);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 0 0 1px rgba(160,190,255,.10),0 30px 46px -30px rgba(0,8,50,.95),0 2px 0 rgba(0,0,0,.25)!important;
+  -webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5)}
+html[data-bg="n"] .lgbar{padding:18px 20px 16px;border-radius:var(--rc,14px);margin-top:12px}
+html[data-bg="n"] .lgst{gap:10px;background:none}html[data-bg="n"] .lgst li{border-radius:var(--rc,14px)}
+html[data-bg="n"] .lgtbl{border-radius:var(--rc,14px);overflow:hidden}
+html[data-bg="n"] :is(.ltab,.lgpt){background:none!important;color:var(--ink)}
+html[data-bg="n"] .ltab :is(td,th){border-color:rgba(160,190,255,.10)}
+html[data-bg="n"] .ltab thead th{color:var(--ink-3);border-bottom:1px solid rgba(170,200,255,.34)}
+html[data-bg="n"] .ltab tbody tr:hover td{background:rgba(150,180,255,.07)}
+html[data-bg="n"] .ltab td.pt{color:#fff;text-shadow:0 0 18px color-mix(in srgb,var(--n-b) 70%,transparent)}
+html[data-bg="n"] :is(.lgconf,.lgm,.lgm a,.lgst li,.lgbar,.lgbar li,.lgempty,.ltab a){color:var(--ink)}
+html[data-bg="n"] :is(.lgst span,.lgst em,.lgm .when small,.dayh,.lkey li){color:var(--ink-3)}
+html[data-bg="n"] .lgm{border-radius:var(--rc,12px);transition:transform .18s cubic-bezier(.23,1,.32,1),box-shadow .18s ease}
+@media (hover:hover) and (pointer:fine){html[data-bg="n"] :is(.lgm,.match,.nxs-g a):hover{background:linear-gradient(158deg,rgba(160,190,255,.2),rgba(150,180,255,.07) 60%)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.26),inset 0 0 0 1px color-mix(in srgb,var(--n-b) 45%,transparent),0 30px 50px -28px color-mix(in srgb,var(--n-a) 70%,#000)!important}}
+html[data-bg="n"] .lgm .s{color:#fff}
+html[data-bg="n"] .btn-line{border-color:rgba(170,200,255,.4);color:var(--ink)}
+html[data-bg="n"] .btn-ink{background:var(--ink);color:#060b1a}
+/* пульты и подложка активной кнопки — светящиеся */
+html[data-bg="n"] :is(.gnav,.lgsw,.pl-tabs,.pl-lgsw,.lghero .chips){background:rgba(150,180,255,.08);box-shadow:inset 0 0 0 1px rgba(160,190,255,.14)}
+html[data-bg="n"] .mpill{background:linear-gradient(180deg,#fff,#dfe8ff);box-shadow:0 0 0 1px rgba(255,255,255,.5),0 8px 26px -6px color-mix(in srgb,var(--n-b) 80%,transparent)}
+html[data-bg="n"] .has-pill .pill-on.pill-on.pill-on{color:#060b1a!important}
+/* плитки клубов и карточки лидеров: цветная тень в глубину вместо серой */
+html[data-bg="n"] :is(.clb,.pod){box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 34px 50px -30px color-mix(in srgb,var(--kb) 85%,#000),0 0 0 1px rgba(255,255,255,.06)}
+/* страницы игроков: тёмные вместо белых */
+html[data-bg="n"][data-white]{--grain-op:0}
+html[data-bg="n"] .lrh{background:rgba(150,180,255,.06);border-bottom-color:rgba(160,190,255,.16)}
+html[data-bg="n"] .lr{border-top-color:rgba(160,190,255,.10)}
+html[data-bg="n"] .lr .c.pt.on{background:linear-gradient(180deg,#fff,#dfe8ff);color:#060b1a;box-shadow:0 6px 20px -6px color-mix(in srgb,var(--n-b) 70%,transparent)}
+html[data-bg="n"] .lr .frm i{background:rgba(160,190,255,.16)}
+html[data-bg="n"] .lr .frm i.g{background:color-mix(in srgb,var(--kb) 55%,#fff)}
+html[data-bg="n"] .lr::before{background:color-mix(in srgb,var(--kb) 70%,#fff)}
+html[data-bg="n"] .pl-row :is(select,input){background-color:rgba(150,180,255,.08);border-color:rgba(160,190,255,.24);color:var(--ink)}
+html[data-bg="n"] .pl-row select option{background:#0e1734;color:#f2f6ff}
+html[data-bg="n"] .pl-kicker{color:var(--n-b)}
+html[data-bg="n"] .pl-more{background:linear-gradient(180deg,#fff,#dfe8ff);color:#060b1a}
+html[data-bg="n"] .pr:not(.k){background:linear-gradient(158deg,rgba(150,180,255,.115),rgba(150,180,255,.04) 60%);border-color:rgba(160,190,255,.12)}
