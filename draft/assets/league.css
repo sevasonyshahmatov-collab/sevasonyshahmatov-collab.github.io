@@ -365,3 +365,7 @@ html[data-sport="football"][data-lg] .lghero::after{background:linear-gradient(1
 .clb:active{transform:scale(.98)}
 .lgsw .tab{transition:background .18s ease,color .18s ease,transform .16s var(--ease-out)}
 .lgsw .tab:active,.lghero .chips a:active{transform:scale(.97)}
+/* полоса блика внутри маски эмблемы (на страницах лиг players.css не подключён — задаём здесь) */
+.clb .wms{background:none;overflow:hidden}
+.clb .wms::before{content:"";position:absolute;top:0;bottom:0;left:0;width:55%;transform:translateX(-120%);
+  background:linear-gradient(105deg,transparent 0,rgba(255,255,255,.2) 28%,rgba(255,255,255,.9) 50%,rgba(255,255,255,.2) 72%,transparent 100%)}
