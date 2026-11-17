@@ -73,7 +73,7 @@ function rowsFor(mode){
  $('clubsBox').innerHTML=`<div class="sec-head" data-rv><h2>Клубы</h2></div>
   <ul class="clubs">${rows.map(t=>{const c=(T[t.id]||{}).c||[],kb=hx(c[0])||'#1d2a44',ks=hx(c[1])||'#ffffff',lt=lum(kb)>165,ko=lt?'#10161f':'#ffffff';
    return `<li><a class="clb" href="${tref(t.id)}" style="--kb:${kb};--kbm:color-mix(in srgb,${kb} 74%,#000);--ks:${ks};--kt:${ko};--ko:${ko};--ko2:${lt?'rgba(16,22,31,.72)':'rgba(255,255,255,.8)'};--kx:${ks}"><img class="wm" src="../assets/fc/${encodeURIComponent(t.id)}.webp" alt="" aria-hidden="true" loading="lazy"><i class="wms" aria-hidden="true" style="--em:url('../assets/fc/${encodeURIComponent(t.id)}.webp')"></i>
-    <span class="cpl"><b>${t.place<99?t.place:'—'}</b><small>место</small></span><span class="cem"><img src="../assets/fc/${encodeURIComponent(t.id)}.webp" alt="" loading="lazy" width="64" height="64"></span>
+    <span class="cpl"><b>${t.place<99?t.place:'—'}</b><small>место</small></span>
     <b class="cnm">${esc(nm(t.id))}</b><span class="cst"><b>${t.pts}</b> ${plural(t.pts,'очко','очка','очков')} · ${t.gp} ${plural(t.gp,'матч','матча','матчей')}</span>
     <span class="cfm" aria-label="Последние матчи">${fm(t.id)}</span></a></li>`}).join('')}</ul>`}
 let mode='all';

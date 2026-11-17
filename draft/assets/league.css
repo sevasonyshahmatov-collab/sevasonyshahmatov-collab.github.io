@@ -315,3 +315,30 @@ html[data-sport="football"][data-lg] .lghero::after{background:linear-gradient(1
   .clb:hover .wms{animation-duration:1.6s;animation-delay:0s}
 }
 @keyframes clbShine{0%{background-position:130% 0}30%,100%{background-position:-40% 0}}
+
+/* 17.11 — плитка клуба: одна эмблема — крупная, непрозрачная (белый квадратик с дублем убран, владелец). Тонкая светлая обводка,
+   чтобы эмблема в цвет фона (Тампа, Торонто, Динамо…) не сливалась с плиткой */
+.clb{grid-template-areas:"pl pl" "nm nm" "st st" "fm fm";min-height:216px}
+.clb .wm,.clb .wms{right:12px;top:12px;bottom:auto;width:128px;height:128px}
+.clb .wm{z-index:0;opacity:1;filter:drop-shadow(1.5px 0 0 rgba(255,255,255,.85)) drop-shadow(-1.5px 0 0 rgba(255,255,255,.85)) drop-shadow(0 1.5px 0 rgba(255,255,255,.85)) drop-shadow(0 -1.5px 0 rgba(255,255,255,.85)) drop-shadow(0 10px 14px rgba(0,0,0,.35))}
+.clb .wms{z-index:1}
+.clb .cpl,.clb .cnm,.clb .cst,.clb .cfm{position:relative;z-index:2}
+.clb .cnm{max-width:100%;text-shadow:0 1px 10px color-mix(in srgb,var(--kb) 80%,transparent)}
+@media (hover:hover){.clb:hover .wm{transform:scale(1.08) rotate(-4deg)}}
+@media (max-width:620px){.clb{min-height:178px}.clb .wm,.clb .wms{right:8px;top:8px;width:92px;height:92px}}
+.clb .cpl{flex-direction:column;align-items:flex-start;gap:5px;max-width:calc(100% - 132px)}
+@media (max-width:620px){.clb .cpl{max-width:calc(100% - 96px)}}
+/* 17.11 (2) — эмблема крупная и непрозрачная, но лежит ПОД текстом (владелец): справа снизу, частично за краем плитки;
+   под подписями — затемнение в цвет клуба, чтобы название и очки читались поверх эмблемы */
+.clb .wm,.clb .wms{top:auto;right:-26px;bottom:-22px;width:200px;height:200px}
+.clb::after{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;
+  background:linear-gradient(to top,color-mix(in srgb,var(--kb) 96%,transparent) 0,color-mix(in srgb,var(--kb) 78%,transparent) 26%,transparent 58%),linear-gradient(to right,color-mix(in srgb,var(--kb) 70%,transparent) 0,transparent 55%)}
+.clb .wms{z-index:1}
+.clb .cpl{max-width:none}
+.clb .cnm,.clb .cst{text-shadow:0 1px 2px color-mix(in srgb,var(--kb) 90%,transparent),0 0 14px var(--kb)}
+@media (max-width:620px){.clb .wm,.clb .wms{top:auto;right:-20px;bottom:-16px;width:150px;height:150px}.clb .cpl{max-width:none}}
+/* 17.11 (3) — эмблема на том же месте, что в первом варианте плитки (правый нижний угол, частично за краем), но крупнее и непрозрачная;
+   затемнение под подписями лёгкое — только у нижней кромки */
+.clb .wm,.clb .wms{top:auto;right:-34px;bottom:-34px;width:200px;height:200px}
+.clb::after{background:linear-gradient(to top,color-mix(in srgb,var(--kb) 82%,transparent) 0,color-mix(in srgb,var(--kb) 45%,transparent) 22%,transparent 46%)}
+@media (max-width:620px){.clb .wm,.clb .wms{top:auto;right:-26px;bottom:-26px;width:150px;height:150px}}
