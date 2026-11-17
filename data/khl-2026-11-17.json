@@ -93,7 +93,37 @@
      "gd": -2
     }
    },
-   "_z": "6uOEV7MUeuDzh/gRc5DzJGU7PSBI/kHoRRmAWnvEUzVz1eHem6Z/S1dSnrPSVjrtuByIV146ri2DJdrcq1Tn54uuzeJF18nfolDkr8Gf1EfnGSDUIpUTWRdydIZ92RMWoT+eSm2MqKj2pRmYhyIjaK/brR1wy9A8ZPB23jd3PyVnbPkWM9umeIshTsY5iqoHfajvR8mkkHFFfKKmUoy41ZBT5ysUVDbKHrAUgOG44muJQXiFQkjvk0630yFxCaeQp/bgW3dnDbFMxpLIlRVqaunGkP4EKYkns+SL1OqnEyf0nV/UlrkunW/RLJuFqoZ0p/jDCJynVuF6Cb9K"
+   "fact": {
+    "k": 18,
+    "n": 27,
+    "team": "Сибирь"
+   },
+   "odds": 1.85,
+   "p": 0.5597,
+   "pick": "Итоговая победа Трактора",
+   "sim": {
+    "hits": 5712,
+    "n": 10000,
+    "top": [
+     [
+      2,
+      2,
+      839
+     ],
+     [
+      1,
+      2,
+      625
+     ],
+     [
+      1,
+      1,
+      572
+     ]
+    ]
+   },
+   "res": "loss",
+   "score": "4:1"
   },
   {
    "h": "Автомобилист",
@@ -185,7 +215,7 @@
      "gd": 12
     }
    },
-   "_z": "vuUaY/Qbks/oA7nOnJsJVpe5sjK0PQL6DoacNPkI1t8cmjmVP05B46py/dGfydpBEXbkm2XcDEUOccVFWShSFGn5XV20vL2FQnBF/lI3ASgbRD8iFj48orkGYRqP31mDkaGMj3eWvj4qzLXSr+cFXc4vYo0Gtc1jQb96Ms7iuI6Iox8P17afFJgibmNWarhi5jQ9Ux/xjfRIfY9zvN49iytnjWICvVQlnVSju3WklFQE1NTcTeULKEbrDsk88pIK2C6E/1uMyzZH4YMI3nDpI670Px4d9VD+aJh/CT1hkuD/pjrFcFnWEUecW6TDnDr796WSqyUyMIA8/gNL6Kmejg=="
+   "_z": "Y3llz/WDEy/9HTW/Q9XbC/koQy+8GVy624q7Y4gz6q+1nveJ84jAmTzj89iqKWL0IPAHoducb6nsno1oK0R/3Foc3o0l1HjqJ7rVNHgQJrVSrESn15uNE0/jZMA8Ad/gk2FywFcQrF++Z47gZMzDMGZi3Q3q0sCYWk0njHaQ/FS7RCzrD/embqr8tNB2AUtnkIq1Hn+6Cpdr5RQGXkhPPssZKKjSK19kB2ubudUBm+mE8n3Wapfvs3xHku6P4PGOzRRPFHTnZIsmoLZbS6aX8aMJrRmPQoJc2WVlka19B9fmg4tmRLaaWYD/dXbtXkLXwhj/NlNqITDAMU17ULaUwIf6dalCgQ6ojwQs6s9bkPPeA3LexjAi5ivo4PhV7D76cg=="
   },
   {
    "h": "Лада",
@@ -277,7 +307,7 @@
      "gd": 28
     }
    },
-   "_z": "g5xmT/rnYtFRGu+xPOJaUCCviuJQOT7uygh8m2ePDdI5nSKvSCHTxIWkbfHn2TNM9OhM08dofES91XEISckuzr038gwU/55zdJWS+3YLyHHa5YJ+X1jvbsKbvmcFCXmT0BsJFtKRkNJLJkBOJLOQcFLMGDAEwJyi1kcxTqlg1eJ/p4bZogilNwbookOUsGcWKSoxvCWqr5mmUDsH6DWQ5bRG46Mwzet6kThELlrheZDPYva8tbNBl35YZcTQbfTQMSo2czBz0BdtPtVF360h5L3IJHJVGz43O/bYVo/DfxA="
+   "_z": "E/88rdoixj22HIp4CniBhHHMMeZlbW25Zo2dqajX0gIUpeQTtA9fCkAtFppwWHzAFAcl2TI3rYO/aorbXUtuHJa+UarqI5/g4iFphAc47JNOYhxBaU63gSWrxUJTH93XkA2eef7LmmmPzUbNZExWqD+3uW+0C10RTobJ4rn1/6Kb5ifT7YIZuJtbnHT/cvXj1PlyhyD0EdwwrwSuibpngGWLpsglfuNRDSDMYWkulaCp4oVb53YzgKWOX6s5jsUIhxA+qZxwdmZ9GzinIkLVx6OoypM9jp7ewC85zpFgS7hbFCqRDgrzfAVi2Gd4ttgFv4GGJz1O/cTy0qFmkCJw"
   },
   {
    "h": "Нефтехимик",
