@@ -234,3 +234,5 @@ body{background:var(--paper);color:var(--ink)}
 /* подиум: без косой полосы слева — только цвета клуба */
 .pod::before{display:none}
 .pod{background:radial-gradient(90% 80% at 100% 100%,color-mix(in srgb,var(--ks) 22%,transparent),transparent 70%),linear-gradient(155deg,color-mix(in srgb,var(--kb) 88%,#fff) 0%,var(--kb) 38%,var(--kbm) 100%)}
+.pod::before{display:block;background:linear-gradient(90deg,var(--ks) 0 12.5px,var(--kt) 13.5px 16.5px,var(--ks) 17.5px 20.5px,transparent 21.5px)}
+.pod{background:linear-gradient(118deg,transparent 0 61%,color-mix(in srgb,var(--ks) 14%,transparent) 63% 71%,transparent 73%),radial-gradient(90% 80% at 100% 100%,color-mix(in srgb,var(--ks) 22%,transparent),transparent 70%),linear-gradient(155deg,color-mix(in srgb,var(--kb) 88%,#fff) 0%,var(--kb) 38%,var(--kbm) 100%)}
