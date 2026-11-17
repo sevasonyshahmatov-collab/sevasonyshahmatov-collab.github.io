@@ -490,3 +490,16 @@ html[data-bg="n"] .rs.ot{background:#4a5a86!important;color:#fff!important}
 /* «инверсные» активные кнопки (фон = --ink): в ночи фон светлый, текст тёмный */
 html[data-bg="n"] :is(.rs-fg button[aria-pressed="true"],.nmha.h,.cmp-tabs button[aria-selected="true"],.fc-sw a[aria-current="page"],.md-sw a[aria-current],.tstep.on):not(.n-light *){color:#060b1a!important}
 html[data-bg="n"] .n-light :is(.rs-fg button[aria-pressed="true"],.nmha.h,.cmp-tabs button[aria-selected="true"],.fc-sw a[aria-current="page"],.md-sw a[aria-current],.tstep.on){color:#fff!important}
+
+/* Ночная арена, v2: без линий и полос — только плавные переходы света */
+html[data-bg="n"] :is(.h3bg::before,.h3bg i){display:none!important}
+html[data-bg="n"] .h3bg::before{display:none!important}
+html[data-bg="n"] [data-zone],html[data-bg="n"][data-theme="arena"] :is(.lghero,.tmhero)+.sec{
+  background:radial-gradient(55% 50% at 24% 50%,color-mix(in srgb,var(--zc) 22%,transparent),transparent 100%) 0 -120px/100% 900px no-repeat!important}
+html[data-bg="n"] .nxs{background:none}
+html[data-bg="n"] .lgtab::before{background-image:none!important}
+html[data-bg="n"] :is(.tmhero,.tmhero::after,.nmatch.grad){background-image:none}
+html[data-bg="n"] .tmhero::after{display:none}
+html[data-bg="n"] :is(.sec-head h2,.pl-hero h1,.nxs h2),html[data-bg="n"] :is(.sec-head h2,.pl-hero h1,.nxs h2) *{text-shadow:none!important}
+/* внутренняя плашка «Расчёт модели» на белой карточке матча */
+html[data-bg="n"] .match.match .qv{background:linear-gradient(180deg,#eef3fb,#e6edf8)!important;border:1px solid #d6e0ef;box-shadow:inset 0 1px 0 #fff}
