@@ -110,9 +110,11 @@ JV.ticker=function(el,items){
 
 /* ── фон: разметка поля и льда на canvas ────────────────────── */
 JV.field=function(kind){
+  /* 17.11 — варианты фона (?bg=a|b|c, ставит nav.js): a и b — без разметки на canvas; c — разметка чёткая (до 2,5× плотности), статичная, без пунктиров и сетки */
+  const BG=doc.dataset.bg||'';if(BG==='a'||BG==='b')return;
   const cv=document.createElement('canvas');cv.id='field';cv.setAttribute('aria-hidden','true');document.body.prepend(cv);
   const g=cv.getContext('2d');let W=0,H=0,D=1,raf=0,last=0;
-  const size=()=>{D=Math.min(1.5,devicePixelRatio||1);W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;g.setTransform(D,0,0,D,0,0);draw(performance.now())};
+  const size=()=>{D=Math.min(BG==='c'?2.5:1.5,devicePixelRatio||1);W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;g.setTransform(D,0,0,D,0,0);draw(performance.now())};
   /* цвета разметки — из CSS-переменных темы (--fld-*), чтобы лёд читался на любом фоне */
   const cs=getComputedStyle(doc),V=(n,d)=>cs.getPropertyValue(n).trim()||d;
   let ink=V('--fld','rgba(16,22,31,.085)'),ink2=V('--fld-2','rgba(16,22,31,.05)'),fPitch=V('--fld-pitch','rgba(22,112,74,.028)'),
@@ -140,11 +142,12 @@ JV.field=function(kind){
     LT={ink,ink2,red:fRed,blue:fBlue,run:fRun,run2:fRun2};
   function draw(now){
     g.clearRect(0,0,W,H);
-    if(AR){const l=JV.lit,P=l<.5?DK:LT;g.globalAlpha=Math.min(1,Math.abs(l-.5)*2+.15);ink=P.ink;ink2=P.ink2;fRed=P.red;fBlue=P.blue;fRun=P.run;fRun2=P.run2}const sy=scrollY*.12,t=now*.00004;
+    if(AR){const l=JV.lit,P=l<.5?DK:LT;g.globalAlpha=Math.min(1,Math.abs(l-.5)*2+.15);ink=P.ink;ink2=P.ink2;fRed=P.red;fBlue=P.blue;fRun=P.run;fRun2=P.run2}const sy=scrollY*.12,t=BG==='c'?0:now*.00004;
     const L=Math.max(W,H*1.3)*1.25,dx=Math.sin(t)*W*.05,ang=-.08+Math.sin(t*.7)*.025;
     if(kind==='hockey')rink(W*.52+dx,H*.5-sy%(H*1.4)+H*.2,L,ang);
     else if(kind==='mix'){pitch(W*.7+dx,H*.55-sy*.6,L*.9,ang);rink(W*.18-dx,H*.38-sy*.4,L*.62,-ang*1.4)}
     else pitch(W*.52+dx,H*.5-sy%(H*1.4)+H*.2,L,ang);
+    if(BG==='c')return;
     // «тактические» пунктиры — медленные дуги розыгрышей
     g.save();g.setLineDash([2,10]);g.lineWidth=1.6;g.lineCap='round';
     runs.forEach((r,i)=>{const p=now*r.s+r.a,x0=W*(.08+.2*i),y0=H*r.y+Math.sin(p)*30;
@@ -156,7 +159,7 @@ JV.field=function(kind){
   const loop=now=>{raf=requestAnimationFrame(loop);if(now-last<33)return;last=now;draw(now)};
   addEventListener('resize',()=>{clearTimeout(size.t);size.t=setTimeout(size,120)});
   size();
-  if(!RM){raf=requestAnimationFrame(loop);document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(raf);if(!document.hidden)raf=requestAnimationFrame(loop)})}
+  if(!RM&&BG!=='c'){raf=requestAnimationFrame(loop);document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(raf);if(!document.hidden)raf=requestAnimationFrame(loop)})}
   else addEventListener('scroll',()=>requestAnimationFrame(()=>draw(0)),{passive:true});
 };
 
@@ -214,6 +217,10 @@ function arena(){
   if(doc.dataset.theme!=='arena'){JV.lit=1;return}
   const hero=document.querySelector('.hero'),hd=document.getElementById('hd');if(!hero)return;
   const Z={arena:[7,18,37],p1:[214,226,238],p2:[236,238,232],p2b:[221,232,242],p3:[239,233,219]};
+  const BG=doc.dataset.bg||'';   /* 17.11 — варианты фона: a — чистый светлый, b — тёмная арена на всю страницу, c — светлый лёд */
+  if(BG==='a')Z.p1=Z.p2=Z.p2b=Z.p3=[244,246,250];
+  if(BG==='b'){Z.p1=[9,20,40];Z.p2=Z.p2b=[7,16,32];Z.p3=[10,22,44]}
+  if(BG==='c'){Z.p1=Z.p2b=[232,240,248];Z.p2=[240,244,249];Z.p3=[236,241,247]}
   if(doc.dataset.col==='1'){Z.p1=Z.p2b=Z.p3=Z.p2}   /* вариант 1: после первого экрана один светлый фон */
   if(doc.dataset.hero==='2')Z.arena=Z.p1;   /* афиша (hero3): у неё свой тёмный фон, который сам растворяется книзу — общий фон страницы не мигает из тёмного в светлый */
   const zones=()=>[{el:hero,c:Z.arena},...[...document.querySelectorAll('[data-zone]')].map(el=>({el,c:Z[el.dataset.zone]||Z.p2}))];
@@ -229,6 +236,7 @@ function arena(){
     if(i===0)lit=dn<Wn?.5-dn/Wn*.5:0;else if(i===1&&up<Wu)lit=.5+up/Wu*.5;else lit=1;
     if(i===0&&lit>0){const g=Math.min(1,scrollY/(vh*.25));lit*=g;col=mix(Z.arena,col,g)}  /* черновик 14.11: пока не прокрутили — первый экран чёткий (на большом мониторе лига/клуб открывались «мутными», --lit ≈ .36) */
     if(RM)lit=lit<.5?0:1,col=lit?col:Z.arena;
+    if(BG==='b')lit=0;
     lit=Math.round(lit*100)/100;JV.lit=lit;
     const cs=`rgb(${col.join(',')})`;if(cs!==lastC){doc.style.setProperty('--bgc',cs);lastC=cs}
     if(lit!==lastLit){doc.style.setProperty('--lit',lit);doc.classList.toggle('lit',lit>=.5);lastLit=lit}

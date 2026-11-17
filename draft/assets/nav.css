@@ -334,3 +334,36 @@ body[data-only="ucl"] .board-top{min-height:45px}
 /* магнитная кнопка: transform ведёт motion.js — CSS-переход transform выключаем, остальное (фон, тень) оставляем */
 .magn{transition:background-color .2s ease,box-shadow .2s ease,color .2s ease!important;will-change:transform}
 .magn>*{will-change:transform}
+
+/* ══ 17.11 — варианты фона (?bg=a|b|c) ══
+   Общее: без «плёночного» зерна; у «a» и «b» нет нарисованной разметки льда (v3a.js её не создаёт). */
+html[data-bg]{--grain-op:0}
+html[data-bg] body::after{display:none!important;animation:none!important}
+/* a — «Чистый»: после тёмного первого экрана ровный светлый фон, белые карточки, мягкие цветные пятна света */
+html[data-bg="a"] [data-zone]{--paper:#f4f6fa;--paper-2:#e9edf4;--paper-3:#dde3ec;--card:#ffffff;--card-hi:#ffffff;--ink-3:#566274;--rule:#e2e7ef;--rule-2:#cfd6e1}
+html[data-bg="a"] body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:var(--lit,1);
+  background:radial-gradient(42% 46% at 92% 8%,rgba(40,120,255,.10),transparent 70%),radial-gradient(40% 44% at 4% 92%,rgba(0,190,220,.08),transparent 70%),radial-gradient(34% 30% at 60% 55%,rgba(255,196,60,.05),transparent 70%)}
+html[data-bg="a"] [data-zone] :is(.lgm,.lgst li,.ltab,.lgtbl,.nxs-g a){box-shadow:0 1px 0 rgba(16,24,40,.04),0 10px 24px -18px rgba(16,24,40,.25)}
+/* b — «Арена»: тёмный фон на всю страницу; прожекторы остаются на первом экране и уезжают при прокрутке, ниже — глубокий синий с мягким светом */
+html[data-bg="b"] [data-zone],html[data-bg="b"] .nxs{--paper:#0a1428;--paper-2:#14264a;--paper-3:#1e3460;--card:#101d38;--card-hi:#16284a;
+  --ink:#eaf3ff;--ink-2:#b8c9e4;--ink-3:#8fa6cc;--rule:#1e3460;--rule-2:#2c4675;--ice:#3ee0ff;--sport:#3ee0ff;--crest-bg:#eef3fa;--shadow:rgba(0,0,0,.6);color:var(--ink)}
+html[data-bg="b"][data-theme="arena"] .arena-bg{position:absolute;height:120vh;opacity:1;-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+html[data-bg="b"] body::before{content:"";position:fixed;inset:0;z-index:-4;pointer-events:none;
+  background:radial-gradient(50% 44% at 96% 30%,rgba(62,224,255,.10),transparent 70%),radial-gradient(46% 42% at 0% 78%,rgba(47,107,255,.14),transparent 70%),linear-gradient(180deg,#0a1a38,#071225 60%,#060e1d)}
+html[data-bg="b"][data-theme="arena"] body{background:#071225}
+html[data-bg="b"][data-theme="arena"] :is(.lghero,.tmhero)+.sec{background:none}
+html[data-bg="b"][data-theme="arena"] #matches .wrap>:not(.period),html[data-bg="b"][data-theme="arena"] .hero+.sec:not(#matches)>.wrap{opacity:1!important}
+html[data-bg="b"] [data-zone]+[data-zone]{box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+html[data-bg="b"] .nxs{border-top-color:rgba(255,255,255,.08)}
+/* c — «Лёд»: светлый холодный фон, разметка катка тонкая и чёткая, неподвижная */
+html[data-bg="c"][data-theme="arena"]{--fld:rgba(16,60,120,.07);--fld-2:rgba(16,40,80,0);--fld-red:rgba(196,48,59,.13);--fld-blue:rgba(15,90,166,.13)}
+html[data-bg="c"] [data-zone]{--paper:#e8f0f8;--paper-2:#dbe6f1;--paper-3:#cddbe9;--card:#f7fafd;--card-hi:#ffffff;--ink-3:#4f5d6c}
+html[data-bg="c"] body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:var(--lit,1);
+  background:radial-gradient(60% 50% at 50% 0%,rgba(255,255,255,.75),transparent 70%),radial-gradient(50% 40% at 100% 100%,rgba(120,170,230,.16),transparent 70%)}
+/* варианты фона: карточки матчей */
+html[data-bg="a"] [data-zone] .match,html[data-bg="c"] [data-zone] .match{background:#fff!important;box-shadow:0 1px 0 rgba(16,24,40,.05),0 12px 26px -20px rgba(16,24,40,.3)!important}
+html[data-bg="b"][data-theme="arena"] [data-zone] .match{background:var(--card)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)!important;color:var(--ink)}
+html[data-bg="b"][data-theme="arena"] [data-zone] .match:hover{background:var(--card-hi)!important}
+html[data-bg="b"] [data-zone] :is(.ltab,.lgconf,.lgm,.lgst li,.lgbar,.lgbar li,.sec-head h2,.lgempty){color:var(--ink)}
+html[data-bg="b"] [data-zone] :is(.ltab th,.lgst span,.lgst em,.lgm .when small){color:var(--ink-3)}
+html[data-bg="b"] [data-zone] .ltab thead th{border-bottom-color:rgba(255,255,255,.35)}
