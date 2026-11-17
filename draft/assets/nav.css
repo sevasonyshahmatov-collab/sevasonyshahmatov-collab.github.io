@@ -433,8 +433,6 @@ html[data-bg="n"] .lgm{border-radius:var(--rc,12px);transition:transform .18s cu
 @media (hover:hover) and (pointer:fine){html[data-bg="n"] :is(.lgm,.match,.nxs-g a):hover{background:linear-gradient(158deg,rgba(160,190,255,.2),rgba(150,180,255,.07) 60%)!important;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.26),inset 0 0 0 1px color-mix(in srgb,var(--n-b) 45%,transparent),0 30px 50px -28px color-mix(in srgb,var(--n-a) 70%,#000)!important}}
 html[data-bg="n"] .lgm .s{color:#fff}
-html[data-bg="n"] .btn-line{border-color:rgba(170,200,255,.4);color:var(--ink)}
-html[data-bg="n"] .btn-ink{background:var(--ink);color:#060b1a}
 /* пульты и подложка активной кнопки — светящиеся */
 html[data-bg="n"] :is(.gnav,.lgsw,.pl-tabs,.pl-lgsw,.lghero .chips){background:rgba(150,180,255,.08);box-shadow:inset 0 0 0 1px rgba(160,190,255,.14)}
 html[data-bg="n"] .mpill{background:linear-gradient(180deg,#fff,#dfe8ff);box-shadow:0 0 0 1px rgba(255,255,255,.5),0 8px 26px -6px color-mix(in srgb,var(--n-b) 80%,transparent)}
@@ -454,3 +452,41 @@ html[data-bg="n"] .pl-row select option{background:#0e1734;color:#f2f6ff}
 html[data-bg="n"] .pl-kicker{color:var(--n-b)}
 html[data-bg="n"] .pl-more{background:linear-gradient(180deg,#fff,#dfe8ff);color:#060b1a}
 html[data-bg="n"] .pr:not(.k){background:linear-gradient(158deg,rgba(150,180,255,.115),rgba(150,180,255,.04) 60%);border-color:rgba(160,190,255,.12)}
+/* «Ночная арена»: плашки матчей дня — белые, текст тёмный (владелец 17.11: нужен контраст) */
+html[data-bg="n"] .match.match,html[data-bg="n"][data-theme="arena"] [data-zone] .match.match{
+  --paper:#ffffff;--paper-2:#eef2f8;--paper-3:#dfe6f0;--card:#f3f6fb;--card-hi:#ffffff;--ink:#0b1220;--ink-2:#3a4658;--ink-3:#5d6773;--rule:#dfe5ee;--rule-2:#c9d2df;--ice:#0f5aa6;--sport:#0f5aa6;--shadow:rgba(8,16,40,.3);
+  background:#fff!important;color:#0b1220!important;-webkit-backdrop-filter:none;backdrop-filter:none;
+  box-shadow:inset 0 1px 0 #fff,0 30px 46px -28px rgba(0,8,50,.9),0 0 0 1px rgba(255,255,255,.5)!important}
+html[data-bg="n"] .match.match:hover{background:#fff!important;box-shadow:inset 0 1px 0 #fff,0 34px 50px -26px color-mix(in srgb,var(--n-a) 80%,#000),0 0 0 2px color-mix(in srgb,var(--n-b) 70%,#fff)!important}
+
+/* ══ «Ночная арена»: контраст по всему сайту (проверка 17.11) ══
+   1) у разделов свои жёстко заданные тёмные оттенки текста (.sec{--ink-3:#414d5c} и т. п.) — на тёмном фоне не читались: задаём светлые на всех контейнерах;
+   2) «светлые островки» — блоки, у которых фон остаётся белым (плашки матчей, таблица и список игр клуба, результаты ЛЧ…): внутри них текст тёмный. */
+html[data-bg="n"] :is(main,section,article,.sec,.lgsec,.wrap):not(.n-light):not(.n-light *){--ink:#f2f6ff!important;--ink-2:#c3cef0!important;--ink-3:#9aa9d8!important}
+/* светлые и тёмные «островки» размечает motion.js по фактическому цвету фона блока (.n-light / .n-dark) — так контраст держится на любой странице */
+html[data-bg="n"] body .n-light.n-light.n-light.n-light{--ink:#0b1220!important;--ink-2:#3a4658!important;--ink-3:#5d6773!important;--paper:#fff;--paper-2:#eef2f8;--paper-3:#dfe6f0;--card:#f3f6fb;--card-hi:#fff;--rule:#dfe5ee;--rule-2:#c9d2df;--ice:#0f5aa6;--sport:#0f5aa6;color:#0b1220}
+html[data-bg="n"] body .n-dark.n-dark.n-dark.n-dark.n-dark{--ink:#f2f6ff!important;--ink-2:#c3cef0!important;--ink-3:#a9b7e2!important;--rule:rgba(160,185,255,.14);--rule-2:rgba(160,185,255,.28);color:#f2f6ff}
+/* кнопки */
+html[data-bg="n"] .btn-ink{background:linear-gradient(180deg,#fff,#dfe8ff)!important;color:#060b1a!important}
+html[data-bg="n"] :is(.lgmore,.more2,.mt-all) .btn-line{background:rgba(150,180,255,.08);border-color:rgba(170,200,255,.45);color:#f2f6ff}
+/* вкладки-фильтры (лиги на главных разделов) */
+html[data-bg="n"] .tabs:not(.lgsw) .tab{background:rgba(150,180,255,.10);color:#f2f6ff;box-shadow:inset 0 0 0 1px rgba(160,190,255,.14)}
+html[data-bg="n"] .tabs:not(.lgsw) .tab .c{color:#9aa9d8}
+html[data-bg="n"] .tabs:not(.lgsw) .tab[aria-selected="true"]{background:linear-gradient(180deg,#fff,#dfe8ff);color:#060b1a}
+html[data-bg="n"] .tabs:not(.lgsw) .tab[aria-selected="true"] .c{color:#4a566c}
+/* целые разделы со светлой заливкой (главная, итоги) — в «Ночной арене» без своей заливки: виден общий фон */
+html[data-bg="n"] .n-clear{background:none!important}
+
+/* Ночная арена: страница клуба — светлые «бумажные» секции переводим в ночь, карточки остаются белыми с тёмным текстом */
+html[data-bg="n"] .club-g :is(#table,#players,#picks){--paper:#0a1128;--paper-2:#121b3a;--paper-3:#1a2448;--ink:#f2f6ff;--ink-2:#c3cef0;--ink-3:#9aa9d8}
+html[data-bg="n"] .club-g #table::before{background:linear-gradient(180deg,color-mix(in srgb,var(--k-a1) 40%,#0a1128),#0a1128 60%)}
+html[data-bg="n"] .club-g #table::after{background:var(--k-em) no-repeat right -16vw top 46% / min(62vw,900px) auto;opacity:.07}
+html[data-bg="n"] .club-g #players::before{background:radial-gradient(60% 50% at 86% 10%,color-mix(in srgb,var(--k-a1) 30%,transparent),transparent 70%),linear-gradient(180deg,#0a1128,#070d20)}
+html[data-bg="n"] .club-g #picks::before{background:linear-gradient(180deg,#070d20,#0a1128)}
+html[data-bg="n"] .club-g #games::after{background:#0a1128}
+html[data-bg="n"] .club-g :is(.tmtable,.stg,.formbox,.plead,.plwrap,.pks,.pkempty){--ink:#0b1220;--ink-2:#3a4658;--ink-3:#5d6773;color:#0b1220}
+html[data-bg="n"] .n-dark .lo b.num{color:#ff6b7f}
+html[data-bg="n"] .rs.ot{background:#4a5a86!important;color:#fff!important}
+/* «инверсные» активные кнопки (фон = --ink): в ночи фон светлый, текст тёмный */
+html[data-bg="n"] :is(.rs-fg button[aria-pressed="true"],.nmha.h,.cmp-tabs button[aria-selected="true"],.fc-sw a[aria-current="page"],.md-sw a[aria-current],.tstep.on):not(.n-light *){color:#060b1a!important}
+html[data-bg="n"] .n-light :is(.rs-fg button[aria-pressed="true"],.nmha.h,.cmp-tabs button[aria-selected="true"],.fc-sw a[aria-current="page"],.md-sw a[aria-current],.tstep.on){color:#fff!important}

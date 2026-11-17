@@ -118,7 +118,27 @@ if(fine&&!reduce){
  document.documentElement.addEventListener('pointerleave',()=>MAGS.forEach(el=>el.__magOff()))}
 const scanMag=()=>{if(fine&&!reduce)document.querySelectorAll('a.btn-tg').forEach(magnet)};
 
-let st=0;const sched=()=>{clearTimeout(st);st=setTimeout(()=>{scan();scanMag()},80)};
+/* ── «Ночная арена» (?bg=n): контраст. Блок с непрозрачным светлым фоном получает класс .n-light (внутри — тёмный текст),
+   с тёмным — .n-dark (светлый текст); переменные цвета для них задаёт nav.css. Размечаем по фактическому цвету, поэтому работает на любой странице. */
+const NIGHT=document.documentElement.dataset.bg==='n';
+function tone(){
+ if(!NIGHT)return;
+ const P=c=>{const m=/rgba?\(([^)]+)\)/.exec(c);if(!m)return null;const a=m[1].split(/[, /]+/).map(Number);return a.length>3&&a[3]<.9?null:a};
+ const L=a=>{const f=v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)};return .2126*f(a[0])+.7152*f(a[1])+.0722*f(a[2])};
+ document.querySelectorAll('main *,.nxs *,.mpanel,.gdd-m').forEach(el=>{
+  if(el.classList.contains('mpill')||el.classList.contains('n-clear')||el.closest('.clb,.pod,svg'))return;
+  const cs=getComputedStyle(el);let c=P(cs.backgroundColor);
+  if(!c&&cs.backgroundImage.startsWith('linear-gradient')){const m=/rgba?\([^)]+\)/.exec(cs.backgroundImage);c=m&&P(m[0])}
+  const H=h=>{h=h.trim();if(/^#[0-9a-f]{6}$/i.test(h))return[1,3,5].map(i=>parseInt(h.substr(i,2),16));const r=P(h);return r};
+  const ik=H(cs.getPropertyValue('--ink'));
+  if(c&&ik&&Math.abs(c[0]-ik[0])+Math.abs(c[1]-ik[1])+Math.abs(c[2]-ik[2])<3)c=null; /* «инверсная» кнопка: фон = --ink, не трогаем */
+  const l=c?L(c):-1,dk=l>=0&&l<.2;let lt=l>.5;
+  if(lt&&(el.tagName==='SECTION'||el.classList.contains('sec')||el.offsetWidth>innerWidth*.92&&el.offsetHeight>innerHeight*.5)){el.classList.add('n-clear');lt=false}
+  if(lt!==el.classList.contains('n-light'))el.classList.toggle('n-light',lt);
+  if(dk!==el.classList.contains('n-dark'))el.classList.toggle('n-dark',dk)})}
+
+let st=0,tt=0;const sched=()=>{clearTimeout(st);st=setTimeout(()=>{scan();scanMag()},80);clearTimeout(tt);tt=setTimeout(tone,350)};
+tone();addEventListener('load',()=>setTimeout(tone,400));
 scanMag();addEventListener('load',scanMag);
 scan();document.addEventListener('DOMContentLoaded',scan);addEventListener('load',scan);
 if('MutationObserver' in window)new MutationObserver(sched).observe(document.documentElement,{subtree:true,childList:true});
