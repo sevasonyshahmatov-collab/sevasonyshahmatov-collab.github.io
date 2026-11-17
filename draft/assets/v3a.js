@@ -52,6 +52,10 @@ JV.NHL_FULL={nhl_car:'Каролина|Харрикейнз',minnesota:'Минн
  JV.mslug=(lg,id)=>lg==='nhl'?(NHL_EN[id]||String(id).replace(/^nhl_/,'').replace(/_/g,'-')):String(id).replace(/_/g,'-');
  JV.matchPage=(root,lg,day,h,a)=>`${root}${lg}/${String(day).slice(0,10)}-${JV.mslug(lg,h)}-${JV.mslug(lg,a)}/index.html`;}
 
+
+/* раскрытая карточка матча (17.11, владелец: «уходит за экран, приходится листать»): плавно подвести её верх под шапку */
+JV.showCard=li=>{if(!li)return;requestAnimationFrame(()=>{const hd=document.querySelector('.hd'),off=(hd?Math.max(0,hd.getBoundingClientRect().bottom):0)+12;
+ const top=li.getBoundingClientRect().top;if(Math.abs(top-off)<8)return;scrollTo({top:Math.max(0,scrollY+top-off),behavior:JV.RM?'auto':'smooth'})})};
 /* «Свернуть матч» внизу раскрытой карточки (17.11): закрывает карточку и возвращает к её началу, если оно ушло вверх */
 document.addEventListener('click',e=>{const x=e.target.closest&&e.target.closest('.xclose');if(!x)return;const li=x.closest('.match'),h=li&&li.querySelector('.mhead');if(!h)return;
  li.classList.remove('open');h.setAttribute('aria-expanded','false');const r=h.getBoundingClientRect();if(r.top<70)h.scrollIntoView({behavior:JV.RM?'auto':'smooth',block:'center'});h.focus({preventScroll:true})});
