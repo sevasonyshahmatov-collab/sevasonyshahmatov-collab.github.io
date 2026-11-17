@@ -1,7 +1,7 @@
 {
  "day": "2026-11-17",
  "league": "khl",
- "skipped": 0,
+ "skipped": 1,
  "matches": [
   {
    "h": "Сибирь",
@@ -114,9 +114,9 @@
     }
    },
    "x1x2": [
-    2.17,
+    2.18,
     3.71,
-    2.94
+    2.91
    ],
    "p3": [
     0.4,
@@ -206,9 +206,9 @@
     }
    },
    "x1x2": [
-    5.49,
-    4.38,
-    1.513
+    5.35,
+    4.3,
+    1.535
    ],
    "p3": [
     0.129,
@@ -277,7 +277,7 @@
      "gd": 28
     }
    },
-   "_z": "Rffm6u34/YpD4aT6yzv2xAdGFtwxYsYigWvXU8sPxu58AMuRNfEkbUB5iUo1EMBURz0EifiF6sHAPnfOBn7CMcdA2RoeWGXpfG8azQR6wBlOWs5GRb5lHyxEanVmVjbIcTKunImFaqz+wxlMZa6lzlKRPyojuFMPJh+G4FfVbyU+W32Nf6VyvGIKFJFh9S6AzrtRniSRb5jqYtdoPzw519GjYCMpwkprU8JrR7lOa6qfL0wP5uBDrD8/xsaukX7bHbYfWfj2cERitAX4wc2F6whDajxiE/zSXutOrUk4XsY="
+   "_z": "g5xmT/rnYtFRGu+xPOJaUCCviuJQOT7uygh8m2ePDdI5nSKvSCHTxIWkbfHn2TNM9OhM08dofES91XEISckuzr038gwU/55zdJWS+3YLyHHa5YJ+X1jvbsKbvmcFCXmT0BsJFtKRkNJLJkBOJLOQcFLMGDAEwJyi1kcxTqlg1eJ/p4bZogilNwbookOUsGcWKSoxvCWqr5mmUDsH6DWQ5bRG46Mwzet6kThELlrheZDPYva8tbNBl35YZcTQbfTQMSo2czBz0BdtPtVF360h5L3IJHJVGz43O/bYVo/DfxA="
   },
   {
    "h": "Нефтехимик",
@@ -298,9 +298,9 @@
     }
    },
    "x1x2": [
-    2.56,
+    2.42,
     3.81,
-    2.4
+    2.53
    ],
    "p3": [
     0.442,
@@ -391,7 +391,7 @@
    },
    "x1x2": [
     2.15,
-    3.68,
+    3.67,
     3.0
    ],
    "p3": [
