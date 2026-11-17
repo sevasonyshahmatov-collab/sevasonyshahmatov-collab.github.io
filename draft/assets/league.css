@@ -377,3 +377,13 @@ html[data-sport="football"][data-lg] .lghero::after{background:linear-gradient(1
 /* полосы возвращены, но со сглаженными краями (переход 1px вместо жёсткой кромки) */
 .clb::before{display:block;background:linear-gradient(90deg,var(--ks) 0 11.5px,var(--kt) 12.5px 15.5px,var(--ks) 16.5px 19.5px,transparent 20.5px)}
 .clb{background:linear-gradient(118deg,transparent 0 59%,color-mix(in srgb,var(--ks) 16%,transparent) 61% 71%,transparent 73%),radial-gradient(90% 80% at 100% 100%,color-mix(in srgb,var(--ks) 22%,transparent),transparent 70%),linear-gradient(155deg,color-mix(in srgb,var(--kb) 88%,#fff) 0%,var(--kb) 38%,var(--kbm) 100%)}
+
+/* Клубы на телефоне (17.11, владелец: «листать все клубы с телефона очень долго»): два ряда, лента листается вбок */
+@media (max-width:620px){
+  .clubs{grid-template-columns:none;grid-template-rows:repeat(2,auto);grid-auto-flow:column;grid-auto-columns:44vw;gap:8px;
+    overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-left:16px;
+    margin:0 -16px;padding:4px 16px 10px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+  .clubs::-webkit-scrollbar{display:none}
+  .clubs>li{scroll-snap-align:start}
+  .clubs .clb{min-height:150px}
+}

@@ -544,3 +544,11 @@ html[data-bg="n"] #honest .wrap.n-dark,html[data-bg="n"] #honest .n-dark.wrap{bo
 html[data-bg="n"] .dk-bgfx{-webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 70%,transparent);mask-image:linear-gradient(180deg,transparent,#000 12%,#000 70%,transparent)}
 html[data-bg="n"] .mx-field{-webkit-mask-image:linear-gradient(180deg,transparent,#000 14%,#000 82%,transparent);mask-image:linear-gradient(180deg,transparent,#000 14%,#000 82%,transparent)}
 html[data-bg="n"] .pp-stick{-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
+
+/* «Навыки» игрока (17.11, владелец: «плохо видно»): в ночной теме — светлая сетка, яркий контур, заметная заливка */
+html[data-bg="n"] .pp-sk .gr{stroke:rgba(190,210,255,.22)}
+html[data-bg="n"] .pp-sk polygon.gr:last-of-type{stroke:rgba(190,210,255,.5)}
+html[data-bg="n"] .pp-sk .vv{fill:color-mix(in srgb,color-mix(in srgb,var(--kb,#3b78e0) 45%,#7fd8ff) 32%,transparent);stroke:color-mix(in srgb,var(--kb,#3b78e0) 35%,#9fe4ff);stroke-width:3.5;filter:drop-shadow(0 0 10px rgba(120,210,255,.45))}
+html[data-bg="n"] .pp-sk .dt{fill:#fff;stroke:color-mix(in srgb,var(--kb,#3b78e0) 35%,#9fe4ff);stroke-width:3}
+html[data-bg="n"] .pp-sk .ax{fill:#b9c7f0}
+html[data-bg="n"] .pp-sk .vl{fill:#fff}
