@@ -169,8 +169,8 @@ async function render(){
   if(!xa||!xb){OUT.innerHTML='<p class="cmp-note">Данные не загрузились. Обновите страницу.</p>';return}
   if(st.t==='clubs'){paint(xa.id,xb.id);OUT.innerHTML=clubView(xa.id,xb.id);return}
   OUT.innerHTML='<p class="cmp-note">Загружаем игроков…</p>';const tk=st.a+'|'+st.b;
-  const pu=x=>'data/pp/'+x.lg+'/'+x.id.split('-')[1]+'.json';
-  const[PA,PB,SK]=await Promise.all([jget(pu(xa)),jget(pu(xb)),xa.lg==='nhl'||xb.lg==='nhl'?jget('data/nhl_skills.json'):null]);
+  const pu=x=>(window.JVD||(u=>u))('data/pp/'+x.lg+'/'+x.id.split('-')[1]+'.json');
+  const[PA,PB,SK]=await Promise.all([jget(pu(xa)),jget(pu(xb)),xa.lg==='nhl'||xb.lg==='nhl'?jget((window.JVD||(u=>u))('data/nhl_skills.json')):null]);
   if(tk!==st.a+'|'+st.b||st.t!=='players')return;
   if(PA&&PB)paint(PA.t,PB.t);
   OUT.innerHTML=PA&&PB?playerView(xa,xb,PA,PB,SK):'<p class="cmp-note">Профиль игрока не загрузился. Выберите другого.</p>'}

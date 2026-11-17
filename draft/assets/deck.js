@@ -168,7 +168,7 @@ function renderInfo(animate){
   const m=list[cur];
   const put=()=>{infoEl.innerHTML=m?infoHtml(m):'<p class="dk-empty">Матчей в этом окне нет.</p>';infoEl.scrollTop=0;infoEl.classList.remove('sw');const b=$('dk-more');if(b)b.onclick=()=>openPanel()};
   /* футбольные клубы: игры сезона лежат в файле клуба — подгружаем при выборе матча и дорисовываем форму */
-  if(m&&!isH(m)&&!(team(m,m.h)||{}).games){const k=m.key;Promise.all([m.h,m.a].map(x=>loadScript(`football/data/club/${encodeURIComponent(x)}.js`))).then(()=>{if(list[cur]&&list[cur].key===k&&!infoEl.classList.contains('sw'))put()})}
+  if(m&&!isH(m)&&!(team(m,m.h)||{}).games){const k=m.key;Promise.all([m.h,m.a].map(x=>loadScript((window.JVD||(u=>u))(`football/data/club/${encodeURIComponent(x)}.js`)))).then(()=>{if(list[cur]&&list[cur].key===k&&!infoEl.classList.contains('sw'))put()})}
   clearTimeout(swTimer);
   if(animate&&!root.classList.contains('rm')){infoEl.classList.add('sw');swTimer=setTimeout(put,190)}else put()}
 
@@ -312,9 +312,9 @@ const loaded={};
 function loadScript(src){return loaded[src]||(loaded[src]=new Promise(res=>{const s=document.createElement('script');s.src=src;s.onload=()=>res(true);s.onerror=()=>res(false);document.head.appendChild(s)}))}
 function loadDetail(m){
   const sl=[m.h,m.a];
-  if(isH(m))return Promise.all([...sl.map(s=>loadScript(`assets/data/club/${encodeURIComponent(s)}.js`)),
-    ...sl.map(s=>fetch(`hockey/data/players/${encodeURIComponent(s)}.json`).then(r=>r.ok?r.json():{}).catch(()=>({})))]).then(r=>({ph:[r[2]||{},r[3]||{}]}));
-  return Promise.all(sl.map(s=>loadScript(`football/data/club/${encodeURIComponent(s)}.js`))).then(()=>({ph:[{},{}]}))}
+  if(isH(m))return Promise.all([...sl.map(s=>loadScript((window.JVD||(u=>u))(`assets/data/club/${encodeURIComponent(s)}.js`))),
+    ...sl.map(s=>fetch((window.JVD||(u=>u))(`hockey/data/players/${encodeURIComponent(s)}.json`)).then(r=>r.ok?r.json():{}).catch(()=>({})))]).then(r=>({ph:[r[2]||{},r[3]||{}]}));
+  return Promise.all(sl.map(s=>loadScript((window.JVD||(u=>u))(`football/data/club/${encodeURIComponent(s)}.js`)))).then(()=>({ph:[{},{}]}))}
 
 /* шестиугольник силы: наложение двух команд */
 function axesFor(m){

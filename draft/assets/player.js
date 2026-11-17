@@ -32,7 +32,7 @@ const radar=sk=>{if(!sk||sk.length<3)return'';const n=sk.length,R=120,C=170,pt=(
  const lab=sk.map(([nm,v],i)=>{const[x,y]=pt(i,R+30),an=Math.abs(x-C)<8?'middle':x>C?'start':'end';return`<text x="${x.toFixed(1)}" y="${(y-6).toFixed(1)}" text-anchor="${an}" class="ax">${esc(nm)}</text><text x="${x.toFixed(1)}" y="${(y+14).toFixed(1)}" text-anchor="${an}" class="vl">${v}</text>`}).join('');
  return `<section class="pp-sec" aria-labelledby="h-k"><h2 id="h-k">Навыки</h2><div class="pp-sk"><svg viewBox="-120 0 580 345" role="img" aria-label="${esc(sk.map(([a,v])=>a+' '+v).join(', '))}">${grid}<polygon class="vv" points="${val}"/>${sk.map(([,v],i)=>{const[x,y]=pt(i,R*Math.max(.04,Math.min(1,(v-45)/55)));return`<circle class="dt" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5"/>`}).join('')}${lab}</svg></div></section>`};
 if(!ID){err('Не указан игрок.');return}
-fetch(`data/pp/${LG}/${ID}.json`).then(r=>{if(!r.ok)throw 0;return r.json()}).then(P=>{
+fetch((window.JVD||(u=>u))(`data/pp/${LG}/${ID}.json`)).then(r=>{if(!r.ok)throw 0;return r.json()}).then(P=>{
  const T=TT[P.t]||{},col=shade((T.colors||[])[0]);
  const log=P.log||[],nhl=LG==='nhl',N=log.length;
  const G=log.reduce((s,r)=>s+r[3],0),A=log.reduce((s,r)=>s+r[4],0);
@@ -123,7 +123,7 @@ fetch(`data/pp/${LG}/${ID}.json`).then(r=>{if(!r.ok)throw 0;return r.json()}).th
  draw(mkList[0].k);
  nextMatch(P);
  /* место в лиге под цифрой (12.11, по образцу nhl.com): итоги всех игроков лиги — hockey/data/lgp_<лига>.json */
- fetch(`data/lgp_${LG}.json`).then(r=>r.ok?r.json():null).then(d=>{
+ fetch((window.JVD||(u=>u))(`data/lgp_${LG}.json`)).then(r=>r.ok?r.json():null).then(d=>{
   /* 13.11: считаем среди тех, кто сыграл хотя бы четверть матчей лидера по играм (не меньше 5) — без игроков на пару матчей;
      у самого игрока с меньшим числом игр плашки нет */
   const every=(d&&d.players)||[];if(every.length<50)return;

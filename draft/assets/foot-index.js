@@ -104,7 +104,7 @@ ltabs.innerHTML=`<button class="tab" role="tab" aria-selected="true" data-l="all
 const LIM=6;/* ближайшие 6 (чётное — владелец 14.11), остальные — по «Показать все N матчей», раскрываются на месте (задание 14.11, п. 4) */let curTab='all',shownN=LIM,sel=[];
 function det(m){return m.det||(m.det={A:{s:m.h,g:gamesOf(m.h),st:stats(m.h)},B:{s:m.a,g:gamesOf(m.a),st:stats(m.a)},h:h2h(m.h,m.a)})}
 /* удары и угловые по матчам — отдельный файл, только когда матч раскрыли (09.11, скорость) */
-let xyP=null;const loadXY=()=>window.JV_XY?Promise.resolve():(xyP=xyP||new Promise(ok=>{const sc=document.createElement('script');sc.src='data/games-xy.js';sc.onload=sc.onerror=()=>ok();document.head.appendChild(sc)}));
+let xyP=null;const loadXY=()=>window.JV_XY?Promise.resolve():(xyP=xyP||new Promise(ok=>{const sc=document.createElement('script');sc.src=(window.JVD||(u=>u))('data/games-xy.js');sc.onload=sc.onerror=()=>ok();document.head.appendChild(sc)}));
 function back(m){const {A,B,h}=det(m),nA=nm(m.h),nB=nm(m.a);
  const last=t=>`<div class="l3"><h5>${CI(t.s)}${esc(nm(t.s))}</h5><ul>${t.g.slice(0,12).map(g=>{const r=rOf(g);return `<li><b class="rs ${r}" title="${RESF[r]}">${RES[r]}</b><span class="op">${CI(g.o)}<span class="nm">${esc(nm(g.o))}</span></span><span class="sc num">${g.gf}:${g.ga}</span><span class="d">${g.h?'дома':'в гостях'} · ${dd(g.d)}</span></li>`}).join('')||'<li class="none">Нет данных</li>'}</ul></div>`;
   const row=(lab,a,b)=>`<tr><td>${lab}</td><td class="num">${a}</td><td class="num">${b}</td></tr>`;

@@ -125,7 +125,7 @@ function build(SE,PL){
  /* страница строится после загрузки данных — якорь из адреса (#clubs, #next…) докручиваем сами */
  if(location.hash.length>1){const t=document.getElementById(location.hash.slice(1));if(t)setTimeout(()=>t.scrollIntoView(),60)}
 }
-fetch('data/lgp_'+LG+'.json').then(r=>r.json()).then(d=>build({[LG]:d.se},d))
+fetch((window.JVD||(u=>u))('data/lgp_'+LG+'.json')).then(r=>r.json()).then(d=>build({[LG]:d.se},d))
  .catch(e=>{console.error(e);$('hero').innerHTML='<p class="lgempty">Данные загрузить не удалось.</p>'});
 })();
 

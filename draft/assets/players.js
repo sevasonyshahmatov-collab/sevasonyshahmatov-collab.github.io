@@ -10,7 +10,7 @@ const crest=s=>`../assets/fc/${encodeURIComponent(s)}.webp`;
 // портреты «как в НХЛ» (голова и плечи, без фона): data/ph/<id>.webp, список готовых — data/headshots.json (players_headshots.py);
 // нет портрета — инициалы (фото Commons напрямую больше не показываем)
 let PH={};
-const photo=id=>PH[id]&&PH[id].ok?`data/ph/${encodeURIComponent(id)}.webp`:'';
+const photo=id=>PH[id]&&PH[id].ok?(window.JVD||(u=>u))(`data/ph/${encodeURIComponent(id)}.webp`):'';
 const ini=n=>n.split(/\s+/).filter(Boolean).map(w=>w[0]).slice(0,2).join('').toUpperCase();
 const col=T=>{const c=Array.isArray(T.c)?T.c[0]:T.c;return /^#?[0-9a-f]{6}$/i.test(String(c||''))?'#'+String(c).replace('#',''):'var(--paper-3)'};   /* только #rrggbb — цвет приходит из данных ESPN */
 // фото игрока (ESPN); нет фото — инициалы на цвете клуба; эмблема — значком в углу
@@ -38,7 +38,7 @@ function hit(p){
   if(st.m==='cr'){if(!st.ha)return p.cr;return null}
   return st.ha?p[st.ha]:p.sg}
 let ready=!!M.players,tok=0;const got={},V=encodeURIComponent(M.built||'');
-const part=k=>got[k]||(got[k]=new Promise((ok,no)=>{const s=document.createElement('script');s.src=`data/plg/${encodeURIComponent(k)}.js?v=${V}`;s.onload=ok;s.onerror=()=>{delete got[k];no()};document.head.appendChild(s)}));
+const part=k=>got[k]||(got[k]=new Promise((ok,no)=>{const s=document.createElement('script');s.src=(window.JVD||(u=>u))(`data/plg/${encodeURIComponent(k)}.js?v=${V}`);s.onload=ok;s.onerror=()=>{delete got[k];no()};document.head.appendChild(s)}));
 function load(){
   if(M.players){teamOpts();render();return}
   const t=++tok,ks=st.lg?[st.lg]:(M.own||M.lgs);ready=false;$('meta').textContent='Загружаем игроков…';
@@ -93,5 +93,5 @@ $('q').oninput=e=>{st.q=e.target.value;st.lim=30;render()};
 $('more').onclick=()=>{st.lim+=30;render()};
 if(!LU)$('mk').querySelectorAll('button').forEach(b=>{if(!['sg','cr'].includes(b.dataset.m))b.hidden=true});
 load();
-fetch('data/headshots.json').then(r=>r.ok?r.json():{}).then(j=>{PH=j||{};render()}).catch(()=>{});
+fetch((window.JVD||(u=>u))('data/headshots.json')).then(r=>r.ok?r.json():{}).then(j=>{PH=j||{};render()}).catch(()=>{});
 })();

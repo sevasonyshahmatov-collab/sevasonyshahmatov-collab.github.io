@@ -19,7 +19,7 @@ const URLQ=(new URLSearchParams(location.search).get('q')||'').slice(0,60);
 const st={m:'pt',pos:'',tm:URLT in TM?URLT:'',ha:'',so:'G',q:URLQ,lim:30};
 const mmss=s=>`${Math.floor(s/60)}:${String(Math.round(s%60)).padStart(2,'0')}`;
 const pl=(n,a,b,c)=>{n=Math.abs(n)%100;const k=n%10;return n>10&&n<20?c:k===1?a:k>1&&k<5?b:c};
-fetch(`data/plite_${LG}.json`).then(r=>r.json()).then(D=>{
+fetch((window.JVD||(u=>u))(`data/plite_${LG}.json`)).then(r=>r.json()).then(D=>{
  $('season').textContent=D.season;
  /* 17.11: переключатель лиг рядом с заголовком (раньше со страницы игроков НХЛ нельзя было перейти к игрокам КХЛ) */
  {const h=document.querySelector('.pl-hero');if(h&&!h.querySelector('.pl-lgsw')){const n=document.createElement('nav');n.className='pl-lgsw';n.setAttribute('aria-label','Лига');

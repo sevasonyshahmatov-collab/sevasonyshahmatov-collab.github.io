@@ -26,7 +26,7 @@ const MK=[
  {k:'ga',n:'Гол+пас',f:r=>r[7]+r[8]>0,v:r=>r[7]+r[8],u:'голы и передачи'},
  {k:'cr',n:'Карточка',f:r=>r[11]+r[12]>0,v:r=>r[11]+r[12],u:'карточки'}];
 if(!ID){err('Не указан игрок.');return}
-fetch(`data/pp/${ID}.json`).then(r=>{if(!r.ok)throw 0;return r.json()}).then(P=>{
+fetch((window.JVD||(u=>u))(`data/pp/${ID}.json`)).then(r=>{if(!r.ok)throw 0;return r.json()}).then(P=>{
  const T=TT[P.t]||{},col=shade(Array.isArray(T.c)?T.c[0]:T.c);
  const log=P.log||[],N=log.length;
  const sum=i=>log.reduce((s,r)=>s+(r[i]||0),0);
@@ -55,7 +55,7 @@ fetch(`data/pp/${ID}.json`).then(r=>{if(!r.ok)throw 0;return r.json()}).then(P=>
    <p class="pp-meta">${pos?`<span>${esc(pos)}</span>`:''}<span>${esc(lgs.map(lgn).join(', ')||lgn(P.lg))}, сезон ${esc(F.season||'')}</span></p>
    <dl class="pp-hs" aria-label="Сезон: ${N} ${pl(N,'матч','матча','матчей')}, ${G} голов, ${A} передач"><div><b>${N}</b><span>${pl(N,'матч','матча','матчей')}</span></div><div><b>${G}</b><span>голы</span></div><div><b>${A}</b><span>передачи</span></div><div><b>${SoT}</b><span>в створ</span></div></dl>
   </div>
-  <div class="pp-photo nop"><span class="pp-ini" aria-hidden="true">${esc(ini)}</span>${P.ph===0?'':`<img class="ph" src="data/ph/${encodeURIComponent(ID)}.webp" alt="${esc(P.n)}" onload="this.parentNode.classList.remove('nop')" onerror="this.remove()">`}</div>
+  <div class="pp-photo nop"><span class="pp-ini" aria-hidden="true">${esc(ini)}</span>${P.ph===0?'':`<img class="ph" src="${(window.JVD||(u=>u))(`data/ph/${encodeURIComponent(ID)}.webp`)}" alt="${esc(P.n)}" onload="this.parentNode.classList.remove('nop')" onerror="this.remove()">`}</div>
  </article>
  <section class="pp-sec" id="s-season" aria-labelledby="h-s"><h2 id="h-s">Сезон</h2><div class="pp-tiles">${tiles.join('')}</div>
   <p class="pp-note">Все турниры (клуб — ${esc(tn(P.t))}): ${esc(lgs.map(lgn).join(', '))}. Данные — составы и статистика матчей ESPN.</p></section>

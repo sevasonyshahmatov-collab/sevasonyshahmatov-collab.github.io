@@ -491,9 +491,9 @@ else{
 document.getElementById('foot').textContent=`Данные ${asOf}${hasSample?', часть — пример':''} · © JARVIS, @jarvibet`;
 // v3a.js (keepTheme) при ?theme= обрезает «?id=» у ссылок на index.html — возвращаем после него
 document.addEventListener('DOMContentLoaded',()=>document.querySelectorAll('a[data-href]').forEach(a=>a.setAttribute('href',a.dataset.href)));
-fetch('../hockey/data/pid/'+encodeURIComponent(ID)+'.json').then(r=>r.ok?r.json():null).then(m=>{if(!m)return;Object.assign(PID,m);linkPn(document)}).catch(()=>{});
+fetch((window.JVD||(u=>u))('../hockey/data/pid/'+encodeURIComponent(ID)+'.json')).then(r=>r.ok?r.json():null).then(m=>{if(!m)return;Object.assign(PID,m);linkPn(document)}).catch(()=>{});
 /* фото лидеров в плашке «Игроки» — из данных раздела «Игроки» (подгружаются после страницы) */
-fetch('../hockey/data/players/'+encodeURIComponent(ID)+'.json').then(r=>r.ok?r.json():null).then(by=>{if(!by)return;
+fetch((window.JVD||(u=>u))('../hockey/data/players/'+encodeURIComponent(ID)+'.json')).then(r=>r.ok?r.json():null).then(by=>{if(!by)return;
  document.querySelectorAll('.plcard .pav').forEach(el=>{const u=by[el.dataset.n];if(u){const im=new Image();im.alt='';im.onload=()=>{el.textContent='';el.appendChild(im)};im.src=u}});
  document.querySelectorAll('.plead .lph').forEach(el=>{const u=by[el.dataset.n];if(u){const im=new Image();im.alt='';im.decoding='async';im.onload=()=>{el.appendChild(im);el.closest('li').classList.add('has-ph')};im.src=u}})}).catch(()=>{});
 })();
