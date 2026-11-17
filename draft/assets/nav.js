@@ -1,5 +1,5 @@
 /* 17.11 — варианты фона для сравнения: ?bg=a|b|c в адресе (запоминается на время вкладки, ?bg=0 — вернуть обычный). Стили — nav.css, разметка льда — v3a.js */
-(()=>{try{const q=new URLSearchParams(location.search).get('bg');if(q!==null)sessionStorage.setItem('jv-bg',/^[abcn]$/.test(q)?q:'');const b=sessionStorage.getItem('jv-bg');if(b)document.documentElement.dataset.bg=b}catch(e){}})();
+(()=>{const d=document.documentElement;try{const q=new URLSearchParams(location.search).get('bg');if(q!==null)sessionStorage.setItem('jv-bg',/^[abcn]$/.test(q)?q:'0');let b=sessionStorage.getItem('jv-bg');if(b===null)b='n';if(b&&b!=='0')d.dataset.bg=b;else delete d.dataset.bg}catch(e){d.dataset.bg='n'}})(); /* 17.11: «Ночная арена» — основная тема */
 /* 17.11 — фото игроков КХЛ, вырезанные заранее (hockey/data/kph/<папка>_<номер>.webp, без белого фона и каймы; список готовых — kph/index.js).
    Есть готовый файл — показываем его, нет (новый игрок) — как раньше: фото с khl.ru и фильтр #jvko. Определяем раньше остальных скриптов страницы.
    ?v=N — при переобработке фото номер увеличиваем: sw.js хранит картинки «навсегда» по адресу, без смены адреса посетитель увидит старую копию. */

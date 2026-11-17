@@ -508,3 +508,4 @@ html[data-bg="n"] .match.match .qv{background:linear-gradient(180deg,#eef3fb,#e6
 @media (hover:hover) and (pointer:fine){
  html[data-bg="n"] :is(.lgm,.nxs-g a):hover{background:linear-gradient(158deg,rgba(150,180,255,.115),rgba(150,180,255,.04) 60%)!important}
  html[data-bg="n"] .match.match:hover{box-shadow:inset 0 1px 0 #fff,0 34px 50px -26px rgba(0,8,50,.95),0 0 0 1px rgba(255,255,255,.5)!important}}
+html[data-bg="n"] .cmpleg b{text-shadow:none;filter:brightness(1.9) saturate(.85)}
