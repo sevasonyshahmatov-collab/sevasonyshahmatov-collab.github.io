@@ -231,3 +231,6 @@ body{background:var(--paper);color:var(--ink)}
 
 /* появление тройки: после анимации transform не «держим» (fill backwards) — иначе он перебивает наклон карточки из motion.js */
 @media (prefers-reduced-motion:no-preference){.pl-list.first .pod{animation-fill-mode:backwards}.pl-list.first .pod .cut{animation-fill-mode:backwards}}
+/* подиум: без косой полосы слева — только цвета клуба */
+.pod::before{display:none}
+.pod{background:radial-gradient(90% 80% at 100% 100%,color-mix(in srgb,var(--ks) 22%,transparent),transparent 70%),linear-gradient(155deg,color-mix(in srgb,var(--kb) 88%,#fff) 0%,var(--kb) 38%,var(--kbm) 100%)}

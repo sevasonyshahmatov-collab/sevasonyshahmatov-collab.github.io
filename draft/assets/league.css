@@ -369,3 +369,8 @@ html[data-sport="football"][data-lg] .lghero::after{background:linear-gradient(1
 .clb .wms{background:none;overflow:hidden}
 .clb .wms::before{content:"";position:absolute;top:0;bottom:0;left:0;width:55%;transform:translateX(-120%);
   background:linear-gradient(105deg,transparent 0,rgba(255,255,255,.2) 28%,rgba(255,255,255,.9) 50%,rgba(255,255,255,.2) 72%,transparent 100%)}
+
+/* Плитки клубов v3: только цвета клуба, без косых полос и жёстких кромок (на экране давали «лесенку»/пиксели) */
+.clb{background:radial-gradient(90% 80% at 100% 100%,color-mix(in srgb,var(--ks) 22%,transparent),transparent 70%),linear-gradient(155deg,color-mix(in srgb,var(--kb) 88%,#fff) 0%,var(--kb) 38%,var(--kbm) 100%)}
+.clb::before{display:none}
+.clb .wm{filter:drop-shadow(0 8px 16px rgba(0,0,0,.35))}

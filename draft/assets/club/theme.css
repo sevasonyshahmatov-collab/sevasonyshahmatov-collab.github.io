@@ -73,6 +73,6 @@
 }
 
 /* эмблемы без чёткой большой версии не растягиваем — иначе видны пиксели */
-.tmwm.lo{width:min(40vw,400px)}
+.tmwm.lo{width:min(44vw,600px);right:3vw;top:50%;opacity:.14;filter:saturate(.7) blur(.4px)} /* КХЛ: целиком в кадре, как у НХЛ */
 .club-g.em-lo #table::after{background-size:auto,min(40vw,400px) auto,auto}
 html[data-bg="n"] .club-g.em-lo #table::after{background-size:min(40vw,400px) auto}
