@@ -330,3 +330,7 @@ body[data-only="ucl"] .board-top{min-height:45px}
 .tilting{z-index:2}
 .tglare{position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:inherit;opacity:var(--g,0);
   background:radial-gradient(circle at var(--gx,50%) var(--gy,30%),rgba(255,255,255,.30),rgba(255,255,255,.09) 32%,transparent 60%)}
+
+/* магнитная кнопка: transform ведёт motion.js — CSS-переход transform выключаем, остальное (фон, тень) оставляем */
+.magn{transition:background-color .2s ease,box-shadow .2s ease,color .2s ease!important;will-change:transform}
+.magn>*{will-change:transform}

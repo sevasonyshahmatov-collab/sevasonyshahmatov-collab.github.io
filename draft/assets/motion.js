@@ -92,7 +92,34 @@ function tilt(el){
  return el.__tilt={on}}
 if(fine&&!reduce)document.addEventListener('pointerover',e=>{const el=e.target&&e.target.closest&&e.target.closest('.clb,.pod');if(el&&!el.__tilt)tilt(el).on(e)},{passive:true});
 
-let st=0;const sched=()=>{clearTimeout(st);st=setTimeout(scan,80)};
+/* ── магнитная кнопка («Magnetic button») — «Получать прогнозы» ──
+   В радиусе притяжения кнопка сдвигается на долю пути к курсору, а подпись — ещё чуть дальше (ощущение глубины); вне радиуса обе
+   пружинят на место. Радиус и сила меньше, чем в образце: кнопка стоит в плотной шапке и не должна убегать от соседних. */
+const MAGS=new Set();
+function magnet(el){
+ if(el.__mag)return;el.__mag=1;el.classList.add('magn');MAGS.add(el);
+ const R=80,bx=S(0,170,13),by=S(0,170,13),lx=S(0,220,15),ly=S(0,220,15),sc=S(1,400,18);let near=false,down=false;
+ const c={frame(dt){[bx,by,lx,ly,sc].forEach(s=>step(s,dt))},
+  render(){el.style.transform=`translate(${bx.x.toFixed(2)}px,${by.x.toFixed(2)}px) scale(${sc.x.toFixed(4)})`;
+   for(const k of el.children)k.style.transform=`translate(${lx.x.toFixed(2)}px,${ly.x.toFixed(2)}px)`},
+  idle:()=>!near&&!down&&[bx,by,lx,ly].every(s=>rest(s,.02))&&rest(sc,.0005),
+  done(){el.style.transform='';for(const k of el.children)k.style.transform=''}};
+ el.__magMove=(x,y)=>{if(!el.offsetWidth)return;const r=el.getBoundingClientRect(),cx=r.left+r.width/2-bx.x,cy=r.top+r.height/2-by.x,dx=x-cx,dy=y-cy;
+  const d=Math.hypot(Math.max(Math.abs(dx)-r.width/2,0),Math.max(Math.abs(dy)-r.height/2,0)),pull=d<R?1-d/R:0;
+  if(!pull&&!near)return;near=pull>0;
+  bx.t=clamp(dx*.16,-9,9)*pull;by.t=clamp(dy*.3,-6,6)*pull;lx.t=clamp(dx*.07,-4,4)*pull;ly.t=clamp(dy*.14,-3,3)*pull;
+  if(!down)sc.t=1+.04*pull;wake(c)};
+ el.__magOff=()=>{if(!near)return;near=false;bx.t=by.t=lx.t=ly.t=0;if(!down)sc.t=1;wake(c)};
+ el.addEventListener('pointerdown',()=>{down=true;sc.t=.95;wake(c)});
+ const up=()=>{if(!down)return;down=false;sc.t=near?1.04:1;sc.v=3;wake(c)};
+ el.addEventListener('pointerup',up);el.addEventListener('pointerleave',up)}
+if(fine&&!reduce){
+ addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;MAGS.forEach(el=>el.__magMove(e.clientX,e.clientY))},{passive:true});
+ document.documentElement.addEventListener('pointerleave',()=>MAGS.forEach(el=>el.__magOff()))}
+const scanMag=()=>{if(fine&&!reduce)document.querySelectorAll('a.btn-tg').forEach(magnet)};
+
+let st=0;const sched=()=>{clearTimeout(st);st=setTimeout(()=>{scan();scanMag()},80)};
+scanMag();addEventListener('load',scanMag);
 scan();document.addEventListener('DOMContentLoaded',scan);addEventListener('load',scan);
 if('MutationObserver' in window)new MutationObserver(sched).observe(document.documentElement,{subtree:true,childList:true});
 })();
