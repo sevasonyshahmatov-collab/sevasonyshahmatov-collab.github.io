@@ -87,4 +87,7 @@ fetch((window.JVD||(u=>u))(`data/pp/${ID}.json`)).then(r=>{if(!r.ok)throw 0;retu
   const d=nx.d;box.innerHTML=`<a class="fnx" href="team.html?id=${encodeURIComponent(nx.o)}"><img src="${crest(nx.o)}" alt="" onerror="this.remove()"><span><b>${esc(tn(nx.o))}</b><small>${nx.h?'дома':'в гостях'} · ${+d.slice(8,10)} ${MON[+d.slice(5,7)-1]}, ${d.slice(11,16)} МСК${nx.lg?' · '+esc(lgn(nx.lg)):''}</small></span></a>`;
  }else box.innerHTML='<p class="pp-note">Ближайший матч пока не назначен.</p>';
 }).catch(()=>err('Игрок не найден или данные ещё не собраны.'));
+
+/* фото с Transfermarkt (17.11): метка источника в адресе, чтобы браузер не показывал старое фото из кэша */
+fetch((window.JVD||(u=>u))('data/headshots.json')).then(r=>r.ok?r.json():{}).then(j=>{const e=(j||{})[ID];if(!e||!e.src)return;const fix=()=>{const im=document.querySelector('.pp-photo img.ph');if(im&&!/[?&]v=/.test(im.src)){im.src=im.src+'?v='+encodeURIComponent(e.src);return true}};if(!fix()){setTimeout(fix,800);setTimeout(fix,2500)}}).catch(()=>{});
 })();

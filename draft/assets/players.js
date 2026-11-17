@@ -10,7 +10,7 @@ const crest=s=>`../assets/fc/${encodeURIComponent(s)}.webp`;
 // портреты «как в НХЛ» (голова и плечи, без фона): data/ph/<id>.webp, список готовых — data/headshots.json (players_headshots.py);
 // нет портрета — инициалы (фото Commons напрямую больше не показываем)
 let PH={};
-const photo=id=>PH[id]&&PH[id].ok?(window.JVD||(u=>u))(`data/ph/${encodeURIComponent(id)}.webp`):'';
+const photo=id=>PH[id]&&PH[id].ok?(window.JVD||(u=>u))(`data/ph/${encodeURIComponent(id)}.webp${PH[id].src?'?v='+encodeURIComponent(PH[id].src):''}`):'';   /* ?v=tm — фото с Transfermarkt, мимо старой копии в кэше */
 const ini=n=>n.split(/\s+/).filter(Boolean).map(w=>w[0]).slice(0,2).join('').toUpperCase();
 const col=T=>{const c=Array.isArray(T.c)?T.c[0]:T.c;return /^#?[0-9a-f]{6}$/i.test(String(c||''))?'#'+String(c).replace('#',''):'var(--paper-3)'};   /* только #rrggbb — цвет приходит из данных ESPN */
 // фото игрока (ESPN); нет фото — инициалы на цвете клуба; эмблема — значком в углу
