@@ -305,3 +305,13 @@ html[data-sport="football"][data-lg] .lghero::after{background:linear-gradient(1
   .clb{min-height:170px;padding:12px 12px 12px 24px}
   .clb .cpl{font-size:26px}.clb .cpl small{font-size:10px}.clb .cem{width:48px;height:48px}.clb .cem img{width:34px;height:34px}.clb .cnm{font-size:17px}.clb .cst{font-size:12px}}
 @media (prefers-reduced-motion:reduce){.clb,.clb .cem,.clb .wm{transition:none}}
+
+/* 17.11 — плитка клуба: по эмблеме на фоне бежит блик (по очереди у плиток; при наведении — сразу) */
+.clb .wms{position:absolute;z-index:-1;right:-34px;bottom:-34px;width:170px;height:170px;pointer-events:none;-webkit-mask:var(--em) center/contain no-repeat;mask:var(--em) center/contain no-repeat;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.2) 45%,rgba(255,255,255,.9) 50%,rgba(255,255,255,.2) 55%,transparent 60%) 130% 0/320% 100% no-repeat}
+@media (prefers-reduced-motion:no-preference){
+  .clb .wms{animation:clbShine 7s cubic-bezier(.4,0,.2,1) infinite}
+  .clubs li:nth-child(3n+2) .wms{animation-delay:1.2s}.clubs li:nth-child(3n) .wms{animation-delay:2.4s}
+  .clb:hover .wms{animation-duration:1.6s;animation-delay:0s}
+}
+@keyframes clbShine{0%{background-position:130% 0}30%,100%{background-position:-40% 0}}

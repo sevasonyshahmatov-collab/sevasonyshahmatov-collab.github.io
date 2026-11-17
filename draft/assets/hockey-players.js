@@ -47,7 +47,7 @@ fetch(`data/plite_${LG}.json`).then(r=>r.json()).then(D=>{
    return `<div class="frm" aria-hidden="true">${L10.map(r=>{const ok=M.f(r),v=M.v(r);return `<i class="${ok?'g':''}" style="--h:${Math.max(.1,v/mx)}" title="${esc(r[0].slice(8,10)+'.'+r[0].slice(5,7)+' '+(r[3]?'дома, ':'в гостях, ')+tn(r[2]))}: ${r[4]}+${r[5]}"></i>`}).join('')}</div>`};
   const view=L.slice(0,st.lim),podN=view.length>=3?3:0;
   const pod=view.slice(0,podN).map((x,i)=>{const p=x.p;
-   return `<article class="pod pod${i+1}" role="listitem" style="${kv(p)}"><img class="wm" src="${em(p.t)}" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">${p.no!=null?`<span class="no" aria-hidden="true">${esc(p.no)}</span>`:''}
+   return `<article class="pod pod${i+1}" role="listitem" style="${kv(p)}"><img class="wm" src="${em(p.t)}" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()"><i class="wms" aria-hidden="true" style="--em:url('${em(p.t)}')"></i>${p.no!=null?`<span class="no" aria-hidden="true">${esc(p.no)}</span>`:''}
     ${ph(p)?`<img class="cut" src="${ph(p)}" referrerpolicy="no-referrer" alt="" loading="lazy" onerror="this.remove()">`:''}
     <span class="prk"><b>${i+1}</b><small>место</small></span>
     <div class="pnm"><b>${nmB(p)}</b><span>${team(p)}</span></div>
