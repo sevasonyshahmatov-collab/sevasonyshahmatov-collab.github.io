@@ -38,7 +38,6 @@
 .pr.k.t1 .rk{font-size:22px}
 @media (hover:hover){
   .pr.k:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 16px 28px -16px color-mix(in srgb,var(--kx) 70%,#000)}
-  .pr.k:hover::before{filter:brightness(1.18) saturate(1.2)}
   .pr.k:hover .no{opacity:.95}
 }
 @media (prefers-reduced-motion:no-preference){.pr.k{transition:transform .18s ease,box-shadow .18s ease}}

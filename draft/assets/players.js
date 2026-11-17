@@ -60,7 +60,7 @@ function render(){
   const view=L.slice(0,st.lim),podN=view.length>=3?3:0,MKN={sg:'Забивал',st:'В створ',s2:'2+ удара',ga:'Гол+пас',cr:'Карточка'};
   const pod=view.slice(0,podN).map((x,i)=>{const p=x.p,T=D.teams[p.t]||{},h=x.h,c=col(T),hex=/^#/.test(c)?c:'#1d2a44',lt=lite(hex);
     const extra=st.m==='cr'?[['Жёлтые',p.y],['Красные',p.r||0]]:st.m==='st'||st.m==='s2'?[['Удары',p.S],['В створ',p.SoT]]:[['Голы',p.G],...(LU?[['Пасы',p.A]]:[])];
-    return `<article class="pod fb pod${i+1}" role="listitem" style="--kb:${hex};--ko:${lt?'#10161f':'#fff'};--ko2:${lt?'rgba(16,22,31,.72)':'rgba(255,255,255,.78)'}"><img class="wm" src="${crest(p.t)}" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()"><i class="wms" aria-hidden="true" style="--em:url('${crest(p.t)}')"></i>
+    return `<article class="pod fb pod${i+1}" role="listitem" style="--kb:${hex};--ko:${lt?'#10161f':'#fff'};--ko2:${lt?'rgba(16,22,31,.72)':'rgba(255,255,255,.78)'}"><img class="wm" src="${crest(p.t).replace('/fc/','/fc/l/')}" alt="" aria-hidden="true" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('/fc/l/','/fc/')}else this.remove()"><i class="wms" aria-hidden="true" style="--em:url('${crest(p.t)}')"></i>
       ${photo(p.id)?`<img class="cut" src="${photo(p.id)}" alt="" loading="lazy" onerror="this.remove()">`:''}
       <span class="prk"><b>${i+1}</b><small>место</small></span>
       <div class="pnm"><b><a href="player.html?id=${encodeURIComponent(p.id)}" title="Профиль игрока">${esc(p.n)}</a></b><span><img class="te" src="${crest(p.t)}" alt="" loading="lazy" onerror="this.remove()">${esc(T.n||'')}${p.pos?' · '+esc(p.pos):''}</span></div>

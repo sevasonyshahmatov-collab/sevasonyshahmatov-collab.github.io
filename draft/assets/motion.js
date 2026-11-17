@@ -71,7 +71,7 @@ function tilt(el){
  const big=el.classList.contains('pod'),MAX=big?6:9,DEPTH=big?16:12;
  const RX=S(0,220,18),RY=S(0,220,18),G=S(0,300,26),L=S(1,300,18),H=S(0,260,22);
  let hover=false,nx=0,ny=0,gx=50,gy=30;
- let glare=el.querySelector(':scope>.tglare');if(!glare){glare=document.createElement('span');glare.className='tglare';glare.setAttribute('aria-hidden','true');el.appendChild(glare)}
+ const glare={style:{setProperty(){}}}; /* блик при наведении убран по просьбе: «засветов нигде не должно быть» */
  const layers=()=>LAYERS.map(([s,d,z])=>[el.querySelector(':scope>'+s),d,z]).filter(l=>l[0]);
  let ls=layers();
  const c={

@@ -14,6 +14,7 @@ const LGS={khl:{name:'КХЛ',full:'Континентальная хоккей�
 const P=new URLSearchParams(location.search),LG=(P.get('lg')||'').toLowerCase(),L=LGS[LG],THEME=P.get('theme');
 const tq=/^(arena|a|b|c)$/.test(THEME||'')?`&theme=${THEME}`:'';
 const lgp=k=>`<span class="lgp ${k}"><img src="../assets/lg/${k}.webp" alt=""></span>`;
+const EMHI=s=>/^(nhl_[a-z]+|dallas|minnesota)$/.test(s); /* для этих клубов есть чёткие эмблемы 768 px в em/l/ */
 const em=s=>`<img class="em" src="../assets/em/s/${esc(s)}.webp" alt="" loading="lazy" width="64" height="64">`;
 const thref=s=>`../team/index.html?id=${encodeURIComponent(s)}${tq}`;
 const MON=['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'],WD=['вс','пн','вт','ср','чт','пт','сб'];
@@ -79,7 +80,7 @@ function build(SE,PL){
   const fm=t=>String(t.form||'').slice(-5).split('').map(c=>`<i class="${c==='В'?'w':c==='П'?'l':'d'}"></i>`).join('');
   $('clubsBox').innerHTML=`<div class="sec-head" data-rv><h2>Клубы</h2></div>
    <ul class="clubs">${all.map((t,i)=>{const v=JY&&JY.vars(t.id)||`--kb:${esc((t.colors||[])[0]||'#1d2a44')};--kbm:${esc((t.colors||[])[0]||'#1d2a44')};--ks:#fff;--kt:#fff;--ko:#fff;--ko2:rgba(255,255,255,.78);--kx:#fff`;
-    return `<li><a class="clb" href="${thref(t.id)}" style="${v}"><img class="wm" src="../assets/em/${esc(t.id)}.webp" alt="" aria-hidden="true" loading="lazy"><i class="wms" aria-hidden="true" style="--em:url('../assets/em/${esc(t.id)}.webp')"></i>
+    return `<li><a class="clb" href="${thref(t.id)}" style="${v}"><img class="wm" src="../assets/em/${EMHI(t.id)?'l/':''}${esc(t.id)}.webp" alt="" aria-hidden="true" loading="lazy"><i class="wms" aria-hidden="true" style="--em:url('../assets/em/${esc(t.id)}.webp')"></i>
      <span class="cpl"><b>${i+1}</b><small>${esc(t.conf||'')}</small></span>
      <b class="cnm">${esc(t.name)}</b><span class="cst"><b>${t.pts}</b> ${plural(t.pts,'очко','очка','очков')} · ${t.gp} ${plural(t.gp,'игра','игры','игр')}</span>
      <span class="cfm" aria-label="Последние матчи">${fm(t)}</span></a></li>`}).join('')}</ul>`}

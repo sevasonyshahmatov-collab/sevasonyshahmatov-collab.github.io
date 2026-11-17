@@ -399,7 +399,7 @@ html[data-bg="n"] body::before{content:"";position:fixed;left:0;right:0;top:-12v
 @keyframes nDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,-10vh,0)}}
 /* 2) шум против полос */
 html[data-bg="n"] body::after{content:""!important;display:block!important;position:fixed!important;inset:0!important;z-index:-3!important;pointer-events:none;animation:none!important;transform:none!important;opacity:.55!important;mix-blend-mode:soft-light;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/240px 240px!important}
+  background:none}
 html[data-bg="n"][data-theme="arena"] .arena-bg{position:absolute;height:118vh;opacity:.9;background:none;mix-blend-mode:screen;-webkit-mask-image:linear-gradient(#000 62%,transparent);mask-image:linear-gradient(#000 62%,transparent)}
 /* шапка — стекло */
 html[data-bg="n"] .hd,html[data-bg="n"][data-theme="arena"] .hd{background:rgba(6,11,28,.62)!important;-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);border-bottom-color:rgba(160,190,255,.14);box-shadow:0 18px 40px -30px rgba(0,6,40,.9)}
@@ -503,3 +503,8 @@ html[data-bg="n"] .tmhero::after{display:none}
 html[data-bg="n"] :is(.sec-head h2,.pl-hero h1,.nxs h2),html[data-bg="n"] :is(.sec-head h2,.pl-hero h1,.nxs h2) *{text-shadow:none!important}
 /* внутренняя плашка «Расчёт модели» на белой карточке матча */
 html[data-bg="n"] .match.match .qv{background:linear-gradient(180deg,#eef3fb,#e6edf8)!important;border:1px solid #d6e0ef;box-shadow:inset 0 1px 0 #fff}
+/* без засветов при наведении: никаких бликов и светлых подложек */
+.tglare{display:none!important}
+@media (hover:hover) and (pointer:fine){
+ html[data-bg="n"] :is(.lgm,.nxs-g a):hover{background:linear-gradient(158deg,rgba(150,180,255,.115),rgba(150,180,255,.04) 60%)!important}
+ html[data-bg="n"] .match.match:hover{box-shadow:inset 0 1px 0 #fff,0 34px 50px -26px rgba(0,8,50,.95),0 0 0 1px rgba(255,255,255,.5)!important}}
