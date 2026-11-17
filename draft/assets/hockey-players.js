@@ -21,6 +21,9 @@ const mmss=s=>`${Math.floor(s/60)}:${String(Math.round(s%60)).padStart(2,'0')}`;
 const pl=(n,a,b,c)=>{n=Math.abs(n)%100;const k=n%10;return n>10&&n<20?c:k===1?a:k>1&&k<5?b:c};
 fetch(`data/plite_${LG}.json`).then(r=>r.json()).then(D=>{
  $('season').textContent=D.season;
+ /* 17.11: переключатель лиг рядом с заголовком (раньше со страницы игроков НХЛ нельзя было перейти к игрокам КХЛ) */
+ {const h=document.querySelector('.pl-hero');if(h&&!h.querySelector('.pl-lgsw')){const n=document.createElement('nav');n.className='pl-lgsw';n.setAttribute('aria-label','Лига');
+  n.innerHTML=[['nhl','НХЛ','players.html'],['khl','КХЛ','players_khl.html']].map(([k,t,u])=>`<a href="${u}"${k===LG?' aria-current="page"':''}><i><img src="../assets/lg/${k}.webp" alt=""></i>${t}</a>`).join('');h.appendChild(n)}}
  $('lg').innerHTML=Object.entries(POS).map(([k,v])=>`<button type="button" data-l="${k}" aria-pressed="${!k}">${v}</button>`).join('');
  $('tm').innerHTML='<option value="">Все</option>'+Object.keys(TM).sort((a,b)=>tn(a).localeCompare(tn(b),'ru')).map(a=>`<option value="${a}"${a===st.tm?' selected':''}>${esc(tn(a))}</option>`).join('');
  const P=D.players.map(p=>{const L=p.log=p.log.map(r=>[r[0],'',r[1],r[2],r[3],r[4],r[5],r[6]]),n=L.length;return{...p,gp:n,G:L.reduce((s,r)=>s+r[4],0),A:L.reduce((s,r)=>s+r[5],0),S:L.reduce((s,r)=>s+r[6],0),toi:p.ts!=null?p.ts:(n?L.reduce((s,r)=>s+(r[7]||0),0)/n:0)}});
@@ -41,8 +44,7 @@ fetch(`data/plite_${LG}.json`).then(r=>r.json()).then(D=>{
    const nx=D.next[p.t];
    const jk=JY?JY.key(LG,p.t):'',jv=JY&&JY.vars(jk),lt=jv&&JY.calc(jk).lt;
    return `<article class="pr${jv?' k'+(lt?' lt':'')+(i<3?' t'+(i+1):''):''}" role="listitem"${jv?` style="${jv}"`:''}>${jv?`<img class="wm" src="${em(p.t)}" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">${p.no!=null?`<span class="no" aria-hidden="true">${esc(p.no)}</span>`:''}`:''}<span class="rk">${i+1}</span>
-    <div class="av" style="--c:${c}">${p.img?`<img class="ph" src="${esc(JV_KPH(p.img))}" referrerpolicy="no-referrer" alt="" loading="lazy" onerror="this.remove()">`:''}<img class="bd" src="${em(p.t)}" alt="" loading="lazy" onerror="this.remove()"></div>
-    <div class="nm"><b>${p.id!=null?`<a href="player.html?lg=${LG}&id=${p.id}" title="Профиль игрока">${esc(p.n)}</a>`:esc(p.n)}</b><span>${esc(tn(p.t))} · ${p.pos==='D'?'защитник':'нападающий'}</span></div>
+    <div class="nm"><b>${p.id!=null?`<a href="player.html?lg=${LG}&id=${p.id}" title="Профиль игрока">${esc(p.n)}</a>`:esc(p.n)}</b><span><img class="te" src="${em(p.t)}" alt="" loading="lazy" onerror="this.remove()">${esc(tn(p.t))} · ${p.pos==='D'?'защитник':'нападающий'}</span></div>
     ${st.m==='pt'?`<div class="pts pin" aria-hidden="true"><b>${p.G}+${p.A}</b></div>`:''}<div class="tot" aria-label="${st.m==='g'?'голов':st.m==='a'?'передач':'очков'}: ${tot(p)}">${tot(p)}</div>
     ${p.img?`<img class="cut" src="${esc(JV_KPH(p.img))}" referrerpolicy="no-referrer" alt="" aria-hidden="true" loading="lazy" onerror="this.remove()">`:''}
    </article>${st.m==='pt'?`<div class="ga${jv?' k':''}"${jv?` style="${jv}"`:''} aria-label="${p.G} голов и ${p.A} передач"><span>${p.G}</span><i>+</i><span>${p.A}</span></div>`:''}`}).join('');

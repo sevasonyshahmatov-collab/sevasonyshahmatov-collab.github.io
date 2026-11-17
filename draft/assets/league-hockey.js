@@ -28,6 +28,7 @@ if(!L){
  document.querySelectorAll('.lgsec').forEach(e=>{e.hidden=true;e.removeAttribute('data-zone')});document.querySelector('.nav').hidden=true;return;
 }
 document.title=`${L.name} — таблица, матчи, бомбардиры · JARVIS`;
+document.documentElement.dataset.lg=LG; /* 17.11: свой фон шапки у каждой лиги (league.css) */
 const TM=Object.entries(D.teams).filter(([,t])=>t.lg===LG).map(([id,t])=>({id,...t}));
 const byName=Object.fromEntries(TM.map(t=>[t.name,t.id])),nm=s=>(D.teams[s]||{}).name||s;
 const ABBR={};TM.forEach(t=>{ABBR[LG==='nhl'?(t.id.startsWith('nhl_')?t.id.slice(4).toUpperCase():t.id==='minnesota'?'MIN':t.id==='dallas'?'DAL':t.id.toUpperCase()):t.id]=t.id});
@@ -55,7 +56,7 @@ function build(SE,PL){
   <ul class="facts" aria-label="Коротко" data-rv>
    <li><b class="num">${TM.length}</b><span>${plural(TM.length,'клуб','клуба','клубов')} в лиге</span></li>
    <li><b class="num">${M.length}</b><span>${plural(M.length,'матч сыгран','матча сыграно','матчей сыграно')} в сезоне</span></li>
-   <li><b class="num">${gpMax}<small style="font-size:max(11px,.42em);color:var(--ink-3)"> / ${L.gm}</small></b><span>игр у лидера по числу матчей</span></li>
+   <li><b class="num">${gpMax}<small style="font-size:max(11px,.42em);color:var(--ink-3)"> / ${L.gm}</small></b><span>игр у лидера по числу матчей</span><i class="fbar" aria-hidden="true"><i style="width:${Math.min(100,Math.round(gpMax/L.gm*100))}%"></i></i></li>
    <li><b class="num">${list.length}</b><span>${plural(list.length,'матч','матча','матчей')} в ближайшие 3 дня</span></li></ul>
   <ul class="chips" aria-label="Другие лиги" data-rv>${Object.keys(LGS).map(k=>`<li><a href="league.html?lg=${k}${tq}"${k===LG?' aria-current="page"':''}>${lgp(k)}${LGS[k].name}</a></li>`).join('')}</ul>`;
 

@@ -67,7 +67,7 @@ const link=(s,cur)=>`<a href="${esc(U(s[2]))}"${cur===s[0]?' aria-current="page"
 const has=(s,cur)=>s[0]===cur||!!s[3]&&s[3].some(x=>has(x,cur));
 const inG=(s,cur)=>!!s[3]&&has(s,cur);
 const CARET='<svg class="cr" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-const col=(x,cur)=>`<div class="gcol"><a class="gch" href="${esc(U(x[2]))}"${cur===x[0]?' aria-current="page"':''}>${esc(x[1])}</a>${x[3].map(y=>`<a href="${esc(U(y[2]))}">${esc(y[1])}</a>`).join('')}</div>`;
+const col=(x,cur)=>`<div class="gcol"><a class="gch" href="${esc(U(x[2]))}"${cur===x[0]?' aria-current="page"':''}>${/^(khl|nhl)$/.test(x[0])?`<span class="gli" aria-hidden="true"><img src="${esc(U('assets/lg/'+x[0]+'.webp'))}" alt=""></span>`:''}${esc(x[1])}</a>${x[3].map(y=>`<a href="${esc(U(y[2]))}">${esc(y[1])}</a>`).join('')}</div>`;
 const top=(s,cur)=>{if(!s[3])return link(s,cur);const cols=s[3].filter(x=>x[3]),rest=s[3].filter(x=>!x[3]);
   return `<div class="gdd${inG(s,cur)?' on':''}"><a href="${esc(U(s[2]))}" aria-haspopup="true"${inG(s,cur)?' aria-current="true"':''}>${esc(s[1])}${CARET}</a><div class="gdd-m${cols.length?' wide':''}${!cols.length&&rest.length>5?' grid':''}">${cols.length?`<div class="gcols">${cols.map(x=>col(x,cur)).join('')}</div>`:''}${rest.map(x=>link(x,cur)).join('')}</div></div>`};
 const STAR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8l2.7 5.9 6.4.7-4.8 4.3 1.4 6.3L12 16.7l-5.7 3.3 1.4-6.3L2.9 9.4l6.4-.7z"/></svg>';
