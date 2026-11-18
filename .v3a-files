@@ -880,10 +880,6 @@ data/deckbg/khl_2026-11-19_metallurg_traktor-m.webp
 data/deckbg/khl_2026-11-19_metallurg_traktor.webp
 data/deckbg/khl_2026-11-19_neftekhimik_ska-m.webp
 data/deckbg/khl_2026-11-19_neftekhimik_ska.webp
-data/deckbg/nhl_2026-11-18_nhl_sjs_nhl_cgy-m.webp
-data/deckbg/nhl_2026-11-18_nhl_sjs_nhl_cgy.webp
-data/deckbg/nhl_2026-11-18_nhl_vgk_dallas-m.webp
-data/deckbg/nhl_2026-11-18_nhl_vgk_dallas.webp
 data/deckbg/nhl_2026-11-19_nhl_det_nhl_bos-m.webp
 data/deckbg/nhl_2026-11-19_nhl_det_nhl_bos.webp
 data/deckbg/nhl_2026-11-19_nhl_njd_nhl_mtl-m.webp
@@ -5555,6 +5551,7 @@ hockey/data/kph/index.js
 hockey/data/kph/index.json
 hockey/data/lgp_khl.json
 hockey/data/lgp_nhl.json
+hockey/data/nhl_ea.json
 hockey/data/nhl_mstats.json
 hockey/data/nhl_players.json
 hockey/data/nhl_skills.json
