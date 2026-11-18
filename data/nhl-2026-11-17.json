@@ -80,7 +80,37 @@
      "gd": -14
     }
    },
-   "_z": "/0xZm40ViMAhmc2TO0wf5A0PsIBtHyUCXhaRGTBL6QCiJYVvEGf/cx3hYekvuiyuGDuogcOsr3K9RTyP9UTq0awSFEpmBZMR6pEJNaq63wauUHZOwAR6WRDHSldKwIM4epGbKIL/HLh8ckPWphj8vPSm+rzzkCNYmXO0/OCZZkeYYJyAnenYGFxGnSydZpiH3+0y8FU0hoXRLzwhEIAXoWX8UKmW652gTDX8VUmsqF3xj0MkJL1Uts+AAlUDG04DByyR1sTz6531IKQRk0bpJEQg79ERW6vsmSpJmtX5/9sTuRlZ/rI7KhCuDgaYG91m5z26MJPGncBlqYnbyP7/6GpZmfmt"
+   "fact": {
+    "k": 13,
+    "n": 18,
+    "team": "Лос-Анджелес"
+   },
+   "odds": 1.64,
+   "p": 0.6793,
+   "pick": "Итоговая победа Бостона",
+   "sim": {
+    "hits": 6986,
+    "n": 10000,
+    "top": [
+     [
+      3,
+      3,
+      647
+     ],
+     [
+      2,
+      2,
+      626
+     ],
+     [
+      3,
+      2,
+      519
+     ]
+    ]
+   },
+   "res": "loss",
+   "score": "0:3"
   },
   {
    "h": "Флорида",
@@ -159,7 +189,7 @@
      "gd": 27
     }
    },
-   "_z": "1r65ZMzWXEReFdTSvh3tW3f9eNnu7ZYv00UQLzFXAEci4THijESHXHFage1WLpFsBXkKCfFtZU2+v+6BMVOcPqIuGgT8EVpqA22RkgJZzSZNtYuWSnrgPAzFhmGIsty7B1RAz8QEnkF2Q3j+kTZWGgmH3FVuy3sFkcK0ZMRwNYMjdVGTYxl2Q48uDrx53OnqvHzg4P5TmagsrJxC7b1JDdoUtqy6j1Ugy+RWUAEEohHbYq8B95N1W3bf05xipLzty0U7YKJ1/ul/SCJZXZma5VQXK0l2xCmk/4Bd68ZpTxEPGjRG8k0C0k5EyoXHQKobdT7zj0xekGzY6wHbinDHQpD7LeROtCr3f8vGlBXyKfb8oo2gVOWN5Jk="
+   "_z": "EmBBuuTxKbI/tWd/O/R7THThUShRVSzUDaYANt4rUnUgywPC8afdkt6DI6YgsxPSVfKLvTdGPNSzWRrq4UmfungnGwe4Hu0f77gDWV74HF2feg/Sb59ib1ZIqzmSn09FGctxdFvt80rjUH2CGTS3QrMKa53ejEJ9cZwcye063AnumaaLf41FVKUy0UwWwE1jrBWdB//YG1ZB7tJRFdcVcoZPLloGmhjtbUv7WiYyjbSzeMK008RuT8Z0eIRqUvxkjPRNBy6EVHAhKBTFrSTkS3xzdnbeMjFVLOcOq3IUzv8m/sThKo8EbF+I4WHcCtwPmvmgjL1Ly37zESZc1C/N1+cGGHPMl9BiJIqm0QbacCV1Yi12gZjMMFY+Jl/44Ar4a8oWetpV5AuDvEd/XcSrsmfnpkxVCG4="
   },
   {
    "h": "Айлендерс",
@@ -238,7 +268,7 @@
      "gd": -13
     }
    },
-   "_z": "zyBqKb9xUpfZaHDLcS5hrSd+B0R830NpyLZ6Gm9n+F5MAeNyTkHHlD2Oj/2DgSaA+KRwBn25sgnizpFhImTJYNTst7VFoDB3hFZR9ATCs8TLeUASIO21B94fYJmkXhv+M7c69zR0N4QQGlA4Du+LKQeHXCd6PsSCkj1vDP+smUt1FTZZKk/MHsmcbXd7hwtAz0vuFwzH+N81Vpy+C9n4V/yU68c0/VHGNSl16sVc9ZFjCKnWD9ou5w7fYJR1/q4bFpSIGe7M1HBvB37okUM0xLxaBK3x40yDscwQ7V2EJ6ZR0RTpATl8t/GegErSvTtRyIMFy2sYmKD/SV+MH52c0sSAOE8eyez3K0m1I86IgpdwDAH6LC3m7voMgnVXoXiRCw=="
+   "_z": "Xy4qiLnjFSNaGDlTKkEl8O21qpu+D/px6RkAeA4DAjQ/iq82dJp9Lya2v5Kvrw+Nk4jtEX/xQMAAZP+AT1aY1z6plSzgAj+OJOnESmerjaeRB0rxwCJ6yXMNj3XECXugwqbhaSRhZ9Kn6Nu+kPIlTcNfZxH7CUK9pPidez/l5PJ1P0yuW9/4lRMJTO8JDkkNHfOYcYPkMFA8X6jRHBzzJscS4BjAQqjjjkHDkLkyHkSz6S7Tk4a6xCwAmkGSz6N1JnVJk9IMfY6yX+cBn/Tqch+w8Hdi1WftC9yCq+4hki9qlps+T7xY9lA7ltUqpHcMQCiAcF0VCPyGwQyopImLpNbvIpECAdI8VIoajjBJpef6UR38LiA8mUtTuDjf17eeKYBGyq88DEfa4nIxCM0JljU0AfbeRllcOlaw5ECJyA=="
   },
   {
    "h": "Филадельфия",
@@ -317,7 +347,7 @@
      "gd": -15
     }
    },
-   "_z": "GfDn+TPFciB2G4eRfuzSJBW63eB3tMcrtQsO7R5ZCjK2z/pnem6mdUH1TVYnV9U2RHU51MOQw1BL4x2nmB1IkcaSrwcTvL3l5xOqqDG2QIT8JEcmh/BSwfwqKq1smak+eR/vdPUY4SuGlDSQPnpX7142IF36N5ksebEAw7W0hxV4r04igfAYd1YHSswj0MxfI26O9pPWMarNGD53s3EyWNc9GljTXyKjQXY5tn+p8qOLgKZu6Rqqd8ZAqucYo5BIpLRLuH1omdZM3wgDODQPylFh9Dpm3iY7OPvrlQl4qp3WUZzp66+bAiSDdMSIufrdK8hVw33t0lMFAQU29Oa6IBtXkGhG3RNaMvP5yTLOdAGgmGRn4qYBArs01ExN"
+   "_z": "D+8KCgmA1ORbz9gxxQsm9OoB+ao/kCn5Vo91YZBJuCVJ8GRbPvrF+4aNZq3Ko/cITDzH9kN+bN35EvllN8Spbz94QmQWMZN529jk6A2OjjzTBv2FSLKr74texaarfNkPCUG9qVU1qafx3+NfgVOAgE6N9G6223HqZGo1l/lHZEH4GH2JGj18ppnE4KVbmK4pBAT4GJncLUOZlX49/fVkmFuUPEKFOoy+IQSQuICK4f1EA4s52YMY1EN8E4fivOQqEe7rucDDtPC0M6mzks2/8mo6NM8etbO6/Kl1uEtadUYnVLEIL3lW/5l6jI3IvO1ho5hQ5wWfPfGXZ3exfjHLX3vGtwrIsb/2naapmLhCWmXze147DfiboB41EyWUr1xphcF97SWOLfmfhFc+D6WM9dD+gsyOXNaCcm51"
   },
   {
    "h": "Виннипег",
@@ -396,7 +426,7 @@
      "gd": 7
     }
    },
-   "_z": "fZUMr4zvCfvMZ43Gm0IjJD+aze38m5DKbyI4QCTFZAhMhcyed81t992L4/b9IYucE9HihSnsvFMj9DzpW7CGLENLyHheEOdjiM7Pym7qr9uNNtU/zXyWrDpC/gtgdnporlrn6NM7gCW95tZ2Uxzfj5DAv2PMnAw4eMA60ds+ZhfV+KL5YbHZ+VzoXK/FQqyxUahxIDpQ050pTwRaMF4IwOm8KaIqri40JdWWWTyDNsZXuPkpCxinay+nteyzcecIlaIB8EZ6jk7/61qOEfRW6+Ttdv0mI1QZTNJqLrx0oBshbuZHk+XCTKhsPX0KjgHcWCnJ6TLCADbHdp5Aob6Rpz9yGH2VJi1whR14MZVokg5ZHASxlZ5GJBw="
+   "_z": "DAUTGoEBbC2dA76zCZ02MUyJoqNGak49tIsTsEResmMmuhak+MfHa2vJChnIiGE88BFvLHM5VS23OyFeCzbdIXAmM4k2VT+GHRRzqB8w6/QmznjWEWz8qho691VJzvgogVaD3ajzP6z3kZRotAE6Q+mf44K2uO+OCFn6QxfFjpqwhfulRSBaFli3WIszo2MljLK6vXU3eDEOYdWaRnbECrmil5ybzktyo6zTOfZcbf2MhD/nUsmPwGVgsp6nW5S8mCsTTsVafBzMUNc5kQPWVYvNOpwlbw/MhGAJyISJrk8AsvC7iwhQEv/9cPYK0j3feinS/EFWurZDAyU+NKU2ozaoJIQ+vJRsvZyn8dRx3fYYJSMsfl0HJ4vqeo5c4CceZ6gPv4Y2tQm+iq3R0fNvs52DhtIB4OkX"
   },
   {
    "h": "Тампа-Бэй",
@@ -475,7 +505,7 @@
      "gd": -3
     }
    },
-   "_z": "BTJsrEkJpoMRuduh9YBjQh27mCd2tfwDSv6aBRaCOnHF0jJ+zvthr9HsRxBHd89WGE0B02E7l4ZatgzSXGCib6fdeOD3pXR0r8aGI1bbYTlFPRdTx51tZ4YxyBpw52myFxWlqMZDz5t9Clc+u81pYZye7o84HCVOoODGVw3mdyunGdtgbzWW7ZSsNqMLSr1Q0qaTYaizXXCCN1STZA1snLuzyV/1RQKpDK81RdBEYdHMEB/UzGqeXH1dqnH8sBzDqh6So+qGKlMqHEef7eIp2YCN0VfFSSAul5iw9yre4xI0CdhbJ31GnTSqrSvDmefMIshjrt6gY7OCwA=="
+   "_z": "l617QrbfU+FNN3GX0jKhihp/TDsj7MUdVybAiyPO/5CAtFgT+AfUR+VTZLrjgaOva5cWrNJBAQaLmTMYrVPWRjUui8tf0HZico9rVAierPe2gia70Y25rCcEP0PqOmQk6eP5YAmLxy3Czzz8lzWdywB2FkdLnwWHTv4A69prXfbx7OcrpmoJ0BRDeZTPR6uzo6Gtpwlh6OMBBbnpmsHPuiN9lLWhyes4PfB4kEmmBWrrRzlCGvwo41Cub2222BGANwctGc04WUuO0INHif+yfk81bTIw8D0L9ZlsrmxyVC8QtudlBszKhvYsYcD5YvdURw/vSP6J6IbOl8COTYd52Avadkq3B0RShxJruJ24qePs4dkMJp77qQ=="
   },
   {
    "h": "Чикаго",
@@ -554,7 +584,7 @@
      "gd": -7
     }
    },
-   "_z": "i58BIVBFXDcLztL6dTQm4y6tTzp3tq0yJbGxYz6zOEymEWOudSA3NdgP5icBTrFj0QgvDCuGINEkA8hQN4opDHlvlYppPBY3FSUbHS8ddRyu0M7OJxAYxqwy/H9sn+ow/KxKTl8bE6Z31VnLfB5vkkrZ6v2NZbnTG//PjzteRY6X0BMyowNkt706g98BR2uM9RGqSsm8d9rwqG+UDi0342gdgayYcKZgVjNu42JuY8dFdkKeXcDOeqxmTD4F2pYaaSWjuk3ck9/FS/DgVYwC6iet2OC/HJ9+vlhVzXBgmuoUeDxu1TRIb0+c0fYg5GA1zYxZq0Ca"
+   "_z": "s4HC2DQcdMICcBnwlad/5c4iEsTDaeNXbzXXVFKzWc5ZWYO3ha79ghDqgLI2U2q2USaGj3NvHG56Z1XJnqY7mcZjI7mFc09yaomNkT1k68hlqcvOQ+pKKTx3U8pRKu0qj5oa8JviQZkh03cddj2o5EpWAs5bYp1EaqgSmIdO/pEeSYJ7+3zOyMwAXbu/sICHLX0TNzUe+9z9rG+yVWoR2GyFeWNi3nHNBzFsdTHLphfEKeWXEIG/A1PlXyKddLTJZ4vwFSRSgghyli0/GvZL2GlfqR1zPp6m0XrH4BFyPRCZiuRgEk6WOLM/N0ttxdX6QSmFkFxAzMMz+kC5kc/cKrlRJrGkabJecLztCvwclMmX95tu"
   },
   {
    "h": "Сент-Луис",
@@ -633,7 +663,7 @@
      "gd": 2
     }
    },
-   "_z": "Wd2xPctul4kJ4t2QPsEyWMAEFFS6zrmrfGPfvVOh9Y5XknC1l3AxaIxVo5PFmNCXivd8MNyvwzE9lWzHJl/4omee8PWrbA75lf6++maCqGme1IWCHEaqXO23n31Czq9k5j7dGN4MlEvlDOocJWBdNO2om1jBhwKCnbdWfHgD74WrOWFcNQAXwJpPjqN9qq6gIv7K40GpVF+3KKuVniItr1keyUcQo4LdwQTsJVeCLsx9/vDA9US0VNJUX/HDajXcTJSuM6tzKXPfImOTh0fJ45RexCF+0O/hakwlATZxLRwA4IQFAauuoIg5gOQJ0ccyD5+txcQq"
+   "_z": "kbXQkwc/Dt/44HYByYgFKXPxoMXGRETqMn2v3NMt+mmn10j+W9nL9ILK0eXLVjc5GTSJSyfGUVyrqyrvlf01IfDWd3/xlcNu1Zm26rbuQRlXRriUG5uBNdFu3HC3hjrUiJ7jT1y0RHta9xRq4ysWNdCifTvFaN2jGlH7DuSmJo6DDf6XJw3tfQxKeGcF5IKY/frlGjE+g5942cCzwS/lpketFIm+q4qSPFWLlzaPEJerxZQVvGFcoLamGfUOYCyrr5nr0tEH25Eg98rMDhEeUgOISkeD0WCzEkICm29tEEESIcLcsjUc1uA8PPxGOSTSte9XJpcAlAtJwL0KVhP0qmD/umr3jwxjZrprnDvSamUqiMqD"
   },
   {
    "h": "Миннесота",
@@ -712,7 +742,7 @@
      "gd": 5
     }
    },
-   "_z": "OpBEeR6OFy2RJOkf8QmHQ+U/G37uT8S37xTXb7QLtdXX6sg5RZEt+iK0x2Ji1/yG6+vkDlxQ8nqBKbmb2Rmj/SFSn1+HWGzgVBHdhuuWKSk1iWU3qxP0dHzbFYTK+gT/eYBlO2Z7CvOI/YhCV2k7+TSuR0Ow2m0bPVCQLWTy895Y3yz39d2CEfQSqEN47RcPacDMtebwbn3k1RnVzeB6zpYmxqHaTCGKeMVNWjNpSOvsRgR74jWa/VENNIMEvSvteNq9vV7J3ufMvVLi505HUp/vM30904Ru7ak6n1bBekdpR7YcmTTmROHOUzc5Jw=="
+   "_z": "JCnBrcoMhpOHyoTaiWtre4iQtKMsvp/E2trzyRvbjJuBsVK1MO6FugGnmAZYAduEiXM6dZLMzrf92l3arobM5yjEgaBQAdQpgT2jtKixkxgi9IsexqC9bPghq49iF9Gsz4Yegg5SYFX3YZEjk2lCctGILHAOpeE/2+MIOMpEwx72dGJHQ4y6AO/kRNy7Xk7n9b8HzC+vcVdye6Thzc7hyKxVQ03jvWUiLgdZQ/7aE7/MXTAXUai3aJE59QfJyrvmSukBy0ICZZPD11CDbKbPP1JWWoJZm2AeXfVv55+3nh/yqHNk5p8sXrSsTTxAjDclaNuTWgZMLu+iBsqsbuQRdwwUJj8+Dm82tMU1TiU="
   },
   {
    "h": "Вегас",
@@ -791,7 +821,7 @@
      "gd": 6
     }
    },
-   "_z": "lRx8O63YEW05+FrJ/U7lgW7pV+cApYShLps5MKPiSFrsD/GLoAc7Ca6Emfke3n4goCfJgMeM3nFeK2ZeVHxO7sGrj3pouFlFVMR2V/aQHzi4TdnBFQA7zWAcliVQiA6SAYR8ugzW1fxV8bSE7OeAqNdP4X1gzN/lZ7zi+051qJvhCPMJFTitv01PtYrARnw9Ft14vl1lQJ4h4Ozof5OvLlEdResjc9pATlJClMWAB264zJ4wk4q8ApAxIGgcRKDYlJgDithpKeeOqrIIykZwaCT2Dx9mwLca5AI+j4qPwvIpejuI5nYFGpkw8R0RTSALqF04jWe/YsB1A/kpjaFs7ufYibalhVFEd9tRxmH0L+UB"
+   "_z": "jKjIxBCW4QiyvLE3vrxBYf2Nrnrp7O7NosVaq7aaRvg+l1HgbfevQRy/9YszAyHY2Q7/FG1jsTdeTUwpKUaRUk+BtkWaVkbKxPpg5XvRZoRnZfE8ciRfyi4Jc3wF5FVdtMQG/SwNob+H51aBsqapXE1bIXFMJllfligoU8qQKcb1eof6zZ0FwC+HiI8xzS+5ohumCax01I3SvjluU6Vt6NUcOVsNXwgHZrDlUWz6Qqf/EbyPo+61EJsIuzJs73xX9OkULfMyYtwFwCo+K08yP+MsqCDeIncxyqnerrcIQvxwKNmUW/hNlBYmIu2n9I/9B7MLBsDAohVohIO75nfb3LsA8Ep/wPXoOr0FPR37Awpwkr73mttBPr17h3M2V72yEMhxXFeewVbXdKYjJXVH4Zh18mU="
   },
   {
    "h": "Сан-Хосе",
@@ -870,7 +900,7 @@
      "gd": -23
     }
    },
-   "_z": "Rvo5cxBSTgdg8gjTKOtmwQVwDELPkT0/TlJCGIm9nN8tBirlR401uQ5NgjSLYIJWdq8ON/gTCMGgfhp2/Bl8WAnBMAfOY6shKfS/eKAJmhkLVlDInAV/7Jkxoyd9hMtqGDsaW2ZWe9g0PIxQFMy85A2Wlu8NM2vJwcwKkHE1HXYXdJ961HFSXH0bKDEn7b7dHqaiMqjYUBt/za2xolDlsQLsMtgTfRfr7452Y88alXAa5JUDP2QxrLM8USxaGrraIjyw7I2W2OEK9gg33OVlKyihNt/IjJEW0qwrt2A3vKlBlcXtK4qlGmxBNEPo4BSdoLpXWb7pyZMacyKGU335DJm7bvklY282zFeSBm3Koigk8RgLuf4="
+   "_z": "2xsQS8La9jMKwPI7Hp9p1FZmUmRFDEH6a7RJUuH72i8PhyDSoRYNhnqfzrnOD2+C27M57AFtX6vBpjmH1WbvobcrRknFZp/RshpDjdu5xR2+Bv19H2Mg3XD1CUBIcdpf84YB9XptsI+4igLnPnv89zLDxw9m+EcbLZJkQUAXa5HsbQ7MDNIvxqZovodR3SG569z7JCjkqkgvhM8tc1kSy8wj8DjIx8Nm3MJunbNySdYW9jK7F3y6Q/HWuMVwOZM6tlIa2VqgBMAqWmbRuI02eEdQLweaQ2ebDDbgSkEzpLB239UzsnejYQ+Z4B/91ZGnGKMgOQWOZyRfjYiFNj00l7JbhFwwDxrrNA3N7yJuPIx+i9hHhybNM4bziEFxjNRvZeqMdAB6fSaMmYTX4F1Fk9cbn3I="
   }
  ],
  "all": [
