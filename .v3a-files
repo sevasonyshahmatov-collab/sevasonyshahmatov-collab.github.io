@@ -886,8 +886,6 @@ data/deckbg/laliga_2026-11-20_athletic_club_espanyol-m.webp
 data/deckbg/laliga_2026-11-20_athletic_club_espanyol.webp
 data/deckbg/ligue1_2026-11-20_troyes_le_havre-m.webp
 data/deckbg/ligue1_2026-11-20_troyes_le_havre.webp
-data/deckbg/nhl_2026-11-19_nhl_uta_nhl_col-m.webp
-data/deckbg/nhl_2026-11-19_nhl_uta_nhl_col.webp
 data/deckbg/nhl_2026-11-20_nhl_car_nhl_mtl-m.webp
 data/deckbg/nhl_2026-11-20_nhl_car_nhl_mtl.webp
 data/deckbg/nhl_2026-11-20_nhl_cgy_minnesota-m.webp
@@ -6813,6 +6811,7 @@ hockey/data/pp/nhl/8480865.json
 hockey/data/pp/nhl/8480870.json
 hockey/data/pp/nhl/8480876.json
 hockey/data/pp/nhl/8480878.json
+hockey/data/pp/nhl/8480879.json
 hockey/data/pp/nhl/8480891.json
 hockey/data/pp/nhl/8480893.json
 hockey/data/pp/nhl/8480950.json
@@ -6921,6 +6920,7 @@ hockey/data/pp/nhl/8482122.json
 hockey/data/pp/nhl/8482124.json
 hockey/data/pp/nhl/8482125.json
 hockey/data/pp/nhl/8482126.json
+hockey/data/pp/nhl/8482132.json
 hockey/data/pp/nhl/8482142.json
 hockey/data/pp/nhl/8482145.json
 hockey/data/pp/nhl/8482146.json
