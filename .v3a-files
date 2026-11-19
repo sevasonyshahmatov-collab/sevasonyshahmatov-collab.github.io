@@ -1053,13 +1053,6 @@ epl/tottenham-hotspur/index.html
 favicon-32.png
 favicon.svg
 football/compare.html
-football/data/as_done.json
-football/data/as_left.txt
-football/data/as_next.txt
-football/data/as_players.json
-football/data/as_skipped.json
-football/data/as_squads.json
-football/data/as_teams.json
 football/data/club/aek_athens.js
 football/data/club/akhmat_grozny.js
 football/data/club/akron_tolyatti.js
@@ -1219,7 +1212,6 @@ football/data/football.json
 football/data/games-xy.js
 football/data/games.js
 football/data/headshots.json
-football/data/headshots_skipped.json
 football/data/ph/102368.webp
 football/data/ph/103485.webp
 football/data/ph/106139.webp
