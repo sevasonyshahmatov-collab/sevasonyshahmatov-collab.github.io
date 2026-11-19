@@ -1,0 +1,332 @@
+{
+ "day": "2026-11-19",
+ "league": "khl",
+ "skipped": 0,
+ "matches": [
+  {
+   "h": "Металлург",
+   "a": "Трактор",
+   "d": "2026-11-19 17:00",
+   "arena": {
+    "id": 287,
+    "capacity": 7700,
+    "phone": "+7 (3519) 49-83-10",
+    "website": "http://www.metallurg.ru/arena/",
+    "name": "УКРК «Арена Металлург»",
+    "address": "455000, Челябинская обл., г. Магнитогорск, пр-кт Ленина, д. 105",
+    "city": "Магнитогорск",
+    "image": "https://www.khl.ru/images/arenas/24/1.jpg",
+    "geo": {
+     "lat": 53.381589,
+     "long": 58.991538
+    }
+   },
+   "x1x2": [
+    1.833,
+    3.84,
+    3.77
+   ],
+   "p3": [
+    0.586,
+    0.194,
+    0.22
+   ],
+   "form": {
+    "Металлург": {
+     "league": "KHL",
+     "last3": [
+      {
+       "date": "17.11",
+       "opp": "Лада",
+       "home": false,
+       "score": "7:2",
+       "res": "В"
+      },
+      {
+       "date": "15.11",
+       "opp": "Барыс",
+       "home": false,
+       "score": "4:5",
+       "res": "П"
+      },
+      {
+       "date": "12.11",
+       "opp": "Авангард",
+       "home": true,
+       "score": "3:4 ОТ",
+       "res": "П"
+      }
+     ],
+     "points": 41,
+     "games": 28,
+     "place": "1 на Востоке",
+     "gd": 33
+    },
+    "Трактор": {
+     "league": "KHL",
+     "last3": [
+      {
+       "date": "17.11",
+       "opp": "Сибирь",
+       "home": false,
+       "score": "1:4",
+       "res": "П"
+      },
+      {
+       "date": "15.11",
+       "opp": "СКА",
+       "home": false,
+       "score": "5:1",
+       "res": "В"
+      },
+      {
+       "date": "13.11",
+       "opp": "Северсталь",
+       "home": false,
+       "score": "3:4 Б",
+       "res": "П"
+      }
+     ],
+     "points": 29,
+     "games": 28,
+     "place": "8 на Востоке",
+     "gd": -5
+    }
+   },
+   "_z": "yIbalhNRmQXrgBw3t5RpEcHs9cBGqxlelQxe+J2dyufnh18fceehTJVgUf1fVa+WNwcvvsWlyHI4j5wwwmmWtF2hibXex+ytBslze/lhG5ytd2kAZDjEGUSWUTuCZTi54SbOWpuG4UWBtyHd30lstYbvK9xUGFpaNpYhUZ/f/OoGSistXPRU8oR5XsAd5PFbVRhc1wSc7RXb5QR+6jSzebBi7QpiOEl3+D6vB9Czt0Mt1rFdg2me8lvC7iBNigYJ5CBea2osUJqXuconHEUYmmYRx0xhsHARw9rZws5I72lhteRfGXPBrB1v95cg4QtPwb3pmaIv8vmkOQ=="
+  },
+  {
+   "h": "Ак Барс",
+   "a": "Спартак",
+   "d": "2026-11-19 19:30",
+   "arena": {
+    "id": 267,
+    "capacity": 8965,
+    "phone": "+7 (843) 527-85-85",
+    "website": "http://www.tatneftarena.ru/",
+    "name": "ЛДС «Татнефть Арена»",
+    "address": "420126, Республика Татарстан, г. Казань, Чистопольская ул., д. 42 ",
+    "city": "Казань",
+    "image": "https://www.khl.ru/images/arenas/16/1.jpg",
+    "geo": {
+     "lat": 55.817774,
+     "long": 49.124941
+    }
+   },
+   "x1x2": [
+    2.51,
+    3.54,
+    2.57
+   ],
+   "p3": [
+    0.299,
+    0.231,
+    0.47
+   ],
+   "form": {
+    "Ак Барс": {
+     "league": "KHL",
+     "last3": [
+      {
+       "date": "17.11",
+       "opp": "Динамо Москва",
+       "home": true,
+       "score": "2:4",
+       "res": "П"
+      },
+      {
+       "date": "14.11",
+       "opp": "Автомобилист",
+       "home": false,
+       "score": "1:5",
+       "res": "П"
+      },
+      {
+       "date": "12.11",
+       "opp": "Салават Юлаев",
+       "home": false,
+       "score": "4:1",
+       "res": "В"
+      }
+     ],
+     "points": 28,
+     "games": 29,
+     "place": "9 на Востоке",
+     "gd": -6
+    },
+    "Спартак": {
+     "league": "KHL",
+     "last3": [
+      {
+       "date": "17.11",
+       "opp": "Автомобилист",
+       "home": false,
+       "score": "1:2 Б",
+       "res": "П"
+      },
+      {
+       "date": "14.11",
+       "opp": "Адмирал",
+       "home": true,
+       "score": "6:3",
+       "res": "В"
+      },
+      {
+       "date": "12.11",
+       "opp": "Амур",
+       "home": true,
+       "score": "3:4",
+       "res": "П"
+      }
+     ],
+     "points": 33,
+     "games": 28,
+     "place": "5 на Западе",
+     "gd": 11
+    }
+   },
+   "_z": "xBw+6Niq6PZn+rFkfppg7nW03or/1yTRhIzEDB1XPrR0Bnfzf7WTfgXLzWLcAh7qlQN7qKCkP/lt9p9lZ/QjCJbcVzvrMKeUFfQIFKMRImnNVnnzYdu3dnj4v9k024fur9QKo3VXDsQ0Ee6UcqlkveMb4Jw6t1OD/9oLllvblinbz2HYaod+h7kgK5vEThBD8mnv306JUnacmdiaRNKZmjfqi8aG6/376RvzmJ0Sh6RvWNgTdQTBt4S1d39+cohskFA1/Fv+zt1ISVy3PLaqRbN10thF76ksV7pAkPm8slM1IBoFHIojFGCUetfIJJBme8JYQS+dmUcsNVaCyg=="
+  },
+  {
+   "h": "Нефтехимик",
+   "a": "СКА",
+   "d": "2026-11-19 19:30",
+   "arena": {
+    "id": 271,
+    "capacity": 5500,
+    "phone": "+7 (8555) 36-86-16",
+    "website": "",
+    "name": "ЛД «Нефтехим Арена»",
+    "address": "423570, Республика Татарстан, г. Нижнекамск, ул. 30 лет Победы, д. 8",
+    "city": "Нижнекамск",
+    "image": "https://www.khl.ru/images/arenas/17/1.jpg",
+    "geo": {
+     "lat": 55.631369,
+     "long": 51.799145
+    }
+   },
+   "x1x2": [
+    2.75,
+    3.75,
+    2.27
+   ],
+   "p3": [
+    0.443,
+    0.208,
+    0.349
+   ],
+   "form": {
+    "Нефтехимик": {
+     "league": "KHL",
+     "last3": [
+      {
+       "date": "17.11",
+       "opp": "Динамо Минск",
+       "home": true,
+       "score": "1:2 Б",
+       "res": "П"
+      },
+      {
+       "date": "14.11",
+       "opp": "Авангард",
+       "home": true,
+       "score": "1:5",
+       "res": "П"
+      },
+      {
+       "date": "10.11",
+       "opp": "Салават Юлаев",
+       "home": true,
+       "score": "4:3 Б",
+       "res": "В"
+      }
+     ],
+     "points": 32,
+     "games": 28,
+     "place": "4 на Востоке",
+     "gd": -5
+    },
+    "СКА": {
+     "league": "KHL",
+     "last3": [
+      {
+       "date": "15.11",
+       "opp": "Трактор",
+       "home": true,
+       "score": "1:5",
+       "res": "П"
+      },
+      {
+       "date": "13.11",
+       "opp": "Динамо Минск",
+       "home": true,
+       "score": "1:4",
+       "res": "П"
+      },
+      {
+       "date": "11.11",
+       "opp": "Динамо Москва",
+       "home": true,
+       "score": "1:2 ОТ",
+       "res": "П"
+      }
+     ],
+     "points": 26,
+     "games": 26,
+     "place": "9 на Западе",
+     "gd": -4
+    }
+   },
+   "_z": "gLfx1mIxTJ40POfrfBb6eVQoNZmsdnADQvD1Qk3dtCMHisXgIDuCkLPF/DpKt4uu0xjL45SoNEAI2w2PvPIGWnhxrLakNnnp1aik9YntwuejNX9mghJFL0yDEOGEeROP90XpmC51JzcXoK3QHsB9RrcwNghpsF37mNDjXSPA7OXmmnxyREN/1yqfTQEMfEB69ENi3Z8Xpae6Zs8nLUj2KhazMGO1KGUd6dUo0y8p6mKfsvAZK12hlODFE8AhJKYAe+EF5gonEvU3zvEMcbNAiA1R2ORAS6RjEc0Ag7Xp6wYNVS6mm70xc+6N0itmNAE2qjA4P+bo/rYtKsDv5zUWLLhF8xgNaCHtZGAiHA1//tLOrr4="
+  }
+ ],
+ "all": [
+  {
+   "d": "2026-11-19 17:00",
+   "h": "Металлург",
+   "a": "Трактор"
+  },
+  {
+   "d": "2026-11-19 19:30",
+   "h": "Ак Барс",
+   "a": "Спартак"
+  },
+  {
+   "d": "2026-11-19 19:30",
+   "h": "Нефтехимик",
+   "a": "СКА"
+  }
+ ],
+ "yday": [
+  {
+   "d": "2026-11-18 16:30",
+   "h": "Авангард",
+   "a": "Адмирал",
+   "sc": "3:1"
+  },
+  {
+   "d": "2026-11-18 17:00",
+   "h": "Салават Юлаев",
+   "a": "Барыс",
+   "sc": "5:3"
+  },
+  {
+   "d": "2026-11-18 19:00",
+   "h": "Северсталь",
+   "a": "Сочи",
+   "sc": "4:2"
+  },
+  {
+   "d": "2026-11-18 19:30",
+   "h": "Шанхайские Драконы",
+   "a": "Амур",
+   "sc": "2:3 Б"
+  },
+  {
+   "d": "2026-11-18 19:30",
+   "h": "ЦСКА",
+   "a": "Локомотив",
+   "sc": "4:2"
+  }
+ ]
+}
