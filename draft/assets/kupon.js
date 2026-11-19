@@ -18,7 +18,7 @@ const fp=p=>p<=0?'0 %':p<.01?'меньше 1 %':p>.99&&p<1?'больше 99 %':M
 const fm=x=>Math.round(x).toLocaleString('ru-RU');
 const LEG=/^[a-z]+(:[\w.+-]+)+$/,ODD=s=>/^\d{1,3}([.,]\d{1,2})?$/.test(String(s))&&num(s)>1&&num(s)<=50;   /* событие и кэф из ссылки или памяти — только такого вида */
 const num=s=>{const v=parseFloat(String(s).replace(',','.'));return isFinite(v)?v:NaN};
-function oneIn(p){if(p<=0)return '';if(p>=.9)return 'по модели примерно '+Math.min(99,Math.round(p*100))+' раз из 100';const n=1/p;
+function oneIn(p){if(p<=0)return '';if(p>=.9)return 'почти наверняка';const n=1/p;
   if(n<1.8){const k=Math.round(p*10);return 'примерно '+k+' раз'+(k>1&&k<5?'а':'')+' из 10'}
   return 'примерно 1 раз из '+Math.round(n)}
 
@@ -28,7 +28,7 @@ const started=m=>tms(m)<=Date.now();
 const mskDay=ms=>new Date(ms+3*36e5).toISOString().slice(0,10);
 function dayName(d){const now=mskDay(Date.now()),tom=mskDay(Date.now()+864e5);
   const s=+d.slice(8)+' '+MON[+d.slice(5,7)-1];return d===now?'Сегодня, '+s:d===tom?'Завтра, '+s:s}
-const hm=m=>esc(String(m.t).slice(11));
+const hm=m=>m.t.slice(11);
 const dm=m=>m.t.slice(8,10)+'.'+m.t.slice(5,7);
 
 /* ---------- сетка счётов матча ---------- */
@@ -146,10 +146,8 @@ function markets(m){
 }
 
 /* ---------- состояние ---------- */
-/* купон хоккейный: футбольные матчи окна (они тоже в today.js) сюда не берём — иначе «undefined» вместо лиги и пустые эмблемы (19.11) */
-const HM=(T.matches||[]).filter(m=>m&&LG[m.lg]);
-const BY={};HM.forEach(m=>BY[m.key]=m);
-const S={legs:[],odds:{},stake:'1000',mode:'x',lg:'',day:'',open:{},sheet:false,look:8,ad:'',an:0};   /* ad — день для автоподбора ('' — все), an — сколько событий (0 — сам) */
+const BY={};T.matches.forEach(m=>BY[m.key]=m);
+const S={legs:[],odds:{},stake:'1000',mode:'x',lg:'',day:'',open:{},sheet:false,look:8};
 /* варианты оформления списка матчей (выбор владельца): 0 — подробные плашки, 1 — строки, 2 — плитки, 3 — спокойный */
 const LOOKS=['Подробный','Строки','Плитки','Спокойный','Цвет слева','Приглушённый','Цвет при выборе','По группам','Группы + цвет при выборе'];
 const EMBS=['Внахлёст','Лицом к лицу','С наклоном','Крупно, с обрезкой','Фоном','В кругах','Столкновение','По краям строки','Ступенькой','В столбик'];S.emb=3;
@@ -168,23 +166,19 @@ try{const v=new URLSearchParams(location.search).get('emb');if(/^[0-9]$/.test(v|
 try{const q=new URLSearchParams(location.search).get('look'),v=q;if(/^[0-8]$/.test(v||''))S.look=+v}catch(e){}
 function load(src){try{
   const d=typeof src==='string'?JSON.parse(src):src;if(!d)return;
-  S.legs=(Array.isArray(d.legs)?d.legs:[]).filter(l=>l&&BY[l.k]&&grid(l.k)&&typeof l.o==='string'&&LEG.test(l.o));
-  S.odds={};Object.entries(d.odds||{}).forEach(([k,v])=>{if(BY[k]&&ODD(v))S.odds[k]=String(v)});S.stake=/^\d{1,9}([.,]\d{1,2})?$/.test(String(d.stake))?String(d.stake):'1000';S.mode=d.mode==='s'?'s':'x';
+  S.legs=(d.legs||[]).filter(l=>BY[l.k]&&grid(l.k)&&typeof l.o==='string'&&LEG.test(l.o));
+  S.odds={};Object.entries(d.odds||{}).forEach(([k,v])=>{if(BY[k]&&ODD(v))S.odds[k]=String(v)});S.stake=d.stake||'1000';S.mode=d.mode==='s'?'s':'x';
 }catch(e){}}
 function dump(){return {legs:S.legs,odds:S.odds,stake:S.stake,mode:S.mode}}
 function keep(){try{localStorage.setItem(LS_CUR,JSON.stringify(dump()))}catch(e){}}
-function saved(){try{const v=JSON.parse(localStorage.getItem(LS_SAVED));return Array.isArray(v)?v.filter(s=>s&&typeof s==='object'&&typeof s.name==='string'&&typeof s.info==='string'&&s.data&&typeof s.data==='object').slice(0,12):[]}catch(e){return []}}
-/* перед заменой купона по ссылке (#k=, ?want) прежний купон не теряем — кладём в «Сохранённые» (аудит 19.11) */
-function stash(){if(!S.legs.length)return false;const sv=saved(),d=dump();const js=JSON.stringify(d);if(sv.some(s=>JSON.stringify(s.data)===js))return false;
-  sv.unshift({name:'Прежний купон · '+S.legs.length+' '+plural(S.legs.length,'событие','события','событий'),info:'сохранён перед открытием ссылки',data:d});
-  try{localStorage.setItem(LS_SAVED,JSON.stringify(sv.slice(0,12)));return true}catch(e){return false}}
+function saved(){try{return JSON.parse(localStorage.getItem(LS_SAVED))||[]}catch(e){return []}}
 /* ссылка на купон: #k=<ключ матча>~<событие>,<событие>@<кэф>;… */
 function toHash(){return 'k='+encodeURIComponent(byMatch().map(g=>g.key+'~'+g.ids.join(',')+(S.odds[g.key]?'@'+S.odds[g.key]:'')).join(';'))}
 function fromHash(){const h=location.hash.replace(/^#/,'');if(h.slice(0,2)!=='k=')return false;
   const legs=[],odds={};
   try{decodeURIComponent(h.slice(2)).split(';').forEach(part=>{const [key,rest]=part.split('~');if(!rest||!BY[key])return;
     const [ids,odd]=rest.split('@');ids.split(',').forEach(o=>{if(LEG.test(o))legs.push({k:key,o})});if(odd&&ODD(odd))odds[key]=odd})}catch(e){return false}
-  if(!legs.length)return false;if(JSON.stringify([legs,odds,'x'])!==JSON.stringify([S.legs.map(l=>({k:l.k,o:l.o})),S.odds,S.mode]))fromHash.kept=stash();load({legs,odds,stake:S.stake,mode:'x'});S.link=true;return true}
+  if(!legs.length)return false;load({legs,odds,stake:S.stake,mode:'x'});S.link=true;return true}
 
 function byMatch(){const out=[],ix={};
   S.legs.forEach(l=>{if(!(l.k in ix)){ix[l.k]=out.length;out.push({key:l.k,m:BY[l.k],ids:[]})}out[ix[l.k]].ids.push(l.o)});
@@ -264,11 +258,11 @@ function card(m){if(S.look)return card2(m);const mk=markets(m),open=!!S.open[m.k
     '<button type="button" class="kp-more" data-more="'+esc(m.key)+'" aria-expanded="'+open+'">'+(open?'Свернуть линию':'Вся линия: форы, тоталы команд, обе забьют')+'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>'+
     (open?'<div class="kp-all">'+mk.more.map(g=>mkt(m,g)).join('')+'</div>':'')+
   '</article>'}
-function visible(){return HM.filter(m=>grid(m.key)&&!started(m)&&(!S.lg||m.lg===S.lg)&&(!S.day||gameDay(m)===S.day))}
+function visible(){return T.matches.filter(m=>grid(m.key)&&!started(m)&&(!S.lg||m.lg===S.lg)&&(!S.day||gameDay(m)===S.day))}
 /* ночные матчи НХЛ относим к игровому дню накануне: «сегодня вечером и ночью» */
 function gameDay(m){return mskDay(tms(m)-9*36e5)}
 function paintList(){
-  const all=HM.filter(m=>grid(m.key)&&!started(m)),days=[...new Set(all.map(gameDay))].sort();
+  const all=T.matches.filter(m=>grid(m.key)&&!started(m)),days=[...new Set(all.map(gameDay))].sort();
   if(S.day&&!days.includes(S.day))S.day='';
   const lgs=[...new Set(all.map(m=>m.lg))];
   const chip=(a,v,t,cur)=>'<button type="button" data-'+a+'="'+v+'" aria-pressed="'+(cur===v)+'">'+t+'</button>';
@@ -285,7 +279,7 @@ function paintList(){
   const sw=(t,k,arr)=>'<div class="kp-looks kp-sw"><span>'+t+'</span>'+arr.map((n,i)=>'<button type="button" data-skin="'+k+'" data-v="'+i+'" aria-pressed="'+(S[k]===i)+'">'+n+'</button>').join('')+'</div>';
   if(VARIANTS)$('kp-filt').insertAdjacentHTML('beforeend',sw('Купон:','slip',SLIPS)+sw('Итог купона:','sum',SUMS)+sw('Фон:','bg',BGS));
   $('kp-list').innerHTML=h||'<p class="kp-empty">'+(all.length?'По этому фильтру матчей нет.':'Ближайшие матчи уже начались. Новые появятся после обновления данных — обычно утром и днём.')+'</p>';
-  $('kp-auto').hidden=!all.length;$('kp-filt').hidden=!VARIANTS;paintOpts();
+  $('kp-auto').hidden=!all.length;$('kp-filt').hidden=!VARIANTS;
 }
 const TG='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 3.2 2.9 10.4c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5ZM8.3 13.2l9.6-6c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-5Z"/></svg>';
 function paintSlip(){
@@ -315,7 +309,6 @@ function paintSlip(){
   const bar=$('kp-bar');bar.hidden=!c.n;
   if(c.n)bar.innerHTML='<span><b>Купон</b><em>'+c.events+'</em></span>'+(c.bad?'<span class="w">проверьте события</span>':S.mode==='x'?'<span>шанс <b>'+fp(c.p)+'</b></span><span>кэф <b>'+fk(c.k)+'</b></span>':'<span>ординары: <b>'+c.n+'</b></span>')+'<i>Открыть</i>';
   document.documentElement.classList.toggle('kp-open',S.sheet&&!!c.n);if(!c.n)S.sheet=false;
-  modal();
 }
 function paintSum(c){c=c||calc();const el=$('kp-sum');if(!el)return;el.style.setProperty('--p',Math.round((S.mode==='s'&&c.n>1?c.sAny:c.p)*100));
   const stake='<label class="kp-stake"><span>Сумма'+(S.mode==='s'&&c.n>1?' на каждую':'')+'</span><input type="text" inputmode="decimal" id="kp-stake" value="'+esc(S.stake)+'" aria-label="Сумма ставки"></label>';
@@ -336,21 +329,12 @@ function paint(){paintList();paintSlip()}
    n ≈ ln(кэф)/ln(1,5) событий с шансом около кэф^(−1/n) — по одному на матч; последнее событие добирает кэф как можно ближе к цели */
 const POOL=['r:1','r:2','w:1','w:2','dc:1x','dc:x2','dc:12','t:o:4.5','t:u:4.5','t:o:5.5','t:u:5.5','t:o:6.5','t:u:6.5','f:1:1.5','f:2:1.5','f:1:-1.5','f:2:-1.5','f:1:2.5','f:2:2.5',
   'it:1:o:1.5','it:2:o:1.5','it:1:o:2.5','it:2:o:2.5','it:1:u:2.5','it:2:u:2.5','it:1:u:3.5','it:2:u:3.5','b:y','ot:n'];
-/* строка выбора под полем кэфа: дни из загруженного списка и число событий 1–8 (владелец 19.11) */
-function paintOpts(){const all=HM.filter(m=>grid(m.key)&&!started(m)),days=[...new Set(all.map(gameDay))].sort();
-  if(S.ad&&!days.includes(S.ad))S.ad='';
-  const b=(k,v,t,on)=>'<button type="button" data-'+k+'="'+v+'" aria-pressed="'+on+'">'+t+'</button>';
-  $('kp-ad').innerHTML='<span>Дни:</span>'+b('ad','','Все',!S.ad)+days.map(d=>b('ad',d,esc(dayName(d).split(',')[0]),S.ad===d)).join('');
-  $('kp-ad').hidden=days.length<2;
-  $('kp-opts').hidden=!all.length}
 function auto(target){
-  const ms=visible().filter(m=>(!S.alg||m.lg===S.alg)&&(!S.ad||gameDay(m)===S.ad));if(!ms.length){toast('Нет матчей для подбора'+(S.alg?' '+LG[S.alg]:'')+(S.ad?' — '+dayName(S.ad).split(',')[0].toLowerCase():''));return}
+  const ms=visible().filter(m=>!S.alg||m.lg===S.alg);if(!ms.length){toast(S.alg?'Сейчас нет матчей '+LG[S.alg]+' для подбора':'Нет матчей для подбора');return}
   const opts=m=>POOL.map(id=>{const p=prob(m.key,[id]);return p>.03&&p<.97?{k:m.key,o:id,p,odd:lineOdd(m.key,id)||1/p}:null}).filter(Boolean);
   const all=ms.map(opts).filter(a=>a.length),maxOdd=o=>Math.max(...o.map(x=>x.odd));
   let n=Math.max(1,Math.min(all.length,8,Math.round(Math.log(target)/Math.log(1.5))));
   while(n<Math.min(all.length,8)&&Math.pow(target,1/n)>3.2)n++;
-  /* число событий задал посетитель: столько и берём (одно событие на матч), если матчей хватает */
-  let few='';if(S.an){n=Math.min(S.an,all.length);if(n<S.an)few='Матчей хватило только на '+n+' '+plural(n,'событие','события','событий')+'. '}
   const leg=Math.pow(target,1/n),legs=[];let k=1;
   /* среди событий с подходящим кэфом берём самое вероятное по модели, а не просто ближайшее по кэфу */
   const near=(o,t,lo,hi)=>{const ok=o.filter(x=>x.odd>=t*lo&&x.odd<=t*hi);return ok.length?ok.reduce((a,b)=>b.p>a.p?b:a):o.reduce((a,b)=>Math.abs(Math.log(b.odd/t))<Math.abs(Math.log(a.odd/t))?b:a)};
@@ -360,14 +344,10 @@ function auto(target){
   let last=null;rest.forEach(r=>{const x=near(r.o,target/k,.96,1.1),in1=x.odd>=target/k*.96&&x.odd<=target/k*1.1,d=in1?-x.p:1+Math.abs(Math.log(k*x.odd/target));if(!last||d<last.d)last={x,d}});
   if(last){legs.push(last.x);k*=last.x.odd}
   S.legs=legs.map(l=>({k:l.k,o:l.o}));S.odds={};S.mode='x';keep();paint();
-  toast(few+(k<target*.9&&!few?'Матчей мало: получился кэф '+fk(k)+' вместо '+fk(target):'Собран '+(legs.length>1?'экспресс из '+legs.length+' '+plural(legs.length,'события','событий','событий'):'ординар')+' с кэфом '+fk(k)));
-  if(matchMedia('(max-width:1023px)').matches)openSheet(document.activeElement)
+  toast(k<target*.9?'Матчей мало: получился кэф '+fk(k)+' вместо '+fk(target):'Собран '+(legs.length>1?'экспресс из '+legs.length+' '+plural(legs.length,'события','событий','событий'):'ординар')+' с кэфом '+fk(k));
+  if(matchMedia('(max-width:1023px)').matches){S.sheet=true;paintSlip()}
 }
-function autoGo(){const ai=$('kp-an'),av=ai?ai.value.trim():'';
-  /* число событий: пусто — модель решает сама; иначе целое 1–15 */
-  if(av&&!/^\d{1,2}$/.test(av)||av&&(+av<1||+av>15)){toast('Событий — от 1 до 15 или оставьте пустым');ai.focus();return}
-  S.an=av?+av:0;
-  const i=$('kp-want'),v=num(i.value);
+function autoGo(){const i=$('kp-want'),v=num(i.value);
   if(!(v>=1.2&&v<=500)){toast('Введите кэф от 1,2 до 500');i.focus();return}
   auto(v)}
 const plural=(n,a,b,c)=>n%10===1&&n%100!==11?a:n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?b:c;
@@ -417,42 +397,26 @@ function save(){const c=calc(),sv=saved(),d=new Date();
     info:('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+' · '+(S.mode==='x'||c.n<2?'кэф '+fk(c.k)+' · шанс '+fp(c.p):c.G.map(g=>g.m.hn).join(', ')),data:dump()});
   try{localStorage.setItem(LS_SAVED,JSON.stringify(sv.slice(0,12)));toast('Купон сохранён на этом устройстве')}catch(e){toast('Не удалось сохранить')}paintSlip()}
 
-/* мобильный лист купона (аудит 19.11, круг 3): одно открытие для полоски и автоподбора — фокус внутрь, удержание (Tab выше), возврат туда, откуда открыли */
-/* узкий экран: открытый лист — модальное окно для экранного диктора (role=dialog, aria-modal), всё вокруг — inert (аудит 19.11, круг 4) */
-const NARROW=matchMedia('(max-width:1023px)');
-function modal(){const sl=$('kp-slip');if(!sl)return;const on=document.documentElement.classList.contains('kp-open')&&NARROW.matches;
-  if(on){sl.setAttribute('role','dialog');sl.setAttribute('aria-modal','true')}else{sl.removeAttribute('role');sl.removeAttribute('aria-modal')}
-  if(on){for(let n=sl;n&&n!==document.body;n=n.parentElement)for(const x of n.parentElement.children)if(x!==n&&x.tagName!=='SCRIPT'&&!x.inert){x.inert=true;x.dataset.kpInert='1'}}
-  else document.querySelectorAll('[data-kp-inert]').forEach(x=>{x.inert=false;delete x.dataset.kpInert})}
-try{NARROW.addEventListener('change',modal)}catch(e){}
-let sheetFrom=null;
-function openSheet(from){sheetFrom=from&&from!==document.body?from:null;S.sheet=true;paintSlip();/* сначала «Закрыть»: Enter не должен попасть на «Очистить» */const sl=$('kp-slip'),f=sl.querySelector('[data-act="close"]')||sl.querySelector('button:not([data-act="clear"]),input');if(f)setTimeout(()=>{try{f.focus({preventScroll:true})}catch(x){}},0)}
-function closeSheet(){S.sheet=false;paintSlip();const to=sheetFrom&&sheetFrom.isConnected?sheetFrom:$('kp-bar');sheetFrom=null;try{if(to&&!to.hidden)to.focus({preventScroll:true})}catch(x){}}
 /* ---------- события интерфейса ---------- */
-/* перерисовка списка заменяет кнопки — возвращаем фокус на такую же кнопку (клавиатура, аудит 19.11) */
-function refocus(b){if(b.isConnected)return;try{const ar=b.closest('[data-key]'),k=ar&&ar.dataset.key;
-  const at=[...b.attributes].filter(x=>/^data-/.test(x.name)).map(x=>'['+x.name+'="'+CSS.escape(x.value)+'"]').join('');if(!at)return;
-  const n=document.querySelector((k?'[data-key="'+CSS.escape(k)+'"] ':'')+'button'+at);if(n)n.focus({preventScroll:true})}catch(e){}}
 document.addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;const d=b.dataset;
-  if(d.o&&d.k){toggle(d.k,d.o);refocus(b);return}
+  if(d.o&&d.k){toggle(d.k,d.o);return}
   if(d.skin){S[d.skin]=+d.v;try{localStorage.setItem('jv_kupon_'+d.skin,d.v)}catch(x){}skin();paintList();return}
-  if(d.fold){FOLD[d.fold]=!FOLD[d.fold];paintList();refocus(b);return}
-  if(d.more){S.open[d.more]=!S.open[d.more];paintList();refocus(b);return}
+  if(d.fold){FOLD[d.fold]=!FOLD[d.fold];paintList();return}
+  if(d.more){S.open[d.more]=!S.open[d.more];paintList();return}
   if('look' in d){S.look=+d.look;try{localStorage.setItem('jv_kupon_look',d.look)}catch(x){}paintList();return}
   if('emb' in d){S.emb=+d.emb;try{localStorage.setItem('jv_kupon_emb',d.emb)}catch(x){}paintList();return}
-  if('lg' in d){S.lg=d.lg;paintList();refocus(b);return}
-  if('day' in d){S.day=d.day;paintList();refocus(b);return}
+  if('lg' in d){S.lg=d.lg;paintList();return}
+  if('day' in d){S.day=d.day;paintList();return}
   if(d.act==='auto'){autoGo();return}
-  if('ad' in d&&b.closest('#kp-ad')){S.ad=d.ad;paintOpts();refocus(b);return}
   if(d.alg){S.alg=S.alg===d.alg?'':d.alg;document.querySelectorAll('[data-alg]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.alg===S.alg));$('kp-alg-n').textContent=S.alg?'только '+LG[S.alg]:'КХЛ и НХЛ вместе';return}
   if(d.mode){S.mode=d.mode;keep();paintSlip();return}
   if(d.load){const s=saved()[+d.load];if(s){load(s.data);keep();paint();toast(S.legs.length?'Купон загружен':'Матчи этого купона уже сыграны')}return}
   if(d.del){const sv=saved();sv.splice(+d.del,1);try{localStorage.setItem(LS_SAVED,JSON.stringify(sv))}catch(x){}paintSlip();return}
-  if(b.id==='kp-bar'){openSheet(b);return}
+  if(b.id==='kp-bar'){S.sheet=true;paintSlip();return}
   switch(d.act){
     case 'clear':S.legs=[];S.odds={};S.link=false;keep();paint();break;
-    case 'close':closeSheet();break;
+    case 'close':S.sheet=false;paintSlip();break;
     case 'tg':telegram();break;case 'copy':copy();break;case 'img':image();break;case 'save':save();break}
 });
 document.addEventListener('input',e=>{const t=e.target;
@@ -463,14 +427,11 @@ function refreshNumbers(c){const st=$('kp-stake'),pos=st&&document.activeElement
   paintSum(c);if(pos!==null){const n=$('kp-stake');n.focus();try{n.setSelectionRange(pos,pos)}catch(e){}}
   c.G.forEach(g=>{const i=document.querySelector('input[data-odd="'+CSS.escape(g.key)+'"]'),s=i&&i.closest('li').querySelector('.kp-src');
     if(s)s.textContent=g.user?'ваш кэф':g.isLine?'кэф из линии':'расчётный кэф по модели — впишите свой'})}
-document.addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.target.id==='kp-want'||e.target.id==='kp-an')){e.preventDefault();autoGo();return}if(e.key==='Escape'&&S.sheet){closeSheet();return}
-  /* открытый мобильный лист: Tab и Shift+Tab ходят только внутри него */
-  if(e.key==='Tab'&&S.sheet&&document.documentElement.classList.contains('kp-open')){const f=[...$('kp-slip').querySelectorAll('button,input,a[href],select,textarea')].filter(x=>!x.disabled&&x.offsetParent);if(!f.length)return;
-    const i=f.indexOf(document.activeElement);if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&(i===-1||i===f.length-1)){e.preventDefault();f[0].focus()}}});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='kp-want'){autoGo();return}if(e.key==='Escape'&&S.sheet){S.sheet=false;paintSlip()}});
 
 /* ---------- запуск ---------- */
 try{load(localStorage.getItem(LS_CUR))}catch(e){}
-if(fromHash()){keep();history.replaceState(null,'',location.pathname+location.search);if(fromHash.kept)setTimeout(()=>toast('Прежний купон — в «Сохранённых»'),400)}
+if(fromHash()){keep();history.replaceState(null,'',location.pathname+location.search)}
 if(T.built)$('kp-upd').textContent='Данные обновлены '+T.built.slice(8,10)+'.'+T.built.slice(5,7)+' в '+T.built.slice(11)+' МСК.';
 /* в поле кэфа — случайный пример, новый при каждом открытии страницы (владелец 15.11) */
 try{$('kp-want').placeholder=fk([1.6,1.8,2,2.2,2.4,2.7,3,3.5,4,4.5,5,6,7.5][Math.floor(Math.random()*13)]).replace(/,00$/,'').replace(/(,\d)0$/,'$1')}catch(e){}
@@ -479,7 +440,7 @@ skin();
 let FOCUS='';try{const k=new URLSearchParams(location.search).get('m');if(k&&BY[k]&&!started(BY[k])){S.open[k]=true;FOCUS=k}}catch(e){}
 paint();
 /* вход с баннера «Не знаете, на что поставить?»: kupon.html?want=3 — купон на этот кэф собирается сразу (владелец 18.11) */
-try{const w=num(new URLSearchParams(location.search).get('want')||'');if(w>=1.2&&w<=500){$('kp-want').value=fk(w).replace(/,00$/,'');const kept=stash();auto(w);if(kept)setTimeout(()=>toast('Прежний купон — в «Сохранённых»'),2700);history.replaceState(null,'',location.pathname+location.hash)}}catch(e){}
+try{const w=num(new URLSearchParams(location.search).get('want')||'');if(w>=1.2&&w<=500){$('kp-want').value=fk(w).replace(/,00$/,'');auto(w);history.replaceState(null,'',location.pathname+location.hash)}}catch(e){}
 if(FOCUS){const el=document.querySelector('.kp-m[data-key="'+CSS.escape(FOCUS)+'"]');if(el)setTimeout(()=>el.scrollIntoView({block:'start'}),60)}
 setInterval(()=>{if(!document.hidden&&!document.activeElement.matches('input'))paint()},6e4);
 })();
