@@ -1,0 +1,129 @@
+/* JARVIS v3a — оформление Лиги чемпионов (data-theme="ucl") и Лиги Европы (data-theme="uel"): ночной тёмно-синий, серебро и белый,
+   звёздное небо (assets/ucl-sky.js), крупный знак турнира на фоне, карточки — тёмное стекло с серебряной кромкой. Без свечений у курсора. */
+[data-theme="ucl"]{
+  --paper:#081539; --paper-2:#102257; --paper-3:#192e6c; --card:#0d1d4c; --card-hi:#14285f;
+  --ink:#f4f7ff; --ink-2:#c9d4ee; --ink-3:#a3b5da; --rule:#26407f; --rule-2:#94a9d8;
+  --board:#050c26; --flap:#0f1d4a; --flap-2:#0a1538; --flap-ink:#f4f7ff;
+  --signal:#ffc21a; --signal-ink:#1a1400;
+  --ice:#5fd8ff; --sport:#5fd8ff; --pitch:#5fd8ff; --mag:#ff3fa4; --cy:#19d9ff; --red:#ff7f8b; --win:#46d68e; --win-ink:#03200f; --loss-ink:#2b0409; --sport-ink:#04122e;
+  --crest-bg:#eef3fa; --crest-pad:1; --shadow:rgba(0,0,0,.55); --grain-blend:overlay; --grain-op:.2;
+  --fld:rgba(170,195,240,.10); --fld-2:rgba(170,195,240,.04); --fld-pitch:rgba(127,208,255,.03);
+  --fld-red:rgba(255,127,139,.25); --fld-blue:rgba(156,200,255,.25); --fld-run:rgba(156,200,255,.2); --fld-run2:rgba(255,194,26,.14);
+  --glass:rgba(10,24,64,.62); --edge:rgba(160,196,255,.34); --team:#5fd8ff;
+  color-scheme:dark}
+[data-theme="uel"]{
+  --paper:#0e0b08; --paper-2:#1b150f; --paper-3:#2b2217; --card:#16110c; --card-hi:#201912;
+  --ink:#f8f1e8; --ink-2:#dccdb9; --ink-3:#b9a78f; --rule:#3d2d1c; --rule-2:#d49a5a;
+  --board:#070503; --flap:#1c140c; --flap-2:#130d07; --flap-ink:#f8f1e8;
+  --signal:#ffc21a; --signal-ink:#1a1400;
+  --ice:#ffa04a; --sport:#ffa04a; --pitch:#ffa04a; --red:#ff8a7a; --win:#46d68e; --win-ink:#03200f; --loss-ink:#2b0409; --sport-ink:#1a0d00;
+  --crest-bg:#f4efe8; --crest-pad:1; --shadow:rgba(0,0,0,.6); --grain-blend:overlay; --grain-op:.2;
+  --fld:rgba(255,160,74,.08); --fld-2:rgba(255,160,74,.03); --fld-pitch:rgba(255,160,74,.02);
+  --fld-red:rgba(255,138,122,.25); --fld-blue:rgba(255,160,74,.22); --fld-run:rgba(255,160,74,.18); --fld-run2:rgba(255,194,26,.12);
+  --glass:rgba(24,17,10,.66); --edge:rgba(214,170,120,.34); --team:#ffa04a;
+  color-scheme:dark}
+[data-theme="ucl"] body{background:radial-gradient(120% 70% at 85% 0%,#0f2a78 0%,rgba(15,42,120,0) 60%),linear-gradient(180deg,#0b1a4a 0%,#06102e 100%) fixed #06102e;color:var(--ink)}
+[data-theme="uel"] body{background:radial-gradient(110% 60% at 90% 0%,#3a1e08 0%,rgba(58,30,8,0) 60%),linear-gradient(180deg,#14100b 0%,#080604 100%) fixed #080604;color:var(--ink)}
+[data-theme="ucl"] .arena-bg,[data-theme="uel"] .arena-bg{display:none}
+/* небо и знак турнира: фиксированный слой под содержимым */
+.ucl-deco{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
+.ucl-deco svg{position:absolute;inset:0;width:100%;height:100%}
+.ucl-deco .lgbig{position:absolute;right:-9vw;top:4vh;height:min(104vh,980px);width:auto;max-width:none;opacity:.10;transform:rotate(-8deg)}
+[data-theme="uel"] .ucl-deco .lgbig{opacity:.12}
+/* шапка и полоса матчей */
+[data-theme="ucl"] .hd,[data-theme="uel"] .hd{background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--edge)}
+[data-theme="ucl"] .ticker,[data-theme="uel"] .ticker{background:rgba(4,10,30,.7);border-color:var(--edge)}
+[data-theme="uel"] .ticker{background:rgba(8,6,4,.75)}
+/* первый экран: без арены, табло на тёмном стекле */
+[data-theme="ucl"] .hero,[data-theme="uel"] .hero{background:none}
+[data-theme="ucl"] .hero h1 .ln:last-child{color:#c7defc}
+[data-theme="uel"] .hero h1 .ln:last-child{color:var(--ice)}
+[data-theme="ucl"] .hero .board,[data-theme="uel"] .hero .board{background:var(--glass);backdrop-filter:blur(10px);box-shadow:0 0 0 1px var(--edge),0 30px 70px -30px #000}
+/* тёмное стекло с серебряной кромкой */
+[data-theme="ucl"] :is(.match,.st,.formbox,.hg,.dvc,.tr,.nmatch,.nmh2h,.plead li,.resl li,.hv>div,.gsum li,.tmpower,.tmtable,.ltab,.cmpw,.pkempty,.faq details,.gs>li,.tmpills li),
+[data-theme="uel"] :is(.match,.st,.formbox,.hg,.dvc,.tr,.nmatch,.nmh2h,.plead li,.resl li,.hv>div,.gsum li,.tmpower,.tmtable,.ltab,.cmpw,.pkempty,.faq details,.gs>li,.tmpills li){
+  background:var(--glass);border:1px solid var(--edge);backdrop-filter:blur(6px)}
+[data-theme="ucl"] .qc,[data-theme="uel"] .qc{background:rgba(255,255,255,.06);border-color:var(--edge)}
+[data-theme="ucl"] .qc b,[data-theme="uel"] .qc b{color:var(--ink)}
+[data-theme="ucl"] .match .qc.fav{background:#2a5bd6;border-color:#8fb4ff;box-shadow:inset 0 -3px 0 #cfe0ff}
+[data-theme="uel"] .match .qc.fav{background:#d9590a;border-color:#ffb27a;box-shadow:inset 0 -3px 0 #ffd2b0}
+[data-theme="ucl"] .tab,[data-theme="uel"] .tab{background:rgba(255,255,255,.07);color:var(--ink)}
+[data-theme="ucl"] .tab[aria-selected="true"],[data-theme="uel"] .tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+[data-theme="ucl"] .sec-head h2,[data-theme="uel"] .sec-head h2{color:var(--ink)}
+[data-theme="ucl"] .ltab,[data-theme="uel"] .ltab{background:var(--glass)}
+[data-theme="ucl"] .ltab th,[data-theme="uel"] .ltab th{border-bottom-color:var(--rule-2)}
+[data-theme="ucl"] .ltab tr.z1 td:first-child{box-shadow:inset 4px 0 0 #7fd0ff}[data-theme="ucl"] .ltab tr.z2 td:first-child{box-shadow:inset 4px 0 0 #c9d4ee}[data-theme="ucl"] .ltab tr.z4 td:first-child{box-shadow:inset 4px 0 0 #ff7f8b}
+[data-theme="uel"] .ltab tr.z1 td:first-child{box-shadow:inset 4px 0 0 #ffa04a}[data-theme="uel"] .ltab tr.z2 td:first-child{box-shadow:inset 4px 0 0 #dccdb9}[data-theme="uel"] .ltab tr.z4 td:first-child{box-shadow:inset 4px 0 0 #ff8a7a}
+[data-theme="ucl"] .btn-ink,[data-theme="uel"] .btn-ink{background:var(--ink);color:var(--paper)}
+[data-theme="ucl"] .btn-line,[data-theme="uel"] .btn-line{box-shadow:inset 0 0 0 2px var(--rule-2);color:var(--ink)}
+[data-theme="ucl"] .sub,[data-theme="uel"] .sub{background:rgba(4,10,30,.7)}
+[data-theme="ucl"] footer,[data-theme="uel"] footer{background:rgba(4,10,30,.6)}
+/* страница клуба: шапка — ночной градиент, а не цвета клуба */
+body.ctx-cup .tmhero.hero{background:linear-gradient(120deg,#0b1a4a 0%,#081340 55%,#06102e 100%)}
+[data-theme="uel"] body.ctx-cup .tmhero.hero{background:linear-gradient(120deg,#2a1608 0%,#150d06 60%,#0a0704 100%)}
+body.ctx-cup .tmhero::before{background:linear-gradient(90deg,#9cc8ff 0 64%,#ffffff 64%)}
+[data-theme="uel"] body.ctx-cup .tmhero::before{background:linear-gradient(90deg,#ff8a1f 0 64%,#ffffff 64%)}
+/* переключатель контекста в шапке клуба */
+.ctxsw{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px;padding:0;list-style:none}
+.ctxsw a{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 8px;border-radius:var(--rp,999px);text-decoration:none;font:700 15px/1 var(--display);color:var(--con,#fff);background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.28);transition:background .2s ease}
+.ctxsw a:hover{background:rgba(255,255,255,.2)}
+.ctxsw a[aria-current="page"]{background:#fff;color:#0a1b30;box-shadow:none}
+.ctxsw small{font:600 13px/1 var(--display);opacity:.8}
+.ctxsw .lgp{--s:18px}
+.eloline{margin:10px 0 0;font:600 15px/1.3 var(--display);color:var(--ink-2)}
+.eloline b{font:800 22px/1 var(--display);color:var(--ink);font-variant-numeric:tabular-nums;margin-right:4px}
+.eloline small{display:block;margin-top:4px;font:500 12px/1.3 var(--display);color:var(--ink-3)}
+.fewn{display:inline-block;margin-left:8px;font:700 12px/1 var(--display);letter-spacing:.04em;text-transform:uppercase;padding:4px 7px;border-radius:4px;background:var(--paper-3);color:var(--ink-2);vertical-align:middle}
+
+/* ── ЛЧ: фирменный ритм — тёмный первый экран, светлые «газетные» секции, полоса из цветов турнира, тёмный финал ── */
+[data-theme="ucl"] .hero h1 .ln:last-child{color:#6fe3ff}
+[data-theme="ucl"] .hero .board::before,[data-theme="ucl"] body.ctx-cup .tmpower::before{content:"";position:absolute;left:18px;right:18px;top:-1px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#19d9ff 30%,#ff3fa4 70%,transparent)}
+[data-theme="ucl"] body.ctx-cup .tmpower{position:relative}
+[data-theme="ucl"] body.ctx-cup .tmhero::before{background:linear-gradient(90deg,#19d9ff 0 40%,#ff3fa4 40% 64%,#fff 64%)}
+.lt,.band{position:relative}
+[data-theme="ucl"] .lt{--paper:#f4f7fc;--paper-2:#e4ecf8;--paper-3:#d3dff2;--card:#ffffff;--card-hi:#ffffff;--ink:#0a1b3d;--ink-2:#2a3d66;--ink-3:#46597f;--rule:#cdd8ec;--rule-2:#0a1b3d;
+  --glass:#ffffff;--edge:#cbd6ea;--ice:#0a4fd0;--sport:#0a4fd0;--team:#1747c9;--win:#0c7a43;--red:#c4303b;--signal:#ffc21a;
+  background:#f4f7fc;color:var(--ink)}
+[data-theme="ucl"] .lt :is(.match,.st,.formbox,.hg,.dvc,.tr,.nmatch,.nmh2h,.plead li,.resl li,.hv>div,.gsum li,.tmpower,.tmtable,.ltab,.cmpw,.pkempty,.gs>li,.tmpills li){backdrop-filter:none;box-shadow:0 1px 0 rgba(10,27,61,.04)}
+[data-theme="ucl"] .lt .qc{background:#fff;border-color:var(--rule)}
+[data-theme="ucl"] .lt .qc b{color:var(--ink)}
+[data-theme="ucl"] .lt .tab{background:#e4ecf8;color:var(--ink)}
+[data-theme="ucl"] .lt .tab[aria-selected="true"]{background:#0a1b3d;color:#fff}
+[data-theme="ucl"] .lt .btn-line{box-shadow:inset 0 0 0 2px #0a1b3d;color:#0a1b3d}
+[data-theme="ucl"] .lt .btn-ink{background:#0a1b3d;color:#fff}
+[data-theme="ucl"] .lt .ltab,[data-theme="ucl"] .lt table{background:#fff}
+[data-theme="ucl"] .lt tr.z1>td,[data-theme="ucl"] .lt .ltab tr.z1 td{background:rgba(30,100,240,.10)}
+[data-theme="ucl"] .lt tr.z2>td{background:rgba(0,190,235,.13)}
+[data-theme="ucl"] .lt tr.z4>td{background:rgba(120,130,150,.16)}
+[data-theme="ucl"] .lt tr.me>td{background:#0a2a8f;color:#fff}
+[data-theme="ucl"] .lt .bar i,[data-theme="ucl"] .lt .hb{background:linear-gradient(180deg,#19c8ff,#1747c9)}
+[data-theme="ucl"] .lt .trd i.y{background:#1747c9;border-color:#1747c9}
+[data-theme="ucl"] .lt .lkey{color:var(--ink-3)}
+[data-theme="ucl"] .lt .crest span{color:var(--ink-2)}
+[data-theme="ucl"] .band{--ink:#fff;--ink-2:#fff;--ink-3:#fde8f4;color:#fff;
+  background:linear-gradient(112deg,#0a2a8f 0%,#3b22a8 50%,#b0007a 100%)}
+[data-theme="ucl"] .band::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,#19d9ff,#ff3fa4)}
+[data-theme="ucl"] .sub.band li span{color:#fff}
+[data-theme="ucl"] .band .nmatch{background:rgba(6,16,46,.55)}
+/* ── ЛЕ: тот же ритм в оранжево-чёрных цветах ── */
+[data-theme="uel"] .lt{--paper:#fbf7f2;--paper-2:#f1e7da;--paper-3:#e4d4c0;--card:#ffffff;--card-hi:#ffffff;--ink:#1a120a;--ink-2:#4a3a2a;--ink-3:#6a5640;--rule:#e3d5c2;--rule-2:#1a120a;
+  --glass:#ffffff;--edge:#e3d5c2;--ice:#b34700;--sport:#b34700;--team:#c2500a;--win:#0c7a43;--red:#b3261e;background:#fbf7f2;color:var(--ink)}
+[data-theme="uel"] .lt :is(.match,.st,.formbox,.hg,.dvc,.tr,.nmatch,.nmh2h,.plead li,.resl li,.hv>div,.gsum li,.tmpower,.tmtable,.ltab,.cmpw,.pkempty,.gs>li,.tmpills li){backdrop-filter:none}
+[data-theme="uel"] .lt .qc{background:#fff;border-color:var(--rule)}[data-theme="uel"] .lt .qc b{color:var(--ink)}
+[data-theme="uel"] .lt .tab{background:#f1e7da;color:var(--ink)}[data-theme="uel"] .lt .tab[aria-selected="true"]{background:#1a120a;color:#fff}
+[data-theme="uel"] .lt .btn-line{box-shadow:inset 0 0 0 2px #1a120a;color:#1a120a}[data-theme="uel"] .lt .btn-ink{background:#1a120a;color:#fff}
+[data-theme="uel"] .lt .ltab,[data-theme="uel"] .lt table{background:#fff}
+[data-theme="uel"] .lt tr.z1>td{background:rgba(255,130,30,.14)}[data-theme="uel"] .lt tr.z2>td{background:rgba(255,200,120,.2)}[data-theme="uel"] .lt tr.z4>td{background:rgba(120,110,100,.16)}
+[data-theme="uel"] .lt tr.me>td{background:#1a120a;color:#fff}
+[data-theme="uel"] .lt .trd i.y{background:#c2500a;border-color:#c2500a}
+[data-theme="uel"] .band{--ink:#fff;--ink-2:#fff;--ink-3:#ffe9d6;color:#fff;background:linear-gradient(112deg,#120b05 0%,#7a3205 50%,#c24a00 100%)}
+[data-theme="uel"] .band::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,#ff8a1f,#fff)}
+[data-theme="uel"] .band .nmatch{background:rgba(10,6,3,.55)}
+.ucl-deco .ball{position:absolute;right:-12vw;top:2vh;height:min(110vh,1000px);width:auto;max-width:none;transform:rotate(-10deg)}
+[data-theme="ucl"] .lt .match .qc.fav,[data-theme="uel"] .lt .match .qc.fav{color:#fff}
+[data-theme="ucl"] .lt .match .qc.fav b,[data-theme="uel"] .lt .match .qc.fav b{color:#fff}
+[data-theme="ucl"] .lt .match .qc.fav small,[data-theme="ucl"] .lt .match .qc.fav em,[data-theme="uel"] .lt .match .qc.fav small,[data-theme="uel"] .lt .match .qc.fav em{color:rgba(255,255,255,.88)}
+/* «ЧЕМПИОНОВ» целиком на широком экране (было «ЧЕМП-ИОНОВ» от 1440 px): колонка ~680 px, слово ≈ 6,65 em (09.11) */
+@media (min-width:1367px){body[data-only="ucl"] .hero h1{font-size:100px}}
+/* ЛЧ на телефоне: подпись табло длинная и всегда в две строки — место сразу, без сдвига (аудит 09.11, CLS 0,137) */
+@media (max-width:620px){body[data-only="ucl"] .board-top{min-height:45px;align-content:flex-start}}

@@ -1,0 +1,35 @@
+/* JARVIS v3a — «Что дальше» в конце страницы (задание 14.11, п. 8): один понятный следующий шаг вместо голого подвала.
+   Ближайший матч (того же вида спорта и лиги, если она открыта) → «Матчи дня»; и «Прогноз на сегодня».
+   Подключает footer.js на страницах лиг, трендов, игроков, клубов, итогов. Данные — data/today.js (грузится сам, если его нет). */
+(()=>{
+const SRC=(document.currentScript&&document.currentScript.src)||new URL('assets/next.js',location.href).href;
+const U=p=>new URL('../'+p,SRC).href;
+/* ближайший матч ведёт на страницу этого матча (владелец 17.11), а не в «Выбрать матч»; в черновике страницы может не быть —
+   data-ml: та же страница на основном сайте (обработчик в v3a.js) */
+const mrel=m=>(window.JV&&JV.matchPage&&m&&m.lg&&m.t&&m.h&&m.a)?JV.matchPage('',m.lg,m.t,m.h,m.a):'';
+const mhref=m=>{const r=mrel(m);return r?U(r):U('matches.html'+(sport?'?s='+(sport==='hockey'?'h':'f'):''))};
+const mml=m=>{const r=mrel(m);return r?' data-ml="'+esc(location.origin+'/'+r)+'"':''};
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+const sport=document.documentElement.dataset.sport||'';
+const lgq=new URLSearchParams(location.search).get('lg')||(location.pathname.match(/\/(khl|nhl|epl|laliga|seriea|bundesliga|ligue1|rpl|ucl|uel)\//)||[])[1]||'';
+const LG={khl:'КХЛ',nhl:'НХЛ',epl:'АПЛ',laliga:'Ла Лига',seriea:'Серия А',bundesliga:'Бундеслига',ligue1:'Лига 1',rpl:'РПЛ',ucl:'Лига чемпионов',uel:'Лига Европы'};
+const isH=lg=>lg==='khl'||lg==='nhl';
+const fc=sport==='hockey'?(lgq==='nhl'?'hockey/forecast-nhl.html':'hockey/forecast-khl.html'):sport==='football'?'football/forecast-'+(LG[lgq]&&!isH(lgq)&&lgq!=='ucl'&&lgq!=='uel'?lgq:'epl')+'.html':'forecast.html';
+/* 17.11: эмблемы клубов рядом с названиями в «Ближайшем матче» (хоккей — assets/em/s, футбол — assets/fc) */
+const logo=(m,id)=>id&&/^[\w-]+$/.test(id)?`<img src="${esc(U((isH(m.lg)?'assets/em/s/':'assets/fc/')+id+'.webp'))}" alt="" width="40" height="40" loading="lazy" onerror="this.remove()">`:'';
+function draw(){
+ const T=window.JV_TODAY||{},now=Date.now(),at=t=>Date.parse(String(t).replace(' ','T')+':00+03:00');
+ let L=(T.matches||[]).filter(m=>at(m.t)>now-15*60e3).sort((a,b)=>a.t<b.t?-1:1);
+ if(sport)L=L.filter(m=>sport==='hockey'?isH(m.lg):!isH(m.lg));
+ const inLg=lgq?L.filter(m=>m.lg===lgq):[];const m=(inLg.length?inLg:L)[0];
+ const MSK=new Date(now+3*36e5).toISOString().slice(0,10),tm=new Date(now+27*36e5).toISOString().slice(0,10);
+ const when=m?(m.t.slice(0,10)===MSK?'сегодня':m.t.slice(0,10)===tm?'завтра':+m.t.slice(8,10)+'.'+m.t.slice(5,7))+', '+m.t.slice(11,16)+' МСК':'';
+ const s=document.createElement('section');s.className='nxs';s.setAttribute('aria-labelledby','nxs-h');
+ s.innerHTML=`<div class="wrap"><h2 id="nxs-h">Что дальше</h2><div class="nxs-g">
+  ${m?`<a class="nxs-m" href="${esc(mhref(m))}"${mml(m)}><small>Ближайший матч · ${esc(LG[m.lg]||'')}</small><b class="nxs-vs"><span>${logo(m,m.h)}${esc(m.hn)}</span><i aria-hidden="true">—</i><span>${esc(m.an)}${logo(m,m.a)}</span></b><span>${esc(when)} · расчёт модели →</span></a>`:''}
+  <a class="nxs-f" href="${esc(U(fc))}"><small>Списком</small><b>Прогноз на сегодня</b><span>все матчи дня с выводом модели →</span></a></div></div>`;
+ const f=document.querySelector('footer.jvf')||document.querySelector('footer');(f&&f.parentNode?f.parentNode.insertBefore(s,f):document.body.appendChild(s))}
+try{const l=document.createElement('link');l.rel='stylesheet';l.href=new URL('next.css',SRC).href;document.head.appendChild(l)}catch(e){}
+const go=()=>{if(window.JV_TODAY)return draw();const sc=document.createElement('script');sc.src='/data/today.js';sc.onload=sc.onerror=draw;document.head.appendChild(sc)};
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',go):go();
+})();

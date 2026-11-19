@@ -1,0 +1,137 @@
+/* фото КХЛ без белого фона (черновик 14.11): адрес khl.ru -> hockey/data/kph/<папка>_<номер>.webp (hockey/khl_cut.py) */
+window.JV_KPH=window.JV_KPH||(S=>u=>{if(!window.JV_KPH_ON)return u;const m=/khl\.ru\/img\/teamplayers_db\/(\d+)\/(\d+)\.jpg/.exec(u||'');return m&&S?new URL('../hockey/data/kph/'+m[1]+'_'+m[2]+'.webp',S).href:u})(document.currentScript&&document.currentScript.src);
+/* JARVIS v3a — страница хоккейной лиги: hockey/league.html?lg=<khl|nhl>.
+   Данные: assets/data/teams.js (таблица), hockey/data/lgp_<лига>.json (матчи сезона и итоги игроков, режет daily/split.py). Время матчей московское. Без кэфов и ставок. */
+(()=>{
+'use strict';
+const D=window.JV_TEAMS||{teams:{}};
+const $=id=>document.getElementById(id);
+const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+const plural=(n,a,b,c)=>{const k=n%100,j=n%10;return k>10&&k<20?c:j===1?a:j>1&&j<5?b:c};
+const f1=(v,d=1)=>(+v).toFixed(d).replace('.',',');
+const LGS={khl:{name:'КХЛ',full:'Континентальная хоккейная лига',gm:68,conf:['Запад','Восток'],json:'khl_players.json',all:'players_khl.html'},
+ nhl:{name:'НХЛ',full:'Национальная хоккейная лига',gm:82,conf:['Восток','Запад'],json:'nhl_players.json',all:'players.html'}};
+const P=new URLSearchParams(location.search),LG=(P.get('lg')||'').toLowerCase(),L=LGS[LG],THEME=P.get('theme');
+const tq=/^(arena|a|b|c)$/.test(THEME||'')?`&theme=${THEME}`:'';
+const lgp=k=>`<span class="lgp ${k}"><img src="../assets/lg/${k}.webp" alt=""></span>`;
+const EMHI=s=>/^(nhl_[a-z]+|dallas|minnesota)$/.test(s); /* для этих клубов есть чёткие эмблемы 768 px в em/l/ */
+const em=s=>`<img class="em" src="../assets/em/s/${esc(s)}.webp" alt="" loading="lazy" width="64" height="64">`;
+const thref=s=>`../team/index.html?id=${encodeURIComponent(s)}${tq}`;
+const MON=['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'],WD=['вс','пн','вт','ср','чт','пт','сб'];
+const day=d=>{const [y,m,dd]=d.slice(0,10).split('-').map(Number),x=new Date(Date.UTC(y,m-1,dd));return {d:dd,mon:MON[m-1],wd:WD[x.getUTCDay()]}};
+const dd=t=>`${t.slice(8,10)}.${t.slice(5,7)}`;
+
+if(!L){
+ document.title='Лига не найдена · JARVIS';
+ $('hero').innerHTML=`<a class="crumb" href="index.html#leagues"><span aria-hidden="true">←</span> Хоккей · Лиги</a>
+  <div class="lgname" data-rv><h1>Такой лиги нет</h1><p class="lead">Выберите турнир:</p></div>
+  <ul class="chips"><li><a href="league.html?lg=khl${tq}">${lgp('khl')}КХЛ</a></li><li><a href="league.html?lg=nhl${tq}">${lgp('nhl')}НХЛ</a></li></ul>`;
+ document.querySelectorAll('.lgsec').forEach(e=>{e.hidden=true;e.removeAttribute('data-zone')});document.querySelector('.nav').hidden=true;return;
+}
+document.title=`${L.name} — таблица, матчи, бомбардиры · JARVIS`;
+document.documentElement.dataset.lg=LG; /* 17.11: свой фон шапки у каждой лиги (league.css) */
+const TM=Object.entries(D.teams).filter(([,t])=>t.lg===LG).map(([id,t])=>({id,...t}));
+const byName=Object.fromEntries(TM.map(t=>[t.name,t.id])),nm=s=>(D.teams[s]||{}).name||s;
+const ABBR={};TM.forEach(t=>{ABBR[LG==='nhl'?(t.id.startsWith('nhl_')?t.id.slice(4).toUpperCase():t.id==='minnesota'?'MIN':t.id==='dallas'?'DAL':t.id.toUpperCase()):t.id]=t.id});
+const sk='<span class="lgsk" style="display:none"></span>';
+
+function build(SE,PL){
+ /* матчи: одна запись на игру (со стороны хозяев) */
+ const M=[],U=[];
+ Object.entries(SE[LG]||{}).forEach(([name,t])=>{const h=byName[name];t.games.forEach(g=>{if(g.h!==1)return;const a=byName[g.o];
+  if(g.gf==null)U.push({t:g.d,h,a});else M.push({d:g.d,h,a,gf:g.gf,ga:g.ga,x:g.x||''})})});
+ M.sort((a,b)=>a.d<b.d?1:a.d>b.d?-1:0);
+ /* в расписании КХЛ в season.json будущих игр нет — берём ближайший матч каждого клуба из файла игроков */
+ if(!U.length&&PL.next)Object.entries(PL.next).forEach(([s,n])=>{if(n&&n.h===1&&D.teams[s]&&D.teams[n.o])U.push({t:n.d,h:s,a:n.o})});
+ U.sort((a,b)=>a.t<b.t?-1:a.t>b.t?1:0);
+ const gpMax=TM.reduce((a,t)=>Math.max(a,t.gp||0),0);
+ const FUT=U.filter(m=>JV.left(m.t)>-2*3600);
+ let list=[],head='';
+ if(FUT.length){const f=FUT[0],end=Date.parse(f.t.slice(0,10)+'T00:00:00+03:00')+3*864e5;list=FUT.filter(m=>JV.atMs(m.t)<end);
+  const a=day(f.t),z=day(list[list.length-1].t);head=`${a.d} ${a.mon}${a.d===z.d&&a.mon===z.mon?'':' — '+z.d+' '+z.mon}`}
+
+ $('hero').innerHTML=`
+  <a class="crumb" href="index.html#lg-${LG}${tq}"><span aria-hidden="true">←</span> Хоккей · Лиги и клубы</a>
+  <div class="lgrow" data-rv><span class="lgbig ${LG}"><img src="../assets/lg/${LG}.webp" alt=""></span>
+   <div class="lgname"><p class="tmlg">${L.full} · сезон ${esc(PL.season||'2026/27')}</p><h1>${L.name}</h1></div></div>
+  <ul class="facts" aria-label="Коротко" data-rv>
+   <li><b class="num">${TM.length}</b><span>${plural(TM.length,'клуб','клуба','клубов')} в лиге</span></li>
+   <li><b class="num">${M.length}</b><span>${plural(M.length,'матч сыгран','матча сыграно','матчей сыграно')} в сезоне</span></li>
+   <li><b class="num">${gpMax}<small style="font-size:max(11px,.42em);color:var(--ink-3)"> / ${L.gm}</small></b><span>игр у лидера по числу матчей</span><i class="fbar" aria-hidden="true"><i style="width:${Math.min(100,Math.round(gpMax/L.gm*100))}%"></i></i></li>
+   <li><b class="num">${list.length}</b><span>${plural(list.length,'матч','матча','матчей')} в ближайшие 3 дня</span></li></ul>
+  <ul class="chips" aria-label="Другие лиги" data-rv>${Object.keys(LGS).map(k=>`<li><a href="league.html?lg=${k}${tq}"${k===LG?' aria-current="page"':''}>${lgp(k)}${LGS[k].name}</a></li>`).join('')}</ul>`;
+
+ /* таблица */
+ let mode='conf';
+ $('tableBox').innerHTML=`
+  <div class="sec-head" data-rv><h2>Турнирная таблица</h2></div>
+  <div class="lgsw tabs" role="tablist" id="tbSw" aria-label="Вид таблицы"><button class="tab" role="tab" type="button" data-m="conf" aria-selected="true">По конференциям</button><button class="tab" role="tab" type="button" data-m="all" aria-selected="false">Вся лига</button></div>
+  <div id="tbBody"></div><ul class="lkey" id="tbKey"></ul>`;
+ const tbl=(rows,zone)=>`<div class="tabscroll lgtbl"><table class="ltab"><thead><tr><th>#</th><th>Клуб</th><th>И</th><th class="hm">В</th><th class="hm">П</th><th>Шайбы</th><th class="hm">РШ</th><th>О</th></tr></thead><tbody>${rows.map((t,i)=>{const d=t.gf-t.ga;
+  return `<tr class="${zone&&i<8?'z1':''}"><td>${i+1}</td><td><a href="${thref(t.id)}">${em(t.id)}<span>${esc(t.name)}</span></a></td><td>${t.gp}</td><td class="hm">${t.w}</td><td class="hm">${t.l}</td><td>${t.gf}:${t.ga}</td><td class="hm gd">${d>0?'+'+d:d}</td><td class="pt">${t.pts}</td></tr>`}).join('')}</tbody></table></div>`;
+ const draw=()=>{
+  if(mode==='conf')$('tbBody').innerHTML=`<div class="confs">${L.conf.map(c=>`<section class="conf"><h3 class="lgconf">${c}</h3>${tbl(TM.filter(t=>t.conf===c).sort((a,b)=>a.place-b.place),true)}</section>`).join('')}</div>`;
+  else $('tbBody').innerHTML=tbl(TM.slice().sort((a,b)=>b.pts-a.pts||b.w-a.w||a.gp-b.gp||(b.gf-b.ga)-(a.gf-a.ga)),false);
+  $('tbKey').innerHTML=mode==='conf'?'<li><i style="background:#0d7a48"></i>Плей-офф</li>':''};
+ $('tbSw').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b||b.dataset.m===mode)return;mode=b.dataset.m;$('tbSw').querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===b));draw()});draw();
+
+ /* 17.11 — «Клубы»: плитки в цветах клуба (assets/club/jersey.js), по местам в лиге; ведут на страницу клуба */
+ {const JY=window.JV_JERSEY,all=TM.slice().sort((a,b)=>b.pts-a.pts||b.w-a.w||a.gp-b.gp||(b.gf-b.ga)-(a.gf-a.ga));
+  const fm=t=>String(t.form||'').slice(-5).split('').map(c=>`<i class="${c==='В'?'w':c==='П'?'l':'d'}"></i>`).join('');
+  $('clubsBox').innerHTML=`<div class="sec-head" data-rv><h2>Клубы</h2></div>
+   <ul class="clubs">${all.map((t,i)=>{const v=JY&&JY.vars(t.id)||`--kb:${esc((t.colors||[])[0]||'#1d2a44')};--kbm:${esc((t.colors||[])[0]||'#1d2a44')};--ks:#fff;--kt:#fff;--ko:#fff;--ko2:rgba(255,255,255,.78);--kx:#fff`;
+    return `<li><a class="clb" href="${thref(t.id)}" style="${v}"><img class="wm" src="../assets/em/${EMHI(t.id)?'l/':''}${esc(t.id)}.webp" alt="" aria-hidden="true" loading="lazy"><i class="wms" aria-hidden="true" style="--em:url('../assets/em/${esc(t.id)}.webp')"></i>
+     <span class="cpl"><b>${i+1}</b><small>${esc(t.conf||'')}</small></span>
+     <b class="cnm">${esc(t.name)}</b><span class="cst"><b>${t.pts}</b> ${plural(t.pts,'очко','очка','очков')} · ${t.gp} ${plural(t.gp,'игра','игры','игр')}</span>
+     <span class="cfm" aria-label="Последние матчи">${fm(t)}</span></a></li>`}).join('')}</ul>`}
+
+ /* строки матчей */
+ const row=(m,fut)=>{const hw=!fut&&m.gf>m.ga,aw=!fut&&m.ga>m.gf,left=fut?JV.left(m.t):0;
+  const when=fut?`${esc(m.t.slice(11))}${left<=0?'<small class="live">идёт</small>':''}`:`${dd(m.d)}<small>${esc(m.d.slice(11))}</small>`;
+  const go=JV.rowGo?JV.rowGo(LG,fut?m.t:m.d,m.h,m.a,nm(m.h)+' — '+nm(m.a),fut):'';
+  return `<li class="lgm${go?' go':''}">${go}<span class="when num">${when}</span><a class="t" href="${thref(m.h)}">${em(m.h)}<span class="${hw?'w':''}">${esc(nm(m.h))}</span></a>
+   <span class="s num${fut?' vs':''}">${fut?'—':m.gf+':'+m.ga+(m.x?`<small>${m.x==='Б'?'буллиты':'овертайм'}</small>`:'')}</span>
+   <a class="t a" href="${thref(m.a)}">${em(m.a)}<span class="${aw?'w':''}">${esc(nm(m.a))}</span></a></li>`};
+ let html='',prev='';list.slice(0,40).forEach(m=>{const dk=m.t.slice(0,10);if(dk!==prev){prev=dk;const d=day(m.t);html+=`<li class="dayh" aria-hidden="true">${d.wd}, ${d.d} ${d.mon}</li>`}html+=row(m,true)});
+ $('nextBox').innerHTML=`
+  <div class="sec-head" data-rv><h2>Ближайшие матчи</h2></div>
+  ${list.length?`<ul class="lgml" data-rv>${html}</ul>`:'<p class="lgempty">В ближайшие дни матчей нет.</p>'}`;
+ {const STEP=10;let n=STEP;$('resultsBox').innerHTML=`
+  <div class="sec-head" data-rv><h2>Последние результаты</h2></div>
+  <ul class="lgml" id="rsList"></ul><div class="lgmore"><button class="btn btn-line" type="button" id="rsMore" hidden></button></div>`;
+  const ul=$('rsList'),more=$('rsMore');const dr=()=>{ul.innerHTML=M.slice(0,n).map(m=>row(m,false)).join('')||'<li class="lgempty">Сыгранных матчей пока нет.</li>';more.hidden=n>=M.length;more.textContent=`Показать ещё ${Math.min(STEP,M.length-n)}`};
+  more.addEventListener('click',()=>{n+=STEP;dr()});dr()}
+
+ /* статистика */
+ {const n=M.length,sum=M.reduce((a,m)=>a+m.gf+m.ga,0),ot=M.filter(m=>m.x==='ОТ').length,so=M.filter(m=>m.x==='Б').length,hw=M.filter(m=>m.gf>m.ga).length,aw=n-hw,pc=v=>n?Math.round(v/n*100):0;
+  const reg=n-ot-so,hp=pc(hw),ap=n?100-hp:0,rp=pc(reg),op=pc(ot),sp=n?100-rp-op:0;
+  $('statsBox').innerHTML=`<div class="sec-head" data-rv><h2>Статистика лиги</h2></div>
+   <ul class="lgst" data-rv>
+    <li><b class="num">${n?f1(sum/n,2):'—'}</b><span>голов за матч</span><em>всего ${sum}</em></li>
+    <li><b class="num">${pc(ot+so)}<small>%</small></b><span>матчей дошли до овертайма</span><em>${ot} в овертайме, ${so} по буллитам</em></li>
+    <li><b class="num">${hp}<small>%</small></b><span>побед хозяев</span><em>${hw} из ${n}</em></li>
+    <li><b class="num">${n?f1(M.filter(m=>m.gf+m.ga>5).length/n*100,0):'—'}<small>%</small></b><span>матчей с тоталом больше 5,5</span><em>${M.filter(m=>m.gf+m.ga>5).length} из ${n}</em></li></ul>
+   <div class="lgbar" data-rv><h3>Победы хозяев и гостей</h3>
+    <div class="bar" role="img" aria-label="Победы хозяев ${hp} %, гостей ${ap} %"><i class="h" style="flex:${hw||.0001}">${hp>=16?hp+'%':''}</i><i class="a" style="flex:${aw||.0001}">${ap>=16?ap+'%':''}</i></div>
+    <ul><li style="--k:#1d7a45">Победы хозяев: ${hp}% (${hw})</li><li style="--k:#1c63c4">Победы гостей: ${ap}% (${aw})</li></ul></div>
+   <div class="lgbar" data-rv><h3>Как заканчиваются матчи</h3>
+    <div class="bar" role="img" aria-label="Основное время ${rp} %, овертайм ${op} %, буллиты ${sp} %"><i class="h" style="flex:${reg||.0001}">${rp>=8?rp+'%':''}</i><i class="o" style="flex:${ot||.0001}">${op>=16?op+'%':''}</i><i class="d" style="flex:${so||.0001}">${sp>=16?sp+'%':''}</i></div>
+    <ul><li style="--k:#1d7a45">Основное время: ${rp}%</li><li style="--k:#b8761a">Овертайм: ${op}%</li><li style="--k:#6b7585">Буллиты: ${sp}%</li></ul></div>`}
+
+ /* блок «Бомбардиры и лидеры» убран со страницы лиги (владелец 17.11): игроки — на отдельной странице «Игроки» */
+ /* 17.11: цифры шапки «набегают» при появлении */
+ if(!matchMedia('(prefers-reduced-motion:reduce)').matches)document.querySelectorAll('#hero .facts b.num').forEach(b=>{const n=b.firstChild;if(!n||n.nodeType!==3)return;const to=parseInt(n.nodeValue,10);if(!(to>0))return;
+  const t0=performance.now(),D=900;const tick=t=>{const k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);n.nodeValue=String(Math.round(to*e));if(k<1)requestAnimationFrame(tick)};n.nodeValue='0';requestAnimationFrame(tick)});
+ JV.reveal();JV.fitWords('.lgname h1,.sec-head h2');
+ /* страница строится после загрузки данных — якорь из адреса (#clubs, #next…) докручиваем сами */
+ if(location.hash.length>1){const t=document.getElementById(location.hash.slice(1));if(t)setTimeout(()=>t.scrollIntoView(),60)}
+}
+fetch((window.JVD||(u=>u))('data/lgp_'+LG+'.json')).then(r=>r.json()).then(d=>build({[LG]:d.se},d))
+ .catch(e=>{console.error(e);$('hero').innerHTML='<p class="lgempty">Данные загрузить не удалось.</p>'});
+})();
+
+/* пересчитать «свет арены» после отрисовки (иначе герой бледный до первой прокрутки) */
+for(const t of [50,400,1200])setTimeout(()=>{dispatchEvent(new Event("resize"));dispatchEvent(new Event("scroll"))},t);
+
+/* вкладка «Игроки» в полосе разделов ведёт на страницу всех игроков лиги, а не к блоку на этой странице (владелец 13.11) */
+(()=>{try{const go=()=>document.querySelectorAll('a[data-pl]').forEach(a=>{if(a.parentElement.querySelector('a[href="#table"]'))a.setAttribute('href',/[?&]lg=nhl/.test(location.search)?'players.html':'players_khl.html')});go();addEventListener('load',go)}catch(e){}})();
