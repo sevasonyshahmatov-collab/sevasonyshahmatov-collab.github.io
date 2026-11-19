@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ru" data-sport="football" data-theme="arena">
 <head>
-<meta charset="utf-8"><script>/*тема: «Ночная арена» по умолчанию; ?bg=0 — старая*/(function(){var d=document.documentElement;try{var q=new URLSearchParams(location.search).get("bg");if(q!==null)sessionStorage.setItem("jv-bg",/^[abcn]$/.test(q)?q:"0");var b=sessionStorage.getItem("jv-bg");if(b===null)b="n";if(b&&b!=="0")d.dataset.bg=b}catch(e){d.dataset.bg="n"}})()</script>
+<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'; form-action 'self'"><script>/*тема: «Ночная арена» по умолчанию; ?bg=0 — старая*/(function(){var d=document.documentElement;try{var q=new URLSearchParams(location.search).get("bg");if(q!==null)sessionStorage.setItem("jv-bg",/^[abcn]$/.test(q)?q:"0");var b=sessionStorage.getItem("jv-bg");if(b===null)b="n";if(b&&b!=="0")d.dataset.bg=b}catch(e){d.dataset.bg="n"}})()</script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <base href="../../football/">
@@ -11,7 +11,7 @@
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#060b1a">
 <script>(()=>{const c=new URLSearchParams(location.search).get("ctx");if(c==="ucl"||c==="uel")document.documentElement.dataset.theme=c})();</script>
-<script>(function(){var m=[0,"parma"];if(m)document.write('<link rel="preload" as="script" href="data/club/'+m[1].toLowerCase()+'.js">')})()</script>
+<script>(function(){var m=[0,"parma"];if(m)document.write('<link rel="preload" as="script" href="/football/data/club/'+m[1].toLowerCase()+'.js">')})()</script>
 <link rel="preload" as="script" href="../assets/vendor/gsap.min.js" media="(min-width: 621px)">
 <link rel="preload" as="script" href="../assets/vendor/SplitText.min.js" media="(min-width: 621px)">
 <link rel="stylesheet" href="../assets/v3a.css">
@@ -92,10 +92,10 @@
 <footer><p id="foot"></p></footer>
 <a class="tgbar" id="tgbar" href="https://t.me/jarvibet" target="_blank" rel="noopener"><span>Получать прогнозы — бесплатно</span><span aria-hidden="true">›</span></a>
 
-<script src="data/football-club.js"></script>
-<script>(function(){var m=[0,"parma"];if(m)document.write('<script src="data/club/'+m[1].toLowerCase()+'.js"><\/script>')})()</script>
-<script src="../data/lines.js"></script>
-<script src="../data/model.js"></script>
+<script src="/football/data/football-club.js"></script>
+<script>(function(){var m=[0,"parma"];if(m)document.write('<script src="/football/data/club/'+m[1].toLowerCase()+'.js"><\/script>')})()</script>
+<script src="/data/lines.js"></script>
+<script src="/data/model.js"></script>
 <script src="../assets/nav.js"></script>
 <script src="../assets/footer.js"></script>
 <script src="../assets/fav.js"></script>

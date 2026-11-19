@@ -552,6 +552,7 @@ html[data-bg="n"] .pp-sk .vv{fill:color-mix(in srgb,color-mix(in srgb,var(--kb,#
 html[data-bg="n"] .pp-sk .dt{fill:#fff;stroke:color-mix(in srgb,var(--kb,#3b78e0) 35%,#9fe4ff);stroke-width:3}
 html[data-bg="n"] .pp-sk .ax{fill:#b9c7f0}
 html[data-bg="n"] .pp-sk .vl{fill:#fff}
+
 /* 18.11 владелец: «верни цветное оформление в цветах клубов у всех команд, сейчас только шапка в цветах клуба».
    Страница клуба в «Ночной арене»: вся страница — один плавный фон в цветах клуба (без стыков между разделами):
    свет акцента клуба сверху слева и снизу справа, второй цвет — справа и снизу слева, основа — тёмный цвет клуба. */
@@ -569,6 +570,7 @@ html[data-bg="n"] body.club-g :is(.tmsec,[data-zone]){--card:color-mix(in srgb,v
 
 /* 18.11 владелец: значок «/» на кнопке поиска убрать (горячая клавиша «/» работает как прежде) */
 .hd .sbtn kbd{display:none!important}
+
 /* 18.11 владелец: «линия блеклая — выделить в рамочку; не нравится синий засвет».
    Бегущая строка: коэффициенты — в рамке, светлее; без синей подсветки снизу. Общий фон: верхний синий свет приглушён. */
 html[data-bg="n"] .ticker .kq{color:#eef3ff;font-weight:700;font-size:14px;padding:5px 9px;border-radius:7px;border:1px solid rgba(220,232,255,.34);background:rgba(220,232,255,.08);letter-spacing:.01em}
@@ -585,9 +587,8 @@ html[data-bg="n"] .ticker li{color:#f2f6ff}
 html[data-bg="n"] .ticker time,html[data-bg="n"] .ticker .k{color:#ffd54d}
 html[data-bg="n"] .ticker li::after{background:rgba(220,232,255,.45)}
 /* затемнение-«хвост» шапки не ложится на бегущую строку, пока страница вверху (строка была блёклой и размытой) */
-html[data-bg="n"].has-tb .hd:not(.stuck)::after{height:100%;-webkit-mask-image:none;mask-image:none;background:rgba(6,11,28,.62)}
-html[data-bg="n"] .ticker{background:linear-gradient(180deg,rgba(6,11,28,.62),rgba(6,11,28,.3) 70%,rgba(6,11,28,0))!important}
 html[data-bg="n"].has-tb:has(.ticker li) .hd:not(.stuck)::after{height:100%;-webkit-mask-image:none;mask-image:none;background:rgba(6,11,28,.62)}
+html[data-bg="n"] .ticker{background:linear-gradient(180deg,rgba(6,11,28,.62),rgba(6,11,28,.3) 70%,rgba(6,11,28,0))!important}
 
 /* 18.11 владелец: «синий у шапки слишком контрастирует с цветными фонами — попробовать тёмный; видна переходная линия».
    Шапка — нейтральное тёмное стекло без синевы; затемнение уходит вниз плавно и длиннее (без заметной границы). */
@@ -595,7 +596,6 @@ html[data-bg="n"] .hd::after{height:calc(100% + 80px)!important;background:linea
 html[data-bg="n"] .hd::before{background:rgba(4,5,9,.78)!important}
 html[data-bg="n"].has-tb:has(.ticker li) .hd:not(.stuck)::after{height:100%!important;-webkit-mask-image:none!important;mask-image:none!important;background:rgba(4,5,9,.66)!important}
 html[data-bg="n"] .ticker{background:linear-gradient(180deg,rgba(4,5,9,.66),rgba(4,5,9,.3) 70%,rgba(4,5,9,0))!important}
-html[data-bg="n"] .hd .gnav,html[data-bg="n"] .hd .sbtn,html[data-bg="n"] .hd .fav-btn{background-color:rgba(255,255,255,.05)}
 html[data-bg="n"] .hd .gnav,html[data-bg="n"] .hd .sbtn,html[data-bg="n"] .hd .fav-btn{background-color:rgba(255,255,255,.05)}
 /* 18.11 владелец: «текст размытый, плохо видно шапку, когда пролистываешь вниз». При прокрутке (.stuck) шапка — плотная
    тёмная полоса с размытием только внутри себя; ниже — мягкая тень без размытия, текст страницы под ней не мылится. */
