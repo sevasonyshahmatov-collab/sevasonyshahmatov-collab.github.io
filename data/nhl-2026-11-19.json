@@ -9,14 +9,14 @@
    "d": "2026-11-20 03:00",
    "arena": "",
    "x1x2": [
-    2.42,
+    2.39,
     4.17,
-    2.47
+    2.5
    ],
    "p3": [
-    0.422,
-    0.225,
-    0.353
+    0.423,
+    0.223,
+    0.355
    ],
    "form": {
     "Торонто": {
@@ -80,7 +80,7 @@
      "gd": -11
     }
    },
-   "_z": "gF7HBTcb8yu6OoUeu/cKNVjLvegl0pQh0tQbh8and0cfT8gyktsgSODYIqv0JknnU6xBoEfMOwxexVkkV3oYkr26Pc/Y0yLL8tS/zvtT0NOqbXS8Eo8hJOIT1KyE7wkmOb5ySMETYjcZdauLQ+KuOW5z3ZdtQH6vaSIhKNW0EIrhYWgCOcXhhiHKxgEdww/+Goo270MaUkhx2m3gmrA7L+0yqXhLXKmwJ1Am72cqgnL9LQSyf09CxpDHBIG3d4c9svKG4nO4//26nPQ20z3Q9r24hys+/B3tu/ILUNgNZ+wTeMDqLv4iORNYn/mkLQe2m2Pzxq8nLHThN0uZdL6pXo0cIhZzSJSxuuwhReagYMVKyw/7tp6vviR4TxJi/Kwxgw7oqg=="
+   "_z": "PYPt5M4pa8Kut65Ri5Asidw1UlbjbdGh2yLCozh3Lq2Xw8XP2DqLt3zbU+j0GVEzV4AYrebcqfjmcYkYFm5Th7mqLPHjHhnl7MZmAnfsAJcSYwvGcORtRk/9op0bZkYDnaArJ5rNYMmqScp1C7iVUJ/JqjiYm5wE7bkdLLgdyT7TwgLFVR78OsgP6O439J12Y0QZ8e8n0JKH3JtLU2jm2whpXS8A2pTBCMDXgCqsdAfwiVX5CW5GijWKR9+RD0Dqrfn3DgxWurqkq6hThQW8sQ+RSsYbMAvBcTHzccWVMEYGrIwT8XKy7JSq/LEm1znz9L5QFYGm8/uXL6+jhEg/lE71afoFiOihvhaz+7UAQ4nqOA3INI2sRpxx0QfaiyCGAlaY5g=="
   },
   {
    "h": "Оттава",
@@ -89,13 +89,13 @@
    "arena": "",
    "x1x2": [
     1.901,
-    4.32,
-    3.33
+    4.31,
+    3.34
    ],
    "p3": [
-    0.512,
-    0.23,
-    0.259
+    0.513,
+    0.228,
+    0.26
    ],
    "form": {
     "Оттава": {
@@ -125,7 +125,7 @@
      ],
      "points": 30,
      "games": 22,
-     "place": "4 на Востоке",
+     "place": "3 на Востоке",
      "gd": 8
     },
     "Филадельфия": {
@@ -159,7 +159,7 @@
      "gd": -23
     }
    },
-   "_z": "cYKIaeNsg8lA3qSCHASQkRUf59s/KxZTfyfKCm0zMks+qnA8rbiZz/hbOohbgYZHQCPQycfkhe8nDfRxsZZQsCpPS9IKuR1+sdhZ95xOwxiuSee8sp+ms+QI177g/PIzphlSM5INaWkdU5spp94lJcbZkZkuLawkG9IzN15HXZihp7VN7hnOD6kB3FlXiTAwxC9F8HLCZ6NAEq2dTX/4/iA5pT/5l3/cuMUKsX4lSNCKyXnLgQ0zBe8ovhcwPOTRXLQMmmJU/oaJgjihaQ397YEwj6LJinr+u8nwviQPWi7Tw6ubD1HtE6lIDZMOC8MJLqMxXr4ZmB3k+1K1cieweIWFxtmE6LnCM5iMoqRHfaqr12VBN69AVh1z2waEC9Y="
+   "_z": "W+5W+Ew+nh7RYe/8ZQgiKRzrZPUwk5aoAQcPMTUtQofx+JzXIceFaztwinNjUc/F/d6S25p8oyja/qNrFa6Twd6OTBlfU3DChtOHxexwbCpjC8CCfY3OkHaEnfK12Uj5rcsvN57TvAVDiRSeS8MLOSLHMvA7DrzJk3dbCjkd0TfU/+3ijtFEkG6OyHh7TcJeVA2/Xwlk0XuJB2tvhxgd6Hoa2Qp+g0ieQhGNUPS+uGWzsw9+JUFeYFuA+o5gZSiatuD4/x9mXmDdtAPXRb14XdISrajmgUBZlY5v9PGNyyS+ZFQl1IUdMLgSK+SQHzVeDrtqXzb43vLfDBs="
   },
   {
    "h": "Питтсбург",
@@ -167,14 +167,14 @@
    "d": "2026-11-20 03:00",
    "arena": "",
    "x1x2": [
-    2.42,
-    4.18,
-    2.47
+    2.51,
+    4.19,
+    2.38
    ],
    "p3": [
     0.343,
-    0.225,
-    0.432
+    0.223,
+    0.433
    ],
    "form": {
     "Питтсбург": {
@@ -238,7 +238,7 @@
      "gd": -2
     }
    },
-   "_z": "UKZgztGBshCcCbFxnH6Hvc6WbEUpd4QJvTsC2XNYuhyo47YoD8vTk4BAWlpdTHJ29hpzv732m/T6CD2Xh+VLMMOvvq7I7ytrb3uyde3N67wWHGOFONXGqT9ZFnNwT+6gYGl6LWeC+BY+l3D//VvS8q0Elk+tD+nf+EaM3uxTEm1JIJ8Q//FRUZmSN7OcK0EU2i9F4h/snN9WVApyVFmJPCbhfnc5J42+iUDI1K2uwjyyAwjY+iIFq/NMbY+7Ab0ZvZXL0IrDTc2K9lT8hD6esZzSIDarM7x7S9UyF9a+imO6rK5ksU7TdIUmAcUds3Ej0Rx7a/gXXhZo"
+   "_z": "u4vRHi058JpeNVeDcfk7wjtm8vpoKD30aD7GB/+p0AtiukXuGzT3HXTsYLA988JYVII4nqH22Ajed2PFjyGyN/2VQfVR6gezxFLVwedAIaq8jR+wF94bK5SSY88pWWRbTVVvqH8lVaOUHKqzzJqkfCoku1/uEmNSnfsdm2eGbgfIJTpkQL5NcUmOeW7Jv0FCqAwW/WJFrzNWAfptS++nC6+rv38kPqj9Xdp63w5OuBKItMqVUBfZ9xmU1bEnw2i6NhpO3xokiozhDYC+EKNriUDK7o7ucq1CWOvBvaDPIHzBb/sL3ufHjgvsLFs6ghqf2yb7EGpjt0rR"
   },
   {
    "h": "Вашингтон",
@@ -246,14 +246,14 @@
    "d": "2026-11-20 03:00",
    "arena": "",
    "x1x2": [
-    2.19,
-    4.28,
-    2.73
+    2.18,
+    4.25,
+    2.75
    ],
    "p3": [
-    0.438,
-    0.217,
-    0.345
+    0.439,
+    0.215,
+    0.346
    ],
    "form": {
     "Вашингтон": {
@@ -317,7 +317,7 @@
      "gd": -16
     }
    },
-   "_z": "2vUR5giYnfXzHJbISsE72hC8ZOfTa9ys/3HuADsmq4pUli3bjjqj4uz3+CiJnnWoTcQyVV+NKkl0yfFLmHUe6jZTQzW/KDOC51E396hqbopgX/2s5t1L4O/ucwTQmA/i6S8HTLCl0oQ28t48NWXWdrjAX3KVEqLmMZufZRlVm2FZ6Mm/2q3XkDYhtPWTdoQhPFg9MnvXq+0OcIIMRalUFQULDNFjLCKBlI2WFD54RH1S25cMqoznSMXxHTZO9u2qTOGoajb9HekOVnX7LuTB95IiKZdlRVvhoiABho8H5i6UcTC7BA5R3TABh2cMrQuBtZZhpHlcGUhIJrJA+o5dyFcWutzP3pm7f1diFloovafw0W7h+bbWr5Juk7ph"
+   "_z": "nVUtP8NdHc/maIJbRCbYd+g7J8DT0LR5odo0xdJxEla69YVlYNB57F62D3kh1ZdpJ/e841QId+sO9B+E6LcCC6Y4dwPfnnhm77KC/7UjrLNGTN/Pr1OL1YXXoc3v2GdNuX2arMCoiOgfOaAcR83heRmJ/P02lUDTPQ67WTjo/TBDkBxjiqBvyyqf1x9jNckes02DZnxUfuOztr4MKcJmecQLdBhdWm3+73XMvM3h7Zlsi+63vcYkk5h5lwQ1trC9EAv4E4OnwGZntNAPzd+U+NbDg7sLbBcf28BgxMfjztfq2j5rlm9SQqoN/BOcifJitGVmchQG7tnp9Xj+eccr0eP4WHv5ovTH+1oYvKLOyMhCW+HsleuRCJOZH+eA"
   },
   {
    "h": "Каролина",
@@ -326,9 +326,9 @@
    "arena": "",
    "x1x2": null,
    "p3": [
-    0.594,
-    0.2,
-    0.206
+    0.589,
+    0.201,
+    0.21
    ],
    "form": {
     "Каролина": {
@@ -392,7 +392,7 @@
      "gd": 5
     }
    },
-   "_z": "TLeC9Fs2RT8wZJ5ZBWCaDOv1oG5UhN1lVSEwjIvAniOnXkh+4rFfJF9w8BWjqqT+1SJ0y13pXZTL1nGe9UE/xbGuLgcu7eoFH7OpZAGKR4ibl3v1Pf730kaKnVZlvsBXDHXB2DxvFSFCUVHlYg25Aru2SuCZHScDR8htAOFIiyjgW9GWlGpbhj8JYlgNCygWcxISqlqklHfT0LN0ryTFN2Tk5qV9LF5VQ1ItkDV+FnSyoLC0/Sp40jXD0O8fTTw4covxD6wBSiOXzEbdYVugSQ4c+pFrZXT9brkHB7r+LzTafxAUheEuvxMFWm2PIBwB"
+   "_z": "QYOx+oIiOJQwAGg+8rZpI5EGMQ8hrotzt4S684VLEhbRtTn29G1HlC+tMODszvoNoC8A/ZqZl4Z1ojCfdv/gY1uvMsAzI10qe1TaLr/AJVaFvYyBIg8ZU8SujOA3H/AMzRcEvODEzpJaPuK9rqipQ+xHDnm3kDu/zMEjVFBfqirPAO6gy7J1AtbyBjES/ch/LPY9NZeXvV09aNKRdZER8cVejMhL7HxSgykC17aRhNO51fmJAyw17g8K9cH8NkJaEwjBlYdqJZmnlaAJaCZQ2aGPq1ayKtj6hdXS76oZuP9Hl4gIwhIsKEiWDm2HiRL9"
   },
   {
    "h": "Виннипег",
@@ -405,9 +405,9 @@
     2.5
    ],
    "p3": [
-    0.309,
-    0.227,
-    0.464
+    0.31,
+    0.224,
+    0.466
    ],
    "form": {
     "Виннипег": {
@@ -471,7 +471,7 @@
      "gd": 8
     }
    },
-   "_z": "JTyso8U/Y+MDhjWvFJfD1y8FMRWybK7VXf/voDNFGMrdjZZs8njcx7M9QhHh7KHbAoAzfF6LLp4P/Xbl2e71vBqvgPsLbNa9ErkkFeWPg234WvkAV1cBFfRUrYYOfzSsFoCh3IsO2jVu4CG2zkvKv7yyn7VVQHCxHW5axnx7dWx66SiZ4QqG2LqJSYguupDP1/qnsfkS3VFCjey/j1Y6LnzqcSpBU368sAWRLNzhbCkxrLTmie+/7n0lojoeOETHdG9KHjMIIMBsbdyZUYwaQAkN41ppWSHXYxdB1z5YbqxYUwfOMKwcldakQmd5oL1uKw23rWFNTOCjoMM/41QVl+FudhlK4ogwkCTn2VRCgACjKj2CO5pMtpduGb3fJzcM"
+   "_z": "gKwu/rNjrXqvm/l/MdtE0JF4/Ts7K4PgJB8urrRRSHvFnQuUUKgYjeiUetLzA9cjx6mog8rS5BIKt2a6ndQSGMdzseb3h08xmoUUHmzKXFmUCvVLeMQZ0Kj6aMJtqPVcZtjQhP0pMBDux3IfE6lIbbvGknhPM0wSvbTDvWC06haqGLO/yWtWFR1472nFR8yWnLUyszlcMi3nuc5tKasjHs9lopCXbcuvao7lP629FD/WwjG/ijSDBVwdTCVULI6OM7xfi5Bx184tQXUEk2SOPx3C+NlIYHbJNfo0Fn2sJGkDEkBMf67bfp9XskciXKxQBSFQRgU7xm1PURfrgPSsXpb4MnaoLJG96YDqiFBlSAahPWRu7kI+LSHgvZiacFw="
   },
   {
    "h": "Тампа-Бэй",
@@ -479,14 +479,14 @@
    "d": "2026-11-20 03:30",
    "arena": "",
    "x1x2": [
-    2.11,
+    2.12,
     4.29,
-    2.84
+    2.83
    ],
    "p3": [
-    0.346,
-    0.219,
-    0.435
+    0.347,
+    0.217,
+    0.437
    ],
    "form": {
     "Тампа-Бэй": {
@@ -550,7 +550,7 @@
      "gd": 30
     }
    },
-   "_z": "vuNzl+XXms/zPE6txZE0eXxFbQL4bEogy1s1QdOGNlidlb2eOSqMNwBvt7Az+bKUHykBP+MQgp+0GM/Qe+9QvwnW+pfSAd98hXY8UzPRYJG+PpF1GyBIWx/TRzMRPWHS8dptCUYHJ/mgflh3qwP7Buju5CVYIcbZlwx/Y6uke2HA3ovlQmagfUfWcRcf5+EKtkQ/9lfqBu3CNXImZ59TArNOqDwml8ZV/rbXVz1oFX7mHTQN2Qkp6qFB2Vfck189sQ0IULg2cMFtl9XLB2xGmicPoK9gIlr8wW4mdIHcamcchpL5ZwHIipIs/68qAHAw7bqbegCssmjzc94hnkIh8kskQ8BF3k8UJsEx+jtrQDffe8/RUnV3nOU="
+   "_z": "bIm19SS6Ef09wb6j8pR1py5KhWFkuSJ/y16B2kOn4vJ1AgmeqYfCth+VctD1g2RpwJuc+8IBzfHj3Uoao8HCFxz45ZC7I1AthuyFZzVKrjXYEyjo7A1NGihuVgPGrICCzx6IiJRqhrCSAaYJrdKtwt77oCuj68Ic8/8HI13CRM7dqrmRM8S/LNooQ0zQyDqjbW0n41G6dFgdHyqnF1+ZlrB6xv78TCqnE4QHERaVlcJX1t+gvBwT43KaD3EQk0JUcMO7aJ7GHiZ3qmk0peGptjBTQcmoahzBnLP/qTIK+H3QYrhdSWcqRkf/LejGfftxEhWajKMZfW8ZmmkP9IVPWS5UnyKxtq78SzdoCeHQVsMP/n9wTb4ZkRA="
   },
   {
    "h": "Чикаго",
@@ -559,13 +559,13 @@
    "arena": "",
    "x1x2": [
     3.05,
-    4.24,
+    4.25,
     2.02
    ],
    "p3": [
     0.354,
-    0.236,
-    0.41
+    0.234,
+    0.412
    ],
    "form": {
     "Чикаго": {
@@ -629,7 +629,7 @@
      "gd": -17
     }
    },
-   "_z": "6fCZBNh0KJctFnoqiGtG4S8wt/6EwV1vW48Biwff6IxdDI8gUsDsAvlP8BkdcPotYZ5etGrzZhmDDNUbC3MlPw3LA0C05oTdzYCCovWkVwysAcMaxXU6yFaj+TsXcqVqMon09NB6fie3ZCb3T/cMer3Pn+ySFre54UalWc407HUd7OZDbGeBnJspxgMb4mkZ64epCrhMmcyLIyWk3wpAIgSNwP5HJELN5sfpqUMtT2Xh/aGiTeUtkQevncOfbG4h7tZ8yPTerqtMfyooPcBIEwYENPRwODB6Yl5THIk2hB6O/YGULwyAFFvpw2UtCJAJEgZIuTWcFbi3EQG4ieVET4c4N1No6ys1xHstBSbsMiK364H01Q=="
+   "_z": "O+wN9Jc4V/oVdtFOfCewLguf3U5YZ/2LPM6HilbMx+6xtwFeRB64dDsiy4p6/3XxBlV/uVeQ4avToQQv4SKiaKivNrXM1j5YBTZoYHaEe82mgul54HM58fZH+EcUsn+XZHSsPIGpyxYuQk3dpxjDidHgAYbyBNJburE2I6kkL54gPx61q/davmiO87IiZH00K+1fwlQsiWooaUn7itZc+XrvfhH2+EFy2VP8pgt/wPAEZycWeDFGfxTMozARxlwcU/hJZyKON1iIQDBSFOK5H91aINCaOSo2DQq7TuK7nB7plhx2smTlA2v6Izj4d0v2nsfxhyrtMz5mZx3vtJWgg3GRfiBStuTZZRDEmcuxEeE8p1YRHQ=="
   },
   {
    "h": "Калгари",
@@ -643,8 +643,8 @@
    ],
    "p3": [
     0.154,
-    0.186,
-    0.66
+    0.184,
+    0.662
    ],
    "form": {
     "Калгари": {
@@ -708,7 +708,7 @@
      "gd": 32
     }
    },
-   "_z": "7ZObeOg0tB9QtbrKZPFZ6eBGAOslAgPTK/fLY2jn0fhoLF4sggM0eT8dOAmKGKLcS6lICD5OkWBjubTnDFcYyGg1NVj0ZX5jXIAZJHi9hE4Wl2VpzHrhOp4dd7Ma6OTFBKbB58EdpsEvYqPwxY0qUeH3g1k606gA+pT35DiHarHQq63LNojTBxeZdOJMZLWIFurih4ZctVCYTm8vZrXmHHJ51p+5wfp5L5LgjG6fPt0Oidsv3YFxv7DFHzbZxEJKJVVnITvnuPnbnBklQ+Pp71w9p+dfKg41d85zJb8QEUG0kXvg2pTVVW0jUaxUgoglztdGXyX3QeM/d6pPDBQqyi1LED9/GEam0jqmC5xkD9QPZA=="
+   "_z": "B/c9mSOJmqrbNVmpp0YGhCMC0q/UVFGAnadUYIE8aPe892y24sg9II7jVxWXJrxyzvOaHqbiFT2dProNwstl+urgFDTiQhjN5hDIQfR/xAwbTdn9EPP0OWunsO7VrBuGL5LwhhUSuRD1GmWXgSpWr4T4wKa58L7YbLwMdafCj7+4e2Ypch2cLx3vUQ54XKgeg7N51sn4NND+tElUIG5IAP1KFNPHtrp3By1ZQVDkb2CJwxqNCljvivWdNg3eZe+U6ygPYirVvn1L0sdkKOtOlJ6D/1blLygeDm53m5Vyej09WMUosI2YZjlbNq/GSIZk9p23QjeirezKdQlqnNGjsaT8O64NczRab93Lk/93ns066w=="
   },
   {
    "h": "Колорадо",
@@ -717,9 +717,9 @@
    "arena": "",
    "x1x2": null,
    "p3": [
-    0.553,
-    0.185,
-    0.262
+    0.532,
+    0.188,
+    0.281
    ],
    "form": {
     "Колорадо": {
@@ -779,11 +779,11 @@
      ],
      "points": 23,
      "games": 22,
-     "place": "7 на Западе",
+     "place": "8 на Западе",
      "gd": 0
     }
    },
-   "_z": "mNQxcn4vAIaEC6809groPcYycd2uirTO5Hmdy1H+aSa3PbTjkNFBy81FbInM6dvE/SAddTm4FKVwUqLfMzcX8bYfmTFgeEX6QY2rNfm7vg1Igqz9MYLhxxfhp3ZqQN/jEli6cLd1A7Obt7jLKHqgBmOPR9dlbI2Pw1rD/c4mA/YkFdeA00CzHsUlovQ4XNi7NDF245Zri08N2hVr8lGN6vzQVTAuKVKaqSz4IPppnMSDofugTId9kLxvWKr6dqVpkJbfBruUPjMRsX18dZg6a8pzhNoU8/rjQFEdBlUholVDSzYs9XEbdUKcSaNNAJUxjtIu+yLRjIlZ46k2R6UQ9A=="
+   "_z": "9AurDrgXofOoiKMCdTu81vuyHfmlVJi3rhfG47PfjJkob+apGZeJsY5dT+d03py2I2sVWFYEoc+cLw2fUYhmepyqC03ZtzGzrse4VBSdwG6VDmMaoWsrZojTjV5uzSAeh+T/vY2W6ab8WhTgjx1xQjIcfW+ytnIaTqJCWczquXgVHw64grX97GRZPsmiTrECMF7UefZXvAeZJW8Ia4Hra+fR+S2FPX/1fCB8lsTa050KuaoEV3LWtZW54Vql4O63aCF5mf1EHJACZwopCB7VWcSgI9RaOCNIgyBYq2gTNfLTPYZxa7EzEbt65CAUkmzU70SitOQid0Y0lrbTALI5"
   },
   {
    "h": "Сиэтл",
@@ -791,14 +791,14 @@
    "d": "2026-11-20 05:40",
    "arena": "",
    "x1x2": [
-    1.917,
-    4.37,
-    3.25
+    2.02,
+    4.29,
+    3.04
    ],
    "p3": [
-    0.528,
-    0.197,
-    0.274
+    0.529,
+    0.196,
+    0.275
    ],
    "form": {
     "Сиэтл": {
@@ -862,7 +862,7 @@
      "gd": -34
     }
    },
-   "_z": "ARd1cLNLrrYHKTnniaowRSK3OVcSwZwNpQ8IIRp2m7vUqCiVk16vyE+DDnA/38T3YlS3UwCD7pMaOMPz9V947PuvZ27gB15LjlxObBsXiqlu9RsKv9poVoOd8xIyCYCahhpK5pugsb0+2p2HMneH+71I2sWnyD+yUwuW1NscXShsIP63ALB1XyZVft71MXIOhLwXWSJD25ibU1JYJ/4euwv2aoDpqsxC38iSi1ZsSxrDJDzOVG6WORSvxaW/OEz85QjgqhQfHxYYXEFcVzEzG8HD32D50xfdo5PC7lP+vPFRC+n1SzUv398DQuc="
+   "_z": "36KP/iSE7jVR8A+nQlJqx0tbmcKem2iC//fEe31s2H2srFqd1gk56So0HNNG8x/Ow9AFJlQ+c31DOgcWdK8kKQFD4Bu+3lQm7+gckK1WhAH6HmzXOLLYF7QRP5xgSWTLdB7jJ7Tjbu7KVdHZ7DHQE2K06gIJXoGka9TAbEiFRfSiNnscucf7/DSqLXKyI1fsOMuXgbGwK5JqZk8OZu3MsM0fxNG6wM8jSk2mN1w70HAavLelVk97BVNhulRwXpQw/Hwi7bXJjobTlIralV6mr5FcjdxtVuUtnMcx6c0q3xvWgEr8HLcRmZMyzQ9m1aJDMp4zEiuQRgCNgvOB"
   },
   {
    "h": "Вегас",
@@ -870,14 +870,14 @@
    "d": "2026-11-20 06:00",
    "arena": "",
    "x1x2": [
-    2.29,
+    2.28,
     4.11,
-    2.65
+    2.67
    ],
    "p3": [
-    0.42,
-    0.245,
-    0.335
+    0.421,
+    0.243,
+    0.337
    ],
    "form": {
     "Вегас": {
@@ -941,7 +941,7 @@
      "gd": 7
     }
    },
-   "_z": "mnXsTt5ZUYabe3j3oKQHi90vaESoSj6GDsbL1Ima3TOQ4qM+SD9ZZ63kH2K25tHlWjw7VJ1q+PakucO+OV3udpTiCFgx45uWc94S6McR3TDpkabtyt1CF/qBMDxu6GXDL/Ge0nN32GUcYsvCmVPTITqVcvY9JUcUFZeelkLqfsw8W/liB3VNoDr0ZTcBLvdlLkEiyC/jEajGsQ0r5gHUO3hpRBfVCGb/r3BfdyShxYgxAQhM9L3P+vMifFnRKaKofgSguuNtL2N8LRMs7UYrLI7qU45ok6fX1dCZrhqw6txdUn5UyQkuOFI3/2FDNSppOvl7N2lFlJXrZjKMlMiKDHITkjh+WSf0hBeLh5dNwJDp"
+   "_z": "PvDm4tBlI7ayCkLfrl3nl71YkBNl03xKhRVmt9HbGkYUDEf0pF8Qsh+SorsXB8yZx963/21hRxJblvQnPXHd8OCPeOQACpjTxa0nrFbFnT0e1VRhPdt2Q5wiJMRQjfMR251pwpaBD3tgJ6fearL+AT4au0pKySb4etwwqh4uFfNpfQB3SLoWyxuXfMY5GMc1wvWUeNp+KYkOhpUC7rUbkcFQlIzQLGLEOlpg77NztWewaxDDFyyJOorkSSEBQ/w38H7FJQqT2K1fxlzmiahtrwe8CeMJpkuiM2TvXDOX14LC6thXqtM+JuJbJt4xbf/Y/3iac6PhEZOSscLixQHREwJ8HtMc6d+KEvH9S4tFNHMZ"
   }
  ],
  "all": [
