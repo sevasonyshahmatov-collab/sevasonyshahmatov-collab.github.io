@@ -866,10 +866,6 @@ data/daily_log.json
 data/deckbg/bundesliga_2026-11-20_bayern_munich_cologne-m.webp
 data/deckbg/bundesliga_2026-11-20_bayern_munich_cologne.webp
 data/deckbg/index.json
-data/deckbg/khl_2026-11-19_akbars_spartak-m.webp
-data/deckbg/khl_2026-11-19_akbars_spartak.webp
-data/deckbg/khl_2026-11-19_neftekhimik_ska-m.webp
-data/deckbg/khl_2026-11-19_neftekhimik_ska.webp
 data/deckbg/khl_2026-11-20_avangard_barys-m.webp
 data/deckbg/khl_2026-11-20_avangard_barys.webp
 data/deckbg/khl_2026-11-20_severstal_amur-m.webp
@@ -6125,7 +6121,6 @@ hockey/data/pp/khl/4257.json
 hockey/data/pp/khl/42759.json
 hockey/data/pp/khl/4321.json
 hockey/data/pp/khl/43535.json
-hockey/data/pp/khl/43551.json
 hockey/data/pp/khl/43571.json
 hockey/data/pp/khl/43575.json
 hockey/data/pp/khl/43583.json
@@ -6214,7 +6209,6 @@ hockey/data/pp/khl/47683.json
 hockey/data/pp/khl/47695.json
 hockey/data/pp/khl/47699.json
 hockey/data/pp/khl/47707.json
-hockey/data/pp/khl/47767.json
 hockey/data/pp/khl/47775.json
 hockey/data/pp/khl/47791.json
 hockey/data/pp/khl/47823.json
