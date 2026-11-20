@@ -9,6 +9,8 @@ const F=window.JV_FOOT||{},TT=F.teams||{},LGS=F.leagues||{};
 const tn=s=>(TT[s]&&TT[s].n)||s||'—';
 const lgn=k=>(LGS[k]&&(LGS[k].short||LGS[k].name))||k||'';
 const crest=s=>`../assets/fc/${encodeURIComponent(s)}.webp`;
+/* мелкие эмблемы (до 40 px) — уменьшенные копии fc/s/, нет копии — полная (аудит 20.11, вес страницы) */
+const crestS=s=>`../assets/fc/s/${encodeURIComponent(s)}.webp`;
 const ddmm=d=>d.slice(8,10)+'.'+d.slice(5,7);
 const MON=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
 const pl=(n,a,b,c)=>{n=Math.abs(n)%100;const k=n%10;return n>10&&n<20?c:k===1?a:k>1&&k<5?b:c};
@@ -48,12 +50,12 @@ fetch((window.JVD||(u=>u))(`data/pp/${ID}.json`)).then(r=>{if(!r.ok)throw 0;retu
  MAIN.innerHTML=`<article class="pp-hero" aria-label="${esc(P.n)}">
   <span class="pp-wm" aria-hidden="true">${esc(tn(P.t))}</span><img class="pp-ghost" src="${crest(P.t)}" alt="" aria-hidden="true" onerror="this.remove()">
   <div class="pp-txt">
-   <p class="pp-crumbs"><a href="${teamHref}" title="Страница клуба"><img src="${crest(P.t)}" alt="" onerror="this.remove()">${esc(tn(P.t))}</a>${P.lg?`<a class="lg" href="league.html?lg=${encodeURIComponent(P.lg)}" title="Страница лиги">${esc(lgn(P.lg))}</a>`:''}<a class="lg" href="players.html?lg=${encodeURIComponent(P.lg||'')}" title="Игроки лиги">Игроки</a></p>
+   <p class="pp-crumbs"><a href="${teamHref}" title="Страница клуба"><img src="${crestS(P.t)}" alt="" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('/fc/s/','/fc/')}else this.remove()">${esc(tn(P.t))}</a>${P.lg?`<a class="lg" href="league.html?lg=${encodeURIComponent(P.lg)}" title="Страница лиги">${esc(lgn(P.lg))}</a>`:''}<a class="lg" href="players.html?lg=${encodeURIComponent(P.lg||'')}" title="Игроки лиги">Игроки</a></p>
    ${pos?`<p class="pp-pos">${esc(pos)}</p>`:''}
    <h1>${small?esc(small)+' ':''}<b${String(big).length>9?` style="--fz:${(9/String(big).length).toFixed(3)}"`:''}>${esc(big)}</b></h1>
    <p class="pp-sub">${G} ${pl(G,'гол','гола','голов')} и ${A} ${pl(A,'передача','передачи','передач')} в ${N} ${pl(N,'матче','матчах','матчах')} сезона</p>
    <p class="pp-meta">${pos?`<span>${esc(pos)}</span>`:''}<span>${esc(lgs.map(lgn).join(', ')||lgn(P.lg))}, сезон ${esc(F.season||'')}</span></p>
-   <dl class="pp-hs" aria-label="Сезон: ${N} ${pl(N,'матч','матча','матчей')}, ${G} голов, ${A} передач"><div><b>${N}</b><span>${pl(N,'матч','матча','матчей')}</span></div><div><b>${G}</b><span>голы</span></div><div><b>${A}</b><span>передачи</span></div><div><b>${SoT}</b><span>в створ</span></div></dl>
+   <dl class="pp-hs" aria-label="Сезон: ${N} ${pl(N,'матч','матча','матчей')}, ${G} голов, ${A} передач"><div><dt>${pl(N,'матч','матча','матчей')}</dt><dd>${N}</dd></div><div><dt>голы</dt><dd>${G}</dd></div><div><dt>передачи</dt><dd>${A}</dd></div><div><dt>в створ</dt><dd>${SoT}</dd></div></dl>
   </div>
   <div class="pp-photo nop"><span class="pp-ini" aria-hidden="true">${esc(ini)}</span>${P.ph===0?'':`<img class="ph" src="${(window.JVD||(u=>u))(`data/ph/${encodeURIComponent(ID)}.webp`)}" alt="${esc(P.n)}" onload="this.parentNode.classList.remove('nop')" onerror="this.remove()">`}</div>
  </article>
@@ -70,14 +72,14 @@ fetch((window.JVD||(u=>u))(`data/pp/${ID}.json`)).then(r=>{if(!r.ok)throw 0;retu
  <section class="pp-sec" id="s-games" aria-labelledby="h-g"><h2 id="h-g">Все матчи сезона</h2>
   <div class="pp-wrap"><table class="pp-gm fgm"><thead><tr><th scope="col" class="res"><span class="sr">Результат</span></th><th scope="col">Дата</th><th scope="col">Соперник</th><th scope="col" class="ct">Г+П</th><th scope="col" class="rt br">Уд/створ</th><th scope="col" class="rt tm">Мин</th><th scope="col" class="rt">Счёт</th></tr></thead><tbody>
   ${log.slice().reverse().map(r=>{const w=res(r),cards=(r[11]?'<i class="cy" title="Жёлтая карточка"></i>':'')+(r[12]?'<i class="cr" title="Красная карточка"></i>':'');
-   return `<tr><td class="res">${w?`<b class="${w==='d'?'':w}">${RL[w]}</b>`:''}</td><td>${ddmm(r[0])}<small class="fl">${esc(lgn(r[13]))}</small></td><td><a class="op" style="color:inherit;text-decoration:none" href="team.html?id=${encodeURIComponent(r[1])}"><img src="${crest(r[1])}" alt="" loading="lazy" onerror="this.remove()"><span>${esc(tn(r[1]))}<small>${r[2]?'дома':'в гостях'}${r[5]?'':' · со скамейки'}</small></span></a></td><td class="ct pt"><b class="${r[7]+r[8]>0?'g':''}">${r[7]}+${r[8]}</b>${cards}</td><td class="rt br">${r[9]}/${r[10]}</td><td class="rt tm">${r[6]??'—'}′</td><td class="rt sc">${r[3]!=null?`<span class="sg"><i>${r[3]}</i><u>:</u><i>${r[4]}</i></span>`:'—'}</td></tr>`}).join('')}
+   return `<tr><td class="res">${w?`<b class="${w==='d'?'':w}">${RL[w]}</b>`:''}</td><td>${ddmm(r[0])}<small class="fl">${esc(lgn(r[13]))}</small></td><td><a class="op" style="color:inherit;text-decoration:none" href="team.html?id=${encodeURIComponent(r[1])}"><img src="${crestS(r[1])}" alt="" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('/fc/s/','/fc/')}else this.remove()"><span>${esc(tn(r[1]))}<small>${r[2]?'дома':'в гостях'}${r[5]?'':' · со скамейки'}</small></span></a></td><td class="ct pt"><b class="${r[7]+r[8]>0?'g':''}">${r[7]}+${r[8]}</b>${cards}</td><td class="rt br">${r[9]}/${r[10]}</td><td class="rt tm">${r[6]??'—'}′</td><td class="rt sc">${r[3]!=null?`<span class="sg"><i>${r[3]}</i><u>:</u><i>${r[4]}</i></span>`:'—'}</td></tr>`}).join('')}
   </tbody></table></div></section>
  <div class="pp-cta"><p>Разборы матчей и прогнозы по футболу — в нашем Telegram-канале.</p><a href="https://t.me/jarvibet" target="_blank" rel="noopener">Получать прогнозы — бесплатно</a></div>`;
  MAIN.style.setProperty('--c',col);
  const chart=document.getElementById('chart');
  const draw=k=>{const m=MK.find(x=>x.k===k)||MK[0],L=log.slice(-15),mx=Math.max(k==='s2'||k==='st'?4:2,...L.map(m.v));
   chart.innerHTML=L.map(r=>{const v=m.v(r),ok=m.f(r),tip=`${ddmm(r[0])}, ${r[2]?'дома':'в гостях'}, ${tn(r[1])}: ${m.u} — ${v}`;
-   return `<div class="pp-col" title="${esc(tip)}"><div class="bar${ok?' g':''}" style="--h:${Math.max(.04,v/mx)}">${v>0?`<b>${v}</b>`:''}</div><img class="em" src="${crest(r[1])}" alt="${esc(tn(r[1]))}" loading="lazy" onerror="this.outerHTML='<span class=fb>${esc(tn(r[1]).slice(0,3).toUpperCase())}</span>'"><small>${r[2]?'':''}${r[0].slice(8,10)}<i>.${r[0].slice(5,7)}</i></small></div>`}).join('');
+   return `<div class="pp-col" title="${esc(tip)}"><div class="bar${ok?' g':''}" style="--h:${Math.max(.04,v/mx)}">${v>0?`<b>${v}</b>`:''}</div><img class="em" src="${crestS(r[1])}" alt="${esc(tn(r[1]))}" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('/fc/s/','/fc/')}else this.outerHTML='<span class=fb>${esc(tn(r[1]).slice(0,3).toUpperCase())}</span>'"><small>${r[2]?'':''}${r[0].slice(8,10)}<i>.${r[0].slice(5,7)}</i></small></div>`}).join('');
   chart.setAttribute('aria-label',`${m.n}: ${L.map(r=>`${ddmm(r[0])} ${tn(r[1])} — ${m.v(r)}`).join('; ')}`);
   document.querySelectorAll('#tabs button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===m.k))};
  document.getElementById('tabs').onclick=e=>{const b=e.target.closest('button');if(b)draw(b.dataset.k)};
