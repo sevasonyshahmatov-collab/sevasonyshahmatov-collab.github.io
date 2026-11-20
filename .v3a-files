@@ -933,10 +933,6 @@ data/deckbg/ligue1_2026-11-21_nice_paris_saint_germain-m.webp
 data/deckbg/ligue1_2026-11-21_nice_paris_saint_germain.webp
 data/deckbg/ligue1_2026-11-21_strasbourg_brest-m.webp
 data/deckbg/ligue1_2026-11-21_strasbourg_brest.webp
-data/deckbg/nhl_2026-11-20_nhl_sea_nhl_van-m.webp
-data/deckbg/nhl_2026-11-20_nhl_sea_nhl_van.webp
-data/deckbg/nhl_2026-11-20_nhl_vgk_dallas-m.webp
-data/deckbg/nhl_2026-11-20_nhl_vgk_dallas.webp
 data/deckbg/nhl_2026-11-21_nhl_car_nhl_edm-m.webp
 data/deckbg/nhl_2026-11-21_nhl_car_nhl_edm.webp
 data/deckbg/nhl_2026-11-21_nhl_cgy_nhl_chi-m.webp
@@ -7056,6 +7052,7 @@ hockey/data/pp/nhl/8480800.json
 hockey/data/pp/nhl/8480801.json
 hockey/data/pp/nhl/8480802.json
 hockey/data/pp/nhl/8480803.json
+hockey/data/pp/nhl/8480806.json
 hockey/data/pp/nhl/8480807.json
 hockey/data/pp/nhl/8480813.json
 hockey/data/pp/nhl/8480817.json
@@ -7113,6 +7110,7 @@ hockey/data/pp/nhl/8481538.json
 hockey/data/pp/nhl/8481540.json
 hockey/data/pp/nhl/8481542.json
 hockey/data/pp/nhl/8481546.json
+hockey/data/pp/nhl/8481550.json
 hockey/data/pp/nhl/8481553.json
 hockey/data/pp/nhl/8481554.json
 hockey/data/pp/nhl/8481557.json
@@ -7401,6 +7399,7 @@ hockey/data/pp/nhl/8484801.json
 hockey/data/pp/nhl/8484803.json
 hockey/data/pp/nhl/8484806.json
 hockey/data/pp/nhl/8484829.json
+hockey/data/pp/nhl/8484859.json
 hockey/data/pp/nhl/8484860.json
 hockey/data/pp/nhl/8484873.json
 hockey/data/pp/nhl/8484901.json
