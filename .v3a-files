@@ -1082,8 +1082,6 @@ data/deckbg/epl_2026-11-21_chelsea_leeds_united-m.webp
 data/deckbg/epl_2026-11-21_chelsea_leeds_united.webp
 data/deckbg/epl_2026-11-21_coventry_city_crystal_palace-m.webp
 data/deckbg/epl_2026-11-21_coventry_city_crystal_palace.webp
-data/deckbg/epl_2026-11-21_manchester_city_fulham-m.webp
-data/deckbg/epl_2026-11-21_manchester_city_fulham.webp
 data/deckbg/epl_2026-11-21_newcastle_united_arsenal-m.webp
 data/deckbg/epl_2026-11-21_newcastle_united_arsenal.webp
 data/deckbg/epl_2026-11-21_tottenham_hotspur_ipswich_town-m.webp
@@ -1107,8 +1105,6 @@ data/deckbg/khl_2026-11-22_shanghai_lada-m.webp
 data/deckbg/khl_2026-11-22_shanghai_lada.webp
 data/deckbg/khl_2026-11-22_torpedo_avtomobilist-m.webp
 data/deckbg/khl_2026-11-22_torpedo_avtomobilist.webp
-data/deckbg/laliga_2026-11-21_alaves_deportivo-m.webp
-data/deckbg/laliga_2026-11-21_alaves_deportivo.webp
 data/deckbg/laliga_2026-11-21_rayo_vallecano_valencia-m.webp
 data/deckbg/laliga_2026-11-21_rayo_vallecano_valencia.webp
 data/deckbg/laliga_2026-11-21_real_madrid_celta_vigo-m.webp
@@ -1169,8 +1165,6 @@ data/deckbg/nhl_2026-11-22_nhl_van_minnesota-m.webp
 data/deckbg/nhl_2026-11-22_nhl_van_minnesota.webp
 data/deckbg/nhl_2026-11-22_nhl_wpg_nhl_vgk-m.webp
 data/deckbg/nhl_2026-11-22_nhl_wpg_nhl_vgk.webp
-data/deckbg/rpl_2026-11-21_akron_tolyatti_fakel_voronezh-m.webp
-data/deckbg/rpl_2026-11-21_akron_tolyatti_fakel_voronezh.webp
 data/deckbg/rpl_2026-11-21_cska_moscow_akhmat_grozny-m.webp
 data/deckbg/rpl_2026-11-21_cska_moscow_akhmat_grozny.webp
 data/deckbg/rpl_2026-11-21_rubin_kazan_zenit_st_petersburg-m.webp
@@ -1286,11 +1280,6 @@ epl/2026-11-21-coventry-city-crystal-palace/bg-m.webp
 epl/2026-11-21-coventry-city-crystal-palace/bg.webp
 epl/2026-11-21-coventry-city-crystal-palace/index.html
 epl/2026-11-21-coventry-city-crystal-palace/og.jpg
-epl/2026-11-21-manchester-city-fulham/.bgv
-epl/2026-11-21-manchester-city-fulham/bg-m.webp
-epl/2026-11-21-manchester-city-fulham/bg.webp
-epl/2026-11-21-manchester-city-fulham/index.html
-epl/2026-11-21-manchester-city-fulham/og.jpg
 epl/2026-11-21-newcastle-united-arsenal/.bgv
 epl/2026-11-21-newcastle-united-arsenal/bg-m.webp
 epl/2026-11-21-newcastle-united-arsenal/bg.webp
@@ -5430,6 +5419,7 @@ football/data/pp/385849.json
 football/data/pp/385968.json
 football/data/pp/385969.json
 football/data/pp/385979.json
+football/data/pp/385987.json
 football/data/pp/385990.json
 football/data/pp/385998.json
 football/data/pp/386242.json
@@ -8582,11 +8572,6 @@ laliga/2026-11-20-athletic-club-espanyol/bg-m.webp
 laliga/2026-11-20-athletic-club-espanyol/bg.webp
 laliga/2026-11-20-athletic-club-espanyol/index.html
 laliga/2026-11-20-athletic-club-espanyol/og.jpg
-laliga/2026-11-21-alaves-deportivo/.bgv
-laliga/2026-11-21-alaves-deportivo/bg-m.webp
-laliga/2026-11-21-alaves-deportivo/bg.webp
-laliga/2026-11-21-alaves-deportivo/index.html
-laliga/2026-11-21-alaves-deportivo/og.jpg
 laliga/2026-11-21-rayo-vallecano-valencia/.bgv
 laliga/2026-11-21-rayo-vallecano-valencia/bg-m.webp
 laliga/2026-11-21-rayo-vallecano-valencia/bg.webp
@@ -9892,16 +9877,13 @@ rpl/2026-11-20-rostov-krylia-sovetov/bg-m.webp
 rpl/2026-11-20-rostov-krylia-sovetov/bg.webp
 rpl/2026-11-20-rostov-krylia-sovetov/index.html
 rpl/2026-11-20-rostov-krylia-sovetov/og.jpg
-rpl/2026-11-21-akron-tolyatti-fakel-voronezh/.bgv
-rpl/2026-11-21-akron-tolyatti-fakel-voronezh/bg-m.webp
-rpl/2026-11-21-akron-tolyatti-fakel-voronezh/bg.webp
-rpl/2026-11-21-akron-tolyatti-fakel-voronezh/index.html
-rpl/2026-11-21-akron-tolyatti-fakel-voronezh/og.jpg
 rpl/2026-11-21-cska-moscow-akhmat-grozny/.bgv
 rpl/2026-11-21-cska-moscow-akhmat-grozny/bg-m.webp
 rpl/2026-11-21-cska-moscow-akhmat-grozny/bg.webp
 rpl/2026-11-21-cska-moscow-akhmat-grozny/index.html
 rpl/2026-11-21-cska-moscow-akhmat-grozny/og.jpg
+rpl/2026-11-21-gazovik-orenburg-baltika-kaliningrad/index.html
+rpl/2026-11-21-gazovik-orenburg-baltika-kaliningrad/og.jpg
 rpl/2026-11-21-rubin-kazan-zenit-st-petersburg/.bgv
 rpl/2026-11-21-rubin-kazan-zenit-st-petersburg/bg-m.webp
 rpl/2026-11-21-rubin-kazan-zenit-st-petersburg/bg.webp
