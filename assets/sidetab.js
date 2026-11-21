@@ -23,7 +23,11 @@ const css=`.sdt{position:fixed;z-index:5;width:var(--w,260px);display:flex;flex-
 .sdt .sd-sc{overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;min-height:0}
 .sdt table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
 .sdt th{font:700 11px/1 var(--text,system-ui);color:rgba(220,230,255,.55);text-align:center;padding:0 2px 6px;position:sticky;top:0;background:rgba(10,16,30,.96)}
-.sdt th:nth-child(2){text-align:left}
+.sdt th:nth-child(3){text-align:left}
+.sdt td.m{width:22px;padding-left:0;padding-right:0}
+.sdt .sd-mv{display:block;font:800 9.5px/1 var(--text,system-ui);font-style:normal;text-align:left;letter-spacing:-.02em}
+.sdt .sd-mv.up{color:#2fd27f}.sdt .sd-mv.dn{color:#ff5a63}
+.sdt.w .sd-mv.up{color:#12924f}.sdt.w .sd-mv.dn{color:#d42a35}
 .sdt td{padding:4px 2px;text-align:center;border-top:1px solid rgba(160,190,255,.08);white-space:nowrap}
 .sdt td.n{width:20px;color:rgba(220,230,255,.6)}
 .sdt td.c{text-align:left;max-width:0;width:100%}
@@ -63,11 +67,26 @@ const name=id=>FB?((F().teams||{})[id]||{}).n||id:(HT()[id]||{}).name||id;
 const em=id=>ROOT+(FB?'assets/fc/s/':'assets/em/s/')+id+'.webp';
 const href=id=>ROOT+(FB?'football/team.html?id=':'team/index.html?id=')+encodeURIComponent(id);
 const club=id=>'<a class="sd-cl" href="'+esc(href(id))+'"><img src="'+esc(em(id))+'" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'"><span>'+esc(name(id))+'</span></a>';
+/* таблица + сдвиг места после последнего матча команды (владелец 21.11: «стрелочку зелёную вверх»):
+   для каждой команды убираем её последний матч лиги и смотрим, какое место у неё было бы — разница со значком ▲/▼ */
+function lastGame(id){
+ if(FB){const J=window.JVF;if(!J||!J.gamesOf)return null;return J.gamesOf(id,g=>!g.c)[0]||null}
+ const gs=((HT()[id]||{}).games||[]).filter(g=>g.gf!=null&&g.ga!=null).sort((x,y)=>x.d<y.d?1:-1);return gs[0]||null}
+const gpts=g=>FB?(g.gf>g.ga?3:g.gf===g.ga?1:0):(g.gf>g.ga?2:g.x?1:0);
+const cmp=(a,b)=>(b.pts-a.pts)||(b.w-a.w)||(b.gd-a.gd)||(b.gf-a.gf);
+function withMoves(rows){
+ /* прошлая таблица: у всех команд убран их последний матч (таблица «тур назад»); сдвиг = место тогда − место сейчас */
+ const prev=rows.map(r=>{const g=lastGame(r.id);return g?{id:r.id,pts:r.pts-gpts(g),w:r.w-(g.gf>g.ga?1:0),gd:r.gd-(g.gf-g.ga),gf:r.gf-g.gf}:{id:r.id,pts:r.pts,w:r.w,gd:r.gd,gf:r.gf}}).sort(cmp);
+ const pp={};prev.forEach((r,i)=>pp[r.id]=i+1);
+ rows.forEach(r=>{r.mv=pp[r.id]?pp[r.id]-r.pl:0});
+ return rows}
 function table(lg){
- if(FB){const TB=F().tables||{};if(lg==='ucl'||lg==='uel')return null;return (TB[lg]||[]).map(r=>({id:r.id,pl:r.place,gp:r.gp,pts:r.pts}))}
- const all=Object.entries(HT()).filter(([,t])=>t.lg===lg&&t.gp!=null);
- all.sort((x,y)=>(y[1].pts-x[1].pts)||((y[1].w||0)-(x[1].w||0))||((y[1].gf-y[1].ga)-(x[1].gf-x[1].ga)));
- return all.map(([id,t],i)=>({id,pl:i+1,gp:t.gp,pts:t.pts}))}
+ if(FB){const TB=F().tables||{};if(lg==='ucl'||lg==='uel')return null;
+  return withMoves((TB[lg]||[]).map(r=>({id:r.id,pl:r.place,gp:r.gp,pts:r.pts,w:r.w||0,gd:(r.gf||0)-(r.ga||0),gf:r.gf||0})))}
+ const all=Object.entries(HT()).filter(([,t])=>t.lg===lg&&t.gp!=null).map(([id,t])=>({id,gp:t.gp,pts:t.pts,w:t.w||0,gd:(t.gf||0)-(t.ga||0),gf:t.gf||0}));
+ all.sort(cmp);all.forEach((r,i)=>r.pl=i+1);
+ return withMoves(all)}
+const mvHTML=r=>r.mv>0?'<i class="sd-mv up" title="поднялись на '+r.mv+' после последнего матча">▲'+r.mv+'</i>':r.mv<0?'<i class="sd-mv dn" title="опустились на '+(-r.mv)+' после последнего матча">▼'+(-r.mv)+'</i>':'<i class="sd-mv"></i>';
 /* 5 последних результатов, слева старые: 'w' | 'd' | 'l' */
 function form(id){
  if(FB){const J=window.JVF;if(!J||!J.gamesOf)return [];return J.gamesOf(id).slice(0,5).reverse().map(g=>g.gf>g.ga?'w':g.gf===g.ga?'d':'l')}
@@ -95,8 +114,8 @@ function build(){
  const k=[lg,me.join(),vis.map(m=>m.h+m.a).join()].join('|');if(k===key&&L)return;key=k;
  if(!L){L=document.createElement('aside');R=document.createElement('aside');L.className=R.className='sdt'+(VIEW==='2'?' w':'');
   L.setAttribute('aria-label','Турнирная таблица');R.setAttribute('aria-label','Форма команд');document.body.append(L,R)}
- L.innerHTML=tb&&tb.length?'<h4>'+esc(LGN[lg]||lg)+' · таблица<small>'+(FB?'место, игры, очки':'все клубы по очкам')+'</small></h4><div class="sd-sc"><table><thead><tr><th>#</th><th>Клуб</th><th title="Игры">И</th><th title="Очки">О</th></tr></thead><tbody>'+
-  tb.map(r=>'<tr class="'+(me.includes(r.id)?'me':today.has(r.id)?'td':'')+'"><td class="n">'+esc(r.pl)+'</td><td class="c">'+club(r.id)+'</td><td class="g">'+esc(r.gp)+'</td><td class="p">'+esc(r.pts)+'</td></tr>').join('')+'</tbody></table></div>':'';
+ L.innerHTML=tb&&tb.length?'<h4>'+esc(LGN[lg]||lg)+' · таблица<small>'+(FB?'место, игры, очки':'все клубы по очкам')+'</small></h4><div class="sd-sc"><table><thead><tr><th>#</th><th></th><th>Клуб</th><th title="Игры">И</th><th title="Очки">О</th></tr></thead><tbody>'+
+  tb.map(r=>'<tr class="'+(me.includes(r.id)?'me':today.has(r.id)?'td':'')+'"><td class="n">'+esc(r.pl)+'</td><td class="m">'+mvHTML(r)+'</td><td class="c">'+club(r.id)+'</td><td class="g">'+esc(r.gp)+'</td><td class="p">'+esc(r.pts)+'</td></tr>').join('')+'</tbody></table></div>':'';
  const ms=(op?[op].concat(vis.filter(m=>m.li!==op.li)):vis).slice(0,8);
  R.innerHTML=ms.length?'<h4>Форма команд<small>5 последних матчей, слева старые</small></h4><div class="sd-sc"><ul class="sd-fm">'+ms.map(m=>
   '<li'+(op&&m.li===op.li?' class="me"':'')+'><time>'+esc((LGN[m.lg]||'')+' · '+m.t.slice(11,16))+'</time><div class="sd-fr">'+club(m.h)+dots(m.h)+'</div><div class="sd-fr">'+club(m.a)+dots(m.a)+'</div></li>').join('')+'</ul></div>':'';
