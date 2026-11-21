@@ -50,6 +50,22 @@ const css=`.sdt{position:fixed;z-index:5;width:var(--w,260px);display:flex;flex-
 .sdt .sd-dt{display:flex;gap:3px;flex:none}
 .sdt .sd-dt i{display:grid;place-items:center;width:15px;height:15px;border-radius:4px;font:800 9px/1 var(--text,system-ui);font-style:normal;color:#fff}
 .sdt .sd-dt i.w{background:#1f9d5c}.sdt .sd-dt i.l{background:#c8343f}.sdt .sd-dt i.d{background:#7d8798}
+.sdt .sd-kp{display:grid;gap:6px;margin:0 2px 10px}
+.sdt .sd-kp div{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:8px 10px;border-radius:10px;background:rgba(160,190,255,.08)}
+.sdt .sd-kp b{font:800 20px/1 var(--display,system-ui)}.sdt .sd-kp b small{font:600 12px/1 var(--text,system-ui);opacity:.7}
+.sdt .sd-kp span{font-size:11.5px;color:rgba(220,230,255,.62);text-align:right}
+.sdt .up{color:#2fd27f}.sdt .dn{color:#ff5a63}
+.sdt .sd-lb{margin:10px 4px 6px;font:700 11px/1.2 var(--text,system-ui);letter-spacing:.04em;text-transform:uppercase;color:rgba(220,230,255,.55)}
+.sdt .sd-rc{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;margin:0 2px}
+.sdt .sd-rc i{aspect-ratio:1;border-radius:4px}.sdt .sd-rc i.w{background:#1f9d5c}.sdt .sd-rc i.l{background:#c8343f}.sdt .sd-rc i.d{background:#7d8798}
+.sdt .sd-mo{display:flex;justify-content:space-between;margin:0 4px;font-size:14px}.sdt .sd-mo b{font-weight:800}.sdt .sd-mo span{font-weight:800}
+.sdt .sd-last{display:grid;gap:3px;margin:0 2px;padding:8px 10px;border-radius:10px;background:rgba(160,190,255,.08);color:inherit;text-decoration:none}
+.sdt .sd-last span{font-size:12px;color:rgba(220,230,255,.7)}.sdt .sd-last b{font-weight:700}
+.sdt .sd-last i{font-style:normal;font-weight:800;font-size:12px}.sdt .sd-last i.w{color:#2fd27f}.sdt .sd-last i.l{color:#ff5a63}
+.sdt .sd-all{display:block;margin:12px 2px 4px;padding:9px;border-radius:10px;text-align:center;background:#ffcc33;color:#111;font-weight:800;text-decoration:none}
+.sdt .sd-18{margin:6px 4px 0;font-size:10.5px;color:rgba(220,230,255,.5)}
+.sdt.w .sd-kp div,.sdt.w .sd-last{background:#f1f4f9}.sdt.w .sd-kp span,.sdt.w .sd-lb,.sdt.w .sd-last span,.sdt.w .sd-18{color:#5b6576}
+.sdt.w .up{color:#12924f}.sdt.w .dn{color:#d42a35}
 @media (prefers-reduced-motion:reduce){.sdt{transition:none}}`;
 /* вид (владелец 21.11: «в цветах и белую — посмотрю»): ?sdt=1 — тёмная (основная), ?sdt=2 — белая; выбор помнится до закрытия вкладки */
 let VIEW='1';try{const v=new URLSearchParams(location.search).get('sdt');if(v==='1'||v==='2')sessionStorage.setItem('jv-sdt',v);VIEW=sessionStorage.getItem('jv-sdt')||'1'}catch(e){}
@@ -96,6 +112,22 @@ function form(id){
 const RL={w:'В',d:'Н',l:'П'},RT={w:'победа',d:'ничья',l:'поражение'};
 const dots=id=>{const f=form(id);return '<span class="sd-dt" aria-label="форма: '+esc(f.map(x=>RT[x]).join(', ')||'нет данных')+'">'+f.map(x=>'<i class="'+x+'">'+RL[x]+'</i>').join('')+'</span>'};
 
+/* справа — «Честные итоги» прогнозов канала (владелец 21.11: «форма уже внутри карточек, нужно что-то другое»):
+   данные window.__RESLITE (data/results-lite.js — уже на странице для полосы итогов) */
+const fx=(x,d)=>Number(x).toFixed(d).replace('.',',');
+function resultsHTML(){const D=window.__RESLITE;if(!D||!D.sum||!D.sum.total)return '';
+ const sp=FB?'football':'hockey',S=D.sum.total[sp]&&D.sum.total[sp].n>=5?D.sum.total[sp]:D.sum.total.all,who=S===D.sum.total.all?'все прогнозы':FB?'футбол':'хоккей';
+ const mo=(D.sum.months||[])[0],M=mo&&mo.all,rec=(D.recent||[]).slice(-20);
+ const L=(D.last||[]).slice(-1)[0];
+ const RS={w:'зашёл',l:'не зашёл',p:'возврат'};
+ return '<h4>Честные итоги<small>'+esc(who)+', с '+esc((D.since||'').slice(8,10)+'.'+(D.since||'').slice(5,7))+' · без удалений</small></h4><div class="sd-sc">'+
+  '<div class="sd-kp"><div><b>'+esc(S.w)+'<small> из '+esc(S.n)+'</small></b><span>зашло, '+esc(Math.round(S.rate))+' %</span></div>'+
+  '<div><b class="'+(S.units>=0?'up':'dn')+'">'+(S.units>=0?'+':'−')+esc(fx(Math.abs(S.units),1))+'</b><span>ед. при ставке 1</span></div>'+
+  '<div><b>'+esc(fx(S.kef,2))+'</b><span>средний кэф</span></div></div>'+
+  (rec.length?'<p class="sd-lb">Последние '+rec.length+' прогнозов канала</p><div class="sd-rc">'+rec.map(r=>'<i class="'+(r.r==='w'?'w':r.r==='l'?'l':'d')+'" title="'+esc((r.kind==='express'?'экспресс: ':'')+(RS[r.r]||''))+'"></i>').join('')+'</div>':'')+
+  (M?'<p class="sd-lb">'+esc(mo.name||'Этот месяц')+' · весь канал</p><div class="sd-mo"><b>'+esc(M.w)+' из '+esc(M.n)+'</b><span class="'+(M.units>=0?'up':'dn')+'">'+(M.units>=0?'+':'−')+esc(fx(Math.abs(M.units||0),1))+' ед.</span></div>':'')+
+  (L?'<p class="sd-lb">Последний разобранный</p><a class="sd-last" href="'+esc(L.url||'#')+'" target="_blank" rel="noopener"><span>'+esc(L.h+' — '+L.a)+(L.sc?' '+esc(L.sc):'')+'</span><b>'+esc(L.bet)+(L.kef?' · '+esc(fx(L.kef,2)):'')+'</b><i class="'+(L.r==='w'?'w':L.r==='l'?'l':'d')+'">'+esc(RS[L.r]||'')+'</i></a>':'')+
+  '<a class="sd-all" href="'+esc(ROOT+'results.html')+'">Все итоги →</a><p class="sd-18">18+ · Прошлые результаты не гарантируют будущих.</p></div>'}
 /* ---- что показывать ---- */
 const rows=()=>[...LIST.querySelectorAll('li.match')].filter(li=>li.offsetParent!==null);
 const info=li=>{const s=li&&li.querySelector('.lvslot[data-lv-lg]');return s?{lg:s.dataset.lvLg,h:s.dataset.lvH,a:s.dataset.lvA,t:s.dataset.lvT||'',li}:null};
@@ -113,12 +145,10 @@ function build(){
  const tb=table(lg);const me=op?[op.h,op.a]:[];const today=new Set(vis.flatMap(m=>[m.h,m.a]));
  const k=[lg,me.join(),vis.map(m=>m.h+m.a).join()].join('|');if(k===key&&L)return;key=k;
  if(!L){L=document.createElement('aside');R=document.createElement('aside');L.className=R.className='sdt'+(VIEW==='2'?' w':'');
-  L.setAttribute('aria-label','Турнирная таблица');R.setAttribute('aria-label','Форма команд');document.body.append(L,R)}
+  L.setAttribute('aria-label','Турнирная таблица');R.setAttribute('aria-label','Итоги прогнозов');document.body.append(L,R)}
  L.innerHTML=tb&&tb.length?'<h4>'+esc(LGN[lg]||lg)+' · таблица<small>'+(FB?'место, игры, очки':'все клубы по очкам')+'</small></h4><div class="sd-sc"><table><thead><tr><th>#</th><th></th><th>Клуб</th><th title="Игры">И</th><th title="Очки">О</th></tr></thead><tbody>'+
   tb.map(r=>'<tr class="'+(me.includes(r.id)?'me':today.has(r.id)?'td':'')+'"><td class="n">'+esc(r.pl)+'</td><td class="m">'+mvHTML(r)+'</td><td class="c">'+club(r.id)+'</td><td class="g">'+esc(r.gp)+'</td><td class="p">'+esc(r.pts)+'</td></tr>').join('')+'</tbody></table></div>':'';
- const ms=(op?[op].concat(vis.filter(m=>m.li!==op.li)):vis).slice(0,8);
- R.innerHTML=ms.length?'<h4>Форма команд<small>5 последних матчей, слева старые</small></h4><div class="sd-sc"><ul class="sd-fm">'+ms.map(m=>
-  '<li'+(op&&m.li===op.li?' class="me"':'')+'><time>'+esc((LGN[m.lg]||'')+' · '+m.t.slice(11,16))+'</time><div class="sd-fr">'+club(m.h)+dots(m.h)+'</div><div class="sd-fr">'+club(m.a)+dots(m.a)+'</div></li>').join('')+'</ul></div>':'';
+ R.innerHTML=resultsHTML();
 }
 function place(){q=0;if(!L)return;
  const lr=LIST.getBoundingClientRect(),gl=lr.left,gr=innerWidth-lr.right,w=Math.min(300,Math.min(gl,gr)-GAP-10);
