@@ -1173,8 +1173,6 @@ data/deckbg/rpl_2026-11-21_akron_tolyatti_fakel_voronezh-m.webp
 data/deckbg/rpl_2026-11-21_akron_tolyatti_fakel_voronezh.webp
 data/deckbg/rpl_2026-11-21_cska_moscow_akhmat_grozny-m.webp
 data/deckbg/rpl_2026-11-21_cska_moscow_akhmat_grozny.webp
-data/deckbg/rpl_2026-11-21_gazovik_orenburg_baltika_kaliningrad-m.webp
-data/deckbg/rpl_2026-11-21_gazovik_orenburg_baltika_kaliningrad.webp
 data/deckbg/rpl_2026-11-21_rubin_kazan_zenit_st_petersburg-m.webp
 data/deckbg/rpl_2026-11-21_rubin_kazan_zenit_st_petersburg.webp
 data/deckbg/rpl_2026-11-22_dinamo_moscow_krasnodar-m.webp
@@ -9904,11 +9902,6 @@ rpl/2026-11-21-cska-moscow-akhmat-grozny/bg-m.webp
 rpl/2026-11-21-cska-moscow-akhmat-grozny/bg.webp
 rpl/2026-11-21-cska-moscow-akhmat-grozny/index.html
 rpl/2026-11-21-cska-moscow-akhmat-grozny/og.jpg
-rpl/2026-11-21-gazovik-orenburg-baltika-kaliningrad/.bgv
-rpl/2026-11-21-gazovik-orenburg-baltika-kaliningrad/bg-m.webp
-rpl/2026-11-21-gazovik-orenburg-baltika-kaliningrad/bg.webp
-rpl/2026-11-21-gazovik-orenburg-baltika-kaliningrad/index.html
-rpl/2026-11-21-gazovik-orenburg-baltika-kaliningrad/og.jpg
 rpl/2026-11-21-rubin-kazan-zenit-st-petersburg/.bgv
 rpl/2026-11-21-rubin-kazan-zenit-st-petersburg/bg-m.webp
 rpl/2026-11-21-rubin-kazan-zenit-st-petersburg/bg.webp
