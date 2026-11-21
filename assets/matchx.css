@@ -605,3 +605,8 @@ html:not([data-theme="arena"]) .mq-tiles li.warn b{color:#9a6a00}
 .inj-col li span{color:var(--ink-3);text-align:right}
 .inj-col li.inj-none{color:var(--ink-3)}
 @media (max-width:700px){.inj-box{grid-template-columns:1fr}}
+
+/* эмблемы в круглых плашках (владелец 21.11, «Ювентус»): у картинки со скруглением в круг браузер режет саму эмблему по внутреннему
+   кругу (радиус минус отступ) — высокие и широкие эмблемы срезались. Картинку больше не скругляем, белый круг рисуем фоном под ней. */
+.mt-oe img{background:radial-gradient(circle closest-side,#f3f5f8 calc(100% - 2.6px),var(--card) calc(100% - 2px),var(--card) calc(100% - .6px),transparent 100%);border-radius:0;box-shadow:none}
+.mx-em{background:radial-gradient(circle closest-side,#f3f5f8 calc(100% - .6px),transparent 100%);border-radius:0}

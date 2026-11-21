@@ -366,3 +366,7 @@ a.dk-trow:hover,a.dk-trow:focus-visible{background:color-mix(in srgb,var(--ink) 
 a.dk-trow:hover b{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px}
 .dk-trow .dk-go{font-style:normal;margin-left:6px;opacity:.55;transition:transform .18s,opacity .18s;display:inline-block}
 a.dk-trow:hover .dk-go{opacity:1;transform:translateX(3px)}
+
+/* эмблемы в круглых плашках (владелец 21.11, «Ювентус»): у картинки со скруглением в круг браузер режет саму эмблему по внутреннему
+   кругу (радиус минус отступ) — высокие и широкие эмблемы срезались. Картинку больше не скругляем, белый круг рисуем фоном под ней. */
+.dk-trow .em{background:radial-gradient(circle closest-side,#eef3fa calc(100% - .6px),transparent 100%);border-radius:0}

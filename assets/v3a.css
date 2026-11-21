@@ -1294,3 +1294,7 @@ html body .pp-ln>div{padding-bottom:14px}
 @view-transition{navigation:auto}
 html:not(.efir)::view-transition-old(root),html:not(.efir)::view-transition-new(root){animation-duration:.15s}
 @media (prefers-reduced-motion:reduce){html:not(.efir)::view-transition-old(root),html:not(.efir)::view-transition-new(root){animation:none}}
+
+/* эмблемы в круглых плашках (владелец 21.11, «Ювентус»): у картинки со скруглением в круг браузер режет саму эмблему по внутреннему
+   кругу (радиус минус отступ) — высокие и широкие эмблемы срезались. Картинку больше не скругляем, белый круг рисуем фоном под ней. */
+.face .em{background:radial-gradient(circle closest-side,#eef3fa calc(100% - .6px),transparent 100%);border-radius:0;box-shadow:none;filter:drop-shadow(0 8px 14px rgba(0,0,0,.35))}

@@ -94,3 +94,7 @@ html.lite .lt-wedge--2{right:-6%;width:22%;clip-path:polygon(34% 0,100% 0,66% 10
   html.lite :is(.hm-row,.match,.fc-m,.lgm,.plcard,.crest,.hm-door,.door,.me-card,.me-m,.me-tm,.lgtab,.lt-glass):is(:hover,:active){transform:none!important}
   html.lite :is(.hm-row,.fc-m,.lgm,.plcard,.hm-door,.door,.me-card,.me-m,.me-tm,.lgtab,.lt-glass)::after{animation:none!important;opacity:0!important}
 }
+
+/* эмблемы в круглых плашках (владелец 21.11, «Ювентус»): у картинки со скруглением в круг браузер режет саму эмблему по внутреннему
+   кругу (радиус минус отступ) — высокие и широкие эмблемы срезались. Картинку больше не скругляем, белый круг рисуем фоном под ней. */
+html.lite .lt-glass__names img{background:radial-gradient(circle closest-side,rgba(255,255,255,.92) calc(100% - .6px),transparent 100%);border-radius:0}
