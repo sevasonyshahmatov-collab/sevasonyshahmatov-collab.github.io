@@ -1,7 +1,7 @@
 {
  "day": "2026-11-21",
  "league": "khl",
- "skipped": 0,
+ "skipped": 1,
  "matches": [
   {
    "h": "Нефтехимик",
@@ -114,9 +114,9 @@
     }
    },
    "x1x2": [
-    4.38,
-    3.99,
-    1.69
+    4.63,
+    4.11,
+    1.633
    ],
    "p3": [
     0.205,
@@ -185,7 +185,7 @@
      "gd": -3
     }
    },
-   "_z": "a0S0dk+h3fYJjJyhijcAIa0AdamB1MgUOA1r+2y/MMuqAxck311V+phiDXXGch2IOjE0Sa591moBIR2FRWzUmkzO8v9VqP2lT216s4JB7CApHHAvKsEZFCa5HCC5NHU2R3CWBoeLVd2/tNrYOzyaSSCF11v4dAGN+58mrIOB+Hq7TqsvCnUFHCaMrr5PFCpVluwd41sLZIQO+3Wxslr/n4VsqcjrK6D/awQ2PP/nFrxnw1mdU/LG4NYtJQJqc91ZnOCJqTBajgpUG6awIjk5T4Vc/LAAX46+Ibzeuv1T"
+   "_z": "An0mzgi9F5vyUKmU9YQwjlxHP7jpxQStptQo4kCvKsa7raeQo8LPJLqWZBrsB8iv8pFgCSrRjnoRAvvwyWYOj058wZ9KIO9GXaG/9JvTTmXNKmqWVG7+71+6yYG00X0dZHPHA2XYCW5BNzmprRzWZzd9ZJV4Syp7BbOQo/jzSliAHiXZkH51aLEJYBkpZrOjI7S8ZWdmtzsOVGlPVAJGJKPHZAG6oajfVoKu0/AgU6195FCFhMWf77JEplpsSpLrsx4YGdagZxs4Z+3MBPZf79ddPvElGq/0aUpHH4tXKfrI2Lj7/gYHknrADGiGhA=="
   }
  ],
  "all": [
