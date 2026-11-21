@@ -68,7 +68,7 @@ const SECTIONS={};
     ['tr','Тренды','hockey/trends.html'],['deck','Выбрать матч','matches.html?s=h'],['kup','Купон','hockey/kupon.html']];
   SECTIONS.football=[['m','Матчи','football/index.html',[['m','Ближайшие матчи','football/index.html'],['fc','Прогноз на сегодня — списком','football/forecast-epl.html']]],
     ['lg','Лиги','football/league.html?lg=epl',[...FL.map(([k,n])=>['lg-'+k,n,'football/league.html?lg='+k]),['ucl','Лига чемпионов','football/ucl.html'],['pl','Игроки','football/players.html']]],
-    ['tr','Тренды','football/trends.html'],['deck','Выбрать матч','matches.html?s=f']];
+    ['tr','Тренды','football/trends.html'],['deck','Выбрать матч','matches.html?s=f'],['kup','Купон','football/kupon.html']];   /* купон и у футбола (владелец 21.11) */
 }
 /* какой пункт активен */
 function active(){

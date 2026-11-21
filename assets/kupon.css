@@ -713,3 +713,8 @@ body.kb4{background:#07102a}
 /* эмблемы в круглых плашках (владелец 21.11, «Ювентус»): у картинки со скруглением в круг браузер режет саму эмблему по внутреннему
    кругу (радиус минус отступ) — высокие и широкие эмблемы срезались. Картинку больше не скругляем, белый круг рисуем фоном под ней. */
 .e5 .kp-m.v1 .kp-logos img{background:radial-gradient(circle closest-side,#eef3fa calc(100% - 2.6px),rgba(7,18,37,.9) calc(100% - 2px),rgba(7,18,37,.9) calc(100% - .6px),transparent 100%);border-radius:0;box-shadow:none;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))}
+
+/* футбол (21.11): шесть кнопок лиг — отдельной строкой над полем кэфа, чтобы не сжимать текст слева */
+html[data-sport="football"] .kp-auto{grid-template-columns:1fr}
+html[data-sport="football"] .kp-want{flex-wrap:wrap;justify-content:flex-start;max-width:none}
+html[data-sport="football"] .kp-alg{width:100%;flex-wrap:wrap}
