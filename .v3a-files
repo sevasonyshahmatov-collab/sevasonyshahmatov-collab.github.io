@@ -861,6 +861,8 @@ assets/matchx.css
 assets/mc.js
 assets/me.css
 assets/me.js
+assets/mfind.css
+assets/mfind.js
 assets/model.css
 assets/model.js
 assets/motion.js
@@ -1091,8 +1093,6 @@ data/deckbg/epl_2026-11-22_hull_city_brighton_hove_albion.webp
 data/deckbg/epl_2026-11-22_liverpool_manchester_united-m.webp
 data/deckbg/epl_2026-11-22_liverpool_manchester_united.webp
 data/deckbg/index.json
-data/deckbg/khl_2026-11-21_neftekhimik_spartak-m.webp
-data/deckbg/khl_2026-11-21_neftekhimik_spartak.webp
 data/deckbg/khl_2026-11-21_sochi_ska-m.webp
 data/deckbg/khl_2026-11-21_sochi_ska.webp
 data/deckbg/khl_2026-11-22_avangard_akbars-m.webp
@@ -9882,6 +9882,9 @@ rpl/2026-11-21-cska-moscow-akhmat-grozny/bg-m.webp
 rpl/2026-11-21-cska-moscow-akhmat-grozny/bg.webp
 rpl/2026-11-21-cska-moscow-akhmat-grozny/index.html
 rpl/2026-11-21-cska-moscow-akhmat-grozny/og.jpg
+rpl/2026-11-21-gazovik-orenburg-baltika-kaliningrad/.bgv
+rpl/2026-11-21-gazovik-orenburg-baltika-kaliningrad/bg-m.webp
+rpl/2026-11-21-gazovik-orenburg-baltika-kaliningrad/bg.webp
 rpl/2026-11-21-gazovik-orenburg-baltika-kaliningrad/index.html
 rpl/2026-11-21-gazovik-orenburg-baltika-kaliningrad/og.jpg
 rpl/2026-11-21-rubin-kazan-zenit-st-petersburg/.bgv

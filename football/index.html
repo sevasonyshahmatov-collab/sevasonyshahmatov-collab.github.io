@@ -10,6 +10,7 @@
 <link rel="preload" as="script" href="../assets/vendor/gsap.min.js" media="(min-width: 621px)">
 <link rel="preload" as="script" href="../assets/vendor/SplitText.min.js" media="(min-width: 621px)">
 <link rel="stylesheet" href="../assets/v3a.css">
+<link rel="stylesheet" href="../assets/mfind.css">
 <link rel="stylesheet" href="../assets/nav.css">
 <link rel="stylesheet" href="../assets/obj.css">
 <link rel="stylesheet" href="../assets/football.css">
@@ -91,7 +92,7 @@
 
 <section class="sec" id="matches" data-zone="p1">
   <div class="wrap">
-    <div class="sec-head" data-rv><h2 id="mh">Сегодня на поле</h2></div>
+    <div class="sec-head" data-rv><h2 id="mh">Сегодня на поле</h2><form class="mfind" role="search" autocomplete="off" aria-label="Поиск матча"><label class="sr-only" for="mf-q">Найти матч: клуб или лига</label><div class="mf-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg><input id="mf-q" type="search" enterkeyhint="go" placeholder="Найти матч: клуб или лига" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="mf-list" spellcheck="false"></div><ul class="mf-list" id="mf-list" role="listbox" aria-label="Найденные матчи" hidden></ul></form></div>
     <p class="note dayinfo" id="mlead" aria-live="polite" hidden></p>
     <div class="tabs" role="tablist" id="ltabs" aria-label="Фильтр по лигам"></div>
     <ul class="mlist" id="mlist"></ul>
@@ -137,6 +138,7 @@
 <script src="../assets/nav.js"></script>
 <script src="../assets/footer.js"></script>
 <script src="../assets/v3a.js"></script>
+<script src="../assets/mfind.js" defer></script>
 <script src="../assets/particles.js" defer></script>
 <script src="../assets/titles.js" defer></script>
 <script src="/football/data/football-lite.js"></script>
