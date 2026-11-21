@@ -14,13 +14,13 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 const ROOT=new URL('../',(document.currentScript&&document.currentScript.src)||location.href).href;
 const LGN={khl:'КХЛ',nhl:'НХЛ',epl:'АПЛ',laliga:'Ла Лига',seriea:'Серия А',bundesliga:'Бундеслига',ligue1:'Лига 1',rpl:'РПЛ',ucl:'Лига чемпионов',uel:'Лига Европы'};
 const MINW=188,GAP=14;
-const css=`.sdt{position:fixed;z-index:5;width:var(--w,260px);display:flex;flex-direction:column;max-height:var(--mh,80vh);padding:12px 8px 8px;border-radius:var(--rc,14px);
+const css=`.sdt{position:fixed;z-index:5;width:var(--w,260px);display:flex;flex-direction:column;max-height:var(--mh,80vh);height:var(--mh,auto);padding:12px 8px 8px;border-radius:var(--rc,14px);
  background:rgba(10,16,30,.86);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 18px 44px rgba(0,0,0,.45),inset 0 0 0 1px rgba(160,190,255,.14);
  color:#eef3ff;font:500 12.5px/1.2 var(--text,system-ui);opacity:0;transition:opacity .2s ease;visibility:hidden}
 .sdt.on{opacity:1;visibility:visible}
 .sdt h4{margin:0 4px 8px;font:800 13px/1.2 var(--display,system-ui);letter-spacing:.04em;text-transform:uppercase;color:rgba(220,230,255,.8);flex:none}
 .sdt h4 small{display:block;margin-top:3px;font:500 11px/1.2 var(--text,system-ui);letter-spacing:0;text-transform:none;color:rgba(220,230,255,.55)}
-.sdt .sd-sc{overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;min-height:0}
+.sdt .sd-sc{flex:1;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;min-height:0}
 .sdt table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
 .sdt th{font:700 11px/1 var(--text,system-ui);color:rgba(220,230,255,.55);text-align:center;padding:0 2px 6px;position:sticky;top:0;background:rgba(10,16,30,.96)}
 .sdt th:nth-child(3){text-align:left}
@@ -66,6 +66,12 @@ const css=`.sdt{position:fixed;z-index:5;width:var(--w,260px);display:flex;flex-
 .sdt .sd-18{margin:6px 4px 0;font-size:10.5px;color:rgba(220,230,255,.5)}
 .sdt.w .sd-kp div,.sdt.w .sd-last{background:#f1f4f9}.sdt.w .sd-kp span,.sdt.w .sd-lb,.sdt.w .sd-last span,.sdt.w .sd-18{color:#5b6576}
 .sdt.w .up{color:#12924f}.sdt.w .dn{color:#d42a35}
+.sdt .sd-v{display:grid;gap:2px;width:100%;margin:0 0 6px;padding:8px 10px;border:0;border-radius:10px;background:rgba(160,190,255,.08);color:inherit;text-align:left;font:inherit;cursor:pointer}
+.sdt .sd-v:hover{background:rgba(160,190,255,.16)}
+.sdt .sd-v span{font-size:11.5px;color:rgba(220,230,255,.62);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sdt .sd-v b{font-weight:800;font-size:13px}
+.sdt .sd-v em{font-style:normal;font-size:11.5px;color:rgba(220,230,255,.8)}.sdt .sd-v em i{font-style:normal;font-weight:800}
+.sdt.w .sd-v{background:#f1f4f9}.sdt.w .sd-v:hover{background:#e6ebf3}.sdt.w .sd-v span{color:#5b6576}.sdt.w .sd-v em{color:#2a3446}
 @media (prefers-reduced-motion:reduce){.sdt{transition:none}}`;
 /* вид (владелец 21.11: «в цветах и белую — посмотрю»): ?sdt=1 — тёмная (основная), ?sdt=2 — белая; выбор помнится до закрытия вкладки */
 let VIEW='1';try{const v=new URLSearchParams(location.search).get('sdt');if(v==='1'||v==='2')sessionStorage.setItem('jv-sdt',v);VIEW=sessionStorage.getItem('jv-sdt')||'1'}catch(e){}
@@ -128,9 +134,35 @@ function resultsHTML(){const D=window.__RESLITE;if(!D||!D.sum||!D.sum.total)retu
   (M?'<p class="sd-lb">'+esc(mo.name||'Этот месяц')+' · весь канал</p><div class="sd-mo"><b>'+esc(M.w)+' из '+esc(M.n)+'</b><span class="'+(M.units>=0?'up':'dn')+'">'+(M.units>=0?'+':'−')+esc(fx(Math.abs(M.units||0),1))+' ед.</span></div>':'')+
   (L?'<p class="sd-lb">Последний разобранный</p><a class="sd-last" href="'+esc(L.url||'#')+'" target="_blank" rel="noopener"><span>'+esc(L.h+' — '+L.a)+(L.sc?' '+esc(L.sc):'')+'</span><b>'+esc(L.bet)+(L.kef?' · '+esc(fx(L.kef,2)):'')+'</b><i class="'+(L.r==='w'?'w':L.r==='l'?'l':'d')+'">'+esc(RS[L.r]||'')+'</i></a>':'')+
   '<a class="sd-all" href="'+esc(ROOT+'results.html')+'">Все итоги →</a><p class="sd-18">18+ · Прошлые результаты не гарантируют будущих.</p></div>'}
+/* справа — «Подсказка модели» (владелец 21.11: «то, что помогало бы выбрать вариант ставки»):
+   1) «Перевес модели» — исходы матчей из списка, где шанс по модели выше, чем закладывает коэффициент линии (шанс × кэф > 1);
+   2) «Самые вероятные» — исходы с наибольшим шансом по модели. Данные — window.JV_MODEL и window.JV_LINES (уже на странице).
+   Щелчок по строке раскрывает этот матч в списке. */
+const pc=p=>Math.round(p*100)+' %';
+function cands(m){const key=[m.lg,m.t.slice(0,10),m.h,m.a].join('|'),M=(window.JV_MODEL||{})[key],L=(window.JV_LINES||{})[key]||{};if(!M)return [];
+ const out=[],add=(lab,p,k)=>{if(typeof p==='number'&&p>0&&p<1)out.push({m,lab,p,k:typeof k==='number'&&k>1?k:null})};
+ add('П1 · '+m.hn,M.p1,L.p1);add('Ничья',M.x,L.x);add('П2 · '+m.an,M.p2,L.p2);
+ if(!FB){add('Победа с ОТ · '+m.hn,M.w1,L.fin1);add('Победа с ОТ · '+m.an,M.w2,L.fin2)}
+ if(L.tot!=null&&L.tot%1){const po=+L.tot===+M.tot?M.over:(M.totals||{})[String(L.tot)];
+  if(typeof po==='number'){add('Тотал больше '+String(L.tot).replace('.',','),po,L.over);add('Тотал меньше '+String(L.tot).replace('.',','),1-po,L.under)}}
+ if(FB&&typeof M.btts==='number')add('Обе забьют',M.btts,null);
+ return out}
+function valueHTML(vis){const all=vis.flatMap(cands);if(!all.length)return '';
+ const val=all.filter(c=>c.k&&c.p*c.k>=1.04).sort((x,y)=>y.p*y.k-x.p*x.k).slice(0,6);
+ const top=all.filter(c=>c.p>=.55&&!/^Ничья/.test(c.lab)).sort((x,y)=>y.p-x.p).slice(0,5);
+ const row=(c,ex)=>'<button type="button" class="sd-v" data-k="'+esc(c.m.h+'|'+c.m.a)+'"><span>'+esc(c.m.hn+' — '+c.m.an)+' · '+esc(c.m.t.slice(11,16))+'</span><b>'+esc(c.lab)+'</b><em>'+
+  (c.k?'кэф '+esc(fx(c.k,2))+' · ':'')+'шанс '+pc(c.p)+(ex?' · <i class="up">перевес +'+Math.round((c.p*c.k-1)*100)+' %</i>':'')+'</em></button>';
+ return '<h4>Подсказка модели<small>по матчам из списка, расчёт JARVIS</small></h4><div class="sd-sc">'+
+  (val.length?'<p class="sd-lb">Перевес модели над линией</p>'+val.map(c=>row(c,1)).join(''):(()=>{const near=all.filter(c=>c.k&&c.p>=.3).sort((x,y)=>y.p*y.k-x.p*x.k).slice(0,3);
+   return '<p class="sd-lb">Перевеса над линией сейчас нет · ближе всего</p>'+near.map(c=>row(c,0)).join('')})())+
+  (top.length?'<p class="sd-lb">Самые вероятные исходы</p>'+top.map(c=>row(c,0)).join(''):'')+
+  '<p class="sd-18">Перевес — шанс по модели больше, чем закладывает коэффициент. Это расчёт, не гарантия. 18+</p></div>'}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.sdt .sd-v');if(!b)return;const [h,a]=b.dataset.k.split('|');
+ const li=rows().find(x=>{const i=info(x);return i&&i.h===h&&i.a===a});if(!li)return;const hd=li.querySelector('.mhead');
+ if(hd&&!li.classList.contains('open'))hd.click();setTimeout(()=>li.scrollIntoView({behavior:'smooth',block:'start'}),60)});
 /* ---- что показывать ---- */
 const rows=()=>[...LIST.querySelectorAll('li.match')].filter(li=>li.offsetParent!==null);
-const info=li=>{const s=li&&li.querySelector('.lvslot[data-lv-lg]');return s?{lg:s.dataset.lvLg,h:s.dataset.lvH,a:s.dataset.lvA,t:s.dataset.lvT||'',li}:null};
+const info=li=>{const s=li&&li.querySelector('.lvslot[data-lv-lg]');return s?{lg:s.dataset.lvLg,h:s.dataset.lvH,a:s.dataset.lvA,hn:s.dataset.lvHn||name(s.dataset.lvH),an:s.dataset.lvAn||name(s.dataset.lvA),t:s.dataset.lvT||'',li}:null};
 function pickLg(open){
  if(open)return open.lg;
  const tab=document.querySelector('#ltabs [aria-selected="true"]'),l=tab&&tab.dataset.l;
@@ -145,10 +177,10 @@ function build(){
  const tb=table(lg);const me=op?[op.h,op.a]:[];const today=new Set(vis.flatMap(m=>[m.h,m.a]));
  const k=[lg,me.join(),vis.map(m=>m.h+m.a).join()].join('|');if(k===key&&L)return;key=k;
  if(!L){L=document.createElement('aside');R=document.createElement('aside');L.className=R.className='sdt'+(VIEW==='2'?' w':'');
-  L.setAttribute('aria-label','Турнирная таблица');R.setAttribute('aria-label','Итоги прогнозов');document.body.append(L,R)}
+  L.setAttribute('aria-label','Турнирная таблица');R.setAttribute('aria-label','Подсказка модели');document.body.append(L,R)}
  L.innerHTML=tb&&tb.length?'<h4>'+esc(LGN[lg]||lg)+' · таблица<small>'+(FB?'место, игры, очки':'все клубы по очкам')+'</small></h4><div class="sd-sc"><table><thead><tr><th>#</th><th></th><th>Клуб</th><th title="Игры">И</th><th title="Очки">О</th></tr></thead><tbody>'+
   tb.map(r=>'<tr class="'+(me.includes(r.id)?'me':today.has(r.id)?'td':'')+'"><td class="n">'+esc(r.pl)+'</td><td class="m">'+mvHTML(r)+'</td><td class="c">'+club(r.id)+'</td><td class="g">'+esc(r.gp)+'</td><td class="p">'+esc(r.pts)+'</td></tr>').join('')+'</tbody></table></div>':'';
- R.innerHTML=resultsHTML();
+ R.innerHTML=valueHTML(vis);
 }
 function place(){q=0;if(!L)return;
  const lr=LIST.getBoundingClientRect(),gl=lr.left,gr=innerWidth-lr.right,w=Math.min(300,Math.min(gl,gr)-GAP-10);
