@@ -504,3 +504,8 @@ html:not([data-theme="arena"]) .mq-tiles li.warn b{color:#9a6a00}
   .mx-go b{font-size:14px;gap:7px}
   .mx-go b img{width:22px;height:22px;flex:none}
 }
+/* Эмблемы целиком, без обрезки (владелец 21.11): в круге эмблема занимает не больше ~72 % ширины — самый «угловатый» герб в базе
+   доходит до 1,35 полуширины; большие эмблемы-фоны не выходят за край карточки. */
+.mx-em{padding:4px}
+.mx-em[width="26"]{padding:3.5px}
+.mx-h2h span.lg img.mx-em{padding:7px}

@@ -652,7 +652,7 @@ h1 .ln{display:block} /* «ХОККЕЙ:» и «КХЛ И НХЛ» — всег�
 .mcard{will-change:transform,opacity}
 .face{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:start;gap:clamp(8px,3cqw,20px);padding:clamp(8px,2.4cqw,16px) 0 clamp(14px,3.4cqw,20px)}
 .face .tm{display:grid;justify-items:center;text-align:center;gap:8px;min-width:0}
-.face .em{width:clamp(56px,18cqw,96px);height:clamp(56px,18cqw,96px);object-fit:contain;--crest-bg:#eef3fa;background:#eef3fa;padding:clamp(5px,1.6cqw,9px);border-radius:50%;
+.face .em{width:clamp(56px,18cqw,96px);height:clamp(56px,18cqw,96px);object-fit:contain;--crest-bg:#eef3fa;background:#eef3fa;padding:calc(clamp(56px,18cqw,96px) * .14);border-radius:50%;
   box-shadow:0 0 0 1px rgba(255,255,255,.12),0 10px 24px -12px #000}
 .face .tm span{font:700 clamp(19px,5.4cqw,28px)/1.05 var(--display);color:var(--flap-ink);text-wrap:balance;overflow-wrap:normal;hyphens:manual;max-width:100%;min-height:2.1em;align-content:start;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -763,7 +763,7 @@ h1 .ln{display:block} /* «ХОККЕЙ:» и «КХЛ И НХЛ» — всег�
 .lgtab.nhl{background:radial-gradient(90% 120% at 100% 0%,rgba(255,255,255,.14),transparent 60%),linear-gradient(120deg,#07080a 0%,#1d2228 45%,#4c5560 100%);box-shadow:inset 0 -6px 0 var(--nhl-s)}
 .lgtab::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
   background-image:linear-gradient(transparent,transparent)} /* фактура: разметка льда */
-.lgtab .lgbg{position:absolute;right:-9%;top:50%;height:155%;width:auto;max-width:none;transform:translateY(-50%) rotate(-8deg);opacity:.2;pointer-events:none;transition:transform .6s var(--out),opacity .4s ease}
+.lgtab .lgbg{position:absolute;right:3%;top:50%;height:88%;width:auto;max-width:none;transform:translateY(-50%) rotate(-8deg);opacity:.2;pointer-events:none;transition:transform .6s var(--out),opacity .4s ease}
 .lgtab .lgtx{position:relative;display:grid;gap:6px}
 .lgtab .lgn{font:800 clamp(54px,5.4vw,84px)/.9 var(--display);text-transform:uppercase;letter-spacing:-.01em}
 .lgtab .lgf{font:600 clamp(19px,1.5vw,22px)/1.2 var(--display);color:rgba(255,255,255,.92)}
@@ -776,12 +776,12 @@ h1 .ln{display:block} /* «ХОККЕЙ:» и «КХЛ И НХЛ» — всег�
 @media (hover:hover) and (pointer:fine){.lgtab:hover{opacity:1;filter:none}.lgtab:hover .lgbg{transform:translateY(-50%) translateX(-10px) rotate(-6deg)}}
 .lgtab:active{transform:scale(.985)}
 @media (max-width:620px){.leagues.two{grid-template-columns:1fr 1fr;gap:8px}.lgtab{min-height:150px;padding:16px}.lgtab .lgn{font-size:44px}
-  .lgtab .lgf{font-size:15px}.lgtab .nt{display:none}.lgtab .cnt{font-size:16px}.lgtab .lgbg{height:130%;right:-22%}}
+  .lgtab .lgf{font-size:15px}.lgtab .nt{display:none}.lgtab .cnt{font-size:16px}.lgtab .lgbg{height:86%;right:3%}}
 #wallbox .wallh{margin-top:clamp(26px,3vw,40px)}
 /* эмблемы целиком: без круглой маски, contain, поля уже внутри файла */
-.crest .em,.wall .em{border-radius:8px;background:transparent;padding:0;width:64px;height:64px;object-fit:contain}
+.crest .em,.wall .em{border-radius:0;background:transparent;padding:0;width:64px;height:64px;object-fit:contain}
 @media (max-width:560px){.crest .em,.wall .em{width:52px;height:52px}}
-.em{border-radius:var(--rc,12px)}
+.em{border-radius:calc(var(--rc,12px) * var(--crest-pad,0))}/* скругление только у эмблемы на подложке: без подложки оно лишь срезало углы (21.11) */
 
 /* ── аналитическая таблица (перенесено с лендинга: 6 листов), под светлую газету ── */
 .eyebrow{font:700 14px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--ice);margin:0 0 12px}
@@ -917,7 +917,7 @@ h1 .ln{display:block} /* «ХОККЕЙ:» и «КХЛ И НХЛ» — всег�
 .board.khl{--acc:#6f9dff}.board.nhl{--acc:#c7d0db}
 .hero .board{padding:clamp(16px,2vw,24px)}
 .hero .board .face{padding:clamp(14px,3cqw,22px) 0 clamp(16px,3.6cqw,24px)}
-.hero .board .face .em{width:clamp(60px,19cqw,100px);height:clamp(60px,19cqw,100px)}
+.hero .board .face .em{width:clamp(60px,19cqw,100px);height:clamp(60px,19cqw,100px);padding:calc(clamp(60px,19cqw,100px) * .14)}
 .hero .board .face .vs time{border:1px solid color-mix(in srgb,var(--acc,#ffc21a) 45%,transparent);background:transparent;color:var(--flap-ink)}
 .hero .board .bet{box-shadow:inset 4px 0 0 var(--acc,var(--signal));padding:14px clamp(14px,3.4cqw,20px)}
 .hero .board .why{margin:12px 2px 0}

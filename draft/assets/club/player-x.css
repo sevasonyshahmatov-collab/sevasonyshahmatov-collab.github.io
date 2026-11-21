@@ -15,7 +15,7 @@
   font:900 clamp(96px,19vw,270px)/.8 var(--display);letter-spacing:-.03em;text-transform:uppercase;white-space:nowrap;text-align:center;
   color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,var(--ko) 22%,transparent)}
 .pp-ghost{display:none}
-.pp.k.x .pp-ghost{display:block;position:absolute;z-index:-1;right:26%;top:50%;height:150%;aspect-ratio:1;object-fit:contain;
+.pp.k.x .pp-ghost{display:block;position:absolute;z-index:-1;right:26%;top:50%;height:90%;aspect-ratio:1;object-fit:contain;
   transform:translate(50%,-50%) rotate(-8deg);opacity:.2;filter:grayscale(1) contrast(1.3) brightness(1.5);mix-blend-mode:screen;pointer-events:none}
 .pp.k.x.lt .pp-ghost{mix-blend-mode:multiply;filter:grayscale(1) contrast(1.2);opacity:.16}
 /* подложка-круг под фото не нужна: фото стоит прямо на цвете клуба */

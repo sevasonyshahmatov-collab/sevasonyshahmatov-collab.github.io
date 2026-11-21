@@ -318,3 +318,11 @@ html,body{overflow-x:clip}
 .sx-side b{font-size:clamp(24px,3.3vw,60px)!important;overflow-wrap:normal!important;word-break:normal;hyphens:none}
 @media (max-width:720px){.sx-side b{font-size:clamp(18px,5.6vw,28px)!important}.sx-spine.sx-rad{padding:0 44px;max-width:400px;box-sizing:border-box}}
 @media (max-width:720px){.sx-spine.sx-rad{flex-direction:column!important;align-items:center}.sx-spine.sx-rad svg{max-width:100%}}
+/* Эмблемы целиком, без обрезки (владелец 21.11): в круге эмблема занимает не больше ~72 % ширины — самый «угловатый» герб в базе
+   доходит до 1,35 полуширины; большие эмблемы-фоны не выходят за край карточки. */
+.sx-em img{width:72%!important;height:72%!important}
+.sx-bg{width:clamp(170px,22vw,340px)}
+.sx-side.a .sx-bg{left:4%}.sx-side.b .sx-bg{right:4%}
+.cmp-in ul .cmp-em,.cmp-h2h .cmp-em,.cmp-side small .cmp-em,.cmp-leg .cmp-em,.cmp-vc .ln .cmp-em,.cmp-fp h3 .cmp-em{padding:3px}
+.cmp-ph .cmp-em{padding:4px}
+@media (max-width:620px){.sx-bg{width:min(120px,34vw)}.sx-side.a .sx-bg{left:7%}.sx-side.b .sx-bg{right:7%}}
