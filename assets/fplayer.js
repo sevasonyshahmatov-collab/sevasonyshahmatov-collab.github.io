@@ -76,6 +76,12 @@ fetch((window.JVD||(u=>u))(`data/pp/${ID}.json`)).then(r=>{if(!r.ok)throw 0;retu
   </tbody></table></div></section>
  <div class="pp-cta"><p>Разборы матчей и прогнозы по футболу — в нашем Telegram-канале.</p><a href="https://t.me/jarvibet" target="_blank" rel="noopener">Получать прогнозы — бесплатно</a></div>`;
  MAIN.style.setProperty('--c',col);
+ /* профиль в цветах клуба, как у хоккеистов (владелец 21.11): club/jersey.js + club/player-k.css; цвета свитера — из цветов клуба ESPN */
+ {const JY=window.JV_JERSEY,cc=(Array.isArray(T.c)?T.c:[T.c]).filter(Boolean).map(x=>'#'+String(x).replace('#',''));
+  if(JY&&cc.length){JY.J[P.t]=JY.J[P.t]||[cc[0],cc[1]||'#ffffff','#ffffff'];const jc=JY.calc(P.t);
+   JY.vars(P.t).split(';').forEach(d=>{const i=d.indexOf(':');MAIN.style.setProperty(d.slice(0,i),d.slice(i+1))});
+   let bg='#0b1626';try{const m=/(\d+)\D+(\d+)\D+(\d+)/.exec(getComputedStyle(document.body).backgroundColor);if(m)bg='#'+[1,2,3].map(i=>(+m[i]).toString(16).padStart(2,'0')).join('')}catch(e){}
+   const a=JY.pick(P.t,bg);MAIN.style.setProperty('--kg',a.g);MAIN.style.setProperty('--kgo',a.go);MAIN.classList.add('k','x');if(jc.lt)MAIN.classList.add('lt')}}
  const chart=document.getElementById('chart');
  const draw=k=>{const m=MK.find(x=>x.k===k)||MK[0],L=log.slice(-15),mx=Math.max(k==='s2'||k==='st'?4:2,...L.map(m.v));
   chart.innerHTML=L.map(r=>{const v=m.v(r),ok=m.f(r),tip=`${ddmm(r[0])}, ${r[2]?'дома':'в гостях'}, ${tn(r[1])}: ${m.u} — ${v}`;
