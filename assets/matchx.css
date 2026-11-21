@@ -504,3 +504,42 @@ html:not([data-theme="arena"]) .mq-tiles li.warn b{color:#9a6a00}
   .mx-go b{font-size:14px;gap:7px}
   .mx-go b img{width:22px;height:22px;flex:none}
 }
+/* Эмблемы целиком, без обрезки (владелец 21.11): в круге эмблема занимает не больше ~72 % ширины — самый «угловатый» герб в базе
+   доходит до 1,35 полуширины; большие эмблемы-фоны не выходят за край карточки. */
+.mx-em{padding:4px}
+.mx-em[width="26"]{padding:3.5px}
+.mx-h2h span.lg img.mx-em{padding:7px}
+
+/* ── Стартовые составы (владелец 21.11): поле по схеме, фото или номер, фамилия; эмблема клуба на фоне — целиком ── */
+.xi-box{position:relative;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.xi-r{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.xi-t{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:6px 16px 6px 8px;border-radius:var(--rp,999px);background:rgba(150,180,255,.10);color:inherit;font:700 16px/1 var(--display);cursor:pointer;box-shadow:inset 0 0 0 1px rgba(160,190,255,.16)}
+.xi-t img{width:28px;height:28px;object-fit:contain;flex:none}
+.xi-t small{font:600 12px/1 var(--text);opacity:.65;text-transform:uppercase;letter-spacing:.04em}
+.xi-r:checked+.xi-t{background:#fff;color:#0d1626;box-shadow:none}
+.xi-r:focus-visible+.xi-t{outline:3px solid var(--signal,#ffc21a);outline-offset:2px}
+.xi-pane{display:none;flex:1 0 100%;margin-top:8px}
+.xi-r:nth-of-type(1):checked~.xi-pane:nth-of-type(1),.xi-r:nth-of-type(2):checked~.xi-pane:nth-of-type(2){display:block}
+.xi-pitch{position:relative;isolation:isolate;aspect-ratio:16/10;border-radius:var(--rc,14px);overflow:hidden;
+ background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 100' preserveAspectRatio='none' fill='none' stroke='%23fff' stroke-opacity='.22' stroke-width='.6' vector-effect='non-scaling-stroke'%3E%3Crect x='1' y='1' width='158' height='98'/%3E%3Cline x1='80' y1='1' x2='80' y2='99'/%3E%3Ccircle cx='80' cy='50' r='12'/%3E%3Ccircle cx='80' cy='50' r='.8' fill='%23fff'/%3E%3Crect x='1' y='22' width='24' height='56'/%3E%3Crect x='1' y='37' width='8' height='26'/%3E%3Crect x='135' y='22' width='24' height='56'/%3E%3Crect x='151' y='37' width='8' height='26'/%3E%3Cpath d='M25 42a10 10 0 0 1 0 16M135 42a10 10 0 0 0 0 16'/%3E%3C/svg%3E") center/calc(100% - 24px) calc(100% - 24px) no-repeat,radial-gradient(110% 90% at 18% 50%,color-mix(in srgb,var(--tc) 60%,#12070a) 0,color-mix(in srgb,var(--tc) 22%,#0b0d14) 62%,#090b12 100%)}
+.xi-bg{position:absolute;z-index:-1;left:2%;top:12%;height:76%;aspect-ratio:1;object-fit:contain;opacity:.13;filter:saturate(.7);pointer-events:none}
+.xi-wrap{position:relative}
+.xi-cap{position:absolute;z-index:2;left:3%;bottom:5%;max-width:19%;display:grid;gap:6px;color:#fff}
+.xi-cap b{font:800 clamp(14px,1.6vw,22px)/1.1 var(--display);text-transform:uppercase}
+.xi-cap span{font:600 clamp(13px,1.4vw,19px)/1.2 var(--display)}
+.xi-cap small{font:500 13px/1.2 var(--text);opacity:.7}
+.xi-list{list-style:none;margin:0;padding:0}
+.xi-p{position:absolute;left:calc(var(--d) * 1%);top:calc(var(--w) * 1%);transform:translate(-50%,-50%);width:clamp(58px,7.4%,92px);text-align:center}
+.xi-ph{position:relative;display:grid;place-items:center;aspect-ratio:1;background:linear-gradient(#f4f5f7,#dfe3ea);border-radius:4px 4px 0 0;overflow:hidden;box-shadow:0 8px 18px -8px rgba(0,0,0,.6)}
+.xi-ph b{font:800 clamp(20px,2.4vw,32px)/1 var(--display);color:color-mix(in srgb,var(--tc) 80%,#000)}
+.xi-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+.xi-n{display:block;padding:4px 3px;background:#f7f7f8;color:#0d1626;font:800 clamp(10px,1vw,13px)/1.15 var(--display);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:0 0 4px 4px;box-shadow:0 8px 18px -8px rgba(0,0,0,.6)}
+.xi-note{margin:10px 2px 0;font:500 14px/1.4 var(--text);opacity:.72}
+@media (max-width:700px){
+ .xi-pitch{aspect-ratio:10/15;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 160' preserveAspectRatio='none' fill='none' stroke='%23fff' stroke-opacity='.22' stroke-width='.6' vector-effect='non-scaling-stroke'%3E%3Cg transform='translate%280 160%29 rotate%28-90%29'%3E%3Crect x='1' y='1' width='158' height='98'/%3E%3Cline x1='80' y1='1' x2='80' y2='99'/%3E%3Ccircle cx='80' cy='50' r='12'/%3E%3Ccircle cx='80' cy='50' r='.8' fill='%23fff'/%3E%3Crect x='1' y='22' width='24' height='56'/%3E%3Crect x='1' y='37' width='8' height='26'/%3E%3Crect x='135' y='22' width='24' height='56'/%3E%3Crect x='151' y='37' width='8' height='26'/%3E%3Cpath d='M25 42a10 10 0 0 1 0 16M135 42a10 10 0 0 0 0 16'/%3E%3C/g%3E%3C/svg%3E") center/calc(100% - 16px) calc(100% - 16px) no-repeat,radial-gradient(100% 80% at 50% 88%,color-mix(in srgb,var(--tc) 60%,#12070a) 0,color-mix(in srgb,var(--tc) 22%,#0b0d14) 62%,#090b12 100%)}
+ .xi-p{left:calc(var(--w) * 1%);top:calc((100 - var(--d)) * .84% + 8%);width:clamp(48px,15.5%,66px)}
+ .xi-bg{left:50%;top:auto;bottom:4%;height:auto;width:44%;transform:translateX(-50%)}
+ .xi-cap{position:static;max-width:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin:0 2px 8px}
+ .xi-cap b{font-size:13px}.xi-cap span{font-size:13px}.xi-cap small{font-size:11px}
+ .xi-t{font-size:15px;padding-right:12px}
+}

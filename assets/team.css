@@ -14,7 +14,7 @@ body[data-lg="nhl"]{--lgc:var(--nhl);--lgc2:var(--nhl-2)}
 .tmrow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,2.4vw,32px);align-items:center}
 .tmcrest{display:grid;place-items:center;width:clamp(96px,11vw,156px);aspect-ratio:1;border-radius:50%;background:#eef3fa;
   box-shadow:0 0 0 4px var(--lgc),0 0 0 7px var(--lgc2),0 24px 40px -24px #000}
-.tmcrest .em{width:78%;height:78%;padding:0;background:none;border-radius:0}
+.tmcrest .em{width:72%;height:72%;padding:0;background:none;border-radius:0}
 .tmlg{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:0 0 10px;font:600 16px/1.2 var(--display);color:var(--ink-2)}
 .tmlg .lgp{--s:18px}.tmlg .dot{color:var(--ink-3)}
 .tmname h1{font-size:clamp(44px,6.4vw,100px);line-height:1;overflow-wrap:normal;hyphens:manual}
@@ -290,7 +290,7 @@ body.on-light .stand tr.me td{color:var(--con)}
 .nmc b{font:800 clamp(18px,1.9vw,26px)/1.1 var(--display);color:var(--ink)}
 .nmc a:hover b{text-decoration:underline}
 .nmcr{display:grid;place-items:center;width:clamp(84px,10vw,150px);aspect-ratio:1;border-radius:50%;background:#eef3fa;box-shadow:0 0 0 3px var(--team)}
-.nmcr .em{width:80%;height:80%;padding:0;background:none;border-radius:0}
+.nmcr .em{width:72%;height:72%;padding:0;background:none;border-radius:0}
 .nmmid{display:grid;justify-items:center;gap:10px;text-align:center}
 .nmdt b{display:block;font:900 clamp(26px,3vw,42px)/1 var(--display);text-transform:uppercase}
 .nmdt small{display:block;margin-top:6px;font:600 16px/1 var(--display);color:var(--ink-2)}

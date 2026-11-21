@@ -151,8 +151,13 @@ render('all');setInterval(tick,1000);
 
 /* ── лиги и клубы: плашки-переключатели, эмблемы клубов лиги целиком, таблица ── */
 const flags=$('flags'),wallEl=$('wall'),wallH=$('wallh');let curLg='';
+/* на общей странице «Футбол» плитка ведёт на отдельную страницу лиги, как в хоккее (владелец 21.11); на страницах одного турнира (ucl.html) — прежний выбор на месте */
+const LGURL=k=>k==='ucl'?'ucl.html':'league.html?lg='+encodeURIComponent(k);
+if(!MODE){flags.removeAttribute('role');$('wallbox').hidden=true;
+ if(/^#lg-/.test(location.hash)&&D.leagues[location.hash.slice(4)])location.replace(LGURL(location.hash.slice(4)));
+ document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#lg-"]');if(a&&D.leagues[a.getAttribute('href').slice(4)]){e.preventDefault();location.href=LGURL(a.getAttribute('href').slice(4))}})}
 flags.innerHTML=LGK.map(k=>{const l=D.leagues[k],n=cntL(k);
- return `<button type="button" role="tab" class="lgtab ${esc(k)}" id="lg-${esc(k)}" data-lg="${esc(k)}" aria-selected="false" aria-controls="wallbox"><img class="lgbg" src="${LGI(k)}" alt=""><span class="lgtx"><span class="lgn">${esc(l.name)}</span><span class="lgf">${esc(l.full)}</span><span class="nt">${l.ids.length} ${plural(l.ids.length,'клуб','клуба','клубов')}</span><span class="cnt">${n?`${n} ${plural(n,'матч','матча','матчей')} в ближайший тур`:'туров нет в расписании'}</span></span></button>`}).join('');
+ return (!MODE?`<a class="lgtab ${esc(k)}" id="lg-${esc(k)}" data-lg="${esc(k)}" href="${esc(LGURL(k))}">`:`<button type="button" role="tab" class="lgtab ${esc(k)}" id="lg-${esc(k)}" data-lg="${esc(k)}" aria-selected="false" aria-controls="wallbox">`)+`<img class="lgbg" src="${LGI(k)}" alt=""><span class="lgtx"><span class="lgn">${esc(l.name)}</span><span class="lgf">${esc(l.full)}</span><span class="nt">${l.ids.length} ${plural(l.ids.length,'клуб','клуба','клубов')}</span><span class="cnt">${n?`${n} ${plural(n,'матч','матча','матчей')} в ближайший тур`:'туров нет в расписании'}</span></span>`+(!MODE?'</a>':'</button>')}).join('');
 const ZONE=lg=>({epl:[[1,4,'z1','Лига чемпионов'],[5,5,'z2','Лига Европы'],[18,20,'z4','Вылет']],laliga:[[1,4,'z1','Лига чемпионов'],[5,6,'z2','Лига Европы'],[18,20,'z4','Вылет']],
  seriea:[[1,4,'z1','Лига чемпионов'],[5,6,'z2','Лига Европы'],[18,20,'z4','Вылет']],bundesliga:[[1,4,'z1','Лига чемпионов'],[5,6,'z2','Лига Европы'],[16,16,'z3','Стыковые матчи'],[17,18,'z4','Вылет']],
  ligue1:[[1,3,'z1','Лига чемпионов'],[4,5,'z2','Лига Европы'],[16,16,'z3','Стыковые матчи'],[17,18,'z4','Вылет']],rpl:[[1,3,'z1','Еврокубки по рейтингу'],[15,16,'z4','Вылет']],
@@ -169,14 +174,14 @@ function pickLg(lg,anim=true){if(lg===curLg||!D.leagues[lg])return;curLg=lg;
   $('lkey').innerHTML=seen.map(x=>`<li><i style="background:${{z1:'#0d7a48',z2:'#1c63c4',z3:'#d9822b',z4:'#c4303b'}[x[2]]}"></i>${esc(x[3])}</li>`).join('')+`<li>И — игры, О — очки; по данным ESPN на ${esc((D.built||'').slice(8,10))}.${esc((D.built||'').slice(5,7))}</li>`;
   if(anim&&!RM)wallEl.querySelectorAll('.crest').forEach((c,i)=>c.animate([{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'none'}],{duration:420,delay:Math.min(i,32)*18,easing:'cubic-bezier(.23,1,.32,1)',fill:'backwards'}))};
  if(anim&&!RM&&wallEl.innerHTML){wallEl.animate([{opacity:1},{opacity:0,transform:'translateY(6px)'}],{duration:160,easing:'ease-in'}).finished.then(put).catch(put)}else put()}
-flags.addEventListener('click',e=>{const b=e.target.closest('.lgtab');if(b)pickLg(b.dataset.lg)});
-flags.addEventListener('keydown',e=>{if(!/Arrow(Left|Right)/.test(e.key))return;const t=[...flags.querySelectorAll('.lgtab')],i=t.findIndex(b=>b.dataset.lg===curLg),n=t[(i+(e.key==='ArrowRight'?1:t.length-1))%t.length];n.focus();pickLg(n.dataset.lg)});
+if(MODE){flags.addEventListener('click',e=>{const b=e.target.closest('.lgtab');if(b)pickLg(b.dataset.lg)});}
+flags.addEventListener('keydown',e=>{if(!MODE||!/Arrow(Left|Right)/.test(e.key))return;const t=[...flags.querySelectorAll('.lgtab')],i=t.findIndex(b=>b.dataset.lg===curLg),n=t[(i+(e.key==='ArrowRight'?1:t.length-1))%t.length];n.focus();pickLg(n.dataset.lg)});
 /* владелец 09.11: лига не выбрана заранее — таблица и клубы появляются после выбора */
 const wbox=$('wallbox'),hint=document.createElement('p');hint.className='lghint';hint.textContent='Выберите лигу — покажем таблицу и все клубы.';
 const first=MODE||(/^#lg-/.test(location.hash)&&D.leagues[location.hash.slice(4)]?location.hash.slice(4):'');
-if(first)pickLg(first,false);else{wbox.hidden=true;wbox.before(hint)}
+if(MODE){if(first)pickLg(first,false);else{wbox.hidden=true;wbox.before(hint)}}
 if(MODE)flags.hidden=true;
-document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#lg-"]');if(!a)return;pickLg(a.getAttribute('href').slice(4))});
+if(MODE){document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#lg-"]');if(!a)return;pickLg(a.getAttribute('href').slice(4))});}
 
 /* последний тур турнира (страница турнира): результаты последних сыгранных матчей */
 if(MODE&&$('resl')){const L=D.leagues[MODE],rows=[];

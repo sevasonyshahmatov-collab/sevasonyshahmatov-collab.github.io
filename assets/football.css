@@ -73,7 +73,7 @@
 .match .qc{border-color:var(--rule)}
 .match .qc.fav{background:#0d7a48;border-color:#0d7a48;box-shadow:inset 0 -3px 0 #4be08a}
 .match .qc.fav small,.match .qc.fav em{color:rgba(255,255,255,.85)}.match .qc.fav b{color:#fff}
-.lgtab .lgbg{height:min(100%,230px);right:-2%;opacity:.2}
+.lgtab .lgbg{height:min(86%,210px);right:3%;opacity:.2}/* знак лиги целиком (21.11) */
 .lgtab[aria-selected="true"] .lgbg{opacity:.26}
 .tabscroll{max-width:1000px}
 /* страница клуба: ничья и «не проиграла» */
@@ -127,3 +127,6 @@
   .resl .d{grid-column:1/-1;text-align:center}
   .resl .d br{display:none}
 }
+
+/* плитки лиг — ссылки на страницы лиг (21.11) */
+a.lgtab{text-decoration:none}

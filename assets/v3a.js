@@ -293,6 +293,8 @@ document.addEventListener('DOMContentLoaded',()=>{keepTheme();JV.fitWords('.hero
  ids.forEach(id=>{const box=document.getElementById(id+'Box');if(!box)return;let btn=null;
   const chk=()=>{if(box.classList.contains('fold-open'))return;let c=cap();
    const me=id==='table'&&box.querySelector('tr.me');if(me){const y=me.getBoundingClientRect().bottom-box.getBoundingClientRect().top;if(y+120>c)c=Math.round(y+160)}   /* строка клуба — всегда видна */
+   /* край свёрнутого раздела — по границе строки: строка (и эмблема в ней) не режется пополам (владелец 21.11) */
+   {const top=box.getBoundingClientRect().top;let best=0;box.querySelectorAll('tr,li').forEach(r=>{const b=r.getBoundingClientRect().bottom-top;if(b<=c&&b>best)best=b});if(best>c-220)c=Math.ceil(best)}
    const need=box.scrollHeight>c+260;
    box.classList.toggle('fold',need);box.style.setProperty('--fold',c+'px');
    if(need&&!btn){btn=document.createElement('button');btn.type='button';btn.className='fold-more';btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-controls',box.id);

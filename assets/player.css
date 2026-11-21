@@ -14,7 +14,7 @@ body{background:var(--paper);color:var(--ink)}
 .pp-crumbs{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:0 0 14px;font:700 13px/1 var(--display);letter-spacing:.07em;text-transform:uppercase}
 .pp-crumbs a{display:inline-flex;align-items:center;gap:8px;color:#fff;text-decoration:none;padding:6px 12px 6px 6px;border-radius:var(--rp,999px);background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.22)}
 .pp-crumbs a:hover,.pp-crumbs a:focus-visible{background:rgba(0,0,0,.5)}
-.pp-crumbs img{width:26px;height:26px;object-fit:contain;background:var(--crest-bg,#fff);border-radius:50%;padding:2px}
+.pp-crumbs img{width:26px;height:26px;object-fit:contain;background:var(--crest-bg,#fff);border-radius:50%;padding:4px}
 .pp-crumbs a.lg{padding:6px 12px}
 .pp-pos{font:700 14px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;opacity:.9;margin:0 0 6px}
 .pp h1{margin:0;font:600 clamp(20px,3vw,32px)/1.05 var(--display);opacity:.92;text-shadow:0 1px 3px rgba(0,0,0,.4)}
@@ -55,7 +55,7 @@ body{background:var(--paper);color:var(--ink)}
 .pp-col .bar.g{background:var(--pitch)}
 .pp-col .bar b{font:800 12px/1 var(--display);padding-top:3px;color:var(--ink-3)}
 .pp-col .bar.g b{color:var(--sport-ink)}
-.pp-col .em{width:min(22px,100%);aspect-ratio:1;object-fit:contain;background:var(--crest-bg,#fff);border-radius:50%;padding:1px}
+.pp-col .em{width:min(22px,100%);aspect-ratio:1;object-fit:contain;background:var(--crest-bg,#fff);border-radius:50%;padding:3px}
 .pp-col .fb{width:22px;height:22px;border-radius:50%;background:var(--paper-3);font:800 8px/22px var(--display);text-align:center;color:var(--ink-2)}
 .pp-col small{font:600 10px/1 var(--display);color:var(--ink-3);white-space:nowrap}
 /* таблица матчей */
@@ -66,7 +66,7 @@ body{background:var(--paper);color:var(--ink)}
 .pp-gm tr:last-child td{border-bottom:0}
 .pp-gm .rt{text-align:right}
 .pp-gm .op{display:flex;align-items:center;gap:8px;min-width:0}
-.pp-gm .op img{width:24px;height:24px;object-fit:contain;background:var(--crest-bg,#fff);border-radius:50%;padding:1px;flex:none}
+.pp-gm .op img{width:24px;height:24px;object-fit:contain;background:var(--crest-bg,#fff);border-radius:50%;padding:3.5px;flex:none}
 .pp-gm .op span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pp-gm .op small{display:block;font:600 12px/1.1 var(--display);color:var(--ink-3)}
 .pp-gm .pt b{display:inline-block;min-width:1.9em;text-align:center;padding:3px 6px;border-radius:7px;background:var(--paper-3);font-weight:800}
@@ -74,7 +74,7 @@ body{background:var(--paper);color:var(--ink)}
 /* следующий матч */
 .pp-nx{background:var(--card);border:1px solid var(--rule);border-radius:var(--rc,18px);padding:clamp(14px,2.4vw,24px);display:grid;gap:14px}
 .pp-nx .vs{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
-.pp-nx .vs img{width:56px;height:56px;object-fit:contain;background:var(--crest-bg,#fff);border-radius:50%;padding:4px}
+.pp-nx .vs img{width:56px;height:56px;object-fit:contain;background:var(--crest-bg,#fff);border-radius:50%;padding:8px}
 .pp-nx .vs b{font:900 clamp(24px,4vw,34px)/1.05 var(--display)}
 .pp-nx .vs span{display:block;font:600 15px/1.3 var(--display);color:var(--ink-2)}
 .pp-nx a.cl{color:inherit;text-decoration:none}.pp-nx a.cl:hover b{text-decoration:underline}

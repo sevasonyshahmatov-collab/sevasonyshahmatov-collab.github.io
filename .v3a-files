@@ -1175,10 +1175,6 @@ data/deckbg/rpl_2026-11-22_dynamo_makhachkala_spartak_moscow-m.webp
 data/deckbg/rpl_2026-11-22_dynamo_makhachkala_spartak_moscow.webp
 data/deckbg/rpl_2026-11-22_rodina_moscow_lokomotiv_moscow-m.webp
 data/deckbg/rpl_2026-11-22_rodina_moscow_lokomotiv_moscow.webp
-data/deckbg/seriea_2026-11-21_como_cagliari-m.webp
-data/deckbg/seriea_2026-11-21_como_cagliari.webp
-data/deckbg/seriea_2026-11-21_lazio_lecce-m.webp
-data/deckbg/seriea_2026-11-21_lazio_lecce.webp
 data/deckbg/seriea_2026-11-21_napoli_torino-m.webp
 data/deckbg/seriea_2026-11-21_napoli_torino.webp
 data/deckbg/seriea_2026-11-21_parma_roma-m.webp
@@ -10000,16 +9996,6 @@ seriea/2026-11-08-napoli-lazio/bg-m.webp
 seriea/2026-11-08-napoli-lazio/bg.webp
 seriea/2026-11-08-napoli-lazio/index.html
 seriea/2026-11-08-napoli-lazio/og.jpg
-seriea/2026-11-21-como-cagliari/.bgv
-seriea/2026-11-21-como-cagliari/bg-m.webp
-seriea/2026-11-21-como-cagliari/bg.webp
-seriea/2026-11-21-como-cagliari/index.html
-seriea/2026-11-21-como-cagliari/og.jpg
-seriea/2026-11-21-lazio-lecce/.bgv
-seriea/2026-11-21-lazio-lecce/bg-m.webp
-seriea/2026-11-21-lazio-lecce/bg.webp
-seriea/2026-11-21-lazio-lecce/index.html
-seriea/2026-11-21-lazio-lecce/og.jpg
 seriea/2026-11-21-napoli-torino/.bgv
 seriea/2026-11-21-napoli-torino/bg-m.webp
 seriea/2026-11-21-napoli-torino/bg.webp

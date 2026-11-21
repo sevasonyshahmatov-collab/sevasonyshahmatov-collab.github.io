@@ -58,7 +58,7 @@
   [data-hero="2"] .hero .mcard .bet{grid-area:bet}
   [data-hero="2"] .hero .mcard .mk3{grid-area:mk;margin-top:4px}
   [data-hero="2"] .hero .mcard .why{grid-area:why;text-align:center;margin:6px 0 0}
-  [data-hero="2"] .hero .face .tm .em{width:clamp(76px,min(8vw,13vh),132px);height:clamp(76px,min(8vw,13vh),132px)}
+  [data-hero="2"] .hero .face .tm .em{width:clamp(76px,min(8vw,13vh),132px);height:clamp(76px,min(8vw,13vh),132px);padding:calc(clamp(76px,min(8vw,13vh),132px) * .14)}
   [data-hero="2"] .hero .face .tm span,[data-hero="2"] .hero .face .tm.long span{font-size:clamp(19px,1.9vw,28px);min-height:0}
   /* отсчёт и точки-переключатели — в одну строку под матчем */
   [data-hero="2"] .hero .board{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"top top" "stage stage" "foot cd";align-items:center;row-gap:0}
