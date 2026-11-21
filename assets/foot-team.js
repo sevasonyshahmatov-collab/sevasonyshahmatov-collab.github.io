@@ -37,6 +37,9 @@ document.title=`${T.n}${CUP?' · '+EN:''} — матчи сезона, мест�
 {const st=document.body.style;[['--c1',CP.stops[0]],['--c2',CP.stops[1]],['--c3',CP.stops[2]],['--con',CP.text],['--cacc',CP.acc],['--team',CP.accL],['--cbase',CP.base]].forEach(([k,v])=>st.setProperty(k,v));
  document.body.classList.toggle('on-light',CP.text!=='#ffffff');
  const m=document.querySelector('meta[name=theme-color]');if(m)m.content=CP.stops[0];
+ /* большая полупрозрачная эмблема клуба в шапке, как у хоккея (team.js, .tmwm) — владелец 21.11 */
+ const hero=document.querySelector('.tmhero');if(hero&&!CUP){const wm=document.createElement('img');wm.className='tmwm lo fb';wm.src=`../assets/fc/l/${ID}.webp`;wm.alt='';wm.setAttribute('aria-hidden','true');
+  wm.onerror=()=>{if(!wm.dataset.f){wm.dataset.f=1;wm.src=`../assets/fc/${ID}.webp`}else wm.remove()};if(window.JVF&&JVF.cr(clubColors(T)[0],'#000000')<2.2)wm.classList.add('inv');hero.prepend(wm)}
 }
 document.body.dataset.lg=lg;
 /* ── клубная тема, как у хоккейных клубов (владелец 21.11): общий движок assets/club/theme.css + живой фон шапки assets/clubbg.js.

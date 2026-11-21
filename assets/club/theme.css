@@ -76,3 +76,8 @@
 .tmwm.lo{width:min(44vw,600px);right:3vw;top:50%;opacity:.14;filter:saturate(.7) blur(.4px)} /* КХЛ: целиком в кадре, как у НХЛ */
 .club-g.em-lo #table::after{background-size:auto,min(40vw,400px) auto,auto}
 html[data-bg="n"] .club-g.em-lo #table::after{background-size:min(40vw,400px) auto}
+/* футбол (владелец 21.11): та же большая эмблема в шапке, что у хоккея. Эмблемы футбольных клубов часто одного цвета с фоном
+   (красный «Ливерпуль» на красном) — осветляем её до светлого силуэта с деталями, иначе её не видно */
+.tmwm.fb{width:min(46vw,620px);right:2vw;top:50%;opacity:.1;filter:grayscale(1) brightness(2.1) contrast(.9) blur(.3px)}
+@media (max-width:700px){.tmwm.fb{width:92vw;right:-22vw;top:34%;opacity:.1}}
+.tmwm.fb.inv{filter:grayscale(1) invert(1) brightness(1.1) blur(.3px);opacity:.1}  /* тёмный клуб (чёрно-белый «Ювентус»): тёмную эмблему — в светлую */
