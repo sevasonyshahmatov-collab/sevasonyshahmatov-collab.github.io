@@ -1470,6 +1470,8 @@ football/data/football-club.js
 football/data/football-lite.js
 football/data/football.js
 football/data/football.json
+football/data/fotmob.json
+football/data/fotmob_teams.json
 football/data/games-xy.js
 football/data/games.js
 football/data/headshots.json
