@@ -21,7 +21,9 @@ const css=`.sdt{position:fixed;z-index:5;width:var(--w,260px);display:flex;flex-
 .sdt h4{margin:0 4px 8px;font:800 13px/1.2 var(--display,system-ui);letter-spacing:.04em;text-transform:uppercase;color:rgba(220,230,255,.8);flex:none}
 .sdt h4 small{display:block;margin-top:3px;font:500 11px/1.2 var(--text,system-ui);letter-spacing:0;text-transform:none;color:rgba(220,230,255,.55)}
 .sdt .sd-sc{flex:1;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;min-height:0}
-.sdt table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.sdt table{width:100%;height:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.sdt thead tr{height:1px}
+.sdt .sd-sc{transition:opacity .18s ease}.sdt.sw .sd-sc,.sdt.sw h4{opacity:0}
 .sdt th{font:700 11px/1 var(--text,system-ui);color:rgba(220,230,255,.55);text-align:center;padding:0 2px 6px;position:sticky;top:0;background:rgba(10,16,30,.96)}
 .sdt th:nth-child(3){text-align:left}
 .sdt td.m{width:22px;padding-left:0;padding-right:0}
@@ -72,6 +74,8 @@ const css=`.sdt{position:fixed;z-index:5;width:var(--w,260px);display:flex;flex-
 .sdt .sd-v b{font-weight:800;font-size:13px}
 .sdt .sd-v em{font-style:normal;font-size:11.5px;color:rgba(220,230,255,.8)}.sdt .sd-v em i{font-style:normal;font-weight:800}
 .sdt.w .sd-v{background:#f1f4f9}.sdt.w .sd-v:hover{background:#e6ebf3}.sdt.w .sd-v span{color:#5b6576}.sdt.w .sd-v em{color:#2a3446}
+.sdt .sd-dots{display:flex;gap:4px;margin-top:6px}.sdt .sd-dots i{width:6px;height:6px;border-radius:50%;background:rgba(220,230,255,.25)}.sdt .sd-dots i.on{background:#ffcc33}
+.sdt.w .sd-dots i{background:#d3d9e4}.sdt.w .sd-dots i.on{background:#f2b600}
 @media (prefers-reduced-motion:reduce){.sdt{transition:none}}`;
 /* вид (владелец 21.11: «в цветах и белую — посмотрю»): ?sdt=1 — тёмная (основная), ?sdt=2 — белая; выбор помнится до закрытия вкладки */
 let VIEW='1';try{const v=new URLSearchParams(location.search).get('sdt');if(v==='1'||v==='2')sessionStorage.setItem('jv-sdt',v);VIEW=sessionStorage.getItem('jv-sdt')||'1'}catch(e){}
@@ -103,7 +107,7 @@ function withMoves(rows){
  rows.forEach(r=>{r.mv=pp[r.id]?pp[r.id]-r.pl:0});
  return rows}
 function table(lg){
- if(FB){const TB=F().tables||{};if(lg==='ucl'||lg==='uel')return null;
+ if(FB){const TB=F().tables||{};
   return withMoves((TB[lg]||[]).map(r=>({id:r.id,pl:r.place,gp:r.gp,pts:r.pts,w:r.w||0,gd:(r.gf||0)-(r.ga||0),gf:r.gf||0})))}
  const all=Object.entries(HT()).filter(([,t])=>t.lg===lg&&t.gp!=null).map(([id,t])=>({id,gp:t.gp,pts:t.pts,w:t.w||0,gd:(t.gf||0)-(t.ga||0),gf:t.gf||0}));
  all.sort(cmp);all.forEach((r,i)=>r.pl=i+1);
@@ -163,8 +167,18 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 /* ---- что показывать ---- */
 const rows=()=>[...LIST.querySelectorAll('li.match')].filter(li=>li.offsetParent!==null);
 const info=li=>{const s=li&&li.querySelector('.lvslot[data-lv-lg]');return s?{lg:s.dataset.lvLg,h:s.dataset.lvH,a:s.dataset.lvA,hn:s.dataset.lvHn||name(s.dataset.lvH),an:s.dataset.lvAn||name(s.dataset.lvA),t:s.dataset.lvT||'',li}:null};
+/* футбол (владелец 21.11): без раскрытого матча и без выбранной вкладки — лиги по очереди, раз в 7 с;
+   только лиги, у которых есть матчи в списке; ЛЧ и ЛЕ — только если их матчи сегодня (МСК) */
+let ROT=0,ROTL=[],HOV=false;
+const todayMSK=()=>new Date(Date.now()+3*36e5).toISOString().slice(0,10);
+function rotLeagues(){const T=((window.JV_TODAY||{}).matches||[]).map(m=>({lg:m.lg,t:m.t||''})),ms=[...LIST.querySelectorAll('li.match')].map(info).filter(Boolean).concat(T),d=todayMSK(),seen=[];
+ ['epl','laliga','seriea','bundesliga','ligue1','rpl'].forEach(l=>{if(ms.some(m=>m.lg===l))seen.push(l)});
+ ['ucl','uel'].forEach(l=>{if(ms.some(m=>m.lg===l&&m.t.slice(0,10)===d))seen.push(l)});
+ return seen.length?seen:['epl']}
+function tabLg(){const tab=document.querySelector('#ltabs [aria-selected="true"]'),l=tab&&tab.dataset.l;return l&&l!=='all'&&LGN[l]?l:''}
 function pickLg(open){
  if(open)return open.lg;
+ if(FB&&!tabLg()){ROTL=rotLeagues();return ROTL[ROT%ROTL.length]}
  const tab=document.querySelector('#ltabs [aria-selected="true"]'),l=tab&&tab.dataset.l;
  if(l&&l!=='all'&&LGN[l])return l;
  const f=info(rows()[0]);return f?f.lg:FB?'epl':'khl'}
@@ -173,12 +187,13 @@ const ownLg=(lg,id)=>FB&&(lg==='ucl'||lg==='uel')?((F().teams||{})[id]||{}).lg||
 let L=null,R=null,key='',q=0;
 function build(){
  const vis=rows().map(info).filter(Boolean),openLi=[...LIST.querySelectorAll('li.match.open')].pop(),op=info(openLi);
- const lg0=pickLg(op),lg=ownLg(lg0,op?op.h:(vis[0]||{}).h);
+ const lg0=pickLg(op),lg=op?ownLg(lg0,op.h):lg0;
  const tb=table(lg);const me=op?[op.h,op.a]:[];const today=new Set(vis.flatMap(m=>[m.h,m.a]));
  const k=[lg,me.join(),vis.map(m=>m.h+m.a).join()].join('|');if(k===key&&L)return;key=k;
  if(!L){L=document.createElement('aside');R=document.createElement('aside');L.className=R.className='sdt'+(VIEW==='2'?' w':'');
   L.setAttribute('aria-label','Турнирная таблица');R.setAttribute('aria-label','Подсказка модели');document.body.append(L,R)}
- L.innerHTML=tb&&tb.length?'<h4>'+esc(LGN[lg]||lg)+' · таблица<small>'+(FB?'место, игры, очки':'все клубы по очкам')+'</small></h4><div class="sd-sc"><table><thead><tr><th>#</th><th></th><th>Клуб</th><th title="Игры">И</th><th title="Очки">О</th></tr></thead><tbody>'+
+ const rot=FB&&!op&&!tabLg()&&ROTL.length>1;
+ L.innerHTML=tb&&tb.length?'<h4>'+esc(LGN[lg]||lg)+' · таблица<small>'+(FB?'место, игры, очки':'все клубы по очкам')+(rot?' · лиги сменяются':'')+'</small>'+(rot?'<span class="sd-dots">'+ROTL.map((l,i)=>'<i'+(i===ROT%ROTL.length?' class="on"':'')+' title="'+esc(LGN[l])+'"></i>').join('')+'</span>':'')+'</h4><div class="sd-sc"><table><thead><tr><th>#</th><th></th><th>Клуб</th><th title="Игры">И</th><th title="Очки">О</th></tr></thead><tbody>'+
   tb.map(r=>'<tr class="'+(me.includes(r.id)?'me':today.has(r.id)?'td':'')+'"><td class="n">'+esc(r.pl)+'</td><td class="m">'+mvHTML(r)+'</td><td class="c">'+club(r.id)+'</td><td class="g">'+esc(r.gp)+'</td><td class="p">'+esc(r.pts)+'</td></tr>').join('')+'</tbody></table></div>':'';
  R.innerHTML=valueHTML(vis);
 }
@@ -199,4 +214,7 @@ const tabs=document.getElementById('ltabs');if(tabs)new MutationObserver(()=>req
 addEventListener('scroll',sched,{passive:true});addEventListener('resize',sched);
 if('ResizeObserver' in window)new ResizeObserver(sched).observe(LIST);
 setTimeout(upd,300);setTimeout(upd,1500);
+if(FB)setInterval(()=>{if(HOV||document.hidden||LIST.querySelector('li.match.open')||tabLg()||ROTL.length<2)return;ROT++;
+ if(L){L.classList.add('sw');setTimeout(()=>{key='';upd();L.classList.remove('sw')},180)}},7000);
+document.addEventListener('pointerover',e=>{HOV=!!(e.target.closest&&e.target.closest('.sdt'))},{passive:true});
 })();
