@@ -1,0 +1,138 @@
+{
+ "day": "2026-11-23",
+ "league": "khl",
+ "skipped": 0,
+ "matches": [
+  {
+   "h": "Сибирь",
+   "a": "Северсталь",
+   "d": "2026-11-23 15:30",
+   "arena": {
+    "id": 743,
+    "capacity": 11650,
+    "phone": "",
+    "website": "",
+    "name": "«Сибирь-Арена»",
+    "address": "630048, Новосибирская обл., г. Новосибирск, ул. Немировича-Данченко, д. 160",
+    "city": "Новосибирск",
+    "image": "https://www.khl.ru/images/arenas/205/1.jpg",
+    "geo": {
+     "lat": 54.993398,
+     "long": 82.923428
+    }
+   },
+   "x1x2": [
+    2.71,
+    3.57,
+    2.37
+   ],
+   "p3": [
+    0.327,
+    0.233,
+    0.44
+   ],
+   "form": {
+    "Сибирь": {
+     "league": "KHL",
+     "last3": [
+      {
+       "date": "20.11",
+       "opp": "Автомобилист",
+       "home": true,
+       "score": "1:0",
+       "res": "В"
+      },
+      {
+       "date": "17.11",
+       "opp": "Трактор",
+       "home": true,
+       "score": "4:1",
+       "res": "В"
+      },
+      {
+       "date": "15.11",
+       "opp": "Динамо Москва",
+       "home": true,
+       "score": "1:3",
+       "res": "П"
+      }
+     ],
+     "points": 26,
+     "games": 29,
+     "place": "10 на Востоке",
+     "gd": -17
+    },
+    "Северсталь": {
+     "league": "KHL",
+     "last3": [
+      {
+       "date": "20.11",
+       "opp": "Амур",
+       "home": true,
+       "score": "3:2 Б",
+       "res": "В"
+      },
+      {
+       "date": "18.11",
+       "opp": "Сочи",
+       "home": true,
+       "score": "4:2",
+       "res": "В"
+      },
+      {
+       "date": "13.11",
+       "opp": "Трактор",
+       "home": true,
+       "score": "4:3 Б",
+       "res": "В"
+      }
+     ],
+     "points": 36,
+     "games": 28,
+     "place": "3 на Западе",
+     "gd": 6
+    }
+   },
+   "_z": "qKcr3JAUJIw6NRnWna0jHKdd3lg+AYy2RvcLyHkcUAeFZFImF+GStkGUsCw1P5eRC7Hcp40zIpAWtENnQEfgRH3MEVm+H4r98bcydJQKUkpRVFjbso50iuW+kz2TnWpUo7+eSHtjzXZ65jNRpCugWJLIK0t6H6oK7jFyZ6fxBYEKCw2Pu5nSNIz6EW3hHSJUj2eeNEh/tnVyGRd1sNehwNNjZoNMovYLkbczGvco+LCHLXSegrMf2y/XIKLyEWEnxd/iQFtOvYz/jk1jQn60oHmJRgpE0rI7enY6LwFn1/8NT3k07JaHG85zJIIk+KLdXhOsjMfndkLlNvUmFeg7"
+  }
+ ],
+ "all": [
+  {
+   "d": "2026-11-23 15:30",
+   "h": "Сибирь",
+   "a": "Северсталь"
+  }
+ ],
+ "yday": [
+  {
+   "d": "2026-11-22 14:00",
+   "h": "Авангард",
+   "a": "Ак Барс",
+   "sc": "3:1"
+  },
+  {
+   "d": "2026-11-22 14:30",
+   "h": "Барыс",
+   "a": "Динамо Минск",
+   "sc": "1:2"
+  },
+  {
+   "d": "2026-11-22 17:00",
+   "h": "Торпедо",
+   "a": "Автомобилист",
+   "sc": "2:4"
+  },
+  {
+   "d": "2026-11-22 17:00",
+   "h": "Шанхайские Драконы",
+   "a": "Лада",
+   "sc": "2:3"
+  },
+  {
+   "d": "2026-11-22 19:46",
+   "h": "Динамо Москва",
+   "a": "ЦСКА",
+   "sc": "3:1"
+  }
+ ]
+}
