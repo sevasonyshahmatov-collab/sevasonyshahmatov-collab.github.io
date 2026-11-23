@@ -1,0 +1,119 @@
+{
+ "day": "2026-11-24",
+ "league": "nhl",
+ "skipped": 0,
+ "matches": [
+  {
+   "h": "Эдмонтон",
+   "a": "Вегас",
+   "d": "2026-11-25 04:00",
+   "arena": "",
+   "x1x2": [
+    2.51,
+    4.17,
+    2.38
+   ],
+   "p3": [
+    0.449,
+    0.224,
+    0.327
+   ],
+   "form": {
+    "Эдмонтон": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "23.11",
+       "opp": "Сент-Луис",
+       "home": false,
+       "score": "4:5 Б",
+       "res": "П"
+      },
+      {
+       "date": "21.11",
+       "opp": "Каролина",
+       "home": false,
+       "score": "4:7",
+       "res": "П"
+      },
+      {
+       "date": "20.11",
+       "opp": "Тампа-Бэй",
+       "home": false,
+       "score": "1:3",
+       "res": "П"
+      }
+     ],
+     "points": 38,
+     "games": 26,
+     "place": "2 на Западе",
+     "gd": 24
+    },
+    "Вегас": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "22.11",
+       "opp": "Виннипег",
+       "home": false,
+       "score": "5:4 Б",
+       "res": "В"
+      },
+      {
+       "date": "20.11",
+       "opp": "Даллас",
+       "home": true,
+       "score": "3:4 Б",
+       "res": "П"
+      },
+      {
+       "date": "18.11",
+       "opp": "Даллас",
+       "home": true,
+       "score": "3:4 ОТ",
+       "res": "П"
+      }
+     ],
+     "points": 33,
+     "games": 25,
+     "place": "3 на Западе",
+     "gd": 10
+    }
+   },
+   "_z": "dUy1aZ+mPU2wY+xKav8ks2xW1Y1QykcB99kqRtm/G9v3ukR2etJ0lVE7rvwsdyWwpvmwgJz98O6mgbqH41zjFx/S4xe+YIv4qZaK8Tvx2Q6vI6u6IrItXHoL4XmtLNnzJzqMoSW0zGgATDQ5YilnCb2GsbayG5z24xvC269xLPW+bixUPP0jOaQ2N2V/QUIcbK8LC1zOitihoWCMQcL7tb+eyAZSeHFs4upUAzp4gXItXA8HYiR2EzfihW6M7xmwyGvLSkac5wfC+9AtmZOYcvaLvn0nXtbDRZSXdt+8CLT7niMJrfLhCqVuX8vnS0tVszBmMxqG6gCcWWbDSCsuqTTJW4NvbUNjdmhlZlHRT1PHoVyWpDecDSBpOOsQEdk="
+  }
+ ],
+ "all": [
+  {
+   "d": "2026-11-25 04:00",
+   "h": "Эдмонтон",
+   "a": "Вегас"
+  }
+ ],
+ "yday": [
+  {
+   "d": "2026-11-23 01:00",
+   "h": "Тампа-Бэй",
+   "a": "Баффало",
+   "sc": "2:6"
+  },
+  {
+   "d": "2026-11-23 03:00",
+   "h": "Сент-Луис",
+   "a": "Эдмонтон",
+   "sc": "5:4 Б"
+  },
+  {
+   "d": "2026-11-23 03:00",
+   "h": "Даллас",
+   "a": "Питтсбург",
+   "sc": "1:0"
+  },
+  {
+   "d": "2026-11-23 04:00",
+   "h": "Ванкувер",
+   "a": "Чикаго",
+   "sc": "3:6"
+  }
+ ]
+}
