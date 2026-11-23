@@ -304,7 +304,8 @@
 [data-card="2"] .dk-em{box-shadow:0 0 0 2px rgba(255,255,255,.35),0 10px 24px -10px #000}
 
 /* 3 · «Билет»: фактура холста в цветах клубов, перфорация, корешок */
-[data-card="3"] .dk-card{--cut:63%}
+[data-card="3"] .dk-card{--cut:calc(100% - max(37%, 190px))}
+/* низ билета не меньше 190 px — иначе «Самый вероятный исход» обрезается на узких карточках (владелец 22.11) */
 [data-card="3"] .dk-cf{border:0;border-radius:var(--rc,16px);background:#0d1526;
   -webkit-mask-image:radial-gradient(circle 12px at 0 var(--cut),#0000 11.5px,#000 12px),radial-gradient(circle 12px at 100% var(--cut),#0000 11.5px,#000 12px);
   -webkit-mask-composite:source-in;mask-image:radial-gradient(circle 12px at 0 var(--cut),#0000 11.5px,#000 12px),radial-gradient(circle 12px at 100% var(--cut),#0000 11.5px,#000 12px);mask-composite:intersect;box-shadow:none}
