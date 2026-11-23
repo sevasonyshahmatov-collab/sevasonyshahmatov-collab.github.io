@@ -1,9 +1,9 @@
 /* черновик 22.11: варианты типографики ?ty=1|2|3 (по умолчанию 1, ?ty=0 — как на живом сайте) */
-(()=>{const d=document.documentElement;let t='1';try{const q=new URLSearchParams(location.search).get('ty');if(q!==null)sessionStorage.setItem('jv-ty',/^[0123]$/.test(q)?q:'1');t=sessionStorage.getItem('jv-ty')||'1'}catch(e){}
+(()=>{const d=document.documentElement;let t='1';try{const q=new URLSearchParams(location.search).get('ty');if(q!==null)sessionStorage.setItem('jv-ty',/^[01234]$/.test(q)?q:'1');t=sessionStorage.getItem('jv-ty')||'1'}catch(e){}
  const base=(document.currentScript&&document.currentScript.src||'').replace(/nav\.js.*$/,'');
- if(t!=='0'){d.dataset.ty=t;const l=document.createElement('link');l.rel='stylesheet';l.href=base+'ty/ty.css?v=1';document.head.appendChild(l)}
+ if(t!=='0'){d.dataset.ty=t==='4'?'2':t;if(t==='4')d.dataset.lay='1';const l=document.createElement('link');l.rel='stylesheet';l.href=base+'ty/ty.css?v=1';document.head.appendChild(l)}
  const sw=()=>{if(document.querySelector('.ty-sw'))return;const n=document.createElement('nav');n.className='ty-sw';n.setAttribute('aria-label','Вариант оформления');
-  n.innerHTML='<span>Вариант</span>'+['1','2','3','0'].map(k=>`<a href="?ty=${k}"${k===t?' aria-current="true"':''}>${k==='0'?'как сейчас':k}</a>`).join('');document.body.appendChild(n)};
+  n.innerHTML='<span>Вариант</span>'+['1','2','3','4','0'].map(k=>`<a href="?ty=${k}"${k===t?' aria-current="true"':''}>${k==='0'?'как сейчас':k}</a>`).join('');document.body.appendChild(n)};
  if(document.body)sw();else addEventListener('DOMContentLoaded',sw)})();
 /* 17.11 — варианты фона для сравнения: ?bg=a|b|c в адресе (запоминается на время вкладки, ?bg=0 — вернуть обычный). Стили — nav.css, разметка льда — v3a.js */
 (()=>{const d=document.documentElement;try{const q=new URLSearchParams(location.search).get('bg');if(q!==null)sessionStorage.setItem('jv-bg',/^[abcn]$/.test(q)?q:'0');let b=sessionStorage.getItem('jv-bg');if(b===null)b='n';if(b&&b!=='0')d.dataset.bg=b;else delete d.dataset.bg}catch(e){d.dataset.bg='n'}})(); /* 17.11: «Ночная арена» — основная тема */

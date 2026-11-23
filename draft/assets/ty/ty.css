@@ -96,26 +96,26 @@ html[data-ty="1"] .hm h1{font-size:clamp(44px,4.6vw,76px);max-width:13em}
    2 — «Сцена»: заголовок по центру над всем; ниже три колонки — «216» | карточки | преимущества и кнопка.
    3 — «Зеркало»: карточки слева, текст справа; «216» и преимущества — рядом в одну строку. */
 @media (min-width:981px){
-  html[data-ty="2"] .hm-lead,html[data-ty="3"] .hm-lead{display:contents}
-  html[data-ty="2"] .mg-right,html[data-ty="3"] .mg-right{margin:0}
+  html[data-ty="2"]:not([data-lay]) .hm-lead,html[data-ty="3"] .hm-lead{display:contents}
+  html[data-ty="2"]:not([data-lay]) .mg-right,html[data-ty="3"] .mg-right{margin:0}
 
   /* 2 — сцена */
-  html[data-ty="2"] .hm-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr) minmax(0,.9fr);column-gap:clamp(36px,4vw,72px);row-gap:0;align-items:center;
+  html[data-ty="2"]:not([data-lay]) .hm-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr) minmax(0,.9fr);column-gap:clamp(36px,4vw,72px);row-gap:0;align-items:center;
     grid-template-areas:"d d d" "h h h" "s s s" "sc cards pr" "sc cards ac"}
-  html[data-ty="2"] .hm-date{grid-area:d;justify-self:center;text-align:center}
-  html[data-ty="2"] .hm h1{grid-area:h;justify-self:center;text-align:center;max-width:none;font-size:clamp(44px,4.6vw,76px)}
-  html[data-ty="2"] .hm-sub{grid-area:s;justify-self:center;text-align:center;max-width:56ch;margin-bottom:clamp(28px,3vw,48px)}
-  html[data-ty="2"] .hm-score{grid-area:sc;align-self:center;justify-self:end;align-items:flex-end;text-align:right;margin:0}
-  html[data-ty="2"] .hm-score span{max-width:22ch}
-  html[data-ty="2"] .hm-score b{font-size:clamp(96px,8vw,140px);display:flex;flex-direction:column;align-items:flex-end}
-  html[data-ty="2"] .hm-score b small{margin:.35em 0 0;font-size:.22em}
-  html[data-ty="2"] .mg-right{grid-area:cards}
-  html[data-ty="2"] .mg-deck{--cw:min(300px,calc((100cqw - 28px) / 2),calc((100svh - 330px) * .714));gap:28px}
-  html[data-ty="2"] .hm-proof{grid-area:pr;align-self:end;flex-direction:column;gap:12px;margin:0 0 22px}
-  html[data-ty="2"] .hm-proof li{font-size:15px}
-  html[data-ty="2"] .hm-act{grid-area:ac;align-self:start}
-  html[data-ty="2"] .hm-act .hm-tg{width:100%;justify-content:center}
-  html[data-ty="2"] .hm-bg .hb{display:none}
+  html[data-ty="2"]:not([data-lay]) .hm-date{grid-area:d;justify-self:center;text-align:center}
+  html[data-ty="2"]:not([data-lay]) .hm h1{grid-area:h;justify-self:center;text-align:center;max-width:none;font-size:clamp(44px,4.6vw,76px)}
+  html[data-ty="2"]:not([data-lay]) .hm-sub{grid-area:s;justify-self:center;text-align:center;max-width:56ch;margin-bottom:clamp(28px,3vw,48px)}
+  html[data-ty="2"]:not([data-lay]) .hm-score{grid-area:sc;align-self:center;justify-self:end;align-items:flex-end;text-align:right;margin:0}
+  html[data-ty="2"]:not([data-lay]) .hm-score span{max-width:22ch}
+  html[data-ty="2"]:not([data-lay]) .hm-score b{font-size:clamp(96px,8vw,140px);display:flex;flex-direction:column;align-items:flex-end}
+  html[data-ty="2"]:not([data-lay]) .hm-score b small{margin:.35em 0 0;font-size:.22em}
+  html[data-ty="2"]:not([data-lay]) .mg-right{grid-area:cards}
+  html[data-ty="2"]:not([data-lay]) .mg-deck{--cw:min(300px,calc((100cqw - 28px) / 2),calc((100svh - 330px) * .714));gap:28px}
+  html[data-ty="2"]:not([data-lay]) .hm-proof{grid-area:pr;align-self:end;flex-direction:column;gap:12px;margin:0 0 22px}
+  html[data-ty="2"]:not([data-lay]) .hm-proof li{font-size:15px}
+  html[data-ty="2"]:not([data-lay]) .hm-act{grid-area:ac;align-self:start}
+  html[data-ty="2"]:not([data-lay]) .hm-act .hm-tg{width:100%;justify-content:center}
+  html[data-ty="2"]:not([data-lay]) .hm-bg .hb{display:none}
 
   /* 3 — зеркало */
   html[data-ty="3"] .hm-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.48fr) minmax(0,.52fr);column-gap:0;row-gap:0;align-items:start;
@@ -134,9 +134,9 @@ html[data-ty="1"] .hm h1{font-size:clamp(44px,4.6vw,76px);max-width:13em}
 }
 /* телефон: 2 — всё по центру, 3 — сначала карточки, потом текст */
 @media (max-width:980px){
-  html[data-ty="2"] .hm-lead{text-align:center}
-  html[data-ty="2"] .hm-score{align-items:center}
-  html[data-ty="2"] .hm-proof{justify-content:center}
+  html[data-ty="2"]:not([data-lay]) .hm-lead{text-align:center}
+  html[data-ty="2"]:not([data-lay]) .hm-score{align-items:center}
+  html[data-ty="2"]:not([data-lay]) .hm-proof{justify-content:center}
   html[data-ty="3"] .mg-right{order:-10;margin:0 0 22px!important}
   html[data-ty="3"] .hm :is(h1,.hm-sub,.hm-date){text-align:left;align-self:flex-start}
   html[data-ty="3"] .hm-lead{text-align:left}
@@ -144,3 +144,6 @@ html[data-ty="1"] .hm h1{font-size:clamp(44px,4.6vw,76px);max-width:13em}
   html[data-ty="3"] .hm-proof{justify-content:flex-start}
   html[data-ty="3"] .hm h1::after{margin-left:0}
 }
+
+/* 23.11 — вариант 4: оформление варианта 2 (шрифты, цвета, свечение), расположение первоначальное — текст слева, карточки справа */
+html[data-lay] .hm h1{max-width:13ch}
