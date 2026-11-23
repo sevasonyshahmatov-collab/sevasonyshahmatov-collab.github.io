@@ -76,6 +76,12 @@ const css=`.sdt{position:fixed;z-index:5;width:var(--w,260px);display:flex;flex-
 .sdt.w .sd-v{background:#f1f4f9}.sdt.w .sd-v:hover{background:#e6ebf3}.sdt.w .sd-v span{color:#5b6576}.sdt.w .sd-v em{color:#2a3446}
 .sdt .sd-dots{display:flex;gap:4px;margin-top:6px}.sdt .sd-dots i{width:6px;height:6px;border-radius:50%;background:rgba(220,230,255,.25)}.sdt .sd-dots i.on{background:#ffcc33}
 .sdt.w .sd-dots i{background:#d3d9e4}.sdt.w .sd-dots i.on{background:#f2b600}
+.sdt .sd-ld td{padding:5px 2px}.sdt .sd-ld tr td:first-child{box-shadow:inset 3px 0 0 var(--cc,#7d8798);padding-left:6px}
+.sdt .sd-ld tbody tr{background:linear-gradient(90deg,color-mix(in srgb,var(--cc,#7d8798) 26%,transparent),transparent 75%)}
+.sdt .sd-ld tr.me td{background:rgba(255,204,51,.16)}.sdt.w .sd-ld tr.me td{background:#fff4cc}.sdt .sd-pl{display:flex;align-items:center;gap:6px;min-width:0}
+.sdt .sd-pl>span{display:grid;min-width:0}.sdt .sd-pl b,.sdt .sd-pl small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sdt .sd-pl b{font-weight:700;font-size:12.5px}.sdt .sd-pl small{font-size:10.5px;color:rgba(220,230,255,.55)}
+.sdt.w .sd-pl small{color:#5b6576}
 @media (prefers-reduced-motion:reduce){.sdt{transition:none}}`;
 /* вид (владелец 21.11: «в цветах и белую — посмотрю»): ?sdt=1 — тёмная (основная), ?sdt=2 — белая; выбор помнится до закрытия вкладки */
 let VIEW='1';try{const v=new URLSearchParams(location.search).get('sdt');if(v==='1'||v==='2')sessionStorage.setItem('jv-sdt',v);VIEW=sessionStorage.getItem('jv-sdt')||'1'}catch(e){}
@@ -164,12 +170,23 @@ function valueHTML(vis){const all=vis.flatMap(cands);if(!all.length)return '';
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.sdt .sd-v');if(!b)return;const [h,a]=b.dataset.k.split('|');
  const li=rows().find(x=>{const i=info(x);return i&&i.h===h&&i.a===a});if(!li)return;const hd=li.querySelector('.mhead');
  if(hd&&!li.classList.contains('open'))hd.click();setTimeout(()=>li.scrollIntoView({behavior:'smooth',block:'start'}),60)});
+/* бомбардиры (владелец 23.11): при наведении на матч справа — бомбардиры его лиги по очкам (голы + передачи).
+   Данные — data/leaders.js (seo/leaders_build.py, топ-15 на лигу), грузим при первом наведении. Игроки команд матча подсвечены. */
+let LDL=0;
+function needLead(){if(LDL||window.JV_LEAD)return;LDL=1;const sc=document.createElement('script');sc.src=ROOT+'data/leaders.js?v='+todayMSK();sc.async=true;sc.onload=()=>{key='';upd()};document.head.appendChild(sc)}
+/* цвет клуба (владелец 23.11: «бомбардиры подсвечиваются линией в цвет своих клубов») */
+const clr=id=>{let c=FB?(((F().teams||{})[id]||{}).c||[])[0]:((HT()[id]||{}).colors||[])[0];c=String(c||'').trim();if(/^[0-9a-f]{6}$/i.test(c))c='#'+c;return /^#[0-9a-f]{3,8}$/i.test(c)?c:'#7d8798'};
+function leadHTML(lg,me){const A=((window.JV_LEAD||{}).lg||{})[lg];
+ if(!A||!A.length)return window.JV_LEAD?'':'<h4>'+esc(LGN[lg]||lg)+' · бомбардиры<small>загружаем…</small></h4>';
+ return '<h4>'+esc(LGN[lg]||lg)+' · бомбардиры<small>по очкам: голы + передачи</small></h4><div class="sd-sc"><table class="sd-ld"><thead><tr><th>#</th><th>Игрок</th><th title="Голы">Г</th><th title="Передачи">П</th><th title="Очки: голы + передачи">О</th></tr></thead><tbody>'+
+  A.map((r,i)=>'<tr class="'+(me.includes(r[1])?'me':'')+'" title="'+esc(r[4])+' игр" style="--cc:'+esc(clr(r[1]))+'"><td class="n">'+(i+1)+'</td><td class="c"><span class="sd-pl"><img src="'+esc(em(r[1]))+'" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'"><span><b>'+esc(r[0])+'</b><small>'+esc(name(r[1]))+'</small></span></span></td><td class="g">'+esc(r[2])+'</td><td class="g">'+esc(r[3])+'</td><td class="p">'+esc(r[2]+r[3])+'</td></tr>').join('')+
+  '</tbody></table></div>'}
 /* ---- что показывать ---- */
 const rows=()=>[...LIST.querySelectorAll('li.match')].filter(li=>li.offsetParent!==null);
 const info=li=>{const s=li&&li.querySelector('.lvslot[data-lv-lg]');return s?{lg:s.dataset.lvLg,h:s.dataset.lvH,a:s.dataset.lvA,hn:s.dataset.lvHn||name(s.dataset.lvH),an:s.dataset.lvAn||name(s.dataset.lvA),t:s.dataset.lvT||'',li}:null};
 /* футбол (владелец 21.11): без раскрытого матча и без выбранной вкладки — лиги по очереди, раз в 7 с;
    только лиги, у которых есть матчи в списке; ЛЧ и ЛЕ — только если их матчи сегодня (МСК) */
-let ROT=0,ROTL=[],HOV=false;
+let ROT=0,ROTL=[],HOV=false,HM=null,HMt=0;
 const todayMSK=()=>new Date(Date.now()+3*36e5).toISOString().slice(0,10);
 function rotLeagues(){const T=((window.JV_TODAY||{}).matches||[]).map(m=>({lg:m.lg,t:m.t||''})),ms=[...LIST.querySelectorAll('li.match')].map(info).filter(Boolean).concat(T),d=todayMSK(),seen=[];
  ['epl','laliga','seriea','bundesliga','ligue1','rpl'].forEach(l=>{if(ms.some(m=>m.lg===l))seen.push(l)});
@@ -186,16 +203,16 @@ const ownLg=(lg,id)=>FB&&(lg==='ucl'||lg==='uel')?((F().teams||{})[id]||{}).lg||
 
 let L=null,R=null,key='',q=0;
 function build(){
- const vis=rows().map(info).filter(Boolean),openLi=[...LIST.querySelectorAll('li.match.open')].pop(),op=info(openLi);
+ const vis=rows().map(info).filter(Boolean),openLi=[...LIST.querySelectorAll('li.match.open')].pop(),hv=HM&&HM.isConnected?info(HM):null,op=hv||info(openLi);if(hv)needLead();
  const lg0=pickLg(op),lg=op?ownLg(lg0,op.h):lg0;
  const tb=table(lg);const me=op?[op.h,op.a]:[];const today=new Set(vis.flatMap(m=>[m.h,m.a]));
- const k=[lg,me.join(),vis.map(m=>m.h+m.a).join()].join('|');if(k===key&&L)return;key=k;
+ const k=[lg,me.join(),hv?'h':'',window.JV_LEAD?1:0,vis.map(m=>m.h+m.a).join()].join('|');if(k===key&&L)return;key=k;
  if(!L){L=document.createElement('aside');R=document.createElement('aside');L.className=R.className='sdt'+(VIEW==='2'?' w':'');
   L.setAttribute('aria-label','Турнирная таблица');R.setAttribute('aria-label','Подсказка модели');document.body.append(L,R)}
- const rot=FB&&!op&&!tabLg()&&ROTL.length>1;
+ const rot=FB&&!op&&!tabLg()&&ROTL.length>1;R.setAttribute('aria-label',hv?'Бомбардиры лиги':'Подсказка модели');
  L.innerHTML=tb&&tb.length?'<h4>'+esc(LGN[lg]||lg)+' · таблица<small>'+(FB?'место, игры, очки':'все клубы по очкам')+(rot?' · лиги сменяются':'')+'</small>'+(rot?'<span class="sd-dots">'+ROTL.map((l,i)=>'<i'+(i===ROT%ROTL.length?' class="on"':'')+' title="'+esc(LGN[l])+'"></i>').join('')+'</span>':'')+'</h4><div class="sd-sc"><table><thead><tr><th>#</th><th></th><th>Клуб</th><th title="Игры">И</th><th title="Очки">О</th></tr></thead><tbody>'+
   tb.map(r=>'<tr class="'+(me.includes(r.id)?'me':today.has(r.id)?'td':'')+'"><td class="n">'+esc(r.pl)+'</td><td class="m">'+mvHTML(r)+'</td><td class="c">'+club(r.id)+'</td><td class="g">'+esc(r.gp)+'</td><td class="p">'+esc(r.pts)+'</td></tr>').join('')+'</tbody></table></div>':'';
- R.innerHTML=valueHTML(vis);
+ R.innerHTML=hv?leadHTML(lg0,me)||valueHTML(vis):valueHTML(vis);
 }
 function place(){q=0;if(!L)return;
  const lr=LIST.getBoundingClientRect(),gl=lr.left,gr=innerWidth-lr.right,w=Math.min(300,Math.min(gl,gr)-GAP-10);
@@ -214,7 +231,12 @@ const tabs=document.getElementById('ltabs');if(tabs)new MutationObserver(()=>req
 addEventListener('scroll',sched,{passive:true});addEventListener('resize',sched);
 if('ResizeObserver' in window)new ResizeObserver(sched).observe(LIST);
 setTimeout(upd,300);setTimeout(upd,1500);
-if(FB)setInterval(()=>{if(HOV||document.hidden||LIST.querySelector('li.match.open')||tabLg()||ROTL.length<2)return;ROT++;
+if(FB)setInterval(()=>{if(HOV||HM||document.hidden||LIST.querySelector('li.match.open')||tabLg()||ROTL.length<2)return;ROT++;
  if(L){L.classList.add('sw');setTimeout(()=>{key='';upd();L.classList.remove('sw')},180)}},7000);
-document.addEventListener('pointerover',e=>{HOV=!!(e.target.closest&&e.target.closest('.sdt'))},{passive:true});
+document.addEventListener('pointerover',e=>{const t=e.target.closest?e.target:null;HOV=!!(t&&t.closest('.sdt'));
+ if(e.pointerType==='touch')return;
+ const li=t&&t.closest('#mlist li.match');
+ if(li){if(li!==HM){clearTimeout(HMt);HMt=setTimeout(()=>{HM=li;upd()},120)}else clearTimeout(HMt);return}
+ if(HOV){clearTimeout(HMt);return}               /* ушли на панель — показ не сбрасываем */
+ if(HM){clearTimeout(HMt);HMt=setTimeout(()=>{HM=null;upd()},350)}},{passive:true});
 })();

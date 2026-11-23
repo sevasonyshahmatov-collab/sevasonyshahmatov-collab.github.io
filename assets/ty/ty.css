@@ -1,0 +1,139 @@
+/* Черновик 22.11 — три варианта типографики и главной (?ty=1|2|3, запоминается на вкладку; ?ty=0 — как на живом сайте).
+   Общее: заголовок ярче и крупнее описания, «216» — главный акцент, подписи легче, больше воздуха между текстом и карточками,
+   фон глубже, мягкое свечение за карточками. Фото на карточках (.pl) не трогаем — правило владельца 15.11. */
+@import url(fonts.css);
+
+/* ── шрифты вариантов ── */
+html[data-ty="1"]{--hd:"Oswald","JV Display FB",Arial,sans-serif;--tx:"Manrope","JV Text FB",Arial,sans-serif;--nm:"Roboto Condensed","JV Display FB",Arial,sans-serif;
+  --hd-w:700;--hd-tt:uppercase;--hd-ls:.005em;--hd-lh:.98;--nm-w:900;--glow1:#1f6fff;--glow2:#14b86a;--acc:#3ee089;--bg0:#03060d;--bg1:#07101f}
+html[data-ty="2"]{--hd:"Montserrat","JV Display FB",Arial,sans-serif;--tx:"Inter","JV Text FB",Arial,sans-serif;--nm:"Space Grotesk","Inter",Arial,sans-serif;
+  --hd-w:800;--hd-tt:none;--hd-ls:-.035em;--hd-lh:1.02;--nm-w:700;--glow1:#7b5cff;--glow2:#2fd0c0;--acc:#4ff0a8;--bg0:#05040e;--bg1:#0d0a22}
+html[data-ty="3"]{--hd:"Rubik","JV Display FB",Arial,sans-serif;--tx:"Golos Text","JV Text FB",Arial,sans-serif;--nm:"Barlow Condensed","JV Display FB",Arial,sans-serif;
+  --hd-w:900;--hd-tt:uppercase;--hd-ls:-.015em;--hd-lh:.95;--nm-w:900;--glow1:#ff4b3a;--glow2:#ffc21a;--acc:#ffc21a;--bg0:#070505;--bg1:#140c0b}
+
+/* весь сайт: текст и подписи — шрифтом текста (легче), заголовки — шрифтом заголовков, цифры — шрифтом цифр */
+html[data-ty]{--text:var(--tx);--display:var(--tx)}
+html[data-ty] body{font-family:var(--tx);letter-spacing:0}
+html[data-ty] :is(h1,h2,.pp h1 b,.pp-wm,.pp-stick .wm){font-family:var(--hd)!important;font-stretch:100%!important;font-weight:var(--hd-w)!important;
+  letter-spacing:var(--hd-ls)!important;text-transform:var(--hd-tt);line-height:var(--hd-lh)}
+html[data-ty] h3{font-family:var(--hd);font-weight:calc(var(--hd-w) - 100);letter-spacing:var(--hd-ls)!important}
+html[data-ty] :is(.btn,.seg a,.nav a){letter-spacing:0!important;font-weight:700}
+/* цифры: коэффициенты, проценты, счёт, таблицы */
+html[data-ty] :is(.hm-score b,.dk-ql b,.kf,.odds b,.sc,.score,.num,.mx-sc,.res-n,.big,.stat-n,td.n,.pts){font-family:var(--nm);font-weight:var(--nm-w)}
+html[data-ty] h1 :is(b,em){font-family:inherit}
+
+/* ── главная: иерархия ── */
+html[data-ty] .hm-date{font:600 12.5px/1 var(--tx);letter-spacing:.22em;color:color-mix(in srgb,var(--ink) 62%,transparent)}
+html[data-ty] .hm h1{color:#fff;font-size:clamp(44px,5vw,84px);max-width:18ch;margin-top:clamp(16px,1.6vw,22px);text-wrap:balance}
+html[data-ty="2"] .hm h1{font-size:clamp(40px,4.4vw,72px);max-width:13ch}
+html[data-ty="3"] .hm h1{font-size:clamp(40px,4.2vw,72px)}
+html[data-ty] .hm-sub{font:400 clamp(16px,1.2vw,18.5px)/1.6 var(--tx);color:color-mix(in srgb,var(--ink) 58%,transparent);max-width:40ch;margin-top:clamp(16px,1.6vw,22px)}
+/* «216» — главный акцент */
+html[data-ty] .hm-score{margin:clamp(22px,2.4vw,34px) 0 6px;gap:8px;position:relative}
+html[data-ty] .hm-score b{font-size:clamp(84px,8.4vw,136px);line-height:.82;letter-spacing:-.02em;color:var(--acc);
+  text-shadow:0 0 42px color-mix(in srgb,var(--acc) 45%,transparent),0 0 2px color-mix(in srgb,var(--acc) 60%,transparent)}
+html[data-ty] .hm-score b small{font:600 .26em/1 var(--tx);letter-spacing:.02em;color:color-mix(in srgb,var(--ink) 70%,transparent);text-shadow:none;margin-left:.25em;vertical-align:.25em}
+html[data-ty] .hm-score span{font:500 14px/1.4 var(--tx);color:color-mix(in srgb,var(--ink) 60%,transparent);text-decoration-color:color-mix(in srgb,var(--ink) 25%,transparent)}
+html[data-ty="1"] .hm-score b{font-style:italic}
+html[data-ty="3"] .hm-score b{font-size:clamp(96px,9.6vw,156px)}
+/* подписи легче: без массивных рамок */
+html[data-ty] .hm-proof{gap:6px 18px;margin-top:clamp(18px,1.8vw,24px)}
+html[data-ty] .hm-proof li{font:500 14px/1.3 var(--tx);letter-spacing:0;background:none;border:0;padding:4px 0 4px 22px;color:color-mix(in srgb,var(--ink) 78%,transparent)}
+html[data-ty] .hm-proof li::before{left:4px;border-color:var(--acc)}
+html[data-ty] .hm-micro{font:400 13px/1.5 var(--tx);color:color-mix(in srgb,var(--ink) 55%,transparent)}
+html[data-ty] .hm-tg{font:700 16px/1 var(--tx);letter-spacing:0}
+
+/* ── композиция: больше воздуха между текстом и карточками ── */
+@media (min-width:981px){
+  html[data-ty] .hm-grid{gap:clamp(56px,7vw,128px);grid-template-columns:minmax(0,.95fr) minmax(0,1fr);align-items:center}
+  html[data-ty] .mg-deck{--cw:min(420px,calc((100cqw - 36px) / 2),calc((100svh - 170px) * .714));gap:clamp(22px,2.4vw,36px)}
+}
+
+/* ── фон глубже, свечение за карточками ── */
+html[data-ty] .hm-bg{background:radial-gradient(120% 90% at 20% 0,var(--bg1),var(--bg0) 70%)!important}
+html[data-ty] .hm-bg .hb{opacity:.22}
+html[data-ty] .hm-bg .hg{opacity:.14}
+html[data-ty] .hm-bg .hd{opacity:.25}
+html[data-ty] .hm-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(140% 100% at 50% 50%,transparent 55%,rgba(0,0,0,.55));pointer-events:none}
+html[data-ty] .mg-right{position:relative;isolation:isolate}
+html[data-ty] .mg-right::before{content:"";position:absolute;z-index:-1;inset:-12% -8% -14%;pointer-events:none;
+  background:radial-gradient(38% 46% at 27% 52%,color-mix(in srgb,var(--glow1) 55%,transparent),transparent 72%),
+             radial-gradient(38% 46% at 75% 52%,color-mix(in srgb,var(--glow2) 48%,transparent),transparent 72%);filter:blur(26px)}
+/* карточки отделены от фона: тень и тонкий светлый контур */
+html[data-ty] .mg-deck .card .shd{background:rgba(0,0,0,.85);filter:blur(24px);height:16%;bottom:-6%}
+html[data-ty] .mg-deck .face.front{box-shadow:0 40px 80px -30px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.14),0 0 60px -10px color-mix(in srgb,var(--glow1) 35%,transparent)}
+html[data-ty] .mg-deck .card.fb .face.front{box-shadow:0 40px 80px -30px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.14),0 0 60px -10px color-mix(in srgb,var(--glow2) 35%,transparent)}
+html[data-ty] .mg-deck .txt h2{font-family:var(--hd);font-weight:var(--hd-w);letter-spacing:var(--hd-ls);text-transform:uppercase}
+html[data-ty="2"] .mg-deck .txt h2{text-transform:none;font-size:max(24px,12.5cqw)}
+html[data-ty] .mg-deck .cnt{font-weight:700}
+html[data-ty] .mg-deck .stat{font-weight:400}
+html[data-ty] .mg-deck .nx b{font-weight:700}
+html[data-ty] .mg-deck .nx span{font-weight:500}
+
+/* вариант 2 — мягче, без капса в подписи даты */
+html[data-ty="2"] .hm-date{text-transform:none;letter-spacing:.04em;font-size:14px}
+/* вариант 3 — плакат: жёлтая черта под заголовком */
+html[data-ty="3"] .hm h1::after{content:"";display:block;width:72px;height:6px;margin-top:clamp(14px,1.4vw,20px);background:var(--signal)}
+
+@media (max-width:760px){
+  html[data-ty] .hm h1{font-size:clamp(36px,10.5vw,48px)}
+  html[data-ty] .hm-score b{font-size:clamp(76px,22vw,104px)}
+  html[data-ty] .hm-proof li{font-size:13.5px}
+}
+
+/* ═══ 22.11 (владелец: «варианты одинаковые — нужно разное расположение») ═══
+   1 — «Классика»: текст слева, карточки справа.
+   2 — «Сцена»: заголовок по центру над всем; ниже три колонки — «216» | карточки | преимущества и кнопка.
+   3 — «Зеркало»: карточки слева, текст справа; «216» и преимущества — рядом в одну строку. */
+@media (min-width:981px){
+  html[data-ty="2"]:not([data-lay]) .hm-lead,html[data-ty="3"] .hm-lead{display:contents}
+  html[data-ty="2"]:not([data-lay]) .mg-right,html[data-ty="3"] .mg-right{margin:0}
+
+  /* 2 — сцена */
+  html[data-ty="2"]:not([data-lay]) .hm-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr) minmax(0,.9fr);column-gap:clamp(36px,4vw,72px);row-gap:0;align-items:center;
+    grid-template-areas:"d d d" "h h h" "s s s" "sc cards pr" "sc cards ac"}
+  html[data-ty="2"]:not([data-lay]) .hm-date{grid-area:d;justify-self:center;text-align:center}
+  html[data-ty="2"]:not([data-lay]) .hm h1{grid-area:h;justify-self:center;text-align:center;max-width:none;font-size:clamp(44px,4.6vw,76px)}
+  html[data-ty="2"]:not([data-lay]) .hm-sub{grid-area:s;justify-self:center;text-align:center;max-width:56ch;margin-bottom:clamp(28px,3vw,48px)}
+  html[data-ty="2"]:not([data-lay]) .hm-score{grid-area:sc;align-self:center;justify-self:end;align-items:flex-end;text-align:right;margin:0}
+  html[data-ty="2"]:not([data-lay]) .hm-score span{max-width:22ch}
+  html[data-ty="2"]:not([data-lay]) .hm-score b{font-size:clamp(96px,8vw,140px);display:flex;flex-direction:column;align-items:flex-end}
+  html[data-ty="2"]:not([data-lay]) .hm-score b small{margin:.35em 0 0;font-size:.22em}
+  html[data-ty="2"]:not([data-lay]) .mg-right{grid-area:cards}
+  html[data-ty="2"]:not([data-lay]) .mg-deck{--cw:min(300px,calc((100cqw - 28px) / 2),calc((100svh - 330px) * .714));gap:28px}
+  html[data-ty="2"]:not([data-lay]) .hm-proof{grid-area:pr;align-self:end;flex-direction:column;gap:12px;margin:0 0 22px}
+  html[data-ty="2"]:not([data-lay]) .hm-proof li{font-size:15px}
+  html[data-ty="2"]:not([data-lay]) .hm-act{grid-area:ac;align-self:start}
+  html[data-ty="2"]:not([data-lay]) .hm-act .hm-tg{width:100%;justify-content:center}
+  html[data-ty="2"]:not([data-lay]) .hm-bg .hb{display:none}
+
+  /* 3 — зеркало */
+  html[data-ty="3"] .hm-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.48fr) minmax(0,.52fr);column-gap:0;row-gap:0;align-items:start;
+    grid-template-areas:"cards d d" "cards h h" "cards s s" "cards sc pr" "cards ac ac"}
+  html[data-ty="3"] .mg-right{grid-area:cards;align-self:center;margin-right:clamp(40px,5vw,96px);
+    margin-left:calc(-1 * max(0px, (100vw - var(--max)) / 2 + var(--m) - 32px))}
+  html[data-ty="3"] .hm-date{grid-area:d}
+  html[data-ty="3"] .hm h1{grid-area:h;max-width:none}
+  html[data-ty="3"] .hm-sub{grid-area:s}
+  html[data-ty="3"] .hm-score{grid-area:sc;margin:clamp(26px,2.6vw,38px) 0 0;padding-right:24px}
+  html[data-ty="3"] .hm-score b{display:flex;flex-direction:column;font-size:clamp(88px,7.6vw,132px)}
+  html[data-ty="3"] .hm-score b small{margin:.3em 0 0;font-size:.22em}
+  html[data-ty="3"] .hm-proof{grid-area:pr;flex-direction:column;gap:12px;margin:clamp(26px,2.6vw,38px) 0 0;padding-left:24px;border-left:2px solid rgba(255,255,255,.14);align-self:stretch;justify-content:center}
+  html[data-ty="3"] .hm-act{grid-area:ac;margin-top:clamp(24px,2.4vw,34px)}
+  html[data-ty="3"] .mg-right::before{inset:-12% -4% -14% -12%}
+}
+/* телефон: 2 — всё по центру, 3 — сначала карточки, потом текст */
+@media (max-width:980px){
+  html[data-ty="2"]:not([data-lay]) .hm-lead{text-align:center}
+  html[data-ty="2"]:not([data-lay]) .hm-score{align-items:center}
+  html[data-ty="2"]:not([data-lay]) .hm-proof{justify-content:center}
+  html[data-ty="3"] .mg-right{order:-10;margin:0 0 22px!important}
+  html[data-ty="3"] .hm :is(h1,.hm-sub,.hm-date){text-align:left;align-self:flex-start}
+  html[data-ty="3"] .hm-lead{text-align:left}
+  html[data-ty="3"] .hm-score{align-items:flex-start}
+  html[data-ty="3"] .hm-proof{justify-content:flex-start}
+  html[data-ty="3"] .hm h1::after{margin-left:0}
+}
+
+/* 23.11 — вариант 4: оформление варианта 2 (шрифты, цвета, свечение), расположение первоначальное — текст слева, карточки справа */
+html[data-lay] .hm h1{max-width:13ch}
