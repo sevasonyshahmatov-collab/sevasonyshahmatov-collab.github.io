@@ -6,8 +6,10 @@
 const T=window.JV_TODAY||{matches:[]},MODEL=window.JV_MODEL||{},LINES=window.JV_LINES||{};
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const LS_CUR='jv_kupon',LS_SAVED='jv_kupons';
-const LG={khl:'КХЛ',nhl:'НХЛ'};
+/* футбол (football/kupon.html, владелец 21.11: «переноси купон на футбол»): тот же конструктор, без овертаймов; свои купоны в памяти браузера */
+const FB=document.documentElement.dataset.sport==='football';
+const LS_CUR=FB?'jv_kupon_f':'jv_kupon',LS_SAVED=FB?'jv_kupons_f':'jv_kupons';
+const LG=FB?{epl:'АПЛ',laliga:'Ла Лига',seriea:'Серия А',bundesliga:'Бундеслига',ligue1:'Лига 1',rpl:'РПЛ',ucl:'Лига чемпионов',uel:'Лига Европы'}:{khl:'КХЛ',nhl:'НХЛ'};
 const MON=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
 
 /* ---------- числа ---------- */
@@ -45,6 +47,7 @@ function grid(key){
   /* доля побед хозяев в овертайме и по буллитам — из «итоговой победы» модели */
   let q=.5;if(ok&&typeof m.w1==='number')q=Math.min(.75,Math.max(.25,(m.w1-m.p1)/m.x));
   const st=[];
+  if(FB){for(const [h,a,r,p0] of cells){const p=p0*f[r];if(p>=1e-12)st.push({h,a,w:r===0?1:r===2?2:0,ot:0,d:r===1?1:0,p})}return GRID[key]=st}
   for(const [h,a,r,p0] of cells){const p=p0*f[r];if(p<1e-12)continue;
     if(r===1){st.push({h,a,w:1,ot:1,p:p*q});st.push({h,a,w:2,ot:1,p:p*(1-q)})}
     else st.push({h,a,w:r===0?1:2,ot:0,p})}
@@ -54,9 +57,9 @@ function grid(key){
 /* ---------- события ---------- */
 function pred(id){const a=id.split(':');
   switch(a[0]){
-    case 'r':return a[1]==='x'?s=>!!s.ot:a[1]==='1'?s=>!s.ot&&s.w===1:s=>!s.ot&&s.w===2;
+    case 'r':return a[1]==='x'?s=>!!s.ot||!!s.d:a[1]==='1'?s=>!s.ot&&s.w===1:s=>!s.ot&&s.w===2;
     case 'w':return a[1]==='1'?s=>s.w===1:s=>s.w===2;
-    case 'dc':return a[1]==='1x'?s=>s.ot||s.w===1:a[1]==='x2'?s=>s.ot||s.w===2:s=>!s.ot;
+    case 'dc':return a[1]==='1x'?s=>s.ot||s.d||s.w===1:a[1]==='x2'?s=>s.ot||s.d||s.w===2:s=>!s.ot&&!s.d;
     case 't':{const l=+a[2];return a[1]==='o'?s=>s.h+s.a>l:s=>s.h+s.a<l}
     case 'f':{const l=+a[2];return a[1]==='1'?s=>s.h+l>s.a:s=>s.a+l>s.h}
     case 'it':{const l=+a[3],g=a[1]==='1'?s=>s.h:s=>s.a;return a[2]==='o'?s=>g(s)>l:s=>g(s)<l}
@@ -85,9 +88,9 @@ function short(id){const a=id.split(':');
   }return id}
 function full(id,m){const a=id.split(':'),tn=a[1]==='1'?m.hn:m.an;
   switch(a[0]){
-    case 'r':return a[1]==='x'?'Ничья в основное время':'П'+a[1]+' · '+tn+', основное время';
+    case 'r':return FB?(a[1]==='x'?'Ничья':'П'+a[1]+' · победа: '+tn):a[1]==='x'?'Ничья в основное время':'П'+a[1]+' · '+tn+', основное время';
     case 'w':return 'Победа в матче: '+tn+' (с ОТ и буллитами)';
-    case 'dc':return a[1]==='1x'?'1Х · '+m.hn+' не проиграет':a[1]==='x2'?'Х2 · '+m.an+' не проиграет':'12 · ничьей в основное время не будет';
+    case 'dc':return a[1]==='1x'?'1Х · '+m.hn+' не проиграет':a[1]==='x2'?'Х2 · '+m.an+' не проиграет':FB?'12 · ничьей не будет':'12 · ничьей в основное время не будет';
     case 't':return 'Тотал '+(a[1]==='o'?'больше ':'меньше ')+fl(a[2]);
     case 'f':return 'Фора '+tn+' ('+fs(+a[2])+')';
     case 'it':return 'Инд. тотал '+(a[1]==='1'?m.hn:m.an)+' '+(a[2]==='o'?'больше ':'меньше ')+fl(a[3]);
@@ -126,10 +129,21 @@ function cols(m){if(COLS[m.key])return COLS[m.key];
 
 /* ---------- рынки матча ---------- */
 /* Правило владельца 14.11: в НХЛ минимальный тотал матча, который дают взять, — 4,5 (больше или меньше); 3,5 не бывает. В КХЛ линия идёт с 3,5. */
-const totalLines=m=>m.lg==='nhl'?[4.5,5.5,6.5,7.5]:[3.5,4.5,5.5,6.5,7.5];
+const totalLines=m=>FB?[0.5,1.5,2.5,3.5,4.5]:m.lg==='nhl'?[4.5,5.5,6.5,7.5]:[3.5,4.5,5.5,6.5,7.5];
 function markets(m){
-  const L=LINES[m.key]||{},base=L.tot!=null&&L.tot%1!==0?+L.tot:5.5,tl=totalLines(m);
+  const L=LINES[m.key]||{},base=L.tot!=null&&L.tot%1!==0?+L.tot:FB?2.5:5.5,tl=totalLines(m);
   const tot=l=>['t:o:'+l,'t:u:'+l];
+  if(FB)return {
+    main:[{n:'Исход матча',o:['r:1','r:x','r:2']},{n:'Двойной шанс',o:['dc:1x','dc:12','dc:x2']},{n:'Тотал голов',o:tot(base)}],
+    more:[
+      {n:'Тотал голов, другие линии',o:tl.filter(l=>l!==base).flatMap(tot),c:2},
+      {n:'Фора: '+m.hn,o:['f:1:-1.5','f:1:-0.5','f:1:0.5','f:1:1.5'],c:2},
+      {n:'Фора: '+m.an,o:['f:2:-1.5','f:2:-0.5','f:2:0.5','f:2:1.5'],c:2},
+      {n:'Голы: '+m.hn,o:[0.5,1.5,2.5].flatMap(l=>['it:1:o:'+l,'it:1:u:'+l]),c:2},
+      {n:'Голы: '+m.an,o:[0.5,1.5,2.5].flatMap(l=>['it:2:o:'+l,'it:2:u:'+l]),c:2},
+      {n:'Обе забьют',o:['b:y','b:n'],c:2},
+      {n:'Чёт / нечет',o:['eo:e','eo:o'],c:2}
+    ]};
   return {
     main:[{n:'Основное время',o:['r:1','r:x','r:2']},{n:'Победа с ОТ и буллитами',o:['w:1','w:2']},{n:'Тотал голов',o:tot(base)}],
     more:[
@@ -210,7 +224,8 @@ function calc(){const G=byMatch(),n=G.length,stake=Math.max(0,num(S.stake)||0);
 
 /* ---------- отрисовка ---------- */
 /* маленькая эмблема — из em/s/ (128 px, аудит 20.11: 384 px для 28 px лишние); нет уменьшенной — полная, нет и её — скрыть */
-const emb=id=>'<img class="kp-em" src="../assets/em/s/'+esc(id)+'.webp" alt="" width="28" height="28" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=\'../assets/em/'+esc(id)+'.webp\'}else this.style.visibility=\'hidden\'">';
+const EMD=FB?'fc':'em';
+const emb=id=>'<img class="kp-em" src="../assets/'+EMD+'/s/'+esc(id)+'.webp" alt="" width="28" height="28" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=\'../assets/'+EMD+'/'+esc(id)+'.webp\'}else this.style.visibility=\'hidden\'">';
 /* на кнопке крупно кэф (владелец 15.11), мелко — шанс модели; кэф из линии — как есть, расчётный по модели — со знаком ≈ */
 const KF=(p,lo)=>lo?fk(lo):p>0?'<s>≈</s>'+fk(Math.min(999,1/p)):'—';
 function btn(m,id){const p=prob(m.key,[id]),lo=lineOdd(m.key,id),on=has(m.key,id),val=lo&&p*lo>=1.03;
@@ -230,6 +245,17 @@ function panel(m){
   const pair=(a,la,b,lb)=>'<div class="kp-tr n2">'+cell(m,a,la)+cell(m,b,lb)+'</div>';
   const ou=(pre,lines)=>lines.map(l=>'<div class="kp-tr ou">'+cell(m,pre+'u:'+l,'Меньше')+'<span class="kp-ln">'+fl(l)+'</span>'+cell(m,pre+'o:'+l,'Больше')+'</div>').join('');
   const RT='Основное время',il=[1.5,2.5,3.5,4.5];
+  if(FB){const MT='Весь матч',fl2=[[-1.5,1.5],[-0.5,0.5],[0.5,-0.5],[1.5,-1.5]];
+   return '<div class="kp-all kp-pan"><div>'+
+    sec('r','Исход матча',MT,'<div class="kp-tr n3">'+cell(m,'r:1',['П1',m.hn])+cell(m,'r:x','Ничья')+cell(m,'r:2',['П2',m.an])+'</div>')+
+    sec('dc','Двойной шанс',MT,'<div class="kp-tr n3">'+cell(m,'dc:1x','1Х')+cell(m,'dc:12','12')+cell(m,'dc:x2','Х2')+'</div>')+
+    sec('t','Тотал',MT,ou('t:',totalLines(m)))+
+    sec('b','Обе забьют',MT,pair('b:y','Да','b:n','Нет'))+
+    sec('eo','Чёт / нечет',MT,pair('eo:e','Чёт','eo:o','Нечет'))+
+    '</div><div>'+
+    sec('f','Фора',MT,fl2.map(([a,b])=>pair('f:1:'+a,[m.hn,'('+fs(a)+')'],'f:2:'+b,[m.an,'('+fs(b)+')'])).join(''))+
+    sec('i1','Тотал '+m.hn,MT,ou('it:1:',[0.5,1.5,2.5]))+sec('i2','Тотал '+m.an,MT,ou('it:2:',[0.5,1.5,2.5]))+
+    '</div></div>'}
   return '<div class="kp-all kp-pan"><div>'+
     sec('w','Победа в матче','С овертаймом и буллитами',pair('w:1',m.hn,'w:2',m.an))+
     sec('dc','Двойной шанс',RT,'<div class="kp-tr n3">'+cell(m,'dc:1x','1Х')+cell(m,'dc:12','12')+cell(m,'dc:x2','Х2')+'</div>')+
@@ -245,7 +271,7 @@ function card2(m){const mk=markets(m),open=!!S.open[m.key],legs=S.legs.filter(l=
   const c=cols(m),tm=(id,n)=>'<div class="kp-t">'+emb(id)+'<b>'+esc(n)+'</b></div>';
   const more='<button type="button" class="kp-more" data-more="'+esc(m.key)+'" aria-expanded="'+open+'" title="'+(open?'Свернуть':'Все события матча')+'"><span>'+(open?'Свернуть':'Все события')+'</span>'+(hid&&!open?'<em>'+hid+'</em>':'')+CHEV+'</button>';
   /* строки: крупные эмблемы во всю высоту строки, внахлёст, обрезаются краем плашки; у названий эмблемы не повторяем */
-  const big=id=>'<img src="../assets/em/'+esc(id)+'.webp" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">';
+  const big=id=>'<img src="../assets/'+EMD+'/'+esc(id)+'.webp" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">';
   if(L===1||L>=4)return '<article class="kp-m v v1'+(L>=4?' v'+L+(L===8?' v6':''):'')+(legs.length?' has':'')+(open?' open':'')+'" data-key="'+esc(m.key)+'" style="--h1:'+c[0]+';--h2:'+c[1]+';--hm:'+c[2]+'">'+
     '<div class="kp-hd"><div class="kp-logos'+(FACE_LEFT[m.a]?' aw':'')+'" aria-hidden="true">'+big(m.a)+big(m.h)+'</div><div class="kp-tms"><b>'+emb(m.h)+esc(m.hn)+'</b><b>'+emb(m.a)+esc(m.an)+'</b></div><div class="kp-when"><time>'+hm(m)+'</time><span class="kp-lg">'+LG[m.lg]+'</span></div></div>'+
     '<div class="kp-os c3 kp-x3">'+mk.main[0].o.map(id=>btn(m,id)).join('')+'</div>'+more+
@@ -335,7 +361,7 @@ function paint(){paintList();paintSlip()}
 /* ---------- «собрать за меня» ---------- */
 /* подбор купона под желаемый кэф (владелец 15.11): чем меньше событий и чем они вероятнее, тем лучше, поэтому берём
    n ≈ ln(кэф)/ln(1,5) событий с шансом около кэф^(−1/n) — по одному на матч; последнее событие добирает кэф как можно ближе к цели */
-const POOL=['r:1','r:2','w:1','w:2','dc:1x','dc:x2','dc:12','t:o:4.5','t:u:4.5','t:o:5.5','t:u:5.5','t:o:6.5','t:u:6.5','f:1:1.5','f:2:1.5','f:1:-1.5','f:2:-1.5','f:1:2.5','f:2:2.5',
+const POOL=FB?['r:1','r:2','dc:1x','dc:x2','dc:12','t:o:1.5','t:u:3.5','t:o:2.5','t:u:2.5','f:1:1.5','f:2:1.5','f:1:-0.5','f:2:-0.5','it:1:o:0.5','it:2:o:0.5','it:1:o:1.5','it:2:o:1.5','b:y','b:n']:['r:1','r:2','w:1','w:2','dc:1x','dc:x2','dc:12','t:o:4.5','t:u:4.5','t:o:5.5','t:u:5.5','t:o:6.5','t:u:6.5','f:1:1.5','f:2:1.5','f:1:-1.5','f:2:-1.5','f:1:2.5','f:2:2.5',
   'it:1:o:1.5','it:2:o:1.5','it:1:o:2.5','it:2:o:2.5','it:1:u:2.5','it:2:u:2.5','it:1:u:3.5','it:2:u:3.5','b:y','ot:n'];
 /* строка выбора под полем кэфа: дни из загруженного списка и число событий 1–8 (владелец 19.11) */
 function paintOpts(){const all=HM.filter(m=>grid(m.key)&&!started(m)),days=[...new Set(all.map(gameDay))].sort();
@@ -451,7 +477,7 @@ document.addEventListener('click',e=>{
   if('day' in d){S.day=d.day;paintList();refocus(b);return}
   if(d.act==='auto'){autoGo();return}
   if('ad' in d&&b.closest('#kp-ad')){S.ad=d.ad;paintOpts();refocus(b);return}
-  if(d.alg){S.alg=S.alg===d.alg?'':d.alg;document.querySelectorAll('[data-alg]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.alg===S.alg));$('kp-alg-n').textContent=S.alg?'только '+LG[S.alg]:'КХЛ и НХЛ вместе';return}
+  if(d.alg){S.alg=S.alg===d.alg?'':d.alg;document.querySelectorAll('[data-alg]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.alg===S.alg));$('kp-alg-n').textContent=S.alg?'только '+LG[S.alg]:FB?'все лиги вместе':'КХЛ и НХЛ вместе';return}
   if(d.mode){S.mode=d.mode;keep();paintSlip();return}
   if(d.load){const s=saved()[+d.load];if(s){load(s.data);keep();paint();toast(S.legs.length?'Купон загружен':'Матчи этого купона уже сыграны')}return}
   if(d.del){const sv=saved();sv.splice(+d.del,1);try{localStorage.setItem(LS_SAVED,JSON.stringify(sv))}catch(x){}paintSlip();return}

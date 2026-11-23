@@ -55,7 +55,9 @@ const picks=MODE||far?pool.slice().sort((a,b)=>a.t<b.t?-1:1).slice(0,4).map(m=>(
 window.__heroPicks=picks.map(({m,b})=>({t:m.t,h:m.h,a:m.a,hn:nm(m.h),an:nm(m.a),pick:b.t,k:b.k})); /* для афиши (assets/hero3/hero3.js): два следующих матча */
 const mcard=$('mcard'),cdv=$('cdv'),boardEl=$('board'),pager=$('pager');
 const lvl=p=>p>=.6?'hi':p>=.5?'mid':'lo';
-const tm=(s,cls)=>{const n=nm(s);return `<div class="tm${n.length>10?' long':''}">${CI(s)}<small>${cls}</small><span>${esc(n)}</span></div>`};
+/* как в хоккее (владелец 21.11, «один в один»): команда — ссылка на страницу клуба, эмблема на плашке цвета клуба (assets/fc/plates.js) */
+const plate=s=>{const p=(window.JV_FCPL||{})[s];if(p)return p;const c=((T[s]||{}).c||[])[0];return['d',c&&/^[0-9a-f]{6}$/i.test(c)?'#'+c:'#2a3f6b']};
+const tm=(s,cls)=>{const n=nm(s),pl=plate(s);return `<a class="tm${n.length>10?' long':''}" href="${esc(teamHref(s))}" aria-label="${esc(n)}, страница клуба"><span class="emq${pl[0]==='l'?' lt':''}" style="--c:${esc(pl[1])}">${CI(s)}</span><small>${cls}</small><span>${esc(n)}</span></a>`};
 const card=({m,b})=>{const A=T[m.h],B=T[m.a];
  return `<div class="face">${tm(m.h,'хозяева')}<div class="vs"><span aria-hidden="true">—</span><time>${esc(m.t.slice(11))}</time></div>${tm(m.a,'гости')}</div>
  <div class="bet lv-${lvl(b.p)}"><span class="bl">Расчёт модели</span><strong>${esc(b.t)}</strong><span class="k num" aria-label="${b.k?'коэффициент':'линии пока нет'}">${b.k?fx(b.k,2):'—'}</span>

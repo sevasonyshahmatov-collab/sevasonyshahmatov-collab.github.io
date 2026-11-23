@@ -32,13 +32,28 @@ const RC=CUP?(D.tables[CUP]||[]).find(x=>x.id===ID)||{place:0,gp:0,w:0,d:0,l:0,g
 const CX=CUP?(T.cx||{})[CUP]:null;
 const AXS=CUP?D.axesCup:D.axes;
 const PAL=document.documentElement.dataset.pal,pv=k=>{const v=getComputedStyle(document.documentElement).getPropertyValue(k).trim();return /^#[0-9a-f]{3,6}$/i.test(v)?v:null};
-const CP=CUP?(CUP==='ucl'?{stops:['#0b1a4a','#081340','#06102e'],text:'#ffffff',acc:'#5fd8ff',accL:'#5fd8ff',base:'#0b1a4a'}:{stops:['#2a1608','#150d06','#0a0704'],text:'#ffffff',acc:'#ffa04a',accL:'#ffa04a',base:'#2a1608'}):palette(clubColors(T)),acc=PAL&&pv('--ink')||CP.acc;
+const CP=CUP?(CUP==='ucl'?{stops:['#0b1a4a','#081340','#06102e'],text:'#ffffff',acc:'#5fd8ff',accL:'#5fd8ff',base:'#0b1a4a'}:{stops:['#2a1608','#150d06','#0a0704'],text:'#ffffff',acc:'#ffa04a',accL:'#ffa04a',base:'#2a1608'}):palette(clubColors(T)),acc=PAL&&pv('--ink')||(!CUP&&CP.text==='#ffffff'?'#ffffff':CP.acc);
 document.title=`${T.n}${CUP?' · '+EN:''} — матчи сезона, место в таблице, сила команды · JARVIS`;
+if(!CUP&&CP.text==='#ffffff')CP.acc='#ffffff';   /* владелец 21.11: акценты шапки (место, «Шестиугольник») — белые, цвет клуба только местами */
 {const st=document.body.style;[['--c1',CP.stops[0]],['--c2',CP.stops[1]],['--c3',CP.stops[2]],['--con',CP.text],['--cacc',CP.acc],['--team',CP.accL],['--cbase',CP.base]].forEach(([k,v])=>st.setProperty(k,v));
  document.body.classList.toggle('on-light',CP.text!=='#ffffff');
  const m=document.querySelector('meta[name=theme-color]');if(m)m.content=CP.stops[0];
+ /* большая полупрозрачная эмблема клуба в шапке, как у хоккея (team.js, .tmwm) — владелец 21.11 */
+ const hero=document.querySelector('.tmhero');if(hero&&!CUP){const wm=document.createElement('img');wm.className='tmwm lo fb';wm.src=`../assets/fc/l/${ID}.webp`;wm.alt='';wm.setAttribute('aria-hidden','true');
+  wm.onerror=()=>{if(!wm.dataset.f){wm.dataset.f=1;wm.src=`../assets/fc/${ID}.webp`}else wm.remove()};if(window.JVF&&JVF.cr(clubColors(T)[0],'#000000')<2.2)wm.classList.add('inv');hero.prepend(wm)}
 }
 document.body.dataset.lg=lg;
+/* ── клубная тема, как у хоккейных клубов (владелец 21.11): общий движок assets/club/theme.css + живой фон шапки assets/clubbg.js.
+   У хоккея цвета темы заданы вручную (assets/club/themes.js), у футбола — считаются из фирменных цветов клуба:
+   dk — тёмная полоса «Матчей», a1/a2 — акценты на тёмном (≥3:1 к dk), ac — окантовка на светлом (≥3:1 к белому). На странице турнира (ЛЧ/ЛЕ) не включаем. */
+if(!CUP){const {mix,cr}=JVF,cc=clubColors(T),c1=cc[0],c2=cc[1];
+ const dk=mix(c1,'#000000',.62);
+ let a1=[c1,c2].sort((x,y)=>cr(y,dk)-cr(x,dk))[0];for(let k=0;k<12&&cr(a1,dk)<3;k++)a1=mix(a1,'#ffffff',.14);
+ const a2='#ffffff';   /* владелец 21.11: «белый, и местами красный» — светлые акценты белые, не розовые */
+ let ac=[c1,c2].sort((x,y)=>cr(y,'#ffffff')-cr(x,'#ffffff'))[0];for(let k=0;k<12&&cr(ac,'#ffffff')<3;k++)ac=mix(ac,'#000000',.14);
+ const MOT=[['chev','stripes'],['hex','chev'],['stars','stripes'],['sparks','chev'],['stripes','hex']],h=[...ID].reduce((x,ch)=>x*31+ch.charCodeAt(0)>>>0,7),m=MOT[h%MOT.length];
+ const b=document.body,u=q=>`url(${new URL('../assets/'+q,document.baseURI).href})`;b.classList.add('club','club-g','club-'+ID);
+ [['--k-dk',dk],['--k-a1',a1],['--k-a2',a2],['--k-ac',ac],['--k-em',u('fc/l/'+ID+'.webp')],['--k-mA',u('club/m/'+m[0]+'.svg')],['--k-mB',u('club/m/'+m[1]+'.svg')]].forEach(([k,v])=>b.style.setProperty(k,v))}
 const all=T.games.slice().sort((a,b)=>a.d<b.d?1:-1).reverse();
 const ctxAll=all.filter(inCtx),real=ctxAll.filter(played),future=ctxAll.filter(g=>!played(g)),S=stats(ID,inCtx);
 const listAll=(CUP||cupOnly)?ctxAll:all;
