@@ -81,16 +81,6 @@ html[data-ty="3"] .hm h1::after{content:"";display:block;width:72px;height:6px;m
   html[data-ty] .hm-proof li{font-size:13.5px}
 }
 
-/* переключатель вариантов (только в черновике) */
-.ty-sw{position:fixed;z-index:9999;left:50%;bottom:14px;transform:translateX(-50%);display:flex;gap:4px;align-items:center;padding:5px;border-radius:999px;
-  background:rgba(8,12,22,.86);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font:600 13px/1 Arial,sans-serif;color:#cfd8ea;box-shadow:0 10px 30px -10px #000}
-.ty-sw span{padding:0 8px 0 10px}
-.ty-sw a{display:grid;place-items:center;min-width:34px;height:34px;padding:0 10px;border-radius:999px;color:#fff;text-decoration:none;font-weight:800}
-.ty-sw a[aria-current]{background:#ffc21a;color:#111}
-html[data-ty="1"] .hm h1{font-size:clamp(44px,4.6vw,76px);max-width:13em}
-@media (max-width:980px){html[data-ty="3"] .hm h1::after{margin-left:auto;margin-right:auto}}
-@media (max-width:760px){.ty-sw{bottom:calc(78px + env(safe-area-inset-bottom));font-size:12px}.ty-sw a{min-width:30px;height:30px}}
-
 /* ═══ 22.11 (владелец: «варианты одинаковые — нужно разное расположение») ═══
    1 — «Классика»: текст слева, карточки справа.
    2 — «Сцена»: заголовок по центру над всем; ниже три колонки — «216» | карточки | преимущества и кнопка.

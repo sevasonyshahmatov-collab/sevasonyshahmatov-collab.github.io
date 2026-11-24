@@ -68,3 +68,6 @@ html body footer.jvf .jvf-safe b{color:#ffd27a}
 /* подписи к фото — в подвале (18.11) */
 footer.jvf .jvf-credit{margin:10px 0 0;font-size:12.5px;line-height:1.45;color:#8f9cb4}
 footer.jvf .jvf-credit a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+
+/* документы (24.11) */
+.jvf-doc{display:flex;flex-wrap:wrap;gap:6px 16px}.jvf-doc a{color:inherit;opacity:.75;font-size:13px;text-decoration:underline;text-underline-offset:3px}.jvf-doc a:hover{opacity:1}.jvf-doc a[hidden]{display:none}

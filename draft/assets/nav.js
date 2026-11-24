@@ -1,10 +1,9 @@
-/* черновик 22.11: варианты типографики ?ty=1|2|3 (по умолчанию 1, ?ty=0 — как на живом сайте) */
-(()=>{const d=document.documentElement;let t='1';try{const q=new URLSearchParams(location.search).get('ty');if(q!==null)sessionStorage.setItem('jv-ty',/^[01234]$/.test(q)?q:'1');t=sessionStorage.getItem('jv-ty')||'1'}catch(e){}
+/* 23.11 — оформление «вариант 4» (выбор владельца): шрифты Montserrat / Inter / Space Grotesk, крупная «216», глубокий фон, свечение
+   за карточками; расположение главной — прежнее. Стили — assets/ty/ty.css (html[data-ty="2"][data-lay]). ?ty=0 — посмотреть старое оформление. */
+(()=>{const d=document.documentElement;let off=false;try{const q=new URLSearchParams(location.search).get('ty');if(q!==null)sessionStorage.setItem('jv-ty0',q==='0'?'1':'');off=sessionStorage.getItem('jv-ty0')==='1'}catch(e){}
+ if(off)return;d.dataset.ty='2';d.dataset.lay='1';
  const base=(document.currentScript&&document.currentScript.src||'').replace(/nav\.js.*$/,'');
- if(t!=='0'){d.dataset.ty=t==='4'?'2':t;if(t==='4')d.dataset.lay='1';const l=document.createElement('link');l.rel='stylesheet';l.href=base+'ty/ty.css?v=1';document.head.appendChild(l)}
- const sw=()=>{if(document.querySelector('.ty-sw'))return;const n=document.createElement('nav');n.className='ty-sw';n.setAttribute('aria-label','Вариант оформления');
-  n.innerHTML='<span>Вариант</span>'+['1','2','3','4','0'].map(k=>`<a href="?ty=${k}"${k===t?' aria-current="true"':''}>${k==='0'?'как сейчас':k}</a>`).join('');document.body.appendChild(n)};
- if(document.body)sw();else addEventListener('DOMContentLoaded',sw)})();
+ const l=document.createElement('link');l.rel='stylesheet';l.href=base+'ty/ty.css?v=2';document.head.appendChild(l)})();
 /* 17.11 — варианты фона для сравнения: ?bg=a|b|c в адресе (запоминается на время вкладки, ?bg=0 — вернуть обычный). Стили — nav.css, разметка льда — v3a.js */
 (()=>{const d=document.documentElement;try{const q=new URLSearchParams(location.search).get('bg');if(q!==null)sessionStorage.setItem('jv-bg',/^[abcn]$/.test(q)?q:'0');let b=sessionStorage.getItem('jv-bg');if(b===null)b='n';if(b&&b!=='0')d.dataset.bg=b;else delete d.dataset.bg}catch(e){d.dataset.bg='n'}})(); /* 17.11: «Ночная арена» — основная тема */
 /* 19.11 «лёгкий режим» (владелец: «на рабочем компьютере сайт тормозит, на домашнем летает»). Если устройство не тянет
