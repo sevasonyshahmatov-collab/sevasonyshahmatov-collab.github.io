@@ -1115,8 +1115,6 @@ data/deckbg/khl_2026-11-25_ska_lokomotiv-m.webp
 data/deckbg/khl_2026-11-25_ska_lokomotiv.webp
 data/deckbg/khl_2026-11-25_torpedo_sibir-m.webp
 data/deckbg/khl_2026-11-25_torpedo_sibir.webp
-data/deckbg/nhl_2026-11-24_nhl_sjs_minnesota-m.webp
-data/deckbg/nhl_2026-11-24_nhl_sjs_minnesota.webp
 data/deckbg/nhl_2026-11-25_nhl_edm_nhl_vgk-m.webp
 data/deckbg/nhl_2026-11-25_nhl_edm_nhl_vgk.webp
 data/deckbg/ucl_2026-11-24_arsenal_borussia_dortmund-m.webp
@@ -8386,6 +8384,7 @@ hockey/data/pp/nhl/8484800.json
 hockey/data/pp/nhl/8484801.json
 hockey/data/pp/nhl/8484803.json
 hockey/data/pp/nhl/8484806.json
+hockey/data/pp/nhl/8484821.json
 hockey/data/pp/nhl/8484829.json
 hockey/data/pp/nhl/8484859.json
 hockey/data/pp/nhl/8484860.json
