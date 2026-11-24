@@ -14,7 +14,7 @@ const COLS=[
  ['JARVIS',[['Матчи дня','matches.html'],['Итоги прогнозов','results.html'],['Мой JARVIS','me/index.html'],['Прогноз на сегодня','forecast.html'],['Как считает модель','model.html'],['Словарь терминов','glossary.html']]]
 ];
 /* телефон (черновик 14.11): вместо трёх колонок — короткая строка главных ссылок; все разделы есть в нижней панели и «Ещё» */
-const MINI=[['Итоги прогнозов','results.html'],['Как считает модель','model.html'],['Словарь','glossary.html'],['Мой JARVIS','me/index.html']];
+const MINI=[['Итоги прогнозов','results.html'],['Как считает модель','model.html'],['Словарь','glossary.html'],['Мой JARVIS','me/index.html']];  /* документы — строкой внизу (.jvf-doc), видны и на телефоне */
 const TG='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 3.2 2.9 10.4c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5ZM8.3 13.2l9.6-6c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-5Z"/></svg>';
 const old=document.querySelector('footer');
 const keep=old&&old.querySelector('#foot');
@@ -29,11 +29,13 @@ f.innerHTML=`<div class="wrap"><div class="jvf-top">
   <nav class="jvf-cols" aria-label="Разделы сайта">${COLS.map(c=>`<div><b>${esc(c[0])}</b>${c[1].map(l=>`<a href="${esc(U(l[1]))}">${esc(l[0])}</a>`).join('')}</div>`).join('')}</nav>
  </div>
  <div class="jvf-safe"><p><b>Единственный канал — @jarvibet.</b> Платных подписок, VIP и «договорных матчей» нет. Мы не пишем первыми в личные сообщения и не просим денег.</p><p>18+. Аналитика, не призыв делать ставки. Выигрыш не гарантирован.</p><p class="jvf-fake" hidden></p></div>
- <div class="jvf-bot"><p class="jvf-data">Данные: ESPN, НХЛ, приложение КХЛ. Линии и расчёт обновляются дважды в день.</p><span class="jvf-slot"></span><span class="jvf-age" title="Сайт только для совершеннолетних">18+</span></div></div>`;
+ <div class="jvf-bot"><p class="jvf-data">Данные: ESPN, НХЛ, приложение КХЛ. Линии и расчёт обновляются дважды в день.</p><nav class="jvf-doc" aria-label="Документы"><a href="${esc(U('privacy.html'))}">Политика конфиденциальности</a><a href="${esc(U('legal.html'))}">Правовая информация</a><a href="${esc(U('privacy.html#p3'))}" data-consent-reset hidden>Настройки cookies</a></nav><span class="jvf-slot"></span><span class="jvf-age" title="Сайт только для совершеннолетних">18+</span></div></div>`;
 if(keep){keep.className='jvf-note';f.querySelector('.jvf-slot').replaceWith(keep)}
 /* подписи к фото (лицензии CC BY-SA) — в подвал сайта, а не под карточками (владелец 18.11) */
 {const cr=document.getElementById('lccredit');if(cr){cr.removeAttribute('id');cr.className='jvf-credit';const b=f.querySelector('.jvf-bot');if(b)b.after(cr);else f.appendChild(cr)}}
 if(old)old.replaceWith(f);else document.body.appendChild(f);
+/* документы и согласие на cookies (24.11): consent.js сам решает, показывать ли плашку (есть номер счётчика Метрики) */
+try{if(!document.querySelector('script[src*="consent.js"]')){const c=document.createElement('script');c.src=new URL('consent.js',SRC).href;c.onload=()=>{if(window.JV_CONSENT_ON){const r=f.querySelector('[data-consent-reset]');if(r)r.hidden=false}};document.head.appendChild(c)}}catch(e){}
 /* «Что дальше» в конце страниц лиг, трендов, игроков, клубов и итогов (14.11, п. 8). Не нужен на главной, в разделах
    Хоккей / Футбол, «Матчах дня», «Прогнозе на сегодня» и на странице матча — там свой следующий шаг */
 {const pth=location.pathname,fl=pth.split('/').pop()||'index.html',sp=document.documentElement.dataset.sport||'';

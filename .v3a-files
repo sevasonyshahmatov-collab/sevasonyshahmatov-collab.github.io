@@ -54,6 +54,7 @@ assets/clubbg.js
 assets/col.css
 assets/compare.css
 assets/compare.js
+assets/consent.js
 assets/crestc.js
 assets/cursor.js
 assets/data/club/admiral.js
@@ -833,6 +834,7 @@ assets/leaguecards/var/nhl-malkin-720.webp
 assets/leaguecards/var/nhl-malkin.webp
 assets/leaguecards/var/nhl-ovechkin.webp
 assets/leaguecards/var/nhl-ovi2.webp
+assets/legal.css
 assets/lg/bundesliga.svg
 assets/lg/bundesliga.webp
 assets/lg/epl.svg
@@ -9197,6 +9199,7 @@ laliga/real-sociedad/index.html
 laliga/sevilla/index.html
 laliga/valencia/index.html
 laliga/villarreal/index.html
+legal.html
 ligue1/2026-11-02-lorient-brest/.bgv
 ligue1/2026-11-02-lorient-brest/bg-m.webp
 ligue1/2026-11-02-lorient-brest/bg.webp
@@ -10432,6 +10435,7 @@ nhl/vegas/index.html
 nhl/washington/index.html
 nhl/winnipeg/index.html
 offline.html
+privacy.html
 proto/home/cards/bg.js
 proto/home/cards/cards.css
 proto/home/cards/cards.js
