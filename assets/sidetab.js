@@ -199,7 +199,8 @@ function pickLg(open){
  const tab=document.querySelector('#ltabs [aria-selected="true"]'),l=tab&&tab.dataset.l;
  if(l&&l!=='all'&&LGN[l])return l;
  const f=info(rows()[0]);return f?f.lg:FB?'epl':'khl'}
-const ownLg=(lg,id)=>FB&&(lg==='ucl'||lg==='uel')?((F().teams||{})[id]||{}).lg||'epl':lg;
+/* еврокубок (владелец 24.11): своя таблица общего этапа ЛЧ / ЛЕ; чемпионат хозяев — только если таблицы кубка нет */
+const ownLg=(lg,id)=>FB&&(lg==='ucl'||lg==='uel')&&!((F().tables||{})[lg]||[]).length?((F().teams||{})[id]||{}).lg||'epl':lg;
 
 let L=null,R=null,key='',q=0;
 function build(){
