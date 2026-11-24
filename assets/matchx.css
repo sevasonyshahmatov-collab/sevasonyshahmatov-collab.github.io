@@ -619,3 +619,8 @@ html:not([data-theme="arena"]) .mq-tiles li.warn b{color:#9a6a00}
 }
 .xi-away .xi-pitch.xi-v6 .xi-bg{right:auto;left:2%}
 @media (max-width:700px){.xi-away .xi-pitch.xi-v6 .xi-bg{left:50%;top:auto;bottom:4%}}
+
+/* сравнение: переключатель турнира на матчах ЛЧ / ЛЕ (24.11) */
+.mc-sw{display:inline-flex;gap:4px;margin:0 0 14px;padding:4px;border-radius:12px;background:color-mix(in srgb,var(--ink) 8%,transparent)}
+.mc-sw button{border:0;border-radius:9px;padding:9px 14px;background:none;color:var(--ink-2);font:700 14px/1 var(--display);cursor:pointer}
+.mc-sw button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
