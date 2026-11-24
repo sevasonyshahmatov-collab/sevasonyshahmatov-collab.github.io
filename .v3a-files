@@ -1115,18 +1115,8 @@ data/deckbg/khl_2026-11-25_ska_lokomotiv-m.webp
 data/deckbg/khl_2026-11-25_ska_lokomotiv.webp
 data/deckbg/khl_2026-11-25_torpedo_sibir-m.webp
 data/deckbg/khl_2026-11-25_torpedo_sibir.webp
-data/deckbg/nhl_2026-11-24_nhl_mtl_nhl_lak-m.webp
-data/deckbg/nhl_2026-11-24_nhl_mtl_nhl_lak.webp
-data/deckbg/nhl_2026-11-24_nhl_nyi_nhl_tor-m.webp
-data/deckbg/nhl_2026-11-24_nhl_nyi_nhl_tor.webp
-data/deckbg/nhl_2026-11-24_nhl_ott_nhl_cgy-m.webp
-data/deckbg/nhl_2026-11-24_nhl_ott_nhl_cgy.webp
-data/deckbg/nhl_2026-11-24_nhl_sea_nhl_ana-m.webp
-data/deckbg/nhl_2026-11-24_nhl_sea_nhl_ana.webp
 data/deckbg/nhl_2026-11-24_nhl_sjs_minnesota-m.webp
 data/deckbg/nhl_2026-11-24_nhl_sjs_minnesota.webp
-data/deckbg/nhl_2026-11-24_nhl_wpg_nhl_uta-m.webp
-data/deckbg/nhl_2026-11-24_nhl_wpg_nhl_uta.webp
 data/deckbg/nhl_2026-11-25_nhl_edm_nhl_vgk-m.webp
 data/deckbg/nhl_2026-11-25_nhl_edm_nhl_vgk.webp
 data/deckbg/ucl_2026-11-24_arsenal_borussia_dortmund-m.webp
@@ -1278,6 +1268,9 @@ epl/2026-11-22-liverpool-manchester-united/bg-m.webp
 epl/2026-11-22-liverpool-manchester-united/bg.webp
 epl/2026-11-22-liverpool-manchester-united/index.html
 epl/2026-11-22-liverpool-manchester-united/og.jpg
+epl/2026-11-23-brentford-everton/.bgv
+epl/2026-11-23-brentford-everton/bg-m.webp
+epl/2026-11-23-brentford-everton/bg.webp
 epl/2026-11-23-brentford-everton/index.html
 epl/2026-11-23-brentford-everton/og.jpg
 epl/2026-11-27-nottingham-forest-chelsea/.bgv
@@ -8196,6 +8189,7 @@ hockey/data/pp/nhl/8482201.json
 hockey/data/pp/nhl/8482245.json
 hockey/data/pp/nhl/8482259.json
 hockey/data/pp/nhl/8482408.json
+hockey/data/pp/nhl/8482451.json
 hockey/data/pp/nhl/8482459.json
 hockey/data/pp/nhl/8482460.json
 hockey/data/pp/nhl/8482470.json
@@ -9128,6 +9122,9 @@ laliga/2026-11-22-racing-santander-real-sociedad/bg-m.webp
 laliga/2026-11-22-racing-santander-real-sociedad/bg.webp
 laliga/2026-11-22-racing-santander-real-sociedad/index.html
 laliga/2026-11-22-racing-santander-real-sociedad/og.jpg
+laliga/2026-11-23-levante-elche/.bgv
+laliga/2026-11-23-levante-elche/bg-m.webp
+laliga/2026-11-23-levante-elche/bg.webp
 laliga/2026-11-23-levante-elche/index.html
 laliga/2026-11-23-levante-elche/og.jpg
 laliga/2026-11-27-levante-racing-santander/.bgv
@@ -10738,6 +10735,9 @@ seriea/2026-11-22-sassuolo-genoa/bg-m.webp
 seriea/2026-11-22-sassuolo-genoa/bg.webp
 seriea/2026-11-22-sassuolo-genoa/index.html
 seriea/2026-11-22-sassuolo-genoa/og.jpg
+seriea/2026-11-23-monza-fiorentina/.bgv
+seriea/2026-11-23-monza-fiorentina/bg-m.webp
+seriea/2026-11-23-monza-fiorentina/bg.webp
 seriea/2026-11-23-monza-fiorentina/index.html
 seriea/2026-11-23-monza-fiorentina/og.jpg
 seriea/2026-11-27-venezia-bologna/.bgv
