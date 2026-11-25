@@ -6,7 +6,7 @@
 /* ── шрифты вариантов ── */
 html[data-ty="1"]{--hd:"Oswald","JV Display FB",Arial,sans-serif;--tx:"Manrope","JV Text FB",Arial,sans-serif;--nm:"Roboto Condensed","JV Display FB",Arial,sans-serif;
   --hd-w:700;--hd-tt:uppercase;--hd-ls:.005em;--hd-lh:.98;--nm-w:900;--glow1:#1f6fff;--glow2:#14b86a;--acc:#3ee089;--bg0:#03060d;--bg1:#07101f}
-html[data-ty="2"]{--hd:"Montserrat","JV Display FB",Arial,sans-serif;--tx:"Inter","JV Text FB",Arial,sans-serif;--nm:"Space Grotesk","Inter",Arial,sans-serif;
+html[data-ty="2"]{--hd:"Montserrat","JV Display FB",Arial,sans-serif;--tx:"Inter","JV Text FB",Arial,sans-serif;--nm:"Inter","JV Text FB",Arial,sans-serif;
   --hd-w:800;--hd-tt:none;--hd-ls:-.035em;--hd-lh:1.02;--nm-w:700;--glow1:#7b5cff;--glow2:#2fd0c0;--acc:#4ff0a8;--bg0:#05040e;--bg1:#0d0a22}
 html[data-ty="3"]{--hd:"Rubik","JV Display FB",Arial,sans-serif;--tx:"Golos Text","JV Text FB",Arial,sans-serif;--nm:"Barlow Condensed","JV Display FB",Arial,sans-serif;
   --hd-w:900;--hd-tt:uppercase;--hd-ls:-.015em;--hd-lh:.95;--nm-w:900;--glow1:#ff4b3a;--glow2:#ffc21a;--acc:#ffc21a;--bg0:#070505;--bg1:#140c0b}
