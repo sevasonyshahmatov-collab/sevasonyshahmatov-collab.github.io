@@ -47,6 +47,7 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
 <link rel="stylesheet" href="../assets/results.css">
 <link rel="stylesheet" href="../assets/slim.css">
 <link rel="stylesheet" href="../assets/kupon-link.css">
+<link rel="stylesheet" href="../assets/hsday/hsday.css">
 <!--seo:begin-->
 <meta name="description" content="Матчи КХЛ и НХЛ на ближайшие дни: вероятность победы и тотала по расчёту модели, ожидаемые голы, таблицы и страницы клубов.">
 <link rel="canonical" href="https://jarvibet.example/hockey/">
@@ -75,6 +76,18 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
   </div>
 </header>
 <div class="ticker" id="ticker" aria-label="Матчи и итоги, бегущая строка"></div>
+<!-- «Хоккей сегодня» (черновик 25.11): строка матчей + первая полоса; наполняет assets/hsday/hsday.js -->
+<section class="hs" id="hsday" aria-labelledby="hs-h1">
+  <div class="hs-strip"><div class="hs-date" aria-hidden="true"><span>&nbsp;</span><b>&nbsp;</b><small>&nbsp;</small></div><div class="hs-sc" aria-label="Матчи дня КХЛ и НХЛ"></div></div>
+  <div class="hs-front">
+    <p class="hs-kick">Хоккей</p>
+    <h1 class="hs-h1" id="hs-h1">Хоккей сегодня</h1>
+    <div class="hs-spread">
+      <figure class="hs-ph" aria-hidden="true"></figure>
+      <div class="hs-story"><span class="hs-sk" style="width:30%"></span><span class="hs-sk" style="height:2.2em;margin:18px 0;width:85%"></span><span class="hs-sk" style="width:70%"></span></div>
+    </div>
+  </div>
+</section>
 
 <main id="main">
 <section class="hero" id="top">
@@ -378,5 +391,6 @@ LeagueCards.mount(document.getElementById('lcdeck'),Object.entries(LG).map(([id,
 <script src="../assets/sidetab.js" defer></script>
 <script src="/data/results-lite.js"></script>
 <script src="../assets/results-strip.js"></script>
+<script src="../assets/hsday/hsday.js"></script>
 </body>
 </html>
