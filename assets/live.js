@@ -101,6 +101,12 @@ function footStatus(p, detail, clock) {
   return clock ? clock : '';
 }
 function fromEspn(x, j) {
+  const best = findEspn(x, j);
+  if (!best) return null;
+  return espnResult(x, best);
+}
+/* матч в ответе ESPN по клубам и времени: {ev, H, A} (нужен и окну голов на «Хоккей/Футбол сегодня») */
+function findEspn(x, j) {
   const evs = (j && j.events) || [], hs = siteToks(x, 'h'), as = siteToks(x, 'a');
   let best = null, bs = 0;
   for (const ev of evs) {
@@ -112,7 +118,9 @@ function fromEspn(x, j) {
     const a = overlap(espnToks(H.team), hs), b = overlap(espnToks(A.team), as);
     if (a && b && a + b > bs) { bs = a + b; best = {ev, H, A}; }
   }
-  if (!best) return null;
+  return best;
+}
+function espnResult(x, best) {
   const st = best.ev.status || {}, ty = st.type || {}, hh = HOCKEY[x.lg];
   const hg = num(best.H.score), ag = num(best.A.score);
   if (hg === null || ag === null) return null;
@@ -121,11 +129,17 @@ function fromEspn(x, j) {
   const text = hh ? hockeyPeriod(num(st.period), ty.detail || ty.shortDetail, clk(st.displayClock)) : footStatus(num(st.period), ty.shortDetail || ty.detail, clk(st.displayClock));
   return {k: 'live', hg, ag, st: text};
 }
-function fromKhl(x, arr) {
+function findKhl(x, arr) {
   for (const w of (Array.isArray(arr) ? arr : [])) {
     const e = w.event || w;
     if (KHL_TID[e.team_a && e.team_a.id] !== x.h || KHL_TID[e.team_b && e.team_b.id] !== x.a) continue;
     if (Math.abs((+e.start_at || 0) - x.start) > 12 * 36e5) continue;
+    return e;
+  }
+  return null;
+}
+function fromKhl(x, arr) {
+  for (const e of [findKhl(x, arr)].filter(Boolean)) {
     const m = /^\s*(\d+)\s*:\s*(\d+)/.exec(String(e.score || ''));
     const key = String(e.game_state_key || '');
     if (key === 'finished') return m ? {k: 'final', hg: +m[1], ag: +m[2], st: ''} : null;
@@ -227,7 +241,7 @@ function start() {
 document.addEventListener('visibilitychange', () => { if (!document.hidden) tick(); });
 document.addEventListener('jv:rows', () => { collect(); tick(); });
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-window.JVLive = {tick, _fromEspn: fromEspn, _fromKhl: fromKhl};
+window.JVLive = {tick, _fromEspn: fromEspn, _fromKhl: fromKhl, _findEspn: findEspn, _findKhl: findKhl, _espnUrl: x => espnUrl(x), _khlUrl: x => khlUrl([x])};
 })();
 
 /* «Прогноз на сегодня»: матч начался больше 3,5 ч назад — помечаем «Сыгран» и приглушаем (аудит 09.11: ночные матчи НХЛ утром выглядели как предстоящие) */

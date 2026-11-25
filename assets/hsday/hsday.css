@@ -275,3 +275,24 @@ html:has(#hsday) :is(.hv-sw,.hh-sw,.h3bar,.hb-sw){display:none!important}
 /* футбол: тот же блок, акцент раздела — зелёный (как --n-sport у футбола), плашка даты — тёмно-зелёная (белый текст читается) */
 .hs[data-sport="football"]{--hs-sky:#3df5a6;--hs-blue:#007a47}
 .hs[data-sport="football"] .hs-st3-lg img{filter:brightness(0) invert(1);opacity:.85}   /* значки ЛЧ/ЛЕ тёмные — на тёмном фоне белым силуэтом */
+/* окно «кто забил» под карточкой строки (assets/hsday/hsday.js: showPop); живёт в body, поэтому цвета — прямо здесь */
+.hs-gp{--gp-acc:#5ab8ff;position:fixed;z-index:90;box-sizing:border-box;padding:14px 16px 12px;background:#0c1324;border:1px solid rgba(255,255,255,.16);border-radius:5px;
+  box-shadow:0 22px 44px -18px #000;color:#f2f6ff;font:500 13.5px/1.35 var(--tx,var(--text));pointer-events:auto;animation:hs-gp .16s ease-out}
+.hs-gp[data-sport="football"]{--gp-acc:#3df5a6}
+.hs-gp::before{content:"";position:absolute;top:-6px;left:calc(var(--ax,50%) - 6px);width:10px;height:10px;background:#0c1324;border-left:1px solid rgba(255,255,255,.16);border-top:1px solid rgba(255,255,255,.16);transform:rotate(45deg)}
+.hs-gp[hidden]{display:none}
+@keyframes hs-gp{from{opacity:0;transform:translateY(-4px)}}
+.hs-gp p{margin:0}
+.hs-gp-h b{font:700 14px/1.25 var(--tx,var(--text));color:#f2f6ff}
+.hs-gp .hs-lbl{margin:10px 0 6px;font:700 11px/1 var(--tx,var(--text));letter-spacing:.08em;text-transform:uppercase;color:#9aa9d8}
+.hs-gp-l{list-style:none;margin:0;padding:0;max-height:min(320px,50vh);overflow-y:auto}
+.hs-gp-l li{display:grid;grid-template-columns:46px minmax(0,1fr) auto;align-items:center;gap:10px;padding:7px 0;border-top:1px solid rgba(255,255,255,.08)}
+.hs-gp-l li.per{grid-template-columns:minmax(0,1fr) auto}
+.hs-gp-m{font:700 13px/1 var(--tx,var(--text));font-variant-numeric:tabular-nums;color:var(--gp-acc)}
+.hs-gp-w{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;min-width:0;color:#f2f6ff}
+.hs-gp-w img{flex:none;width:18px;height:18px;object-fit:contain}
+.hs-gp-w small{flex-basis:100%;padding-left:26px;font:500 11.5px/1.2 var(--tx,var(--text));color:#9aa9d8}
+.hs-gp-l li.per .hs-gp-w{color:#c3cef0}
+.hs-gp-s{min-width:34px;padding:3px 6px;border-radius:4px;background:rgba(255,255,255,.08);text-align:center;font:700 12.5px/1 var(--tx,var(--text));font-variant-numeric:tabular-nums;color:#f2f6ff}
+.hs-gp-x{padding:8px 0 2px;color:#c3cef0}
+@media (prefers-reduced-motion:reduce){.hs-gp{animation:none}}

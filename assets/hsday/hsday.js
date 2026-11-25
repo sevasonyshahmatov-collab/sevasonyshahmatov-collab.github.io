@@ -102,7 +102,7 @@ function pickDay(all) {
 /* ── строка матчей ── */
 const label = (a, s) => a.setAttribute('aria-label', s + '. Открыть разбор матча');
 function card(m) {
-  const a = el('a', 'hs-m'); a.href = linkOf(m); a.dataset.lg = m.lg; a.dataset.key = m.key;
+  const a = el('a', 'hs-m'); a.href = linkOf(m); a.dataset.lg = m.lg; a.dataset.key = m.key; a.dataset.t = hm(m);
   a.dataset.lv = ''; a.dataset.lvLg = m.lg; a.dataset.lvT = new Date(tms(m.t)).toISOString(); a.dataset.lvH = m.h; a.dataset.lvA = m.a;
   a.dataset.lvHn = m.hn; a.dataset.lvAn = m.an;
   const top = el('span', 'hs-mt'); top.append(el('span', 'hs-ml', LG[m.lg]), el('em', 'hs-st', hm(m) + ' МСК'));
@@ -563,6 +563,134 @@ function paint() {
   TIMERS.push(setInterval(clocks, 30000));
   clocks();
 }
+/* ── окно «кто забил» под карточкой строки (владелец 25.11): при наведении — авторы голов и минута.
+   НХЛ и футбол — ESPN (тот же открытый источник, что и счёт в live.js), КХЛ — счёт по периодам
+   (авторов голов открытый источник КХЛ не отдаёт). Загрузка — при первом наведении, повтор не чаще раза в минуту в лайве. ── */
+const GC = {};
+const xOf = a => ({lg: a.dataset.lg, start: Date.parse(a.dataset.lvT), h: a.dataset.lvH, a: a.dataset.lvA, enh: '', ena: ''});
+const hkMin = (p, c) => { const x = /^(\d+):(\d+)/.exec(c || ''); return x ? ((p - 1) * 20 + +x[1]) + ':' + x[2] : (c || ''); };
+async function goalsOf(a) {
+  const k = a.dataset.key, L = window.JVLive, c = GC[k], st = ST[k];
+  if (c && Date.now() - c.t < (st && st.k === 'live' ? 6e4 : 36e5)) return c.d;
+  if (!L || !L._findEspn) return null;
+  const x = xOf(a); let d = null;
+  if (x.lg === 'khl') {
+    const e = L._findKhl(x, await getJSON(L._khlUrl(x)));
+    if (e) { const sc = e.scores || {}; d = {kind: 'per', rows: [['1-й период', sc.first_period], ['2-й период', sc.second_period], ['3-й период', sc.third_period], ['Овертайм', sc.overtime], ['Буллиты', sc.bullitt]]
+      .filter(r => r[1] != null && String(r[1]).trim() !== '')}; }
+  } else {
+    const b = L._findEspn(x, await getJSON(L._espnUrl(x)));
+    if (b) {
+      const hid = String((b.H.team || {}).id);
+      if (x.lg === 'nhl') {
+        const s = await getJSON('https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/summary?event=' + encodeURIComponent(b.ev.id));
+        d = {kind: 'goals', rows: (s.plays || []).filter(q => q.scoringPlay && ((q.period || {}).number || 1) < 5).map(q => {
+          const ps = q.participants || [], sc = ps.find(z => z.type === 'scorer') || ps[0] || {}, str = ((q.strength || {}).abbreviation || '');
+          return {side: String((q.team || {}).id) === hid ? 'h' : 'a', min: hkMin((q.period || {}).number || 1, (q.clock || {}).displayValue),
+            who: (sc.athlete || {}).displayName || '', sc: q.homeScore + ':' + q.awayScore,
+            tag: /power/i.test(str) ? 'в большинстве' : /short/i.test(str) ? 'в меньшинстве' : /empty net/i.test(q.text || '') ? 'в пустые ворота' : ''};
+        })};
+      } else {
+        let hg = 0, ag = 0;
+        d = {kind: 'goals', rows: (((b.ev.competitions || [])[0] || {}).details || []).filter(q => q.scoringPlay && !q.shootout).map(q => {
+          const side = String((q.team || {}).id) === hid ? 'h' : 'a'; if (side === 'h') hg++; else ag++;
+          const p = (q.athletesInvolved || [])[0] || {};
+          return {side, min: (q.clock || {}).displayValue || '', who: p.displayName || '', sc: hg + ':' + ag, tag: q.ownGoal ? 'автогол' : q.penaltyKick ? 'пенальти' : ''};
+        })};
+      }
+    }
+  }
+  GC[k] = {t: Date.now(), d};
+  return d;
+}
+let POP = null, popFor = null, popT = 0;
+function popEl() {
+  if (POP) return POP;
+  POP = el('div', 'hs-gp'); POP.id = 'hs-gp'; POP.setAttribute('role', 'tooltip'); POP.hidden = true; POP.dataset.sport = SPORT;
+  POP.addEventListener('mouseenter', () => clearTimeout(popT));
+  POP.addEventListener('mouseleave', () => hidePop());
+  document.body.append(POP);
+  addEventListener('scroll', () => hidePop(true), {passive: true});
+  addEventListener('resize', () => hidePop(true));
+  return POP;
+}
+function placePop(a) {
+  const r = a.getBoundingClientRect(), w = Math.min(340, innerWidth - 16);
+  let x = Math.max(8, Math.min(r.left + r.width / 2 - w / 2, innerWidth - w - 8));
+  POP.style.width = w + 'px'; POP.style.left = x + 'px'; POP.style.top = Math.round(r.bottom + 10) + 'px';
+  POP.style.setProperty('--ax', Math.round(Math.max(18, Math.min(w - 18, r.left + r.width / 2 - x))) + 'px');
+}
+function popBody(a, d, state) {
+  const m = {h: a.dataset.lvH, a: a.dataset.lvA}, nm = a.querySelectorAll('.hs-tn');
+  const box = document.createDocumentFragment(), head = el('p', 'hs-gp-h');
+  head.append(el('b', '', nm[0].textContent + ' — ' + nm[1].textContent));
+  box.append(head);
+  if (state === 'up') { box.append(el('p', 'hs-gp-x', 'Матч ещё не начался. Начало в ' + a.dataset.t + ' МСК.')); return box; }
+  if (state === 'load') { box.append(el('p', 'hs-gp-x', 'Загружаем голы…')); return box; }
+  if (!d) { box.append(el('p', 'hs-gp-x', 'Не удалось загрузить голы. Попробуйте чуть позже.')); return box; }
+  if (d.kind === 'per') {
+    box.append(lbl('p', 'Счёт по периодам'));
+    const ul = el('ul', 'hs-gp-l');
+    d.rows.forEach(([n, v]) => { const li = el('li', 'per'); li.append(el('span', 'hs-gp-w', n), el('b', 'hs-gp-s', String(v).replace(/\s/g, ''))); ul.append(li); });
+    if (!d.rows.length) ul.append(el('li', 'hs-gp-x', 'Шайб пока нет.'));
+    box.append(ul); return box;
+  }
+  box.append(lbl('p', 'Голы'));
+  const ul = el('ul', 'hs-gp-l');
+  d.rows.forEach(g => {
+    const li = el('li'), who = el('span', 'hs-gp-w'), im = crestImg(m[g.side], '', '', 18);
+    who.append(im, el('span', '', g.who || 'Гол')); if (g.tag) who.append(el('small', '', g.tag));
+    li.append(el('b', 'hs-gp-m', g.min), who, el('b', 'hs-gp-s', g.sc)); ul.append(li);
+  });
+  if (!d.rows.length) ul.append(el('li', 'hs-gp-x', state === 'live' ? 'Голов пока нет.' : 'Голов не было.'));
+  box.append(ul); return box;
+}
+async function showPop(a) {
+  clearTimeout(popT); popEl(); popFor = a;
+  const k = a.dataset.key, s = ST[k], up = !s && Date.now() < Date.parse(a.dataset.lvT);
+  const state = up ? 'up' : s && s.k === 'live' ? 'live' : 'done';
+  POP.replaceChildren(popBody(a, null, up ? 'up' : GC[k] ? 'x' : 'load'));
+  if (!up && GC[k]) POP.replaceChildren(popBody(a, GC[k].d, state));
+  POP.hidden = false; placePop(a); a.setAttribute('aria-describedby', 'hs-gp');
+  if (up) return;
+  let d = null; try { d = await goalsOf(a); } catch (e) { d = null; }
+  if (popFor !== a || POP.hidden) return;
+  POP.replaceChildren(popBody(a, d, state)); placePop(a);
+}
+function hidePop(now) {
+  clearTimeout(popT);
+  const go = () => { if (POP) POP.hidden = true; if (popFor) popFor.removeAttribute('aria-describedby'); popFor = null; };
+  if (now) go(); else popT = setTimeout(go, 160);
+}
+function goalsHover(a) {
+  if (!matchMedia('(hover: hover)').matches) return;          /* на телефоне карточка — просто ссылка на разбор */
+  let t = 0;
+  a.addEventListener('mouseenter', () => { clearTimeout(t); t = setTimeout(() => showPop(a), 120); });
+  a.addEventListener('mouseleave', () => { clearTimeout(t); hidePop(); });
+  a.addEventListener('focus', () => { if (a.matches(':focus-visible')) showPop(a); });
+  a.addEventListener('blur', () => hidePop(true));
+  a.addEventListener('keydown', e => { if (e.key === 'Escape') hidePop(true); });
+}
+/* строка сама листается, когда матчей больше, чем влезает (владелец 25.11): шаг на карточку раз в 4 с, в конце — к началу;
+   стоит, пока курсор, фокус или палец на строке; при «уменьшить движение» — не листается */
+function autoScroll(sc) {
+  if (RM) return;
+  let hold = false, rt = 0;
+  const step = () => {
+    if (hold || document.hidden || sc.scrollWidth - sc.clientWidth < 8) return;
+    const c = sc.querySelector('.hs-m'), w = c ? c.getBoundingClientRect().width : 228;
+    const end = sc.scrollLeft + sc.clientWidth >= sc.scrollWidth - 4;
+    sc.scrollTo({left: end ? 0 : sc.scrollLeft + w, behavior: 'smooth'});
+  };
+  setInterval(step, 4000);
+  const on = () => { hold = true; clearTimeout(rt); }, off = d => { clearTimeout(rt); rt = setTimeout(() => { hold = false; }, d); };
+  sc.addEventListener('mouseenter', on); sc.addEventListener('mouseleave', () => off(0));
+  sc.addEventListener('focusin', on); sc.addEventListener('focusout', () => off(0));
+  sc.addEventListener('touchstart', on, {passive: true}); sc.addEventListener('touchend', () => off(8000), {passive: true});
+  sc.addEventListener('wheel', () => { on(); off(8000); }, {passive: true});
+  sc.addEventListener('scroll', () => { if (POP && !POP.hidden && popFor && sc.contains(popFor)) placePop(popFor); }, {passive: true});
+}
+
 async function render() {
   if (!window.JV_MATCHLINKS) await loadScript(U('../../data/matchlinks.js'));
   const all = ((window.JV_TODAY || {}).matches || []).filter(m => LG[m.lg]);
@@ -581,7 +709,7 @@ async function render() {
   /* строка */
   const sc = root.querySelector('.hs-sc'); sc.textContent = '';
   const cards = list.map(card);
-  if (cards.length) cards.forEach(a => { sc.append(a); watchLive(a); });
+  if (cards.length) { cards.forEach(a => { sc.append(a); watchLive(a); goalsHover(a); }); autoScroll(sc); }
   else sc.append(el('p', 'hs-none', 'Сегодня матчей нет. Ближайшие игры — ниже, в разделе «' + SP.below + '».'));
 
   /* первый экран: данные всех матчей дня — со страниц разборов */
