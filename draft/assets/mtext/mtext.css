@@ -1,0 +1,8 @@
+/* «Мой разбор» на странице матча (assets/mtext/mtext.js) */
+.mx-text .mt-auth{margin:0;max-width:72ch;font:400 clamp(17px,1.3vw,19px)/1.65 var(--tx,var(--text));color:var(--ink,#f2f6ff)}
+.mx-text .mt-verdict{margin:20px 0 0;max-width:72ch;padding:16px 20px;border-left:3px solid #ffc21a;border-radius:0 var(--rp,4px) var(--rp,4px) 0;
+  background:rgba(255,194,26,.07);font:500 clamp(16px,1.2vw,18px)/1.6 var(--tx,var(--text));color:var(--ink,#f2f6ff)}
+.mx-text .mt-verdict b{font-weight:800;color:#ffc21a}
+.mx-text .mt-note{margin:12px 0 0;font:500 13px/1.4 var(--tx,var(--text));color:var(--ink-3,#9aa9d8)}
+.mx-text:has(.mt-auth){display:block!important;columns:auto!important}
+.mx-text .mt-verdict{max-width:none}

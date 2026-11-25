@@ -4,6 +4,12 @@
  if(off)return;d.dataset.ty='2';d.dataset.lay='1';
  const base=(document.currentScript&&document.currentScript.src||'').replace(/nav\.js.*$/,'');
  const l=document.createElement('link');l.rel='stylesheet';l.href=base+'ty/ty.css?v=3';document.head.appendChild(l)})();
+/* 25.11 «Мой разбор» на страницах матчей: живой текст с фактами и выводом (assets/mtext) — подключаем здесь, чтобы работал на всех страницах матчей, и на будущих тоже */
+(()=>{const base=(document.currentScript&&document.currentScript.src||'').replace(/nav\.js.*$/,'');
+ const go=()=>{if(!document.querySelector('.mx-hero .mx-team')||!document.querySelector('.mx-text'))return;
+  const l=document.createElement('link');l.rel='stylesheet';l.href=base+'mtext/mtext.css';document.head.appendChild(l);
+  const s=document.createElement('script');s.src=base+'mtext/mtext.js';s.defer=true;document.body.appendChild(s)};
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go()})();
 /* 17.11 — варианты фона для сравнения: ?bg=a|b|c в адресе (запоминается на время вкладки, ?bg=0 — вернуть обычный). Стили — nav.css, разметка льда — v3a.js */
 (()=>{const d=document.documentElement;try{const q=new URLSearchParams(location.search).get('bg');if(q!==null)sessionStorage.setItem('jv-bg',/^[abcn]$/.test(q)?q:'0');let b=sessionStorage.getItem('jv-bg');if(b===null)b='n';if(b&&b!=='0')d.dataset.bg=b;else delete d.dataset.bg}catch(e){d.dataset.bg='n'}})(); /* 17.11: «Ночная арена» — основная тема */
 /* 19.11 «лёгкий режим» (владелец: «на рабочем компьютере сайт тормозит, на домашнем летает»). Если устройство не тянет
