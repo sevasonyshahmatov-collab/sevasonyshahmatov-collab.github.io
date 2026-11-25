@@ -217,6 +217,42 @@
 .hs-ac:not(.is-open) .hs-prog{display:none}
 .hs-acc>.hs-ctl{align-self:flex-end}
 
+/* 7 · детали (владелец 25.11: «разнообразить»): три цифры вечера, эмблемы у сюжетов, полоска цветов клубов, форма команд */
+.hs-st3{list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--hs-line);border-bottom:1px solid var(--hs-line)}
+.hs-st3 li{display:flex;flex-direction:column;gap:6px;padding:16px 16px 16px 0;min-width:0}
+.hs-st3 li+li{padding-left:18px;border-left:1px solid var(--hs-line)}
+.hs-st3 b{font:700 34px/1 var(--hs-nm);letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--hs-ink)}
+.hs-st3 li:nth-child(2) b{color:var(--hs-sky)}
+.hs-st3 li:nth-child(3) b{color:var(--hs-sig)}
+.hs-st3 span{font:600 12.5px/1.3 var(--hs-tx);color:var(--hs-ink-3)}
+.hs-st3 .hs-st3-lg{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:2px}
+.hs-st3-lg small{display:inline-flex;align-items:center;gap:5px;font:700 11.5px/1 var(--hs-tx);letter-spacing:.04em;color:var(--hs-ink-2)}
+.hs-st3-lg img{width:16px;height:16px;object-fit:contain}
+.hs-sli{grid-template-columns:71px minmax(0,1fr) 20px;grid-template-areas:"p l go" "p h go" "p s go";column-gap:16px}
+.hs-sli-p{grid-area:p;align-self:center;transition:transform .25s}
+.hs-sli:hover .hs-sli-p{transform:scale(1.06)}
+.hs-bd-stripe{position:absolute;left:-1px;right:-1px;top:-1px;height:4px;display:flex;border-radius:var(--rc,5px) var(--rc,5px) 0 0;overflow:hidden}
+.hs-bd-stripe::before,.hs-bd-stripe::after{content:"";flex:1;background:var(--hc,#5ab8ff);transition:background-color .3s}
+.hs-bd-stripe::after{background:var(--ac,#9aa9d8)}
+.hs-fm{display:flex;flex-direction:column;gap:10px}
+.hs-fm-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.hs-fm-r{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0;padding:10px 12px;border:1px solid var(--hs-line);border-left:3px solid var(--c);border-radius:var(--rp,4px);background:rgba(255,255,255,.03)}
+.hs-fm-n{display:flex;flex-direction:column;gap:3px;min-width:0}
+.hs-fm-n b{font:700 14px/1.15 var(--hs-tx);color:var(--hs-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hs-fm-n small{font:500 12px/1.2 var(--hs-tx);color:var(--hs-ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hs-fm-d{flex:none;display:flex;gap:4px}
+.hs-fm-d i{width:10px;height:10px;border-radius:50%;background:#ff5d6c}
+.hs-fm-d i.w{background:#34d27f}
+.hs-fm-d i:last-child{outline:2px solid rgba(255,255,255,.35);outline-offset:1px}
+/* шапка «JARVIS | ХОККЕЙ» — по тому же левому краю, что и первый экран (на широких экранах она была шире) */
+@media (min-width:1600px){
+  html.hs-on .hd .wrap.hdrow{max-width:var(--max)}
+  html.hs-on .hd .btn-tg .tl{display:none}
+  html.hs-on .hd .btn-tg{padding:11px 14px;gap:8px;font-size:15px}
+  html.hs-on .hd .btn-tg svg{width:18px;height:18px}
+  html.hs-on .hd .wrap.hdrow{gap:14px}
+}
+
 /* ── планшет ── */
 @media (max-width:1100px){
   .hs-v7{column-gap:32px}
@@ -281,6 +317,12 @@
   .hs-btn{justify-content:space-between;padding:16px 20px}
   .hs-more{align-self:center}
   .hs-sli-h{font-size:19px}
+  .hs-st3 b{font-size:26px}
+  .hs-st3 li+li{padding-left:12px}
+  .hs-fm-g{grid-template-columns:minmax(0,1fr);gap:8px}
+  .hs-sli{grid-template-columns:56px minmax(0,1fr) 20px}
+  .hs-sli-p.hs-mini{width:56px;height:33px}
+  .hs-sli-p.hs-mini img{width:33px}
   .hs-ps-txt{padding:24px 18px 4px;gap:14px}
   .hs .hs-ps-h{font-size:clamp(28px,8.4vw,34px)!important}
   .hs-ps-sub{font-size:15px}

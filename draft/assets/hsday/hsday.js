@@ -468,18 +468,49 @@ function slideHead(r, withMeta, i, n) {
   return head;
 }
 
+/* три цифры вечера под сводкой: матчи по лигам, первая (следующая) шайба, сколько шайб ждёт модель */
+function statsEl(Cx) {
+  const rows = Cx.rows, n = rows.length, k = rows.filter(r => r.m.lg === 'khl').length, h = n - k;
+  const box = el('ul', 'hs-st3'); box.setAttribute('role', 'list');
+  const tile = (v, l, extra) => { const li = el('li'); li.append(el('b', '', v), el('span', '', l)); if (extra) li.append(extra); box.append(li); };
+  const lgs = el('span', 'hs-st3-lg');
+  [['khl', k], ['nhl', h]].forEach(([g, c]) => { if (!c) return; const s = el('small'); const im = el('img'); im.src = U('../lg/' + g + '.webp'); im.alt = ''; im.width = im.height = 16; s.append(im, document.createTextNode(LG[g] + ' · ' + c)); lgs.append(s); });
+  tile(String(n), plural(n, 'матч', 'матча', 'матчей') + ' сегодня', lgs);
+  const up = rows.filter(r => stateOf(r.m) === 'up' && !night(r.m)), started = rows.some(r => stateOf(r.m) !== 'up' && !night(r.m));
+  tile(up.length ? hm(up[0].m) : '—', up.length ? (started ? 'следующий матч, МСК' : 'первая шайба, МСК') : 'все матчи начались');
+  const lam = rows.filter(r => r.lam);
+  if (lam.length) { const t = lam.reduce((a, r) => a + r.lam[0] + r.lam[1], 0); tile('≈\u2009' + Math.round(t), plural(Math.round(t), 'шайбу', 'шайбы', 'шайб') + ' ждёт модель за вечер'); }
+  return box;
+}
+/* форма команд: пять последних матчей, свежий справа; место из разбора */
+function formEl(r) {
+  const D = r.F.dots; if (!D || D.length !== 2 || !D[0] || !D[1]) return null;
+  const m = r.m, box = el('div', 'hs-fm'); box.append(lbl('span', 'Форма · 5 последних'));
+  const g = el('div', 'hs-fm-g');
+  [[m.h, m.hn, D[0], r.hc, 0], [m.a, m.an, D[1], r.ac, 1]].forEach(([id, nm, d, c, i]) => {
+    const row = el('div', 'hs-fm-r'); row.style.setProperty('--c', c);
+    const dots = el('span', 'hs-fm-d'); const last = d.slice(-5), w = last.filter(x => x.r === 'w').length;
+    dots.setAttribute('role', 'img'); dots.setAttribute('aria-label', nm + ': ' + w + ' ' + plural(w, 'победа', 'победы', 'побед') + ' в ' + last.length + ' последних матчах');
+    last.forEach(x => { const i2 = el('i', x.r); if (x.t) i2.title = x.t; dots.append(i2); });
+    const nmE = el('span', 'hs-fm-n'); nmE.append(el('b', '', nm)); const wh = (r.F.where || [])[i]; if (wh) nmE.append(el('small', '', wh));
+    row.append(nmE, dots); g.append(row);
+  });
+  box.append(g); return box;
+}
+
 /* ═════ 7 · «Сводка и табло» ═════ */
 function paintV7(Cx, main) {
   main.classList.add('hs-v7');
-  const sumW = el('div', 'hs-v7-sum'), sumP = el('p', 'hs-sum'); sumP.append(frag(summary(Cx))); sumW.append(sumP);
+  const sumW = el('div', 'hs-v7-sum'), sumP = el('p', 'hs-sum'); sumP.append(frag(summary(Cx))); sumW.append(sumP, statsEl(Cx));
   const sl = storylines(Cx), ol = el('ol', 'hs-sl');
   const slW = el('div', 'hs-v7-sl'); slW.append(lbl('h2', 'Главное за вечер'), ol, moreLink());
   const board = el('section', 'hs-board'); board.setAttribute('aria-roledescription', 'карусель'); board.setAttribute('aria-label', 'Матчи вечера');
+  const stripe = el('i', 'hs-bd-stripe'); stripe.setAttribute('aria-hidden', 'true');
   const top = el('div', 'hs-bd-top'), counter = el('span', 'hs-bd-n'), meta = el('span', 'hs-bd-meta');
   top.append(counter, meta);
   const stage = el('div', 'hs-bd-stage');
   const pager = el('div', 'hs-pg'); pager.setAttribute('role', 'group'); pager.setAttribute('aria-label', 'Выбор матча');
-  board.append(top, stage, pager);
+  board.append(stripe, top, stage, pager);
   main.append(sumW, board, slW);
   const n = Cx.rows.length;
   const show = (i, dir) => {
@@ -488,7 +519,9 @@ function paintV7(Cx, main) {
     meta.replaceChildren(el('span', 'hs-chip', LG[m.lg]), document.createTextNode((night(m) ? 'ночью, ' : '') + hm(m) + ' МСК'));
     const s = el('div', 'hs-slide'); s.setAttribute('role', 'group'); s.setAttribute('aria-roledescription', 'слайд'); s.setAttribute('aria-label', (i + 1) + ' из ' + n + ': ' + m.hn + ' — ' + m.an);
     const ct = el('div', 'hs-ctas'); ct.append(button(m, 'Читать разбор'));
-    s.append(slideHead(r, false), modelEl(r), factEl(r), ct);
+    board.style.setProperty('--hc', r.hc); board.style.setProperty('--ac', r.ac);
+    const fm = formEl(r);
+    s.append(slideHead(r, false), modelEl(r)); if (fm) s.append(fm); s.append(factEl(r), ct);
     stage.replaceChildren(s); animateIn(s, dir);
     pager.querySelectorAll('button').forEach((b, j) => b.setAttribute('aria-pressed', String(j === i)));
     ol.querySelectorAll('.hs-sli').forEach(b => b.classList.toggle('is-on', +b.dataset.i === i));
@@ -503,7 +536,7 @@ function paintV7(Cx, main) {
   top.append(controls(rot));
   sl.forEach(c => {
     const li = el('li'), b = el('button', 'hs-sli'); b.type = 'button'; b.dataset.i = c.r.i;
-    b.append(el('span', 'hs-sli-l', c.label), el('b', 'hs-sli-h', c.head), el('span', 'hs-sli-s', c.sub + ' · ' + hm(c.r.m)), svg('hs-sli-go', I.arrow));
+    b.append(pairOf(c.r.m, 'hs-mini hs-sli-p'), el('span', 'hs-sli-l', c.label), el('b', 'hs-sli-h', c.head), el('span', 'hs-sli-s', c.sub + ' · ' + hm(c.r.m)), svg('hs-sli-go', I.arrow));
     b.addEventListener('click', () => { rot.go(c.r.i); if (innerWidth <= 860) board.scrollIntoView({behavior: RM ? 'auto' : 'smooth', block: 'nearest'}); });
     li.append(b); ol.append(li);
   });
