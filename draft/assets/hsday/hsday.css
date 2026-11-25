@@ -244,6 +244,9 @@
 .hs-fm-d i{width:10px;height:10px;border-radius:50%;background:#ff5d6c}
 .hs-fm-d i.w{background:#34d27f}
 .hs-fm-d i:last-child{outline:2px solid rgba(255,255,255,.35);outline-offset:1px}
+/* вторая строка меню (Сегодня · Лиги и клубы · Аналитика · Итоги) на этой странице не нужна (владелец 25.11) */
+html:has(#hsday) .hd .subbar{display:none!important}
+html:has(#hsday) .hd:not(:has(.hdrow)):has(.nav){min-height:0}
 /* шапка «JARVIS | ХОККЕЙ» — по тому же левому краю, что и первый экран (на широких экранах она была шире) */
 @media (min-width:1600px){
   html.hs-on .hd .wrap.hdrow{max-width:var(--max)}
