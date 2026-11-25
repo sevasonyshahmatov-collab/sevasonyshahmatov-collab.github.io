@@ -232,6 +232,179 @@
 }
 @media (prefers-reduced-motion:reduce){.hs *,.hs *::before{transition:none!important;animation:none!important}}
 
+/* ═════════════ Редакция 4: новые варианты 4 «Цифра дня», 5 «Расклад модели», 6 «Вечер по часам» ═════════════ */
+.hs{--hs-mint:var(--acc,#4ff0a8)}
+.hs-hx:empty{display:none}
+.hs:is([data-hv="4"],[data-hv="5"],[data-hv="6"]) .hs-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;column-gap:40px;
+  padding-bottom:24px;border-bottom:1px solid var(--hs-line-2)}
+.hs:is([data-hv="4"],[data-hv="5"],[data-hv="6"]) .hs-kick{grid-column:1/-1}
+.hs:is([data-hv="4"],[data-hv="5"],[data-hv="6"]) .hs-h1{border:0;padding:0;font-size:clamp(38px,4.6vw,66px)!important}
+/* рубрики-подписи: Inter, капсом (ty.css навязывает h2 шрифт заголовков — перебиваем точнее) */
+.hs :is(h2,p).hs-lbl,html[data-ty] .hs :is(h2,p).hs-lbl{margin:0;font-family:var(--hs-tx)!important;font-weight:700!important;font-size:13px!important;line-height:1.2!important;
+  letter-spacing:.08em!important;text-transform:uppercase;color:var(--hs-ink-3)}
+.hs-chip{flex:none;display:inline-flex;align-items:center;padding:4px 7px;border:1px solid var(--hs-line-2);border-radius:var(--rp,4px);
+  font:700 11px/1 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-ink-2)}
+.hs-mini{position:relative;flex:none;display:inline-block;width:71px;height:42px}     /* эмблемы внахлёст на ~31 %, как в «Купоне» */
+.hs-mini img{position:absolute;top:0;width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 3px 6px rgba(0,0,0,.5))}
+.hs-mini img.h{left:0;z-index:2}
+.hs-mini img.a{right:0;z-index:1}
+.hs-mini.aw img.a{z-index:3}
+
+/* ── 4 · «Цифра дня»: одна большая цифра из разборов + ещё цифры вечера ── */
+.hs-v4{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:56px;align-items:start;margin-top:36px}
+.hs-n :is(h2,p).hs-lbl,html[data-ty] .hs-n :is(h2,p).hs-lbl{color:var(--hs-mint)}
+.hs-n-fig{display:flex;align-items:flex-end;gap:24px;margin:14px 0 24px;min-width:0}
+.hs-n-big{flex:none;font:700 clamp(150px,18vw,260px)/.8 var(--hs-nm);letter-spacing:-.045em;color:var(--hs-mint);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hs-n-big[data-len="m"]{font-size:clamp(110px,12.5vw,190px)}
+.hs-n-big[data-len="l"]{font-size:clamp(72px,8.4vw,124px);letter-spacing:-.035em}
+.hs-n-unit{display:flex;flex-direction:column;min-width:0;padding-bottom:.2em;font-family:var(--hs-hd);font-weight:800;font-size:clamp(26px,2.9vw,42px);
+  line-height:1.04;letter-spacing:-.03em;color:var(--hs-ink)}
+.hs-n-who{display:flex;align-items:center;gap:12px;margin:0 0 14px;font:700 19px/1.25 var(--hs-tx);color:var(--hs-ink)}
+.hs-n-who>img{flex:none;width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,.45))}
+.hs-n-text{margin:0 0 12px;max-width:36em;font:400 19px/1.55 var(--hs-tx);color:var(--hs-ink-2)}
+.hs-n-text b{font-weight:700;color:var(--hs-ink)}
+.hs-n-where{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:0 0 28px;font:600 14.5px/1.3 var(--hs-tx);color:var(--hs-ink-3)}
+.hs-nl{box-sizing:border-box;width:100%;max-width:none;margin:0;padding:24px 26px 8px;background:var(--hs-panel);border:1px solid var(--hs-line);border-radius:var(--rc,5px)}
+.hs-nl ul{list-style:none;margin:10px 0 0;padding:0}
+.hs-nl li+li{border-top:1px solid var(--hs-line)}
+.hs-ni{display:grid;row-gap:6px;padding:18px 0}
+.hs-ni b{font:700 40px/1 var(--hs-nm);letter-spacing:-.03em;color:var(--hs-ink);font-variant-numeric:tabular-nums}
+.hs-ni>span{font:700 16px/1.3 var(--hs-tx);color:var(--hs-ink)}
+.hs-ni em{font:500 14.5px/1.35 var(--hs-tx);font-style:normal;color:var(--hs-ink-2)}
+.hs-ni small{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:4px;font:600 13px/1.3 var(--hs-tx);color:var(--hs-ink-3)}
+.hs-ni:hover>span{text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(242,246,255,.35)}
+.hs-ni:focus-visible{outline:2px solid var(--hs-sky);outline-offset:2px}
+.hs-ni-none{padding:18px 0;font:500 15px/1.45 var(--hs-tx);color:var(--hs-ink-2)}
+
+/* ── 5 · «Расклад модели»: самый равный матч + расчёт на каждый матч ровными полосами ── */
+.hs-sub{grid-column:1/-1;margin-top:12px;font:500 clamp(17px,1.5vw,20px)/1.4 var(--hs-tx);color:var(--hs-ink-2)}
+.hs-v5{display:flex;flex-direction:column;gap:22px;margin-top:32px}
+.hs-co{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px 48px;padding:22px 28px;
+  background:var(--hs-panel);border:1px solid rgba(255,255,255,.9);border-radius:var(--rc,5px)}
+.hs-co :is(h2,p).hs-lbl,html[data-ty] .hs-co :is(h2,p).hs-lbl{color:var(--hs-sig)}
+.hs-co-t{grid-column:1;margin:0;max-width:52em;font:400 18px/1.55 var(--hs-tx);color:var(--hs-ink-2)}
+.hs-co-t b{font-weight:700;color:var(--hs-ink)}
+.hs-co .hs-ctas{grid-column:2;grid-row:1/3}
+.hs-mr-list{background:var(--hs-panel);border:1px solid var(--hs-line);border-radius:var(--rc,5px)}
+.hs-mr-head,.hs-mr{display:grid;grid-template-columns:118px minmax(0,1fr) minmax(0,1.2fr) 200px 18px;column-gap:24px;align-items:center;padding-left:24px;padding-right:24px}
+.hs-mr-head{padding-top:14px;padding-bottom:14px;border-bottom:1px solid var(--hs-line);font:700 11px/1.2 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-ink-3)}
+.hs-mr-ul{list-style:none;margin:0;padding:0}
+.hs-mr-ul li+li{border-top:1px solid var(--hs-line)}
+.hs-mr{padding-top:16px;padding-bottom:16px;transition:background-color .2s}
+.hs-mr:hover{background:rgba(255,255,255,.035)}
+.hs-mr:focus-visible{outline:2px solid var(--hs-sky);outline-offset:-2px}
+.hs-mr-t b{display:block;font:800 26px/1 var(--hs-tx);letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:var(--hs-ink)}
+.hs-rs{display:block;margin-top:6px;font:600 12.5px/1.25 var(--hs-tx);color:var(--hs-ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hs-rs.is-live{color:var(--hs-live)}
+.hs-rs.is-final{color:var(--hs-ink-2)}
+.hs-mr-m{display:flex;align-items:center;gap:14px;min-width:0}
+.hs-mr-n{min-width:0}
+.hs-mr-n b{display:block;font:700 17px/1.25 var(--hs-tx);color:var(--hs-ink)}
+.hs-mr-n small{display:block;margin-top:4px;font:500 13px/1.3 var(--hs-tx);color:var(--hs-ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hs-mr-bc{min-width:0}
+.hs-mr-b{display:flex;gap:2px;height:32px;border-radius:var(--rp,4px);overflow:hidden}
+.hs-mr-b i{display:flex;align-items:center;min-width:0;padding:0 10px;background:var(--c);color:var(--k);font-style:normal;overflow:hidden}
+.hs-mr-b i.x{justify-content:center;background:#27304a;color:var(--hs-ink-2)}
+.hs-mr-b i:last-child{justify-content:flex-end}
+.hs-mr-b b{font:700 14px/1 var(--hs-nm);white-space:nowrap;font-variant-numeric:tabular-nums}
+.hs-mr-bc small{display:block;margin-top:8px;font:500 12.5px/1.2 var(--hs-tx);color:var(--hs-ink-3)}
+.hs-mr-tag{justify-self:start;padding:6px 9px;border:1px solid var(--hs-line-2);border-radius:var(--rp,4px);font:700 11.5px/1.25 var(--hs-tx);letter-spacing:.03em;text-transform:uppercase;color:var(--hs-ink-2)}
+.hs-mr-tag.eq{border-color:var(--hs-sig);color:var(--hs-sig)}
+.hs-mr-tag.is-empty{visibility:hidden}
+.hs-mr-go{width:18px;height:18px;color:var(--hs-ink-3);transition:transform .2s,color .2s}
+.hs-mr:hover .hs-mr-go{transform:translateX(3px);color:var(--hs-ink)}
+.hs-mr.is-final .hs-mr-b{opacity:.5}
+.hs-mr-note{margin:0;font:500 13px/1.5 var(--hs-tx);color:var(--hs-ink-3)}
+
+/* ── 6 · «Вечер по часам»: лента вечера с отметкой «сейчас» ── */
+.hs-now{display:flex;flex-direction:column;align-items:flex-end;gap:8px;text-align:right}
+.hs-now-t{font:700 clamp(40px,4.4vw,62px)/.85 var(--hs-nm);letter-spacing:-.03em;color:var(--hs-ink);font-variant-numeric:tabular-nums}
+.hs-now-l{font:700 12px/1 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-ink-3)}
+.hs-now-n{font:600 15px/1.3 var(--hs-tx);color:var(--hs-sig)}
+.hs-v6{margin-top:22px}
+.hs-tl{position:relative;list-style:none;margin:0;padding:0}
+.hs-tl-i,.hs-tl-now{position:relative;display:grid;grid-template-columns:120px 28px minmax(0,1fr);column-gap:22px}
+.hs-tl-i::before,.hs-tl-now::before{content:"";position:absolute;left:155px;top:0;bottom:0;width:2px;background:var(--hs-line-2)}
+.hs-tl>:first-child::before{top:36px}
+.hs-tl>:last-child::before{bottom:auto;height:36px}
+.hs-tl-t{padding:24px 0;text-align:right}
+.hs-tl-t b{display:block;font:800 32px/1 var(--hs-tx);letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:var(--hs-ink)}
+.hs-tl-d{display:block;margin-top:7px;font:700 11px/1 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-ink-3)}
+.hs-tl-d:empty{display:none}
+.hs-tl-node{position:relative;z-index:1;justify-self:center;margin-top:29px;width:16px;height:16px;border-radius:50%;background:#0a0f1d;border:2px solid var(--hs-ink-3)}
+.is-past .hs-tl-node{background:var(--hs-ink-3)}
+.is-live .hs-tl-node{background:var(--hs-live);border-color:var(--hs-live)}
+.is-next .hs-tl-node{background:var(--hs-sig);border-color:var(--hs-sig);box-shadow:0 0 0 5px rgba(255,194,26,.2)}
+.hs-tl-c{min-width:0;padding:20px 0 24px}
+.is-next .hs-tl-c{margin:10px 0;padding:22px 26px 24px;background:var(--hs-panel);border:1px solid rgba(255,255,255,.9);border-radius:var(--rc,5px)}
+.hs-tl-h{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px}
+.hs .hs-tl-n{margin:0;font-family:var(--hs-hd);font-weight:800;font-size:clamp(22px,2.3vw,32px);line-height:1.08;letter-spacing:-.03em;color:var(--hs-ink)}
+.hs-tl-v,.hs-tl-r{display:flex;align-items:flex-start;gap:9px;margin:12px 0 0;font:500 15px/1.45 var(--hs-tx);color:var(--hs-ink-2)}
+.hs-tl-v svg,.hs-tl-r svg{flex:none;width:17px;height:17px;margin-top:2px;color:var(--hs-ink-3)}
+.hs-tl-r b{font-weight:700;color:var(--hs-ink)}
+.hs-tl-a{margin-top:16px}
+.hs-tl-a:empty{display:none}
+.hs-tl-link{display:inline-flex;align-items:center;gap:6px;font:600 14.5px/1 var(--hs-tx);color:var(--hs-ink-2);text-decoration:underline;
+  text-decoration-color:rgba(195,206,240,.35);text-underline-offset:5px}
+.hs-tl-link svg{width:15px;height:15px}
+.hs-tl-link:hover{color:var(--hs-ink)}
+.hs-tl-link:focus-visible{outline:2px solid var(--hs-sky);outline-offset:3px}
+.is-past :is(.hs-tl-c,.hs-tl-t b,.hs-tl-d){opacity:.55}
+.is-past :is(.hs-tl-v,.hs-tl-r){display:none}
+.is-past .hs-tl-c{padding-bottom:18px}
+.hs-tl-now .hs-tl-t{padding:12px 0;font:700 12px/1.2 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-sig)}
+.hs-tl-now .hs-tl-node{margin-top:12px;width:12px;height:12px;border:0;border-radius:2px;background:var(--hs-sig);transform:rotate(45deg)}
+.hs-tl-now .hs-tl-c{display:flex;align-items:center;gap:12px;padding:6px 0}
+.hs-tl-line{flex:1;height:1px;background:var(--hs-sig)}
+.hs-tl-nowt{font:700 14px/1 var(--hs-nm);color:var(--hs-sig);font-variant-numeric:tabular-nums}
+
+@media (max-width:1100px){
+  .hs-mr-head,.hs-mr{grid-template-columns:110px minmax(0,1fr) minmax(0,1.1fr) 160px 18px;column-gap:18px}
+  .hs-v4{gap:36px}
+}
+@media (max-width:860px){
+  .hs-v4{grid-template-columns:minmax(0,1fr);gap:32px}
+  .hs-mr-head{display:none}
+  .hs-mr{grid-template-columns:minmax(0,1fr) 18px;grid-template-areas:"t go" "m m" "b b" "tag tag";row-gap:12px;padding-left:18px;padding-right:18px}
+  .hs-mr-t{display:flex;align-items:baseline;gap:12px}
+  .hs-mr-t .hs-rs{margin-top:0}
+  .hs-mr-t{grid-area:t}.hs-mr-m{grid-area:m}.hs-mr-bc{grid-area:b}.hs-mr-tag{grid-area:tag}.hs-mr-go{grid-area:go}
+  .hs-mr-tag.is-empty{display:none}
+  .hs-co{grid-template-columns:minmax(0,1fr);padding:20px}
+  .hs-co .hs-ctas{grid-column:1;grid-row:auto;margin-top:10px}
+}
+@media (max-width:640px){
+  .hs:is([data-hv="4"],[data-hv="5"],[data-hv="6"]) .hs-head{grid-template-columns:minmax(0,1fr);padding-bottom:18px}
+  .hs:is([data-hv="4"],[data-hv="5"],[data-hv="6"]) .hs-h1{padding:0}
+  .hs-now{align-items:flex-start;text-align:left;margin-top:14px;gap:6px}
+  .hs-sub{font-size:16px}
+  .hs-n-fig{gap:14px;margin:10px 0 18px}
+  .hs-n-big{font-size:clamp(110px,34vw,150px)}
+  .hs-n-big[data-len="m"]{font-size:clamp(84px,24vw,110px)}
+  .hs-n-big[data-len="l"]{font-size:clamp(52px,15vw,66px)}
+  .hs-n-unit{font-size:24px}
+  .hs-n-who{font-size:17px}
+  .hs-n-text{font-size:17px}
+  .hs-nl{padding:20px 18px 4px}
+  .hs-ni b{font-size:34px}
+  .hs-mr-t b{font-size:22px}
+  .hs-mr-n b{font-size:16px}
+  .hs-tl-i,.hs-tl-now{grid-template-columns:54px 20px minmax(0,1fr);column-gap:12px}
+  .hs-tl-i::before,.hs-tl-now::before{left:75px}
+  .hs-tl-t b{font-size:20px}
+  .hs-tl-t .hs-rs{white-space:normal;font-size:11px;line-height:1.3}
+  .hs-tl-d{font-size:10px}
+  .hs-tl-node{margin-top:25px;width:14px;height:14px}
+  .hs-tl-now .hs-tl-node{margin-top:12px;width:10px;height:10px}
+  .hs-tl>:first-child::before{top:30px}
+  .hs-tl>:last-child::before{height:30px}
+  .is-next .hs-tl-c{padding:18px 16px 20px}
+  .hs .hs-tl-n{font-size:21px}
+  .hs-tl-v,.hs-tl-r{font-size:14px}
+  .hs-tl-h .hs-mini{width:60px;height:36px}
+  .hs-tl-h .hs-mini img{width:36px;height:36px}
+}
+
 /* старый первый экран и бегущая строка в этом варианте не показываются; следующий блок не подтягиваем под старый экран */
 html.hs-on .hero#top,html.hs-on #ticker{display:none!important}
 html.hs-on #matches{margin-top:0!important}
@@ -241,10 +414,12 @@ html.hs-on :is(.hv-sw,.hh-sw,.h3bar,.hb-sw){display:none!important}
 /* ── переключатель вариантов (только в черновике) ── */
 .hs-vsw{position:fixed;left:16px;bottom:16px;z-index:70;display:flex;align-items:center;gap:2px;padding:3px;border-radius:4px;
   background:rgba(10,14,28,.94);border:1px solid rgba(255,255,255,.16);box-shadow:0 14px 30px -14px #000;font-family:var(--tx,var(--text))}
+.hs-vsw-l+button{margin-left:0}
+.hs-vsw button+.hs-vsw-l{margin-left:8px;padding-left:12px;border-left:1px solid rgba(255,255,255,.16)}
 .hs-vsw-l{padding:0 10px 0 9px;font:700 11px/1 var(--tx,var(--text));letter-spacing:.08em;text-transform:uppercase;color:#9aa9d8}
 .hs-vsw button{appearance:none;border:0;border-radius:4px;padding:9px 12px;background:transparent;color:#c3cef0;font:700 13px/1 var(--tx,var(--text));cursor:pointer;white-space:nowrap}
 .hs-vsw button:hover{color:#f2f6ff}
 .hs-vsw button[aria-pressed="true"]{background:#f2f6ff;color:#060b1a}
 .hs-vsw button:focus-visible{outline:2px solid #5ab8ff;outline-offset:1px}
 @media (max-width:860px){.hs-vsw{left:8px;right:8px;bottom:calc(70px + env(safe-area-inset-bottom));justify-content:center;flex-wrap:wrap}}
-@media (max-width:420px){.hs-vsw-l{display:none}.hs-vsw button{padding:9px 9px;font-size:12.5px}}
+@media (max-width:640px){.hs-vsw-l{display:none}.hs-vsw button{padding:8px 8px;font-size:12px}}
