@@ -184,15 +184,20 @@ function lead(m, f) {
   add(live ? 'Что решало в этой игре — в разборе.' : 'Что это меняет перед стартом в ' + time + ' — в разборе.');
   return p;
 }
-function photo(m) {                       /* эмблемы соперников внахлёст, слегка выходят за рамку */
+const FACE_LEFT = {nhl_chi: 1, minnesota: 1, nhl_ana: 1, nhl_fla: 1};
+function photo(m) {                       /* эмблемы соперников внахлёст, чуть выходят за рамку */
   const fig = el('figure', 'hs-ph hs-ph--em'), bg = el('div', 'hs-ph-in');
   bg.append(el('span', 'hs-ph-bg', LG[m.lg])); fig.append(bg);
-  [['h', 'hn', 'hs-cr-h'], ['a', 'an', 'hs-cr-a']].forEach(([id, n, cls]) => {
+  /* как в «Купоне»: одинаковые эмблемы рядом внахлёст; хозяева поверх слева, гости справа
+     (эмблема гостей, «смотрящая» влево, ложится поверх — FACE_LEFT из kupon.js) */
+  const pair = el('div', 'hs-pair' + (FACE_LEFT[m.a] ? ' aw' : ''));
+  [['a', 'an', 'hs-cr-a'], ['h', 'hn', 'hs-cr-h']].forEach(([id, n, cls]) => {
     const im = el('img', 'hs-cr ' + cls); im.src = crest(m[id]); im.alt = m[n]; im.width = 384; im.height = 384; im.decoding = 'async';
     if (id === 'h') im.fetchPriority = 'high';
     im.onerror = () => { im.style.visibility = 'hidden'; };
-    fig.append(im);
+    pair.append(im);
   });
+  fig.append(pair);
   const cap = el('figcaption', 'hs-cap'), nm = el('b');
   nm.append(document.createTextNode(m.hn), el('span', '', '—'), document.createTextNode(m.an));
   cap.append(nm, el('small', '', LG[m.lg] + ' · ' + m.t.slice(11, 16) + ' МСК'));

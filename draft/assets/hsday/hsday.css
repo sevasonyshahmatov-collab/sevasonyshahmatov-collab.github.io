@@ -49,11 +49,13 @@
 .hs-ph{position:relative;margin:0;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end}
 .hs-ph-in{position:absolute;inset:0;background:var(--hs-photo);overflow:hidden}
 .hs-ph-bg{position:absolute;right:22px;top:6px;font:900 clamp(96px,11vw,180px)/1 var(--wide);letter-spacing:-.04em;color:rgba(255,255,255,.5);pointer-events:none;user-select:none}
-/* эмблемы внахлёст: хозяева крупнее и выше, гости — поверх, ниже и правее; обе чуть выходят за рамку */
-.hs-cr{position:absolute;aspect-ratio:1;height:auto;object-fit:contain;filter:drop-shadow(0 22px 28px rgba(16,22,31,.28)) drop-shadow(0 3px 6px rgba(16,22,31,.18));
-  pointer-events:none;animation:hs-in .7s var(--out,ease) both}
-.hs-cr-h{width:44%;max-width:330px;left:12%;top:-30px;transform:rotate(-7deg);z-index:1}
-.hs-cr-a{width:38%;max-width:290px;right:-28px;bottom:30px;transform:rotate(6deg);z-index:2;animation-delay:.12s}
+/* эмблемы внахлёст, как в «Купоне»: одного размера, рядом, перекрытие ~треть; чуть выходят за верх рамки */
+.hs-pair{position:absolute;left:50%;top:calc(50% - 34px);transform:translate(-50%,-50%);width:min(86%,560px);aspect-ratio:1.62;z-index:1}
+.hs-cr{position:absolute;top:0;width:61.7%;height:auto;aspect-ratio:1;object-fit:contain;
+  filter:drop-shadow(0 18px 26px rgba(16,22,31,.3)) drop-shadow(0 3px 6px rgba(16,22,31,.2));pointer-events:none;animation:hs-in .6s var(--out,ease) both}
+.hs-cr-h{left:0;z-index:2}
+.hs-cr-a{right:0;z-index:1;animation-delay:.1s}
+.hs-pair.aw .hs-cr-a{z-index:3}
 @keyframes hs-in{from{opacity:0;translate:0 18px}to{opacity:1;translate:0 0}}
 .hs-cap{position:relative;z-index:3;display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 16px;justify-content:space-between;background:var(--hs-board);color:#fff;padding:13px 20px;
   font:700 16px/1.2 var(--display)}
@@ -85,7 +87,7 @@ html.hs-on #matches{margin-top:0!important}
 @media (max-width:1100px){.hs{--hs-m:28px}.hs-spread{gap:32px}.hs-ph{min-height:380px}}
 @media (max-width:860px){
   .hs-spread{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
-  .hs-ph{min-height:320px}.hs-cr-h{width:54%;left:6%;top:-22px}.hs-cr-a{width:46%;right:-20px}
+  .hs-ph{min-height:320px}
   .hs-tt{font-size:clamp(28px,4.6vw,40px)}
   .hs-lead{font-size:16px}
 }
@@ -110,7 +112,7 @@ html.hs-on #matches{margin-top:0!important}
   /* своё кадрирование: крупнее и ближе к лицу */
   /* своё кадрирование для узкого экрана: эмблемы крупнее, выход за рамку меньше (поле 16 px) */
   .hs-ph{margin-top:14px}
-  .hs-cr-h{width:52%;left:8%;top:-18px}.hs-cr-a{width:44%;right:-8px;bottom:26px}
+  .hs-pair{width:96%;top:calc(50% - 26px)}
   .hs-ph-bg{font-size:96px;right:14px}
   .hs-cap{padding:11px 14px;font-size:14.5px}
 }
