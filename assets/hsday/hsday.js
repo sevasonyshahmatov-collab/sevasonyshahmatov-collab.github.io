@@ -486,7 +486,12 @@ function statsEl(Cx) {
   lgCount(rows).forEach(([g, c]) => { const s = el('small'); const im = el('img'); im.src = U('../lg/' + g + '.webp'); im.alt = ''; im.width = im.height = 16; s.append(im, document.createTextNode(LG[g] + ' · ' + c)); lgs.append(s); });
   tile(String(n), plural(n, 'матч', 'матча', 'матчей') + ' сегодня', lgs);
   const up = rows.filter(r => stateOf(r.m) === 'up' && !night(r.m)), started = rows.some(r => stateOf(r.m) !== 'up' && !night(r.m));
-  tile(up.length ? hm(up[0].m) : '—', up.length ? (started ? 'следующий матч, МСК' : SP.firstT) : 'все матчи начались');
+  if (up.length) tile(hm(up[0].m), started ? 'следующий матч, МСК' : SP.firstT);
+  else {                                     /* все начались: сколько идёт сейчас, иначе сколько сыграно */
+    const lv = rows.filter(r => stateOf(r.m) === 'live').length;
+    if (lv) tile(String(lv), plural(lv, 'матч идёт', 'матча идут', 'матчей идут') + ' сейчас');
+    else tile(rows.length + ' из ' + rows.length, 'матчей сыграно');
+  }
   const lam = rows.filter(r => r.lam);
   if (lam.length) { const t = lam.reduce((a, r) => a + r.lam[0] + r.lam[1], 0); tile('≈\u2009' + Math.round(t), plural(Math.round(t), ...SP.goal) + ' ждёт модель за вечер'); }
   return box;
