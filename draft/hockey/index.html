@@ -76,16 +76,13 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
   </div>
 </header>
 <div class="ticker" id="ticker" aria-label="Матчи и итоги, бегущая строка"></div>
-<!-- «Хоккей сегодня» (черновик 25.11): строка матчей + первая полоса; наполняет assets/hsday/hsday.js -->
-<section class="hs" id="hsday" aria-labelledby="hs-h1">
-  <div class="hs-strip"><div class="hs-date" aria-hidden="true"><span>&nbsp;</span><b>&nbsp;</b><small>&nbsp;</small></div><div class="hs-sc" aria-label="Матчи дня КХЛ и НХЛ"></div></div>
-  <div class="hs-front">
-    <p class="hs-kick">Хоккей</p>
+<!-- «Хоккей сегодня» (черновик 25.11, редакция 3): строка матчей + первая полоса; варианты ?hv=1|2|3; наполняет assets/hsday/hsday.js -->
+<section class="hs" id="hsday" aria-labelledby="hs-h1" data-hv="1">
+  <div class="hs-strip"><div class="hs-date" aria-hidden="true"><span>&nbsp;</span><b>&nbsp;</b><small>&nbsp;</small></div><div class="hs-sc" role="region" aria-label="Матчи дня КХЛ и НХЛ"></div></div>
+  <div class="hs-front hs-w">
+    <p class="hs-kick"><i></i>Хоккей</p>
     <h1 class="hs-h1" id="hs-h1">Хоккей <em>сегодня</em></h1>
-    <div class="hs-spread">
-      <figure class="hs-ph" aria-hidden="true"></figure>
-      <div class="hs-story"><span class="hs-sk" style="width:30%"></span><span class="hs-sk" style="height:2.2em;margin:18px 0;width:85%"></span><span class="hs-sk" style="width:70%"></span></div>
-    </div>
+    <div class="hs-main is-sk"></div>
   </div>
 </section>
 
