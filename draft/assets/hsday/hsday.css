@@ -247,15 +247,6 @@
 /* вторая строка меню (Сегодня · Лиги и клубы · Аналитика · Итоги) на этой странице не нужна (владелец 25.11) */
 html:has(#hsday) .hd .subbar{display:none!important}
 html:has(#hsday) .hd:not(:has(.hdrow)):has(.nav){min-height:0}
-/* шапка «JARVIS | ХОККЕЙ» — по тому же левому краю, что и первый экран (на широких экранах она была шире) */
-@media (min-width:1600px){
-  html.hs-on .hd .wrap.hdrow{max-width:var(--max)}
-  html.hs-on .hd .btn-tg .tl{display:none}
-  html.hs-on .hd .btn-tg{padding:11px 14px;gap:8px;font-size:15px}
-  html.hs-on .hd .btn-tg svg{width:18px;height:18px}
-  html.hs-on .hd .wrap.hdrow{gap:14px}
-}
-
 /* ── планшет ── */
 @media (max-width:1100px){
   .hs-v7{column-gap:32px}
@@ -343,6 +334,6 @@ html:has(#hsday) .hd:not(:has(.hdrow)):has(.nav){min-height:0}
 }
 
 /* старый первый экран, бегущая строка и переключатели прежних вариантов здесь не показываются; следующий блок не подтягиваем под старый экран */
-html.hs-on .hero#top,html.hs-on #ticker{display:none!important}
-html.hs-on #matches{margin-top:0!important}
-html.hs-on :is(.hv-sw,.hh-sw,.h3bar,.hb-sw){display:none!important}
+html:has(#hsday) .hero#top,html:has(#hsday) #ticker{display:none!important}
+html:has(#hsday) #matches{margin-top:0!important}
+html:has(#hsday) :is(.hv-sw,.hh-sw,.h3bar,.hb-sw){display:none!important}

@@ -154,7 +154,7 @@ html[data-sport="football"] .mstage{min-height:430px}
 .hd:not(:has(.hdrow)):has(.nav){min-height:110px}
 
 /* шапка в одну строку на любой ширине (assets/nav.js, 09.11): шире на больших экранах; hd-c1/2/3 — шаги сжатия, если не влезает */
-@media (min-width:1600px){.hd .wrap.hdrow{max-width:calc(var(--max) + 240px)}}
+/* шапка — по тому же левому краю, что и содержимое страницы, на любой ширине (владелец 25.11: «JARVIS | ХОККЕЙ» на одной линии с блоком ниже; раньше на широких экранах была на 240 px шире) */
 .hd .hdrow.hd-c1 .btn-tg .tl{display:none}
 .hd .hdrow.hd-c1 .hd-me span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .hd .hdrow.hd-c1 .hd-me{padding:0 10px}
