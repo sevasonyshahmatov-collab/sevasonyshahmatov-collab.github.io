@@ -19,10 +19,10 @@ document.documentElement.classList.add('hs-on');
 
 const qs = new URLSearchParams(location.search);
 const VARS = {7: 'Сводка и табло', 8: 'Афиша', 9: 'Гармошка'};
-let hv = qs.get('hv');
-try { if (hv && VARS[hv]) sessionStorage.setItem('jv-hv7', hv); else hv = sessionStorage.getItem('jv-hv7'); } catch (e) {}
+let hv = String(window.JV_HV || '');                /* вариант выбирает hsday-load.js (черновик: сравнение 1–9) */
 if (!VARS[hv]) hv = '7';
 root.dataset.hv = hv;
+window.JV_HS = {has: k => !!VARS[k], set(k) { if (VARS[k]) { hv = k; paint(); } }};
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const ROTATE = 9000;                        /* как у табло «Прогноз дня» */
 
@@ -637,7 +637,6 @@ async function render() {
   const cards = list.map(card);
   if (cards.length) cards.forEach(a => { sc.append(a); watchLive(a); });
   else sc.append(el('p', 'hs-none', 'Сегодня матчей КХЛ и НХЛ нет. Ближайшие игры — ниже, в разделе «Сегодня на льду».'));
-  switcher();
 
   /* первый экран: данные всех матчей дня — со страниц разборов */
   const Fs = await Promise.all(list.map(factsOf));

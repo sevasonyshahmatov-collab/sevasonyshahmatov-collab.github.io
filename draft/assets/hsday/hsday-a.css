@@ -1,0 +1,412 @@
+/* «Хоккей сегодня» — первый экран /hockey/ (черновик 25.11, редакция 3: три варианта, ?hv=1|2|3).
+   Язык сайта: фон — «Ночная арена» страницы (своей подложки нет), шрифты варианта 4 (ty.css): заголовки --hd (Montserrat),
+   текст --tx (Inter), цифры --nm (Space Grotesk); панели — как «О встрече» в «Матчах дня»; эмблемы внахлёст — как в «Купоне»;
+   кнопка — жёлтая сайта; точки формы — как в «Матчах дня»; плашка «через 7 ч» — как на странице матча.
+   Владелец 25.11: без градиентов — только ровные заливки. Цвета клубов (--hc/--ac) берём со страницы разбора, ровными плашками.
+   Сетка — как у шапки: контейнер --max (1360) с полями --m, края совпадают с логотипом JARVIS. Углы — --rc 5px, --rp 4px (решение 12.11). */
+.hs{--hs-hd:var(--hd,var(--wide));--hs-tx:var(--tx,var(--text));--hs-nm:var(--nm,var(--display));
+  --hs-ink:#f2f6ff;--hs-ink-2:#c3cef0;--hs-ink-3:#9aa9d8;
+  --hs-panel:rgba(10,14,28,.9);--hs-line:rgba(255,255,255,.09);--hs-line-2:rgba(255,255,255,.16);
+  --hs-sky:#5ab8ff;--hs-sig:#ffc21a;--hs-blue:var(--khl,#1146b8);--hs-win:#34d27f;--hs-loss:#ff5d6c;--hs-live:#ff5d6c;
+  --hc:#5ab8ff;--ac:#9aa9d8;
+  position:relative;z-index:2;color:var(--hs-ink);font-family:var(--hs-tx);overflow-x:clip}
+.hs *{box-sizing:border-box}
+.hs a{color:inherit;text-decoration:none}
+.hs-w{max-width:var(--max,1360px);margin:0 auto;padding:0 var(--m,44px)}
+
+/* ── строка матчей ── */
+.hs-strip{display:flex;min-height:104px;background:var(--hs-panel);border-top:1px solid var(--hs-line);border-bottom:1px solid var(--hs-line)}
+.hs-date{flex:none;width:156px;display:flex;flex-direction:column;justify-content:center;padding:12px 20px;background:var(--hs-blue);color:#fff;
+  font:700 11.5px/1.15 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase}
+.hs-date b{font:700 54px/.9 var(--hs-nm);letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin:5px 0 7px}
+.hs-date small{font:inherit;color:rgba(255,255,255,.8)}
+.hs-date small i{font-style:normal}
+.hs-sc{flex:1;min-width:0;display:flex;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--hs-line-2) transparent}
+.hs-m{position:relative;flex:0 0 228px;display:flex;flex-direction:column;justify-content:center;gap:9px;padding:14px 18px;border-right:1px solid var(--hs-line);
+  scroll-snap-align:start;transition:background-color .2s}
+.hs-m:hover{background:rgba(255,255,255,.045)}
+.hs-m:focus-visible{outline:2px solid var(--hs-sky);outline-offset:-2px}
+.hs-m::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px}
+.hs-m.is-main::after{background:var(--hs-sig)}
+.hs-m.is-live::after{background:var(--hs-live)}
+.hs-mt{display:flex;align-items:center;justify-content:space-between;gap:10px;font:700 11px/1 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-ink-3)}
+.hs-st{display:inline-flex;align-items:center;gap:6px;font:700 12px/1 var(--hs-tx);letter-spacing:.02em;text-transform:none;font-style:normal;color:var(--hs-ink);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.is-live .hs-st{color:var(--hs-live)}
+.is-live .hs-st::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;animation:hs-blink 1.6s steps(2,start) infinite}
+.is-final .hs-st{color:var(--hs-ink-3)}
+@keyframes hs-blink{50%{opacity:.25}}
+.hs-tm{display:flex;align-items:center;gap:10px;min-width:0;font:700 15.5px/1.2 var(--hs-tx);color:var(--hs-ink)}
+.hs-tm img{flex:none;width:24px;height:24px;object-fit:contain}
+.hs-tn{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hs-g{flex:none;min-width:24px;height:24px;padding:0 6px;display:grid;place-items:center;border-radius:var(--rp,4px);background:var(--hs-ink);color:#060b1a;
+  font:700 15px/1 var(--hs-nm);font-variant-numeric:tabular-nums}
+.hs-g:empty{display:none}
+.is-final .hs-tm.lose{color:var(--hs-ink-3)}
+.is-final .hs-tm.lose .hs-g{background:rgba(255,255,255,.14);color:var(--hs-ink-2)}
+.hs-m .lv{display:none!important}
+.hs-none{display:flex;align-items:center;margin:0;padding:0 24px;font:500 15px/1.35 var(--hs-tx);color:var(--hs-ink-2)}
+
+/* ── шапка полосы: рубрика, заголовок между линиями ── */
+.hs-front{padding-top:40px;padding-bottom:64px}
+.hs-kick{display:flex;align-items:center;gap:10px;margin:0 0 16px;font:700 13px/1 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-ink-3)}
+.hs-kick i{flex:none;width:8px;height:8px;border-radius:50%;background:var(--hs-sig)}
+.hs-kick span{color:var(--hs-line-2)}
+.hs-h1{margin:0;padding:18px 0 22px;border-top:1px solid var(--hs-line-2);border-bottom:1px solid var(--hs-line-2);
+  font-family:var(--hs-hd);font-weight:800;font-size:clamp(40px,6.1vw,88px)!important;line-height:1!important;letter-spacing:-.035em;color:var(--hs-ink)}
+.hs-h1 em{font-style:normal;color:var(--hs-sky)}
+.hs-main{margin-top:44px}
+.hs-main.is-sk{min-height:420px}
+
+/* ── материал дня ── */
+.hs-rub{display:flex;align-items:center;gap:8px;margin:0 0 16px;font:700 13px/1 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-ink-3)}
+.hs-rub b{font-weight:700;color:var(--hs-sig)}
+.hs-rub span{color:var(--hs-line-2)}
+.hs-tt{margin:0 0 18px;font-family:var(--hs-hd);font-weight:800;font-size:clamp(32px,3.75vw,54px)!important;line-height:1.02!important;letter-spacing:-.035em;color:var(--hs-ink);overflow-wrap:break-word}
+.hs-tt span{display:block}
+.hs-lead{margin:0 0 30px;max-width:31em;font:400 17px/1.6 var(--hs-tx);color:var(--hs-ink-2)}
+.hs-lead b{font-weight:700;color:var(--hs-ink)}
+.hs-ctas{display:flex;align-items:center;flex-wrap:wrap;gap:14px 26px}
+.hs-btn{display:inline-flex;align-items:center;gap:12px;padding:15px 22px;border-radius:var(--rp,4px);background:var(--hs-sig);color:#0b1220!important;
+  font:700 16px/1 var(--hs-tx);box-shadow:0 8px 18px -10px rgba(255,194,26,.8);transition:background-color .2s}
+.hs-btn svg{width:18px;height:18px;transition:transform .2s}
+.hs-btn:hover{background:#ffcd45}
+.hs-btn:hover svg{transform:translateX(3px)}
+.hs-btn:focus-visible,.hs-more:focus-visible{outline:2px solid var(--hs-sky);outline-offset:3px}
+.hs-more{display:inline-flex;align-items:center;gap:6px;font:600 15px/1 var(--hs-tx);color:var(--hs-ink-2);text-decoration:underline;
+  text-decoration-color:rgba(195,206,240,.35);text-underline-offset:5px;transition:color .2s}
+.hs-more svg{width:16px;height:16px}
+.hs-more:hover{color:var(--hs-ink)}
+
+/* ── эмблемы, команды, время (общее) ── */
+.hs-vis{position:relative;min-width:0}
+.hs-pair{position:relative;aspect-ratio:1.69}                           /* перекрытие ~31 %, как в «Купоне» */
+.hs-cr{position:absolute;top:0;width:59.2%;height:auto;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 6px 14px rgba(0,0,0,.5));
+  animation:hs-in .6s cubic-bezier(.2,.8,.2,1) both}
+.hs-cr-h{left:0;z-index:2}
+.hs-cr-a{right:0;z-index:1;animation-delay:.08s}
+.hs-pair.aw .hs-cr-a{z-index:3}
+@keyframes hs-in{from{opacity:0;translate:0 14px}to{opacity:1;translate:0 0}}
+.hs-team{min-width:0}
+.hs-team-n{display:block;font-family:var(--hs-hd);font-weight:800;font-size:22px;line-height:1.1;letter-spacing:-.02em;color:var(--hs-ink);overflow-wrap:break-word}
+.hs-team-w{display:block;margin-top:6px;font:600 13.5px/1.35 var(--hs-tx);color:var(--hs-ink-3)}
+.hs-dots{display:flex;align-items:center;gap:5px;margin-top:10px}
+.hs-dots small{margin-right:5px;font:700 10.5px/1 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-ink-3)}
+.hs-dots:empty{display:none}
+.hs-dots i{width:11px;height:11px;border-radius:50%;background:var(--hs-loss)}
+.hs-dots i.w{background:var(--hs-win)}
+.hs-team-a{text-align:right}
+.hs-team-a .hs-dots{justify-content:flex-end}
+.hs-clock{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}
+.hs-cd-l{display:none}
+.hs-time{font:800 44px/.9 var(--hs-tx);letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--hs-ink)}
+.hs-when{font:600 14px/1.3 var(--hs-tx);color:var(--hs-ink-2)}
+.hs-cd{display:inline-block;padding:5px 12px;border-radius:var(--rp,4px);background:rgba(0,0,0,.32);font:700 15px/1.2 var(--hs-tx);color:var(--hs-ink);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.hs-cd:empty{display:none}
+.hs-cd.is-live{background:var(--hs-live);color:#fff}
+.hs-cd.is-final{background:rgba(255,255,255,.12)}
+.hs-bar{display:flex;height:4px}
+.hs-bar i{flex:1;background:var(--hc)}
+.hs-bar i+i{background:var(--ac)}
+
+/* ═════ 1 · «Разворот»: карточка с эмблемами слева (55 %), материал дня справа (45 %) ═════ */
+.hs[data-hv="1"] .hs-main{display:grid;grid-template-columns:minmax(0,55fr) minmax(0,45fr);gap:48px;align-items:stretch}
+.hs[data-hv="1"] .hs-vis{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);grid-template-rows:1fr auto auto;
+  grid-template-areas:"pair pair pair" "h clock a" "bar bar bar";column-gap:20px;min-height:430px;padding:0 28px;
+  background:var(--hs-panel);border:1px solid var(--hs-line);border-radius:var(--rc,5px)}
+.hs[data-hv="1"] .hs-pair{grid-area:pair;justify-self:center;align-self:start;width:min(78%,470px);margin-top:-34px}   /* чуть выходят за верх карточки */
+.hs[data-hv="1"] .hs-team-h{grid-area:h;align-self:end}
+.hs[data-hv="1"] .hs-team-a{grid-area:a;align-self:end}
+.hs[data-hv="1"] .hs-clock{grid-area:clock;align-self:end}
+.hs[data-hv="1"] .hs-when{display:none}
+.hs[data-hv="1"] .hs-bar{grid-area:bar;margin:26px -28px -1px;border-radius:0 0 var(--rc,5px) var(--rc,5px);overflow:hidden}
+.hs[data-hv="1"] .hs-story{display:flex;flex-direction:column;justify-content:center;padding:8px 0}
+
+/* ═════ 2 · «Табло»: строка «Купона» крупно — «Хозяева [эмблемы] Гости», под ней время; материал дня — строкой ниже ═════ */
+.hs[data-hv="2"] .hs-main{display:flex;flex-direction:column;gap:28px}
+.hs[data-hv="2"] .hs-vis{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);grid-template-areas:"h pair a" "h clock a" "bar bar bar";
+  column-gap:48px;align-items:center;margin-top:34px;padding:0 48px;background:var(--hs-panel);border:1px solid var(--hs-line);border-radius:var(--rc,5px)}
+.hs[data-hv="2"] .hs-pair{grid-area:pair;width:340px;margin-top:-34px}
+.hs[data-hv="2"] .hs-clock{grid-area:clock;padding:8px 0 24px;gap:7px}
+.hs[data-hv="2"] .hs-time{font-size:50px}
+.hs[data-hv="2"] .hs-team-h{grid-area:h;text-align:right}
+.hs[data-hv="2"] .hs-team-h .hs-dots{justify-content:flex-end}
+.hs[data-hv="2"] .hs-team-a{grid-area:a;text-align:left}
+.hs[data-hv="2"] .hs-team-a .hs-dots{justify-content:flex-start}
+.hs[data-hv="2"] .hs-team-n{font-size:clamp(28px,3vw,42px);line-height:1.02;letter-spacing:-.035em}
+.hs[data-hv="2"] .hs-team-w{font-size:15px;margin-top:10px}
+.hs[data-hv="2"] .hs-dots{margin-top:14px;gap:6px}
+.hs[data-hv="2"] .hs-dots i{width:13px;height:13px}
+.hs[data-hv="2"] .hs-bar{grid-area:bar;margin:0 -48px -1px;border-radius:0 0 var(--rc,5px) var(--rc,5px);overflow:hidden}
+.hs[data-hv="2"] .hs-story{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"rub ctas" "lead ctas";column-gap:48px;align-items:center}
+.hs[data-hv="2"] .hs-rub{grid-area:rub;margin-bottom:10px}
+.hs[data-hv="2"] .hs-tt{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hs[data-hv="2"] .hs-lead{grid-area:lead;max-width:46em;margin:0}
+.hs[data-hv="2"] .hs-ctas{grid-area:ctas;flex-direction:column;align-items:flex-end;gap:14px}
+
+/* ═════ 3 · «Медальоны»: материал дня слева, справа эмблемы в белых кругах с кольцом цвета клуба, без рамки ═════ */
+.hs[data-hv="3"] .hs-main{display:grid;grid-template-columns:minmax(0,45fr) minmax(0,55fr);grid-template-areas:"story vis";gap:56px;align-items:center}
+.hs[data-hv="3"] .hs-story{grid-area:story}
+.hs[data-hv="3"] .hs-vis{grid-area:vis;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);grid-template-areas:"pair pair pair" "h clock a";
+  column-gap:24px;row-gap:26px;align-items:start}
+.hs[data-hv="3"] .hs-pair{grid-area:pair;justify-self:center;width:min(100%,560px);aspect-ratio:1.74}
+.hs[data-hv="3"] .hs-cr{width:57.5%;padding:14%;border-radius:50%;background:#f3f6fb;filter:none;
+  box-shadow:0 0 0 8px var(--hc),0 26px 50px -22px rgba(0,0,0,.75)}
+.hs[data-hv="3"] .hs-cr-a{box-shadow:0 0 0 8px var(--ac),0 26px 50px -22px rgba(0,0,0,.75)}
+.hs[data-hv="3"] .hs-team-h{grid-area:h;padding-left:6%}
+.hs[data-hv="3"] .hs-team-a{grid-area:a;padding-right:6%}
+.hs[data-hv="3"] .hs-clock{grid-area:clock}
+.hs[data-hv="3"] .hs-when{display:none}
+.hs[data-hv="3"] .hs-bar{display:none}
+
+/* ── планшет ── */
+@media (max-width:1100px){
+  .hs[data-hv="1"] .hs-main,.hs[data-hv="3"] .hs-main{gap:32px}
+  .hs[data-hv="1"] .hs-vis{min-height:380px;padding:0 20px}
+  .hs[data-hv="1"] .hs-bar{margin:22px -20px -1px}
+  .hs[data-hv="2"] .hs-vis{column-gap:28px;padding:0 28px}
+  .hs[data-hv="2"] .hs-bar{margin:0 -28px -1px}
+  .hs[data-hv="2"] .hs-pair{width:320px}
+  .hs-team-n{font-size:20px}
+}
+@media (max-width:860px){
+  .hs-pts{display:none}
+  .hs[data-hv="1"] .hs-main{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .hs[data-hv="1"] .hs-vis{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"pair pair" "clock clock" "h a" "bar bar";row-gap:18px;min-height:0;padding-top:0}
+  .hs[data-hv="1"] .hs-pair{width:84%;margin-top:-26px}
+  .hs[data-hv="3"] .hs-main{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .hs[data-hv="3"] .hs-vis{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"pair pair" "clock clock" "h a";row-gap:20px}
+  .hs[data-hv="3"] .hs-team-h,.hs[data-hv="3"] .hs-team-a{padding:0}
+  .hs[data-hv="2"] .hs-vis{column-gap:16px;padding:0 20px}
+  .hs[data-hv="2"] .hs-bar{margin:0 -20px -1px}
+  .hs[data-hv="2"] .hs-pair{width:240px;margin-top:-28px}
+  .hs[data-hv="2"] .hs-time{font-size:44px}
+  .hs[data-hv="2"] .hs-team-n{font-size:26px}
+  .hs[data-hv="2"] .hs-story{grid-template-columns:minmax(0,1fr);grid-template-areas:"rub" "lead" "ctas"}
+  .hs[data-hv="2"] .hs-lead{margin-bottom:24px}
+  .hs[data-hv="2"] .hs-ctas{flex-direction:row;align-items:center}
+  .hs-tt{font-size:clamp(28px,4.6vw,40px)!important}
+  .hs-lead{font-size:16px}
+}
+/* ── телефон: строка матчей → заголовок → матч и анонс → кнопка → эмблемы ── */
+@media (max-width:640px){
+  .hs-strip{min-height:96px}
+  .hs-date{width:92px;padding:10px 12px;font-size:10px;letter-spacing:.05em}
+  .hs-date b{font-size:40px;margin:4px 0 5px}
+  .hs-date small i{display:none}
+  .hs-date small span{display:block}
+  .hs-m{flex-basis:192px;gap:8px;padding:12px 14px}
+  .hs-tm{font-size:14.5px;gap:8px}
+  .hs-tm img{width:22px;height:22px}
+  .hs-g{min-width:22px;height:22px;font-size:14px}
+  .hs-front{padding-top:24px;padding-bottom:44px}
+  .hs-kick{font-size:11.5px;margin-bottom:12px}
+  .hs-h1{font-size:clamp(38px,11.4vw,46px)!important;padding:12px 0 14px}
+  .hs-main,.hs[data-hv] .hs-main{display:flex;flex-direction:column;gap:30px;margin-top:26px}
+  .hs[data-hv] .hs-story{order:1;display:block;padding:0}
+  .hs[data-hv] .hs-vis{order:2}
+  .hs-rub{font-size:11.5px;margin-bottom:12px}
+  .hs[data-hv] .hs-tt{position:static;width:auto;height:auto;margin:0 0 14px;overflow:visible;clip:auto;white-space:normal;font-size:clamp(30px,8.6vw,36px)!important}
+  .hs-tt span{display:inline}
+  .hs[data-hv] .hs-lead{font-size:16px;margin:0 0 22px}
+  .hs[data-hv] .hs-ctas{flex-direction:column;align-items:stretch;gap:16px}
+  .hs-btn{justify-content:space-between;padding:16px 20px}
+  .hs-more{align-self:center}
+  /* визуальная часть на узком экране: эмблемы крупнее, время под ними, команды — в две колонки */
+  .hs[data-hv] .hs-vis{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"pair pair" "clock clock" "h a" "bar bar";row-gap:16px;column-gap:16px}
+  .hs[data-hv="1"] .hs-vis,.hs[data-hv="2"] .hs-vis{margin-top:22px;padding:0 16px}
+  .hs[data-hv="1"] .hs-pair,.hs[data-hv="2"] .hs-pair{width:86%;justify-self:center;margin-top:-22px}
+  .hs[data-hv="2"] .hs-clock{padding:0}
+  .hs[data-hv="1"] .hs-bar,.hs[data-hv="2"] .hs-bar{margin:6px -16px -1px}
+  .hs[data-hv] .hs-team-h{text-align:left}
+  .hs[data-hv] .hs-team-h .hs-dots{justify-content:flex-start}
+  .hs[data-hv] .hs-team-a{text-align:right}
+  .hs[data-hv] .hs-team-a .hs-dots{justify-content:flex-end}
+  .hs[data-hv] .hs-team-n{font-size:19px}
+  .hs[data-hv] .hs-team-w{font-size:13px}
+  .hs[data-hv] .hs-time{font-size:36px}
+  .hs[data-hv="3"] .hs-pair{width:92%}
+  .hs[data-hv="3"] .hs-cr{box-shadow:0 0 0 6px var(--hc),0 20px 40px -20px rgba(0,0,0,.75)}
+  .hs[data-hv="3"] .hs-cr-a{box-shadow:0 0 0 6px var(--ac),0 20px 40px -20px rgba(0,0,0,.75)}
+}
+@media (prefers-reduced-motion:reduce){.hs *,.hs *::before{transition:none!important;animation:none!important}}
+
+/* ═════════════ Редакция 4: новые варианты 4 «Цифра дня», 5 «Расклад модели», 6 «Вечер по часам» ═════════════ */
+.hs{--hs-mint:var(--acc,#4ff0a8)}
+.hs-hx:empty{display:none}
+.hs:is([data-hv="4"],[data-hv="5"],[data-hv="6"]) .hs-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;column-gap:40px;
+  padding-bottom:24px;border-bottom:1px solid var(--hs-line-2)}
+.hs:is([data-hv="4"],[data-hv="5"],[data-hv="6"]) .hs-kick{grid-column:1/-1}
+.hs:is([data-hv="4"],[data-hv="5"],[data-hv="6"]) .hs-h1{border:0;padding:0;font-size:clamp(38px,4.6vw,66px)!important}
+/* рубрики-подписи: Inter, капсом (ty.css навязывает h2 шрифт заголовков — перебиваем точнее) */
+.hs :is(h2,p).hs-lbl,html[data-ty] .hs :is(h2,p).hs-lbl{margin:0;font-family:var(--hs-tx)!important;font-weight:700!important;font-size:13px!important;line-height:1.2!important;
+  letter-spacing:.08em!important;text-transform:uppercase;color:var(--hs-ink-3)}
+.hs-chip{flex:none;display:inline-flex;align-items:center;padding:4px 7px;border:1px solid var(--hs-line-2);border-radius:var(--rp,4px);
+  font:700 11px/1 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-ink-2)}
+.hs-mini{position:relative;flex:none;display:inline-block;width:71px;height:42px}     /* эмблемы внахлёст на ~31 %, как в «Купоне» */
+.hs-mini img{position:absolute;top:0;width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 3px 6px rgba(0,0,0,.5))}
+.hs-mini img.h{left:0;z-index:2}
+.hs-mini img.a{right:0;z-index:1}
+.hs-mini.aw img.a{z-index:3}
+
+/* ── 4 · «Цифра дня»: одна большая цифра из разборов + ещё цифры вечера ── */
+.hs-v4{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:56px;align-items:start;margin-top:36px}
+.hs-n :is(h2,p).hs-lbl,html[data-ty] .hs-n :is(h2,p).hs-lbl{color:var(--hs-mint)}
+.hs-n-fig{display:flex;align-items:flex-end;gap:24px;margin:14px 0 24px;min-width:0}
+.hs-n-big{flex:none;font:700 clamp(150px,18vw,260px)/.8 var(--hs-nm);letter-spacing:-.045em;color:var(--hs-mint);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hs-n-big[data-len="m"]{font-size:clamp(110px,12.5vw,190px)}
+.hs-n-big[data-len="l"]{font-size:clamp(72px,8.4vw,124px);letter-spacing:-.035em}
+.hs-n-unit{display:flex;flex-direction:column;min-width:0;padding-bottom:.2em;font-family:var(--hs-hd);font-weight:800;font-size:clamp(26px,2.9vw,42px);
+  line-height:1.04;letter-spacing:-.03em;color:var(--hs-ink)}
+.hs-n-who{display:flex;align-items:center;gap:12px;margin:0 0 14px;font:700 19px/1.25 var(--hs-tx);color:var(--hs-ink)}
+.hs-n-who>img{flex:none;width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,.45))}
+.hs-n-text{margin:0 0 12px;max-width:36em;font:400 19px/1.55 var(--hs-tx);color:var(--hs-ink-2)}
+.hs-n-text b{font-weight:700;color:var(--hs-ink)}
+.hs-n-where{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:0 0 28px;font:600 14.5px/1.3 var(--hs-tx);color:var(--hs-ink-3)}
+.hs-nl{box-sizing:border-box;width:100%;max-width:none;margin:0;padding:24px 26px 8px;background:var(--hs-panel);border:1px solid var(--hs-line);border-radius:var(--rc,5px)}
+.hs-nl ul{list-style:none;margin:10px 0 0;padding:0}
+.hs-nl li+li{border-top:1px solid var(--hs-line)}
+.hs-ni{display:grid;row-gap:6px;padding:18px 0}
+.hs-ni b{font:700 40px/1 var(--hs-nm);letter-spacing:-.03em;color:var(--hs-ink);font-variant-numeric:tabular-nums}
+.hs-ni>span{font:700 16px/1.3 var(--hs-tx);color:var(--hs-ink)}
+.hs-ni em{font:500 14.5px/1.35 var(--hs-tx);font-style:normal;color:var(--hs-ink-2)}
+.hs-ni small{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:4px;font:600 13px/1.3 var(--hs-tx);color:var(--hs-ink-3)}
+.hs-ni:hover>span{text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(242,246,255,.35)}
+.hs-ni:focus-visible{outline:2px solid var(--hs-sky);outline-offset:2px}
+.hs-ni-none{padding:18px 0;font:500 15px/1.45 var(--hs-tx);color:var(--hs-ink-2)}
+
+/* ── 5 · «Расклад модели»: самый равный матч + расчёт на каждый матч ровными полосами ── */
+.hs-sub{grid-column:1/-1;margin-top:12px;font:500 clamp(17px,1.5vw,20px)/1.4 var(--hs-tx);color:var(--hs-ink-2)}
+.hs-v5{display:flex;flex-direction:column;gap:22px;margin-top:32px}
+.hs-co{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px 48px;padding:22px 28px;
+  background:var(--hs-panel);border:1px solid rgba(255,255,255,.9);border-radius:var(--rc,5px)}
+.hs-co :is(h2,p).hs-lbl,html[data-ty] .hs-co :is(h2,p).hs-lbl{color:var(--hs-sig)}
+.hs-co-t{grid-column:1;margin:0;max-width:52em;font:400 18px/1.55 var(--hs-tx);color:var(--hs-ink-2)}
+.hs-co-t b{font-weight:700;color:var(--hs-ink)}
+.hs-co .hs-ctas{grid-column:2;grid-row:1/3}
+.hs-mr-list{background:var(--hs-panel);border:1px solid var(--hs-line);border-radius:var(--rc,5px)}
+.hs-mr-head,.hs-mr{display:grid;grid-template-columns:118px minmax(0,1fr) minmax(0,1.2fr) 200px 18px;column-gap:24px;align-items:center;padding-left:24px;padding-right:24px}
+.hs-mr-head{padding-top:14px;padding-bottom:14px;border-bottom:1px solid var(--hs-line);font:700 11px/1.2 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-ink-3)}
+.hs-mr-ul{list-style:none;margin:0;padding:0}
+.hs-mr-ul li+li{border-top:1px solid var(--hs-line)}
+.hs-mr{padding-top:16px;padding-bottom:16px;transition:background-color .2s}
+.hs-mr:hover{background:rgba(255,255,255,.035)}
+.hs-mr:focus-visible{outline:2px solid var(--hs-sky);outline-offset:-2px}
+.hs-mr-t b{display:block;font:800 26px/1 var(--hs-tx);letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:var(--hs-ink)}
+.hs-rs{display:block;margin-top:6px;font:600 12.5px/1.25 var(--hs-tx);color:var(--hs-ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hs-rs.is-live{color:var(--hs-live)}
+.hs-rs.is-final{color:var(--hs-ink-2)}
+.hs-mr-m{display:flex;align-items:center;gap:14px;min-width:0}
+.hs-mr-n{min-width:0}
+.hs-mr-n b{display:block;font:700 17px/1.25 var(--hs-tx);color:var(--hs-ink)}
+.hs-mr-n small{display:block;margin-top:4px;font:500 13px/1.3 var(--hs-tx);color:var(--hs-ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hs-mr-bc{min-width:0}
+.hs-mr-b{display:flex;gap:2px;height:32px;border-radius:var(--rp,4px);overflow:hidden}
+.hs-mr-b i{display:flex;align-items:center;min-width:0;padding:0 10px;background:var(--c);color:var(--k);font-style:normal;overflow:hidden}
+.hs-mr-b i.x{justify-content:center;background:#27304a;color:var(--hs-ink-2)}
+.hs-mr-b i:last-child{justify-content:flex-end}
+.hs-mr-b b{font:700 14px/1 var(--hs-nm);white-space:nowrap;font-variant-numeric:tabular-nums}
+.hs-mr-bc small{display:block;margin-top:8px;font:500 12.5px/1.2 var(--hs-tx);color:var(--hs-ink-3)}
+.hs-mr-tag{justify-self:start;padding:6px 9px;border:1px solid var(--hs-line-2);border-radius:var(--rp,4px);font:700 11.5px/1.25 var(--hs-tx);letter-spacing:.03em;text-transform:uppercase;color:var(--hs-ink-2)}
+.hs-mr-tag.eq{border-color:var(--hs-sig);color:var(--hs-sig)}
+.hs-mr-tag.is-empty{visibility:hidden}
+.hs-mr-go{width:18px;height:18px;color:var(--hs-ink-3);transition:transform .2s,color .2s}
+.hs-mr:hover .hs-mr-go{transform:translateX(3px);color:var(--hs-ink)}
+.hs-mr.is-final .hs-mr-b{opacity:.5}
+.hs-mr-note{margin:0;font:500 13px/1.5 var(--hs-tx);color:var(--hs-ink-3)}
+
+/* ── 6 · «Вечер по часам»: лента вечера с отметкой «сейчас» ── */
+.hs-now{display:flex;flex-direction:column;align-items:flex-end;gap:8px;text-align:right}
+.hs-now-t{font:700 clamp(40px,4.4vw,62px)/.85 var(--hs-nm);letter-spacing:-.03em;color:var(--hs-ink);font-variant-numeric:tabular-nums}
+.hs-now-l{font:700 12px/1 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-ink-3)}
+.hs-now-n{font:600 15px/1.3 var(--hs-tx);color:var(--hs-sig)}
+.hs-v6{margin-top:22px}
+.hs-tl{position:relative;list-style:none;margin:0;padding:0}
+.hs-tl-i,.hs-tl-now{position:relative;display:grid;grid-template-columns:120px 28px minmax(0,1fr);column-gap:22px}
+.hs-tl-i::before,.hs-tl-now::before{content:"";position:absolute;left:155px;top:0;bottom:0;width:2px;background:var(--hs-line-2)}
+.hs-tl>:first-child::before{top:36px}
+.hs-tl>:last-child::before{bottom:auto;height:36px}
+.hs-tl-t{padding:24px 0;text-align:right}
+.hs-tl-t b{display:block;font:800 32px/1 var(--hs-tx);letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:var(--hs-ink)}
+.hs-tl-d{display:block;margin-top:7px;font:700 11px/1 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-ink-3)}
+.hs-tl-d:empty{display:none}
+.hs-tl-node{position:relative;z-index:1;justify-self:center;margin-top:29px;width:16px;height:16px;border-radius:50%;background:#0a0f1d;border:2px solid var(--hs-ink-3)}
+.is-past .hs-tl-node{background:var(--hs-ink-3)}
+.is-live .hs-tl-node{background:var(--hs-live);border-color:var(--hs-live)}
+.is-next .hs-tl-node{background:var(--hs-sig);border-color:var(--hs-sig);box-shadow:0 0 0 5px rgba(255,194,26,.2)}
+.hs-tl-c{min-width:0;padding:20px 0 24px}
+.is-next .hs-tl-c{margin:10px 0;padding:22px 26px 24px;background:var(--hs-panel);border:1px solid rgba(255,255,255,.9);border-radius:var(--rc,5px)}
+.hs-tl-h{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px}
+.hs .hs-tl-n{margin:0;font-family:var(--hs-hd);font-weight:800;font-size:clamp(22px,2.3vw,32px);line-height:1.08;letter-spacing:-.03em;color:var(--hs-ink)}
+.hs-tl-v,.hs-tl-r{display:flex;align-items:flex-start;gap:9px;margin:12px 0 0;font:500 15px/1.45 var(--hs-tx);color:var(--hs-ink-2)}
+.hs-tl-v svg,.hs-tl-r svg{flex:none;width:17px;height:17px;margin-top:2px;color:var(--hs-ink-3)}
+.hs-tl-r b{font-weight:700;color:var(--hs-ink)}
+.hs-tl-a{margin-top:16px}
+.hs-tl-a:empty{display:none}
+.hs-tl-link{display:inline-flex;align-items:center;gap:6px;font:600 14.5px/1 var(--hs-tx);color:var(--hs-ink-2);text-decoration:underline;
+  text-decoration-color:rgba(195,206,240,.35);text-underline-offset:5px}
+.hs-tl-link svg{width:15px;height:15px}
+.hs-tl-link:hover{color:var(--hs-ink)}
+.hs-tl-link:focus-visible{outline:2px solid var(--hs-sky);outline-offset:3px}
+.is-past :is(.hs-tl-c,.hs-tl-t b,.hs-tl-d){opacity:.55}
+.is-past :is(.hs-tl-v,.hs-tl-r){display:none}
+.is-past .hs-tl-c{padding-bottom:18px}
+.hs-tl-now .hs-tl-t{padding:12px 0;font:700 12px/1.2 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-sig)}
+.hs-tl-now .hs-tl-node{margin-top:12px;width:12px;height:12px;border:0;border-radius:2px;background:var(--hs-sig);transform:rotate(45deg)}
+.hs-tl-now .hs-tl-c{display:flex;align-items:center;gap:12px;padding:6px 0}
+.hs-tl-line{flex:1;height:1px;background:var(--hs-sig)}
+.hs-tl-nowt{font:700 14px/1 var(--hs-nm);color:var(--hs-sig);font-variant-numeric:tabular-nums}
+
+@media (max-width:1100px){
+  .hs-mr-head,.hs-mr{grid-template-columns:110px minmax(0,1fr) minmax(0,1.1fr) 160px 18px;column-gap:18px}
+  .hs-v4{gap:36px}
+}
+@media (max-width:860px){
+  .hs-v4{grid-template-columns:minmax(0,1fr);gap:32px}
+  .hs-mr-head{display:none}
+  .hs-mr{grid-template-columns:minmax(0,1fr) 18px;grid-template-areas:"t go" "m m" "b b" "tag tag";row-gap:12px;padding-left:18px;padding-right:18px}
+  .hs-mr-t{display:flex;align-items:baseline;gap:12px}
+  .hs-mr-t .hs-rs{margin-top:0}
+  .hs-mr-t{grid-area:t}.hs-mr-m{grid-area:m}.hs-mr-bc{grid-area:b}.hs-mr-tag{grid-area:tag}.hs-mr-go{grid-area:go}
+  .hs-mr-tag.is-empty{display:none}
+  .hs-co{grid-template-columns:minmax(0,1fr);padding:20px}
+  .hs-co .hs-ctas{grid-column:1;grid-row:auto;margin-top:10px}
+}
+@media (max-width:640px){
+  .hs:is([data-hv="4"],[data-hv="5"],[data-hv="6"]) .hs-head{grid-template-columns:minmax(0,1fr);padding-bottom:18px}
+  .hs:is([data-hv="4"],[data-hv="5"],[data-hv="6"]) .hs-h1{padding:0}
+  .hs-now{align-items:flex-start;text-align:left;margin-top:14px;gap:6px}
+  .hs-sub{font-size:16px}
+  .hs-n-fig{gap:14px;margin:10px 0 18px}
+  .hs-n-big{font-size:clamp(110px,34vw,150px)}
+  .hs-n-big[data-len="m"]{font-size:clamp(84px,24vw,110px)}
+  .hs-n-big[data-len="l"]{font-size:clamp(52px,15vw,66px)}
+  .hs-n-unit{font-size:24px}
+  .hs-n-who{font-size:17px}
+  .hs-n-text{font-size:17px}
+  .hs-nl{padding:20px 18px 4px}
+  .hs-ni b{font-size:34px}
+  .hs-mr-t b{font-size:22px}
+  .hs-mr-n b{font-size:16px}
+  .hs-tl-i,.hs-tl-now{grid-template-columns:54px 20px minmax(0,1fr);column-gap:12px}
+  .hs-tl-i::before,.hs-tl-now::before{left:75px}
+  .hs-tl-t b{font-size:20px}
+  .hs-tl-t .hs-rs{white-space:normal;font-size:11px;line-height:1.3}
+  .hs-tl-d{font-size:10px}
+  .hs-tl-node{margin-top:25px;width:14px;height:14px}
+  .hs-tl-now .hs-tl-node{margin-top:12px;width:10px;height:10px}
+  .hs-tl>:first-child::before{top:30px}
+  .hs-tl>:last-child::before{height:30px}
+  .is-next .hs-tl-c{padding:18px 16px 20px}
+  .hs .hs-tl-n{font-size:21px}
+  .hs-tl-v,.hs-tl-r{font-size:14px}
+  .hs-tl-h .hs-mini{width:60px;height:36px}
+  .hs-tl-h .hs-mini img{width:36px;height:36px}
+}
+
+/* старый первый экран и бегущая строка в этом варианте не показываются; следующий блок не подтягиваем под старый экран */
+html.hs-on .hero#top,html.hs-on #ticker{display:none!important}
+html.hs-on #matches{margin-top:0!important}
+/* переключатели вариантов старого первого экрана (hero2/hero3/herovid/herobg) здесь не нужны */
+html.hs-on :is(.hv-sw,.hh-sw,.h3bar,.hb-sw){display:none!important}

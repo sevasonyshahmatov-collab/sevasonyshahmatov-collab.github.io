@@ -301,14 +301,3 @@
 html.hs-on .hero#top,html.hs-on #ticker{display:none!important}
 html.hs-on #matches{margin-top:0!important}
 html.hs-on :is(.hv-sw,.hh-sw,.h3bar,.hb-sw){display:none!important}
-
-/* ── переключатель вариантов (только в черновике) ── */
-.hs-vsw{position:fixed;left:16px;bottom:16px;z-index:70;display:flex;align-items:center;flex-wrap:wrap;gap:2px;padding:3px;border-radius:4px;
-  background:rgba(10,14,28,.94);border:1px solid rgba(255,255,255,.16);box-shadow:0 14px 30px -14px #000;font-family:var(--tx,var(--text))}
-.hs-vsw-l{padding:0 10px 0 9px;font:700 11px/1 var(--tx,var(--text));letter-spacing:.08em;text-transform:uppercase;color:#9aa9d8}
-.hs-vsw button{appearance:none;border:0;border-radius:4px;padding:9px 12px;background:transparent;color:#c3cef0;font:700 13px/1 var(--tx,var(--text));cursor:pointer;white-space:nowrap}
-.hs-vsw button:hover{color:#f2f6ff}
-.hs-vsw button[aria-pressed="true"]{background:#f2f6ff;color:#060b1a}
-.hs-vsw button:focus-visible{outline:2px solid #5ab8ff;outline-offset:1px}
-@media (max-width:860px){.hs-vsw{left:8px;right:8px;bottom:calc(70px + env(safe-area-inset-bottom));justify-content:center}}
-@media (max-width:640px){.hs-vsw-l{display:none}.hs-vsw button{padding:8px 9px;font-size:12px}}
