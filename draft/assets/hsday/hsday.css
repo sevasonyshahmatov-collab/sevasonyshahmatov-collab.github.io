@@ -1,119 +1,124 @@
-/* «Хоккей сегодня» — первый экран /hockey/ (черновик 25.11).
-   Светлая строка матчей под шапкой + первая полоса: заголовок, фото игрока, материал дня.
-   Шрифты и цвета — фирменные JARVIS (v3a.css): JV Wide / JV Display (Roboto Flex), JV Text (Golos Text), бумага, чернила, красный, синий КХЛ. */
-.hs{--hs-paper:#eceee8;--hs-paper-2:#e0e3db;--hs-strip:#f4f5f1;--hs-ink:#10161f;--hs-ink-2:#3b4552;--hs-ink-3:#5d6773;
-  --hs-acc:#c4303b;--hs-blue:#1146b8;--hs-board:#15181c;--hs-photo:#c9d3ce;--hs-line:rgba(16,22,31,.16);
-  --hs-m:48px;position:relative;z-index:2;color:var(--hs-ink);background:var(--hs-paper);font-family:var(--text);
-  -webkit-font-smoothing:antialiased;overflow-x:clip}
+/* «Хоккей сегодня» — первый экран /hockey/ (черновик 25.11, вариант 2: в стиле «Ночной арены»).
+   Фон — фон сайта (арена со свечением, без своей подложки). Шрифты — действующие на сайте (вариант 4, ty.css):
+   заголовки --hd (Montserrat), текст --tx (Inter), цифры --nm (Space Grotesk); без ty — фирменные JV Wide / JV Text.
+   Цвета — из темы: светлый текст #f2f6ff, бирюзовый акцент #22e1ff (как «КХЛ и НХЛ» в прежнем заголовке),
+   голубой раздела #5ab8ff, жёлтый #ffc21a, карточка — как табло «Прогноз дня» (тёмный градиент + бирюзовая кайма). */
+.hs{--hs-hd:var(--hd,var(--wide));--hs-tx:var(--tx,var(--text));--hs-nm:var(--nm,var(--display));
+  --hs-ink:#f2f6ff;--hs-ink-2:rgba(242,246,255,.72);--hs-ink-3:rgba(242,246,255,.5);--hs-cyan:#22e1ff;--hs-sky:#5ab8ff;--hs-sig:#ffc21a;
+  --hs-live:#ff4d5e;--hs-line:rgba(242,246,255,.14);--hs-ring:rgba(62,224,255,.28);
+  --hs-m:48px;position:relative;z-index:2;color:var(--hs-ink);font-family:var(--hs-tx);overflow-x:clip}
 .hs *{box-sizing:border-box}
 .hs a{color:inherit;text-decoration:none}
 
-/* ── строка матчей ── */
-.hs-strip{display:flex;align-items:stretch;background:var(--hs-strip);border-top:3px solid var(--hs-blue);border-bottom:1px solid var(--hs-line);min-height:118px}
-.hs-date{flex:0 0 auto;width:168px;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:12px 22px;background:var(--hs-blue);color:#fff;
-  font:700 13px/1.1 var(--display);letter-spacing:.06em;text-transform:uppercase;position:relative;z-index:2}
-.hs-date b{font:900 62px/.86 var(--wide);letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin:2px 0 4px}
-.hs-date small{font:inherit;opacity:.9}
-.hs-sc{flex:1 1 auto;display:flex;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:thin;min-width:0}
-.hs-sc::-webkit-scrollbar{height:4px}.hs-sc::-webkit-scrollbar-thumb{background:var(--hs-line)}
-.hs-m{flex:0 0 232px;display:flex;flex-direction:column;justify-content:center;gap:9px;padding:12px 18px 14px;border-right:1px solid var(--hs-line);
+/* ── строка матчей (как бегущая строка сайта: тёмное стекло) ── */
+.hs-strip{display:flex;align-items:stretch;min-height:112px;background:linear-gradient(rgba(4,5,9,.72),rgba(4,5,9,.42));
+  border-top:1px solid var(--hs-ring);border-bottom:1px solid var(--hs-line);backdrop-filter:blur(6px)}
+.hs-date{flex:0 0 auto;width:164px;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:12px 22px;position:relative;z-index:2;
+  background:linear-gradient(150deg,#1e6bff,#0b2a84);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 0 40px -6px rgba(30,107,255,.6);
+  font:700 12.5px/1.1 var(--hs-tx);letter-spacing:.07em;text-transform:uppercase}
+.hs-date b{font:var(--nm-w,800) 60px/.9 var(--hs-nm);letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin:2px 0 4px}
+.hs-date small{font:inherit;opacity:.85}
+.hs-sc{flex:1 1 auto;display:flex;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--hs-line) transparent;min-width:0}
+.hs-m{flex:0 0 228px;display:flex;flex-direction:column;justify-content:center;gap:9px;padding:12px 18px 14px;border-right:1px solid var(--hs-line);
   scroll-snap-align:start;position:relative;transition:background .2s}
-.hs-m:hover{background:#fff}
-.hs-m:focus-visible{outline:2px solid var(--hs-blue);outline-offset:-3px}
-.hs-m::after{content:"";position:absolute;left:18px;right:18px;bottom:0;height:3px;background:var(--hs-acc);transform:scaleX(0);transform-origin:left;transition:transform .25s}
-.hs-m.is-live::after,.hs-m:hover::after{transform:scaleX(1)}
-.hs-mt{display:flex;align-items:center;gap:8px;font:800 11.5px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--hs-ink)}
-.hs-mt i{width:3px;height:13px;background:var(--hs-blue)}
-.hs-m[data-lg="nhl"] .hs-mt i{background:var(--hs-ink)}
-.hs-st{margin-left:8px;font-style:normal;color:var(--hs-blue);font-variant-numeric:tabular-nums;white-space:nowrap}
-.is-live .hs-st{color:var(--hs-acc)}
+.hs-m:hover{background:rgba(62,224,255,.07)}
+.hs-m:focus-visible{outline:2px solid var(--hs-cyan);outline-offset:-3px}
+.hs-m::after{content:"";position:absolute;left:18px;right:18px;bottom:0;height:2px;background:var(--hs-cyan);transform:scaleX(0);transform-origin:left;transition:transform .25s;box-shadow:0 0 12px var(--hs-cyan)}
+.hs-m:hover::after{transform:scaleX(1)}
+.hs-m.is-live::after{transform:scaleX(1);background:var(--hs-live);box-shadow:0 0 12px var(--hs-live)}
+.hs-mt{display:flex;align-items:center;gap:8px;font:700 11px/1 var(--hs-tx);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-ink-2)}
+.hs-mt i{width:3px;height:12px;background:var(--hs-sky)}
+.hs-m[data-lg="nhl"] .hs-mt i{background:var(--hs-ink-2)}
+.hs-st{margin-left:6px;font:700 11.5px/1 var(--hs-nm);letter-spacing:.04em;font-style:normal;color:var(--hs-cyan);font-variant-numeric:tabular-nums;white-space:nowrap}
+.is-live .hs-st{color:var(--hs-live)}
 .is-final .hs-st{color:var(--hs-ink-2)}
-.hs-tm{display:flex;align-items:center;gap:10px;font:700 17px/1.15 var(--display);min-width:0}
-.hs-tm img{width:28px;height:28px;object-fit:contain;flex:0 0 auto}
+.hs-tm{display:flex;align-items:center;gap:10px;font:600 16px/1.15 var(--hs-tx);color:var(--hs-ink);min-width:0}
+.hs-tm img{width:26px;height:26px;object-fit:contain;flex:0 0 auto;filter:drop-shadow(0 2px 4px rgba(0,0,0,.45))}
 .hs-tm span{flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hs-g{flex:0 0 auto;min-width:28px;height:28px;display:grid;place-items:center;background:var(--hs-ink);color:#fff;font:800 18px/1 var(--display);font-variant-numeric:tabular-nums;padding:0 6px}
+.hs-g{flex:0 0 auto;min-width:26px;height:26px;display:grid;place-items:center;padding:0 6px;border-radius:4px;background:var(--hs-ink);color:#0b1220;
+  font:700 16px/1 var(--hs-nm);font-variant-numeric:tabular-nums}
 .hs-g:empty{display:none}
 .is-final .hs-tm.lose{color:var(--hs-ink-3)}
-.is-final .hs-tm.lose .hs-g{background:var(--hs-ink-3)}
+.is-final .hs-tm.lose .hs-g{background:rgba(242,246,255,.22);color:var(--hs-ink)}
 .hs-m .lv{display:none!important}
-.hs-none{display:flex;align-items:center;padding:0 24px;font:600 15px/1.3 var(--text);color:var(--hs-ink-2)}
+.hs-none{display:flex;align-items:center;padding:0 24px;font:500 15px/1.3 var(--hs-tx);color:var(--hs-ink-2)}
 
 /* ── первая полоса ── */
-.hs-front{padding:26px var(--hs-m) 44px;max-width:1536px;margin:0 auto}
-.hs-kick{margin:0 0 14px;font:800 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-acc)}
-.hs-kick span{margin:0 .45em;opacity:.7}
-.hs-h1{margin:0;padding:14px 0 16px;border-top:1px solid var(--hs-ink);border-bottom:1px solid var(--hs-ink);
-  font:900 clamp(40px,6.3vw,96px)/.92 var(--wide);letter-spacing:-.035em;color:var(--hs-ink)}
-.hs-spread{display:grid;grid-template-columns:minmax(0,55fr) minmax(0,45fr);gap:44px;margin-top:26px;align-items:stretch}
+.hs-front{padding:30px var(--hs-m) 52px;max-width:1440px;margin:0 auto}
+.hs-kick{margin:0 0 14px;font:700 12.5px/1 var(--hs-tx);letter-spacing:.1em;text-transform:uppercase;color:var(--hs-cyan)}
+.hs-kick span{margin:0 .5em;color:var(--hs-ink-3)}
+.hs-h1{margin:0;padding:16px 0 18px;border-top:1px solid var(--hs-line);border-bottom:1px solid var(--hs-line);
+  font-family:var(--hs-hd);font-weight:800;font-size:clamp(40px,6.2vw,88px)!important;line-height:.98;letter-spacing:-.035em;color:var(--hs-ink)}
+.hs-h1 em{font-style:normal;color:var(--hs-cyan);text-shadow:0 0 40px rgba(34,225,255,.35)}
+.hs-spread{display:grid;grid-template-columns:minmax(0,55fr) minmax(0,45fr);gap:44px;margin-top:30px;align-items:stretch}
 
-.hs-ph{position:relative;margin:0;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end}
-.hs-ph-in{position:absolute;inset:0;background:var(--hs-photo);overflow:hidden}
-.hs-ph-bg{position:absolute;right:22px;top:6px;font:900 clamp(96px,11vw,180px)/1 var(--wide);letter-spacing:-.04em;color:rgba(255,255,255,.5);pointer-events:none;user-select:none}
+/* карточка с эмблемами — как табло «Прогноз дня» */
+.hs-ph{position:relative;margin:0;min-height:410px;display:flex;flex-direction:column;justify-content:flex-end;border-radius:var(--rc,5px);
+  box-shadow:0 0 0 1px var(--hs-ring),0 0 0 6px rgba(62,224,255,.05),0 30px 90px -24px rgba(62,224,255,.35),0 40px 70px -30px #000}
+.hs-ph-in{position:absolute;inset:0;border-radius:inherit;overflow:hidden;
+  background:radial-gradient(60% 70% at 50% 42%,rgba(62,224,255,.16),transparent 70%),linear-gradient(rgb(6,17,46),rgb(3,7,15) 70%)}
+.hs-ph-bg{position:absolute;right:20px;top:10px;font:800 clamp(90px,10vw,160px)/1 var(--hs-hd);letter-spacing:-.04em;color:rgba(242,246,255,.05);pointer-events:none;user-select:none}
 /* эмблемы внахлёст, как в «Купоне»: одного размера, рядом, перекрытие ~треть; чуть выходят за верх рамки */
-.hs-pair{position:absolute;left:50%;top:calc(50% - 34px);transform:translate(-50%,-50%);width:min(86%,560px);aspect-ratio:1.62;z-index:1}
+.hs-pair{position:absolute;left:50%;top:calc(50% - 30px);transform:translate(-50%,-50%);width:min(84%,540px);aspect-ratio:1.62;z-index:1}
 .hs-cr{position:absolute;top:0;width:61.7%;height:auto;aspect-ratio:1;object-fit:contain;
-  filter:drop-shadow(0 18px 26px rgba(16,22,31,.3)) drop-shadow(0 3px 6px rgba(16,22,31,.2));pointer-events:none;animation:hs-in .6s var(--out,ease) both}
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.5)) drop-shadow(0 18px 30px rgba(0,0,0,.35));pointer-events:none;animation:hs-in .6s var(--out,ease) both}
 .hs-cr-h{left:0;z-index:2}
 .hs-cr-a{right:0;z-index:1;animation-delay:.1s}
 .hs-pair.aw .hs-cr-a{z-index:3}
 @keyframes hs-in{from{opacity:0;translate:0 18px}to{opacity:1;translate:0 0}}
-.hs-cap{position:relative;z-index:3;display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 16px;justify-content:space-between;background:var(--hs-board);color:#fff;padding:13px 20px;
-  font:700 16px/1.2 var(--display)}
-.hs-cap span{opacity:.6;margin:0 .4em}
-.hs-cap small{font:500 13.5px/1.2 var(--text);color:rgba(255,255,255,.72)}
+.hs-cap{position:relative;z-index:3;display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 16px;justify-content:space-between;padding:13px 20px;
+  background:rgba(3,7,15,.78);border-top:1px solid var(--hs-line);border-radius:0 0 var(--rc,5px) var(--rc,5px);font:700 15.5px/1.2 var(--hs-tx)}
+.hs-cap span{color:var(--hs-ink-3);margin:0 .4em}
+.hs-cap small{font:600 13px/1.2 var(--hs-nm);letter-spacing:.03em;color:var(--hs-cyan)}
 
 .hs-story{display:flex;flex-direction:column;justify-content:center;padding:8px 0 12px}
-.hs-rub{margin:0 0 18px;font:800 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--hs-acc)}
-.hs-rub span{margin:0 .45em;opacity:.7}
-.hs-tt{margin:0 0 20px;font:900 clamp(30px,4.1vw,60px)/.98 var(--wide);letter-spacing:-.03em;color:var(--hs-ink);overflow-wrap:anywhere;hyphens:auto}
+.hs-rub{margin:0 0 18px;font:700 12.5px/1 var(--hs-tx);letter-spacing:.1em;text-transform:uppercase;color:var(--hs-sig)}
+.hs-rub span{margin:0 .5em;color:var(--hs-ink-3)}
+.hs-tt{margin:0 0 20px;font-family:var(--hs-hd);font-weight:800;font-size:clamp(30px,3.9vw,56px)!important;line-height:1.02;letter-spacing:-.03em;color:var(--hs-ink);overflow-wrap:anywhere;hyphens:auto}
 .hs-tt span{display:block}
-.hs-lead{margin:0 0 28px;max-width:34em;font:400 17.5px/1.55 var(--text);color:var(--hs-ink-2)}
+.hs-lead{margin:0 0 28px;max-width:34em;font:400 17px/1.6 var(--hs-tx);color:var(--hs-ink-2)}
 .hs-lead b{font-weight:600;color:var(--hs-ink)}
-.hs-btn{align-self:flex-start;display:inline-flex;align-items:center;gap:14px;background:var(--hs-ink);color:#fff!important;padding:17px 26px;border-radius:var(--rp,4px);
-  font:700 17px/1 var(--display);letter-spacing:.01em;transition:background .2s,transform .2s}
+.hs-btn{align-self:flex-start;display:inline-flex;align-items:center;gap:14px;padding:16px 24px;border-radius:var(--rp,5px);background:var(--hs-sig);color:#1a1400!important;
+  font:700 16.5px/1 var(--hs-tx);box-shadow:0 10px 30px -10px rgba(255,194,26,.55);transition:filter .2s,transform .2s}
 .hs-btn svg{width:18px;height:18px;transition:transform .2s}
-.hs-btn:hover{background:var(--hs-acc)}
+.hs-btn:hover{filter:brightness(1.08)}
 .hs-btn:hover svg{transform:translateX(4px)}
-.hs-btn:focus-visible{outline:3px solid var(--hs-blue);outline-offset:3px}
-.hs-sk{display:block;height:1em;background:var(--hs-paper-2);border-radius:3px}
+.hs-btn:focus-visible{outline:3px solid var(--hs-cyan);outline-offset:3px}
+.hs-sk{display:block;height:1em;background:rgba(242,246,255,.08);border-radius:3px}
 
-/* старый первый экран и бегущая строка в этом варианте не показываются */
+/* старый первый экран и бегущая строка в этом варианте не показываются; следующий блок не подтягиваем под старый экран */
 html.hs-on .hero#top,html.hs-on #ticker{display:none!important}
-/* фон «Ночной арены» (data-bg=n) обнуляет фон у всех section — у первой полосы он свой; следующий блок больше не подтягиваем под старый экран */
-html #hsday.hs{background:var(--hs-paper)!important}
 html.hs-on #matches{margin-top:0!important}
 
 /* ── планшет ── */
-@media (max-width:1100px){.hs{--hs-m:28px}.hs-spread{gap:32px}.hs-ph{min-height:380px}}
+@media (max-width:1100px){.hs{--hs-m:28px}.hs-spread{gap:32px}.hs-ph{min-height:370px}}
 @media (max-width:860px){
   .hs-spread{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
   .hs-ph{min-height:320px}
-  .hs-tt{font-size:clamp(28px,4.6vw,40px)}
-  .hs-lead{font-size:16px}
+  .hs-tt{font-size:clamp(28px,4.6vw,40px)!important}
+  .hs-lead{font-size:15.5px}
 }
-/* ── телефон: заголовок → матч и анонс → кнопка → фото ── */
+/* ── телефон: заголовок → матч и анонс → кнопка → эмблемы ── */
 @media (max-width:640px){
   .hs{--hs-m:16px}
-  .hs-strip{min-height:104px}
-  .hs-date{width:96px;padding:10px 12px;font-size:10.5px;letter-spacing:.03em}
-  .hs-date b{font-size:44px}
-  .hs-m{flex-basis:196px;padding:10px 14px 12px;gap:7px}
-  .hs-tm{font-size:15px;gap:8px}.hs-tm img{width:24px;height:24px}.hs-g{min-width:24px;height:24px;font-size:15px}
-  .hs-front{padding:18px var(--hs-m) 32px}
-  .hs-kick{font-size:12px;margin-bottom:10px}
-  .hs-h1{font-size:clamp(38px,11.6vw,48px);padding:10px 0 12px}
-  .hs-spread{display:flex;flex-direction:column;gap:22px;margin-top:20px}
+  .hs-strip{min-height:100px}
+  .hs-date{width:96px;padding:10px 12px;font-size:10.5px;letter-spacing:.04em}
+  .hs-date b{font-size:42px}
+  .hs-m{flex-basis:192px;padding:10px 14px 12px;gap:7px}
+  .hs-tm{font-size:14.5px;gap:8px}.hs-tm img{width:22px;height:22px}.hs-g{min-width:22px;height:22px;font-size:14px}
+  .hs-front{padding:20px var(--hs-m) 34px}
+  .hs-kick{font-size:11.5px;margin-bottom:10px}
+  .hs-h1{font-size:clamp(38px,11.6vw,46px)!important;padding:10px 0 12px}
+  .hs-spread{display:flex;flex-direction:column;gap:24px;margin-top:20px}
   .hs-story{order:1;padding:0}
-  .hs-ph{order:2;min-height:0;aspect-ratio:4/3.6}
-  .hs-rub{margin-bottom:12px;font-size:12px}
-  .hs-tt{font-size:clamp(30px,8.6vw,36px);margin-bottom:12px}
-  .hs-lead{font-size:16px;margin-bottom:20px}
+  .hs-ph{order:2;min-height:0;aspect-ratio:4/3.5;margin-top:12px}
+  .hs-rub{margin-bottom:12px;font-size:11.5px}
+  .hs-tt{font-size:clamp(30px,8.4vw,36px)!important;margin-bottom:12px}
+  .hs-lead{font-size:15.5px;margin-bottom:20px}
   .hs-btn{align-self:stretch;justify-content:space-between;padding:16px 20px}
-  /* своё кадрирование: крупнее и ближе к лицу */
-  /* своё кадрирование для узкого экрана: эмблемы крупнее, выход за рамку меньше (поле 16 px) */
-  .hs-ph{margin-top:14px}
-  .hs-pair{width:96%;top:calc(50% - 26px)}
-  .hs-ph-bg{font-size:96px;right:14px}
-  .hs-cap{padding:11px 14px;font-size:14.5px}
+  /* своё кадрирование для узкого экрана: эмблемы крупнее */
+  .hs-pair{width:94%;top:calc(50% - 24px)}
+  .hs-ph-bg{font-size:84px;right:12px}
+  .hs-cap{padding:11px 14px;font-size:14px}
 }
 @media (prefers-reduced-motion:reduce){.hs *{transition:none!important;animation:none!important}}

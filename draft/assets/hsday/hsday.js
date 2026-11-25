@@ -217,7 +217,7 @@ async function render() {
   dt.append(el('span', '', msk(dms, {weekday: 'long'})), el('b', '', msk(dms, {day: 'numeric'})), el('small', '', msk(dms, {day: 'numeric', month: 'long'}).replace(/^\d+\s*/, '') + ' / МСК'));
   const kick = root.querySelector('.hs-kick'); kick.textContent = '';
   kick.append(document.createTextNode('Хоккей'), el('span', '', '/'), document.createTextNode(msk(dms, {weekday: 'long'}) + ', ' + msk(dms, {day: 'numeric', month: 'long'})));
-  if (day !== ymd(Date.now())) root.querySelector('.hs-h1').textContent = 'Хоккей ' + (day > ymd(Date.now()) ? 'завтра' : 'вчера');
+  if (day !== ymd(Date.now())) { const h = root.querySelector('.hs-h1'); h.textContent = 'Хоккей '; h.append(el('em', '', day > ymd(Date.now()) ? 'завтра' : 'вчера')); }
 
   /* строка */
   const sc = root.querySelector('.hs-sc'); sc.textContent = '';
