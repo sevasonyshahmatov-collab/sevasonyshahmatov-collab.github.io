@@ -1,5 +1,5 @@
 {
- "at": "2026-11-05 05:55 UTC",
+ "at": "2026-11-25 19:15 UTC",
  "origin": "https://raw.githack.com",
  "items": [
   {
@@ -7,11 +7,11 @@
    "name": "ESPN scoreboard",
    "url": "https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard",
    "code": 200,
-   "ms": 102,
-   "bytes": 95995,
+   "ms": 99,
+   "bytes": 289058,
    "acao": "*",
    "vary": "Accept-Encoding",
-   "cache": "max-age=2",
+   "cache": "max-age=9",
    "ctype": "application/json;charset=UTF-8",
    "preflight": {
     "code": 403,
@@ -21,55 +21,55 @@
    },
    "cors_simple_get": true,
    "fields": {
-    "events": 4,
+    "events": 14,
     "sample": [
      {
-      "id": "401892644",
-      "date": "2026-11-05T00:30Z",
+      "id": "401892781",
+      "date": "2026-11-26T00:00Z",
+      "teams": [
+       "BOS",
+       "WPG"
+      ],
+      "score": [
+       "0",
+       "0"
+      ],
+      "period": 0,
+      "clock": "0:00",
+      "state": "pre",
+      "detail": "11/25 - 7:00 PM EST"
+     },
+     {
+      "id": "401892782",
+      "date": "2026-11-26T00:00Z",
       "teams": [
        "BUF",
-       "OTT"
+       "NYR"
       ],
       "score": [
-       "1",
-       "2"
+       "0",
+       "0"
       ],
-      "period": 3,
+      "period": 0,
       "clock": "0:00",
-      "state": "post",
-      "detail": "Final"
+      "state": "pre",
+      "detail": "11/25 - 7:00 PM EST"
      },
      {
-      "id": "401892645",
-      "date": "2026-11-05T00:30Z",
+      "id": "401892783",
+      "date": "2026-11-26T00:00Z",
       "teams": [
-       "FLA",
-       "CHI"
+       "TB",
+       "CAR"
       ],
       "score": [
-       "5",
-       "3"
+       "0",
+       "0"
       ],
-      "period": 3,
+      "period": 0,
       "clock": "0:00",
-      "state": "post",
-      "detail": "Final"
-     },
-     {
-      "id": "401892646",
-      "date": "2026-11-05T03:00Z",
-      "teams": [
-       "LA",
-       "SJ"
-      ],
-      "score": [
-       "7",
-       "2"
-      ],
-      "period": 3,
-      "clock": "0:00",
-      "state": "post",
-      "detail": "Final"
+      "state": "pre",
+      "detail": "11/25 - 7:00 PM EST"
      }
     ]
    }
@@ -79,11 +79,11 @@
    "name": "ESPN scoreboard",
    "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard",
    "code": 200,
-   "ms": 51,
-   "bytes": 15386,
+   "ms": 102,
+   "bytes": 15531,
    "acao": "*",
    "vary": "Accept-Encoding",
-   "cache": "max-age=1",
+   "cache": "max-age=9",
    "ctype": "application/json;charset=UTF-8",
    "preflight": {
     "code": 403,
@@ -96,11 +96,11 @@
     "events": 1,
     "sample": [
      {
-      "id": "401879242",
-      "date": "2026-11-06T20:00Z",
+      "id": "401879225",
+      "date": "2026-11-27T20:00Z",
       "teams": [
-       "EVE",
-       "COV"
+       "NFO",
+       "CHE"
       ],
       "score": [
        "0",
@@ -119,11 +119,11 @@
    "name": "ESPN scoreboard",
    "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/scoreboard",
    "code": 200,
-   "ms": 54,
-   "bytes": 15402,
+   "ms": 47,
+   "bytes": 15717,
    "acao": "*",
    "vary": "Accept-Encoding",
-   "cache": "max-age=3",
+   "cache": "max-age=1",
    "ctype": "application/json;charset=UTF-8",
    "preflight": {
     "code": 403,
@@ -136,11 +136,11 @@
     "events": 1,
     "sample": [
      {
-      "id": "401882809",
-      "date": "2026-11-06T20:00Z",
+      "id": "401882791",
+      "date": "2026-11-27T20:00Z",
       "teams": [
-       "SEV",
-       "ALA"
+       "LEV",
+       "RAC"
       ],
       "score": [
        "0",
@@ -159,8 +159,8 @@
    "name": "ESPN scoreboard",
    "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/scoreboard",
    "code": 200,
-   "ms": 86,
-   "bytes": 15158,
+   "ms": 45,
+   "bytes": 15182,
    "acao": "*",
    "vary": "Accept-Encoding",
    "cache": "max-age=4",
@@ -176,11 +176,11 @@
     "events": 1,
     "sample": [
      {
-      "id": "401874815",
-      "date": "2026-11-06T19:45Z",
+      "id": "401875004",
+      "date": "2026-11-27T19:45Z",
       "teams": [
        "VEN",
-       "UDI"
+       "BOL"
       ],
       "score": [
        "0",
@@ -199,11 +199,11 @@
    "name": "ESPN scoreboard",
    "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/scoreboard",
    "code": 200,
-   "ms": 53,
-   "bytes": 11404,
+   "ms": 66,
+   "bytes": 15071,
    "acao": "*",
    "vary": "Accept-Encoding",
-   "cache": "max-age=3",
+   "cache": "max-age=8",
    "ctype": "application/json;charset=UTF-8",
    "preflight": {
     "code": 403,
@@ -216,10 +216,10 @@
     "events": 1,
     "sample": [
      {
-      "id": "401884739",
-      "date": "2026-11-06T19:30Z",
+      "id": "401884720",
+      "date": "2026-11-27T19:30Z",
       "teams": [
-       "HSV",
+       "SVW",
        "BMG"
       ],
       "score": [
@@ -239,11 +239,11 @@
    "name": "ESPN scoreboard",
    "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/scoreboard",
    "code": 200,
-   "ms": 60,
-   "bytes": 14889,
+   "ms": 51,
+   "bytes": 14848,
    "acao": "*",
    "vary": "Accept-Encoding",
-   "cache": "max-age=8",
+   "cache": "max-age=6",
    "ctype": "application/json;charset=UTF-8",
    "preflight": {
     "code": 403,
@@ -256,11 +256,11 @@
     "events": 1,
     "sample": [
      {
-      "id": "401876405",
-      "date": "2026-11-06T19:45Z",
+      "id": "401876392",
+      "date": "2026-11-27T19:45Z",
       "teams": [
-       "TOU",
-       "STR"
+       "BRE",
+       "PAR"
       ],
       "score": [
        "0",
@@ -279,11 +279,11 @@
    "name": "ESPN scoreboard",
    "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/rus.1/scoreboard",
    "code": 200,
-   "ms": 130,
-   "bytes": 9472,
+   "ms": 133,
+   "bytes": 24037,
    "acao": "*",
    "vary": "Accept-Encoding",
-   "cache": "max-age=1",
+   "cache": "max-age=3",
    "ctype": "application/json;charset=UTF-8",
    "preflight": {
     "code": 403,
@@ -293,14 +293,46 @@
    },
    "cors_simple_get": true,
    "fields": {
-    "events": 1,
+    "events": 3,
     "sample": [
      {
-      "id": "401879812",
-      "date": "2026-11-06T16:30Z",
+      "id": "401879793",
+      "date": "2026-11-28T11:00Z",
       "teams": [
-       "LMO",
-       "RUB"
+       "RUB",
+       "AKT"
+      ],
+      "score": [
+       "0",
+       "0"
+      ],
+      "period": null,
+      "clock": "0'",
+      "state": "pre",
+      "detail": "Scheduled"
+     },
+     {
+      "id": "401879794",
+      "date": "2026-11-28T13:30Z",
+      "teams": [
+       "CSK",
+       "ZEN"
+      ],
+      "score": [
+       "0",
+       "0"
+      ],
+      "period": null,
+      "clock": "0'",
+      "state": "pre",
+      "detail": "Scheduled"
+     },
+     {
+      "id": "401879797",
+      "date": "2026-11-28T16:00Z",
+      "teams": [
+       "BAL",
+       "GRZ"
       ],
       "score": [
        "0",
@@ -319,11 +351,11 @@
    "name": "ESPN scoreboard",
    "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/scoreboard",
    "code": 200,
-   "ms": 48,
-   "bytes": 111862,
+   "ms": 38,
+   "bytes": 124991,
    "acao": "*",
    "vary": "Accept-Encoding",
-   "cache": "max-age=8",
+   "cache": "max-age=1",
    "ctype": "application/json;charset=UTF-8",
    "preflight": {
     "code": 403,
@@ -336,52 +368,52 @@
     "events": 9,
     "sample": [
      {
-      "id": "401915383",
-      "date": "2026-11-04T17:45Z",
+      "id": "401915378",
+      "date": "2026-11-25T17:45Z",
       "teams": [
-       "AEK",
-       "RMA"
+       "SAB",
+       "BAR"
       ],
       "score": [
-       "2",
-       "3"
+       "1",
+       "4"
       ],
       "period": 2,
-      "clock": "90'+4'",
-      "state": "post",
-      "detail": "FT"
+      "clock": "73'",
+      "state": "in",
+      "detail": "73'"
      },
      {
-      "id": "401915382",
-      "date": "2026-11-04T17:45Z",
+      "id": "401915293",
+      "date": "2026-11-25T17:45Z",
       "teams": [
-       "FEN",
-       "LIV"
+       "SLP",
+       "VIL"
       ],
       "score": [
-       "3",
-       "2"
-      ],
-      "period": 2,
-      "clock": "90'+3'",
-      "state": "post",
-      "detail": "FT"
-     },
-     {
-      "id": "401915304",
-      "date": "2026-11-04T20:00Z",
-      "teams": [
-       "DOR",
-       "BET"
-      ],
-      "score": [
-       "2",
+       "0",
        "1"
       ],
       "period": 2,
-      "clock": "90'+4'",
-      "state": "post",
-      "detail": "FT"
+      "clock": "71'",
+      "state": "in",
+      "detail": "71'"
+     },
+     {
+      "id": "401915291",
+      "date": "2026-11-25T20:00Z",
+      "teams": [
+       "ATM",
+       "VFK"
+      ],
+      "score": [
+       "0",
+       "0"
+      ],
+      "period": null,
+      "clock": "0'",
+      "state": "pre",
+      "detail": "Scheduled"
      }
     ]
    }
@@ -391,11 +423,11 @@
    "name": "ESPN scoreboard",
    "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/scoreboard",
    "code": 200,
-   "ms": 56,
-   "bytes": 9572,
+   "ms": 49,
+   "bytes": 220908,
    "acao": "*",
    "vary": "Accept-Encoding",
-   "cache": "max-age=5",
+   "cache": "max-age=10",
    "ctype": "application/json;charset=UTF-8",
    "preflight": {
     "code": 403,
@@ -405,23 +437,55 @@
    },
    "cors_simple_get": true,
    "fields": {
-    "events": 1,
+    "events": 18,
     "sample": [
      {
-      "id": "401915551",
-      "date": "2026-11-04T15:30Z",
+      "id": "401915506",
+      "date": "2026-11-26T17:45Z",
       "teams": [
-       "REN",
-       "OLY"
+       "BES",
+       "HBE"
       ],
       "score": [
        "0",
        "0"
       ],
-      "period": 2,
-      "clock": "90'+4'",
-      "state": "post",
-      "detail": "FT"
+      "period": null,
+      "clock": "0'",
+      "state": "pre",
+      "detail": "Scheduled"
+     },
+     {
+      "id": "401915519",
+      "date": "2026-11-26T17:45Z",
+      "teams": [
+       "CEL",
+       "BOU"
+      ],
+      "score": [
+       "0",
+       "0"
+      ],
+      "period": null,
+      "clock": "0'",
+      "state": "pre",
+      "detail": "Scheduled"
+     },
+     {
+      "id": "401915517",
+      "date": "2026-11-26T17:45Z",
+      "teams": [
+       "DZG",
+       "B04"
+      ],
+      "score": [
+       "0",
+       "0"
+      ],
+      "period": null,
+      "clock": "0'",
+      "state": "pre",
+      "detail": "Scheduled"
      }
     ]
    }
@@ -431,11 +495,11 @@
    "name": "api-web score/now",
    "url": "https://api-web.nhle.com/v1/score/now",
    "code": 200,
-   "ms": 277,
-   "bytes": 29077,
+   "ms": 373,
+   "bytes": 47260,
    "acao": null,
    "vary": "Accept-Encoding",
-   "cache": "no-transform, max-age=14, s-maxage=14",
+   "cache": "no-transform, max-age=9, s-maxage=9",
    "ctype": "application/json",
    "preflight": {
     "code": 200,
@@ -445,61 +509,46 @@
    },
    "cors_simple_get": false,
    "fields": {
-    "games": 4,
+    "games": 14,
     "sample": [
      {
-      "id": 2026020247,
-      "start": "2026-11-05T00:30:00Z",
-      "state": "OFF",
+      "id": 2026020386,
+      "start": "2026-11-26T00:00:00Z",
+      "state": "FUT",
+      "home": "BOS",
+      "away": "WPG",
+      "score": [
+       null,
+       null
+      ],
+      "period": null,
+      "clock": null
+     },
+     {
+      "id": 2026020387,
+      "start": "2026-11-26T00:00:00Z",
+      "state": "FUT",
       "home": "BUF",
-      "away": "OTT",
+      "away": "NYR",
       "score": [
-       1,
-       2
+       null,
+       null
       ],
-      "period": 3,
-      "clock": {
-       "timeRemaining": "00:00",
-       "secondsRemaining": 0,
-       "running": false,
-       "inIntermission": false
-      }
+      "period": null,
+      "clock": null
      },
      {
-      "id": 2026020248,
-      "start": "2026-11-05T00:30:00Z",
-      "state": "OFF",
-      "home": "FLA",
-      "away": "CHI",
+      "id": 2026020388,
+      "start": "2026-11-26T00:00:00Z",
+      "state": "FUT",
+      "home": "TBL",
+      "away": "CAR",
       "score": [
-       5,
-       3
+       null,
+       null
       ],
-      "period": 3,
-      "clock": {
-       "timeRemaining": "00:00",
-       "secondsRemaining": 0,
-       "running": false,
-       "inIntermission": false
-      }
-     },
-     {
-      "id": 2026020249,
-      "start": "2026-11-05T03:00:00Z",
-      "state": "FINAL",
-      "home": "LAK",
-      "away": "SJS",
-      "score": [
-       7,
-       2
-      ],
-      "period": 3,
-      "clock": {
-       "timeRemaining": "00:00",
-       "secondsRemaining": 0,
-       "running": false,
-       "inIntermission": false
-      }
+      "period": null,
+      "clock": null
      }
     ]
    }
@@ -507,13 +556,13 @@
   {
    "league": "НХЛ",
    "name": "api-web gamecenter landing",
-   "url": "https://api-web.nhle.com/v1/gamecenter/2026020247/landing",
+   "url": "https://api-web.nhle.com/v1/gamecenter/2026020386/landing",
    "code": 200,
-   "ms": 411,
-   "bytes": 7510,
+   "ms": 394,
+   "bytes": 22160,
    "acao": null,
    "vary": "Accept-Encoding",
-   "cache": "no-transform, max-age=13, s-maxage=13",
+   "cache": "no-transform, max-age=9, s-maxage=9",
    "ctype": "application/json",
    "preflight": {
     "code": 200,
@@ -523,17 +572,12 @@
    },
    "cors_simple_get": false,
    "fields": {
-    "id": 2026020247,
-    "state": "OFF",
-    "period": 3,
-    "clock": {
-     "timeRemaining": "00:00",
-     "secondsRemaining": 0,
-     "running": false,
-     "inIntermission": false
-    },
-    "home": 1,
-    "away": 2
+    "id": 2026020386,
+    "state": "FUT",
+    "period": null,
+    "clock": null,
+    "home": null,
+    "away": null
    }
   },
   {
@@ -541,11 +585,11 @@
    "name": "api-web schedule/now",
    "url": "https://api-web.nhle.com/v1/schedule/now",
    "code": 200,
-   "ms": 322,
-   "bytes": 89624,
+   "ms": 467,
+   "bytes": 120781,
    "acao": null,
    "vary": "Accept-Encoding",
-   "cache": "no-transform, max-age=12, s-maxage=12",
+   "cache": "no-transform, max-age=3, s-maxage=3",
    "ctype": "application/json",
    "preflight": {
     "code": 200,
@@ -572,11 +616,11 @@
    "name": "api.nhle.com stats team summary",
    "url": "https://api.nhle.com/stats/rest/en/team/summary?limit=2&cayenneExp=seasonId=20262027%20and%20gameTypeId=2",
    "code": 200,
-   "ms": 121,
-   "bytes": 1063,
+   "ms": 184,
+   "bytes": 1068,
    "acao": null,
    "vary": "Accept-Encoding, Origin",
-   "cache": null,
+   "cache": "no-transform, max-age=60, s-maxage=300, stale-while-revalidate=60, stale-if-error=600",
    "ctype": "application/json",
    "preflight": {
     "code": 200,
@@ -597,7 +641,7 @@
    "name": "khl.api.webcaster.pro data.json",
    "url": "https://khl.api.webcaster.pro/api/khl_mobile/data.json",
    "code": 403,
-   "ms": 1386,
+   "ms": 262,
    "bytes": 1,
    "acao": null,
    "vary": "Accept-Encoding",
@@ -617,9 +661,9 @@
   {
    "league": "КХЛ",
    "name": "khl.api.webcaster.pro events_v2",
-   "url": "https://khl.api.webcaster.pro/api/khl_mobile/events_v2.json?order_direction=asc&page=1&q%5Bstart_at_gt_time_from_unixtime%5D=1793771743&q%5Bstart_at_lt_time_from_unixtime%5D=1794030943&stage_id=None",
+   "url": "https://khl.api.webcaster.pro/api/khl_mobile/events_v2.json?order_direction=asc&page=1&q%5Bstart_at_gt_time_from_unixtime%5D=1795547708&q%5Bstart_at_lt_time_from_unixtime%5D=1795806908&stage_id=None",
    "code": 200,
-   "ms": 787,
+   "ms": 198,
    "bytes": 170,
    "acao": "https://raw.githack.com",
    "vary": "Accept-Encoding, Accept-Encoding",
@@ -642,8 +686,8 @@
    "name": "khl.ru (сайт)",
    "url": "https://www.khl.ru/calendar/",
    "code": 200,
-   "ms": 1127,
-   "bytes": 97506,
+   "ms": 271,
+   "bytes": 97826,
    "acao": null,
    "vary": "Accept-Encoding",
    "cache": "no-store, no-cache, must-revalidate",
@@ -663,14 +707,14 @@
    "variant": "UA Mozilla/5.0 без Origin",
    "code": 200,
    "acao": "*",
-   "bytes": 29947,
+   "bytes": 29944,
    "head": "{\"safe_live_shift\":0,\"stages_v2\":[{\"id\":407,\"khl_id\":1436,\"title\":\"Регулярный чемпионат\",\"type\":\"regular\",\"season\":\"2026"
   },
   {
    "variant": "UA Chrome без Origin",
    "code": 200,
    "acao": "*",
-   "bytes": 29947,
+   "bytes": 29944,
    "head": "{\"safe_live_shift\":0,\"stages_v2\":[{\"id\":407,\"khl_id\":1436,\"title\":\"Регулярный чемпионат\",\"type\":\"regular\",\"season\":\"2026"
   },
   {
@@ -701,23 +745,23 @@
    "origin": false,
    "code": 200,
    "acao": "*",
-   "ms": 1117,
-   "n": 15
+   "ms": 678,
+   "n": 12
   },
   {
    "what": "events_v2",
    "origin": true,
    "code": 200,
    "acao": "https://raw.githack.com",
-   "ms": 763,
-   "n": 15
+   "ms": 240,
+   "n": 12
   },
   {
    "what": "event_v2",
    "origin": false,
    "code": 200,
    "acao": "*",
-   "ms": 1041,
+   "ms": 330,
    "keys": [
     "announce",
     "arena",
@@ -786,28 +830,28 @@
     "yandex_rights"
    ],
    "state": "finished",
-   "score": "4:0"
+   "score": "2:1"
   },
   {
    "what": "event_v2",
    "origin": true,
    "code": 403,
    "acao": null,
-   "ms": 758,
+   "ms": 220,
    "keys": null,
    "state": null,
    "score": null
   }
  ],
  "khl_sample_event": {
-  "id": 3001043,
-  "start_at": 1793775600000,
+  "id": 3001367,
+  "start_at": 1795615200000,
   "game_state_key": "finished",
-  "score": "4:0",
+  "score": "2:1",
   "scores": {
-   "first_period": "1:0",
-   "second_period": "2:0",
-   "third_period": "1:0",
+   "first_period": "0:0",
+   "second_period": "2:1",
+   "third_period": "0:0",
    "overtime": null,
    "bullitt": null
   },
