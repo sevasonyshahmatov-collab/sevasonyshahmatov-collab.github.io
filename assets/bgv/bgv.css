@@ -125,3 +125,71 @@ html.lite[data-bgv] .bgv-art *{animation:none!important}
 html[data-bgv="9"] .bgv-art i:nth-child(1){opacity:.5}
 html[data-bgv="9"] .bgv-art i:nth-child(2){opacity:.4}
 html[data-bgv="10"] .bgv-art i{filter:blur(10px)}
+
+/* ═════ 26.11, третья волна (владелец: «ещё 8 вариантов») ═════ */
+/* 11 · «Вспышки камер»: тёмная арена, на трибунах вспыхивают фотокамеры */
+html[data-bgv="11"] body,html[data-bgv="11"][data-theme] body{background:#04060d!important}
+html[data-bgv="11"] body::before{background:radial-gradient(90% 45% at 50% 0%,rgba(90,140,255,.22),transparent 70%),linear-gradient(transparent 55%,rgba(20,30,60,.5))!important}
+html[data-bgv="11"] .bgv-art i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 6px 2px #fff,0 0 22px 6px rgba(180,210,255,.7);opacity:0;animation:bgvFlash 4s linear infinite}
+@keyframes bgvFlash{0%,92%,100%{opacity:0;transform:scale(.4)}94%{opacity:1;transform:scale(1.4)}97%{opacity:.2}}
+
+/* 12 · «Лазерное шоу»: цветные лучи из-под нижнего края медленно ходят веером */
+html[data-bgv="12"] body,html[data-bgv="12"][data-theme] body,html[data-bgv="12"] body::before{background:#05030f!important}
+html[data-bgv="12"] .bgv-art i{position:absolute;left:50%;bottom:-10vh;width:3px;height:150vh;margin-left:-1.5px;transform-origin:50% 100%;border-radius:3px;opacity:.55;
+  animation:bgvLaser ease-in-out infinite alternate}
+@keyframes bgvLaser{from{transform:rotate(var(--a0))}to{transform:rotate(var(--a1))}}
+
+/* 13 · «Голограмма»: светящиеся соты и бегущая сверху вниз полоса сканера */
+html[data-bgv="13"] body,html[data-bgv="13"][data-theme] body,html[data-bgv="13"] body::before{background:#030b14!important}
+html[data-bgv="13"] .bgv-art{color:#2fd8ff;opacity:.5}
+html[data-bgv="13"][data-sport="football"] .bgv-art{color:#3df5a6}
+html[data-bgv="13"] .bgv-art svg{opacity:.35}
+html[data-bgv="13"] .bgv-art b{position:absolute;left:0;right:0;height:22vh;background:linear-gradient(transparent,currentColor 92%,transparent);opacity:.22;animation:bgvScan 7s linear infinite}
+@keyframes bgvScan{from{transform:translateY(-25vh)}to{transform:translateY(110vh)}}
+
+/* 14 · «Дым и свет»: красный и синий дым шоу перед матчем медленно клубится */
+html[data-bgv="14"] body,html[data-bgv="14"][data-theme] body,html[data-bgv="14"] body::before{background:#05050a!important}
+html[data-bgv="14"] .bgv-art i{position:absolute;border-radius:50%;filter:blur(70px);mix-blend-mode:screen;animation:bgvSmoke ease-in-out infinite alternate}
+@keyframes bgvSmoke{0%{transform:translate3d(0,0,0) scale(1) rotate(0)}100%{transform:translate3d(var(--dx),var(--dy),0) scale(1.35) rotate(25deg)}}
+
+/* 15 · «Шайбы» (у футбола — «Мячи»): силуэты плавают в глубине */
+html[data-bgv="15"] body,html[data-bgv="15"][data-theme] body{background:#060c1c!important}
+html[data-bgv="15"] body::before{background:radial-gradient(70% 60% at 50% 30%,rgba(40,80,180,.25),transparent 70%),#060c1c!important}
+html[data-bgv="15"] .bgv-art span{position:absolute;color:#8fb4ff;animation:bgvFloat ease-in-out infinite alternate}
+html[data-bgv="15"][data-sport="football"] .bgv-art span{color:#8ff0c4}
+html[data-bgv="15"] .bgv-art span svg{position:static;width:100%;height:100%}
+@keyframes bgvFloat{from{transform:translate3d(0,0,0) rotate(0)}to{transform:translate3d(var(--dx),var(--dy),0) rotate(var(--r))}}
+
+/* 16 · «Светодиодное табло»: точки как на табло арены, по ним идёт волна света */
+html[data-bgv="16"] body,html[data-bgv="16"][data-theme] body,html[data-bgv="16"] body::before{background:#040508!important}
+html[data-bgv="16"] .bgv-art{background-image:radial-gradient(circle,rgba(255,190,60,.16) 1.6px,transparent 2.2px);background-size:12px 12px}
+html[data-bgv="16"] .bgv-art b{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,200,80,.95) 1.6px,transparent 2.4px);background-size:12px 12px;
+  -webkit-mask-image:linear-gradient(100deg,transparent 35%,#000 50%,transparent 65%);mask-image:linear-gradient(100deg,transparent 35%,#000 50%,transparent 65%);
+  -webkit-mask-size:300% 100%;mask-size:300% 100%;animation:bgvLed 6s linear infinite;opacity:.45}
+html[data-bgv="16"][data-sport="football"] .bgv-art{background-image:radial-gradient(circle,rgba(80,255,170,.14) 1.6px,transparent 2.2px)}
+html[data-bgv="16"][data-sport="football"] .bgv-art b{background-image:radial-gradient(circle,rgba(90,255,180,.95) 1.6px,transparent 2.4px)}
+@keyframes bgvLed{from{-webkit-mask-position:100% 0;mask-position:100% 0}to{-webkit-mask-position:-100% 0;mask-position:-100% 0}}
+
+/* 17 · «Иней»: морозный узор льда и редкие искры */
+html[data-bgv="17"] body,html[data-bgv="17"][data-theme] body{background:#06111f!important}
+html[data-bgv="17"] body::before{background:radial-gradient(80% 60% at 20% 0%,rgba(120,190,255,.22),transparent 70%),radial-gradient(70% 50% at 100% 100%,rgba(120,220,255,.14),transparent 70%),#06111f!important}
+html[data-bgv="17"] .bgv-art svg{opacity:.5;mix-blend-mode:screen}
+html[data-bgv="17"] .bgv-art i{position:absolute;width:2px;height:2px;border-radius:50%;background:#e8f6ff;box-shadow:0 0 6px 1px #bfe6ff;opacity:0;animation:bgvSpark 5s ease-in-out infinite}
+@keyframes bgvSpark{0%,100%{opacity:0}50%{opacity:.9}}
+
+/* 18 · «Пульс»: от центра расходятся кольца, как волны от удара */
+html[data-bgv="18"] body,html[data-bgv="18"][data-theme] body{background:#050817!important}
+html[data-bgv="18"] body::before{background:radial-gradient(50% 50% at 50% 55%,rgba(30,70,200,.25),transparent 70%),#050817!important}
+html[data-bgv="18"] .bgv-art i{position:absolute;left:50%;top:55%;width:20vmax;height:20vmax;margin:-10vmax 0 0 -10vmax;border-radius:50%;
+  border:2px solid var(--n-b,#22e1ff);opacity:0;animation:bgvRing 8s cubic-bezier(.2,.6,.4,1) infinite}
+html[data-bgv="18"] .bgv-art i:nth-child(2n){border-color:var(--n-c,#ff2e4d)}
+@keyframes bgvRing{0%{transform:scale(.2);opacity:0}10%{opacity:.5}100%{transform:scale(6);opacity:0}}
+
+@media (prefers-reduced-motion:reduce){html[data-bgv] .bgv-art *,html[data-bgv] .bgv-art{animation:none!important}}
+html.lite[data-bgv] .bgv-art *{animation:none!important}
+/* вариантов стало 18 — вместо ряда кнопок список и стрелки на любой ширине */
+.bgv-sw button:not(.bgv-nav),.bgv-sw button+span{display:none!important}
+.bgv-sw select{display:block;min-width:230px;height:38px;padding:0 10px;border-radius:4px;border:1px solid rgba(255,255,255,.2);background:#0c1324;color:#f2f6ff;font:700 14px/1 var(--tx,var(--text))}
+.bgv-sw .bgv-nav{display:block!important;width:38px;height:38px;padding:0;font-size:20px;line-height:1}
+.bgv-sw{flex-wrap:nowrap;gap:6px;padding:6px 8px}
+@media (max-width:1100px){.bgv-sw select{flex:1;min-width:0}}
