@@ -1,0 +1,83 @@
+/* Три варианта оформления главной раздела «Хоккей» (черновик): html[data-jv="a|b|c"]. Поверх skin.css; разметка и данные — те же.
+   A «Арена» — видео-первый экран + «шторки», крупные тёмные карточки матчей.
+   B «Тех»   — живая сетка на весь раздел, «стеклянные» карточки, заголовки по буквам, блоки слева/справа.
+   C «Лёд»   — светлый лёд с бликами, тёмные акценты, карточки с тенью и подъёмом, параллакс. */
+
+/* общее для всех вариантов: свой фон вместо фоновых слоёв сайта */
+html[data-jv] #arena,html[data-jv] #snow{display:none!important}
+html[data-jv] .jv-arena,html[data-jv] .jv-netbg{display:none}
+
+/* ═══════════ A «АРЕНА» ═══════════ */
+html[data-jv="a"] .jv-arena{display:block;position:sticky;top:0;z-index:0;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#000}
+html[data-jv="a"] .jv-arena video,html[data-jv="a"] .jv-arena img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(.9);transform:scale(1.08)}
+html[data-jv="a"] .jv-arena::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,15,.2),rgba(7,9,15,.1) 40%,rgba(7,9,15,.95))}
+html[data-jv="a"] .jv-arena .in{position:absolute;z-index:2;left:0;right:0;bottom:7vh;max-width:1360px;margin:0 auto;padding:0 40px}
+html[data-jv="a"] .jv-mega{font:700 clamp(96px,21vw,330px)/.8 "Oswald","Arial Narrow",sans-serif;text-transform:uppercase;color:#e4ff3a;letter-spacing:-.01em;margin:0 0 0 -.03em}
+html[data-jv="a"] .jv-arena p{margin:18px 0 0;font:500 clamp(18px,1.6vw,24px)/1.3 "JV Text",sans-serif;color:#dfe5ef;max-width:620px}
+html[data-jv="a"] .jv-arena .down{display:inline-flex;margin-top:22px;color:#e4ff3a;font:600 14px/1 "JV Text",sans-serif;gap:8px}
+html[data-jv="a"] #hsday,html[data-jv="a"] main,html[data-jv="a"] footer{position:relative;z-index:1;background:#07090f}
+html[data-jv="a"] #hsday{border-radius:28px 28px 0 0;box-shadow:0 -30px 60px rgba(0,0,0,.5)}
+html[data-jv="a"] #mlist li.match{background:#111725!important;color:#f4f6ef!important;border:1px solid rgba(255,255,255,.08)!important;border-radius:16px!important;box-shadow:0 20px 40px -24px rgba(0,0,0,.8)!important}
+html[data-jv="a"] #mlist li.match *{color:inherit}
+html[data-jv="a"] #mlist li.match .em{width:80px!important;height:80px!important}
+html[data-jv="a"] #mlist li.match .mt time{font:700 44px/1 "Oswald",sans-serif!important;color:#e4ff3a!important}
+html[data-jv="a"] #mlist li.match .qv-k{font:700 46px/1 "Oswald",sans-serif!important;color:#e4ff3a!important}
+html[data-jv="a"] #mlist li.match .qv,html[data-jv="a"] #mlist li.match .chev{background:#161e2f!important}
+html[data-jv="a"] #mlist li.match .team span{font:600 22px/1.1 "Oswald",sans-serif;text-transform:uppercase}
+html[data-jv="a"] #mlist li.dayh{font:600 22px/1 "Oswald",sans-serif;text-transform:uppercase;color:#e4ff3a}
+html[data-jv="a"] .pf-n > div{background:#111725!important;border-radius:14px}
+html[data-jv="a"] .pf-n dd,html[data-jv="a"] .pf-n b{font-family:"Oswald",sans-serif!important}
+
+/* ═══════════ B «ТЕХ» ═══════════ */
+html[data-jv="b"],html[data-jv="b"] body{background:#05070d!important}
+html[data-jv="b"] .jv-netbg{display:block;position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(70% 60% at 80% 0%,rgba(228,255,58,.10),transparent 60%),radial-gradient(60% 60% at 0% 100%,rgba(60,120,255,.12),transparent 60%),#05070d}
+html[data-jv="b"] .jv-netbg canvas{width:100%;height:100%;display:block}
+html[data-jv="b"] #hsday,html[data-jv="b"] main,html[data-jv="b"] footer,html[data-jv="b"] .hd{position:relative;z-index:1}
+html[data-jv="b"] .hd{position:sticky}
+html[data-jv="b"] #mlist li.match,html[data-jv="b"] .pf-n > div,html[data-jv="b"] .kpb,html[data-jv="b"] .tbl-plate,html[data-jv="b"] .hs-board,
+html[data-jv="b"] .hs-v7-sum,html[data-jv="b"] .hs-v7-sl{background:rgba(17,23,37,.42)!important;color:#f4f6ef!important;border:1px solid rgba(228,255,58,.16)!important;
+  border-radius:18px!important;backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 20px 50px -30px rgba(0,0,0,.9)!important}
+html[data-jv="b"] #mlist li.match *{color:inherit}
+html[data-jv="b"] #mlist li.match .qv,html[data-jv="b"] #mlist li.match .chev{background:rgba(255,255,255,.05)!important}
+html[data-jv="b"] #mlist li.match .qv-k,html[data-jv="b"] #mlist li.match .mt time{color:#e4ff3a!important;font-family:"Oswald",sans-serif!important}
+html[data-jv="b"] #mlist li.match:hover{border-color:rgba(228,255,58,.5)!important}
+html[data-jv="b"] main h2,html[data-jv="b"] #hsday h1{text-shadow:0 0 30px rgba(228,255,58,.25)}
+@media (max-width:809px){html[data-jv="b"] #mlist li.match,html[data-jv="b"] .pf-n > div,html[data-jv="b"] .kpb,html[data-jv="b"] .tbl-plate{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(17,23,37,.85)!important}}
+
+/* ═══════════ C «ЛЁД» ═══════════ */
+html[data-jv="c"]:root:root:root{--paper:#e9f0f7;--paper-2:#dfe8f2;--paper-3:#d3deea;--card:#ffffff;--card-hi:#f4f7fb;--ink:#0b1220;--ink-2:#334155;--ink-3:#64748b;
+  --rule:rgba(11,18,32,.1);--rule-2:rgba(11,18,32,.2);--signal:#0b1220;--signal-ink:#e4ff3a;--sport:#0b1220;--sport-ink:#ffffff;--acc:#0b1220;--ice:#1d4ed8;
+  --n-base:#e9f0f7;--n-a:#dfe8f2;--n-b:#e9f0f7;--n-c:#e9f0f7;--n-d:#e9f0f7;--glow1:#ffffff;--glow2:#ffffff;--bg0:#e9f0f7;--bg1:#dfe8f2;--bgc:#e9f0f7;background:#e9f0f7}
+html[data-jv="c"] body{background:#e9f0f7 url(/draft/v4/skin/ice.jpg) center top/cover fixed!important;color:#0b1220}
+@media (max-width:809px){html[data-jv="c"] body{background:#e9f0f7 url(/draft/v4/skin/ice-s.jpg) center top/cover!important}}
+/* шапка, нижнее меню и подвал — тёмные, как на v4 */
+html[data-jv="c"] .hd,html[data-jv="c"] .jvf,html[data-jv="c"] .tb,html[data-jv="c"] .tbs-wrap,html[data-jv="c"] .jv-ticker{--paper:#07090f;--paper-2:#0d111b;--card:#111725;--ink:#f4f6ef;--ink-2:#aeb6c6;--ink-3:#7d8799;--rule:rgba(255,255,255,.1);--signal:#e4ff3a;--signal-ink:#0b0d05;color:#f4f6ef}
+html[data-jv="c"] .jvf{background:#07090f!important}
+html[data-jv="c"] main h1,html[data-jv="c"] main h2,html[data-jv="c"] #hsday h1{color:#0b1220!important}
+html[data-jv="c"] main h2{font-size:clamp(40px,5vw,76px)!important}
+html[data-jv="c"] #hsday,html[data-jv="c"] #hsday *{--ink:#0b1220}
+html[data-jv="c"] .hs-strip{background:rgba(255,255,255,.75)!important;color:#0b1220!important;backdrop-filter:blur(8px)}
+html[data-jv="c"] #mlist li.match,html[data-jv="c"] .pf-n > div,html[data-jv="c"] .kpb,html[data-jv="c"] .tbl-plate,html[data-jv="c"] .hs-board,html[data-jv="c"] .hs-v7-sum,html[data-jv="c"] .hs-v7-sl{
+  background:#fff!important;color:#0b1220!important;border:1px solid rgba(11,18,32,.06)!important;border-radius:18px!important;
+  box-shadow:0 1px 2px rgba(11,18,32,.06),0 14px 34px -14px rgba(11,18,32,.18)!important;transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s!important}
+html[data-jv="c"] #mlist li.match:hover,html[data-jv="c"] .pf-n > div:hover,html[data-jv="c"] .kpb:hover,html[data-jv="c"] .tbl-plate:hover{transform:translateY(-6px);box-shadow:0 2px 4px rgba(11,18,32,.06),0 30px 50px -18px rgba(11,18,32,.28)!important}
+html[data-jv="c"] #mlist li.match .qv-k,html[data-jv="c"] #mlist li.match .mt time{font-family:"Oswald",sans-serif!important;color:#0b1220!important}
+html[data-jv="c"] #mlist li.match .qv-k{font-size:38px!important}
+html[data-jv="c"] .btn-tg,html[data-jv="c"] .btn-ink{background:#0b1220!important;color:#e4ff3a!important}
+html[data-jv="c"] .pf-n dd,html[data-jv="c"] .pf-n b{color:#0b1220!important;font-family:"Oswald",sans-serif!important}
+
+/* правки после первого просмотра */
+html[data-jv="a"] .jv-arena .jv-mega{font:700 clamp(96px,21vw,330px)/.8 "Oswald","Arial Narrow",sans-serif!important;color:#e4ff3a!important;text-transform:uppercase!important;margin:0!important}
+html[data-jv="a"] #hsday,html[data-jv="a"] main,html[data-jv="a"] footer,html[data-jv="a"] .jv-ticker{position:relative!important;z-index:2!important;background:#07090f!important}
+html[data-jv="a"] .jv-arena{z-index:0!important}
+@media (max-width:809px){html[data-jv="a"] #mlist li.match .mt time{font-size:28px!important}html[data-jv="a"] #mlist li.match .em{width:56px!important;height:56px!important}
+  html[data-jv="a"] #mlist li.match .qv-k{font-size:34px!important}html[data-jv="a"] .jv-arena .in{padding:0 16px}}
+html[data-jv="c"] :is(#hsday,#matches,#kupon,#leagues,#table,#honest,#subscribe) :is(p,span,b,small,em,a,h1,h2,h3,dd,dt,li,strong,time,label,button,div){color:#0b1220}
+html[data-jv="c"] :is(#hsday,#matches) :is(small,.note,.hs-kick){color:#475569}
+html[data-jv="c"] .hs-date,html[data-jv="c"] .hs-date *,html[data-jv="c"] .lcard,html[data-jv="c"] .lcard *,html[data-jv="c"] .lv-tag,
+html[data-jv="c"] [style*="background"] > b,html[data-jv="c"] .hs-board [class*="bar"] *{color:#fff!important}
+html[data-jv="c"] .btn:not(.btn-line),html[data-jv="c"] .btn:not(.btn-line) *{color:#e4ff3a!important;background:#0b1220}
+html[data-jv="c"] .tabs button,html[data-jv="c"] .tabs a{background:#fff!important;border:1px solid rgba(11,18,32,.12)!important}
+html[data-jv="c"] .tabs [aria-selected="true"],html[data-jv="c"] .tabs .on{background:#0b1220!important;color:#e4ff3a!important}
+html[data-jv="c"] .tabs [aria-selected="true"] *,html[data-jv="c"] .tabs .on *{color:#e4ff3a!important}
+html[data-jv="c"] .hs-strip *{color:#0b1220}

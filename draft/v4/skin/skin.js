@@ -58,7 +58,8 @@
     }).join('');
     var tk = document.createElement('div'); tk.className = 'jv-ticker'; tk.setAttribute('aria-hidden', 'true');
     tk.innerHTML = '<div class="in">' + items + items + '</div>';
-    var first = main.firstElementChild; if (first) first.parentNode.insertBefore(tk, first.nextSibling);
+    var ft = document.querySelector('footer');                // владелец 26.11: не сверху (дублирует матчи) — внизу, перед подвалом
+    if (ft) ft.parentNode.insertBefore(tk, ft); else main.appendChild(tk);
     if (RM || !window.gsap) return;
     var inner = tk.firstChild, x = 0, w = inner.scrollWidth / 2;
     gsap.ticker.add(function (t, dt) { var v = window.jvLenis ? Math.min(Math.abs(jvLenis.velocity) * 60, 700) : 0; x -= (90 + v) * dt / 1000; if (x <= -w) x += w; inner.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,0)'; });
@@ -89,7 +90,7 @@
   function groups(root) {
     var out = [];
     $$('div, ul, ol, section', root).forEach(function (el) {
-      if (el.dataset.jvG || el.closest('table, nav, .hd, .tabbar, .jv-ticker, header, footer, select')) return;
+      if (el.dataset.jvG || el.closest('table, nav, .hd, .tabbar, .jv-ticker, header, footer, select, [data-jv-own]')) return;
       var ch = el.children; if (ch.length < 3 || ch.length > 80) return;
       var sig = function (c) { return c.tagName + '.' + (c.className && c.className.baseVal === undefined ? String(c.className).split(' ')[0] : ''); };
       var s0 = sig(ch[0]), same = 0; for (var i = 0; i < ch.length; i++) if (sig(ch[i]) === s0) same++;
@@ -133,7 +134,7 @@
       var el = document.getElementById(decodeURIComponent(u.hash.slice(1))); if (!el) return;
       e.preventDefault(); lenis.scrollTo(el, { offset: -parseInt(getComputedStyle(document.documentElement).getPropertyValue('--jv-top') || 64) - 8 });
     }, true);
-    $$('h2', main).forEach(function (el) {
+    if (document.documentElement.dataset.jv !== 'b') $$('h2', main).forEach(function (el) {   // в варианте B — по буквам (variants.js)
       if (el.getBoundingClientRect().top < innerHeight * 0.9) return;
       var s = SplitText.create(el, { type: 'words' });
       gsap.from(s.words, { autoAlpha: 0, y: 10, filter: 'blur(10px)', duration: 0.5, stagger: 0.07, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true } });
