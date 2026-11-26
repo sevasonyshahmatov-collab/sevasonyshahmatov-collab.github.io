@@ -47,7 +47,7 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Аналитическая таблица КХЛ и НХЛ | JARVIS"><meta name="twitter:description" content="Что внутри аналитической таблицы JARVIS по КХЛ и НХЛ: рейтинг Эло, прогнозы на все матчи, что заходит у команд, расписание и история ставок."><meta name="twitter:image" content="https://jarvisbet.ru/assets/og/og-hockey.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Аналитическая таблица КХЛ и НХЛ | JARVIS","description":"Что внутри аналитической таблицы JARVIS по КХЛ и НХЛ: рейтинг Эло, прогнозы на все матчи, что заходит у команд, расписание и история ставок.","inLanguage":"ru","isPartOf":{"@id":"https://jarvisbet.ru/#site"},"url":"https://jarvisbet.ru/hockey/table.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://jarvisbet.ru/"},{"@type":"ListItem","position":2,"name":"Хоккей","item":"https://jarvisbet.ru/hockey/"},{"@type":"ListItem","position":3,"name":"Аналитическая таблица","item":"https://jarvisbet.ru/hockey/table.html"}]}]}</script>
 <!--seo:end-->
-<link rel="stylesheet" href="/draft/anim/vendor/lenis-1.3.28.css"><link rel="stylesheet" href="/draft/v4/skin/skin.css?v=202611262119">
+<link rel="stylesheet" href="/draft/anim/vendor/lenis-1.3.28.css"><link rel="stylesheet" href="/draft/v4/skin/skin.css?v=202611262127">
 </head>
 <body data-field="hockey">
 <a class="skip" href="/draft/v4/hockey/table.html#main">К содержанию</a>
@@ -55,7 +55,7 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
 <main id="main" class="tbl-page">
 <section class="sec tbl-top" style="padding-bottom:0">
   <div class="wrap">
-    <p class="back"><a href="index.html">← Хоккей</a></p>
+    <p class="back"><a href="./">← Хоккей</a></p>
     <h1>Аналитическая таблица КХЛ и НХЛ</h1>
     <p class="lead">Для тех, кто считает сам: все матчи, форма команд, вероятности модели и кэфы в одной таблице. Ниже — что в ней есть.</p>
   </div>
@@ -67,18 +67,15 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
       <a class="btn btn-ink" href="https://t.me/JarvisTablePayBot?start=site_table" target="_blank" rel="noopener">Хочу таблицу</a><p class="note" style="margin-top:10px">Оплата появится скоро. Сейчас доступ — через Telegram.</p></div></div>
     <div class="tour" id="tour" data-rv aria-roledescription="карусель" aria-label="Что внутри таблицы">
       <div class="tour-steps" id="tsteps" role="tablist" aria-label="Листы таблицы">
-        <button type="button" role="tab" class="tstep" aria-selected="true" data-i="0">Эло</button>
-        <button type="button" role="tab" class="tstep" aria-selected="false" data-i="1">Прогнозы</button>
-        <button type="button" role="tab" class="tstep" aria-selected="false" data-i="2">Что заходит</button>
-        <button type="button" role="tab" class="tstep" aria-selected="false" data-i="3">Расписание</button>
-        <button type="button" role="tab" class="tstep" aria-selected="false" data-i="4">История</button>
-        <button type="button" role="tab" class="tstep" aria-selected="false" data-i="5">И ещё</button>
+        <button type="button" role="tab" class="tstep" aria-selected="true" data-i="0">Прогнозы</button>
+        <button type="button" role="tab" class="tstep" aria-selected="false" data-i="1">Что заходит</button>
+        <button type="button" role="tab" class="tstep" aria-selected="false" data-i="2">Расписание</button>
+        <button type="button" role="tab" class="tstep" aria-selected="false" data-i="3">История</button>
+        <button type="button" role="tab" class="tstep" aria-selected="false" data-i="4">И ещё</button>
       </div>
       <div class="tour-grid">
         <div class="stack tour-text">
-          <article class="tc on"><h3>Рейтинг Эло</h3><p>Сила каждой команды одним числом. Рейтинг пересчитывается после каждого матча: победа над сильным соперником стоит больше, чем над слабым.</p>
-            <ul><li>Все команды лиги в одном списке</li><li>Как менялась сила команды за сезон</li><li>Поправка на игру: броски в створ и шайбы сверх ожидания</li></ul></article>
-          <article class="tc"><h3>Прогнозы на все матчи</h3><p>Все матчи ближайших дней на одном листе: время по Москве, прогноз модели, коэффициенты и вероятность. После игры рядом появляется счёт.</p>
+          <article class="tc on"><h3>Прогнозы на все матчи</h3><p>Все матчи ближайших дней на одном листе: время по Москве, прогноз модели, коэффициенты и вероятность. После игры рядом появляется счёт.</p>
             <ul><li>КХЛ и НХЛ</li><li>Расчёт модели рядом с линией</li><li>Обновляется каждое утро</li></ul></article>
           <article class="tc"><h3>Что заходит у команд</h3><p>Как часто у каждой команды случается то или иное событие за сезон: победа, тотал больше или меньше, игра в овертайм.</p>
             <ul><li>Видно сильные и слабые стороны каждой команды</li><li>Конструктор матча: выбираешь две команды и видишь, что вероятнее в их игре</li></ul></article>
@@ -86,15 +83,14 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
             <ul><li>Сегодня, завтра и вся неделя</li><li>Ночные матчи НХЛ собраны в один игровой день</li></ul></article>
           <article class="tc"><h3>История ставок</h3><p>Каждый прогноз остаётся в таблице: зашёл или нет и по какому кэфу. Видно, как часто модель угадывает и как менялся банк на дистанции.</p>
             <ul><li>Точность модели по фаворитам и аутсайдерам</li><li>Ничего не удаляется</li></ul></article>
-          <article class="tc"><h3>И это только часть</h3><p>Мы показали 5 листов. Всего в таблице их больше 20: коэффициенты, купон дня, точность модели, карточки команд, статистика, травмы и ключевые игроки.</p>
+          <article class="tc"><h3>И это только часть</h3><p>Мы показали 4 листа. Всего в таблице их больше 20: коэффициенты, купон дня, точность модели, карточки команд, статистика, травмы и ключевые игроки.</p>
             <a class="btn btn-tg tc-cta" href="https://t.me/JarvisTablePayBot?start=site_table" target="_blank" rel="noopener">Узнать про доступ →</a></article>
         </div>
         <div class="tour-vis">
           <div class="win" id="twin">
             <div class="win-bar"><i></i><i></i><i></i><span>Лист таблицы</span></div>
             <div class="stack win-body">
-              <div class="tv on"><div class="soon"><b>Скоро</b><span>Рейтинг Эло появится на сайте, когда подключим его расчёт. В таблице лист уже есть.</span></div></div>
-              <div class="tv"><table class="gt" id="gtbl"></table></div>
+              <div class="tv on"><table class="gt" id="gtbl"></table></div>
               <div class="tv"><div class="soon"><b>Скоро</b><span>Что заходит у команд: цифры по сезону появятся здесь после подключения данных.</span></div></div>
               <div class="tv"><div class="cal" id="calbox"></div></div>
               <div class="tv"><div class="soon"><b>На сайте</b><span>История прогнозов канала по месяцам, со счётом матча и ссылкой на пост.</span><a class="btn btn-ink" href="../results.html">Все прогнозы и итоги</a></div></div>
@@ -106,16 +102,16 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
                 <div><b>Ключевые игроки</b><span>лидеры и основной вратарь</span></div><div><b>Досье команд</b><span>травмы, тренер, форма</span></div>
                 <div><b>Разбор перед матчем</b><span>сводка по каждой игре</span></div><div class="etc"><b>и другие</b><span>всего больше 20 листов</span></div></div></div>
             </div>
-            <div class="win-tabs" aria-hidden="true"><span class="on">Рейтинг Эло</span><span>Прогнозы</span><span>Что заходит</span><span>Расписание</span><span>История ставок</span><span>И ещё…</span></div>
+            <div class="win-tabs" aria-hidden="true"><span class="on">Прогнозы</span><span>Что заходит</span><span>Расписание</span><span>История ставок</span><span>И ещё…</span></div>
           </div>
-          <div class="tour-nav"><button type="button" class="tarr" id="tprev" aria-label="Предыдущий лист">‹</button><span class="tcount num" id="tcount">1 / 6</span><button type="button" class="tarr" id="tnext" aria-label="Следующий лист">›</button></div>
+          <div class="tour-nav"><button type="button" class="tarr" id="tprev" aria-label="Предыдущий лист">‹</button><span class="tcount num" id="tcount">1 / 5</span><button type="button" class="tarr" id="tnext" aria-label="Следующий лист">›</button></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 <section class="sec next-step">
-  <div class="wrap"><a class="btn btn-ink" href="index.html#matches">Ближайшие матчи КХЛ и НХЛ</a></div>
+  <div class="wrap"><a class="btn btn-ink" href="./#matches">Ближайшие матчи КХЛ и НХЛ</a></div>
 </section>
 </main>
 <script src="../assets/nav.js"></script>
@@ -193,6 +189,6 @@ const rOf=g=>g.gf>g.ga?'w':g.x?'o':'l';
  go(0);}
 })();
 </script>
-<div class="jv-draft" role="note">Черновик v4 · живой сайт не изменён</div><script defer src="/draft/v4/skin/skin.js?v=202611262119"></script>
+<div class="jv-draft" role="note">Черновик v4 · живой сайт не изменён</div><script defer src="/draft/v4/skin/skin.js?v=202611262127"></script>
 </body>
 </html>

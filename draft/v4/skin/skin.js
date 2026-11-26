@@ -16,13 +16,22 @@
     try {
       var u = new URL(a.href, location.href);
       if (u.origin !== location.origin || u.pathname.indexOf(D + '/') === 0) return null;
-      if (u.pathname === '/' || u.pathname === '/index.html') return D + '/index.html' + u.search + u.hash;
-      if (DRAFT_RX.test(u.pathname) && !/\.(js|json|css|webp|png|jpg|svg)$/.test(u.pathname)) return D + u.pathname + u.search + u.hash;
+      var p = u.pathname.replace(/\/index\.html$/, '/');          // адреса без index.html (владелец 26.11)
+      if (p === '/') return D + '/' + u.search + u.hash;
+      if (DRAFT_RX.test(p) && !/\.(js|json|css|webp|png|jpg|svg)$/.test(p)) return D + p + u.search + u.hash;
     } catch (e) {}
     return null;
   }
+  /* ── адреса без index.html: ссылки (и построенные скриптами), строка браузера — без перезагрузки ── */
+  function shortUrls(root) {
+    Array.prototype.slice.call((root || document).querySelectorAll('a[href*="index.html"]')).forEach(function (a) {
+      try { var u = new URL(a.href, location.href); if (u.origin === location.origin && /\/index\.html$/.test(u.pathname)) a.setAttribute('href', u.pathname.replace(/index\.html$/, '') + u.search + u.hash); } catch (e) {}
+    });
+  }
+  if (/\/index\.html$/.test(location.pathname) && history.replaceState) history.replaceState(history.state, '', location.pathname.replace(/index\.html$/, '') + location.search + location.hash);
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href]'); if (!a || e.defaultPrevented) return;
+    shortUrls(a.parentNode || document);
     var h = draftHref(a); if (h) a.setAttribute('href', h);       // браузер перейдёт уже по черновому адресу
   }, true);
 
@@ -142,7 +151,7 @@
     reveal(main);
     // данные дорисовываются скриптами страниц позже — догоняем новые блоки
     var pend = null;
-    new MutationObserver(function () { clearTimeout(pend); pend = setTimeout(function () { tables(); reveal(main); ScrollTrigger.refresh(); }, 250); })
+    new MutationObserver(function () { clearTimeout(pend); pend = setTimeout(function () { shortUrls(); tables(); reveal(main); ScrollTrigger.refresh(); }, 250); })
       .observe(main, { childList: true, subtree: true });
     ticker();
   }
@@ -165,7 +174,7 @@
     walk(h); h.setAttribute('aria-label', h.textContent.replace(/\s+/g, ' ').trim());
   }
   function start() {
-    h1words();
+    h1words(); shortUrls(); setTimeout(shortUrls, 1500);
     topOffset(); window.addEventListener('resize', topOffset);
     setTimeout(topOffset, 800);
     tables();

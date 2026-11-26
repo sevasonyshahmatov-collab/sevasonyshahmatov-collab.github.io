@@ -61,7 +61,7 @@
     box.innerHTML = list.map(function (m) {
       var lv = 'data-lv data-lv-lg="' + esc(m.lg) + '" data-lv-t="' + esc(m.t.replace(' ', 'T')) + ':00+03:00" data-lv-h="' + esc(m.h) + '" data-lv-a="' + esc(m.a) + '" data-lv-hn="' + esc(m.hn) + '" data-lv-an="' + esc(m.an) + '"';
       var pk = m.pr ? '<b>' + H.pct(m.best) + '%</b><span>' + ['П1', 'Х', 'П2'][m.bi] + ' · ' + esc(m.who) + '</span>' + (kef(m, m.bi) ? '<em>' + kef(m, m.bi) + '</em>' : '') : '<span>расчёт скоро</span>';
-      return '<a class="mc" href="' + esc(m.hockey ? '/draft/v4' + m.page : m.page) + '" ' + lv + '><div class="t"><span>' + esc(m.lgn) + '</span><span>' + esc(m.day) + ', ' + esc(m.hm) + '</span></div>' +
+      return '<a class="mc" href="' + esc((m.hockey ? '/draft/v4' + m.page : m.page).replace(/index\.html$/, '')) + '" ' + lv + '><div class="t"><span>' + esc(m.lgn) + '</span><span>' + esc(m.day) + ', ' + esc(m.hm) + '</span></div>' +
         '<div class="tm"><div><img src="' + esc(m.hc) + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' + esc(m.hn) + '</div>' +
         '<div><img src="' + esc(m.ac) + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' + esc(m.an) + '</div></div><div class="pk">' + pk + '</div></a>';
     }).join('');
@@ -276,6 +276,7 @@
   }
 
   function start() {
+    if (/\/index\.html$/.test(location.pathname) && history.replaceState) history.replaceState(history.state, '', location.pathname.replace(/index\.html$/, '') + location.search + location.hash);   // без index.html
     heroData(); doors(); matches(); ui(); videos();
     var rj = fetch('/data/results.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
     var mt = fetch('/data/mtext.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; });
