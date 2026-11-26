@@ -253,3 +253,94 @@ html[data-bgv="19"] .bgv-art s i{width:5px;height:5px}
    Пока фон выбирают по ссылке ?bgv, анимации фона идут всегда; при выборе основного вернём бережный режим. */
 html.lite[data-bgv] .bgv-art :is(*,*::before,*::after),html.lite[data-bgv] .bgv-art{animation-iteration-count:infinite!important}
 html.lite[data-bgv="9"] .bgv-art i,html.lite[data-bgv="4"] .bgv-art i,html.lite[data-bgv="14"] .bgv-art i{filter:blur(40px)}
+
+/* «Как считает модель» — постоянный фон «Поток цифр»: при «уменьшить движение» цифры стоят на месте, но видны */
+@media (prefers-reduced-motion:reduce){html[data-bgv-fix] .bgv-art u{animation:none!important;transform:translateY(var(--y,80vh))}}
+
+/* ═════ 26.11, пятая волна (владелец: «предложи ещё 10») ═════ */
+@keyframes bgvDraw{0%{stroke-dashoffset:100;opacity:0}8%{opacity:.85}55%{stroke-dashoffset:0;opacity:.85}85%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes bgvDot{0%,50%{opacity:0;transform:scale(.3)}58%{opacity:1;transform:scale(1.4)}66%{transform:scale(1)}85%,100%{opacity:0}}
+
+/* 27 · «Тепловая карта»: пятна, как на карте бросков, мягко пульсируют */
+html[data-bgv="27"] body,html[data-bgv="27"][data-theme] body,html[data-bgv="27"] body::before{background:#06070f!important}
+html[data-bgv="27"] .bgv-art i{position:absolute;border-radius:50%;filter:blur(18px);mix-blend-mode:screen;opacity:.55;animation:bgvHeat ease-in-out infinite alternate}
+@keyframes bgvHeat{from{transform:scale(.75);opacity:.3}to{transform:scale(1.2);opacity:.65}}
+
+/* 28 · «Траектории»: светящиеся дуги рисуются через экран, как пасы и броски */
+html[data-bgv="28"] body,html[data-bgv="28"][data-theme] body,html[data-bgv="28"] body::before{background:#050816!important}
+html[data-bgv="28"] .bgv-art path{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:100;filter:drop-shadow(0 0 6px currentColor);animation:bgvDraw var(--t) ease-in-out var(--dl) infinite}
+html[data-bgv="28"] .bgv-art circle{fill:currentColor;transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 0 8px currentColor);animation:bgvDot var(--t) ease-in-out var(--dl) infinite}
+
+/* 29 · «Тактическая доска»: доска тренера — разметка, крестики-нолики и стрелки схем рисуются мелом */
+html[data-bgv="29"] body,html[data-bgv="29"][data-theme] body,html[data-bgv="29"] body::before{background:#0b1a26!important}
+html[data-bgv="29"][data-sport="football"] body,html[data-bgv="29"][data-sport="football"] body::before{background:#0b2018!important}
+html[data-bgv="29"] .bgv-art{color:#e9f1ea}
+html[data-bgv="29"] .bgv-art svg:first-child{opacity:.12}
+html[data-bgv="29"] .bgv-art svg+svg{opacity:.32}
+html[data-bgv="29"] .bgv-art .o{fill:none;stroke:currentColor;stroke-width:3.5;stroke-linecap:round}
+html[data-bgv="29"] .bgv-art .ar{fill:none;stroke:currentColor;stroke-width:2.8;stroke-linecap:round;stroke-dasharray:100;animation:bgvDraw var(--t) ease-in-out var(--dl) infinite}
+
+/* 30 · «Снегопад» (у футбола — «Дождь») */
+html[data-bgv="30"] body,html[data-bgv="30"][data-theme] body{background:#071222!important}
+html[data-bgv="30"] body::before{background:radial-gradient(80% 50% at 50% 0%,rgba(120,170,255,.2),transparent 70%),#071222!important}
+html[data-bgv="30"][data-sport="football"] body,html[data-bgv="30"][data-sport="football"] body::before{background:#08110f!important}
+html[data-bgv="30"] .bgv-art i{position:absolute;top:-5%;border-radius:50%;background:#eaf4ff;box-shadow:0 0 4px rgba(220,240,255,.8);animation:bgvSnow linear infinite}
+html[data-bgv="30"][data-sport="football"] .bgv-art i{border-radius:1px;background:rgba(180,225,255,.7);box-shadow:none;transform:rotate(12deg)}
+@keyframes bgvSnow{to{transform:translate3d(var(--dx),112vh,0)}}
+
+/* 31 · «Радар»: по кругу ходит луч, на нём вспыхивают отметки */
+html[data-bgv="31"]{--rc:34,225,255}
+html[data-bgv="31"][data-sport="football"]{--rc:61,245,166}
+html[data-bgv="31"] body,html[data-bgv="31"][data-theme] body,html[data-bgv="31"] body::before{background:#030a10!important}
+html[data-bgv="31"] .bgv-art b{position:absolute;left:70%;top:45%;width:96vmin;height:96vmin;margin:-48vmin 0 0 -48vmin;border-radius:50%}
+html[data-bgv="31"] .bgv-art b i{position:absolute;border-radius:50%;border:1px solid rgba(var(--rc),.22)}
+html[data-bgv="31"] .bgv-art b i:nth-child(1){inset:0}
+html[data-bgv="31"] .bgv-art b i:nth-child(2){inset:12.5%}
+html[data-bgv="31"] .bgv-art b i:nth-child(3){inset:25%}
+html[data-bgv="31"] .bgv-art b i:nth-child(4){inset:37.5%}
+html[data-bgv="31"] .bgv-art b em{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(var(--rc),.38),transparent 70deg);animation:bgvSpin 6s linear infinite}
+html[data-bgv="31"] .bgv-art s{position:absolute;width:9px;height:9px;margin:-4px;border-radius:50%;background:rgb(var(--rc));box-shadow:0 0 12px 3px rgba(var(--rc),.8);opacity:0;animation:bgvBlip 6s ease-out infinite}
+@keyframes bgvBlip{0%,70%,100%{opacity:0;transform:scale(.5)}75%{opacity:1;transform:scale(1.4)}90%{opacity:.4;transform:scale(1)}}
+
+/* 32 · «Графики»: линии графиков рисуются слева направо, внизу «дышат» столбики */
+html[data-bgv="32"] body,html[data-bgv="32"][data-theme] body,html[data-bgv="32"] body::before{background:#050a16!important}
+html[data-bgv="32"] .bgv-art path{fill:none;stroke:currentColor;stroke-width:2.5;vector-effect:non-scaling-stroke;stroke-dasharray:100;opacity:.5;filter:drop-shadow(0 0 5px currentColor);animation:bgvDraw var(--t) linear var(--dl) infinite}
+html[data-bgv="32"] .bgv-art .bars{position:absolute;left:0;right:0;bottom:0;height:28vh;display:flex;align-items:flex-end;gap:6px;opacity:.13}
+html[data-bgv="32"] .bgv-art .bars i{flex:1;border-radius:3px 3px 0 0;transform-origin:bottom;animation:bgvBar ease-in-out infinite alternate}
+@keyframes bgvBar{from{transform:scaleY(.35)}to{transform:scaleY(1)}}
+
+/* 33 · «Туманность»: цветные облака космоса медленно поворачиваются, мерцают звёзды */
+html[data-bgv="33"] body,html[data-bgv="33"][data-theme] body,html[data-bgv="33"] body::before{background:#04030c!important}
+html[data-bgv="33"] .bgv-art b{position:absolute;inset:-25%;opacity:.8;animation:bgvNeb 80s ease-in-out infinite alternate;
+  background:radial-gradient(30% 22% at 30% 35%,rgba(140,60,255,.45),transparent 70%),radial-gradient(26% 20% at 62% 55%,rgba(30,200,255,.35),transparent 70%),
+  radial-gradient(22% 18% at 48% 40%,rgba(255,60,160,.3),transparent 70%),radial-gradient(34% 26% at 70% 30%,rgba(40,80,255,.3),transparent 70%)}
+html[data-bgv="33"][data-sport="football"] .bgv-art b{background:radial-gradient(30% 22% at 30% 35%,rgba(0,170,110,.42),transparent 70%),radial-gradient(26% 20% at 62% 55%,rgba(30,160,255,.32),transparent 70%),
+  radial-gradient(22% 18% at 48% 40%,rgba(255,190,40,.24),transparent 70%),radial-gradient(34% 26% at 70% 30%,rgba(20,90,200,.3),transparent 70%)}
+html[data-bgv="33"] .bgv-art i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;box-shadow:0 0 5px #fff;opacity:0;animation:bgvSpark ease-in-out infinite}
+@keyframes bgvNeb{from{transform:rotate(-6deg) scale(1)}to{transform:rotate(8deg) scale(1.15)}}
+
+/* 34 · «LED-лента»: две ленты, как рекламный пояс арены, с бегущей надписью */
+html[data-bgv="34"] body,html[data-bgv="34"][data-theme] body,html[data-bgv="34"] body::before{background:#05060b!important}
+html[data-bgv="34"] .bgv-art p{position:absolute;left:-6%;right:-6%;height:56px;margin:0;overflow:hidden;transform:rotate(-4deg);opacity:.5;
+  background:#0b0c12;background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1.5px);background-size:6px 6px;border-top:1px solid rgba(255,170,40,.3);border-bottom:1px solid rgba(255,170,40,.3)}
+html[data-bgv="34"] .bgv-art p+p{transform:rotate(3deg)}
+html[data-bgv="34"] .bgv-art p span{display:inline-block;white-space:nowrap;font:800 30px/56px var(--hd,var(--wide));letter-spacing:.12em;color:#ffb02e;text-shadow:0 0 12px rgba(255,170,40,.85);animation:bgvTicker 90s linear infinite}
+html[data-bgv="34"][data-sport="football"] .bgv-art p span{color:#4dffb0;text-shadow:0 0 12px rgba(61,245,166,.8)}
+@keyframes bgvTicker{to{transform:translateX(-50%)}}
+
+/* 35 · «Кристаллы»: ледяные снежинки-кристаллы плывут и медленно вращаются */
+html[data-bgv="35"] body,html[data-bgv="35"][data-theme] body{background:#06101d!important}
+html[data-bgv="35"] body::before{background:radial-gradient(70% 50% at 30% 20%,rgba(90,160,255,.2),transparent 70%),#06101d!important}
+html[data-bgv="35"] .bgv-art em{position:absolute;color:#cfe8ff;filter:drop-shadow(0 0 6px rgba(160,210,255,.8));animation:bgvSpin linear infinite}
+html[data-bgv="35"][data-sport="football"] .bgv-art em{color:#bff7dd;filter:drop-shadow(0 0 6px rgba(120,255,200,.7))}
+html[data-bgv="35"] .bgv-art em svg{position:static;width:100%;height:100%}
+
+/* 36 · «Жара матча»: снизу горит пламя, вверх летят искры */
+html[data-bgv="36"] body,html[data-bgv="36"][data-theme] body{background:#0a0506!important}
+html[data-bgv="36"] body::before{background:radial-gradient(90% 45% at 50% 105%,rgba(255,90,30,.35),transparent 70%),#0a0506!important}
+html[data-bgv="36"] .bgv-art b{position:absolute;bottom:-20vh;width:26vw;height:52vh;border-radius:50% 50% 40% 40%;filter:blur(34px);mix-blend-mode:screen;transform-origin:bottom;
+  background:radial-gradient(ellipse at 50% 80%,rgba(255,130,30,.75),rgba(255,40,40,.35) 45%,transparent 70%);animation:bgvFlame ease-in-out infinite alternate}
+@keyframes bgvFlame{0%{transform:scaleY(.8) scaleX(1)}50%{transform:scaleY(1.12) scaleX(.92)}100%{transform:scaleY(.9) scaleX(1.06)}}
+html[data-bgv="36"] .bgv-art i{position:absolute;bottom:-5vh;border-radius:50%;background:#ffb347;box-shadow:0 0 8px 2px rgba(255,150,50,.9);opacity:0;animation:bgvRise linear infinite}
+html.lite[data-bgv="36"] .bgv-art b,html.lite[data-bgv="27"] .bgv-art i{filter:blur(20px)}
+html[data-bgv-fix] .bgv-art{opacity:.7}   /* на странице модели цифры чуть тише, чтобы не мешать тексту */

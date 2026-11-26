@@ -10,14 +10,17 @@
   const l=document.createElement('link');l.rel='stylesheet';l.href=base+'mtext/mtext.css';document.head.appendChild(l);
   const s=document.createElement('script');s.src=base+'mtext/mtext.js';s.defer=true;document.body.appendChild(s)};
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go()})();
-/* 26.11 — варианты фона для сравнения: ?bgv=1…5 (запоминается на вкладку, ?bgv=0 — как сейчас). Стили и переключатель — assets/bgv */
-(()=>{const d=document.documentElement,base=(document.currentScript&&document.currentScript.src||'').replace(/nav\.js.*$/,'');let v=null,sw=false;
- try{const q=new URLSearchParams(location.search).get('bgv');if(q!==null&&/^(2[0-6]|1[0-9]|[0-9])$/.test(q)){sessionStorage.setItem('jv-bgv',q);sessionStorage.setItem('jv-bgv-sw','1')}
+/* 26.11 — варианты фона для сравнения: ?bgv=1…36 (запоминается на вкладку, ?bgv=0 — как сейчас). Стили и переключатель — assets/bgv.
+   Страница «Как считает модель» (model.html) — всегда фон 22 «Поток цифр» (владелец 26.11), если вариант не задан в адресе этой страницы. */
+(()=>{const d=document.documentElement,base=(document.currentScript&&document.currentScript.src||'').replace(/nav\.js.*$/,'');let v=null,sw=false,q=null;
+ const RX=/^(3[0-6]|2[0-9]|1[0-9]|[0-9])$/;
+ try{q=new URLSearchParams(location.search).get('bgv');if(q!==null&&RX.test(q)){sessionStorage.setItem('jv-bgv',q);sessionStorage.setItem('jv-bgv-sw','1')}else q=null;
   v=sessionStorage.getItem('jv-bgv');sw=sessionStorage.getItem('jv-bgv-sw')==='1'}catch(e){}
- if(v&&/^(2[0-6]|1[0-9]|[1-9])$/.test(v))d.dataset.bgv=v;
+ const FIX=/\/model\.html$/.test(location.pathname)?'22':'';
+ if(FIX&&q===null){d.dataset.bgv=FIX;d.dataset.bgvFix='1'}else if(v&&v!=='0'&&RX.test(v))d.dataset.bgv=v;
  if(!d.dataset.bgv&&!sw&&!/\/draft\//.test(location.pathname))return;
- const l=document.createElement('link');l.rel='stylesheet';l.href=base+'bgv/bgv.css?v=5';document.head.appendChild(l);
- const s=document.createElement('script');s.src=base+'bgv/bgv.js?v=4';s.defer=true;document.head.appendChild(s)})();
+ const l=document.createElement('link');l.rel='stylesheet';l.href=base+'bgv/bgv.css?v=6';document.head.appendChild(l);
+ const s=document.createElement('script');s.src=base+'bgv/bgv.js?v=6';s.defer=true;document.head.appendChild(s)})();
 /* 17.11 — варианты фона для сравнения: ?bg=a|b|c в адресе (запоминается на время вкладки, ?bg=0 — вернуть обычный). Стили — nav.css, разметка льда — v3a.js */
 (()=>{const d=document.documentElement;try{const q=new URLSearchParams(location.search).get('bg');if(q!==null)sessionStorage.setItem('jv-bg',/^[abcn]$/.test(q)?q:'0');let b=sessionStorage.getItem('jv-bg');if(b===null)b='n';if(b&&b!=='0')d.dataset.bg=b;else delete d.dataset.bg}catch(e){d.dataset.bg='n'}})(); /* 17.11: «Ночная арена» — основная тема */
 /* 19.11 «лёгкий режим» (владелец: «на рабочем компьютере сайт тормозит, на домашнем летает»). Если устройство не тянет
