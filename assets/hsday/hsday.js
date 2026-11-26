@@ -122,9 +122,20 @@ function short(stTxt) {                    /* «2-й период, 08:42» → �
   if (/^Доп\. время/.test(s)) return 'ДВ' + (s.split(', ')[1] ? ' · ' + s.split(', ')[1] : '');
   return s;
 }
-const ST = {};                             /* ключ матча → {k: live|final|done, hg, ag, st} */
+const ST = {};
+/* «ГОООЛ!» (владелец 26.11): плашка вспыхивает, поверх — надпись, у забившей команды подсвечен счёт; ~7 с */
+function goalFx(a, side) {
+  clearTimeout(a.__gt); a.querySelectorAll('.hs-goal').forEach(n => n.remove());
+  const rows = a.querySelectorAll('.hs-tm'); rows.forEach((r, i) => r.classList.toggle('scored', i === side));
+  const o = el('span', 'hs-goal', HOCKEY_GOAL()); o.setAttribute('aria-hidden', 'true'); a.append(o);
+  a.classList.remove('is-goal'); void a.offsetWidth; a.classList.add('is-goal');
+  a.__gt = setTimeout(() => { a.classList.remove('is-goal'); rows.forEach(r => r.classList.remove('scored')); o.remove(); }, 7000);
+}
+const HOCKEY_GOAL = () => 'ГОООЛ!';                             /* ключ матча → {k: live|final|done, hg, ag, st} */
 function setScore(a, k, hg, ag, stTxt) {
   const g = a.querySelectorAll('.hs-g'), rows = a.querySelectorAll('.hs-tm'), s = a.querySelector('.hs-st'), nm = a.querySelectorAll('.hs-tn');
+  const pv = ST[a.dataset.key];                /* гол: счёт вырос, пока матч шёл у нас на глазах (не при первой загрузке) */
+  if (pv && pv.k === 'live' && (k === 'live' || k === 'final') && (+hg + +ag) > (+pv.hg + +pv.ag)) goalFx(a, +hg > +pv.hg ? 0 : 1);
   g[0].textContent = hg; g[1].textContent = ag;
   a.classList.toggle('is-live', k === 'live'); a.classList.toggle('is-final', k === 'final' || k === 'done');
   rows[0].classList.toggle('lose', k === 'final' && +hg < +ag); rows[1].classList.toggle('lose', k === 'final' && +ag < +hg);
@@ -696,7 +707,7 @@ function marquee(sc, cards) {
   };
   const sync = () => clones.forEach((c, i) => {
     const a = cards[i]; c.className = a.className + ' hs-clone';
-    c.replaceChildren(...[...a.childNodes].filter(n => !(n.classList && n.classList.contains('lv'))).map(n => n.cloneNode(true)));
+    c.replaceChildren(...[...a.childNodes].filter(n => !(n.classList && (n.classList.contains('lv') || n.classList.contains('hs-goal')))).map(n => n.cloneNode(true)));
   });
   setInterval(() => { if (on) sync(); }, 2000);
   const loop = t => {
