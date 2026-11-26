@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /draft/
 Allow: /
-Sitemap: https://sevasonyshahmatov-collab.github.io/sitemap.xml
+Sitemap: https://jarvisbet.ru/sitemap.xml
