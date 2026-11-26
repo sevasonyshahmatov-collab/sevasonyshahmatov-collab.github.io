@@ -1,3 +1,4 @@
+/*jv-kph*/window.JV_KPH_ON=1;document.addEventListener("error",function(e){var i=e.target;if(!i||i.tagName!=="IMG"||!/\/hockey\/data\/kph\/(\d+)_(\d+)\.webp/.test(i.src)||i.dataset.kphBack)return;var m=/\/hockey\/data\/kph\/(\d+)_(\d+)\.webp/.exec(i.src);i.dataset.kphBack=1;i.src="https://www.khl.ru/img/teamplayers_db/"+m[1]+"/"+m[2]+".jpg"},true);
 /* JARVIS · «Эфир»: загрузчик темы. Подключается в <head> ПЕРЕД assets/palettes.js (одной строкой).
    ?theme=efir включает тему (помнится до закрытия вкладки), ?theme=off сбрасывает. Без параметра сайт как раньше.
    ?theme=lite — «Лайт»: старый вид + стеклянное табло матча дня, клинья в шапках клубов, лёгкий подъём карточек (assets/lite/). */
