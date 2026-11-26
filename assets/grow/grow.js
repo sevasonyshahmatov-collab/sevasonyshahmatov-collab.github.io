@@ -5,7 +5,7 @@
 (function () {
   'use strict';
   if (window.JV_GROW) return; window.JV_GROW = 1;
-  var ON = {1: 1, 2: 1};
+  var ON = {1: 1, 2: 1, 3: 1};
   var BOT = 'https://t.me/JarvisTablePayBot?start=site_';
   var INV = {"home": "https://t.me/+kVtA3PgrrBtjMzRk", "hockey": "https://t.me/+Lbk6rnYP0JdjOWRk", "football": "https://t.me/+FZtnDW4i-PhhYTJk", "match": "https://t.me/+idxBEXvnVq9iZTk0", "club": "https://t.me/+aOjZOQpLZutmOGI0", "forecast": "https://t.me/+LyZaX7dRbjhiNmQ0", "results": "https://t.me/+iAsAMDmG5aZlMmM8", "table": "https://t.me/+MEcyqVZBQn04NTE0"};
   var path = location.pathname.replace(/\/draft\/v4/, ''), file = (path.split('/').pop() || 'index.html');
