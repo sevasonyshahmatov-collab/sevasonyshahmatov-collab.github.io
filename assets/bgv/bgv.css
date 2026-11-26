@@ -193,3 +193,66 @@ html.lite[data-bgv] .bgv-art *{animation:none!important}
 .bgv-sw .bgv-nav{display:block!important;width:38px;height:38px;padding:0;font-size:20px;line-height:1}
 .bgv-sw{flex-wrap:nowrap;gap:6px;padding:6px 8px}
 @media (max-width:1100px){.bgv-sw select{flex:1;min-width:0}}
+
+/* ═════ 26.11, четвёртая волна (владелец: «жду ещё варианты») ═════ */
+/* 19 · «Салют»: над ареной время от времени раскрываются залпы */
+html[data-bgv="19"] body,html[data-bgv="19"][data-theme] body,html[data-bgv="19"] body::before{background:#04050d!important}
+html[data-bgv="19"] .bgv-art s{position:absolute;width:0;height:0}
+html[data-bgv="19"] .bgv-art s i{position:absolute;left:0;top:0;width:4px;height:4px;margin:-2px;border-radius:50%;background:var(--c);box-shadow:0 0 8px 2px var(--c);opacity:0;
+  animation:bgvBurst var(--t) cubic-bezier(.1,.7,.3,1) infinite;animation-delay:var(--dl)}
+@keyframes bgvBurst{0%{transform:rotate(var(--a)) translateX(0);opacity:0}4%{opacity:1}40%{opacity:.8}60%,100%{transform:rotate(var(--a)) translateX(var(--r)) translateY(30px);opacity:0}}
+
+/* 20 · «Гиперпрыжок»: звёзды летят из центра навстречу */
+html[data-bgv="20"] body,html[data-bgv="20"][data-theme] body,html[data-bgv="20"] body::before{background:#02030a!important}
+html[data-bgv="20"] .bgv-art i{position:absolute;left:50%;top:45%;width:2px;height:2px;border-radius:2px;background:#cfe0ff;opacity:0;animation:bgvWarp linear infinite}
+@keyframes bgvWarp{0%{transform:rotate(var(--a)) translateX(0) scaleX(1);opacity:0}20%{opacity:.9}100%{transform:rotate(var(--a)) translateX(85vmax) scaleX(40);opacity:0}}
+
+/* 21 · «Волны»: светящиеся линии плавно текут, как звук трибун */
+html[data-bgv="21"] body,html[data-bgv="21"][data-theme] body,html[data-bgv="21"] body::before{background:#040818!important}
+html[data-bgv="21"] .bgv-art svg{opacity:.7}
+html[data-bgv="21"] .bgv-art svg path{fill:none;stroke-width:1.6;filter:drop-shadow(0 0 6px currentColor);animation:bgvWave linear infinite}
+@keyframes bgvWave{to{transform:translateX(var(--s))}}
+
+/* 22 · «Поток цифр»: падающие столбцы счёта и процентов */
+html[data-bgv="22"] body,html[data-bgv="22"][data-theme] body,html[data-bgv="22"] body::before{background:#03070a!important}
+html[data-bgv="22"] .bgv-art u{position:absolute;top:-60%;text-decoration:none;font:600 15px/1.25 ui-monospace,Consolas,monospace;writing-mode:vertical-rl;text-orientation:upright;
+  color:#2fd8ff;opacity:.28;text-shadow:0 0 8px currentColor;animation:bgvRain linear infinite;white-space:nowrap}
+html[data-bgv="22"][data-sport="football"] .bgv-art u{color:#3df5a6}
+@keyframes bgvRain{to{transform:translateY(170vh)}}
+
+/* 23 · «Отражения»: блеск прожекторов на льду (на поле — на мокром газоне), блик медленно скользит */
+html[data-bgv="23"] body,html[data-bgv="23"][data-theme] body{background:#050b18!important}
+html[data-bgv="23"] body::before{background:
+  radial-gradient(18% 9% at 22% 78%,rgba(190,220,255,.32),transparent 70%),radial-gradient(18% 9% at 50% 82%,rgba(190,220,255,.36),transparent 70%),
+  radial-gradient(18% 9% at 78% 78%,rgba(190,220,255,.32),transparent 70%),radial-gradient(90% 40% at 50% 100%,rgba(40,110,220,.35),transparent 70%),
+  linear-gradient(#050b18 45%,#0a1a33)!important}
+html[data-bgv="23"][data-sport="football"] body::before{background:
+  radial-gradient(18% 9% at 22% 78%,rgba(200,255,225,.26),transparent 70%),radial-gradient(18% 9% at 50% 82%,rgba(200,255,225,.3),transparent 70%),
+  radial-gradient(18% 9% at 78% 78%,rgba(200,255,225,.26),transparent 70%),radial-gradient(90% 40% at 50% 100%,rgba(0,140,80,.32),transparent 70%),
+  linear-gradient(#04100b 45%,#072417)!important}
+html[data-bgv="23"] .bgv-art b{position:absolute;top:55%;bottom:0;width:30%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.1),transparent);animation:bgvSheen 9s ease-in-out infinite}
+@keyframes bgvSheen{from{transform:translateX(-120%)}to{transform:translateX(420%)}}
+
+/* 24 · «Геометрия»: крупные полупрозрачные фигуры медленно вращаются */
+html[data-bgv="24"] body,html[data-bgv="24"][data-theme] body,html[data-bgv="24"] body::before{background:#060918!important}
+html[data-bgv="24"] .bgv-art em{position:absolute;opacity:.16;mix-blend-mode:screen;animation:bgvSpin linear infinite}
+@keyframes bgvSpin{to{transform:rotate(360deg)}}
+
+/* 25 · «Трибуны»: внизу силуэты болельщиков, в зале мерцают огоньки телефонов */
+html[data-bgv="25"] body,html[data-bgv="25"][data-theme] body{background:#070a16!important}
+html[data-bgv="25"] body::before{background:radial-gradient(90% 50% at 50% 0%,rgba(80,120,255,.3),transparent 70%),#070a16!important}
+html[data-bgv="25"] .bgv-art svg{top:auto;height:38vh}
+html[data-bgv="25"] .bgv-art i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff6d0;box-shadow:0 0 6px 1px #fff3b0;animation:bgvSpark ease-in-out infinite}
+
+/* 26 · «Сетка ворот»: крупная сетка, по ней ходит луч прожектора */
+html[data-bgv="26"] body,html[data-bgv="26"][data-theme] body,html[data-bgv="26"] body::before{background:#05070f!important}
+html[data-bgv="26"] .bgv-art{background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 1.5px,transparent 1.5px 26px),repeating-linear-gradient(-45deg,rgba(255,255,255,.07) 0 1.5px,transparent 1.5px 26px)}
+html[data-bgv="26"] .bgv-art b{position:absolute;inset:-20%;background:radial-gradient(28% 32% at 50% 50%,rgba(140,190,255,.28),transparent 70%);animation:bgvSpot 12s ease-in-out infinite alternate}
+html[data-bgv="26"][data-sport="football"] .bgv-art b{background:radial-gradient(28% 32% at 50% 50%,rgba(140,255,200,.24),transparent 70%)}
+@keyframes bgvSpot{0%{transform:translate(-25%,-15%)}50%{transform:translate(20%,10%)}100%{transform:translate(-5%,20%)}}
+
+@media (prefers-reduced-motion:reduce){html[data-bgv] .bgv-art *,html[data-bgv] .bgv-art{animation:none!important}}
+html.lite[data-bgv] .bgv-art *{animation:none!important}
+html[data-bgv="25"] body::before{background:radial-gradient(90% 50% at 50% 0%,rgba(80,120,255,.3),transparent 70%),radial-gradient(70% 40% at 50% 85%,rgba(255,140,60,.35),transparent 70%),#070a16!important}
+html[data-bgv="25"][data-sport="football"] body::before{background:radial-gradient(90% 50% at 50% 0%,rgba(80,255,170,.2),transparent 70%),radial-gradient(70% 40% at 50% 85%,rgba(255,190,60,.32),transparent 70%),#06100c!important}
+html[data-bgv="19"] .bgv-art s i{width:5px;height:5px}
