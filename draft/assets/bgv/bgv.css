@@ -1,0 +1,75 @@
+/* Варианты фона для сравнения (владелец 26.11: «4–5 разных вариантов фонового оформления»).
+   Поверх «Ночной арены» (html[data-bg="n"]): тёмные цвета карточек и текста — прежние, меняется только фон.
+   html[data-bgv="1…5"] ставит assets/bgv/bgv.js (?bgv=N, запоминается на вкладку; ?bgv=0 — как сейчас). Рисунок — слой .bgv-art. */
+
+html[data-bgv] .arena-bg{display:none!important}
+html[data-bgv] body::after{display:none!important}
+html[data-bgv] body::before{animation:none!important;transform:none!important;top:0!important;height:100vh!important}
+/* полосы-подсветки разделов: оставляем только тонкую линию сверху */
+html[data-bgv] [data-zone],html[data-bgv][data-theme="arena"] :is(.lghero,.tmhero)+.sec{background:linear-gradient(90deg,transparent,rgba(255,255,255,.12) 30%,rgba(255,255,255,.12) 70%,transparent) top/100% 1px no-repeat!important}
+html[data-bgv] .sec-head h2,html[data-bgv] .pl-hero h1,html[data-bgv] .nxs h2{text-shadow:none}
+.bgv-art{position:fixed;inset:0;z-index:-3;pointer-events:none;overflow:hidden}
+.bgv-art svg{position:absolute;inset:0;width:100%;height:100%}
+
+/* 1 · «Лёд»: ровный тёмно-синий и разметка площадки (у футбола — поля) тонкими линиями */
+html[data-bgv="1"] body,html[data-bgv="1"][data-theme] body{background:#07101f!important}
+html[data-bgv="1"] body::before{background:#07101f!important}
+html[data-bgv="1"] .bgv-art{color:#9cc4ff;opacity:.13}
+html[data-bgv="1"][data-sport="football"] .bgv-art{color:#7ff0bd;opacity:.11}
+
+/* 2 · «Графит»: почти чёрный, мелкая сетка точек — спокойно и дорого */
+html[data-bgv="2"] body,html[data-bgv="2"][data-theme] body{background:#0a0c11!important}
+html[data-bgv="2"] body::before{background:#0a0c11!important}
+html[data-bgv="2"] .bgv-art{background-image:radial-gradient(rgba(255,255,255,.15) 1px,transparent 1.5px);background-size:22px 22px}
+html[data-bgv="2"] [data-zone]{--paper:#0d1016;--card:#12161e;--card-hi:#181d27}
+
+/* 3 · «Прожекторы»: тёмный стадион, два луча света сверху */
+html[data-bgv="3"] body,html[data-bgv="3"][data-theme] body{background:#04060c!important}
+html[data-bgv="3"] body::before{background:
+  conic-gradient(from 160deg at 18% -10%,transparent 0deg,rgba(120,170,255,.26) 12deg,transparent 26deg),
+  conic-gradient(from 174deg at 82% -10%,transparent 0deg,rgba(120,170,255,.2) 12deg,transparent 26deg),
+  radial-gradient(70% 40% at 50% 110%,rgba(40,90,200,.22),transparent 70%),#04060c!important}
+html[data-bgv="3"][data-sport="football"] body::before{background:
+  conic-gradient(from 160deg at 18% -10%,transparent 0deg,rgba(160,255,210,.22) 12deg,transparent 26deg),
+  conic-gradient(from 174deg at 82% -10%,transparent 0deg,rgba(160,255,210,.17) 12deg,transparent 26deg),
+  radial-gradient(70% 40% at 50% 110%,rgba(0,140,80,.22),transparent 70%),#04060c!important}
+
+/* 4 · «Сияние»: медленно плывущие мягкие пятна цветов раздела */
+html[data-bgv="4"] body,html[data-bgv="4"][data-theme] body{background:#050816!important}
+html[data-bgv="4"] body::before{background:#050816!important}
+html[data-bgv="4"] .bgv-art i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(90px);opacity:.38;will-change:transform}
+html[data-bgv="4"] .bgv-art i:nth-child(1){left:-15vmax;top:-20vmax;background:var(--n-a,#1a3cff);animation:bgvA 26s ease-in-out infinite alternate}
+html[data-bgv="4"] .bgv-art i:nth-child(2){right:-20vmax;top:10vmax;background:var(--n-b,#22e1ff);opacity:.2;animation:bgvB 32s ease-in-out infinite alternate}
+html[data-bgv="4"] .bgv-art i:nth-child(3){left:20vmax;bottom:-30vmax;background:var(--n-d,#7a3cff);opacity:.3;animation:bgvA 38s ease-in-out infinite alternate-reverse}
+@keyframes bgvA{to{transform:translate3d(18vmax,10vmax,0) scale(1.15)}}
+@keyframes bgvB{to{transform:translate3d(-16vmax,14vmax,0) scale(.9)}}
+
+/* 5 · «Полосы»: тёмно-синий с косыми полосами, как на клубной форме, и тёмными краями */
+html[data-bgv="5"] body,html[data-bgv="5"][data-theme] body{background:#081226!important}
+html[data-bgv="5"] body::before{background:
+  repeating-linear-gradient(-55deg,rgba(255,255,255,.035) 0 46px,transparent 46px 120px),
+  radial-gradient(120% 90% at 50% 40%,transparent 50%,rgba(0,0,0,.55)),#081226!important}
+html[data-bgv="5"][data-sport="football"] body::before{background:
+  repeating-linear-gradient(-55deg,rgba(120,255,190,.035) 0 46px,transparent 46px 120px),
+  radial-gradient(120% 90% at 50% 40%,transparent 50%,rgba(0,0,0,.55)),#06140f!important}
+html[data-bgv="5"][data-sport="football"] body{background:#06140f!important}
+
+@media (prefers-reduced-motion:reduce){html[data-bgv] .bgv-art i{animation:none!important}}
+html.lite[data-bgv="4"] .bgv-art i{animation:none!important;filter:blur(60px)}
+
+/* переключатель вариантов */
+.bgv-sw{position:fixed;right:16px;bottom:16px;z-index:75;display:flex;align-items:center;gap:2px;padding:3px;border-radius:4px;background:rgba(10,14,28,.95);
+  border:1px solid rgba(255,255,255,.16);box-shadow:0 14px 30px -14px #000;font:700 13px/1 var(--tx,var(--text))}
+.bgv-sw span{padding:0 8px 0 9px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9aa9d8}
+.bgv-sw button{appearance:none;border:0;border-radius:4px;padding:9px 11px;background:transparent;color:#c3cef0;font:inherit;cursor:pointer;white-space:nowrap}
+.bgv-sw button:hover{color:#f2f6ff}
+.bgv-sw button[aria-pressed="true"]{background:#f2f6ff;color:#060b1a}
+.bgv-sw button:focus-visible,.bgv-sw select:focus-visible{outline:2px solid #5ab8ff;outline-offset:1px}
+.bgv-sw select{display:none}
+@media (max-width:1100px){
+  .bgv-sw{left:8px;right:8px;bottom:calc(70px + env(safe-area-inset-bottom));gap:10px;padding:8px 10px}
+  .bgv-sw button{display:none}
+  .bgv-sw select{display:block;flex:1;height:38px;padding:0 10px;border-radius:4px;border:1px solid rgba(255,255,255,.2);background:#0c1324;color:#f2f6ff;font:700 14px/1 var(--tx,var(--text))}
+}
+@media (max-width:1100px){body:has(.hs-vsw) .bgv-sw{bottom:calc(124px + env(safe-area-inset-bottom))}}
+@media (min-width:1101px){body:has(.hs-vsw) .bgv-sw{bottom:70px}}
