@@ -281,7 +281,7 @@
     var rj = fetch('/data/results.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
     var mt = fetch('/data/mtext.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; });
     var data = Promise.all([rj, mt]).then(function (x) { if (x[0]) results(x[0]); feed(x[0], x[1]); });
-    if (RM || MOB || (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4) return;   // v5: лёгкий режим — без GSAP/Lenis
+    if (RM || MOB || (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4) { document.documentElement.classList.remove('anim'); return; }   // v5: лёгкий режим — без GSAP/Lenis, всё видно сразу
     var p = Promise.resolve();
     ['gsap-3.15.1.min.js', 'ScrollTrigger-3.15.1.min.js', 'SplitText-3.15.1.min.js', 'lenis-1.3.28.min.js'].forEach(function (f) { p = p.then(function () { return load(f); }); });
     Promise.all([p, data, document.fonts ? document.fonts.ready : 0]).then(function () { var l = smooth(); tickers(l); animate(l); })
