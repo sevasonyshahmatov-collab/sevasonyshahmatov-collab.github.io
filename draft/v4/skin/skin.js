@@ -133,9 +133,6 @@
       var el = document.getElementById(decodeURIComponent(u.hash.slice(1))); if (!el) return;
       e.preventDefault(); lenis.scrollTo(el, { offset: -parseInt(getComputedStyle(document.documentElement).getPropertyValue('--jv-top') || 64) - 8 });
     }, true);
-    var h1 = main.querySelector('h1');
-    if (h1) { var sp = SplitText.create(h1, { type: 'words' }); gsap.set(h1, { visibility: 'visible' });
-      gsap.from(sp.words, { autoAlpha: 0, y: 10, filter: 'blur(10px)', duration: 0.5, stagger: 0.07, ease: 'power2.out' }); }
     $$('h2', main).forEach(function (el) {
       if (el.getBoundingClientRect().top < innerHeight * 0.9) return;
       var s = SplitText.create(el, { type: 'words' });
@@ -149,7 +146,25 @@
     ticker();
   }
 
+  /* заголовок страницы — по словам сразу при открытии, на CSS (не ждёт библиотек и не прячет заголовок: скорость первой отрисовки) */
+  function h1words() {
+    var h = main.querySelector('h1'); if (!h || RM || h.dataset.jvW) return; h.dataset.jvW = 1;
+    var i = 0, walk = function (n) {
+      Array.prototype.slice.call(n.childNodes).forEach(function (c) {
+        if (c.nodeType === 3 && c.textContent.trim()) {
+          var f = document.createDocumentFragment();
+          c.textContent.split(/(\s+)/).forEach(function (w) {
+            if (!w) return; if (/^\s+$/.test(w)) { f.appendChild(document.createTextNode(w)); return; }
+            var s = document.createElement('span'); s.className = 'jv-w'; s.style.animationDelay = (i++ * 0.07) + 's'; s.textContent = w; f.appendChild(s);
+          });
+          n.replaceChild(f, c);
+        } else if (c.nodeType === 1 && !/^(SVG|IMG|BR)$/i.test(c.tagName)) walk(c);
+      });
+    };
+    walk(h); h.setAttribute('aria-label', h.textContent.replace(/\s+/g, ' ').trim());
+  }
   function start() {
+    h1words();
     topOffset(); window.addEventListener('resize', topOffset);
     setTimeout(topOffset, 800);
     tables();
@@ -159,7 +174,5 @@
     Promise.all([p, document.fonts ? document.fonts.ready : 0]).then(function () { tables(); animate(); })
       .catch(function () { document.documentElement.classList.remove('jv-anim'); });
   }
-  // класс jv-anim ставит строка в <head> (до отрисовки); страховка — заголовок не остаётся скрытым дольше 2,5 с
-  setTimeout(function () { var h = main.querySelector('h1'); if (h && getComputedStyle(h).visibility === 'hidden') h.style.visibility = 'visible'; }, 2500);
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', start, { once: true }) : start();
 })();
