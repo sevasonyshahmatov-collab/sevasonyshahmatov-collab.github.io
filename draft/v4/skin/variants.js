@@ -15,7 +15,11 @@
     var v = $('.jv-arena video');
     if (v) {
       if (MOB || RM) v.remove();
-      else { v.src = v.canPlayType('video/webm; codecs="vp9"') ? v.dataset.src.replace(/\.mp4$/, '.webm') : v.dataset.src; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      else {                     // видео — только после полной загрузки страницы: не мешает первой отрисовке (заставка уже на экране)
+        var go = function () { (window.requestIdleCallback || setTimeout)(function () {
+          v.src = v.canPlayType('video/webm; codecs="vp9"') ? v.dataset.src.replace(/\.mp4$/, '.webm') : v.dataset.src; var p = v.play(); if (p && p.catch) p.catch(function () {}); }, { timeout: 1500 }); };
+        document.readyState === 'complete' ? go() : addEventListener('load', go, { once: true });
+      }
     }
   }
 
