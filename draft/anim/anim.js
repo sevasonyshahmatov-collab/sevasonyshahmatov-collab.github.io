@@ -69,10 +69,9 @@
     if (!hm) return;                                            // только главная
     var q = new URLSearchParams(location.search);
     var fx = q.get('fx') === 'fog' ? 'fog' : 'net';
-    var box = document.createElement('div');
-    box.className = 'jv-vanta jv-vanta-' + fx;
-    box.setAttribute('aria-hidden', 'true');
-    hm.insertBefore(box, hm.firstChild);
+    var box = hm.querySelector('.jv-vanta');                  // блок уже в разметке (site_draft_anim.py)
+    if (!box) { box = document.createElement('div'); box.className = 'jv-vanta'; box.setAttribute('aria-hidden', 'true'); hm.insertBefore(box, hm.firstChild); }
+    box.classList.add('jv-vanta-' + fx);
     document.documentElement.classList.add('jv-fx');
     if (REDUCED || !DESKTOP || q.get('still') === '1') { box.classList.add('is-still'); return; }
     afterLoad(function () {
