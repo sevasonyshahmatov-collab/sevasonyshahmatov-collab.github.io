@@ -12,12 +12,12 @@
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go()})();
 /* 26.11 — варианты фона для сравнения: ?bgv=1…5 (запоминается на вкладку, ?bgv=0 — как сейчас). Стили и переключатель — assets/bgv */
 (()=>{const d=document.documentElement,base=(document.currentScript&&document.currentScript.src||'').replace(/nav\.js.*$/,'');let v=null,sw=false;
- try{const q=new URLSearchParams(location.search).get('bgv');if(q!==null&&/^[0-5]$/.test(q)){sessionStorage.setItem('jv-bgv',q);sessionStorage.setItem('jv-bgv-sw','1')}
+ try{const q=new URLSearchParams(location.search).get('bgv');if(q!==null&&/^(10|[0-9])$/.test(q)){sessionStorage.setItem('jv-bgv',q);sessionStorage.setItem('jv-bgv-sw','1')}
   v=sessionStorage.getItem('jv-bgv');sw=sessionStorage.getItem('jv-bgv-sw')==='1'}catch(e){}
- if(v&&/^[1-5]$/.test(v))d.dataset.bgv=v;
+ if(v&&/^(10|[1-9])$/.test(v))d.dataset.bgv=v;
  if(!d.dataset.bgv&&!sw&&!/\/draft\//.test(location.pathname))return;
- const l=document.createElement('link');l.rel='stylesheet';l.href=base+'bgv/bgv.css?v=1';document.head.appendChild(l);
- const s=document.createElement('script');s.src=base+'bgv/bgv.js?v=1';s.defer=true;document.head.appendChild(s)})();
+ const l=document.createElement('link');l.rel='stylesheet';l.href=base+'bgv/bgv.css?v=2';document.head.appendChild(l);
+ const s=document.createElement('script');s.src=base+'bgv/bgv.js?v=2';s.defer=true;document.head.appendChild(s)})();
 /* 17.11 — варианты фона для сравнения: ?bg=a|b|c в адресе (запоминается на время вкладки, ?bg=0 — вернуть обычный). Стили — nav.css, разметка льда — v3a.js */
 (()=>{const d=document.documentElement;try{const q=new URLSearchParams(location.search).get('bg');if(q!==null)sessionStorage.setItem('jv-bg',/^[abcn]$/.test(q)?q:'0');let b=sessionStorage.getItem('jv-bg');if(b===null)b='n';if(b&&b!=='0')d.dataset.bg=b;else delete d.dataset.bg}catch(e){d.dataset.bg='n'}})(); /* 17.11: «Ночная арена» — основная тема */
 /* 19.11 «лёгкий режим» (владелец: «на рабочем компьютере сайт тормозит, на домашнем летает»). Если устройство не тянет

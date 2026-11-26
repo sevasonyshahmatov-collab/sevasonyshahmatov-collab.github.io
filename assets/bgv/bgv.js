@@ -2,7 +2,7 @@
    (.bgv-art) и переключатель. Переключатель виден в черновике всегда, на живом сайте — если вариант открыт ссылкой ?bgv=N. */
 (() => {
 'use strict';
-const d = document.documentElement, V = {0: 'Как сейчас', 1: 'Лёд', 2: 'Графит', 3: 'Прожекторы', 4: 'Сияние', 5: 'Полосы'};
+const d = document.documentElement, V = {0: 'Как сейчас', 6: 'Неон', 7: 'Скорость', 8: 'Ретро-арена', 9: 'Северное сияние', 10: 'Огни стадиона', 1: 'Лёд', 2: 'Графит', 3: 'Прожекторы', 4: 'Сияние', 5: 'Полосы'};
 const FOOT = d.dataset.sport === 'football';
 const RINK = '<svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width=".35">' +
   '<rect x="8" y="12" width="184" height="76" rx="18"/><line x1="100" y1="12" x2="100" y2="88" stroke-width=".7"/>' +
@@ -20,7 +20,13 @@ const paint = () => {
   const v = d.dataset.bgv || '';
   if (!v) { if (art) art.remove(); art = null; return; }
   if (!art) { art = document.createElement('div'); art.className = 'bgv-art'; art.setAttribute('aria-hidden', 'true'); document.body.prepend(art); }
-  art.innerHTML = v === '1' ? (FOOT ? PITCH : RINK) : v === '4' ? '<i></i><i></i><i></i>' : '';   /* только свои константы */
+  art.innerHTML = v === '1' || v === '6' ? (FOOT ? PITCH : RINK) : v === '4' || v === '9' ? '<i></i><i></i><i></i>' : v === '8' ? '<i></i>' : '';   /* только свои константы */
+  if (v === '6') art.querySelectorAll('svg line[stroke-width=".7"], svg path').forEach(n => n.setAttribute('class', 'r'));
+  if (v === '7') for (let i = 0; i < 16; i++) { const b = document.createElement('b'); b.style.top = (i * 6.5 + Math.random() * 4) + '%';
+    b.style.animationDuration = (2.6 + Math.random() * 3.4).toFixed(2) + 's'; b.style.animationDelay = (-Math.random() * 6).toFixed(2) + 's'; art.append(b); }
+  if (v === '10') { const C = FOOT ? ['#3df5a6', '#ffb400', '#ffffff', '#0b6cff'] : ['#22e1ff', '#ff2e4d', '#ffffff', '#7a3cff'];
+    for (let i = 0; i < 26; i++) { const e = document.createElement('i'), z = 8 + Math.random() * 46; e.style.cssText = 'left:' + (Math.random() * 100).toFixed(1) + '%;width:' + z.toFixed(0) + 'px;height:' + z.toFixed(0) + 'px;background:' + C[i % 4] +
+      ';--o:' + (0.18 + Math.random() * 0.4).toFixed(2) + ';animation-duration:' + (14 + Math.random() * 18).toFixed(1) + 's;animation-delay:' + (-Math.random() * 30).toFixed(1) + 's'; art.append(e); } }
 };
 const set = k => {
   try { sessionStorage.setItem('jv-bgv', k); } catch (e) {}
@@ -38,8 +44,9 @@ const go = () => {
   const box = document.createElement('div'); box.className = 'bgv-sw'; box.setAttribute('role', 'group'); box.setAttribute('aria-label', 'Вариант фона');
   const l = document.createElement('span'); l.textContent = 'Фон'; box.append(l);
   sel = document.createElement('select'); sel.setAttribute('aria-label', 'Вариант фона');
-  Object.keys(V).forEach(k => {
+  ['0', '6', '7', '8', '9', '10', '1', '2', '3', '4', '5'].forEach(k => {   /* новые — первыми */
     const b = document.createElement('button'); b.type = 'button'; b.dataset.v = k; b.textContent = (k === '0' ? '' : k + ' · ') + V[k];
+    if (k === '1') { const sp = document.createElement('span'); sp.textContent = 'Прошлые'; box.append(sp); }
     b.addEventListener('click', () => set(k)); box.append(b); btns.push(b);
     const o = document.createElement('option'); o.value = k; o.textContent = b.textContent; sel.append(o);
   });
