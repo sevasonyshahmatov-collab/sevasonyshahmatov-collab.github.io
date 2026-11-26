@@ -93,14 +93,14 @@
   }, { rootMargin: '0px 0px -6% 0px' }) : null;
   function reveal(root) {
     if (RM || !io) return;
-    groups(root).forEach(function (g) {
+    (LITE ? [] : groups(root)).forEach(function (g) {   // лёгкий режим: без поиска «лесенок» (дорого на больших страницах)
       g.dataset.v5G = 1;
       Array.prototype.slice.call(g.children).forEach(function (c, i) {
         if (c.getBoundingClientRect().top < innerHeight * 0.9) return;
         c.classList.add('v5-r'); c.style.transitionDelay = ((i % 4) * 0.06) + 's'; io.observe(c);
       });
     });
-    $$('table, h2', root).forEach(function (t) {
+    $$(LITE ? 'main > section, table, h2' : 'table, h2', root).forEach(function (t) {
       if (t.dataset.v5R || t.getBoundingClientRect().top < innerHeight * 0.9 || t.closest('[role], .v5-r')) return;
       t.dataset.v5R = 1; t.classList.add('v5-r'); io.observe(t);
     });
