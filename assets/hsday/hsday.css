@@ -296,3 +296,8 @@ html:has(#hsday) :is(.hv-sw,.hh-sw,.h3bar,.hb-sw){display:none!important}
 .hs-gp-s{min-width:34px;padding:3px 6px;border-radius:4px;background:rgba(255,255,255,.08);text-align:center;font:700 12.5px/1 var(--tx,var(--text));font-variant-numeric:tabular-nums;color:#f2f6ff}
 .hs-gp-x{padding:8px 0 2px;color:#c3cef0}
 @media (prefers-reduced-motion:reduce){.hs-gp{animation:none}}
+/* бегущая лента матчей (hsday.js: marquee) */
+.hs-track{display:flex;flex:none}
+.hs-sc.is-mq{overflow:hidden;scroll-snap-type:none;touch-action:pan-y;cursor:grab}
+.hs-sc.is-mq .hs-track{will-change:transform}
+.hs-sc.is-mq:active{cursor:grabbing}

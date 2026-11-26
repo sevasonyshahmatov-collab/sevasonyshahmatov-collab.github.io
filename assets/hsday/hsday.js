@@ -676,24 +676,49 @@ function goalsHover(a) {
   a.addEventListener('blur', () => hidePop(true));
   a.addEventListener('keydown', e => { if (e.key === 'Escape') hidePop(true); });
 }
-/* строка сама листается, когда матчей больше, чем влезает (владелец 25.11): шаг на карточку раз в 4 с, в конце — к началу;
-   стоит, пока курсор, фокус или палец на строке; при «уменьшить движение» — не листается */
-function autoScroll(sc) {
+/* строка матчей — бегущая лента (владелец 26.11: «чтобы линия с матчами плавно передвигалась»): если матчи не влезают,
+   лента непрерывно едет влево (~38 px/с) по кругу — за карточками идут их копии (aria-hidden, без фокуса), копии раз в 2 с
+   повторяют счёт и статус оригиналов. Стоит, пока курсор или фокус на ленте; пальцем/мышью ленту можно протянуть.
+   При «уменьшить движение» — обычная прокрутка без движения. */
+function marquee(sc, cards) {
+  const track = el('div', 'hs-track'); cards.forEach(a => track.append(a)); sc.append(track);
   if (RM) return;
-  let hold = false, rt = 0;
-  const step = () => {
-    if (hold || document.hidden || sc.scrollWidth - sc.clientWidth < 8) return;
-    const c = sc.querySelector('.hs-m'), w = c ? c.getBoundingClientRect().width : 228;
-    const end = sc.scrollLeft + sc.clientWidth >= sc.scrollWidth - 4;
-    sc.scrollTo({left: end ? 0 : sc.scrollLeft + w, behavior: 'smooth'});
+  let on = false, clones = [], x = 0, half = 0, hold = false, rt = 0, last = 0, drag = null, moved = false;
+  const SPEED = 38;
+  const setup = () => {
+    clones.forEach(c => c.remove()); clones = []; track.style.transform = ''; sc.classList.remove('is-mq'); on = false;
+    if (track.scrollWidth <= sc.clientWidth + 4) return;
+    half = track.scrollWidth; on = true; sc.classList.add('is-mq'); sc.scrollLeft = 0; x = x % half;
+    cards.forEach(a => {
+      const c = a.cloneNode(true); c.classList.add('hs-clone'); c.setAttribute('aria-hidden', 'true'); c.tabIndex = -1;
+      c.removeAttribute('data-lv'); c.querySelectorAll('.lv').forEach(n => n.remove()); goalsHover(c);   /* копии live.js не опрашивает */ clones.push(c); track.append(c);
+    });
   };
-  setInterval(step, 4000);
-  const on = () => { hold = true; clearTimeout(rt); }, off = d => { clearTimeout(rt); rt = setTimeout(() => { hold = false; }, d); };
-  sc.addEventListener('mouseenter', on); sc.addEventListener('mouseleave', () => off(0));
-  sc.addEventListener('focusin', on); sc.addEventListener('focusout', () => off(0));
-  sc.addEventListener('touchstart', on, {passive: true}); sc.addEventListener('touchend', () => off(8000), {passive: true});
-  sc.addEventListener('wheel', () => { on(); off(8000); }, {passive: true});
-  sc.addEventListener('scroll', () => { if (POP && !POP.hidden && popFor && sc.contains(popFor)) placePop(popFor); }, {passive: true});
+  const sync = () => clones.forEach((c, i) => {
+    const a = cards[i]; c.className = a.className + ' hs-clone';
+    c.replaceChildren(...[...a.childNodes].filter(n => !(n.classList && n.classList.contains('lv'))).map(n => n.cloneNode(true)));
+  });
+  setInterval(() => { if (on) sync(); }, 2000);
+  const loop = t => {
+    const dt = last ? Math.min(t - last, 64) : 0; last = t;
+    if (on && !hold && !drag && !document.hidden) { x += SPEED * dt / 1000; if (x >= half) x -= half; track.style.transform = 'translate3d(' + (-x).toFixed(2) + 'px,0,0)'; }
+    requestAnimationFrame(loop);
+  };
+  requestAnimationFrame(loop);
+  const stop = () => { hold = true; clearTimeout(rt); }, go = d => { clearTimeout(rt); rt = setTimeout(() => { hold = false; }, d); };
+  sc.addEventListener('mouseenter', stop); sc.addEventListener('mouseleave', () => go(0));
+  sc.addEventListener('focusin', stop); sc.addEventListener('focusout', () => go(0));
+  /* протянуть ленту пальцем или мышью */
+  sc.addEventListener('pointerdown', e => { if (!on || e.button > 0) return; drag = {x0: e.clientX, s: x}; moved = false; });
+  addEventListener('pointermove', e => {
+    if (!drag) return; const dx = e.clientX - drag.x0; if (Math.abs(dx) > 6) moved = true;
+    if (moved) { x = ((drag.s - dx) % half + half) % half; track.style.transform = 'translate3d(' + (-x).toFixed(2) + 'px,0,0)'; hidePop(true); }
+  }, {passive: true});
+  const up = e => { if (!drag) return; drag = null; if (e.pointerType !== 'mouse') { hold = true; go(3000); } };
+  addEventListener('pointerup', up); addEventListener('pointercancel', up);
+  sc.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+  let rz = 0; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(setup, 250); });
+  setup();
 }
 
 async function render() {
@@ -714,7 +739,7 @@ async function render() {
   /* строка */
   const sc = root.querySelector('.hs-sc'); sc.textContent = '';
   const cards = list.map(card);
-  if (cards.length) { cards.forEach(a => { sc.append(a); watchLive(a); goalsHover(a); }); autoScroll(sc); }
+  if (cards.length) { cards.forEach(a => { watchLive(a); goalsHover(a); }); marquee(sc, cards); }
   else sc.append(el('p', 'hs-none', 'Сегодня матчей нет. Ближайшие игры — ниже, в разделе «' + SP.below + '».'));
 
   /* первый экран: данные всех матчей дня — со страниц разборов */
