@@ -5,7 +5,7 @@
 (function () {
   'use strict';
   if (window.JV_GROW) return; window.JV_GROW = 1;
-  var ON = {1: 1, 2: 1, 3: 1};
+  var ON = {1: 1, 2: 1, 3: 1, 4: 1};
   var BOT = 'https://t.me/JarvisTablePayBot?start=site_';
   var INV = {"home": "https://t.me/+kVtA3PgrrBtjMzRk", "hockey": "https://t.me/+Lbk6rnYP0JdjOWRk", "football": "https://t.me/+FZtnDW4i-PhhYTJk", "match": "https://t.me/+idxBEXvnVq9iZTk0", "club": "https://t.me/+aOjZOQpLZutmOGI0", "forecast": "https://t.me/+LyZaX7dRbjhiNmQ0", "results": "https://t.me/+iAsAMDmG5aZlMmM8", "table": "https://t.me/+MEcyqVZBQn04NTE0"};
   var path = location.pathname.replace(/\/draft\/v4/, ''), file = (path.split('/').pop() || 'index.html');
@@ -59,7 +59,7 @@
       '<a class="gr-bot" href="' + BOT + TYPE + '" target="_blank" rel="noopener">' + TG + '<span>' + BTXT[TYPE] + '</span></a>';
     // на первый экран телефона: стартовая — сразу под цифрой итогов; клуб — под названием; итоги — под вводным текстом
     var after = TYPE === 'home' ? ($('#hm-score') || h1) : TYPE === 'club' ? h1 : TYPE === 'results' ? ($('#rs-lead') || h1) : null;
-    if (after) { after.insertAdjacentElement('afterend', box); return; }
+    if (after) { after.insertAdjacentElement('afterend', box); box.style.order = getComputedStyle(after).order; return; }   // на телефоне блоки переставлены order
     var host = TYPE === 'hockey' || TYPE === 'football' ? ($('.hs-head') || h1.parentElement) : h1.parentElement;
     host.appendChild(box);
   }
@@ -82,7 +82,9 @@
     var m = ms[0]; if (!m) return;
     var md = J.M[m.key], pr = [md.p1, md.x, md.p2], bi = 0; pr.forEach(function (p, i) { if (p != null && p > pr[bi]) bi = i; });
     var p = document.createElement('p'); p.className = 'gr-near';
-    p.innerHTML = 'Ближайший: <b>' + J.esc(m.hn) + ' — ' + J.esc(m.an) + '</b>, ' + J.hhmm(m.t) + ' МСК · модель: <b>' + ['П1', 'Х', 'П2'][bi] + ' ' + Math.round(pr[bi] * 100) + ' %</b>';
+    var d0 = new Date(Date.now() + 3 * 36e5).toISOString().slice(0, 10), d1 = new Date(Date.now() + 27 * 36e5).toISOString().slice(0, 10), dm = m.t.slice(0, 10);
+    var day = dm === d0 ? 'сегодня' : dm === d1 ? 'завтра' : dm.slice(8, 10) + '.' + dm.slice(5, 7);
+    p.innerHTML = 'Ближайший: <b>' + J.esc(m.hn) + ' — ' + J.esc(m.an) + '</b>, ' + day + ' ' + J.hhmm(m.t) + ' МСК · модель: <b>' + ['П1', 'Х', 'П2'][bi] + ' ' + Math.round(pr[bi] * 100) + ' %</b>';
     var head = $('.hs-head') || ($('main h1') || {}).parentElement; if (head) head.appendChild(p);
   }
 
