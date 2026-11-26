@@ -42,7 +42,7 @@ main table thead th{position:sticky;top:var(--jv-top);z-index:3;background:var(-
 .jv-tscroll table thead th{top:0}
 @media (max-width:809px){.jv-tscroll table th:first-child,.jv-tscroll table td:first-child{position:sticky;left:0;z-index:2;background:var(--v5-bg2)}}
 /* появление: только opacity + transform */
-.v5-w{display:inline-block;opacity:0;transform:translateY(.35em);animation:v5w .5s cubic-bezier(.22,1,.36,1) forwards}
+.v5-w{display:inline-block;opacity:.01;transform:translateY(.35em);animation:v5w .5s cubic-bezier(.22,1,.36,1) forwards}
 @keyframes v5w{to{opacity:1;transform:none}}
 .v5-r{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s cubic-bezier(.22,1,.36,1)}
 .v5-r.v5-in{opacity:1;transform:none}
