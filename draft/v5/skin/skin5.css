@@ -1,0 +1,53 @@
+/* «Кожа» v5 (черновик /draft/v5/). Темы: html[data-v5t="alt"] (по умолчанию: графит + «ледяной» голубой) и html[data-v5t="bw"]
+   (чёрно-белая; зелёный/красный — только «зашло / не зашло»). Анимации — только transform/opacity. */
+@font-face{font-family:"Oswald";font-style:normal;font-weight:300 700;font-display:swap;src:url(/draft/v4/fonts/oswald-cyrillic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Oswald";font-style:normal;font-weight:300 700;font-display:swap;src:url(/draft/v4/fonts/oswald-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"JV Text";font-style:normal;font-weight:400 900;font-display:swap;src:url(/assets/vendor/fonts/golos-cyrillic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"JV Text";font-style:normal;font-weight:400 900;font-display:swap;src:url(/assets/vendor/fonts/golos-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2212}
+
+html:root:root:root{
+  --hd:"Oswald","Arial Narrow",sans-serif;--nm:"Oswald","Arial Narrow",sans-serif;
+  --tx:"JV Text","Helvetica Neue",Arial,sans-serif;--text:"JV Text","Helvetica Neue",Arial,sans-serif;--display:"JV Text","Helvetica Neue",Arial,sans-serif;
+  --win:#22c55e;--red:#ef4444;--jv-top:64px;
+  /* alt (по умолчанию) */
+  --v5-bg:#0a0f1a;--v5-bg2:#0f1626;--v5-card:#121a2b;--v5-card2:#18223a;--v5-ink:#eef3fb;--v5-ink2:#a9b6cc;--v5-ink3:#75839b;--v5-acc:#38bdf8;--v5-acc-ink:#04131c;--v5-rule:rgba(148,190,255,.14);
+}
+html[data-v5t="bw"]:root:root:root{--v5-bg:#0a0a0a;--v5-bg2:#111;--v5-card:#151515;--v5-card2:#1d1d1d;--v5-ink:#f5f5f5;--v5-ink2:#a3a3a3;--v5-ink3:#737373;--v5-acc:#ffffff;--v5-acc-ink:#0a0a0a;--v5-rule:rgba(255,255,255,.12)}
+html:root:root:root{
+  --paper:var(--v5-bg);--paper-2:var(--v5-bg2);--paper-3:var(--v5-card2);--card:var(--v5-card);--card-hi:var(--v5-card2);
+  --ink:var(--v5-ink);--ink-2:var(--v5-ink2);--ink-3:var(--v5-ink3);--rule:var(--v5-rule);--rule-2:var(--v5-rule);
+  --signal:var(--v5-acc);--signal-ink:var(--v5-acc-ink);--sport:var(--v5-acc);--sport-ink:var(--v5-acc-ink);--acc:var(--v5-acc);--ice:var(--v5-acc);--conf-hi:var(--v5-acc);
+  --n-base:var(--v5-bg);--n-a:var(--v5-bg2);--n-b:var(--v5-bg2);--n-c:var(--v5-bg);--n-d:var(--v5-bg);--n-sport:var(--v5-acc);--glow1:var(--v5-bg2);--glow2:var(--v5-bg2);
+  --bg0:var(--v5-bg);--bg1:var(--v5-bg2);--bgc:var(--v5-bg);background:var(--v5-bg)
+}
+html:root body{background:var(--v5-bg)!important}
+#arena,#snow,.bgv-sw,.bgv-art,.h3bg,.hm-bg,.herovid,.hv-wrap{display:none!important}   /* декоративные фоны — убраны */
+h1,h2{font-family:"Oswald","Arial Narrow",sans-serif!important;font-weight:600!important;text-transform:uppercase;letter-spacing:0!important}
+main h1{font-size:clamp(40px,6.2vw,96px)!important;line-height:.95!important}
+main h2{font-size:clamp(28px,3.4vw,52px)!important;line-height:1!important}
+h1 em,h1 i,h1 span[class]{font-style:normal}
+.hd{background:color-mix(in srgb,var(--v5-bg) 88%,transparent)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--v5-rule)!important}
+.hd .logo{font-family:"Oswald","Arial Narrow",sans-serif!important;font-weight:700!important;letter-spacing:.06em!important}
+.hd .logo i{color:var(--v5-acc)!important}
+.btn-tg,.hd .btn-tg,.gr-bot{background:var(--v5-acc)!important;color:var(--v5-acc-ink)!important;border-radius:8px!important}
+html[data-v5t="bw"] .btn-ink{background:#fff!important;color:#000!important}
+/* bw: цвет только у «зашло / не зашло» — убираем цветные плашки лиг и клубов */
+html[data-v5t="bw"] img[src*="/em/"],html[data-v5t="bw"] img[src*="/fc/"],html[data-v5t="bw"] img[src*="/lg/"]{filter:grayscale(1) contrast(1.05)}
+/* эмблемы — лёгкое увеличение при наведении (transform) */
+img[src*="/em/"],img[src*="/fc/"],img[src*="crest"]{transition:transform .45s cubic-bezier(.22,1,.36,1)}
+a:hover img[src*="/em/"],a:hover img[src*="/fc/"],li:hover img[src*="/em/"]{transform:scale(1.07)}
+/* таблицы: закреплённая шапка; на телефоне — прокрутка вбок с закреплённым первым столбцом */
+main table thead th{position:sticky;top:var(--jv-top);z-index:3;background:var(--v5-bg2)}
+.jv-tscroll{overflow-x:auto!important;-webkit-overflow-scrolling:touch;max-width:100%}
+.jv-tscroll table thead th{top:0}
+@media (max-width:809px){.jv-tscroll table th:first-child,.jv-tscroll table td:first-child{position:sticky;left:0;z-index:2;background:var(--v5-bg2)}}
+/* появление: только opacity + transform */
+.v5-w{display:inline-block;opacity:0;transform:translateY(.35em);animation:v5w .5s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes v5w{to{opacity:1;transform:none}}
+.v5-r{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s cubic-bezier(.22,1,.36,1)}
+.v5-r.v5-in{opacity:1;transform:none}
+.v5-lite .v5-r{transform:translateY(12px)}
+@media (prefers-reduced-motion:reduce){.v5-w,.v5-r{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}}
+.jv-draft{position:fixed;left:10px;bottom:10px;z-index:9999;font:600 12px/1.3 system-ui;background:color-mix(in srgb,var(--v5-bg) 90%,transparent);color:var(--v5-acc);border:1px solid var(--v5-rule);border-radius:8px;padding:6px 10px}
+.jv-draft a{color:inherit}
+@media (max-width:809px){.jv-draft{bottom:auto;top:62px}}
