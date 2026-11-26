@@ -54,8 +54,6 @@ html[data-bgv="5"][data-sport="football"] body::before{background:
   radial-gradient(120% 90% at 50% 40%,transparent 50%,rgba(0,0,0,.55)),#06140f!important}
 html[data-bgv="5"][data-sport="football"] body{background:#06140f!important}
 
-@media (prefers-reduced-motion:reduce){html[data-bgv] .bgv-art i{animation:none!important}}
-html.lite[data-bgv="4"] .bgv-art i{animation:none!important;filter:blur(60px)}
 
 /* переключатель вариантов */
 .bgv-sw{position:fixed;right:16px;bottom:16px;z-index:75;display:flex;align-items:center;gap:2px;padding:3px;border-radius:4px;background:rgba(10,14,28,.95);
@@ -118,8 +116,6 @@ html[data-bgv="10"] body::before{background:radial-gradient(80% 35% at 50% -5%,r
 html[data-bgv="10"] .bgv-art i{position:absolute;bottom:-20vh;border-radius:50%;filter:blur(6px);opacity:0;animation:bgvRise linear infinite}
 @keyframes bgvRise{0%{transform:translateY(0);opacity:0}15%{opacity:var(--o,.5)}85%{opacity:var(--o,.5)}100%{transform:translateY(-140vh);opacity:0}}
 
-@media (prefers-reduced-motion:reduce){html[data-bgv] .bgv-art *,html[data-bgv] .bgv-art{animation:none!important}}
-html.lite[data-bgv] .bgv-art *{animation:none!important}
 .bgv-sw{flex-wrap:wrap;max-width:calc(100vw - 32px)}
 .bgv-sw button+span{margin-left:6px;padding-left:12px;border-left:1px solid rgba(255,255,255,.16)}
 html[data-bgv="9"] .bgv-art i:nth-child(1){opacity:.5}
@@ -185,8 +181,6 @@ html[data-bgv="18"] .bgv-art i{position:absolute;left:50%;top:55%;width:20vmax;h
 html[data-bgv="18"] .bgv-art i:nth-child(2n){border-color:var(--n-c,#ff2e4d)}
 @keyframes bgvRing{0%{transform:scale(.2);opacity:0}10%{opacity:.5}100%{transform:scale(6);opacity:0}}
 
-@media (prefers-reduced-motion:reduce){html[data-bgv] .bgv-art *,html[data-bgv] .bgv-art{animation:none!important}}
-html.lite[data-bgv] .bgv-art *{animation:none!important}
 /* вариантов стало 18 — вместо ряда кнопок список и стрелки на любой ширине */
 .bgv-sw button:not(.bgv-nav),.bgv-sw button+span{display:none!important}
 .bgv-sw select{display:block;min-width:230px;height:38px;padding:0 10px;border-radius:4px;border:1px solid rgba(255,255,255,.2);background:#0c1324;color:#f2f6ff;font:700 14px/1 var(--tx,var(--text))}
@@ -251,8 +245,11 @@ html[data-bgv="26"] .bgv-art b{position:absolute;inset:-20%;background:radial-gr
 html[data-bgv="26"][data-sport="football"] .bgv-art b{background:radial-gradient(28% 32% at 50% 50%,rgba(140,255,200,.24),transparent 70%)}
 @keyframes bgvSpot{0%{transform:translate(-25%,-15%)}50%{transform:translate(20%,10%)}100%{transform:translate(-5%,20%)}}
 
-@media (prefers-reduced-motion:reduce){html[data-bgv] .bgv-art *,html[data-bgv] .bgv-art{animation:none!important}}
-html.lite[data-bgv] .bgv-art *{animation:none!important}
 html[data-bgv="25"] body::before{background:radial-gradient(90% 50% at 50% 0%,rgba(80,120,255,.3),transparent 70%),radial-gradient(70% 40% at 50% 85%,rgba(255,140,60,.35),transparent 70%),#070a16!important}
 html[data-bgv="25"][data-sport="football"] body::before{background:radial-gradient(90% 50% at 50% 0%,rgba(80,255,170,.2),transparent 70%),radial-gradient(70% 40% at 50% 85%,rgba(255,190,60,.32),transparent 70%),#06100c!important}
 html[data-bgv="19"] .bgv-art s i{width:5px;height:5px}
+
+/* сравнение фонов: «лёгкий режим» и «уменьшить движение» обрывали анимации, и огни/лучи (в начале — невидимые) пропадали.
+   Пока фон выбирают по ссылке ?bgv, анимации фона идут всегда; при выборе основного вернём бережный режим. */
+html.lite[data-bgv] .bgv-art :is(*,*::before,*::after),html.lite[data-bgv] .bgv-art{animation-iteration-count:infinite!important}
+html.lite[data-bgv="9"] .bgv-art i,html.lite[data-bgv="4"] .bgv-art i,html.lite[data-bgv="14"] .bgv-art i{filter:blur(40px)}
