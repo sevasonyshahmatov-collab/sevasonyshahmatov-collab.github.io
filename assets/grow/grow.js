@@ -37,7 +37,7 @@
       '.gr-near{margin:10px 0 0;font-size:15px;color:var(--ink-2,#bcc8ec)}.gr-near b{color:var(--ink,#f2f6ff)}' +
       '.gr-fade{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 44px),transparent)}' +
       '.gr-fade.gr-end{-webkit-mask-image:none;mask-image:none}' +
-      '@media (max-width:809px){#tgbar,.tgbar{display:none!important}}';
+      (ON[4] ? '@media (max-width:809px){#tgbar,.tgbar{display:none!important}}' : '');
     document.head.appendChild(s);
   }
 
@@ -57,10 +57,10 @@
     var box = document.createElement('div'); box.className = 'gr-cta';
     box.innerHTML = (TYPE === 'match' ? '<p>Прогноз JARVIS на этот матч выйдет в Telegram до начала.</p>' : '') +
       '<a class="gr-bot" href="' + BOT + TYPE + '" target="_blank" rel="noopener">' + TG + '<span>' + BTXT[TYPE] + '</span></a>';
-    var act = TYPE === 'home' ? $('.hm-act') : null;
-    if (act) { act.insertBefore(box, act.querySelector('.hm-micro')); box.style.margin = '12px 0 0'; return; }
+    // на первый экран телефона: стартовая — сразу под цифрой итогов; клуб — под названием; итоги — под вводным текстом
+    var after = TYPE === 'home' ? ($('#hm-score') || h1) : TYPE === 'club' ? h1 : TYPE === 'results' ? ($('#rs-lead') || h1) : null;
+    if (after) { after.insertAdjacentElement('afterend', box); return; }
     var host = TYPE === 'hockey' || TYPE === 'football' ? ($('.hs-head') || h1.parentElement) : h1.parentElement;
-    if (TYPE === 'club') { var row = $('a[href*="t.me/jarvibet"]', host.closest('section') || document); if (row && row.parentElement) host = row.parentElement; }
     host.appendChild(box);
   }
 
