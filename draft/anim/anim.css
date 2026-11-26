@@ -13,3 +13,4 @@
 .jv-draft a{color:#5ff0a0}
 @media (prefers-reduced-motion:reduce){.rs-card,.rs-chart{opacity:1!important;visibility:visible!important;transform:none!important}}
 @media (max-width:760px){.jv-draft{bottom:auto;top:76px;left:8px;font-size:12px;padding:6px 10px}}
+html.lenis,html.lenis *{scroll-behavior:auto!important} /* Lenis сам ведёт плавную прокрутку */
