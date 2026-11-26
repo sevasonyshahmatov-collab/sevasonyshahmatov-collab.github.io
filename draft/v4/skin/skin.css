@@ -1,0 +1,67 @@
+/* «Кожа» v4 для страниц разделов (черновик /draft/v4/, 26.11.2026). Накладывается ПОВЕРХ существующих страниц:
+   разметка, данные, ссылки, поиск, избранное, фильтры не меняются — только переменные темы, шрифты и несколько правил вида.
+   Oswald — заголовки и крупные цифры, Golos Text — текст; тёмный фон + лаймовый акцент, как на новой стартовой. */
+@import url(/draft/v4/fonts/oswald.css);
+@font-face{font-family:"JV Text";font-style:normal;font-weight:400 900;font-display:swap;src:url(/assets/vendor/fonts/golos-cyrillic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"JV Text";font-style:normal;font-weight:400 900;font-display:swap;src:url(/assets/vendor/fonts/golos-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2212}
+
+/* переменные темы сайта (v3a.css + ty.css) — выше по специфичности, чтобы перебить темы, которые nav.js подключает позже */
+html:root:root:root{
+  --paper:#07090f;--paper-2:#0d111b;--paper-3:#161e2f;--card:#111725;--card-hi:#161e2f;
+  --ink:#f4f6ef;--ink-2:#aeb6c6;--ink-3:#7d8799;--rule:rgba(255,255,255,.1);--rule-2:rgba(255,255,255,.18);
+  --signal:#e4ff3a;--signal-ink:#0b0d05;--ice:#e4ff3a;--sport:#e4ff3a;--sport-ink:#0b0d05;--acc:#e4ff3a;--conf-hi:#e4ff3a;--n-sport:#e4ff3a;
+  --win:#3ddc84;--red:#ff6b78;
+  --n-base:#07090f;--n-a:#0d111b;--n-b:#141a28;--n-c:#10151f;--n-d:#0d111b;--glow1:#0d111b;--glow2:#0d111b;--bg0:#07090f;--bg1:#0d111b;--bgc:#07090f;
+  --hd:"Oswald","Arial Narrow",sans-serif;--nm:"Oswald","Arial Narrow",sans-serif;
+  --tx:"JV Text","Helvetica Neue",Arial,sans-serif;--text:"JV Text","Helvetica Neue",Arial,sans-serif;--display:"JV Text","Helvetica Neue",Arial,sans-serif;
+  --jv-top:64px;
+  background:#07090f
+}
+html:root body{background:#07090f}
+.bgv-sw,.bgv-art{display:none!important}                    /* переключатель фонов черновиков — не нужен */
+
+/* заголовки — как на v4: Oswald, заглавные */
+h1,h2{font-family:"Oswald","Arial Narrow",sans-serif!important;font-weight:600!important;text-transform:uppercase;letter-spacing:-.005em!important}
+main h1{font-size:clamp(44px,6.6vw,104px)!important;line-height:.95!important}
+main h2{font-size:clamp(30px,3.6vw,56px)!important;line-height:1!important}
+h1 em,h1 i,h1 span[class]{font-style:normal}
+h3{font-family:"Oswald","Arial Narrow",sans-serif;font-weight:600;letter-spacing:0}
+
+/* шапка и нижнее меню (nav.js) — вид v4, работа прежняя (поиск, избранное, меню) */
+.hd{background:rgba(7,9,15,.85)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)!important}
+.hd .logo{font-family:"Oswald","Arial Narrow",sans-serif!important;font-weight:700!important;letter-spacing:.06em!important}
+.hd .logo i{color:#e4ff3a!important}
+.btn-tg,.hd .btn-tg{background:#e4ff3a!important;color:#0b0d05!important;border-radius:8px!important;transition:background-color .35s,color .35s!important}
+.btn-tg:hover{background:#f4f6ef!important;color:#07090f!important}
+
+/* кнопки и ссылки-действия */
+.btn{border-radius:8px;transition:background-color .35s cubic-bezier(.22,1,.36,1),color .35s,transform .35s cubic-bezier(.22,1,.36,1)}
+.btn:hover{transform:translateY(-2px)}
+
+/* эмблемы и фото — чуть увеличиваются при наведении на карточку/ссылку */
+img[src*="/em/"],img[src*="/fc/"],img[src*="crest"],img[src*="/club/"],img[src*="emblem"]{transition:transform .5s cubic-bezier(.22,1,.36,1)}
+a:hover img[src*="/em/"],a:hover img[src*="/fc/"],a:hover img[src*="crest"],a:hover img[src*="/club/"],
+li:hover > * img[src*="/em/"],article:hover img[src*="/em/"]{transform:scale(1.08)}
+
+/* таблицы: закреплённая шапка при прокрутке; без анимаций внутри */
+main table thead th{position:sticky;top:var(--jv-top);z-index:3;background:#0d111b}
+.jv-tscroll{overflow-x:auto!important;-webkit-overflow-scrolling:touch;max-width:100%}
+.jv-tscroll table thead th{top:0}
+@media (max-width:809px){
+  .jv-tscroll table th:first-child,.jv-tscroll table td:first-child{position:sticky;left:0;z-index:2;background:#0d111b}
+  .jv-tscroll table thead th:first-child{z-index:4}
+}
+
+/* бегущая строка раздела (ближайшие матчи) */
+.jv-ticker{position:relative;z-index:2;overflow:hidden;background:#e4ff3a;color:#0b0d05;padding:9px 0;white-space:nowrap}
+.jv-ticker .in{display:inline-flex;gap:30px;will-change:transform}
+.jv-ticker span{display:inline-flex;align-items:center;gap:30px;font:600 20px/30px "Oswald","Arial Narrow",sans-serif;text-transform:uppercase}
+.jv-ticker span::after{content:"";width:8px;height:8px;background:#0b0d05;transform:rotate(45deg)}
+.jv-ticker b{font-weight:700}
+
+.jv-draft{position:fixed;left:10px;bottom:10px;z-index:9999;font:600 12px/1.3 system-ui;background:rgba(7,9,15,.9);color:#e4ff3a;border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:6px 10px}
+@media (max-width:809px){.jv-draft{bottom:auto;top:62px}}
+
+/* до анимаций (только при включённых анимациях) */
+.jv-anim main h1{visibility:hidden}
+@media (prefers-reduced-motion:reduce){.jv-anim main h1{visibility:visible}}
