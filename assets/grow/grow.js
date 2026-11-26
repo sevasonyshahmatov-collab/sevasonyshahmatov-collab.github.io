@@ -106,7 +106,7 @@
     if (TYPE !== 'club') return;
     var h = $$('h2').filter(function (x) { return /Следующий матч/.test(x.textContent); })[0]; if (!h) return;
     var sec = h.closest('section') || h.parentElement;
-    if (/матч начался|идёт сейчас|LIVE/i.test(sec.textContent)) h.textContent = 'Матч идёт сейчас';
+    if (/матч начался|идёт сейчас|LIVE/i.test(sec.textContent)) h.textContent = 'Текущий матч';
   }
 
   function run() {
