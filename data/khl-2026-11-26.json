@@ -185,7 +185,7 @@
      "gd": 2
     }
    },
-   "_z": "ZRR9s7y2xUsdU0HtVr19ltogXddNhj5H/u+OFdOHb8MgIHN80QhqmgMbk0jX0lZ493NKsG6nEqqqBMEtCJOCf1uboCGgt/FuSilVFd8/2M0oFYRi1jr9lasdDWW/EFM3MOqbBvv5l+HFkwMTWCKSCe5XaebgYrYXpYesswafMubl2Bx7pc9D4qxTe164/Necolagsa+rXknqhObRIlKq9nsafUIHPIjpJpw0PdT3JICV0+u1KzePr3GBo/W/2HYmitUybd1HX8H6EsKKuBe0beP7CGJMkZQhvPZotYI16mXFjT9l4KeSud3UTMwUqkM="
+   "_z": "KLwPKBDxAa3nQvXo0V2THM+FBAGSYL4Th6EMCjjsY2Vaqma6IxNtez3YBwiUEP6sHLeA/FJxkuew5aI2IAWhG7AuuSCZjNdkbvEqmObUD1awlzjhKvHLNkt5xGMwKp1J/TY8sjMo7LbXQe1kkcL8/tPR4ovWVKncGW2H3dL1qEtJXyd0FYk0ZjxkpHfIHdJvhjg7TeD+sQVDkBfxpoJXM8SOWFs4KdRjtDzVeRUSF8fIk0QYtPmwcfNW34IhxWbOFqNWXX8YkKGoo5/pSa6ufhwes4hBTjQp1G1y/JrBnbyRehem3Qv6BJbChHNZcqkv7fSYBf9WN/grP6EYtKBMnjHfErYsehsDwvXZeD4jnYo="
   },
   {
    "h": "Трактор",
@@ -277,7 +277,35 @@
      "gd": 10
     }
    },
-   "_z": "QvLUdCGQeTt+6hTNTOekd0kTsqmjauwME09T2F5VSPpCBUEcv+G9qFf9XE9Pbwvs0gYHcpucQqQ6OusTSA+BrdSVpT2GEH/GvhfVMLwJpmE7IgN7rcaBh9sbMgAzt+AcpDtZbe59dKn/oZrcKqkKSEpw0IIYJ+j08WQc9l4gejpEz26oSfacTvj3K5pSaUFKLwx3DflXdt1ou6zGzEdFcJaeCRvogaHTyEedp2rswvvs9CGK60zLx98d8UWfBF9QNLHdS2Rv0G+0MXM4lCOa5Bm7TD2TIIU+SSDPr4MYF9yf9SZfB1fkMqQTnKZVlfeAyfAbGntk869o20ja6+qP8g=="
+   "fact": {
+    "k": 16,
+    "n": 29,
+    "team": "Автомобилист"
+   },
+   "odds": 1.69,
+   "p": 0.5259,
+   "pick": "Тотал матча больше 4,5",
+   "sim": {
+    "hits": 5277,
+    "n": 10000,
+    "top": [
+     [
+      2,
+      2,
+      807
+     ],
+     [
+      3,
+      3,
+      534
+     ],
+     [
+      1,
+      2,
+      534
+     ]
+    ]
+   }
   },
   {
    "h": "Салават Юлаев",
@@ -369,7 +397,35 @@
      "gd": -11
     }
    },
-   "_z": "LipGR5idQgJ9eBCam05BsBk3F4I/VdpPGglZdHT+XQEJYJNx6K2ynWczX4LVeBjeHF9uzZ0fSijrBh6+I4fKKYfIw+ebM+NvEHgUnQWkFGAMv+Kngx8OYsXP0Pdku9FVcKwFYVR1Y55z/eN/XKhr2YjHkSMC1FIuI/aiKcbvIbVo9POdhYrHz8moxzgIjceFrXb55sIw/63RW81HEqWjrPk0OGs8v1CF6R8ApESuP31LlOJ6H4LhzPbsFGXJY9JT12KYbMbi4pzXtxIfEOK4B4b9KgZxilh/mLdznH/k+Db3T9jGvsm/kN1LIr0+CmChHvoBexc2CUK8oDA/5IuH/+A="
+   "fact": {
+    "k": 19,
+    "n": 29,
+    "team": "Салават Юлаев"
+   },
+   "odds": 1.67,
+   "p": 0.6276,
+   "pick": "Тотал матча больше 4,5",
+   "sim": {
+    "hits": 6682,
+    "n": 10000,
+    "top": [
+     [
+      2,
+      2,
+      666
+     ],
+     [
+      3,
+      3,
+      575
+     ],
+     [
+      3,
+      2,
+      548
+     ]
+    ]
+   }
   },
   {
    "h": "Сочи",
