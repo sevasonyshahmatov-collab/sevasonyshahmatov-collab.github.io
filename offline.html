@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ru" data-theme="a">
 <head>
-<meta charset="utf-8"><!--jv-pl--><link rel="preload" as="script" href="assets/efir/efir-loader.js"><link rel="preload" as="script" href="assets/palettes.js"><link rel="preload" as="script" href="assets/nav.js"><link rel="preload" as="script" href="assets/footer.js"><!--/jv-pl--><meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'; form-action 'self'"><script>/*тема: «Ночная арена» по умолчанию; ?bg=0 — старая*/(function(){var d=document.documentElement;try{var q=new URLSearchParams(location.search).get("bg");if(q!==null)sessionStorage.setItem("jv-bg",/^[abcn]$/.test(q)?q:"0");var b=sessionStorage.getItem("jv-bg");if(b===null)b="n";if(b&&b!=="0")d.dataset.bg=b}catch(e){d.dataset.bg="n"}})()</script>
+<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'; form-action 'self'"><script>/*тема: «Ночная арена» по умолчанию; ?bg=0 — старая*/(function(){var d=document.documentElement;try{var q=new URLSearchParams(location.search).get("bg");if(q!==null)sessionStorage.setItem("jv-bg",/^[abcn]$/.test(q)?q:"0");var b=sessionStorage.getItem("jv-bg");if(b===null)b="n";if(b&&b!=="0")d.dataset.bg=b}catch(e){d.dataset.bg="n"}})()</script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Нет интернета — JARVIS</title>
@@ -16,7 +16,7 @@
 <!-- TODO(домен): абсолютный URL -->
 <meta property="og:image" content="assets/og/og-home.png"><meta name="twitter:card" content="summary_large_image">
 <script>/* страницу отдаёт sw.js по любому адресу сайта: корень — папка, где лежит sw.js */
-(()=>{const r=navigator.serviceWorker&&navigator.serviceWorker.controller?new URL('./',navigator.serviceWorker.controller.scriptURL).href:new URL('./',location.href).href;document.write('<base href="'+r+'">')})();</script>
+(()=>{const r=navigator.serviceWorker&&navigator.serviceWorker.controller?new URL('./',navigator.serviceWorker.controller.scriptURL).href:new URL('./',location.href).href;document.write('<base href="'+r+'"><!--jv-pl--><link rel="preload" as="script" href="assets/efir/efir-loader.js"><link rel="preload" as="script" href="assets/palettes.js"><link rel="preload" as="script" href="assets/nav.js"><link rel="preload" as="script" href="assets/footer.js"><!--/jv-pl-->')})();</script>
 <link rel="stylesheet" href="assets/v3a.css">
 <link rel="stylesheet" href="assets/nav.css">
 <style>
