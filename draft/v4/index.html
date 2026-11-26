@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>JARVIS — прогнозы, разборы и статистика хоккея и футбола (черновик v4)</title>
+<meta name="description" content="Прогнозы на хоккей и футбол с честными итогами: КХЛ, НХЛ и топ-лиги Европы. Вероятности модели рядом с линией, разборы, статистика. 18+">
+<meta name="theme-color" content="#07090f">
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<script>/* анимации — только без «уменьшить движение»; видео — только на компьютере */
+(function(){var d=document.documentElement,m=function(q){return window.matchMedia&&matchMedia(q).matches};
+if(!m("(prefers-reduced-motion: reduce)"))d.classList.add("anim");if(m("(min-width: 810px)")&&!m("(prefers-reduced-motion: reduce)"))d.classList.add("vid")})()</script>
+<link rel="preload" as="font" type="font/woff2" href="fonts/oswald-cyrillic.woff2" crossorigin>
+<link rel="preload" as="image" href="/proto/home/cards/hockey.webp">
+<link rel="stylesheet" href="/draft/anim/vendor/lenis-1.3.28.css">
+<link rel="stylesheet" href="v4.css?v=202611261854">
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+
+<header class="hdr" id="hd"><div class="wrap">
+  <a class="brand" href="./" aria-label="JARVIS, главная">JAR<i>V</i>IS</a>
+  <nav class="seg" aria-label="Вид спорта"><a href="/hockey/index.html">Хоккей</a><a href="/football/index.html">Футбол</a></nav>
+  <nav class="nav" aria-label="Разделы"><a href="#today">Сегодня</a><a href="/matches.html">Матчи</a><a href="#results">Итоги</a><a href="/model.html">Модель</a><a href="#faq">Вопросы</a></nav>
+  <a class="btn btn-sm btn-tg" href="https://t.me/jarvibet" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 3.2 2.9 10.4c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5ZM8.3 13.2l9.6-6c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-5Z"/></svg><span class="lb"><span>Получать прогнозы</span><span aria-hidden="true">Получать прогнозы</span></span></a>
+  <button class="burger" type="button" aria-label="Меню" aria-expanded="false"><i></i><i></i></button>
+</div></header>
+<div class="mmenu" role="dialog" aria-label="Меню">
+  <a href="/hockey/index.html">Хоккей</a><a href="/football/index.html">Футбол</a><a href="/matches.html">Матчи дня</a><a href="/results.html">Итоги</a><a href="/model.html">Модель</a><a href="#faq">Вопросы</a>
+  <a class="btn " href="https://t.me/jarvibet" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 3.2 2.9 10.4c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5ZM8.3 13.2l9.6-6c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-5Z"/></svg><span class="lb"><span>Получать прогнозы — бесплатно</span><span aria-hidden="true">Получать прогнозы — бесплатно</span></span></a>
+</div>
+
+<main id="main">
+
+<!-- 1. Первый экран -->
+<section class="hero" aria-labelledby="hh">
+  <div class="hero-bg">
+    <video class="hv" muted loop playsinline preload="none" poster="media/skate.webp" data-src="media/skate.mp4" aria-hidden="true"></video>
+  </div>
+  <img class="mcd" src="/proto/home/cards/hockey.webp" alt="" fetchpriority="high" decoding="async">
+  <div class="wrap">
+    <h1 class="mega" id="hh" aria-label="JARVIS — прогнозы на хоккей и футбол">JARVIS</h1>
+    <div class="hero-row" data-load><span id="hdate">Сегодня</span><span><b>НХЛ · КХЛ · топ-лиги Европы</b></span></div>
+    <div class="hero-bot">
+      <div>
+        <p class="hero-lead" data-load>Прогнозы, разборы и статистика хоккея и футбола — с честными итогами</p>
+        <a class="hero-score" id="hscore" href="#results" data-load><b data-k="wl">233 из 321</b><span>прогнозов канала зашло · <b data-k="rate">72,6</b>% · все итоги со ссылкой на пост</span></a>
+        <div class="hero-act"><a class="btn " href="https://t.me/jarvibet" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 3.2 2.9 10.4c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5ZM8.3 13.2l9.6-6c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-5Z"/></svg><span class="lb"><span>Получать прогнозы — бесплатно</span><span aria-hidden="true">Получать прогнозы — бесплатно</span></span></a><a class="btn btn-line" href="#results"><span class="lb"><span>Итоги прогнозов</span><span aria-hidden="true">Итоги прогнозов</span></span></a></div>
+      </div>
+    </div>
+  </div>
+  <p class="credit">Фото: Connor McDavid — All-Pro Reels, CC BY-SA 2.0</p>
+</section>
+
+<div class="ticker " aria-hidden="true"><div class="ticker-in"><span>КХЛ <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>НХЛ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>АПЛ <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Ла Лига <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>Серия А <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Бундеслига <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>Лига 1 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>РПЛ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>Лига чемпионов <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Лига Европы <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>КХЛ <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>НХЛ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>АПЛ <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Ла Лига <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>Серия А <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Бундеслига <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>Лига 1 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>РПЛ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>Лига чемпионов <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Лига Европы <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span></div></div>
+
+<!-- 2. Два входа -->
+<section class="sec" id="doors" aria-labelledby="dh">
+  <div class="wrap">
+    <div class="head"><div><p class="tag" data-up>Разделы</p><h2 class="h2" id="dh" data-words>Выберите спорт</h2></div></div>
+    <div class="doors" data-cards>
+      <a class="door hk" href="/hockey/index.html" data-k="hk"><span class="num"><span>№ 01</span><span>КХЛ · НХЛ</span></span>
+        <img src="/proto/home/cards/hockey.webp" alt="" loading="lazy" decoding="async">
+        <h3>Хоккей</h3><p class="cnt" data-cnt>матчи загружаются</p><p class="st" data-stat></p><p class="nx" data-next></p><span class="go">Открыть раздел →</span></a>
+      <a class="door fb" href="/football/index.html" data-k="fb"><span class="num"><span>№ 02</span><span>Топ-лиги</span></span>
+        <img src="/proto/home/cards/football.webp" alt="" loading="lazy" decoding="async">
+        <h3>Футбол</h3><p class="cnt" data-cnt>матчи загружаются</p><p class="st" data-stat></p><p class="nx" data-next></p><span class="go">Открыть раздел →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Ближайшие матчи -->
+<section class="sec" id="today" aria-labelledby="th" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><div><p class="tag" data-up>Сегодня</p><h2 class="h2" id="th" data-words>Ближайшие матчи</h2><p class="sub" id="mupd" data-up></p></div>
+      <a class="more" href="/matches.html" data-up>Все матчи дня →</a></div>
+    <div class="mlist" id="mlist" aria-live="polite"><p class="sub">Загружаем матчи…</p></div>
+  </div>
+</section>
+
+<section class="full" aria-hidden="true">
+  <video class="fv" muted loop playsinline preload="none" poster="media/puck.webp" data-src="media/puck.mp4"></video>
+  <img class="fp" src="media/puck.webp" alt="" loading="lazy">
+</section>
+
+<!-- 4. Результаты канала -->
+<section class="sec" id="results" aria-labelledby="rh">
+  <div class="wrap">
+    <div class="head"><div><p class="tag" data-up>Итоги канала</p><h2 class="h2" id="rh" data-words>Честные итоги по месяцам</h2>
+      <p class="sub" data-up>Считаются все прогнозы канала, включая проигрыши. Итог — по счёту матча, у каждого — ссылка на пост.</p></div>
+      <a class="more" href="/results.html" data-up>Все прогнозы и итоги →</a></div>
+    <div class="months" id="months"></div>
+    <div class="chart" id="chart" hidden></div>
+    <p class="note" id="rupd"></p>
+  </div>
+</section>
+
+<!-- 5. Свежие прогнозы и разборы -->
+<section class="sec" id="fresh" aria-labelledby="fh" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><div><p class="tag" data-up>Канал @jarvibet</p><h2 class="h2" id="fh" data-words>Свежие прогнозы и разборы</h2></div>
+      <a class="more" href="https://t.me/jarvibet" target="_blank" rel="noopener" data-up>Открыть канал →</a></div>
+    <div class="feed" id="feed"></div>
+  </div>
+</section>
+
+<!-- 6. Как появляется прогноз -->
+<section class="sec" id="model" aria-labelledby="mh">
+  <div class="wrap split">
+    <div class="split-l"><p class="tag" data-up>Модель</p><h2 class="h2" id="mh" data-words>Как появляется прогноз</h2>
+      <p class="sub" data-up>Модель считает, автор отбирает. Нет хорошей ставки — разбор без выбора.</p>
+      <p data-up style="margin-top:24px"><a class="more" href="/model.html">Как считает модель — подробно →</a></p></div>
+    <div class="stack" data-stack="60" data-top="120">
+      <article class="scard"><p class="n">01</p><h3>Форма</h3><p>Последние игры, атака и оборона, место в таблице.</p></article>
+      <article class="scard"><p class="n">02</p><h3>Линия</h3><p>Кэфы рынка рядом с вероятностью модели.</p></article>
+      <article class="scard"><p class="n">03</p><h3>Выбор</h3><p>От 60 % при кэфе от 1,6. Нет такой ставки — разбор без выбора.</p></article>
+      <article class="scard"><p class="n">04</p><h3>Автор</h3><p>Смотрит составы, вратаря, мотивацию. Может снять ставку.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Таблица аналитики — один блок -->
+<section class="sec acc" id="table" aria-labelledby="tbh">
+  <div class="wrap tbl">
+    <div><p class="tag" data-up>Для тех, кто считает сам</p><h2 class="h2" id="tbh" data-words>Таблица аналитики</h2>
+      <p class="sub" data-up>Google-таблица НХЛ и КХЛ: вероятности и честные кэфы на каждый матч, составы и форма команд. Обновляется каждый день сама.</p>
+      <ul data-up><li>Вероятности и честный кэф без маржи</li><li>Конструктор матча — почти 60 событий (Про)</li><li>Сводка составов за 4 часа до матча (Про)</li></ul></div>
+    <div data-block><p class="price"><small>от</small>1 490 ₽</p><p class="per">за 2 недели · Базовый · месяц и сезон — в боте</p>
+      <div class="acts"><a class="btn btn-dark" href="https://t.me/JarvisTablePayBot" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9 16h6"/></svg><span class="lb"><span>Демо 3 дня — в боте</span><span aria-hidden="true">Демо 3 дня — в боте</span></span></a></div></div>
+  </div>
+</section>
+
+<!-- 8. Канал и бот -->
+<section class="sec" id="subscribe" aria-labelledby="ch">
+  <div class="wrap cb">
+    <div><p class="tag" data-up>Кто мы</p><h2 class="h2" id="ch" data-words>Канал и бот</h2>
+      <p class="t" data-up style="margin-top:20px">JARVIS — канал прогнозов на хоккей и футбол. На каждый матч КХЛ, НХЛ и топ-лиг Европы своя модель считает вероятности и ставит их рядом с линией. Что из этого брать, решает автор канала. Все прогнозы бесплатные, а итоги открыты.</p>
+      <ul class="pts" data-cards>
+        <li><b>Своя модель</b><span>расчёт на каждый матч, рядом с реальной линией</span></li>
+        <li><b>Отбор автора</b><span>проверяет составы, вратаря, мотивацию — не автомат</span></li>
+        <li><b>Всё открыто</b><span>бесплатно; каждый итог — со счётом и ссылкой на пост</span></li>
+      </ul></div>
+    <div class="tiles" id="tiles" data-cards>
+      <a class="tile" href="https://t.me/jarvibet" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 3.2 2.9 10.4c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5ZM8.3 13.2l9.6-6c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-5Z"/></svg><span><b>Telegram</b><small>Прогнозы до матча и итоги дня · @jarvibet</small></span></a>
+      <a class="tile" href="https://t.me/JarvisTablePayBot" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9 16h6"/></svg><span><b>Бот</b><small>Таблица аналитики, демо 3 дня · @JarvisTablePayBot</small></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Вопросы -->
+<section class="sec" id="faq" aria-labelledby="qh" style="padding-top:0">
+  <div class="wrap faq-grid">
+    <div><p class="tag" data-up>Вопросы</p><h2 class="h2" id="qh" data-words>Вопросы</h2></div>
+    <div><div class="faq" data-cards>
+      <div class="qa"><button type="button" aria-expanded="false"><span>Это бесплатно?</span><i class="pl" aria-hidden="true"></i></button><div class="ans"><p>Да. Канал @jarvibet бесплатный, прогнозы выходят до начала матча. Без VIP, без предоплаты, без «верняков».</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><span>А если не сработает?</span><i class="pl" aria-hidden="true"></i></button><div class="ans"><p>Гарантий нет: прогноз — оценка вероятности, и у любой модели бывают плохие серии. Поэтому цифры и линия всегда рядом, а решать вам.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><span>Где посмотреть итоги?</span><i class="pl" aria-hidden="true"></i></button><div class="ans"><p>На странице <a href="/results.html">«Итоги прогнозов»</a>: все прогнозы канала со счётом матча и ссылкой на пост, по месяцам. И каждое утро в канале @jarvibet — итоги дня.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><span>Какие лиги?</span><i class="pl" aria-hidden="true"></i></button><div class="ans"><p>Хоккей: КХЛ и НХЛ. Футбол: АПЛ, Ла Лига, Серия А, Бундеслига, Лига 1, РПЛ, Лига чемпионов и Лига Европы.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><span>Что такое «ВЫБОР»?</span><i class="pl" aria-hidden="true"></i></button><div class="ans"><p>Ставка, у которой модель даёт от 60 % при кэфе от 1,6. Остальные матчи — разбор без выбора.</p></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><span>Почему кэф от 1,6?</span><i class="pl" aria-hidden="true"></i></button><div class="ans"><p>Ниже — выигрыш слишком мал для риска. Чем выше кэф, тем больше случайности, поэтому почти все ставки — до 2,3.</p></div></div>
+    </div>
+    <p class="legal" data-up>18+. Аналитика, а не призыв делать ставки. Выигрыш не гарантирован.</p></div>
+  </div>
+</section>
+
+<section class="full" aria-hidden="true">
+  <video class="fv" muted loop playsinline preload="none" poster="media/skate.webp" data-src="media/skate.mp4"></video>
+  <img class="fp" src="media/skate.webp" alt="" loading="lazy">
+  <p class="over">Хоккей без эмоций</p>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="ticker dark" aria-hidden="true"><div class="ticker-in"><span>Прогнозы до матча <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Честные итоги <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>Своя модель <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Отбор автора <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>Прогнозы до матча <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Честные итоги <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>Своя модель <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Отбор автора <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span></div></div><div class="ticker " aria-hidden="true" data-dir="r"><div class="ticker-in"><span>Бесплатно <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Без VIP <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>18+ · не гарантия выигрыша <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Букмекеров не рекламируем <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>Бесплатно <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Без VIP <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span>18+ · не гарантия выигрыша <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Букмекеров не рекламируем <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span></div></div>
+  <div class="wrap">
+    <p class="mega" aria-hidden="true">JARVIS</p>
+    <div class="foot-row">
+      <div><p><b>18+</b> · Аналитика, а не призыв делать ставки. Выигрыш не гарантирован. Букмекеров не рекламируем.</p>
+        <p class="small" style="margin-top:8px">Фото на главной: Connor McDavid — <a href="https://commons.wikimedia.org/wiki/File:Connor_McDavid_of_the_Edmonton_Oilers.jpg" target="_blank" rel="noopener">All-Pro Reels, CC BY-SA 2.0</a>; Kylian Mbappé — Bryan Berlin, CC BY-SA 4.0; Wikimedia Commons, фон удалён, цвет изменён. Видео — Pexels (Tony Schnagl).</p></div>
+      <nav aria-label="Ссылки"><a href="/hockey/index.html">Хоккей</a><a href="/football/index.html">Футбол</a><a href="/matches.html">Матчи дня</a><a href="/results.html">Итоги</a><a href="/model.html">Модель</a><a href="https://t.me/jarvibet" target="_blank" rel="noopener">Канал</a><a href="https://t.me/JarvisTablePayBot" target="_blank" rel="noopener">Бот</a><a href="/legal.html">Правовая информация</a><a href="/privacy.html">Конфиденциальность</a></nav>
+    </div>
+  </div>
+</footer>
+
+<nav class="tabbar" aria-label="Нижнее меню">
+  <a href="./" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/></svg>Главная</a><a href="/hockey/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l6 14h6"/><ellipse cx="7" cy="19" rx="4" ry="1.8"/></svg>Хоккей</a><a href="/football/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7 4 3-1.5 5h-5L8 10z"/></svg>Футбол</a><a href="/results.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Итоги</a><a href="https://t.me/jarvibet" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 3.2 2.9 10.4c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5ZM8.3 13.2l9.6-6c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-5Z"/></svg>Канал</a>
+</nav>
+<div class="draft" role="note">Черновик v4 · живой сайт не изменён</div>
+
+<script>window.JV_ROOT="/"</script>
+<script src="/data/today.js"></script>
+<script src="/data/lines.js"></script>
+<script src="/data/model.js"></script>
+<script src="/data/posts.js"></script>
+<script src="/assets/lines.js"></script>
+<script src="/proto/home/common.js"></script>
+<script src="/data/results-lite.js"></script>
+<script defer src="/assets/live.js"></script>
+<script defer src="v4.js?v=202611261854"></script>
+</body>
+</html>
