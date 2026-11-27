@@ -93,7 +93,7 @@
      "gd": 34
     }
    },
-   "_z": "ApRimF8AYp4mASwT0K5IgaN9ndxpWZ3kc/pQjl+PfRzD5s2GrGO41qofI9io40q0jBF5ZAxTlvgL6cOE7+7Zhf8TBAcQI3KYnjgSlIC0lO4W9KAIkMxjq2bal7ix6ed2NG1pkE5FhVKjpbpSbezS29+IPxtBFeFjYpjQO+GmfN8meUCG39Jo/94h/rxzgxm3d+rbmOeBE81AI9E9ZfmDNv1Z8VAkyMYZQn48F4M2dQj055t3vlyFyzw82dblktpnOKni7JaTb/6GhpjKpUZFavQZEGvDi3VTxrwMNC4iepo="
+   "_z": "bG5EyXJC2ye4Z0wJUs4nM0bqoyNkuB1XnhhJX7BGl10vc3XAZ3h3EJinY+3DwNflCbzfPdxdf2X20RFZgdVxeHW3uWGyYaO5ONqSIx4o4h9l13Rouof0hmu3DPjkVojp56+ZN3w4kN4ltWTWKQDBR1dU3bcDVDSFRthKKcWu67Sq5JMadfEehgbWTOdVUph5rEixCoE2zJiAdsu9X75YzKxABVEUA1aQBnJfY/JpjDSOdUGHq93dSMLIxgXXbFqTQPqSfaTyR3OUhmSZhsIRxBtGU7FjM+qBoF5QMUFmbUtE8uxMTDZRqfBgHaogsOPPmPBUr9J16E/b+haulps="
   },
   {
    "h": "Северсталь",
@@ -185,7 +185,35 @@
      "gd": -21
     }
    },
-   "_z": "S0ytR3+hUdVeGIPykMzfNWv7TG2bY3gnpB7b8M1yrfe9nCAdEEP1blm3ShMgzN6hDwgeiOwBSe/4DANrQ9RZ7fb8CQ5JKMkAlfz4CVDYpmeJlzsqIxBK4oJjfeZEyI+KTVWMEbEkAGCWnpenCoXrASMxlI9yYe7CATdKuPkhP+m9jqSEILDiHqLo/ZByBdsNYf3jqXbyvz0WzJZcYWqe5h/kYlL/lDBCo3YJEmFTA0Dr5HFUilU+4ZPJbl+iZtmd9H8692LK8M9sCjDUiU5ekhcQyUlLXozqr/SKqgAlcbytXLQ50MOzH94Xj4vlTBHQOtHUvA=="
+   "fact": {
+    "k": 18,
+    "n": 31,
+    "team": "Сибирь"
+   },
+   "odds": 1.81,
+   "p": 0.5461,
+   "pick": "Тотал матча больше 4,5",
+   "sim": {
+    "hits": 4809,
+    "n": 10000,
+    "top": [
+     [
+      2,
+      2,
+      818
+     ],
+     [
+      2,
+      1,
+      676
+     ],
+     [
+      1,
+      1,
+      648
+     ]
+    ]
+   }
   },
   {
    "h": "СКА",
