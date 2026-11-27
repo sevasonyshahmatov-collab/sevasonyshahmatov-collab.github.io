@@ -106,3 +106,5 @@ html[data-hv] #hsday .hs-kick i{background:var(--hx)!important}
 html[data-hv] #hsday .hs-m.is-main::after{background:var(--hx)!important}
 html[data-hv] #subscribe{background-image:none!important}
 html[data-hv] .jvf-brand::after,html[data-hv] .jvf-brand .jvf-logo::after,html[data-hv] .jvf-brand b::after{background:var(--hx)!important}
+/* бегущая строка: названия — цветом клуба (skin/cc.js), у проигравших приглушены */
+html[data-hv] #hsday .hs-tm.lose .hs-tn{opacity:.75}

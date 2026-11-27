@@ -18,6 +18,17 @@
   var key = function (img) { var m = RX.exec(img.getAttribute('src') || ''); return m && m[2]; };
   var inScope = function (el) { return !SCOPE || (el.closest && el.closest(SCOPE)); };
   var bright = function (c) { return lum(c[0]) >= 0.05 ? c[0] : lum(c[1]) >= 0.05 ? c[1] : '#bfbfbf'; };   // на чёрном фоне — видимый из двух
+  // цвет клуба, читаемый на тёмном фоне (контраст ≥ 4,5 к #0d0d0d): основной → запасной → основной, осветлённый к белому
+  var BG = lum('#0d0d0d'), cr = function (h) { return (lum(h) + 0.05) / (BG + 0.05); };
+  var mix = function (h, k) { h = h.replace('#', ''); return '#' + [0, 2, 4].map(function (i) { var v = parseInt(h.substr(i, 2), 16); return ('0' + Math.round(v + (255 - v) * k).toString(16)).slice(-2); }).join(''); };
+  var sat = function (h) { h = h.replace('#', ''); var v = [0, 2, 4].map(function (i) { return parseInt(h.substr(i, 2), 16); }); return Math.max.apply(0, v) - Math.min.apply(0, v); };
+  var readable = function (c) {   // самый насыщенный из двух цветов клуба (белый/чёрный свитер не считается), при нехватке контраста — осветлить
+    var x = sat(c[1]) > sat(c[0]) + 30 ? c[1] : c[0];
+    if (sat(x) < 30) return '#e5e5e5';                                   // клуб чёрно-белый — нейтральный светлый
+    if (cr(x) >= 4.5) return x;
+    for (var k = 0.1; k < 1; k += 0.1) { var m = mix(x, k); if (cr(m) >= 4.5) return m; }
+    return '#e5e5e5';
+  };
   var initials = function (s) {
     var w = String(s || '').replace(/[«»"()]/g, ' ').trim().split(/[\s\-]+/).filter(function (x) { return x && /[A-Za-zА-Яа-яЁё0-9]/.test(x); });
     return (w.length > 1 ? w[0][0] + w[1][0] : (w[0] || '?').slice(0, 2)).toUpperCase();
@@ -31,6 +42,8 @@
     img.dataset.cc = k; img.classList.add('v5-cc'); img.classList.remove('v5-cc-dk');
     var c = C[k]; if (!c) return;
     if (c[2]) img.classList.add('v5-cc-dk');
+    var tn = img.parentNode && img.parentNode.classList.contains('hs-tm') && img.parentNode.querySelector('.hs-tn');   // бегущая строка: название — цветом клуба
+    if (tn) tn.style.setProperty('color', readable(c), 'important');
     var p = img.parentNode; if (BAR && p && p.children.length <= 3 && p.textContent.trim().length < 40) { p.classList.add('v5-cct'); p.style.setProperty('--cc1', bright(c)); }
   }
   function placeholder(img) {
