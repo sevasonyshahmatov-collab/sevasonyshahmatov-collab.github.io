@@ -1,0 +1,108 @@
+/* v5 · раздел «Хоккей» (главная раздела) в тёмной теме bw — проба владельца 27.11, два варианта:
+   html[data-hv="1"] «Тех»  — по мотивам draft/v4/hockey/variant-b.html без цвета: неподвижная сетка-фон, «стеклянные» плашки, акцент белый.
+   html[data-hv="2"] «Лёд»  — строгий чёрный, плотные плашки, один акцент — холодный голубой.
+   Цвет кроме акцента — только у клубов (эмблемы, полосы расчёта по цветам команд) и «зашло / не зашло» (зелёный/красный).
+   Без анимаций и тяжёлых эффектов: нет blur, нет canvas, сетка — статичный SVG. */
+html[data-v5t="bw"][data-hv]{--hx:#ffffff;--hx-ink:#0a0a0a;--hp:#0a0a0a;--hc:rgba(255,255,255,.035);--hc2:rgba(255,255,255,.06);--hb:rgba(255,255,255,.12);--hb2:rgba(255,255,255,.22);--ht:#f5f5f5;--ht2:#a3a3a3}
+html[data-v5t="bw"][data-hv="2"]{--hx:#5ee0ff;--hx-ink:#03161c;--hc:#111;--hc2:#171717;--hb:#262626;--hb2:#333}
+
+/* фон */
+html[data-v5t="bw"][data-hv] body{background:var(--hp)!important}
+html[data-v5t="bw"][data-hv="1"] body{background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cg fill='none' stroke='%23fff' stroke-opacity='.05'%3E%3Cpath d='M20 30L130 70L220 20M130 70L90 170L200 210M90 170L10 220M130 70L200 130L200 210'/%3E%3C/g%3E%3Cg fill='%23fff' fill-opacity='.16'%3E%3Ccircle cx='20' cy='30' r='1.6'/%3E%3Ccircle cx='130' cy='70' r='1.6'/%3E%3Ccircle cx='220' cy='20' r='1.6'/%3E%3Ccircle cx='90' cy='170' r='1.6'/%3E%3Ccircle cx='200' cy='210' r='1.6'/%3E%3Ccircle cx='10' cy='220' r='1.6'/%3E%3Ccircle cx='200' cy='130' r='1.6'/%3E%3C/g%3E%3C/svg%3E") 0 0/240px 240px,
+  radial-gradient(70% 50% at 85% 0%,rgba(255,255,255,.06),transparent 60%),var(--hp)!important}
+
+/* шапка и полоса матчей */
+html[data-hv] .hd .ls-h,html[data-hv] .hd .logo em{color:var(--hx)!important}
+html[data-hv] .hd .beta{color:var(--ht2)!important;border-color:var(--hb2)!important;background:none!important}
+html[data-hv] .hs-strip{background:#0d0d0d!important;border-color:var(--hb)!important}
+html[data-hv] .hs-date{background:var(--hx)!important;color:var(--hx-ink)!important}
+html[data-hv] .hs-date *{color:inherit!important}
+html[data-hv] .hs-strip .hs-g{background:rgba(255,255,255,.1)!important;color:var(--ht2)!important}
+html[data-hv] .hs-strip .hs-g[style],html[data-hv] .hs-strip b.hs-g:last-child{color:inherit}
+
+/* первый экран: заголовок Oswald, «сегодня» — акцент; цифры дня — плашки */
+html[data-hv] #hs-h1{font-family:"Oswald","Arial Narrow",sans-serif!important;text-transform:uppercase;letter-spacing:0}
+html[data-hv] #hs-h1 em{color:var(--hx)!important;font-style:normal}
+html[data-hv="1"] #hs-h1 em{text-shadow:0 0 28px rgba(255,255,255,.35)}
+html[data-hv] .hs-st3{border:1px solid var(--hb)!important;border-radius:16px;background:var(--hc);overflow:hidden}
+html[data-hv] .hs-st3 li{border-color:var(--hb)!important}
+html[data-hv] .hs-st3 b{color:var(--ht)!important;font-family:"Oswald","Arial Narrow",sans-serif!important}
+html[data-hv] .hs-st3 li:first-child b{color:var(--hx)!important}
+html[data-hv] .hs-v7-sl .hs-sl{border:1px solid var(--hb)!important;border-radius:16px;background:var(--hc);overflow:hidden}
+html[data-hv] .hs-sl li+li{border-top:1px solid var(--hb)}
+html[data-hv] .hs-sli-l{color:var(--hx)!important}
+html[data-hv] .hs-sli:hover{background:var(--hc2)}
+
+/* табло матча дня: рамка, акцент сверху; полосы расчёта — в цветах клубов (как было) */
+html[data-hv] .hs-board{background:var(--hc)!important;border:1px solid var(--hb)!important;border-radius:18px!important;overflow:hidden}
+html[data-hv] .hs-board .hs-prog,html[data-hv] .hs-board .hs-prog.is-run{background:var(--hx)!important}
+html[data-hv] .hs-board .hs-chip{color:var(--ht2)!important;border-color:var(--hb2)!important}
+html[data-hv] .hs-board .hs-ctl-b{background:var(--hc2)!important;border-color:var(--hb2)!important}
+html[data-hv] .hs-mb i.x{background:#2a2a2a!important;color:var(--ht2)!important}
+html[data-hv] .hs-fm-r{background:var(--hc2)!important;border-color:var(--hb)!important}
+html[data-hv] .hs-fl{background:var(--hc2)!important;border-left:3px solid var(--hx)!important;color:var(--ht2)!important}
+html[data-hv] .hs-fl b{color:var(--ht)}
+html[data-hv] .hs-btn{background:var(--hx)!important;color:var(--hx-ink)!important;box-shadow:none!important}
+
+/* разделы: заголовки Oswald */
+html[data-hv] main h2,html[data-hv] #subscribe h2{font-family:"Oswald","Arial Narrow",sans-serif!important;text-transform:uppercase}
+html[data-hv="1"] main h2{text-shadow:0 0 30px rgba(255,255,255,.12)}
+
+/* вкладки лиг и поиск матча */
+html[data-hv] #ltabs .tab{background:var(--hc2)!important;color:var(--ht2)!important;border:1px solid var(--hb)!important}
+html[data-hv] #ltabs .tab[aria-selected="true"],html[data-hv] #ltabs .tab.on{background:var(--hx)!important;color:var(--hx-ink)!important;border-color:var(--hx)!important}
+html[data-hv] .lgp.khl,html[data-hv] .lgp.nhl{background:#1f1f1f!important;color:var(--ht)!important}
+html[data-hv] .mf-box{background:var(--hc2)!important;border-color:var(--hb)!important}
+
+/* карточки матчей — тёмные плашки */
+html[data-hv] #mlist li.match{background:var(--hc)!important;color:var(--ht)!important;border:1px solid var(--hb)!important;border-radius:16px!important;box-shadow:none!important}
+html[data-hv] #mlist li.match:hover{border-color:var(--hb2)!important}
+html[data-hv] #mlist li.match *{color:inherit}
+html[data-hv] #mlist li.match small,html[data-hv] #mlist li.match .qv-e em,html[data-hv] #mlist li.match .mt span{color:var(--ht2)!important}
+html[data-hv] #mlist li.match img.em{background:transparent!important}
+html[data-hv] #mlist li.match .qv{background:var(--hc2)!important;border:1px solid var(--hb)!important;border-left:3px solid var(--hx)!important}
+html[data-hv] #mlist li.match .qv-k{color:var(--hx)!important;font-family:"Oswald","Arial Narrow",sans-serif!important}
+html[data-hv] #mlist li.match .qv-e i{background:#333!important}
+html[data-hv] #mlist li.match .qv-e i:nth-child(-n+3)[style],html[data-hv] #mlist li.match .qv-e[data-l="1"] i:nth-child(1),
+html[data-hv] #mlist li.match .qv-e[data-l="2"] i:nth-child(-n+2),html[data-hv] #mlist li.match .qv-e[data-l="3"] i:nth-child(-n+3){background:var(--hx)!important}
+html[data-hv] #mlist li.match .qc{background:var(--hc2)!important;border-color:var(--hb2)!important;color:var(--ht)!important}
+html[data-hv] #mlist li.match .qc.fav{background:var(--hx)!important;border-color:var(--hx)!important;color:var(--hx-ink)!important}
+html[data-hv] #mlist li.match .chev{background:var(--hc2)!important;color:var(--ht)!important}
+html[data-hv] .more2 a,html[data-hv] .more2 button{background:transparent!important;color:var(--ht)!important;border:1px solid var(--hb2)!important}
+
+/* купон, таблица, итоги, подписка — тёмные плашки с рамкой */
+html[data-hv] .kpb{background:radial-gradient(70% 120% at 100% 50%,rgba(255,255,255,.06),transparent 60%),var(--hc)!important;border:1px solid var(--hb)!important;border-radius:18px!important}
+html[data-hv="2"] .kpb{background:radial-gradient(70% 120% at 100% 50%,rgba(94,224,255,.08),transparent 60%),var(--hc)!important}
+html[data-hv] .kpb-go{background:var(--hx)!important;color:var(--hx-ink)!important;border-color:var(--hx)!important;box-shadow:none!important}
+html[data-hv] .tbl-plate{background:var(--hc)!important;border:1px solid var(--hb)!important;border-left:3px solid var(--hx)!important}
+html[data-hv] #honest .wrap{background:var(--hc)!important;border:1px solid var(--hb);border-radius:20px}
+html[data-hv] #honest .pf-n > div{background:var(--hc2)!important;border:1px solid var(--hb)!important;border-radius:14px}
+html[data-hv] #pfR{color:var(--hx)!important}
+html[data-hv="1"] #pfR{text-shadow:0 0 24px rgba(255,255,255,.35)}
+html[data-hv] #pfW,html[data-hv] #honest dd{font-family:"Oswald","Arial Narrow",sans-serif!important}
+html[data-hv] #honest .btn-ink{background:var(--hx)!important;color:var(--hx-ink)!important}
+html[data-hv] #honest .btn-line{border-color:var(--hb2)!important;color:var(--ht)!important}
+html[data-hv] #subscribe{background:var(--hc)!important;border-top:1px solid var(--hb);border-bottom:1px solid var(--hb)}
+html[data-hv] #subscribe p{color:var(--ht2)!important}
+
+/* карточки КХЛ / НХЛ: фон — графит вместо фиолетово-красного, рамка тонкая; игроки — как есть */
+html[data-hv] #lcdeck .art{background:linear-gradient(160deg,#1b1b1b,#0b0b0b)!important}
+html[data-hv] #lcdeck .art .tex path:first-child{fill:#262626!important}
+html[data-hv] #lcdeck .art .tex path:not(:first-child){fill:var(--hx)!important;opacity:.35!important}
+html[data-hv] #lcdeck .holo{display:none!important}
+html[data-hv] #lcdeck .frame{background:linear-gradient(120deg,#3a3a3a,#1a1a1a 40%,#3a3a3a)!important}
+html[data-hv] #lcdeck .bk{background:#121212!important}
+html[data-hv] #lcdeck .open{background:var(--hx)!important;color:var(--hx-ink)!important}
+
+/* боковые таблицы и подвал */
+html[data-hv] aside.sdt{background:rgba(14,14,14,.94)!important;border-color:var(--hb)!important}
+html[data-hv] aside.sdt .sd-v{background:var(--hc2)!important}
+html[data-hv] .jvf-cols b{color:var(--ht2)!important}
+html[data-hv] .jvf-brand .tg,html[data-hv] .jvf-brand a{border-color:var(--hb)!important}
+/* вторичный текст первого экрана — нейтральный серый (был сиреневый); метки «сейчас» — акцент */
+html[data-hv] #hsday :is(.hs-mt,.hs-ml,.hs-st,.hs-tn,.hs-tm.lose,.hs-kick,.hs-st3 span,.hs-st3-lg,.hs-bd-meta,.hs-lbl,.hs-md-l,.hs-md-l span,.hs-md-x,.hs-fm-n small,.hs-sli-s){color:var(--ht2)!important}
+html[data-hv] #hsday .hs-kick i{background:var(--hx)!important}
+html[data-hv] #hsday .hs-m.is-main::after{background:var(--hx)!important}
+html[data-hv] #subscribe{background-image:none!important}
+html[data-hv] .jvf-brand::after,html[data-hv] .jvf-brand .jvf-logo::after,html[data-hv] .jvf-brand b::after{background:var(--hx)!important}
