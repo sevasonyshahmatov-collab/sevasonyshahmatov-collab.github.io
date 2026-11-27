@@ -1,3 +1,4 @@
 User-agent: *
+Disallow: /draft/
 Allow: /
 Sitemap: https://jarvisbet.ru/sitemap.xml
