@@ -9,9 +9,9 @@
    "d": "2026-11-27 21:00",
    "arena": "",
    "x1x2": [
-    2.0,
-    4.34,
-    3.07
+    2.03,
+    4.33,
+    2.99
    ],
    "p3": [
     0.534,
@@ -80,7 +80,7 @@
      "gd": -10
     }
    },
-   "_z": "g1bIrrn7PTa2/yKfY+NwUCwRIMr2a+x7ONNdwFHy32S/V+mLcRn86xqZkXkB0i/jXNPPfKik9K/ksvGiB5nlsrRnDR4E1IjhmmBiO7/Bv4a+MmzZvop4R4X/4RmD7JwHS75qB6MvG+iNO2TwQ1cZs2/1b8GWLY3bmKsacIK/E8iq8AxNRYIG2gqIzvAf4upAjH+XN3ew6zK4I29CAIWn33H73HEZ9WfKi4L3DP4EQ+U7s5tyfe+83xPbUaKjm+Gbhw9KPNB1/UW0hCH/BURLNnJhnswU6uw+WpAJoxePNI1Cz/zyFEfB9d5TrRPOi2LLHSPB9xSj8lILmXk="
+   "_z": "CP5fnFhBcFpsS/HM4kwdUHhQV7diQ4TZLRhxx0BRG0f9NsrDEZD9DfWJSY1i283O79GMHSWAnMcfgzhBiGAtQMBNb/wJgb9jwICl8nyF+ez6FBe5uQnGMJK8ZksE7Kiu1qSfPmp3UK+U1BAqdNrnA0QwMNEQOPBTu5YO5Cwf+poMEaZCCEsggR+UJiF2n4INWzxraljkSE/527S02nRWd4OougBuDSi/737tsvcIL2zrvwMbF8NXVF8OYBB/TgCCyMhBuZuZA90o3IqRuJL+MGM+8g+g+xkjTpqARVcD7YuQO8l258doqart7uJlSJutxn0QnAKEo14hM9Y="
   },
   {
    "h": "Нью-Джерси",
@@ -168,8 +168,8 @@
    "arena": "",
    "x1x2": [
     2.51,
-    4.25,
-    2.36
+    4.26,
+    2.35
    ],
    "p3": [
     0.436,
@@ -238,7 +238,7 @@
      "gd": -2
     }
    },
-   "_z": "rU+0ewCUf53J2Ac8lXL91TMn08aodoDVTf4GSPXu+c/n1YgVLs0GKDHrusRATNWb15dX1tDv9qMEbGouxwcEqtIdWInj0KEkksRU9nOtZJ0cOA1aHT4OmGds3GzbV+VCGsRqnnOU9XzuABIP6rlGAHsFbK9E0pW3+sxXL/1hJuCoFr5Hpv3F1i/NB3aR6qbSFCe/Dt/XBLStvtKhFB271lKJJt7GqMy3WVE5o5nhEfyIvTy8OqAi2s6d8mnTg/UJqokKGGfkVMSS1CouogfjLjPc3J+xdU1EbhKiqNiZt1U/nqY2Z2IB/MGBsg3CK0GsgDAQ+hKISoMQ7oy7Sud25oaMY1lvadcRyMUsoUipwC6+e9pg"
+   "_z": "lgwFuBF4fUI6n8mPnuVRI+0IfBdbP0QAWJF9JXOXCb0B4+qWRBOrkdK2I/0JcQRKJAy12GfhWkrjPzq8zvIe9QosG0SwHxAGIjxLnBirSwmzjdq3/6w93qo2XIq2RPQKkuiZq9/plFWuceRQyO+qpoc8F8G2VbOOGqTDQMrqixvP5A74a7WLNQRjSJf2YJ8czI9q1iHHo+gbzdCJANI6e6ipnqNdcyDYYrg9nVMf56YdWbASpaAxtY3MKIQrI76G7K2xRg77eaC6zhgxX3jZ1FGFLEuLUil0Qcq4+oE2enJBwtx4pa+H3B3+xfMv/NbLxwaCiaKQJ7731UM+gWC3khjkyoxPIG9cwl2QtsVcP1C+gIpGMw=="
   },
   {
    "h": "Сент-Луис",
@@ -483,9 +483,9 @@
    "d": "2026-11-27 23:00",
    "arena": "",
    "x1x2": [
-    2.46,
+    2.52,
     4.26,
-    2.4
+    2.35
    ],
    "p3": [
     0.326,
@@ -554,7 +554,7 @@
      "gd": 7
     }
    },
-   "_z": "0ovXLRnwBw1tgT89W022VRoVMr8hCrbDuZkBF3JnIzeUI59sque/UZWEBEJyCyZ0nns2p52dvKVynyS+uAgJMnOGt4iUA4Q4CxDh86fGnqmBUWmfLDU5hJfKygKWMzftrm6BoiH1Ez1JrzM7GHx3Mg+MjJj0lUkTk/AAuZPtHWZOUf2uhiIjjpYnwgixGirnqS0rcptNSN1rPHDAJqC5ByodB3QqmPqMO5v1a7hkxvASajm22NH0SCM9NPizOWU3mWJUkr7aEkmLpekVqqaQpqaadjysSit+sZWBauXSrNUI0e1y6Lj83nsnBeJn13/DGsTFFIaLqFtLeh69"
+   "_z": "GaYhyQLFmZmC8NBIyWR9wmri5AXLbqsy9goaZq5YbiGMzskpiHWI9xSGHaVZ1iI56epefHC+GgePj3zm8RPHmEwHrYiR4tgVyCjC4PRkZg+te78fmpaXGBYdOZmUf8hRyOyHQUnUIqOIWQotAUge1+teLqgxMtKju+mlQIjBKyp9K9xnW7Rw9u8kNW8naN68ceVT/v1yT+ZomMvDnEarebqDTzi4YeiKzWdPzxBZg/TUU7yHl+HmjWwuooz9rVkoIqCceUxS10LCRRSkyKl1bGzZyoN9dVp6z8EO6RpN7RPINlltTgiznsZEps/khMu/wH3tF4QvvGHc7Df+sczIEyLfr9GHhV3LkagIwBVpyvvIse/ozas7K+Gve7XJC7z4IaU="
   },
   {
    "h": "Коламбус",
@@ -562,9 +562,9 @@
    "d": "2026-11-27 23:00",
    "arena": "",
    "x1x2": [
-    2.25,
+    2.24,
     4.13,
-    2.7
+    2.71
    ],
    "p3": [
     0.32,
@@ -633,7 +633,7 @@
      "gd": -7
     }
    },
-   "_z": "ep7PjhS72yEN4edpEe7/PHa9mqYasUnUhIjIGAmTwVwCpIkwuBPZumjhq6R43OxYUgXv3sJ9FI7K253rQUTfejJz5EsRSh9R5NnJ3MsXObeEGd0NZHZgCUK4B5A8JkZKZe4yEoZH/ygRSv+KFv6cGYF8/tsgXxpnsnfuYwpEnEOgcU33nau32cqMmreSEdLWYiMAUCieXWUE2wZdscKEQtvqKNw/eB14xTvDDlm9DcXfrLPuKh78T6uoD2vDolqnXGnMP9AJ+iaS3MZfme4s/BWN7nqxP/e318oNmrddVQWruLtxDIz7pExjzOUTbiRGWNZ5mpxPW/coT5V+rDoxdX8eadx8tQbXlDU3wBmEhv23k81tgft+"
+   "_z": "c4+Ddip8lGIm/7iVIuEeO96LywX9U8OxGHpX9jiv+GNo8fUDVMFDKFnkBLf8eoWtVIeXVLMwlHqgTbAAXWY1Z2QyCtuWd5+iStDNTCmdbQ1dhnt8tyaa5L0cnxAvgraVLKhQC9ZyMKhoZjU0orGDpms+pN515N4SZ4dfn7YsgqqArUa4/mgAttFfU+41IJIC86s2YBuJX0W+WZyiTf6yeRRgOw3m9iJU0c3VubWDNy8ZDWeWCKhMpr/1EeS3Rb+JSgEqt4SlxZlicBJ5F/pRvNmKyBTwaQBkoSvjrF8OT7J0hKw/SLslGApvqGhi62BIhxGLxT6o1WuK/eveAq5V/1ATA+63dSdiediRMKRgO06ptxCiU24v"
   },
   {
    "h": "Миннесота",
@@ -1028,7 +1028,7 @@
      "gd": -3
     }
    },
-   "_z": "ndU06MMWnvr6LanB3zxfSnWF2k9jcN1jBQsnNgtbwGOWoy40+Z6bjN/AvrDQyAMF8ZfejszgULnyhi0S7Wq7V8BrsDphc+9LTxjDMQ638Yap93TKdlTr/r1zL9hn9l+V+kHZ+WaIs2fCpSC+Iyilb4/ffd391vQKsuTolx2oA1sWRFOwHxoO9VAC+v1TCu15I+FF0BfBXx78IcaF4u+pF7pxk/T/8kWO5y0CP9eWjy3QaxCB0wON1QdXFxtMiIBnnvXe9ABV5wGsNXww6eHxoyqMcMoxz+roz9obeEpw6EbTk4hAc4f2b6FBhNkptEkkcN6bt1pr9E/kshQDUN/tUks23Bhm958a1DkrLcYE09XP3CEzRJou8A=="
+   "_z": "pmjGX39+35hf6dEknjuJ72j9WV2zm+P+RycmhWZBpytRgA3IOOoGIBsoK6S+LnhVlT8PlqcILezm3WbYlYjKjjYSImx6Ig37mzjsULfwe4wnPFVMHymuOmR7IJfwHgEELU0sZIX06mLIABE18Kep6/iHFluGYgZPQd2+7JlRH7M/NvxxytH6jC8UjTq1LPRLDyzG3Gpy1ibp0PT5rcKXLQBC/5S7JyDrOlhiQZ9ykTVcNK2uDox4ry35wyiBca8xpU+do9sIzxqORPjrggH6u7VCWYSvP+fBSQb39ge71Vx7a8SGwJ7JcW60pkI6l+uKjQGakFn/4ES9pviOi99bRCmNTos3kgsuKob1ks9FP24ly40ij+Zr"
   },
   {
    "h": "Баффало",
