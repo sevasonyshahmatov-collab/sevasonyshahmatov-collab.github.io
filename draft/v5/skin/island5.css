@@ -1,0 +1,95 @@
+/* v5 · светлый «остров» (владелец 27.11): блок «Таблица НХЛ + матчи дня» на «Хоккее» (#matches + боковые таблицы .sdt)
+   и «Ближайшие матчи» на стартовой (#today). Включается классом html.v5-li (переключатель «Светлый | Тёмный» у заголовка блока,
+   по умолчанию — светлый), только в теме bw. Остальная страница — тёмная. Только цвета/рамки/тени: без анимаций, без новых файлов.
+   Контраст: #111 на #fff 18,9:1; #666 на #fff 5,7:1 и на #F5F5F2 5,3:1; белый на #111 18,9:1; белый на #c8102e 5,9:1. */
+html.v5-li[data-v5t="bw"]{--li-bg:#f5f5f2;--li-card:#fff;--li-bd:#e2e2dc;--li-bd2:#cfcfc8;--li-ink:#111;--li-ink2:#666;--li-row:#f7f7f4;--li-hl:#e7efff;--li-hl2:#3a66d1;--li-sh:0 1px 2px rgba(0,0,0,.06),0 6px 18px rgba(0,0,0,.06)}
+
+/* подложка острова: светлая, скругления, мягкий край к тёмной странице */
+html.v5-li[data-v5t="bw"] #matches,html.v5-li[data-v5t="bw"] #today{background:var(--li-bg)!important;color:var(--li-ink)!important;border-radius:28px;margin:24px 8px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.06),0 30px 80px -40px rgba(0,0,0,.9);padding-top:48px!important;padding-bottom:40px!important}
+html.v5-li[data-v5t="bw"] #today{padding-left:0;padding-right:0}
+html.v5-li[data-v5t="bw"] :is(#matches,#today) :is(h2,.h2){color:var(--li-ink)!important;text-shadow:none!important}
+html.v5-li[data-v5t="bw"] :is(#matches,#today) :is(.sub,.tag,.note,.dayinfo,.dayh){color:var(--li-ink2)!important}
+html.v5-li[data-v5t="bw"] #today .tag::before{background:var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] :is(#matches,#today) .more,html.v5-li[data-v5t="bw"] #matches .more2 :is(a,button){color:var(--li-ink)!important;background:var(--li-card)!important;border:1px solid var(--li-bd2)!important}
+
+/* вкладки и поиск */
+html.v5-li[data-v5t="bw"] #matches #ltabs .tab{background:var(--li-card)!important;color:var(--li-ink)!important;border:1px solid var(--li-bd2)!important}
+html.v5-li[data-v5t="bw"] #matches #ltabs .tab :is(span,b,i,small){color:inherit!important}
+html.v5-li[data-v5t="bw"] #matches #ltabs .tab:is([aria-selected="true"],.on){background:var(--li-ink)!important;color:#fff!important;border-color:var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] #matches .mf-box{background:var(--li-card)!important;border:1px solid var(--li-bd2)!important;color:var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] #matches .mf-box input{color:var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] #matches .mf-box input::placeholder{color:var(--li-ink2)!important}
+
+/* карточки матчей «Хоккея»: белые, рамка, тень; время и клубы — крупно и тёмным */
+html.v5-li[data-v5t="bw"] #matches #mlist li.match{background:var(--li-card)!important;color:var(--li-ink)!important;border:1px solid var(--li-bd)!important;box-shadow:var(--li-sh)!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match:hover{border-color:var(--li-bd2)!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match :is(time,.teams span,.lgline,b){color:var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match .mt time{font-size:1.12em}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match .teams span{font-weight:800}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match :where(small,.cd,.mt span:not(.lvslot):not(.lv):not(.lv-tag),.qv-e em){color:var(--li-ink2)!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match img.em{filter:none!important}
+/* расчёт модели: кэф — главный элемент (тёмная плашка, белые цифры); полоски перевеса — тёмные на светлом */
+html.v5-li[data-v5t="bw"] #matches #mlist li.match .qv{background:var(--li-bg)!important;border:1px solid var(--li-bd)!important;border-left:3px solid var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match .qv-k{background:var(--li-ink)!important;color:#fff!important;padding:4px 10px;border-radius:8px;font-family:"Oswald","Arial Narrow",sans-serif!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match .qv-e i{background:#d4d4ce!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match :is(.qv-e[data-l="1"] i:nth-child(1),.qv-e[data-l="2"] i:nth-child(-n+2),.qv-e[data-l="3"] i:nth-child(-n+3)){background:var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match .qc{background:var(--li-card)!important;border:1px solid var(--li-bd2)!important;color:var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match .qc :is(small,em){color:var(--li-ink2)!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match .qc.fav{background:var(--li-ink)!important;border-color:var(--li-ink)!important;color:#fff!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match .qc.fav :is(small,em,b){color:#fff!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match .chev{background:var(--li-bg)!important;color:var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match .lgp{background:#1f1f1f!important}
+
+/* карточки «Ближайших матчей» на стартовой */
+html.v5-li[data-v5t="bw"] #today .mc{background:var(--li-card)!important;color:var(--li-ink)!important;border:1px solid var(--li-bd)!important;box-shadow:var(--li-sh)}
+html.v5-li[data-v5t="bw"] #today .mc:hover{border-color:var(--li-bd2)!important}
+html.v5-li[data-v5t="bw"] #today .mc .t{color:var(--li-ink2)!important}
+html.v5-li[data-v5t="bw"] #today .mc .t span:last-child{color:var(--li-ink)!important;font-weight:700}
+html.v5-li[data-v5t="bw"] #today .mc .tm div{color:var(--li-ink)!important;font-size:1.06em;font-weight:800}
+html.v5-li[data-v5t="bw"] #today .mc img{filter:none!important}
+html.v5-li[data-v5t="bw"] #today .mc .pk{border-top-color:var(--li-bd)!important}
+html.v5-li[data-v5t="bw"] #today .mc .pk b{color:var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] #today .mc .pk span{color:var(--li-ink2)!important}
+html.v5-li[data-v5t="bw"] #today .mc .pk em{background:var(--li-ink);color:#fff!important;padding:3px 9px;border-radius:8px;font-family:"Oswald","Arial Narrow",sans-serif;font-size:1.15em}
+
+/* LIVE: красная плашка, счёт крупно */
+html.v5-li[data-v5t="bw"] :is(#matches,#today) .lv-tag{background:#c8102e!important;color:#fff!important}
+html.v5-li[data-v5t="bw"] :is(#matches,#today) .lv-final .lv-tag{background:#555!important}
+html.v5-li[data-v5t="bw"] :is(#matches,#today) .lv-sc{color:var(--li-ink)!important;font-size:20px!important;font-weight:800}
+html.v5-li[data-v5t="bw"] :is(#matches,#today) .lv-st{color:var(--li-ink2)!important}
+
+/* боковые таблицы (только широкий экран): белые карточки, чётные строки чуть темнее, выделенная строка — мягкий голубой */
+html.v5-li[data-v5t="bw"] aside.sdt{background:var(--li-card)!important;color:var(--li-ink)!important;border:1px solid var(--li-bd)!important;box-shadow:var(--li-sh)!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+html.v5-li[data-v5t="bw"] aside.sdt h4{color:var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] aside.sdt :is(h4 small,th,td.n,td.g,.sd-18,.sd-lb,.sd-v span,.sd-pl small,.sd-fm time){color:var(--li-ink2)!important}
+html.v5-li[data-v5t="bw"] aside.sdt th{background:var(--li-card)!important}
+html.v5-li[data-v5t="bw"] aside.sdt td{border-top-color:#ececE8!important;color:var(--li-ink)}
+html.v5-li[data-v5t="bw"] aside.sdt tbody tr:nth-child(even) td{background:var(--li-row)}
+html.v5-li[data-v5t="bw"] aside.sdt tr.me td{background:var(--li-hl)!important}
+html.v5-li[data-v5t="bw"] aside.sdt tr.me td:first-child{box-shadow:inset 3px 0 0 var(--li-hl2)!important;color:var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] aside.sdt :is(.sd-mv.up,.up){color:#0e7a42!important}
+html.v5-li[data-v5t="bw"] aside.sdt :is(.sd-mv.dn,.dn){color:#c62828!important}
+html.v5-li[data-v5t="bw"] aside.sdt .sd-v{background:var(--li-bg)!important;color:var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] aside.sdt .sd-v:hover{background:#ecece7!important}
+html.v5-li[data-v5t="bw"] aside.sdt .sd-v :is(b,em){color:var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] aside.sdt .sd-v [style*="color"],html.v5-li[data-v5t="bw"] aside.sdt .sd-v .pos{color:#0e7a42!important}
+
+/* переключатель «Светлый | Тёмный» — только для этого блока */
+.v5-lit{flex:none!important;width:max-content!important;align-self:center;display:inline-flex;gap:2px;padding:3px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);vertical-align:middle;margin-left:12px}
+.v5-lit button{all:unset;cursor:pointer;padding:6px 12px;border-radius:7px;font:700 13px/1 "JV Text",system-ui,sans-serif;color:#a3a3a3}
+.v5-lit button[aria-pressed="true"]{background:#fff;color:#111}
+html.v5-li .v5-lit{border-color:var(--li-bd2);background:var(--li-card)}
+html.v5-li .v5-lit button{color:var(--li-ink2)}
+html.v5-li .v5-lit button[aria-pressed="true"]{background:var(--li-ink);color:#fff}
+.v5-lit button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+@media (max-width:809px){html.v5-li[data-v5t="bw"] :is(#matches,#today){border-radius:20px;margin:16px 6px}.v5-lit{margin:10px 0 0;align-self:flex-start!important}}
+/* раскрытый матч: кнопка «Страница матча» — тёмная с белым текстом; шапка «Статистики команды» — светлая */
+html.v5-li[data-v5t="bw"] #matches #mlist li.match a.xgo{background:var(--li-ink)!important;color:#fff!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match a.xgo *{color:#fff!important}
+html.v5-li[data-v5t="bw"] #matches #mlist li.match thead,html.v5-li[data-v5t="bw"] #matches #mlist li.match th{background:var(--li-bg)!important;color:var(--li-ink)!important}
+/* форма В/П — белые буквы на цветных квадратах; закреплённый первый столбец таблиц на телефоне — светлый */
+html.v5-li[data-v5t="bw"] #matches #mlist li.match b.rs.rs{color:#fff!important}
+html.v5-li[data-v5t="bw"] #matches .jv-tscroll table :is(th,td):first-child{background:var(--li-card)!important;color:var(--li-ink)!important}
+html.v5-li[data-v5t="bw"] #today .more{background:none!important;border:0!important;text-decoration:underline;text-underline-offset:4px}
+#today .head .v5-lit{display:flex;width:max-content!important;margin:14px 0 0}
