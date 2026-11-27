@@ -12,7 +12,9 @@ const CORE=['index.html','hockey/index.html','football/index.html','matches.html
  'assets/v3a.css','assets/nav.css','assets/home.css','assets/footer.css','assets/nav.js','assets/footer.js','assets/v3a.js',
  'data/today.js','data/lines.js','data/model.js','data/results-lite.js','favicon.svg?v=3','icon-192.png?v=3'];
 self.addEventListener('install',e=>{self.skipWaiting();
- e.waitUntil(caches.open(CACHE).then(c=>Promise.all(CORE.map(u=>c.add(new Request(ROOT+u,{cache:'reload'})).catch(()=>{})))))});
+ e.waitUntil(caches.open(CACHE).then(c=>{const add=u=>c.add(new Request(ROOT+u,{cache:'reload'}));
+  /* offline.html обязателен: не скачался — установка не проходит, прежний worker и его кэш остаются (аудит 27.11) */
+  return Promise.all([add('offline.html'),...CORE.filter(u=>u!=='offline.html').map(u=>add(u).catch(()=>{}))])}))});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys()
  .then(ks=>Promise.all(ks.filter(k=>k.startsWith('jv-')&&(!k.includes('|')||k.endsWith('|'+ROOT))&&k!==CACHE&&k!==IMG).map(k=>caches.delete(k)))).then(trim).then(()=>self.clients.claim())));
 /* обрезка не чаще раза в 15 с; пропущенная — догоняющая через 15 с (аудит 19.11, круг 3) */
