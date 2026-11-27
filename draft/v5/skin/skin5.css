@@ -52,3 +52,9 @@ main table thead th{position:sticky;top:var(--jv-top);z-index:3;background:var(-
 .jv-draft a{color:inherit}
 @media (max-width:809px){.jv-draft{bottom:auto;top:62px}}
 html[data-v5t="bw"] main h1,html[data-v5t="bw"] main h1 *,html[data-v5t="bw"] main h2{color:#fff!important}
+/* клубы в фирменных цветах (27.11, skin/cc.js): эмблема без серого фильтра; тёмная — светлая обводка; заглушка — кружок цвета клуба */
+html:root img.v5-cc{filter:none!important}
+html:root img.v5-cc-dk{filter:drop-shadow(0 0 .6px rgba(255,255,255,.95)) drop-shadow(0 0 2px rgba(255,255,255,.45))!important}
+.v5-ccph{display:inline-flex;align-items:center;justify-content:center;flex:none;border-radius:50%;font:700 11px/1 "Oswald","Arial Narrow",sans-serif;letter-spacing:.02em;vertical-align:middle;box-sizing:border-box}
+.v5-ccph-dk{box-shadow:0 0 0 1.5px rgba(255,255,255,.75)}
+.v5-ccbar .v5-cct{box-shadow:inset 3px 0 0 var(--cc1);padding-left:9px!important}
