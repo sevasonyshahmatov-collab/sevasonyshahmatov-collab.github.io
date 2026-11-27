@@ -325,9 +325,9 @@
    "d": "2026-11-27 23:00",
    "arena": "",
    "x1x2": [
-    2.17,
+    2.16,
     4.16,
-    2.81
+    2.82
    ],
    "p3": [
     0.43,
@@ -405,7 +405,7 @@
    "arena": "",
    "x1x2": [
     1.704,
-    4.6,
+    4.61,
     3.94
    ],
    "p3": [
@@ -483,7 +483,7 @@
    "d": "2026-11-27 23:00",
    "arena": "",
    "x1x2": [
-    2.52,
+    2.51,
     4.26,
     2.35
    ],
@@ -554,7 +554,7 @@
      "gd": 7
     }
    },
-   "_z": "GaYhyQLFmZmC8NBIyWR9wmri5AXLbqsy9goaZq5YbiGMzskpiHWI9xSGHaVZ1iI56epefHC+GgePj3zm8RPHmEwHrYiR4tgVyCjC4PRkZg+te78fmpaXGBYdOZmUf8hRyOyHQUnUIqOIWQotAUge1+teLqgxMtKju+mlQIjBKyp9K9xnW7Rw9u8kNW8naN68ceVT/v1yT+ZomMvDnEarebqDTzi4YeiKzWdPzxBZg/TUU7yHl+HmjWwuooz9rVkoIqCceUxS10LCRRSkyKl1bGzZyoN9dVp6z8EO6RpN7RPINlltTgiznsZEps/khMu/wH3tF4QvvGHc7Df+sczIEyLfr9GHhV3LkagIwBVpyvvIse/ozas7K+Gve7XJC7z4IaU="
+   "_z": "vvVyaGIV26AlafdzqsroUiGwjSXOumuX9FfeIGz5MgouoI5W3lu03+mdyLSh+i+JRdW8EGawmqSDrYDIbfcUrCIF1UBM3+h3BJT6W+2+XRNQyijl7wf5DkeNGigoI25Tc5WDDUTaWkljwbABMltv09egK9wqu2xXFv+GOY6kohYVAldZrfj+vXCM7McJDaEbytK6MYJ9ivY1rwmX+15vxgv50MIOwKRNKEszpNsDsbw414UQ0TSBVcbp3FFyuDG7dBRYZzhvRIzFW4CJsa9x68GhGbjljFv6f4wuf5Z7X9DFMBo2qAEtn1NBE2cp7MGuJcVkFwjeYLW77FwGglyQTz2DN+WoeXOv24ByEuCjXClBhWhoDCoSoAU="
   },
   {
    "h": "Коламбус",
@@ -633,7 +633,7 @@
      "gd": -7
     }
    },
-   "_z": "c4+Ddip8lGIm/7iVIuEeO96LywX9U8OxGHpX9jiv+GNo8fUDVMFDKFnkBLf8eoWtVIeXVLMwlHqgTbAAXWY1Z2QyCtuWd5+iStDNTCmdbQ1dhnt8tyaa5L0cnxAvgraVLKhQC9ZyMKhoZjU0orGDpms+pN515N4SZ4dfn7YsgqqArUa4/mgAttFfU+41IJIC86s2YBuJX0W+WZyiTf6yeRRgOw3m9iJU0c3VubWDNy8ZDWeWCKhMpr/1EeS3Rb+JSgEqt4SlxZlicBJ5F/pRvNmKyBTwaQBkoSvjrF8OT7J0hKw/SLslGApvqGhi62BIhxGLxT6o1WuK/eveAq5V/1ATA+63dSdiediRMKRgO06ptxCiU24v"
+   "_z": "ep7PjhS72yEN4edpEe7/PHa9mqYasUnUhIjIGAmTwVwCpIkwuBPZumjhq6R43OxYUgXv3sJ9FI7K253rQUTfejJz5EsRSh9R5NnJ3MsXObeEGd0NZHZgCUK4B5A8JkZKZe4yEoZH/ygRSv+KFv6cGYF8/tsgXxpnsnfuYwpEnEOgcU33nau32cqMmreSEdLWYiMAUCieXWUE2wZdscKEQtvqKNw/eB14xTvDDlm9DcXfrLPuKh78T6uoD2vDolqnXGnMP9AJ+iaS3MZfme4s/BWN7nqxP/e318oNmrddVQWruLtxDIz7pExjzOUTbiRGWNZ5mpxPW/coT5V+rDoxdX8eadx8tQbXlDU3wBmEhv23k81tgft+"
   },
   {
    "h": "Миннесота",
@@ -720,9 +720,9 @@
    "d": "2026-11-28 00:00",
    "arena": "",
    "x1x2": [
-    2.44,
-    4.26,
-    2.42
+    2.42,
+    4.28,
+    2.44
    ],
    "p3": [
     0.482,
@@ -791,7 +791,7 @@
      "gd": -11
     }
    },
-   "_z": "WdsDuINID2vOz6mFXfjH+3a7g86Jcmkn+RSx5Q8xwau7Uzb0wqlnirEEluiGwjSBBPFuInMan5HcMC1Szj5laDC1Sr7JjZjW2mELXHh6igt6HVar97Nbb6JR7hODkzbZOTh2bMi8pl7HQR/3RWhDGVQRjpaI1WuNftwjDOZDeyi7J5VEvHOOAGEhzilnrBdGKtGPefVXJXuwzt0nwozQTue8oh85u6BV6L3nFfVBsc8pizaNQi4pCjV6I7kzKpXpI2flCnr/RhCZ4YPXCvaw2Ok69rbadySmVmjev5FOHoNbsuqruDLD2XxLGFmnu8PiE8D5REz/"
+   "_z": "0ZJHIuRMWqVqLH+JCYbG9duY1NU7NI2HGINwmWFGFzRbFNdSCJ74ZkCOY5D7zvZ9jA7K3TPpvbCoU9iC25VTwY4QF9egV9ISA043KPlhKaRcUoHyy/7Pz7iKgz+r+z7wxCvYCQHezfEfIeqkbeJ/CWqm/tK+CVAVV4BjriTc99H5wQpXJVD/11afwo2LRttF+MmucMaN5gbxaFMPmqR4CD2r1uHtlh2F8QzNrGeTaZj4wg46b0xOdykdTPl92d36iAeQAdtjCUvg/3CzhrbSKGF3AZbOep9xU77irEzIlciWDWM5D/ort07GLG7fSwcmRZXHMo0="
   },
   {
    "h": "Сан-Хосе",
@@ -799,9 +799,9 @@
    "d": "2026-11-28 00:00",
    "arena": "",
    "x1x2": [
-    3.51,
+    3.55,
     4.5,
-    1.813
+    1.806
    ],
    "p3": [
     0.204,
