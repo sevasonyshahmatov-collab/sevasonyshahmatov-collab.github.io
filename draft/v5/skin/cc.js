@@ -27,9 +27,8 @@
     var p = img.parentNode, t = p ? p.textContent.trim() : ''; return t || key(img) || '';
   }
   function paint(img) {
-    if (img.dataset.cc || !inScope(img)) return;
-    var k = key(img); if (!k) return;
-    img.dataset.cc = 1; img.classList.add('v5-cc');
+    var k = key(img); if (!k || img.dataset.cc === k || !inScope(img)) return;   // src сменился — перекрасить
+    img.dataset.cc = k; img.classList.add('v5-cc'); img.classList.remove('v5-cc-dk');
     var c = C[k]; if (!c) return;
     if (c[2]) img.classList.add('v5-cc-dk');
     var p = img.parentNode; if (BAR && p && p.children.length <= 3 && p.textContent.trim().length < 40) { p.classList.add('v5-cct'); p.style.setProperty('--cc1', bright(c)); }
@@ -52,7 +51,17 @@
   function scan() {
     Array.prototype.forEach.call(document.querySelectorAll('img[src*="/em/"], img[src*="/fc/"]'), function (img) { paint(img); if (broken(img)) placeholder(img); });
   }
-  var t; new MutationObserver(function () { if (!t) t = requestAnimationFrame(function () { t = 0; scan(); }); })
-    .observe(document.documentElement, { childList: true, subtree: true });
+  // только добавленные узлы (бегущая строка и слайдеры меняют страницу постоянно — весь документ не пересматриваем)
+  var Q = [], t = 0, flush = function () {
+    t = 0; var q = Q; Q = [];
+    q.forEach(function (n) {
+      if (n.tagName === 'IMG') { paint(n); return; }
+      if (n.querySelectorAll) Array.prototype.forEach.call(n.querySelectorAll('img[src*="/em/"], img[src*="/fc/"]'), function (img) { paint(img); });
+    });
+  };
+  new MutationObserver(function (ms) {
+    ms.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, function (n) { if (n.nodeType === 1) Q.push(n); }); if (m.type === 'attributes') Q.push(m.target); });
+    if (Q.length && !t) t = (window.requestIdleCallback || requestAnimationFrame)(flush);
+  }).observe(document.body || document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['src'] });
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', scan, { once: true }) : scan();
 })();
