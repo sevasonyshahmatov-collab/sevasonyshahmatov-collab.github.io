@@ -213,7 +213,9 @@
       648
      ]
     ]
-   }
+   },
+   "res": "loss",
+   "score": "0:2"
   },
   {
    "h": "СКА",
@@ -305,7 +307,7 @@
      "gd": 9
     }
    },
-   "_z": "LAcOg6lJYxUNNT4knCeAetJR+et66beS9sJXEiRqjCrM5ATSq0bsMSlJ2zB1RuAyCoDpQT5VK3g7yb15xeGPt0hGO7cuuirD6NeuNBbNxaHDbwtbDh05kqak5y7KYtLTdpZKut58Jgb+K15RoEjsB2lK6PoK++0BFNzvRf14KTAiEPmVGrbsTvbGwGP2wsBGUpcQBsshktnhEyF+IQyY8tyuBRBMEGzLwQoIixgpbnMEE/s3Lr3KY4acRMfPRfCFwYC+LLeSVYZLXHa0TfM2fuGSAY3HybzgJ4mmzVdyoOCRqGx3mTIoeNfATfvIOr5XwVyRp5Hf56FvblSDYn6Bb06CU1TVf0drcw=="
+   "_z": "t/QX+J0Uk4oKi7pngy0nkLlzlqZNQknGqqvU0PRSpvocICaXS9ZfaERindYBUcuX7A8whD1S1vA60Nuv2XkdchpFbnK7nCtogxVAnZ4u/LoZ4VVDZpAke0P7SA/uFJodKydVCXbtu+lpWUWkUko3fnnbXuWTG6XGFyzXr+10B9L1WVjBG4FR9gRvTRrMPpfkRyhlTVml3pzZK7MXbshgO8+kEd5Jf7PtyrAM2BzAb8UQSDt0BkGN5q5dqvGNX3fQf0jnGfiiOZSefWbz4BYqjBEmvIZbTIdQZJreQ/UgAMOk58cBwFpBE/RRltG1Fo8ifX7Tw46jXid8MkSaXm4EdLLn628ADM0lXGs+zqN2VZsvRMAPJ2gochZ3HaJYJUWJPcXlyIURng=="
   }
  ],
  "all": [

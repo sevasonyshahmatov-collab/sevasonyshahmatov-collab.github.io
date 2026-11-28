@@ -1,0 +1,1099 @@
+{
+ "day": "2026-11-28",
+ "league": "nhl",
+ "skipped": 0,
+ "matches": [
+  {
+   "h": "Вегас",
+   "a": "Монреаль",
+   "d": "2026-11-29 00:00",
+   "arena": "",
+   "x1x2": null,
+   "p3": [
+    0.455,
+    0.227,
+    0.318
+   ],
+   "form": {
+    "Вегас": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "25.11",
+       "opp": "Эдмонтон",
+       "home": false,
+       "score": "5:3",
+       "res": "В"
+      },
+      {
+       "date": "22.11",
+       "opp": "Виннипег",
+       "home": false,
+       "score": "5:4 Б",
+       "res": "В"
+      },
+      {
+       "date": "20.11",
+       "opp": "Даллас",
+       "home": true,
+       "score": "3:4 Б",
+       "res": "П"
+      }
+     ],
+     "points": 35,
+     "games": 26,
+     "place": "3 на Западе",
+     "gd": 12
+    },
+    "Монреаль": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "26.11",
+       "opp": "Колорадо",
+       "home": false,
+       "score": "0:6",
+       "res": "П"
+      },
+      {
+       "date": "24.11",
+       "opp": "Лос-Анджелес",
+       "home": true,
+       "score": "1:2",
+       "res": "П"
+      },
+      {
+       "date": "22.11",
+       "opp": "Филадельфия",
+       "home": true,
+       "score": "3:4",
+       "res": "П"
+      }
+     ],
+     "points": 32,
+     "games": 26,
+     "place": "6 на Востоке",
+     "gd": -1
+    }
+   },
+   "_z": "R4/vNkTaNNKXBU8cLBcJb0oK2lJDobpdHbDmYlvy/qdTFGsdYk5yTpT2nWtkKay998hB/MHc2e1gHnSbGycbZrIeUKIF/2+IP8dL5VvkSPSnY6g/oeP+cw/2mmbcv02OSgL9O2WLkidDF7gEOkg2t51BgmGxCuemLtqZn0k3UkBCC/MwIISp4vmh/IU6W+VKQyzO6KjKnRYv536mq9pbPzKNFkL0eMSMiRfL+S218wM/lZzH8h/VKmadblJx+wPLRncnGfsGeEPH43D6aSdXgl/x9E2IzFUwAq3Nx3pChM5ArBeTyZCoB8SqLUOtRtsr6a9KYGRx"
+  },
+  {
+   "h": "Флорида",
+   "a": "Тампа-Бэй",
+   "d": "2026-11-29 02:00",
+   "arena": "",
+   "x1x2": null,
+   "p3": [
+    0.398,
+    0.222,
+    0.38
+   ],
+   "form": {
+    "Флорида": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "27.11",
+       "opp": "Вашингтон",
+       "home": false,
+       "score": "3:2",
+       "res": "В"
+      },
+      {
+       "date": "26.11",
+       "opp": "Оттава",
+       "home": true,
+       "score": "5:3",
+       "res": "В"
+      },
+      {
+       "date": "22.11",
+       "opp": "Баффало",
+       "home": true,
+       "score": "4:3",
+       "res": "В"
+      }
+     ],
+     "points": 33,
+     "games": 26,
+     "place": "4 на Востоке",
+     "gd": 8
+    },
+    "Тампа-Бэй": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "27.11",
+       "opp": "Оттава",
+       "home": true,
+       "score": "2:6",
+       "res": "П"
+      },
+      {
+       "date": "26.11",
+       "opp": "Каролина",
+       "home": true,
+       "score": "1:3",
+       "res": "П"
+      },
+      {
+       "date": "23.11",
+       "opp": "Баффало",
+       "home": true,
+       "score": "2:6",
+       "res": "П"
+      }
+     ],
+     "points": 32,
+     "games": 25,
+     "place": "5 на Востоке",
+     "gd": 10
+    }
+   },
+   "_z": "kjJdnewGRbWp/EhrLAOth1uSftTJ2TSVk8WhmuYiKdewLw1P5obMSFCSWfFgCmlAnwp6Ku2wW9sUMMdDGSGZu6nwLr4DQHC3xFjqwYNw6S7dbyofo3GJq5PJhNZmQA3HfufYsbOlB1pjhPWKpgOEnHfxCfFbljHN++sN70FeOUWXZwJeGbFBQriBCQsvLxUNLvi4FxSvRhKfA956BKtYqkMt/HS3uUrexF3jXyjf/36CT23G7ShCE7rI66/E68lCjkiyjUYK7jYcI7Gt8xyIACuK+DM8yCFwug2L5LA66F2p9FnDcbz3RC9MlDG/mn9MMa/hiewgaGKl294r"
+  },
+  {
+   "h": "Детройт",
+   "a": "Нэшвилл",
+   "d": "2026-11-29 03:00",
+   "arena": "",
+   "x1x2": null,
+   "p3": [
+    0.346,
+    0.239,
+    0.415
+   ],
+   "form": {
+    "Детройт": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "27.11",
+       "opp": "Коламбус",
+       "home": false,
+       "score": "2:0",
+       "res": "В"
+      },
+      {
+       "date": "26.11",
+       "opp": "Ванкувер",
+       "home": true,
+       "score": "5:1",
+       "res": "В"
+      },
+      {
+       "date": "22.11",
+       "opp": "Айлендерс",
+       "home": true,
+       "score": "2:3",
+       "res": "П"
+      }
+     ],
+     "points": 23,
+     "games": 25,
+     "place": "12 на Востоке",
+     "gd": -5
+    },
+    "Нэшвилл": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "27.11",
+       "opp": "Юта",
+       "home": true,
+       "score": "5:6 Б",
+       "res": "П"
+      },
+      {
+       "date": "26.11",
+       "opp": "Даллас",
+       "home": false,
+       "score": "3:1",
+       "res": "В"
+      },
+      {
+       "date": "22.11",
+       "opp": "Питтсбург",
+       "home": true,
+       "score": "4:3",
+       "res": "В"
+      }
+     ],
+     "points": 32,
+     "games": 25,
+     "place": "5 на Западе",
+     "gd": 3
+    }
+   },
+   "_z": "85gll2+e7K8aX8/8JJM5XaZQscvhR5h+BN7ZJ9rpj6HGpylsuUnZflR1C/eNuhP0T7z1sfBOFmtcn54/hJb5nXKx+rvcHoKr9aleTI7qEJFYXTJ7nlsyAqBMTW1SWwA7MSPJ3zJPRPYHz4nViVe8+TrNWUV5XHSoen2nwwygELcVlIy8mYnud+sk1ISRh1sar82zmPj6MUIz2Bfls1zbDRR0RrkPoH8KHNfgyMBzKumF93pKT7lzqMN5jjIVVBrt6TQe5l0FMPIDaOuxUdSlZ2AixJhGHnwV9mmSFkoIl5+kDSKYK/wj5Qs9mQGTJfg9PO+L+qx+"
+  },
+  {
+   "h": "Нью-Джерси",
+   "a": "Виннипег",
+   "d": "2026-11-29 03:00",
+   "arena": "",
+   "x1x2": null,
+   "p3": [
+    0.475,
+    0.21,
+    0.315
+   ],
+   "form": {
+    "Нью-Джерси": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "27.11",
+       "opp": "Калгари",
+       "home": true,
+       "score": "5:3",
+       "res": "В"
+      },
+      {
+       "date": "26.11",
+       "opp": "Коламбус",
+       "home": false,
+       "score": "3:2 Б",
+       "res": "В"
+      },
+      {
+       "date": "24.11",
+       "opp": "Коламбус",
+       "home": true,
+       "score": "3:2",
+       "res": "В"
+      }
+     ],
+     "points": 36,
+     "games": 26,
+     "place": "3 на Востоке",
+     "gd": 19
+    },
+    "Виннипег": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "26.11",
+       "opp": "Бостон",
+       "home": false,
+       "score": "4:2",
+       "res": "В"
+      },
+      {
+       "date": "24.11",
+       "opp": "Юта",
+       "home": true,
+       "score": "4:2",
+       "res": "В"
+      },
+      {
+       "date": "22.11",
+       "opp": "Вегас",
+       "home": true,
+       "score": "4:5 Б",
+       "res": "П"
+      }
+     ],
+     "points": 30,
+     "games": 26,
+     "place": "9 на Западе",
+     "gd": -3
+    }
+   },
+   "_z": "YxDG1YPI1FGinvYrkCCJsxYbbLK4ktQFHPr/6Rzx73aGIfEI1GZRcprA4TIfCEchPLD3CLuRxoiEMoo2BWGJ7b4Kz1SCoWh7KsEEXVpBXEtRR5aR7zAhJzIvgqrbDaKsXBrx5EuJd7CYTTBgXft9aDgYn/qxERogOcVf3qlkZuijobADNwHEf/jCKuJQFDZNCL7vL+FDlaInW/kTSqFtVUQRDhmHdx+RRXwCkW5cYCBHr8fZf0QP0U7ldWIzid0n2XYi55CkQ8c4Hh9PH7oYnyuG4kblyLQFnaHu42RumF9QegwW4PZH/AI3K4++B21Wnk4="
+  },
+  {
+   "h": "Рейнджерс",
+   "a": "Калгари",
+   "d": "2026-11-29 03:00",
+   "arena": "",
+   "x1x2": null,
+   "p3": [
+    0.514,
+    0.22,
+    0.265
+   ],
+   "form": {
+    "Рейнджерс": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "26.11",
+       "opp": "Баффало",
+       "home": false,
+       "score": "1:5",
+       "res": "П"
+      },
+      {
+       "date": "22.11",
+       "opp": "Каролина",
+       "home": true,
+       "score": "2:5",
+       "res": "П"
+      },
+      {
+       "date": "17.11",
+       "opp": "Монреаль",
+       "home": true,
+       "score": "3:1",
+       "res": "В"
+      }
+     ],
+     "points": 27,
+     "games": 24,
+     "place": "9 на Востоке",
+     "gd": 2
+    },
+    "Калгари": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "27.11",
+       "opp": "Нью-Джерси",
+       "home": false,
+       "score": "3:5",
+       "res": "П"
+      },
+      {
+       "date": "26.11",
+       "opp": "Питтсбург",
+       "home": false,
+       "score": "6:3",
+       "res": "В"
+      },
+      {
+       "date": "24.11",
+       "opp": "Оттава",
+       "home": false,
+       "score": "1:2",
+       "res": "П"
+      }
+     ],
+     "points": 24,
+     "games": 27,
+     "place": "12 на Западе",
+     "gd": -24
+    }
+   },
+   "_z": "PbjhmUnmL/E5N1EioSEzVgTz4QKZNsOhA0qvlQ89ivBe38MUelidCHwmyC4sD+n5S6ZpC2/yA9WRB8Pk7w07co1eKL7Phh4hKK3B6a9pUbOJ3gQjnbw+Mw4EDMcz2fkWmpJNCG6IyUa7ANUE/fr7aRl6m0n8CUAaro+pficlw9W32oAf4CoX39LyIDJfNIrojCBs0lewOsj4yLdTtcCGiMgTaQsYukgEnQVaDt4VnrtGdLuhCDVjAl+LetGoRGoLVxO8gHpJnepLhp53uO9iebnzlfhzIAdiuhiqUQ0NljcdF8FAQepGF3uPlR5A19fj"
+  },
+  {
+   "h": "Питтсбург",
+   "a": "Торонто",
+   "d": "2026-11-29 03:00",
+   "arena": "",
+   "x1x2": null,
+   "p3": [
+    0.338,
+    0.215,
+    0.447
+   ],
+   "form": {
+    "Питтсбург": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "26.11",
+       "opp": "Калгари",
+       "home": true,
+       "score": "3:6",
+       "res": "П"
+      },
+      {
+       "date": "23.11",
+       "opp": "Даллас",
+       "home": false,
+       "score": "0:1",
+       "res": "П"
+      },
+      {
+       "date": "22.11",
+       "opp": "Нэшвилл",
+       "home": false,
+       "score": "3:4",
+       "res": "П"
+      }
+     ],
+     "points": 16,
+     "games": 24,
+     "place": "16 на Востоке",
+     "gd": -17
+    },
+    "Торонто": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "27.11",
+       "opp": "Бостон",
+       "home": false,
+       "score": "3:1",
+       "res": "В"
+      },
+      {
+       "date": "24.11",
+       "opp": "Айлендерс",
+       "home": false,
+       "score": "4:2",
+       "res": "В"
+      },
+      {
+       "date": "22.11",
+       "opp": "Коламбус",
+       "home": true,
+       "score": "3:4",
+       "res": "П"
+      }
+     ],
+     "points": 23,
+     "games": 27,
+     "place": "13 на Востоке",
+     "gd": -8
+    }
+   },
+   "_z": "R1iZRArEH5DaYNFljr/O9Nt311sfczph8uH3mQvgyKQ8+oACaRVv/F0pUHYBh+yDMdHM4WpEia451zhGvvUhpQ5E4UPJOoDEgFEoVH4xDzqO+kPa3Stc7mD8d/Bf1NxzZ8rVImff+lE2pQ9CbxNOUuPyPNvSgK6t+D+HQnm5ADNR3KnNzybq3jlhxkVRrKjUEXp1ORSXBdAOZL3X+nZ8HnIph2xjcG+vHx/t3kb788yAa3ynIbgVPl1w354ZOG5VTZIka7DKeZTXWW4RPkc6madqGvzWaM2l5rsTmAymA2g+fghOxyrquqNIVkwRhpczQ2WkM7rg/X7VYWprkIon7A=="
+  },
+  {
+   "h": "Каролина",
+   "a": "Оттава",
+   "d": "2026-11-29 03:00",
+   "arena": "",
+   "x1x2": null,
+   "p3": [
+    0.581,
+    0.201,
+    0.217
+   ],
+   "form": {
+    "Каролина": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "26.11",
+       "opp": "Тампа-Бэй",
+       "home": false,
+       "score": "3:1",
+       "res": "В"
+      },
+      {
+       "date": "22.11",
+       "opp": "Рейнджерс",
+       "home": false,
+       "score": "5:2",
+       "res": "В"
+      },
+      {
+       "date": "21.11",
+       "opp": "Эдмонтон",
+       "home": true,
+       "score": "7:4",
+       "res": "В"
+      }
+     ],
+     "points": 41,
+     "games": 25,
+     "place": "1 на Востоке",
+     "gd": 47
+    },
+    "Оттава": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "27.11",
+       "opp": "Тампа-Бэй",
+       "home": false,
+       "score": "6:2",
+       "res": "В"
+      },
+      {
+       "date": "26.11",
+       "opp": "Флорида",
+       "home": false,
+       "score": "3:5",
+       "res": "П"
+      },
+      {
+       "date": "24.11",
+       "opp": "Калгари",
+       "home": true,
+       "score": "2:1",
+       "res": "В"
+      }
+     ],
+     "points": 37,
+     "games": 27,
+     "place": "2 на Востоке",
+     "gd": 12
+    }
+   },
+   "_z": "/XcQ6fgYT7ePPerkSnh6di4Ms72UQNsQD4MYC0SgYm1nTJLugrFlk2sfMQhx0G+RvUdW9VpN5V+2Zcs8fNdNHh1b3FDQH/NgNQttg0/QmwCqGec9PfAOUjn2WEHhF49/VUMyPiqsx/y4hHArBtLAboOTStaeqb8hTecxgb4znp4KttHTJR41366dwfVWnO14NCQvtYctodfKZzJ0Qe1c9T95ZOKc2VIWEr48kC4MgoSJvvtx1+nroEiMuCIezUYrpLUR2eiVdGtN+aY4tNQ0jHn2QoQykgBdF31pX14E/fllizTA4YDL2A=="
+  },
+  {
+   "h": "Сент-Луис",
+   "a": "Вашингтон",
+   "d": "2026-11-29 03:00",
+   "arena": "",
+   "x1x2": null,
+   "p3": [
+    0.496,
+    0.198,
+    0.306
+   ],
+   "form": {
+    "Сент-Луис": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "27.11",
+       "opp": "Даллас",
+       "home": true,
+       "score": "5:3",
+       "res": "В"
+      },
+      {
+       "date": "26.11",
+       "opp": "Айлендерс",
+       "home": false,
+       "score": "2:3 Б",
+       "res": "П"
+      },
+      {
+       "date": "23.11",
+       "opp": "Эдмонтон",
+       "home": true,
+       "score": "5:4 Б",
+       "res": "В"
+      }
+     ],
+     "points": 31,
+     "games": 26,
+     "place": "7 на Западе",
+     "gd": 6
+    },
+    "Вашингтон": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "27.11",
+       "opp": "Флорида",
+       "home": true,
+       "score": "2:3",
+       "res": "П"
+      },
+      {
+       "date": "26.11",
+       "opp": "Филадельфия",
+       "home": true,
+       "score": "7:3",
+       "res": "В"
+      },
+      {
+       "date": "22.11",
+       "opp": "Бостон",
+       "home": false,
+       "score": "5:7",
+       "res": "П"
+      }
+     ],
+     "points": 22,
+     "games": 23,
+     "place": "14 на Востоке",
+     "gd": -8
+    }
+   },
+   "_z": "G46Z4zenz+wUfazzQBHlcCzc9yQtALnssTevq6g5PCnw//Y4UMBoyTCjvQahpN9+LebNABjzTCZqIc4tdM9PjgQ+MBRFUcKkOVb1L+i8KPLZ6oJK3uI3Y5MQ1X9UKuG4B99zZC2Imp13fRQSIS9v0mUhrH2POjxOwLoTNiC+60e0umDYCzzVi2wbDtLMLTSLr2ZVL8h4nDreMYKpOhVEhZbqYiqFhObB/DRhWRiIg0QjU2/Fzlu//IvwGZ4DAb/exFAVqLBnjXD+C6ALyRj8lRt2EpbziyyE26RAE8HbUVyASSdy0xpxomjWsVQ4rcWufX6kOWitoh1mQoWzxJ2Ac2FxJZE="
+  },
+  {
+   "h": "Филадельфия",
+   "a": "Айлендерс",
+   "d": "2026-11-29 03:30",
+   "arena": "",
+   "x1x2": null,
+   "p3": [
+    0.284,
+    0.225,
+    0.491
+   ],
+   "form": {
+    "Филадельфия": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "27.11",
+       "opp": "Ванкувер",
+       "home": true,
+       "score": "5:2",
+       "res": "В"
+      },
+      {
+       "date": "26.11",
+       "opp": "Вашингтон",
+       "home": false,
+       "score": "3:7",
+       "res": "П"
+      },
+      {
+       "date": "22.11",
+       "opp": "Монреаль",
+       "home": false,
+       "score": "4:3",
+       "res": "В"
+      }
+     ],
+     "points": 26,
+     "games": 28,
+     "place": "11 на Востоке",
+     "gd": -22
+    },
+    "Айлендерс": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "26.11",
+       "opp": "Сент-Луис",
+       "home": true,
+       "score": "3:2 Б",
+       "res": "В"
+      },
+      {
+       "date": "24.11",
+       "opp": "Торонто",
+       "home": true,
+       "score": "2:4",
+       "res": "П"
+      },
+      {
+       "date": "22.11",
+       "opp": "Детройт",
+       "home": false,
+       "score": "3:2",
+       "res": "В"
+      }
+     ],
+     "points": 29,
+     "games": 24,
+     "place": "8 на Востоке",
+     "gd": 7
+    }
+   },
+   "_z": "P5dRQMppsuuIuM6ZjiktsX+htV4Xhd1T57KDaSs3LTr7hwlu2wYLBkDviYP1LlJrpGcKM370WADO7UJQNdPOeBgPkNfn4SoEEQXhpL7GhWFHyvg2MviRyJYivxi2rMCqEK4E4Ej2Q2das88h6M6AFa5V1QIiBjaPoabmp7xoHDfOZvymgczf43CT33vKvXa9N1R/QaqLVI4tbZ2D0rmdpM24VWh1x/il12F7RcEeLe/RKYiE4La/STXtp1DxXavwBLhQAwLP3VMjTzvsxF8b23hnjioLSvqD/oPD2aZMr5lFl/CyzfjgpXxTrD0qpgreiEipa6QKfjVD2sIhcNU/zCTI2Xvb7l1O"
+  },
+  {
+   "h": "Даллас",
+   "a": "Юта",
+   "d": "2026-11-29 04:00",
+   "arena": "",
+   "x1x2": null,
+   "p3": [
+    0.404,
+    0.234,
+    0.362
+   ],
+   "form": {
+    "Даллас": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "27.11",
+       "opp": "Сент-Луис",
+       "home": false,
+       "score": "3:5",
+       "res": "П"
+      },
+      {
+       "date": "26.11",
+       "opp": "Нэшвилл",
+       "home": true,
+       "score": "1:3",
+       "res": "П"
+      },
+      {
+       "date": "23.11",
+       "opp": "Питтсбург",
+       "home": true,
+       "score": "1:0",
+       "res": "В"
+      }
+     ],
+     "points": 32,
+     "games": 25,
+     "place": "6 на Западе",
+     "gd": 5
+    },
+    "Юта": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "27.11",
+       "opp": "Нэшвилл",
+       "home": false,
+       "score": "6:5 Б",
+       "res": "В"
+      },
+      {
+       "date": "26.11",
+       "opp": "Миннесота",
+       "home": false,
+       "score": "4:3",
+       "res": "В"
+      },
+      {
+       "date": "24.11",
+       "opp": "Виннипег",
+       "home": false,
+       "score": "2:4",
+       "res": "П"
+      }
+     ],
+     "points": 31,
+     "games": 27,
+     "place": "8 на Западе",
+     "gd": -1
+    }
+   },
+   "_z": "Q2rtk7mI3zs8CW052eqWxHjr/UmT+iJ+E19KPOjlyFyuN7BKc8/M2YjbV93v0KXOgnKaraxuJ17uHejoUltKSBhATMLEbMcOqDp9QafPbZmKQzr/ohtsD4iAP4ztTOEFKNjY9+JcVI27KFka8NP9L3G9XnaeKLAPuEmFc+utWuvbiJG6r7rQ0E1xdYIsmIxqu5u275yzrdgqewyQCkr1glO4Xa2pja4EGNyVyU6w1JMQWiRc/7NSkf6Qupj8HPrC5JBkmNfSHMNQwwwBv152H9JtjbnchKTZwMb+HWPy/9CgcppKcvP9xpm2ULe+UgFUtiY9kKgnuUf6qQ=="
+  },
+  {
+   "h": "Колорадо",
+   "a": "Сан-Хосе",
+   "d": "2026-11-29 05:00",
+   "arena": "",
+   "x1x2": null,
+   "p3": [
+    0.693,
+    0.161,
+    0.146
+   ],
+   "form": {
+    "Колорадо": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "26.11",
+       "opp": "Монреаль",
+       "home": true,
+       "score": "6:0",
+       "res": "В"
+      },
+      {
+       "date": "20.11",
+       "opp": "Анахайм",
+       "home": true,
+       "score": "4:0",
+       "res": "В"
+      },
+      {
+       "date": "19.11",
+       "opp": "Юта",
+       "home": false,
+       "score": "1:4",
+       "res": "П"
+      }
+     ],
+     "points": 31,
+     "games": 24,
+     "place": "4 на Западе",
+     "gd": 28
+    },
+    "Сан-Хосе": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "26.11",
+       "opp": "Анахайм",
+       "home": false,
+       "score": "0:7",
+       "res": "П"
+      },
+      {
+       "date": "24.11",
+       "opp": "Миннесота",
+       "home": true,
+       "score": "2:5",
+       "res": "П"
+      },
+      {
+       "date": "22.11",
+       "opp": "Сиэтл",
+       "home": true,
+       "score": "4:3",
+       "res": "В"
+      }
+     ],
+     "points": 24,
+     "games": 27,
+     "place": "10 на Западе",
+     "gd": -30
+    }
+   },
+   "_z": "rH7MGwc7s9yjT2077G5EKvk7yZ1CKsLPFk4kbf91OZASwLiYJNoaBFQwwqm2Oj3eKrTlyWYyvZBSIZHqPgEzwCzSmQ21Wqj/dkLNkuIhgE+JIHZaHOQO6jEK/K31lbHgHIE1d0MWV3Wqn71GLxBS8nldRw191Tvz7eg3L7j4ovn68Ypptl6w2C6BdTDGO9EBSxxJ7cxEc31l4zQEQLZ9SQxNVXQtVFxBY6jadfQXfEkArokHs13BZ5yC2rF5iJf9VzN96bb4RgS209Hq24N7vQs/71XvLkwXRB1AeOhUikM1V3FA4R5qbZPuTAqZVuoXdXs="
+  },
+  {
+   "h": "Лос-Анджелес",
+   "a": "Анахайм",
+   "d": "2026-11-29 05:00",
+   "arena": "",
+   "x1x2": null,
+   "p3": [
+    0.356,
+    0.211,
+    0.433
+   ],
+   "form": {
+    "Лос-Анджелес": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "24.11",
+       "opp": "Монреаль",
+       "home": false,
+       "score": "2:1",
+       "res": "В"
+      },
+      {
+       "date": "22.11",
+       "opp": "Оттава",
+       "home": false,
+       "score": "2:4",
+       "res": "П"
+      },
+      {
+       "date": "20.11",
+       "opp": "Торонто",
+       "home": false,
+       "score": "4:3 Б",
+       "res": "В"
+      }
+     ],
+     "points": 18,
+     "games": 22,
+     "place": "14 на Западе",
+     "gd": -11
+    },
+    "Анахайм": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "26.11",
+       "opp": "Сан-Хосе",
+       "home": true,
+       "score": "7:0",
+       "res": "В"
+      },
+      {
+       "date": "24.11",
+       "opp": "Сиэтл",
+       "home": false,
+       "score": "2:3",
+       "res": "П"
+      },
+      {
+       "date": "22.11",
+       "opp": "Юта",
+       "home": false,
+       "score": "2:3",
+       "res": "П"
+      }
+     ],
+     "points": 25,
+     "games": 26,
+     "place": "11 на Западе",
+     "gd": 1
+    }
+   },
+   "_z": "C6bIiLQoOx/P7liYc6lHkIUf72H6jYe27aCOYczSbiYonXXTpRWBjW7+9a/ciE+msnxIK4E+exw6JnHYAf217hhVCOja74GE47SS5FBWUQdx3g1mVCxnAYfUldZXM5k8/GXFWpm4eP9Kvghz/0w5aGzE3ecG+PFvtCrEaZMwLpDjb6VUi2sZav8v68aUINjtJ0OG9goBRzZfRciD9rXvmheLW0dHfrvGpaMOmjmZjC/7N3TzT6HktiCD6TJkeLvLAZLhq3QBt02AfQR3tKqty+afe5+5DamVdNJT/R8DjOQ9bePmMnt8ui/fol1G/tJjBT8ahwQ8lOBKZZu8hhXdodm1NsLbhQ=="
+  },
+  {
+   "h": "Сиэтл",
+   "a": "Эдмонтон",
+   "d": "2026-11-29 06:00",
+   "arena": "",
+   "x1x2": null,
+   "p3": [
+    0.276,
+    0.201,
+    0.523
+   ],
+   "form": {
+    "Сиэтл": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "26.11",
+       "opp": "Чикаго",
+       "home": true,
+       "score": "1:3",
+       "res": "П"
+      },
+      {
+       "date": "24.11",
+       "opp": "Анахайм",
+       "home": true,
+       "score": "3:2",
+       "res": "В"
+      },
+      {
+       "date": "22.11",
+       "opp": "Сан-Хосе",
+       "home": false,
+       "score": "3:4",
+       "res": "П"
+      }
+     ],
+     "points": 23,
+     "games": 22,
+     "place": "13 на Западе",
+     "gd": -5
+    },
+    "Эдмонтон": {
+     "league": "NHL",
+     "last3": [
+      {
+       "date": "25.11",
+       "opp": "Вегас",
+       "home": true,
+       "score": "3:5",
+       "res": "П"
+      },
+      {
+       "date": "23.11",
+       "opp": "Сент-Луис",
+       "home": false,
+       "score": "4:5 Б",
+       "res": "П"
+      },
+      {
+       "date": "21.11",
+       "opp": "Каролина",
+       "home": false,
+       "score": "4:7",
+       "res": "П"
+      }
+     ],
+     "points": 38,
+     "games": 27,
+     "place": "2 на Западе",
+     "gd": 22
+    }
+   },
+   "_z": "fbv6rduDelO9pBInMLjTGzb1Q2X3NUB5YO6lhU8RZWiFiHewNvr1XP0YZQSpujRKXMmAUg+09sEfplqimCW+WtUaFaZLjTGOu2IbtQFUN9qurky48dB1vjA4ZE3WNTJQogu0ZNGnCswihFTcGRP5x9zftn3LIDbLogPAfa2EHWkJTlroxb6jFMm8qXF95b3F80DeuChuI4ohwDvoB4fkrITUYhXRQFKV6r/VJJEaX6eGVfdP+sG07nAT4R6ymhWi5FUTcIOE9Gh2N5azWeTvS9a9NWAD0COrDeNMRNGxR35hVTkwnw=="
+  }
+ ],
+ "all": [
+  {
+   "d": "2026-11-29 00:00",
+   "h": "Вегас",
+   "a": "Монреаль"
+  },
+  {
+   "d": "2026-11-29 02:00",
+   "h": "Флорида",
+   "a": "Тампа-Бэй"
+  },
+  {
+   "d": "2026-11-29 03:00",
+   "h": "Детройт",
+   "a": "Нэшвилл"
+  },
+  {
+   "d": "2026-11-29 03:00",
+   "h": "Нью-Джерси",
+   "a": "Виннипег"
+  },
+  {
+   "d": "2026-11-29 03:00",
+   "h": "Рейнджерс",
+   "a": "Калгари"
+  },
+  {
+   "d": "2026-11-29 03:00",
+   "h": "Питтсбург",
+   "a": "Торонто"
+  },
+  {
+   "d": "2026-11-29 03:00",
+   "h": "Каролина",
+   "a": "Оттава"
+  },
+  {
+   "d": "2026-11-29 03:00",
+   "h": "Сент-Луис",
+   "a": "Вашингтон"
+  },
+  {
+   "d": "2026-11-29 03:30",
+   "h": "Филадельфия",
+   "a": "Айлендерс"
+  },
+  {
+   "d": "2026-11-29 04:00",
+   "h": "Даллас",
+   "a": "Юта"
+  },
+  {
+   "d": "2026-11-29 05:00",
+   "h": "Колорадо",
+   "a": "Сан-Хосе"
+  },
+  {
+   "d": "2026-11-29 05:00",
+   "h": "Лос-Анджелес",
+   "a": "Анахайм"
+  },
+  {
+   "d": "2026-11-29 06:00",
+   "h": "Сиэтл",
+   "a": "Эдмонтон"
+  }
+ ],
+ "yday": [
+  {
+   "d": "2026-11-27 21:00",
+   "h": "Бостон",
+   "a": "Торонто",
+   "sc": "1:3"
+  },
+  {
+   "d": "2026-11-27 21:00",
+   "h": "Нью-Джерси",
+   "a": "Калгари",
+   "sc": "5:3"
+  },
+  {
+   "d": "2026-11-27 21:00",
+   "h": "Нэшвилл",
+   "a": "Юта",
+   "sc": "5:6 Б"
+  },
+  {
+   "d": "2026-11-27 22:00",
+   "h": "Сент-Луис",
+   "a": "Даллас",
+   "sc": "5:3"
+  },
+  {
+   "d": "2026-11-27 23:00",
+   "h": "Тампа-Бэй",
+   "a": "Оттава",
+   "sc": "2:6"
+  },
+  {
+   "d": "2026-11-27 23:00",
+   "h": "Филадельфия",
+   "a": "Ванкувер",
+   "sc": "5:2"
+  },
+  {
+   "d": "2026-11-27 23:00",
+   "h": "Вашингтон",
+   "a": "Флорида",
+   "sc": "2:3"
+  },
+  {
+   "d": "2026-11-27 23:00",
+   "h": "Коламбус",
+   "a": "Детройт",
+   "sc": "0:2"
+  }
+ ]
+}
