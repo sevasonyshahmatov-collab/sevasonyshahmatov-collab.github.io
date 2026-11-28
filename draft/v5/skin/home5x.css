@@ -1,12 +1,5 @@
 /* правки владельца 28.11 к главной черновика v5 */
 :root{--gold:#d9b25f;--gold2:#f3d98f;--gold-ink:#171106;--mg:calc((min(100vw,1280px) - 2*var(--gut)) / 2.62)}
-/* первый экран: JARVIS BET с наложением */
-.hero .betw{position:absolute;z-index:3;right:calc(var(--gut) - 6px);top:calc(var(--hdr) + 12px + var(--mg)*.56);margin:0;pointer-events:none;
-  font:700 calc(var(--mg)*.74)/.8 var(--head);letter-spacing:-.01em;background:linear-gradient(170deg,var(--gold2) 10%,var(--gold) 55%,#9a742c);
-  -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 18px 28px rgba(0,0,0,.65))}
-.hero .hero-row{position:relative;z-index:4}
-.hero .hero-bot{position:relative;z-index:4}
-@media (max-width:809px){.hero .betw{font-size:calc(var(--mg)*.9);top:calc(var(--hdr) + 12px + var(--mg)*.62)}.hero .hero-row{margin-top:calc(var(--mg)*.55)}}
 /* золотой акцент при наведении */
 html:root .btn:hover,html:root .btn-tg:hover,html:root .hdr .btn-tg:hover,html:root .btn-line:hover,html:root .btn-dark:hover{background:var(--gold)!important;color:var(--gold-ink)!important;box-shadow:0 10px 30px -10px rgba(217,178,95,.8)!important}
 .btn-gold{background:var(--gold)!important;color:var(--gold-ink)!important}
@@ -89,9 +82,62 @@ html:root:root .full .over{color:#fff!important;text-shadow:0 6px 30px rgba(0,0,
 .fgold i:last-child{background:linear-gradient(90deg,#c9962f,transparent)}
 .fgold span{font:600 18px/1 var(--head);letter-spacing:.42em;text-transform:uppercase;color:#9a742c;white-space:nowrap}
 @media (max-width:560px){.fgold span{letter-spacing:.2em;font-size:14px}}
-/* снег поверх страницы */
-#snow5{position:fixed;inset:0;width:100vw;height:100vh;z-index:200;pointer-events:none;display:block!important}
 /* без фото игрока: за названием всегда виден каток (и там, где видео не запускается) */
 .hero .hero-bg{background:linear-gradient(rgba(7,9,15,.42),rgba(7,9,15,.42)),url(/draft/v4/media/skate.webp) 62% 50%/cover}
-@media (max-width:809px){.hero .hero-row{margin-top:calc(var(--mg)*.5)}}
 @media (max-width:809px){.rot-tag{bottom:92px}html:root:root .full .over{bottom:96px}}
+
+/* ══ этап 1 (28.11): первый экран без наложенного «BET». Варианты: html[data-hero=a|b|c] ══ */
+.hero .mega{visibility:visible!important;font-kerning:none;font-feature-settings:"kern" 0}
+.hw{position:relative;display:inline-block;white-space:nowrap}
+.hw .mk{display:inline-block;overflow:hidden;vertical-align:top;padding:.1em 0 .03em;margin:-.1em 0 -.03em}
+.hw .ch{display:inline-block;transform:translate3d(0,112%,0);animation:jvRise 1.6s cubic-bezier(.19,1,.22,1) forwards;animation-delay:calc(.25s + var(--i)*.08s)}
+@keyframes jvRise{to{transform:none}}
+/* блик: один раз проходит по слову; свет от курсора (ПК). Фон каждой буквы — кусок общего фона слова (--x, --W из home5x.js) */
+@property --g{syntax:'<percentage>';inherits:true;initial-value:-20%}
+@property --la{syntax:'<number>';inherits:true;initial-value:0}
+.hw{--mx:-999px;--my:-999px;animation:jvGlint 2.4s cubic-bezier(.65,0,.35,1) 1.5s forwards;transition:--la .7s ease}
+.hw.lit{--la:1}
+@keyframes jvGlint{to{--g:125%}}
+.hw .ch{-webkit-text-fill-color:transparent;-webkit-background-clip:text;background-clip:text;background-repeat:no-repeat;
+  background-size:var(--W,100%) 100%;background-position:calc(var(--x,0px) * -1) 0;
+  background-image:radial-gradient(circle at var(--mx) var(--my),rgba(243,217,143,var(--la)),rgba(217,178,95,calc(var(--la) * .55)) 90px,rgba(217,178,95,0) 230px),
+    linear-gradient(104deg,#fff calc(var(--g) - 9%),#fff4cf calc(var(--g) - 2%),#d9b25f var(--g),#fff4cf calc(var(--g) + 2%),#fff calc(var(--g) + 9%))}
+.hstamp,.hsig,.hnum{display:none}
+/* А · «Подпись»: гигантское JARVIS, под ним тонкая золотая линия и BET разрядкой */
+html[data-hero="a"] .hsig{display:flex;align-items:center;gap:22px;margin:18px 0 0;position:relative;z-index:4}
+.hsig .hl{flex:1;height:1px;background:linear-gradient(90deg,rgba(217,178,95,0),rgba(217,178,95,.55) 45%,var(--gold2));transform-origin:0 50%;transform:scaleX(0);animation:jvLine 1.8s cubic-bezier(.19,1,.22,1) 1.1s forwards}
+@keyframes jvLine{to{transform:none}}
+.hsig-t{display:flex;align-items:baseline;gap:18px;white-space:nowrap;opacity:0;animation:jvFade 1.2s ease 1.9s forwards}
+@keyframes jvFade{to{opacity:1}}
+.hsig-t b{font:600 17px/1 var(--head);letter-spacing:.62em;margin-right:-.62em;color:var(--gold2)}
+.hsig-t em{font:600 11.5px/1 var(--text);font-style:normal;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+html[data-hero="a"] .hero .hero-row{margin-top:16px}
+/* Б · «Знак»: JARVIS чуть меньше, справа — маленький золотой штамп BET */
+html[data-hero="b"] main h1.mega,html[data-hero="b"] .hero h1.mega{font-size:calc(var(--mg)*.8)!important;position:relative}
+html[data-hero="b"] .hstamp{display:inline-flex;position:absolute;right:0;top:.04em}
+.hstamp{align-items:center;gap:.7em;font:600 calc(var(--mg)*.052)/1 var(--head);letter-spacing:.5em;padding:.7em .45em .7em 1.05em;border:1px solid rgba(217,178,95,.75);border-radius:999px;color:var(--gold2)!important;
+  background:rgba(10,10,10,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;animation:jvFade 1.2s ease 1.6s forwards;-webkit-text-fill-color:var(--gold2)}
+.hstamp i{width:.34em;height:.34em;border-radius:50%;background:var(--gold);box-shadow:0 0 14px var(--gold)}
+/* В · «Цифра»: одна строка названия, главное — крупный процент */
+html[data-hero="c"] main h1.mega,html[data-hero="c"] .hero h1.mega{font-size:max(46px,calc(var(--mg)*.24))!important;display:flex;align-items:flex-start;gap:.22em}
+html[data-hero="c"] .hstamp{display:inline-flex;position:static;font-size:max(11px,calc(var(--mg)*.034));margin-top:.2em;padding:.55em .35em .55em .85em;background:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+html[data-hero="c"] .hnum{display:block;position:relative;z-index:4;margin-top:clamp(28px,5vh,56px)}
+.hnum-k{display:flex;align-items:center;gap:14px;margin:0 0 6px;font:600 12px/1 var(--text);letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.hnum-k i{width:44px;height:1px;background:var(--gold)}
+.hnum-v{margin:0;display:flex;align-items:flex-start;font:700 calc(var(--mg)*.78)/.8 var(--head);letter-spacing:-.025em;color:#fff;font-variant-numeric:tabular-nums}
+.hnum-v small{font-size:.3em;line-height:1;margin:.12em 0 0 .14em;color:var(--gold2);letter-spacing:0}
+.hnum-s{margin:calc(var(--mg)*.13) 0 0;font-size:15px;color:rgba(255,255,255,.66)}
+.hnum-s b{color:#fff;font-weight:600}
+html[data-hero="c"] .hero-score{display:none!important}
+html[data-hero="c"] .hero .hero-row{margin-top:0;order:-1;margin-bottom:22px}
+html[data-hero="c"] .hero-bot{max-width:none}
+@media (min-width:1024px){html[data-hero="c"] .hero-bot{position:absolute;right:var(--gut);bottom:40px;max-width:540px;text-align:left}}
+@media (max-width:809px){
+  .hsig-t em{display:none}.hsig-t b{font-size:14px}
+  html[data-hero="b"] .hstamp{top:auto;bottom:-1.9em;font-size:12px}
+  html[data-hero="b"] .hero .hero-row{margin-top:46px}
+  html[data-hero="c"] .hnum-v{font-size:calc(var(--mg)*1.02)}
+  html[data-hero="c"] .hnum-s{font-size:13.5px}
+}
+@media (prefers-reduced-motion:reduce){.hw .ch{animation:none;transform:none}.hw{animation:none}.hsig .hl{animation:none;transform:none}.hsig-t,.hstamp{animation:none;opacity:1}}
+@media (max-width:809px){html[data-hero="a"] main h1.mega,html[data-hero="a"] .hero h1.mega{font-size:calc(var(--mg)*.95)!important}}

@@ -222,10 +222,11 @@
     gsap.registerPlugin(ScrollTrigger, SplitText);
     var mega = $('.hero .mega');
     gsap.set(mega, { visibility: 'visible' });
-    gsap.from(mega, { y: -106, autoAlpha: 0.12, duration: 1.2, ease: E });
+    gsap.to('.hero-bg', { yPercent: 14, scale: 1.06, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('.hero .wrap', { yPercent: -10, autoAlpha: 0.15, ease: 'none', scrollTrigger: { trigger: '.hero', start: '20% top', end: 'bottom top', scrub: true } });
     gsap.from('.mcd', { y: 80, autoAlpha: 0, duration: 1.3, ease: E, delay: 0.15 });
     gsap.from('.hero [data-load]', { y: 20, autoAlpha: 0, duration: 0.8, stagger: 0.07, ease: E, delay: 0.25 });
-    gsap.from('.hero .hero-act .btn', { y: 48, autoAlpha: 0, duration: 1, stagger: 0.08, ease: E, delay: 0.4, onStart: function () { $$('.hero-score b').forEach(function (e) { countUp(e, 1.6); }); } });
+    gsap.from('.hero .hero-act .btn', { y: 48, autoAlpha: 0, duration: 1, stagger: 0.08, ease: E, delay: 0.4, onStart: function () { $$('.hero-score b, .hnum b').forEach(function (e) { countUp(e, 2.2); }); } });
     gsap.to('.mcd', { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     $$('[data-words]').forEach(function (el) {
       var sp = SplitText.create(el, { type: 'words' }); gsap.set(el, { visibility: 'visible' });
