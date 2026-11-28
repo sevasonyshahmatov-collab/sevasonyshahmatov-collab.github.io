@@ -180,13 +180,14 @@
     });
   }
 
-  function load(f) { return new Promise(function (ok, bad) { var s = document.createElement('script'); s.src = V + f; s.async = false; s.onload = ok; s.onerror = bad; document.head.appendChild(s); }); }
+  function load(f) { return new Promise(function (ok, bad) { var s = document.createElement('script'); s.src = f.charAt(0) === '/' ? f : V + f; s.async = false; s.onload = ok; s.onerror = bad; document.head.appendChild(s); }); }
 
   function smooth() {
-    var lenis = new Lenis();
+    var loco = new LocomotiveScroll({ lenisOptions: { lerp: 0.085, wheelMultiplier: 0.9 },
+      initCustomTicker: function (render) { gsap.ticker.add(render); }, destroyCustomTicker: function (render) { gsap.ticker.remove(render); } });
+    var lenis = loco.lenisInstance; window.jvLoco = loco;
     window.jvLenis = lenis;
     lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
     gsap.ticker.lagSmoothing(0);
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a[href*="#"]'); if (!a) return;
@@ -222,7 +223,6 @@
     gsap.registerPlugin(ScrollTrigger, SplitText);
     var mega = $('.hero .mega');
     gsap.set(mega, { visibility: 'visible' });
-    gsap.to('.hero-bg', { yPercent: 14, scale: 1.06, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     gsap.to('.hero .wrap', { yPercent: -10, autoAlpha: 0.15, ease: 'none', scrollTrigger: { trigger: '.hero', start: '20% top', end: 'bottom top', scrub: true } });
     gsap.from('.mcd', { y: 80, autoAlpha: 0, duration: 1.3, ease: E, delay: 0.15 });
     gsap.from('.hero [data-load]', { y: 20, autoAlpha: 0, duration: 0.8, stagger: 0.07, ease: E, delay: 0.25 });
@@ -288,7 +288,7 @@
     var data = Promise.all([rj, mt]).then(function (x) { if (x[0]) results(x[0]); feed(x[0], x[1]); });
     if (RM || MOB || (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4) { document.documentElement.classList.remove('anim'); return; }   // v5: лёгкий режим — без GSAP/Lenis, всё видно сразу
     var p = Promise.resolve();
-    ['gsap-3.15.1.min.js', 'ScrollTrigger-3.15.1.min.js', 'SplitText-3.15.1.min.js', 'lenis-1.3.28.min.js'].forEach(function (f) { p = p.then(function () { return load(f); }); });
+    ['gsap-3.15.1.min.js', 'ScrollTrigger-3.15.1.min.js', 'SplitText-3.15.1.min.js', '/draft/v5/assets/locomotive/locomotive-scroll.min.js'].forEach(function (f) { p = p.then(function () { return load(f); }); });
     Promise.all([p, data, document.fonts ? document.fonts.ready : 0]).then(function () { var l = smooth(); tickers(l); animate(l); })
       .catch(function (e) { document.documentElement.classList.remove('anim'); if (window.console) console.warn(e); });
   }

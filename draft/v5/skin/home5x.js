@@ -10,7 +10,26 @@
     var w = $('.hero .hw'), h = $('.hero');
     if (w) {                                                   // общий фон слова: смещение каждой буквы
       var lay = function () { w.style.setProperty('--W', w.offsetWidth + 'px'); $$('.mk', w).forEach(function (m) { m.firstChild.style.setProperty('--x', m.offsetLeft + 'px'); }); };
-      lay(); addEventListener('resize', lay); if (document.fonts) document.fonts.ready.then(lay);
+      var sig = $('.hero .hsig'), I = $$('.ch', w)[4];
+      /* размеры букв Oswald 600 из файла шрифта (доли кегля): I — чернила от 0,0627 до 0,22723; B — от 0,06064, ширина B 0,574, E 0,438,
+         правый край T 0,42634; высота заглавных 0,81, базовая линия при line-height 1 — 0,952 */
+      var fit = function () {                                  // BET ровно под буквой I: края совпадают на любой ширине
+        if (!sig || !I || document.documentElement.dataset.hero !== 'a') return;
+        var fs = parseFloat(getComputedStyle(I).fontSize), iW = 0.16453 * fs, F = 0, ls = 0;
+        var x0 = I.parentNode.getBoundingClientRect().left + 0.0627 * fs - sig.getBoundingClientRect().left;
+        [.3, .22, .14, .07, 0].some(function (l) { F = iW / (1.3777 + 2 * l); ls = l; return F >= 11; });   // разрядка меньше, если буквы мельче 11 px
+        var gap = Math.max(10, iW * .45), v = { '--bf': F + 'px', '--ls': ls + 'em', '--bx': (x0 - 0.06064 * F) + 'px', '--ly': (0.547 * F) + 'px', '--bh': F + 'px',
+          '--lw': Math.max(0, x0 - gap) + 'px', '--ex': (x0 + iW + gap) + 'px', '--mt': Math.max(12, fs * .05) + 'px' };
+        for (var k in v) sig.style.setProperty(k, v[k]);
+        sig.classList.add('fit');
+        var he = $('.he', sig), av = sig.clientWidth - (x0 + iW + gap), f;   // «аналитика матчей» помещается справа от I: строка, иначе две, мельче
+        if (he && av > 20) {
+          he.style.fontSize = ''; he.style.whiteSpace = 'nowrap'; he.style.maxWidth = av + 'px'; f = parseFloat(getComputedStyle(he).fontSize);
+          while (f > 9 && he.scrollWidth > av + .5) { f -= .5; he.style.fontSize = f + 'px'; }
+          if (he.scrollWidth > av + .5) { he.style.whiteSpace = 'normal'; while (f > 6.5 && he.scrollWidth > av + .5) { f -= .5; he.style.fontSize = f + 'px'; } }
+        }
+      };
+      lay(); fit(); addEventListener('resize', function () { lay(); fit(); }); if (document.fonts) document.fonts.ready.then(function () { lay(); fit(); });
     }
     if (w && h && !RM && matchMedia('(hover:hover) and (pointer:fine)').matches) {
       var raf = 0, ev = null;
