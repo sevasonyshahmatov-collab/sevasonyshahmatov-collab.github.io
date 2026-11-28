@@ -1,0 +1,149 @@
+/* v5 · «Статистика» раздела (задание 28.11): секции во всю ширину, фон чередуется — чёрный / белый.
+   Цвет — только «зашло» (зелёный) / «не зашло» (красный), всегда со значком и словом. Контраст текста ≥ 4,5:1. */
+main.st{--k:#0a0a0a;--k2:#141414;--w:#fff;--w2:#f4f4f1;--g1:#a3a3a3;--g2:#5c5c5c;--ok:#1f9d55;--ok2:#3ddc84;--bad:#d92d3a;--bad2:#ff6b74;
+  font-family:"JV Text","Helvetica Neue",Arial,sans-serif;display:block;padding:0!important;margin:0!important;max-width:none!important}
+main.st *{box-sizing:border-box}
+.st-w{max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+.st-sec{padding:clamp(56px,8vw,112px) 0;position:relative}
+html main.st > section.st-sec.st-dark:not(#x){background:var(--k)!important;color:var(--w)!important}
+html main.st > section.st-sec.st-light:not(#x){background:var(--w)!important;color:var(--k)!important}
+main.st :is(h1,h2,h3,p,li,span,b,small,td,th,summary){text-shadow:none!important}
+.st-tip[hidden]{display:none!important}
+.st-top{padding-top:clamp(36px,5vw,64px)}
+main.st a{color:inherit}
+.st-crumb{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 0 40px;font:600 14px/1.3 "JV Text","Helvetica Neue",Arial,sans-serif;color:var(--g1)}
+.st-crumb a{text-decoration:none;font-weight:700;color:var(--w)!important}
+.st-crumb a:hover{text-decoration:underline;text-underline-offset:4px}
+.st-h1{margin:0;font:700 clamp(44px,7vw,104px)/.92 "Oswald","Arial Narrow",sans-serif!important;text-transform:uppercase!important;letter-spacing:-.01em}
+.st-h1 em{font-style:normal;color:var(--g1)}
+.st-lead{max-width:44em;margin:24px 0 0;font:400 clamp(17px,1.4vw,20px)/1.55 "JV Text","Helvetica Neue",Arial,sans-serif;color:#d4d4d4}
+.st-lead b{color:var(--w)}
+.st-eyebrow{margin:0 0 14px;font:700 12.5px/1.2 "JV Text","Helvetica Neue",Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--g1)}
+.st-light .st-eyebrow,.st-light .st-note,.st-light .st-small{color:var(--g2)}
+.st-hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,5vw,80px);margin-top:clamp(40px,5vw,72px);padding-top:clamp(32px,4vw,48px);border-top:1px solid rgba(255,255,255,.16);align-items:end}
+.st-mega{margin:0;font:700 clamp(96px,15vw,208px)/.82 "Oswald","Arial Narrow",sans-serif;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.st-mega small{font-size:.34em;color:var(--g1);margin-left:6px}
+.st-meter{display:block;height:4px;margin:28px 0 16px;background:rgba(255,255,255,.14);border-radius:2px;overflow:hidden}
+.st-meter u{display:block;height:100%;width:0;background:var(--w);transition:width 1s cubic-bezier(.23,1,.32,1)}
+.st-cap{margin:0;font:500 15px/1.45 "JV Text","Helvetica Neue",Arial,sans-serif;color:var(--g1)}
+.st-kpi{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);border-radius:20px;overflow:hidden}
+.st-kpi li{display:flex;flex-direction:column;gap:10px;padding:clamp(22px,2.4vw,32px);background:var(--k)}
+.st-kpi b{font:700 clamp(32px,3.4vw,46px)/1 "Oswald","Arial Narrow",sans-serif;font-variant-numeric:tabular-nums}
+.st-kpi span{font:500 14px/1.4 "JV Text","Helvetica Neue",Arial,sans-serif;color:var(--g1)}
+.st-kpi li.st-warn{grid-column:1/-1;flex-direction:row;font:500 14px/1.45 "JV Text","Helvetica Neue",Arial,sans-serif;color:#e6e6e6}
+.st-head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px 64px;align-items:end;margin-bottom:clamp(32px,4vw,56px)}
+.st-h2{margin:0;font:700 clamp(32px,4vw,56px)/1 "Oswald","Arial Narrow",sans-serif!important;text-transform:uppercase!important;letter-spacing:-.005em;color:inherit!important;text-shadow:none!important}
+.st-h3{margin:clamp(40px,5vw,64px) 0 18px;font:700 13px/1.2 "JV Text","Helvetica Neue",Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:inherit;opacity:.72}
+.st-note{margin:0;max-width:40em;font:400 16px/1.55 "JV Text","Helvetica Neue",Arial,sans-serif;color:var(--g1)}
+/* график */
+.st-chart{position:relative;padding:clamp(16px,2vw,28px);border:1px solid #e3e3de;border-radius:20px;background:var(--w)}
+.st-svg{display:block;width:100%;height:auto;touch-action:pan-y}
+.st-svg .g{stroke:#ececE8;stroke-width:1}
+.st-svg .z{stroke:#9a9a94;stroke-width:1}
+.st-svg .ax{font:500 13px "JV Text",Arial,sans-serif;fill:#6b6b66}
+.st-svg .ln{fill:none;stroke:var(--k);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.st-svg .ar{fill:rgba(10,10,10,.06)}
+.st-svg .dot{fill:var(--k);stroke:var(--w);stroke-width:2}
+.st-svg .lb{font:700 18px "Oswald",Arial,sans-serif;fill:var(--k)}
+.st-svg .cx{stroke:#9a9a94;stroke-width:1;stroke-dasharray:3 4}
+.st-tip{position:absolute;z-index:2;display:flex;flex-direction:column;gap:3px;min-width:160px;padding:10px 14px;border-radius:12px;background:var(--k);color:var(--w);pointer-events:none;
+  font:500 13px/1.35 "JV Text",Arial,sans-serif;box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}
+.st-tip b{font-size:14px}.st-tip small{color:var(--g1);font-size:12.5px}
+/* таблица по месяцам */
+.st-table-w{overflow-x:auto;border:1px solid #e3e3de;border-radius:20px;background:var(--w)}
+.st-tab{width:100%;border-collapse:collapse;font:500 15px/1.3 "JV Text","Helvetica Neue",Arial,sans-serif;font-variant-numeric:tabular-nums;min-width:720px}
+.st-tab th,.st-tab td{padding:16px 22px;text-align:right;border-bottom:1px solid #ececE8;white-space:nowrap}
+.st-tab thead th{font:700 12px/1.2 "JV Text","Helvetica Neue",Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--g2);background:var(--w2)}
+.st-tab th:first-child{text-align:left}
+.st-tab tbody tr:last-child>*{border-bottom:0}
+.st-tab tbody th{font-weight:700}
+.st-tab .pos{color:#13763d;font-weight:700}.st-tab .neg{color:#b3202c;font-weight:700}
+/* разрезы */
+.st-cuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,48px)}
+.st-cuts .st-h3{margin-top:0}
+.st-bars{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px}
+.st-bars li{padding:20px 22px;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:var(--k2)}
+.st-bt{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 12px;font:600 15.5px/1.3 "JV Text","Helvetica Neue",Arial,sans-serif}
+.st-bt b{font:700 24px/1 "Oswald",Arial,sans-serif;font-variant-numeric:tabular-nums}
+.st-bar{display:block;height:6px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden}
+.st-bar u{display:block;height:100%;background:var(--w);border-radius:3px}
+.st-bars small{display:block;margin-top:10px;font:500 13px/1.4 "JV Text","Helvetica Neue",Arial,sans-serif;color:var(--g1)}
+/* список прогнозов */
+.st-filt{display:flex;flex-wrap:wrap;gap:12px 28px;margin-bottom:24px}
+.st-fg{display:flex;flex-wrap:wrap;gap:8px}
+.st-chip{appearance:none;padding:10px 16px;border:1px solid #d6d6d0;border-radius:999px;background:var(--w);color:var(--k);font:600 14px/1 "JV Text",Arial,sans-serif;cursor:pointer}
+.st-chip:hover{border-color:var(--k)}
+.st-chip[aria-pressed="true"]{background:var(--k);border-color:var(--k);color:var(--w)}
+.st-list{list-style:none;margin:0;padding:0;border:1px solid #e3e3de;border-radius:20px;background:var(--w);overflow:hidden}
+.st-row{display:grid;grid-template-columns:110px minmax(0,1fr) 64px 76px 128px 72px;align-items:center;gap:20px;padding:18px 24px;border-bottom:1px solid #ececE8}
+.st-row:last-child{border-bottom:0}
+.st-when{margin:0;display:flex;flex-direction:column;gap:4px}
+.st-when b{font:700 15px/1.2 "JV Text","Helvetica Neue",Arial,sans-serif}.st-when span{font:600 12px/1.2 "JV Text","Helvetica Neue",Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--g2)}
+.st-mid{min-width:0}
+.st-tm{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 6px;font:700 16px/1.25 "JV Text","Helvetica Neue",Arial,sans-serif}
+.st-tm img{width:24px;height:24px;object-fit:contain}
+.st-tm i{font-style:normal;color:var(--g2)}
+.st-bet{margin:0;font:400 14.5px/1.4 "JV Text","Helvetica Neue",Arial,sans-serif;color:#3d3d3a}
+.st-exp summary{cursor:pointer;font:700 16px/1.25 "JV Text","Helvetica Neue",Arial,sans-serif}
+.st-exp ul{margin:10px 0 0;padding:0 0 0 16px;display:flex;flex-direction:column;gap:8px}
+.st-exp li{display:flex;flex-direction:column;gap:2px;font:400 14px/1.35 "JV Text","Helvetica Neue",Arial,sans-serif;color:#3d3d3a}
+.st-exp li b{color:var(--k)}
+.st-k{margin:0;display:flex;flex-direction:column;gap:2px;text-align:right}
+.st-k small{font:600 11px/1 "JV Text","Helvetica Neue",Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--g2)}
+.st-k b{font:700 20px/1 "Oswald",Arial,sans-serif;font-variant-numeric:tabular-nums}
+.st-sc{margin:0;font:700 22px/1 "Oswald",Arial,sans-serif;text-align:center;font-variant-numeric:tabular-nums}
+.st-res{margin:0;display:inline-flex;align-items:center;gap:8px;justify-self:start;padding:7px 12px;border-radius:999px;font:700 13px/1 "JV Text","Helvetica Neue",Arial,sans-serif;white-space:nowrap;background:#efefeb;color:#3d3d3a}
+.st-res i{font-style:normal}
+.r-w .st-res{background:#e3f5ea;color:#13763d}
+.r-l .st-res{background:#fde8ea;color:#b3202c}
+.st-post{font:700 14px/1 "JV Text","Helvetica Neue",Arial,sans-serif;text-decoration:none;justify-self:end;white-space:nowrap}
+.st-post:hover{text-decoration:underline;text-underline-offset:4px}
+.st-empty{padding:28px 24px;color:var(--g2)}
+.st-more{margin:28px 0 0;text-align:center}
+.st-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border:0;border-radius:999px;background:var(--w);color:var(--k)!important;font:700 16px/1 "JV Text",Arial,sans-serif;text-decoration:none;cursor:pointer}
+.st-btn-d,.st-light .st-btn{background:var(--k);color:var(--w)!important}
+.st-btn:hover{opacity:.88}
+.st-link{font:700 16px/1.2 "JV Text","Helvetica Neue",Arial,sans-serif;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+/* как появляется прогноз */
+.st-how{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
+.st-lead2{margin:20px 0 28px;font:400 17px/1.55 "JV Text","Helvetica Neue",Arial,sans-serif;color:#cfcfcf;max-width:30em}
+.st-steps{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.16)}
+.st-steps li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:24px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.st-steps b{font:700 56px/.9 "Oswald",Arial,sans-serif;color:var(--w)}
+.st-steps h3{margin:4px 0 8px;font:700 22px/1.1 "Oswald",Arial,sans-serif!important;text-transform:uppercase;color:var(--w)!important}
+.st-steps p{margin:0;font:400 15.5px/1.55 "JV Text","Helvetica Neue",Arial,sans-serif;color:var(--g1)}
+/* призыв */
+.st-cta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 64px;align-items:start}
+.st-cta .st-eyebrow,.st-cta .st-h2{grid-column:1}
+.st-cta .st-ticks,.st-cta .st-btns,.st-cta .st-small{grid-column:2}
+.st-cta .st-ticks{grid-row:1/3}
+.st-ticks{list-style:none;margin:0;padding:0;border-top:1px solid #e3e3de}
+.st-ticks li{padding:18px 0 18px 32px;border-bottom:1px solid #e3e3de;font:500 16.5px/1.5 "JV Text","Helvetica Neue",Arial,sans-serif;position:relative}
+.st-ticks li::before{content:"✓";position:absolute;left:4px;top:18px;font-weight:700}
+.st-btns{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin:16px 0 0}
+.st-small{margin:0;font:500 13px/1.4 "JV Text","Helvetica Neue",Arial,sans-serif}
+.st-legal{margin:0 auto!important;padding-top:28px!important;padding-bottom:28px!important;font:500 13px/1.4 "JV Text",Arial,sans-serif;color:#8a8a8a;background:transparent}
+main.st :is(a,button,summary):focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media (max-width:960px){
+  .st-hero,.st-head,.st-how,.st-cta{grid-template-columns:minmax(0,1fr)}
+  .st-cta .st-ticks,.st-cta .st-btns,.st-cta .st-small,.st-cta .st-eyebrow,.st-cta .st-h2{grid-column:1;grid-row:auto}
+  .st-cuts{grid-template-columns:minmax(0,1fr)}
+  .st-row{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"when res" "mid mid" "k sc" "post post";gap:12px 16px;padding:18px 18px}
+  .st-when{grid-area:when;flex-direction:row;align-items:baseline;gap:10px}.st-mid{grid-area:mid}.st-res{grid-area:res;justify-self:end}
+  .st-k{grid-area:k;flex-direction:row;align-items:baseline;gap:8px;text-align:left}.st-sc{grid-area:sc;text-align:right}.st-post{grid-area:post;justify-self:start}
+}
+@media (max-width:560px){
+  .st-kpi{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .st-kpi li{padding:20px 18px}
+  .st-steps li{grid-template-columns:64px minmax(0,1fr);gap:16px}.st-steps b{font-size:40px}
+  .st-chart{padding:10px 6px;border-radius:16px}.st-svg .ax{font-size:22px}.st-svg .lb{font-size:26px}
+}
+/* заголовки поверх тёмной обвязки раздела (html[data-hv] main h2 — белые) */
+html main.st > .st-light:not(#x) :is(h2,h3,.st-h2,.st-h3){color:#0a0a0a!important}
+html main.st > .st-dark:not(#x) :is(h2,h3,.st-h2,.st-h3){color:#fff!important}
+/* таблица месяцев: у сайта на телефоне первая колонка закреплена с тёмным фоном — здесь своя */
+main.st .st-tab :is(th,td):not(#x){position:static!important;background:transparent!important;color:#0a0a0a!important;box-shadow:none!important}
+main.st .st-tab thead th:not(#x){background:#f4f4f1!important;color:#5c5c5c!important}
+main.st .st-tab td.pos:not(#x){color:#13763d!important}main.st .st-tab td.neg:not(#x){color:#b3202c!important}
+@media (max-width:560px){.st-svg .ax{font-size:15px}.st-svg .lb{font-size:19px}.st-h1 em{display:block}}
+.st-svg .lb{paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round}

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru" data-sport="hockey" data-theme="arena">
-<head><base href="/hockey/"><meta name="robots" content="noindex, nofollow"><script>(function(){var d=document.documentElement,t;try{t=new URLSearchParams(location.search).get("theme");if(t==="bw"||t==="alt")sessionStorage.setItem("v5t",t);t=sessionStorage.getItem("v5t")}catch(e){}d.dataset.v5t=t==="bw"?"bw":"alt"})()</script><script>(function(){var d=document.documentElement,v;if(d.dataset.v5t!=="bw")return;try{v=new URLSearchParams(location.search).get("hv");if(v==="1"||v==="2")sessionStorage.setItem("v5hv",v);v=sessionStorage.getItem("v5hv")}catch(e){}d.dataset.hv=v==="2"?"2":"1"})()</script><script>(function(){var d=document.documentElement,K="v5li",v;if(d.dataset.v5t!=="bw")return;try{v=localStorage.getItem(K)}catch(e){}if(v!=="0")d.classList.add("v5-li");function ui(){var h=document.querySelector("#matches .sec-head,#today .head");if(!h||h.querySelector(".v5-lit"))return;var g=document.createElement("span");g.className="v5-lit";g.setAttribute("role","group");g.setAttribute("aria-label","Оформление блока");[["1","Светлый"],["0","Тёмный"]].forEach(function(o){var b=document.createElement("button");b.type="button";b.textContent=o[1];b.dataset.m=o[0];b.onclick=function(){d.classList.toggle("v5-li",o[0]==="1");try{localStorage.setItem(K,o[0])}catch(e){}set()};g.appendChild(b)});function set(){var on=d.classList.contains("v5-li");g.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",String((b.dataset.m==="1")===on))})}set();(h.closest("#today")?h.firstElementChild:h).appendChild(g)}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",ui):ui()})()</script><script>/* v5: декоративный motion.js (его подключает nav.js) не грузим — анимации делает «кожа» */(function(){var a=Node.prototype.appendChild;Node.prototype.appendChild=function(n){if(n&&((n.tagName==="SCRIPT"&&/\/assets\/(motion\.js|bgv\/)/.test(n.src||""))||(n.tagName==="LINK"&&/\/assets\/bgv\//.test(n.href||""))))return n;return a.call(this,n)}})()</script><link rel="preload" as="font" type="font/woff2" href="/draft/v4/fonts/oswald-cyrillic.woff2" crossorigin>
+<head><base href="/hockey/"><meta name="robots" content="noindex, nofollow"><script>(function(){var d=document.documentElement,t;try{t=new URLSearchParams(location.search).get("theme");if(t==="bw"||t==="alt")sessionStorage.setItem("v5t",t);t=sessionStorage.getItem("v5t")}catch(e){}d.dataset.v5t=t==="bw"?"bw":"alt"})()</script><script>(function(){var d=document.documentElement;if(d.dataset.v5t!=="bw")return;d.dataset.hv="1";d.classList.add("v5-li")})()</script><script>/* v5: декоративный motion.js (его подключает nav.js) не грузим — анимации делает «кожа» */(function(){var a=Node.prototype.appendChild;Node.prototype.appendChild=function(n){if(n&&((n.tagName==="SCRIPT"&&/\/assets\/(motion\.js|bgv\/)/.test(n.src||""))||(n.tagName==="LINK"&&/\/assets\/bgv\//.test(n.href||""))))return n;return a.call(this,n)}})()</script><link rel="preload" as="font" type="font/woff2" href="/draft/v4/fonts/oswald-cyrillic.woff2" crossorigin>
 <meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'; form-action 'self'"><script>/*тема: «Ночная арена» по умолчанию; ?bg=0 — старая*/(function(){var d=document.documentElement;try{var q=new URLSearchParams(location.search).get("bg");if(q!==null)sessionStorage.setItem("jv-bg",/^[abcn]$/.test(q)?q:"0");var b=sessionStorage.getItem("jv-bg");if(b===null)b="n";if(b&&b!=="0")d.dataset.bg=b}catch(e){d.dataset.bg="n"}})()</script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -59,9 +59,8 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
 <!--seo:end-->
 <link rel="stylesheet" href="../assets/hsday/hsday.css">
 <!--jv-pl--><link rel="preload" as="script" href="../assets/hero2/hero2.js"><link rel="preload" as="script" href="../assets/leaguecards/lc.js"><link rel="preload" as="script" href="../assets/nav.js"><link rel="preload" as="script" href="../assets/footer.js"><link rel="preload" as="script" href="../assets/v3a.js"><link rel="preload" as="script" href="../assets/mfind.js"><link rel="preload" as="script" href="/assets/data/teams-lite.js"><link rel="preload" as="script" href="../assets/em/plates.js"><link rel="preload" as="script" href="/data/today.js"><link rel="preload" as="script" href="/data/lines.js"><link rel="preload" as="script" href="/data/model.js"><link rel="preload" as="script" href="/data/posts.js"><link rel="preload" as="script" href="../assets/lines.js"><link rel="preload" as="script" href="../assets/live.js"><link rel="preload" as="script" href="../assets/sidetab.js"><link rel="preload" as="script" href="/data/results-lite.js"><link rel="preload" as="script" href="../assets/results-strip.js"><!--/jv-pl-->
-<link rel="stylesheet" href="/draft/v5/skin/skin5.css?v=202611281216">
-<link rel="stylesheet" href="/draft/v5/skin/hockey5.css?v=202611281216"><link rel="stylesheet" href="/draft/v5/skin/island5.css?v=202611281216">
-<link rel="stylesheet" href="/draft/v5/skin/kit5.css?v=202611281216">
+<link rel="stylesheet" href="/draft/v5/skin/skin5.css?v=202611281242">
+<link rel="stylesheet" href="/draft/v5/skin/hockey5.css?v=202611281242"><link rel="stylesheet" href="/draft/v5/skin/island5.css?v=202611281242"><link rel="stylesheet" href="/draft/v5/skin/sec5.css?v=202611281242">
 </head>
 <body data-field="hockey">
 <div class="arena-bg" id="arena" aria-hidden="true"><i class="bm"></i><i class="bm"></i><i class="bm"></i><i class="bm"></i><i class="sp"></i></div>
@@ -84,7 +83,7 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
 <section class="hs" id="hsday" data-sport="hockey" aria-labelledby="hs-h1">
   <div class="hs-strip"><div class="hs-date" aria-hidden="true"><span>&nbsp;</span><b>&nbsp;</b><small>&nbsp;</small></div><div class="hs-sc" role="region" aria-label="Матчи дня КХЛ и НХЛ"></div></div>
   <div class="hs-front hs-w">
-    <div class="hs-head"><p class="hs-kick"><i></i>Хоккей</p><h1 class="hs-h1" id="hs-h1">Хоккей <em>сегодня</em></h1><div class="hs-hx"></div></div>
+    <div class="hs-head"><p class="hs-kick"><i></i>Хоккей</p><h1 class="hs-h1" id="hs-h1">Хоккей <em>сегодня</em></h1><div class="hs-hx"></div><a class="s5-stat" href="/draft/v5/hockey/stats/"><span class="s5-stat-k">Статистика</span><b data-s5="rate">Все итоги прогнозов</b><small data-s5="sub">модель, лиги, все прогнозы с исходом</small><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
     <div class="hs-main is-sk"></div>
   </div>
 </section>
@@ -127,63 +126,6 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
   </div>
 </section>
 
-<!-- v5 · дизайн-кит: блоки ниже двух первых экранов «Хоккея» (тема bw), v2 28.11 — раскладка вместо плашек:
-     огромная цифра + вывод, строки через линии, закреплённая колонка. Цифры — живые (kit5.js), в разметке только подписи. -->
-<section class="k-sec k-new k-trust2" id="k-trust" aria-labelledby="k-trust-h" data-v5-r="1">
-  <div class="k-wrap k-split">
-    <div class="k-mega-col" data-k-rv>
-      <p class="k-eyebrow">Открытые итоги · с <span data-k="since">7 сентября</span></p>
-      <p class="k-mega" data-v5-n="1"><span data-k="rate" data-k-count data-v5-n="1">—</span><small>%</small></p>
-      <div class="k-bar" aria-hidden="true"><i></i></div>
-      <p class="k-cap2">прогнозов канала зашли — все, включая проигрыши, со счётом и ссылкой на пост</p>
-    </div>
-    <div class="k-side">
-      <h2 class="k-h2" id="k-trust-h" data-v5-r="1" data-k="concl">Почти три из четырёх прогнозов заходят</h2>
-      <ul class="k-rows" data-v5-g="1">
-        <li data-k-rv><b data-v5-n="1"><span data-k="w">—</span><small> из <span data-k="n">—</span></small></b><span>прогнозов зашли</span></li>
-        <li data-k-rv><b data-v5-n="1"><span data-k="u">—</span><small> ед.</small></b><span>итог при ставке в 1 единицу на каждый прогноз</span></li>
-        <li data-k-rv id="k-lg-nhl"><b data-k="pct" data-v5-n="1">—</b><span><em>НХЛ</em> · <span data-k="lgtxt">считаем…</span></span></li>
-        <li data-k-rv id="k-lg-khl"><b data-k="pct" data-v5-n="1">—</b><span><em>КХЛ</em> · <span data-k="lgtxt">считаем…</span></span></li>
-      </ul>
-      <p class="k-note2"><a class="k-link" href="/results.html">Все прогнозы и итоги <span>→</span></a><span>Обновлено <span data-k="built">сегодня</span> МСК · 18+ · не призыв к ставкам, выигрыш не гарантирован</span></p>
-    </div>
-  </div>
-</section>
-
-<section class="k-sec k-new" id="k-how-s" aria-labelledby="k-how-h" data-v5-r="1">
-  <div class="k-wrap k-how">
-    <div class="k-how-l"><p class="k-eyebrow">Как появляется прогноз</p><h2 class="k-h2" id="k-how-h" data-v5-r="1">Модель считает, а&nbsp;не&nbsp;угадывает</h2>
-      <p class="k-lead">Четыре шага от данных до поста. Если перевеса нет — прогноза тоже нет.</p>
-      <p style="margin-top:28px"><a class="k-link" href="/model.html?s=h">Как считает модель <span>→</span></a></p></div>
-    <ol class="k-steps2" data-v5-g="1">
-      <li class="k-step" data-k-rv><b data-v5-n="1">01</b><div><h3>Собираем данные</h3><p>Расписание, результаты, форма и статистика всех клубов НХЛ и КХЛ, линии — обновляем дважды в день.</p></div></li>
-      <li class="k-step" data-k-rv><b data-v5-n="1">02</b><div><h3>Считаем шансы</h3><p>Рейтинг силы клубов и ожидаемые голы дают вероятность каждого исхода: победы, ничьей в основное время, тотала.</p></div></li>
-      <li class="k-step" data-k-rv><b data-v5-n="1">03</b><div><h3>Сравниваем с линией</h3><p>Оставляем только матчи, где расчёт заметно расходится с линией. Остальные пропускаем.</p></div></li>
-      <li class="k-step" data-k-rv><b data-v5-n="1">04</b><div><h3>Публикуем и отчитываемся</h3><p>Пост с разбором — в канале до начала матча. Итог — утром, в открытой таблице вместе со всеми остальными.</p></div></li>
-    </ol>
-  </div>
-</section>
-
-<section class="k-sec k-new" id="k-ex" aria-labelledby="k-ex-h" data-v5-r="1">
-  <div class="k-wrap">
-    <div class="k-head"><div><p class="k-eyebrow">Примеры</p><h2 class="k-h2 k-h2w" id="k-ex-h" data-v5-r="1">Последние прогнозы — как есть</h2></div>
-      <p class="k-lead" style="max-width:36ch">Что считали, чем закончился матч и ссылка на пост с разбором. Без фильтра «только удачные».</p></div>
-    <ol class="k-exl" id="k-ex-list" data-v5-g="1"><li class="k-small">Загружаем последние прогнозы…</li></ol>
-  </div>
-</section>
-
-<section class="k-sec k-new k-cta2" id="k-cta-s" aria-labelledby="k-cta-h" data-v5-r="1">
-  <div class="k-wrap k-split k-split-r">
-    <div data-k-rv><p class="k-eyebrow">Аналитическая таблица JARVIS</p><h2 class="k-h2 k-h2w" id="k-cta-h" data-v5-r="1">Все расчёты — в&nbsp;одной таблице</h2></div>
-    <div class="k-side" data-k-rv>
-      <ul class="k-rows k-rows-s"><li><span>Расчёт модели по каждому матчу НХЛ и КХЛ, а не только по тем, что попали в канал</span></li><li><span>Рейтинг Эло, форма и что заходит у каждой команды</span></li><li><span>Вся история прогнозов — для тех, кто считает сам</span></li></ul>
-      <p class="k-btns"><a class="k-btn" href="https://t.me/JarvisTablePayBot?start=site_hockey" target="_blank" rel="noopener">Узнать про доступ в боте <span>→</span></a>
-        <a class="k-link" href="/hockey/table.html">Пример таблицы <span>→</span></a></p>
-      <p class="k-small">Откроется Telegram-бот JARVIS. 18+.</p>
-    </div>
-  </div>
-</section>
-
 <section class="kup-promo" id="kupon"><div class="wrap">
   <div class="kpb"><div class="kpb-t"><b>Не знаешь, на что поставить?</b><span>Назови желаемый кэф — модель соберёт купон из самых вероятных событий и покажет его шанс.</span></div>
    <a class="kpb-go" href="kupon.html">Собрать купон</a>
@@ -198,39 +140,12 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
   </div>
 </section>
 
-<section class="sec tbl-link" id="table" data-zone="p2b">
-  <div class="wrap">
-    <a class="tbl-plate" href="table.html"><span><b>Аналитическая таблица</b><small>Эло, прогнозы на все матчи, что заходит у команд, история — для тех, кто считает сам</small></span><i aria-hidden="true">→</i></a>
-  </div>
-</section>
-
-
-<section class="sec pf-sec" id="honest" data-zone="p3">
-  <div class="wrap">
-    <div class="pf" id="pf" data-sport="hockey">
-      <h2>Честные итоги</h2>
-      <dl class="pf-n"><div><dt>зашло</dt><dd id="pfW">—</dd></div><div><dt>прогнозов зашло</dt><dd id="pfR">—</dd></div><div><dt>результат при ставке 1</dt><dd id="pfU">—</dd></div></dl>
-      <p class="pf-s" id="pfS">Все прогнозы канала — со счётом матча и ссылкой на пост.</p>
-      <p class="pf-l"><a class="btn btn-ink" href="../results.html">Все итоги</a><a class="btn btn-line" href="../model.html?s=h">Как считает модель</a></p>
-    </div>
-  </div>
-</section>
-
-<section class="sub sub-c" id="subscribe">
-  <div class="wrap" data-rv>
-    <h2>Все прогнозы&nbsp;— в Telegram</h2>
-    <p>Пост на каждый матч с кэфом и вероятностью, итоги — каждое утро. Бесплатно.</p>
-    <div class="cta"><a class="btn btn-tg" href="https://t.me/jarvibet" target="_blank" rel="noopener">Получать прогнозы — бесплатно</a></div>
-  </div>
-</section>
-
-
 </main>
 
 <a class="tgbar" id="tgbar" href="https://t.me/jarvibet" target="_blank" rel="noopener"><span>Получать прогнозы — бесплатно</span><span aria-hidden="true">›</span></a>
 
 <script src="../assets/nav.js"></script>
-<script src="../assets/footer.js"></script>
+<script src="/draft/v5/skin/footer5.js?v=202611281242"></script>
 <script src="../assets/v3a.js"></script>
 <script src="../assets/mfind.js" defer></script>
 
@@ -445,11 +360,11 @@ LeagueCards.mount(document.getElementById('lcdeck'),Object.entries(LG).map(([id,
 })();
 </script>
 <script src="../assets/live.js" defer></script>
-<script src="../assets/hsday/hsday.js" defer></script>
+<script src="/draft/v5/skin/hsday5.js?v=202611281242" data-x="" defer></script>
 <script src="../assets/sidetab.js" defer></script>
 <script src="/data/results-lite.js"></script>
 <script src="../assets/results-strip.js"></script>
-<div class="jv-draft" role="note">Черновик v5 · тема: <a href="?theme=alt">alt</a> · <a href="?theme=bw">bw</a></div><script defer src="/draft/v5/skin/skin5.js?v=202611281216"></script>
-<script defer src="/draft/v5/skin/clubcolors.js?v=202611281216"></script><script defer src="/draft/v5/skin/cc.js?v=202611281216" data-scope=""></script><script defer src="/draft/v5/skin/kit5.js?v=202611281216"></script>
+<div class="jv-draft" role="note">Черновик v5 · тема: <a href="?theme=alt">alt</a> · <a href="?theme=bw">bw</a></div><script defer src="/draft/v5/skin/skin5.js?v=202611281242"></script>
+<script defer src="/draft/v5/skin/clubcolors.js?v=202611281242"></script><script defer src="/draft/v5/skin/cc.js?v=202611281242" data-scope=""></script><script defer src="/draft/v5/skin/sec5.js?v=202611281242"></script>
 </body>
 </html>

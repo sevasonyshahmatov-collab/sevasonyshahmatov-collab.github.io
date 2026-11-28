@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru" data-sport="football" data-theme="arena">
-<head><base href="/football/"><meta name="robots" content="noindex, nofollow"><script>(function(){var d=document.documentElement,t;try{t=new URLSearchParams(location.search).get("theme");if(t==="bw"||t==="alt")sessionStorage.setItem("v5t",t);t=sessionStorage.getItem("v5t")}catch(e){}d.dataset.v5t=t==="bw"?"bw":"alt"})()</script><script>/* v5: декоративный motion.js (его подключает nav.js) не грузим — анимации делает «кожа» */(function(){var a=Node.prototype.appendChild;Node.prototype.appendChild=function(n){if(n&&((n.tagName==="SCRIPT"&&/\/assets\/(motion\.js|bgv\/)/.test(n.src||""))||(n.tagName==="LINK"&&/\/assets\/bgv\//.test(n.href||""))))return n;return a.call(this,n)}})()</script><link rel="preload" as="font" type="font/woff2" href="/draft/v4/fonts/oswald-cyrillic.woff2" crossorigin>
+<head><base href="/football/"><meta name="robots" content="noindex, nofollow"><script>(function(){var d=document.documentElement,t;try{t=new URLSearchParams(location.search).get("theme");if(t==="bw"||t==="alt")sessionStorage.setItem("v5t",t);t=sessionStorage.getItem("v5t")}catch(e){}d.dataset.v5t=t==="bw"?"bw":"alt"})()</script><script>(function(){var d=document.documentElement;if(d.dataset.v5t!=="bw")return;d.dataset.hv="1";d.classList.add("v5-li")})()</script><script>/* v5: декоративный motion.js (его подключает nav.js) не грузим — анимации делает «кожа» */(function(){var a=Node.prototype.appendChild;Node.prototype.appendChild=function(n){if(n&&((n.tagName==="SCRIPT"&&/\/assets\/(motion\.js|bgv\/)/.test(n.src||""))||(n.tagName==="LINK"&&/\/assets\/bgv\//.test(n.href||""))))return n;return a.call(this,n)}})()</script><link rel="preload" as="font" type="font/woff2" href="/draft/v4/fonts/oswald-cyrillic.woff2" crossorigin>
 <meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'; form-action 'self'"><script>/*тема: «Ночная арена» по умолчанию; ?bg=0 — старая*/(function(){var d=document.documentElement;try{var q=new URLSearchParams(location.search).get("bg");if(q!==null)sessionStorage.setItem("jv-bg",/^[abcn]$/.test(q)?q:"0");var b=sessionStorage.getItem("jv-bg");if(b===null)b="n";if(b&&b!=="0")d.dataset.bg=b}catch(e){d.dataset.bg="n"}})()</script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -44,7 +44,9 @@
 <!--seo:end-->
 <link rel="stylesheet" href="../assets/hsday/hsday.css">
 <!--jv-pl--><link rel="preload" as="script" href="../assets/hero2/hero2.js"><link rel="preload" as="script" href="../assets/nav.js"><link rel="preload" as="script" href="../assets/footer.js"><link rel="preload" as="script" href="../assets/v3a.js"><link rel="preload" as="script" href="../assets/mfind.js"><link rel="preload" as="script" href="/football/data/football-lite.js"><link rel="preload" as="script" href="/football/data/games.js"><link rel="preload" as="script" href="/data/today.js"><link rel="preload" as="script" href="/data/lines.js"><link rel="preload" as="script" href="/data/model.js"><link rel="preload" as="script" href="/data/posts.js"><link rel="preload" as="script" href="../assets/lines.js"><link rel="preload" as="script" href="../assets/foot-kit.js"><link rel="preload" as="script" href="../assets/fc/plates.js"><link rel="preload" as="script" href="../assets/foot-index.js"><link rel="preload" as="script" href="../assets/live.js"><link rel="preload" as="script" href="../assets/sidetab.js"><link rel="preload" as="script" href="/data/results-lite.js"><link rel="preload" as="script" href="../assets/results-strip.js"><!--/jv-pl-->
-<link rel="stylesheet" href="/draft/v5/skin/skin5.css?v=202611281216">
+<link rel="stylesheet" href="/draft/v5/skin/skin5.css?v=202611281242">
+<link rel="stylesheet" href="/assets/kupon-link.css">
+<link rel="stylesheet" href="/draft/v5/skin/hockey5.css?v=202611281242"><link rel="stylesheet" href="/draft/v5/skin/island5.css?v=202611281242"><link rel="stylesheet" href="/draft/v5/skin/sec5.css?v=202611281242">
 </head>
 <body data-field="football">
 <div class="arena-bg" id="arena" aria-hidden="true"><i class="bm"></i><i class="bm"></i><i class="bm"></i><i class="bm"></i><i class="sp"></i></div>
@@ -68,7 +70,7 @@
 <section class="hs" id="hsday" data-sport="football" aria-labelledby="hs-h1">
   <div class="hs-strip"><div class="hs-date" aria-hidden="true"><span>&nbsp;</span><b>&nbsp;</b><small>&nbsp;</small></div><div class="hs-sc" role="region" aria-label="Матчи дня топ-лиг и еврокубков"></div></div>
   <div class="hs-front hs-w">
-    <div class="hs-head"><p class="hs-kick"><i></i>Футбол</p><h1 class="hs-h1" id="hs-h1">Футбол <em>сегодня</em></h1><div class="hs-hx"></div></div>
+    <div class="hs-head"><p class="hs-kick"><i></i>Футбол</p><h1 class="hs-h1" id="hs-h1">Футбол <em>сегодня</em></h1><div class="hs-hx"></div><a class="s5-stat" href="/draft/v5/football/stats/"><span class="s5-stat-k">Статистика</span><b data-s5="rate">Все итоги прогнозов</b><small data-s5="sub">модель, лиги, все прогнозы с исходом</small><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
     <div class="hs-main is-sk"></div>
   </div>
 </section>
@@ -111,6 +113,12 @@
   </div>
 </section>
 
+<section class="kup-promo" id="kupon"><div class="wrap">
+  <div class="kpb"><div class="kpb-t"><b>Не знаешь, на что поставить?</b><span>Назови желаемый кэф — модель соберёт купон из самых вероятных событий и покажет его шанс.</span></div>
+   <a class="kpb-go" href="kupon.html">Собрать купон</a>
+   <div class="kpb-em" aria-hidden="true"></div></div>
+</div></section>
+
 <section class="sec" id="leagues" data-zone="p2">
   <div class="wrap">
     <h2 class="sr-only">Лиги и клубы</h2>  <!-- заголовок убран по просьбе владельца 14.11, оставлен для экранного диктора -->
@@ -122,32 +130,12 @@
 </section>
 
 
-<section class="sec pf-sec" id="honest" data-zone="p3">
-  <div class="wrap">
-    <div class="pf" id="pf" data-sport="football">
-      <h2>Честные итоги</h2>
-      <dl class="pf-n"><div><dt>зашло</dt><dd id="pfW">—</dd></div><div><dt>прогнозов зашло</dt><dd id="pfR">—</dd></div><div><dt>результат при ставке 1</dt><dd id="pfU">—</dd></div></dl>
-      <p class="pf-s" id="pfS">Все прогнозы канала — со счётом матча и ссылкой на пост.</p>
-      <p class="pf-l"><a class="btn btn-ink" href="../results.html">Все итоги</a><a class="btn btn-line" href="../model.html?s=f">Как считает модель</a></p>
-    </div>
-  </div>
-</section>
-
-<section class="sub sub-c" id="subscribe">
-  <div class="wrap" data-rv>
-    <h2>Все прогнозы&nbsp;— в Telegram</h2>
-    <p>Пост на каждый матч с кэфом и вероятностью, итоги — каждое утро. Бесплатно.</p>
-    <div class="cta"><a class="btn btn-tg" href="https://t.me/jarvibet" target="_blank" rel="noopener">Получать прогнозы — бесплатно</a></div>
-  </div>
-</section>
-
-
 </main>
 
 <a class="tgbar" id="tgbar" href="https://t.me/jarvibet" target="_blank" rel="noopener"><span>Получать прогнозы — бесплатно</span><span aria-hidden="true">›</span></a>
 
 <script src="../assets/nav.js"></script>
-<script src="../assets/footer.js"></script>
+<script src="/draft/v5/skin/footer5.js?v=202611281242"></script>
 <script src="../assets/v3a.js"></script>
 <script src="../assets/mfind.js" defer></script>
 
@@ -163,10 +151,11 @@
 <script src="../assets/fc/plates.js"></script>
 <script src="../assets/foot-index.js"></script>
 <script src="../assets/live.js" defer></script>
-<script src="../assets/hsday/hsday.js" defer></script>
+<script src="/draft/v5/skin/hsday5.js?v=202611281242" data-x="" defer></script>
 <script src="../assets/sidetab.js" defer></script>
 <script src="/data/results-lite.js"></script>
 <script src="../assets/results-strip.js"></script>
-<div class="jv-draft" role="note">Черновик v5 · тема: <a href="?theme=alt">alt</a> · <a href="?theme=bw">bw</a></div><script defer src="/draft/v5/skin/skin5.js?v=202611281216"></script>
+<div class="jv-draft" role="note">Черновик v5 · тема: <a href="?theme=alt">alt</a> · <a href="?theme=bw">bw</a></div><script defer src="/draft/v5/skin/skin5.js?v=202611281242"></script>
+<script defer src="/draft/v5/skin/clubcolors.js?v=202611281242"></script><script defer src="/draft/v5/skin/cc.js?v=202611281242" data-scope=""></script><script defer src="/draft/v5/skin/sec5.js?v=202611281242"></script>
 </body>
 </html>

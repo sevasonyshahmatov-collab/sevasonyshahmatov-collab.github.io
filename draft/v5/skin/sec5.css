@@ -1,0 +1,98 @@
+/* v5 · разделы «Хоккей» и «Футбол» в теме bw (задание 28.11) — один паттерн для обоих:
+   чёрный первый экран (линия на игровой день, дата сверху слева, сводка + табло, ровные внутренние отступы) →
+   белые «Матчи дня» → чёрный «Купон» → белые «Лиги и клубы» → чёрный подвал. Только цвет/отступы/сетка, без анимаций. */
+html[data-v5t="bw"]{--s5k:#0a0a0a;--s5k2:#121212;--s5w:#fff;--s5w2:#f4f4f1;--s5l:rgba(255,255,255,.14);--s5l2:rgba(255,255,255,.24);--s5g:#a3a3a3;--s5g2:#5c5c5c;--s5r:20px}
+/* дата из линии убрана — она сверху слева */
+.hs-date{display:none!important}
+.hs-kick i,.hs-kick span{display:none!important}
+
+/* ── линия матчей: весь игровой день, едет/листается ── */
+html[data-v5t="bw"] .hs-strip{min-height:100px;background:var(--s5k2)!important;border-top:1px solid var(--s5l)!important;border-bottom:1px solid var(--s5l)!important}
+html[data-v5t="bw"] .hs-m{flex-basis:244px;padding:16px 24px;gap:10px}
+html[data-v5t="bw"] .hs-m .hs-st{font-weight:700}
+html[data-v5t="bw"] .hs-m.is-main::after{background:#fff!important}
+
+/* ── шапка первого экрана: дата слева сверху, справа — «Статистика» ── */
+html[data-v5t="bw"] .hs-front{padding-top:clamp(32px,4vw,52px);padding-bottom:clamp(56px,7vw,96px)}
+html[data-v5t="bw"] .hs-head{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"k s" "h s";grid-template-rows:1fr auto;column-gap:40px;align-items:end;padding-bottom:32px;border-color:var(--s5l)!important}
+html[data-v5t="bw"] .hs-kick{grid-area:k;margin:0 0 16px!important;font:600 clamp(18px,1.6vw,22px)/1 "Oswald","Arial Narrow",sans-serif!important;letter-spacing:.06em!important;color:var(--s5g)!important}
+html[data-v5t="bw"] .hs-h1{grid-area:h}
+html[data-v5t="bw"] .hs-hx{grid-area:s}
+.s5-stat{grid-area:s;align-self:end;display:grid;grid-template-columns:minmax(0,1fr) 22px;grid-template-areas:"k go" "b go" "s go";gap:6px 20px;min-width:300px;max-width:380px;
+  padding:20px 24px;border:1px solid rgba(255,255,255,.24);border-radius:18px;background:rgba(255,255,255,.04);color:#fff!important;text-decoration:none!important;
+  font-family:"JV Text","Helvetica Neue",Arial,sans-serif;transition:background-color .2s,color .2s,border-color .2s}
+.s5-stat-k{grid-area:k;font:700 12px/1 inherit;letter-spacing:.12em;text-transform:uppercase;color:#a3a3a3}
+.s5-stat b{grid-area:b;font:700 26px/1.05 "Oswald","Arial Narrow",sans-serif;letter-spacing:.005em}
+.s5-stat small{grid-area:s;font:500 13.5px/1.35 inherit;color:#bdbdbd}
+.s5-stat svg{grid-area:go;align-self:center;width:22px;height:22px;transition:transform .2s}
+.s5-stat:hover{background:#fff;color:#0a0a0a!important;border-color:#fff}
+.s5-stat:hover :is(.s5-stat-k,small){color:#4a4a4a}
+.s5-stat:hover svg{transform:translateX(4px)}
+.s5-stat:focus-visible{outline:2px solid #fff;outline-offset:3px}
+html:not([data-v5t="bw"]) .s5-stat{border-color:var(--v5-rule,rgba(255,255,255,.2));background:var(--v5-card,transparent)}
+
+/* ── сводка, три цифры, «Главное за вечер», табло: воздух внутри плашек ── */
+html[data-v5t="bw"] .hs-main{margin-top:clamp(32px,3.6vw,48px)}
+html[data-v5t="bw"] .hs-v7{column-gap:clamp(28px,3.4vw,48px);row-gap:32px}
+html[data-v5t="bw"] .hs-sum{font-size:clamp(17px,1.35vw,20px);line-height:1.55;color:#cfcfcf!important}
+html[data-v5t="bw"] .hs-sum b{color:#fff!important}
+html[data-v5t="bw"] .hs-st3{margin-top:28px;border-radius:var(--s5r)!important;border:1px solid var(--s5l)!important;background:rgba(255,255,255,.03)!important}
+html[data-v5t="bw"] .hs-st3 li,html[data-v5t="bw"] .hs-st3 li+li{padding:24px 24px 22px!important;gap:8px}
+html[data-v5t="bw"] .hs-st3 li+li{border-left:1px solid var(--s5l)!important}
+html[data-v5t="bw"] .hs-st3 b{font-size:clamp(30px,2.6vw,38px)!important;color:#fff!important}
+html[data-v5t="bw"] .hs-st3 span{line-height:1.4}
+html[data-v5t="bw"] .hs-v7-sl{gap:16px}
+html[data-v5t="bw"] .hs-v7-sl .hs-sl{border-radius:var(--s5r)!important;border:1px solid var(--s5l)!important;background:rgba(255,255,255,.03)!important;overflow:hidden}
+html[data-v5t="bw"] .hs-sl>li{border-bottom:0!important}
+html[data-v5t="bw"] .hs-sl>li+li{border-top:1px solid var(--s5l)!important}
+html[data-v5t="bw"] .hs-sli,html[data-v5t="bw"] .hs-sli.is-on{padding:20px 24px!important;column-gap:20px;row-gap:7px}
+html[data-v5t="bw"] .hs-sli.is-on{box-shadow:inset 3px 0 0 #fff!important;background:rgba(255,255,255,.05)!important}
+html[data-v5t="bw"] .hs-sli-l{color:#bdbdbd!important}
+html[data-v5t="bw"] .hs-sli-h{font-size:20px;line-height:1.2}
+html[data-v5t="bw"] .hs-v7-sl .hs-more{margin:8px 0 0 4px;color:#d4d4d4}
+html[data-v5t="bw"] .hs-board{padding:0 32px 30px!important;border-radius:var(--s5r)!important;border:1px solid var(--s5l)!important;background:rgba(255,255,255,.035)!important}
+html[data-v5t="bw"] .hs-bd-top{margin:0 -32px 30px!important;padding:0 20px 0 32px!important;min-height:72px;border-color:var(--s5l)!important}
+html[data-v5t="bw"] .hs-bd-stripe{border-radius:var(--s5r) var(--s5r) 0 0!important}
+html[data-v5t="bw"] .hs-slide{gap:24px}
+html[data-v5t="bw"] .hs-sl-head{gap:28px}
+html[data-v5t="bw"] .hs-ck-p{padding:6px 12px;border-radius:8px}
+html[data-v5t="bw"] .hs-mb{height:38px;border-radius:10px}
+html[data-v5t="bw"] .hs-mb i{padding:0 14px}
+html[data-v5t="bw"] .hs-md{gap:10px}
+html[data-v5t="bw"] .hs-fm-g{gap:14px}
+html[data-v5t="bw"] .hs-fm-r{padding:14px 18px!important;border-radius:12px!important}
+html[data-v5t="bw"] .hs-fl{padding:18px 22px!important;border-radius:0 12px 12px 0!important;line-height:1.55}
+html[data-v5t="bw"] .hs-btn{padding:16px 26px;border-radius:999px!important}
+html[data-v5t="bw"] .hs-ctl-b{width:40px;height:40px;border-radius:10px!important}
+html[data-v5t="bw"] .hs-pg{margin-top:30px}
+
+/* ── «Матчи дня» — белый во всю ширину ── */
+html[data-v5t="bw"] #matches{background:var(--s5w)!important;color:#111!important;border-radius:0!important;margin:0!important;box-shadow:none!important;
+  padding-top:clamp(64px,8vw,112px)!important;padding-bottom:clamp(64px,8vw,112px)!important}
+html[data-v5t="bw"] #matches .v5-lit{display:none!important}
+html[data-v5t="bw"] #matches .sec-head{margin-bottom:28px}
+html[data-v5t="bw"] #matches h2{font-size:clamp(36px,4.6vw,64px)!important;color:#0a0a0a!important;text-shadow:none!important}
+
+/* ── «Купон» — чёрный ── */
+html[data-v5t="bw"] #kupon{background:var(--s5k)!important;padding:clamp(64px,8vw,104px) 0!important;margin:0!important}
+html[data-v5t="bw"] #kupon .kpb{padding:clamp(28px,3.4vw,48px) clamp(24px,3.6vw,56px)!important;border-radius:24px!important;border:1px solid var(--s5l)!important;gap:24px 40px}
+html[data-v5t="bw"] #kupon .kpb-t b{font-family:"Oswald","Arial Narrow",sans-serif!important;text-transform:uppercase;font-size:clamp(26px,2.8vw,40px)!important;line-height:1.05;color:#fff!important}
+html[data-v5t="bw"] #kupon .kpb-t span{color:#cfcfcf!important;font-size:17px!important;line-height:1.55!important;max-width:36em}
+html[data-v5t="bw"] #kupon .kpb-go{padding:18px 30px!important;border-radius:999px!important;background:#fff!important;color:#0a0a0a!important;border-color:#fff!important}
+
+/* ── «Лиги и клубы» — белый ── */
+html[data-v5t="bw"] #leagues{background:var(--s5w2)!important;color:#111!important;padding-top:clamp(64px,8vw,112px)!important;padding-bottom:clamp(64px,8vw,112px)!important;margin:0!important}
+html[data-v5t="bw"] #leagues :is(h3,.wallh){color:#0a0a0a!important}
+html[data-v5t="bw"] #leagues .note{color:#5c5c5c!important}
+html[data-v5t="bw"] main{padding-bottom:0!important}
+
+@media (max-width:860px){
+  html[data-v5t="bw"] .hs-head{grid-template-columns:minmax(0,1fr);grid-template-areas:"k" "h" "s";row-gap:0}
+  .s5-stat{min-width:0;max-width:none;margin-top:24px}
+  html[data-v5t="bw"] .hs-board{padding:0 20px 24px!important}
+  html[data-v5t="bw"] .hs-bd-top{margin:0 -20px 22px!important;padding:0 12px 0 20px!important;min-height:64px}
+  html[data-v5t="bw"] .hs-st3 li,html[data-v5t="bw"] .hs-st3 li+li{padding:18px 16px!important}
+  html[data-v5t="bw"] .hs-sli,html[data-v5t="bw"] .hs-sli.is-on{padding:18px 18px!important;column-gap:14px}
+  html[data-v5t="bw"] .hs-m{flex-basis:216px;padding:14px 18px}
+  html[data-v5t="bw"] .hs-fm-g{grid-template-columns:minmax(0,1fr)}
+}
