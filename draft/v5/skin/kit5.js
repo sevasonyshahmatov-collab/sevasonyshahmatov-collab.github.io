@@ -23,6 +23,8 @@
     set('w', a.w); set('n', a.w + a.l); set('rate', num(a.rate)); set('u', (a.units > 0 ? '+' : a.units < 0 ? '−' : '') + num(Math.abs(a.units)));
     if (since) set('since', +since.slice(8, 10) + ' ' + MON[+since.slice(5, 7)]);
     var b = $('#k-trust .k-bar i'); if (b) b.style.transform = 'scaleX(' + (a.w / Math.max(1, a.w + a.l)).toFixed(3) + ')';
+    var r = a.rate, c = r >= 70 ? 'Почти три из четырёх прогнозов заходят' : r >= 62 ? 'Примерно два из трёх прогнозов заходят' : r >= 50 ? 'Больше половины прогнозов заходят' : num(r) + ' % прогнозов заходят';
+    set('concl', c);
     if (R.built) set('built', R.built.slice(8, 10) + '.' + R.built.slice(5, 7) + ', ' + R.built.slice(11, 16));
   }
 
@@ -43,12 +45,12 @@
       var ex = P.filter(function (p) { return p.r && p.url; }).sort(function (a, b) { return a.d < b.d ? 1 : -1; }).slice(0, 4), box = $('#k-ex-list');
       if (box && ex.length) box.innerHTML = ex.map(function (p) {
         var d = String(p.d || ''), res = p.r === 'w' ? '<span class="k-res w">✓ Зашло</span>' : p.r === 'l' ? '<span class="k-res l">✕ Не зашло</span>' : '<span class="k-res p">Возврат</span>';
-        return '<a class="k-card k-hov" data-k-rv href="' + esc(p.url) + '" target="_blank" rel="noopener">' +
-          '<span class="k-ex-t"><span>' + (p.lg === 'khl' ? 'КХЛ' : 'НХЛ') + '</span><span>' + (+d.slice(8, 10)) + ' ' + MON[+d.slice(5, 7)] + '</span></span>' +
-          '<span class="k-ex-m"><div><img src="/' + esc(p.he) + '" alt="" width="26" height="26" loading="lazy">' + esc(p.h) + '</div>' +
-          '<div><img src="/' + esc(p.ae) + '" alt="" width="26" height="26" loading="lazy">' + esc(p.a) + '</div></span>' +
-          '<span class="k-ex-b">' + esc(p.bet) + '</span>' +
-          '<span class="k-ex-r"><b>' + esc(p.sc || '—') + '</b>' + res + '</span><span class="k-ex-go">Пост с разбором в канале →</span></a>';
+        return '<li><a class="k-exr" data-k-rv href="' + esc(p.url) + '" target="_blank" rel="noopener">' +
+          '<span class="k-exr-d"><b>' + (+d.slice(8, 10)) + ' ' + MON[+d.slice(5, 7)] + '</b>' + (p.lg === 'khl' ? 'КХЛ' : 'НХЛ') + '</span>' +
+          '<span class="k-exr-m"><span><img src="/' + esc(p.he) + '" alt="" width="28" height="28" loading="lazy">' + esc(p.h) + '</span>' +
+          '<span><img src="/' + esc(p.ae) + '" alt="" width="28" height="28" loading="lazy">' + esc(p.a) + '</span></span>' +
+          '<span class="k-exr-b">' + esc(p.bet) + '<small>Пост с разбором в канале →</small></span>' +
+          '<b class="k-exr-s">' + esc(p.sc || '—') + '</b>' + res + '</a></li>';
       }).join('');
       if (window.__kitAnim) window.__kitAnim($('#k-ex'));
     }).catch(function () {});

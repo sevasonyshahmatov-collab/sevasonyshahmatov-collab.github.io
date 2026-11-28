@@ -59,9 +59,9 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
 <!--seo:end-->
 <link rel="stylesheet" href="../assets/hsday/hsday.css">
 <!--jv-pl--><link rel="preload" as="script" href="../assets/hero2/hero2.js"><link rel="preload" as="script" href="../assets/leaguecards/lc.js"><link rel="preload" as="script" href="../assets/nav.js"><link rel="preload" as="script" href="../assets/footer.js"><link rel="preload" as="script" href="../assets/v3a.js"><link rel="preload" as="script" href="../assets/mfind.js"><link rel="preload" as="script" href="/assets/data/teams-lite.js"><link rel="preload" as="script" href="../assets/em/plates.js"><link rel="preload" as="script" href="/data/today.js"><link rel="preload" as="script" href="/data/lines.js"><link rel="preload" as="script" href="/data/model.js"><link rel="preload" as="script" href="/data/posts.js"><link rel="preload" as="script" href="../assets/lines.js"><link rel="preload" as="script" href="../assets/live.js"><link rel="preload" as="script" href="../assets/sidetab.js"><link rel="preload" as="script" href="/data/results-lite.js"><link rel="preload" as="script" href="../assets/results-strip.js"><!--/jv-pl-->
-<link rel="stylesheet" href="/draft/v5/skin/skin5.css?v=202611281140">
-<link rel="stylesheet" href="/draft/v5/skin/hockey5.css?v=202611281140"><link rel="stylesheet" href="/draft/v5/skin/island5.css?v=202611281140">
-<link rel="stylesheet" href="/draft/v5/skin/kit5.css?v=202611281140">
+<link rel="stylesheet" href="/draft/v5/skin/skin5.css?v=202611281157">
+<link rel="stylesheet" href="/draft/v5/skin/hockey5.css?v=202611281157"><link rel="stylesheet" href="/draft/v5/skin/island5.css?v=202611281157">
+<link rel="stylesheet" href="/draft/v5/skin/kit5.css?v=202611281157">
 </head>
 <body data-field="hockey">
 <div class="arena-bg" id="arena" aria-hidden="true"><i class="bm"></i><i class="bm"></i><i class="bm"></i><i class="bm"></i><i class="sp"></i></div>
@@ -127,56 +127,59 @@ document.querySelector('meta[name=theme-color]').content={arena:'#071225',a:'#0a
   </div>
 </section>
 
-<!-- v5 · дизайн-кит: блоки ниже двух первых экранов «Хоккея» (тема bw). Цифры — живые (kit5.js), в разметке только подписи. -->
-<section class="k-sec k-new" id="k-trust" aria-labelledby="k-trust-h" data-v5-r="1">
-  <div class="k-wrap">
-    <div class="k-head"><div><p class="k-eyebrow">Открытые итоги</p><h2 class="k-h2" id="k-trust-h" data-v5-r="1">Показываем все прогнозы. <em>И проигрыши тоже</em></h2>
-      <p class="k-lead">Каждый прогноз канала с <span data-k="since">7 сентября</span> — со счётом матча и ссылкой на пост. Ничего не удаляем и не подправляем задним числом: цифры обновляются автоматически каждое утро.</p></div>
-      <a class="k-link" href="/results.html">Все прогнозы и итоги <span>→</span></a></div>
-    <div class="k-stats" data-v5-g="1">
-      <div class="k-card" data-k-rv><span class="k-num k-acc" data-v5-n="1"><span data-k="rate" data-k-count data-v5-n="1">—</span><small>%</small></span>
-        <p class="k-cap">прогнозов канала зашли — <span data-k="w">—</span> из <span data-k="n">—</span></p><div class="k-bar" aria-hidden="true"><i></i></div></div>
-      <div class="k-card" data-k-rv><span class="k-num" data-v5-n="1"><span data-k="w" data-k-count data-v5-n="1">—</span></span><p class="k-cap">прогнозов зашли из <span data-k="n">—</span> рассчитанных</p></div>
-      <div class="k-card" data-k-rv><span class="k-num" data-v5-n="1"><span data-k="u" data-v5-n="1">—</span><small>ед.</small></span><p class="k-cap">итог при ставке в 1 единицу на каждый прогноз</p></div>
+<!-- v5 · дизайн-кит: блоки ниже двух первых экранов «Хоккея» (тема bw), v2 28.11 — раскладка вместо плашек:
+     огромная цифра + вывод, строки через линии, закреплённая колонка. Цифры — живые (kit5.js), в разметке только подписи. -->
+<section class="k-sec k-new k-trust2" id="k-trust" aria-labelledby="k-trust-h" data-v5-r="1">
+  <div class="k-wrap k-split">
+    <div class="k-mega-col" data-k-rv>
+      <p class="k-eyebrow">Открытые итоги · с <span data-k="since">7 сентября</span></p>
+      <p class="k-mega" data-v5-n="1"><span data-k="rate" data-k-count data-v5-n="1">—</span><small>%</small></p>
+      <div class="k-bar" aria-hidden="true"><i></i></div>
+      <p class="k-cap2">прогнозов канала зашли — все, включая проигрыши, со счётом и ссылкой на пост</p>
     </div>
-    <div class="k-lg" data-v5-g="1">
-      <div class="k-card k-hov" id="k-lg-nhl" data-k-rv><img src="/assets/lg/nhl.webp" alt="" width="48" height="48" loading="lazy"><div><h3>НХЛ</h3><p data-k="lgtxt">считаем…</p></div><b class="k-pct" data-k="pct" data-v5-n="1">—</b></div>
-      <div class="k-card k-hov" id="k-lg-khl" data-k-rv><img src="/assets/lg/khl.webp" alt="" width="48" height="48" loading="lazy"><div><h3>КХЛ</h3><p data-k="lgtxt">считаем…</p></div><b class="k-pct" data-k="pct" data-v5-n="1">—</b></div>
+    <div class="k-side">
+      <h2 class="k-h2" id="k-trust-h" data-v5-r="1" data-k="concl">Почти три из четырёх прогнозов заходят</h2>
+      <ul class="k-rows" data-v5-g="1">
+        <li data-k-rv><b data-v5-n="1"><span data-k="w">—</span><small> из <span data-k="n">—</span></small></b><span>прогнозов зашли</span></li>
+        <li data-k-rv><b data-v5-n="1"><span data-k="u">—</span><small> ед.</small></b><span>итог при ставке в 1 единицу на каждый прогноз</span></li>
+        <li data-k-rv id="k-lg-nhl"><b data-k="pct" data-v5-n="1">—</b><span><em>НХЛ</em> · <span data-k="lgtxt">считаем…</span></span></li>
+        <li data-k-rv id="k-lg-khl"><b data-k="pct" data-v5-n="1">—</b><span><em>КХЛ</em> · <span data-k="lgtxt">считаем…</span></span></li>
+      </ul>
+      <p class="k-note2"><a class="k-link" href="/results.html">Все прогнозы и итоги <span>→</span></a><span>Обновлено <span data-k="built">сегодня</span> МСК · 18+ · не призыв к ставкам, выигрыш не гарантирован</span></p>
     </div>
-    <p class="k-note"><span>Данные — ежедневная сборка, обновлено <span data-k="built">сегодня</span> МСК. 18+. Аналитика, а не призыв делать ставки; выигрыш не гарантирован.</span></p>
   </div>
 </section>
 
 <section class="k-sec k-new" id="k-how-s" aria-labelledby="k-how-h" data-v5-r="1">
   <div class="k-wrap k-how">
-    <div class="k-how-l"><p class="k-eyebrow">Как появляется прогноз</p><h2 class="k-h2" id="k-how-h" data-v5-r="1">От данных до&nbsp;поста — <em>четыре шага</em></h2>
-      <p class="k-lead">Модель не угадывает, а считает. И честно пропускает матчи, где ей нечего сказать.</p>
-      <p style="margin-top:24px"><a class="k-link" href="/model.html?s=h">Как считает модель <span>→</span></a></p></div>
-    <ol class="k-steps" data-v5-g="1">
-      <li class="k-card k-step" data-k-rv><b data-v5-n="1">01</b><div><h3>Собираем данные</h3><p>Расписание, результаты, форма и статистика всех клубов НХЛ и КХЛ, линии — обновляем дважды в день.</p></div></li>
-      <li class="k-card k-step" data-k-rv><b data-v5-n="1">02</b><div><h3>Модель считает шансы</h3><p>Рейтинг силы клубов и ожидаемые голы дают вероятность каждого исхода: победы, ничьей в основное время, тотала.</p></div></li>
-      <li class="k-card k-step" data-k-rv><b data-v5-n="1">03</b><div><h3>Сравниваем с линией</h3><p>Оставляем только матчи, где расчёт заметно расходится с линией. Если перевеса нет — прогноза нет.</p></div></li>
-      <li class="k-card k-step" data-k-rv><b data-v5-n="1">04</b><div><h3>Публикуем и отчитываемся</h3><p>Пост с разбором — в канале до начала матча. Итог — утром, в открытой таблице вместе со всеми остальными.</p></div></li>
+    <div class="k-how-l"><p class="k-eyebrow">Как появляется прогноз</p><h2 class="k-h2" id="k-how-h" data-v5-r="1">Модель считает, а&nbsp;не&nbsp;угадывает</h2>
+      <p class="k-lead">Четыре шага от данных до поста. Если перевеса нет — прогноза тоже нет.</p>
+      <p style="margin-top:28px"><a class="k-link" href="/model.html?s=h">Как считает модель <span>→</span></a></p></div>
+    <ol class="k-steps2" data-v5-g="1">
+      <li class="k-step" data-k-rv><b data-v5-n="1">01</b><div><h3>Собираем данные</h3><p>Расписание, результаты, форма и статистика всех клубов НХЛ и КХЛ, линии — обновляем дважды в день.</p></div></li>
+      <li class="k-step" data-k-rv><b data-v5-n="1">02</b><div><h3>Считаем шансы</h3><p>Рейтинг силы клубов и ожидаемые голы дают вероятность каждого исхода: победы, ничьей в основное время, тотала.</p></div></li>
+      <li class="k-step" data-k-rv><b data-v5-n="1">03</b><div><h3>Сравниваем с линией</h3><p>Оставляем только матчи, где расчёт заметно расходится с линией. Остальные пропускаем.</p></div></li>
+      <li class="k-step" data-k-rv><b data-v5-n="1">04</b><div><h3>Публикуем и отчитываемся</h3><p>Пост с разбором — в канале до начала матча. Итог — утром, в открытой таблице вместе со всеми остальными.</p></div></li>
     </ol>
   </div>
 </section>
 
 <section class="k-sec k-new" id="k-ex" aria-labelledby="k-ex-h" data-v5-r="1">
   <div class="k-wrap">
-    <div class="k-head"><div><p class="k-eyebrow">Примеры</p><h2 class="k-h2" id="k-ex-h" data-v5-r="1">Последние прогнозы — <em>как есть</em></h2>
-      <p class="k-lead">Четыре последних хоккейных прогноза канала: что считали, чем закончился матч и пост с разбором.</p></div></div>
-    <div class="k-ex" id="k-ex-list" data-v5-g="1"><p class="k-small">Загружаем последние прогнозы…</p></div>
+    <div class="k-head"><div><p class="k-eyebrow">Примеры</p><h2 class="k-h2 k-h2w" id="k-ex-h" data-v5-r="1">Последние прогнозы — как есть</h2></div>
+      <p class="k-lead" style="max-width:36ch">Что считали, чем закончился матч и ссылка на пост с разбором. Без фильтра «только удачные».</p></div>
+    <ol class="k-exl" id="k-ex-list" data-v5-g="1"><li class="k-small">Загружаем последние прогнозы…</li></ol>
   </div>
 </section>
 
-<section class="k-sec k-new" id="k-cta-s" aria-labelledby="k-cta-h" data-v5-r="1">
-  <div class="k-wrap">
-    <div class="k-card k-cta" data-k-rv>
-      <div><p class="k-eyebrow">Аналитическая таблица JARVIS</p><h2 class="k-h2" id="k-cta-h" data-v5-r="1">Все расчёты — <em>в одной таблице</em></h2>
-        <ul><li>Расчёт модели по каждому матчу НХЛ и КХЛ, а не только по тем, что попали в канал</li><li>Рейтинг Эло, форма и что заходит у каждой команды</li><li>Вся история прогнозов — для тех, кто считает сам</li></ul></div>
-      <div class="k-cta-r"><a class="k-btn" href="https://t.me/JarvisTablePayBot?start=site_hockey" target="_blank" rel="noopener">Узнать про доступ в боте <span>→</span></a>
-        <a class="k-btn k-btn-g" href="/hockey/table.html">Посмотреть пример таблицы</a>
-        <p class="k-small">Откроется Telegram-бот JARVIS. 18+.</p></div>
+<section class="k-sec k-new k-cta2" id="k-cta-s" aria-labelledby="k-cta-h" data-v5-r="1">
+  <div class="k-wrap k-split k-split-r">
+    <div data-k-rv><p class="k-eyebrow">Аналитическая таблица JARVIS</p><h2 class="k-h2 k-h2w" id="k-cta-h" data-v5-r="1">Все расчёты — в&nbsp;одной таблице</h2></div>
+    <div class="k-side" data-k-rv>
+      <ul class="k-rows k-rows-s"><li><span>Расчёт модели по каждому матчу НХЛ и КХЛ, а не только по тем, что попали в канал</span></li><li><span>Рейтинг Эло, форма и что заходит у каждой команды</span></li><li><span>Вся история прогнозов — для тех, кто считает сам</span></li></ul>
+      <p class="k-btns"><a class="k-btn" href="https://t.me/JarvisTablePayBot?start=site_hockey" target="_blank" rel="noopener">Узнать про доступ в боте <span>→</span></a>
+        <a class="k-link" href="/hockey/table.html">Пример таблицы <span>→</span></a></p>
+      <p class="k-small">Откроется Telegram-бот JARVIS. 18+.</p>
     </div>
   </div>
 </section>
@@ -446,7 +449,7 @@ LeagueCards.mount(document.getElementById('lcdeck'),Object.entries(LG).map(([id,
 <script src="../assets/sidetab.js" defer></script>
 <script src="/data/results-lite.js"></script>
 <script src="../assets/results-strip.js"></script>
-<div class="jv-draft" role="note">Черновик v5 · тема: <a href="?theme=alt">alt</a> · <a href="?theme=bw">bw</a></div><script defer src="/draft/v5/skin/skin5.js?v=202611281140"></script>
-<script defer src="/draft/v5/skin/clubcolors.js?v=202611281140"></script><script defer src="/draft/v5/skin/cc.js?v=202611281140" data-scope=""></script><script defer src="/draft/v5/skin/kit5.js?v=202611281140"></script>
+<div class="jv-draft" role="note">Черновик v5 · тема: <a href="?theme=alt">alt</a> · <a href="?theme=bw">bw</a></div><script defer src="/draft/v5/skin/skin5.js?v=202611281157"></script>
+<script defer src="/draft/v5/skin/clubcolors.js?v=202611281157"></script><script defer src="/draft/v5/skin/cc.js?v=202611281157" data-scope=""></script><script defer src="/draft/v5/skin/kit5.js?v=202611281157"></script>
 </body>
 </html>

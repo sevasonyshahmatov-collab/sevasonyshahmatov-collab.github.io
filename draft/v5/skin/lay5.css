@@ -1,0 +1,83 @@
+/* v5 · новая раскладка страниц «Хоккея» (lay5.js), тема bw. Только сетка, типографика, линии; цвета клубов не трогаем. */
+html.lay-on{--l-ink:#f5f5f5;--l-ink2:#a3a3a3;--l-ink3:#8a8a8a;--l-line:rgba(255,255,255,.12);--l-acc:var(--hx,#fff)}
+
+/* герой страницы: огромная цифра и вывод */
+.lay-hero{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:24px 48px;margin-top:40px;padding-top:32px;border-top:1px solid var(--l-line)}
+.lay-hero-l{margin:0;font:600 clamp(32px,4.6vw,72px)/.98 "Oswald","Arial Narrow",sans-serif;text-transform:uppercase;color:var(--l-ink);max-width:18ch}
+.lay-hero-l[hidden]{display:none}
+.lay-hero-n{margin:0;display:grid;justify-items:end;text-align:right}
+.lay-hero-n b{display:block;font:600 clamp(96px,15vw,220px)/.82 "Oswald","Arial Narrow",sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.02em;color:var(--l-acc)}
+html[data-hv="2"] .lay-hero-n b{text-shadow:0 0 60px rgba(94,224,255,.25)}
+.lay-hero-n span{margin-top:12px;font:600 14px/1.4 "JV Text",system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--l-ink2)}
+
+/* секции: больше воздуха, без коробок */
+html.lay-on section.lay{padding:120px 0!important;border-top:1px solid var(--l-line);background:none!important}
+html.lay-on section.lay > .wrap{background:none!important;border:0!important;box-shadow:none!important}
+.lay-h{margin:0!important}
+.lay-h .lay-e,.lay-h > h2{margin:0 0 20px!important;font:700 12px/1.2 "JV Text",system-ui,sans-serif!important;letter-spacing:.18em!important;text-transform:uppercase!important;color:var(--l-ink2)!important}
+.lay-h.lay-plain .lay-e,.lay-h.lay-plain > h2{font:600 clamp(36px,4.4vw,68px)/.98 "Oswald","Arial Narrow",sans-serif!important;letter-spacing:0!important;color:var(--l-ink)!important}
+.lay-h .lay-e::before{content:"";display:inline-block;width:28px;height:1px;background:var(--l-acc);vertical-align:middle;margin-right:12px}
+.lay-h.lay-plain .lay-e::before{display:none}
+.lay-t{margin:0;font:600 clamp(36px,4.4vw,68px)/.98 "Oswald","Arial Narrow",sans-serif;text-transform:uppercase;color:var(--l-ink)}
+.lay-n{margin:40px 0 0;display:grid}
+.lay-n b{font:600 clamp(80px,9vw,150px)/.85 "Oswald","Arial Narrow",sans-serif;font-variant-numeric:tabular-nums;color:var(--l-acc);letter-spacing:-.02em}
+.lay-n span{margin-top:10px;font:600 13px/1.4 "JV Text",system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--l-ink2)}
+.lay-n-s span{margin:0}
+
+/* узкая секция: слева закреплённый вывод, справа содержимое */
+@media (min-width:1024px){
+  section.lay-s > .wrap{display:grid!important;grid-template-columns:minmax(0,4fr) minmax(0,8fr);column-gap:72px;align-items:start}
+  section.lay-s > .wrap > *{grid-column:2;min-width:0}
+  section.lay-s > .wrap > .lay-h{grid-column:1;grid-row:1 / span 40;position:sticky;top:calc(var(--jv-top,64px) + 40px);display:block!important}
+  section.lay-s > .wrap > .lay-h > :not(h2):not(.lay-t):not(.lay-n){margin-top:24px}   /* поиск/переключатели из шапки секции — под выводом */
+  /* широкая: вывод во всю ширину, крупнее; содержимое ниже с воздухом */
+  section.lay-w .lay-t{font-size:clamp(52px,6vw,96px);max-width:22ch}
+  section.lay-w > .wrap > .lay-h{margin-bottom:64px!important;display:grid!important;grid-template-columns:1fr auto;align-items:end;gap:24px}
+  section.lay-w > .wrap > .lay-h > h2{grid-column:1/-1}
+}
+/* линии вместо коробок в списках */
+html.lay-on section.lay :is(.lgml,.trs,#rs-list,.rs-how) > li,html.lay-on section.lay #glist li{background:none!important;border:0!important;border-bottom:1px solid var(--l-line)!important;border-radius:0!important;box-shadow:none!important}
+html.lay-on section.lay .lgml > li.dayh{border-bottom:0!important;padding-top:28px;color:var(--l-ink3)!important}
+html.lay-on section.lay :is(.lgst,.gsum,.facts) > li{background:none!important;border:0!important;border-left:1px solid var(--l-line)!important;border-radius:0!important;box-shadow:none!important;padding-left:24px!important}
+html.lay-on section.lay :is(.lgst,.gsum) b{font-family:"Oswald","Arial Narrow",sans-serif!important;font-size:clamp(40px,4vw,64px)!important;line-height:1!important}
+
+/* лига: факты под героем — строкой через линии */
+html.lay-league .lghero{padding-bottom:40px!important}
+html.lay-league .lghero .facts{display:grid!important;grid-template-columns:repeat(4,1fr);gap:0!important;margin-top:40px!important}
+html.lay-league .lghero .facts > li{background:none!important;border:0!important;border-left:1px solid var(--l-line)!important;border-radius:0!important;padding:4px 24px!important;box-shadow:none!important}
+html.lay-league .lghero .facts b{font-family:"Oswald","Arial Narrow",sans-serif!important;font-size:clamp(36px,3.6vw,56px)!important}
+html.lay-league .lghero h1{font-size:clamp(88px,13vw,200px)!important;line-height:.85!important}
+/* клуб: герой — эмблема и имя крупно, место огромной цифрой; «шестиугольник» справа сдвигаем ниже по смыслу */
+html.lay-club .tmhero #hero{display:grid!important;grid-template-columns:minmax(0,7fr) minmax(0,5fr)!important;align-items:end}
+html.lay-club .tmhero #hero > .lay-hero{grid-column:1/-1}
+html.lay-club .tmhero .tmrow h1{font-size:clamp(72px,10vw,160px)!important;line-height:.86!important}
+/* матч: вердикт модели в герое; блок расчёта — широкий */
+html.lay-match .mx-head .lay-hero{margin-top:28px}
+html.lay-match .mx-model .mx-bar{height:112px!important;border-radius:0!important}
+html.lay-match .mx-model .mx-bar b{font:600 clamp(28px,3vw,48px)/1 "Oswald","Arial Narrow",sans-serif!important}
+
+/* анимации — стартовое состояние задаёт GSAP; без библиотек всё видно */
+@media (max-width:1023px){
+  html.lay-on section.lay{padding:72px 0!important}
+  .lay-hero{grid-template-columns:1fr;gap:16px}.lay-hero-n{justify-items:start;text-align:left}
+  .lay-n{margin-top:20px}.lay-h{margin-bottom:28px!important}
+  html.lay-league .lghero .facts{grid-template-columns:1fr 1fr}
+  html.lay-club .tmhero #hero{grid-template-columns:1fr!important}
+}
+@media (max-width:640px){html.lay-on section.lay{padding:56px 0!important}.lay-n b{font-size:72px}.lay-hero-n b{font-size:96px}html.lay-league .lghero .facts > li{padding:4px 14px!important}}
+/* узкая колонка: списки матчей — в один столбец, чтобы названия не переносились */
+@media (min-width:1024px){section.lay-s :is(.lgml,#rsList){grid-template-columns:1fr!important;display:grid!important}}
+/* итоги: в теме bw карточки и строки были светлыми со светлым текстом (старая ошибка) — тёмные, линии вместо коробок */
+html.lay-results :is(.rs-card,.rs-chart){background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015))!important;border:1px solid var(--l-line)!important;box-shadow:none!important;color:var(--l-ink)!important}
+html.lay-results .rs-card :is(span,small,p,li){color:var(--l-ink2)}
+html.lay-results .rs-card :is(h3,b){color:var(--l-ink)}
+html.lay-results .rs-chart :is(text){fill:var(--l-ink2)!important}
+html.lay-results li.rs-row{background:none!important;border:0!important;border-bottom:1px solid var(--l-line)!important;border-radius:0!important;box-shadow:none!important;color:var(--l-ink)!important}
+html.lay-results li.rs-row :is(span,small){color:var(--l-ink2)}
+html.lay-results li.rs-row b{color:var(--l-ink)}
+html.lay-results img.rs-em{background:none!important}
+html.lay-results #rs-filters button,html.lay-results .rs-more{background:rgba(255,255,255,.06)!important;color:var(--l-ink)!important;border:1px solid var(--l-line)!important}
+html.lay-results #rs-filters button[aria-pressed="true"],html.lay-results #rs-filters button.on{background:var(--l-ink)!important;color:#0a0a0a!important}
+html.lay-results .rs-top .rs-kpi{margin-top:32px}
+/* таблица: заголовок страницы крупнее, «Что внутри» — закреплённая колонка слева */
+html.lay-table .tbl-top h1{font-size:clamp(56px,8vw,128px)!important;line-height:.9!important;max-width:12ch}

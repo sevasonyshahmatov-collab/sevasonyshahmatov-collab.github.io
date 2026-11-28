@@ -120,3 +120,60 @@ html[data-hv] #subscribe .btn-tg{border-radius:999px!important;padding:16px 26px
   .k-cta{padding:var(--k-s4) var(--k-s3)}.k-btn{width:100%;justify-content:center}
 }
 @media (prefers-reduced-motion:reduce){.k-card,.k-btn,.k-btn span,.k-link span,.k-step{transition:none!important}.k-anim [data-k-rv]{opacity:1!important;transform:none!important}}
+
+/* ═══ v2 (28.11): раскладка вместо плашек — огромная цифра + вывод, строки через линии ═══ */
+.k-new{border-top:1px solid var(--k-line)}
+.k-split{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--k-s5);align-items:end}
+.k-split-r{grid-template-columns:minmax(0,6fr) minmax(0,5fr);align-items:start}
+.k-mega{margin:0;font:600 clamp(150px,22vw,340px)/.78 "Oswald","Arial Narrow",sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.03em;color:var(--k-acc)}
+.k-mega small{font-size:.34em;letter-spacing:0;color:var(--k-ink2);margin-left:.08em}
+html[data-hv="1"] .k-mega{text-shadow:0 0 80px rgba(255,255,255,.22)}
+html[data-hv="2"] .k-mega{text-shadow:0 0 90px rgba(94,224,255,.28)}
+.k-trust2 .k-bar{height:4px;margin-top:var(--k-s4);max-width:92%}
+.k-cap2{margin:var(--k-s2) 0 0;font:600 13px/1.5 "JV Text",system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--k-ink2);max-width:46ch}
+.k-side .k-h2{font-size:clamp(36px,3.8vw,60px);max-width:none}
+.k-h2w{max-width:20ch}
+.k-rows{list-style:none;margin:var(--k-s4) 0 0;padding:0;border-top:1px solid var(--k-line)}
+.k-rows li{display:grid;grid-template-columns:minmax(150px,auto) 1fr;align-items:baseline;gap:var(--k-s3);padding:22px 0;border-bottom:1px solid var(--k-line)}
+.k-rows li b{font:600 clamp(36px,3.4vw,52px)/1 "Oswald","Arial Narrow",sans-serif;font-variant-numeric:tabular-nums;color:var(--k-ink);white-space:nowrap}
+.k-rows li b small{font-size:.5em;color:var(--k-ink2)}
+.k-rows li > span{font:500 15px/1.45 "JV Text",system-ui,sans-serif;color:var(--k-ink2)}
+.k-rows li em{font-style:normal;font-weight:800;color:var(--k-ink);letter-spacing:.06em}
+.k-rows-s li{grid-template-columns:1fr;padding:18px 0}
+.k-rows-s li > span{font-size:17px;color:var(--k-ink)}
+.k-note2{display:flex;flex-direction:column;gap:14px;margin:var(--k-s4) 0 0;font:500 13px/1.5 "JV Text",system-ui,sans-serif;color:var(--k-ink3)}
+.k-note2 .k-link{align-self:flex-start}
+/* шаги — строки с огромными номерами, без коробок */
+.k-steps2{list-style:none;margin:0;padding:0;border-top:1px solid var(--k-line)}
+.k-steps2 .k-step{display:grid;grid-template-columns:140px 1fr;gap:var(--k-s4);padding:var(--k-s5) 0;border-bottom:1px solid var(--k-line);background:none;border-radius:0}
+.k-steps2 .k-step b{font:600 clamp(72px,7vw,112px)/.85 "Oswald","Arial Narrow",sans-serif;color:var(--k-acc)}
+.k-steps2 .k-step h3{font-size:clamp(26px,2.4vw,36px);margin-bottom:12px}
+.k-steps2 .k-step p{font-size:17px;max-width:46ch}
+/* примеры — список строк, как табло */
+.k-exl{list-style:none;margin:0;padding:0;border-top:1px solid var(--k-line)}
+.k-exr{display:grid;grid-template-columns:110px minmax(0,2.2fr) minmax(0,2.4fr) 110px 150px;align-items:center;gap:var(--k-s3);padding:26px 8px;border-bottom:1px solid var(--k-line);color:inherit;text-decoration:none;position:relative;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.k-exr::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.05),transparent 70%);opacity:0;transition:opacity .4s ease;pointer-events:none}
+@media (hover:hover){.k-exr:hover{transform:translateX(6px)}.k-exr:hover::after{opacity:1}}
+.k-exr-d{font:700 12px/1.4 "JV Text",system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--k-ink3)}
+.k-exr-d b{display:block;color:var(--k-ink2)}
+.k-exr-m{display:grid;gap:8px}
+.k-exr-m span{display:flex;align-items:center;gap:10px;font:700 17px/1.2 "JV Text",system-ui,sans-serif;color:var(--k-ink)}
+.k-exr-m img{width:28px;height:28px;object-fit:contain}
+.k-exr-b{font:500 15px/1.45 "JV Text",system-ui,sans-serif;color:var(--k-ink2)}
+.k-exr-b small{display:block;margin-top:6px;font-weight:700;color:var(--k-ink)}
+.k-exr-s{font:600 48px/1 "Oswald","Arial Narrow",sans-serif;color:var(--k-ink);font-variant-numeric:tabular-nums}
+.k-exr .k-res{justify-self:end}
+/* таблица JARVIS — широкая секция между линиями */
+.k-cta2 .k-btns{display:flex;flex-wrap:wrap;align-items:center;gap:var(--k-s3);margin:var(--k-s4) 0 var(--k-s2)}
+.k-cta2{border-bottom:1px solid var(--k-line)}
+@media (max-width:1023px){
+  .k-split,.k-split-r{grid-template-columns:1fr;gap:var(--k-s4)}
+  .k-exr{grid-template-columns:90px 1fr auto;grid-template-areas:"d m s" "b b r"}
+  .k-exr-d{grid-area:d}.k-exr-m{grid-area:m}.k-exr-s{grid-area:s}.k-exr-b{grid-area:b}.k-exr .k-res{grid-area:r}
+}
+@media (max-width:640px){
+  .k-mega{font-size:clamp(120px,38vw,180px)}
+  .k-rows li{grid-template-columns:1fr;gap:6px;padding:18px 0}
+  .k-steps2 .k-step{grid-template-columns:64px 1fr;gap:var(--k-s2);padding:var(--k-s4) 0}.k-steps2 .k-step b{font-size:52px}
+  .k-exr{grid-template-columns:1fr auto;grid-template-areas:"d s" "m m" "b b" "r r";padding:22px 0}.k-exr .k-res{justify-self:start}
+}
