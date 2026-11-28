@@ -1,0 +1,97 @@
+/* правки владельца 28.11 к главной черновика v5 */
+:root{--gold:#d9b25f;--gold2:#f3d98f;--gold-ink:#171106;--mg:calc((min(100vw,1280px) - 2*var(--gut)) / 2.62)}
+/* первый экран: JARVIS BET с наложением */
+.hero .betw{position:absolute;z-index:3;right:calc(var(--gut) - 6px);top:calc(var(--hdr) + 12px + var(--mg)*.56);margin:0;pointer-events:none;
+  font:700 calc(var(--mg)*.74)/.8 var(--head);letter-spacing:-.01em;background:linear-gradient(170deg,var(--gold2) 10%,var(--gold) 55%,#9a742c);
+  -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 18px 28px rgba(0,0,0,.65))}
+.hero .hero-row{position:relative;z-index:4}
+.hero .hero-bot{position:relative;z-index:4}
+@media (max-width:809px){.hero .betw{font-size:calc(var(--mg)*.9);top:calc(var(--hdr) + 12px + var(--mg)*.62)}.hero .hero-row{margin-top:calc(var(--mg)*.55)}}
+/* золотой акцент при наведении */
+html:root .btn:hover,html:root .btn-tg:hover,html:root .hdr .btn-tg:hover,html:root .btn-line:hover,html:root .btn-dark:hover{background:var(--gold)!important;color:var(--gold-ink)!important;box-shadow:0 10px 30px -10px rgba(217,178,95,.8)!important}
+.btn-gold{background:var(--gold)!important;color:var(--gold-ink)!important}
+.btn-gold:hover{background:var(--gold2)!important}
+.seg a:hover{background:var(--gold)!important;border-color:var(--gold)!important;color:var(--gold-ink)!important}
+.nav a::after{background:var(--gold)}
+html:root :is(.mc,.pc,.scard,.mo,.tile,.mstat):hover{border-color:var(--gold)!important}
+html:root .pc:hover h3{color:var(--gold)!important}
+html:root .door:hover .go{background:var(--gold)!important;color:var(--gold-ink)!important}
+html:root .tile:hover{background:var(--gold)!important;color:var(--gold-ink)!important}
+html:root .tile:hover :is(svg,small,b){color:var(--gold-ink)!important}
+/* без «дыр» между разделами: светлый блок без отступов и скруглений */
+html:root:root #today{margin:0!important;border-radius:0!important;box-shadow:none!important}
+/* карточки спорта — один фон */
+html:root .doors .door::before{background:linear-gradient(165deg,#1d1d1d,#0c0c0c)!important}
+html:root .doors .door{background:#141414!important}
+/* матчи: хоккей сверху, футбол снизу */
+.mgroups{margin-top:28px}
+.mgroups .mg{display:flex;align-items:center;gap:14px;font:600 30px/1 var(--head);margin:28px 0 14px}
+.mgroups .mg::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.mrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:1023px){.mrow{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.mrow{grid-template-columns:1fr}.mrow .mc:nth-child(n+4){display:none}}
+/* полноэкранное видео: смена хоккей / футбол */
+.full.rot video,.full.rot img{position:absolute;inset:0;transform:scale(1.04)!important;opacity:0;transition:opacity 1.1s ease}
+.full.rot video.on,.full.rot img.on{opacity:1}
+.rot-tag{position:absolute;left:var(--gut);bottom:40px;margin:0;display:flex;gap:10px}
+.rot-tag span{font:700 22px/1 var(--head);text-transform:uppercase;padding:10px 16px;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:6px;transition:background-color .5s,color .5s}
+.rot-tag span.on{background:var(--gold);border-color:var(--gold);color:var(--gold-ink)}
+.full .over em{font-style:normal;color:var(--gold)}
+html:root:root .full .over{color:#fff!important;text-shadow:0 6px 30px rgba(0,0,0,.6);font-size:clamp(40px,7vw,108px);padding:0 var(--gut)}
+/* блок бота */
+.botsec{background:#0a0a0a!important;color:#f5f5f5}
+.botw{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:center}
+.botw>*{min-width:0}
+.botpts{list-style:none;padding:0;margin:26px 0;display:grid;gap:0}
+.botpts li{padding:12px 0;border-top:1px solid rgba(255,255,255,.12);color:#b9b9b9}
+.botpts b{color:#fff}
+.botl .acts{display:flex;gap:10px;flex-wrap:wrap}
+.botl .small{font-size:13px;color:#8a8a8a;margin-top:14px}
+.phones{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px;scrollbar-width:none;cursor:grab}
+.phones::-webkit-scrollbar{display:none}
+.phone{flex:0 0 270px;margin:0;scroll-snap-align:start;border-radius:34px;border:8px solid #232323;background:#0e1621;overflow:hidden;min-height:500px;display:flex;flex-direction:column;box-shadow:0 30px 60px -30px #000}
+.ph-top{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 10px;background:#17212b;font-size:13px}
+.ph-top span{color:#7d8e9f}
+.ph-body{padding:12px;display:flex;flex-direction:column;gap:10px}
+.ph-h{margin:0;font-weight:800;font-size:15px}
+.ph-msg{background:#182533;border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:5px;font-size:13px}
+.ph-msg small{color:#7d8e9f;font-size:11px}
+.ph-msg b{font-size:14px}
+.ph-msg span{color:#c9d4de}
+.ph-bar{display:block;height:6px;border-radius:9px;background:#2b3a49;overflow:hidden}
+.ph-bar u{display:block;height:100%;background:var(--gold)}
+.ph-note{margin:0;font-size:12px;color:#7d8e9f;text-align:center}
+.ph-nav{display:flex;align-items:center;gap:14px;justify-content:flex-end;color:#8a8a8a;font-size:13px}
+.ph-nav button{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:none;color:#fff;font-size:18px;cursor:pointer;transition:background-color .3s,color .3s}
+.ph-nav button:hover{background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+@media (max-width:1023px){.botw{grid-template-columns:1fr}}
+/* как появляется прогноз: шаги выезжают по одному */
+.stack.steps{gap:18px}
+.stack.steps .scard{position:relative;top:auto!important;opacity:0;transform:translateX(90px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1),border-color .35s}
+.stack.steps .scard.on{opacity:1;transform:none}
+.stack.steps .scard:nth-child(even){margin-left:36px}
+.stack.steps .scard .n{-webkit-text-stroke-color:var(--gold)}
+.mstat{margin-top:36px;padding:22px;border-radius:14px;background:var(--card);border:1px solid var(--line)}
+.ms-h{font:600 20px/1.2 var(--head);text-transform:uppercase;margin:0 0 14px}
+.ms-big{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.ms-big b{font:700 52px/1 var(--head)}
+.ms-big span{font:600 24px/1 var(--head);color:var(--gold)}
+.ms-bar{display:block;height:8px;border-radius:9px;background:rgba(255,255,255,.12);margin:12px 0 8px;overflow:hidden}
+.ms-bar u{display:block;height:100%;width:0;background:var(--gold);transition:width 1.4s ease}
+.ms-cap{margin:0;font-size:13px;color:var(--ink-3)}
+.ms-rows{display:grid;margin:14px 0}
+.ms-rows p{display:flex;justify-content:space-between;margin:0;padding:9px 0;border-top:1px solid var(--line)}
+@media (max-width:809px){.stack.steps .scard:nth-child(even){margin-left:0}.stack.steps .scard{transform:translateY(40px)}}
+@media (prefers-reduced-motion:reduce){.stack.steps .scard{opacity:1;transform:none}}
+/* подвал: деталь под названием */
+.fgold{display:flex;align-items:center;gap:18px;margin:-14px 0 30px}
+.fgold i{flex:1;height:3px;background:linear-gradient(90deg,transparent,#c9962f)}
+.fgold i:last-child{background:linear-gradient(90deg,#c9962f,transparent)}
+.fgold span{font:600 18px/1 var(--head);letter-spacing:.42em;text-transform:uppercase;color:#9a742c;white-space:nowrap}
+@media (max-width:560px){.fgold span{letter-spacing:.2em;font-size:14px}}
+/* снег поверх страницы */
+#snow5{position:fixed;inset:0;width:100vw;height:100vh;z-index:200;pointer-events:none;display:block!important}
+/* без фото игрока: за названием всегда виден каток (и там, где видео не запускается) */
+.hero .hero-bg{background:linear-gradient(rgba(7,9,15,.42),rgba(7,9,15,.42)),url(/draft/v4/media/skate.webp) 62% 50%/cover}
+@media (max-width:809px){.hero .hero-row{margin-top:calc(var(--mg)*.5)}}
+@media (max-width:809px){.rot-tag{bottom:92px}html:root:root .full .over{bottom:96px}}

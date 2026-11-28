@@ -55,15 +55,19 @@
   function matches() {
     var box = $('#mlist'); if (!box) return;
     if (!H || !H.J) { box.innerHTML = '<p class="sub">Матчи сейчас недоступны — откройте <a class="more" href="/matches.html">все матчи дня</a>.</p>'; return; }
-    var list = H.all().slice(0, 8);
+    var every = H.all(), list = every;
     if (!list.length) { box.innerHTML = '<p class="sub">В ближайшие дни матчей нет.</p>'; return; }
     var f2 = H.f2, kef = function (m, i) { var ln = m.ln; if (!ln) return ''; var v = [ln.p1, ln.x, ln.p2][i]; return v ? f2(v) : ''; };
-    box.innerHTML = list.map(function (m) {
+    var one = function (m) {
       var lv = 'data-lv data-lv-lg="' + esc(m.lg) + '" data-lv-t="' + esc(m.t.replace(' ', 'T')) + ':00+03:00" data-lv-h="' + esc(m.h) + '" data-lv-a="' + esc(m.a) + '" data-lv-hn="' + esc(m.hn) + '" data-lv-an="' + esc(m.an) + '"';
       var pk = m.pr ? '<b>' + H.pct(m.best) + '%</b><span>' + ['П1', 'Х', 'П2'][m.bi] + ' · ' + esc(m.who) + '</span>' + (kef(m, m.bi) ? '<em>' + kef(m, m.bi) + '</em>' : '') : '<span>расчёт скоро</span>';
       return '<a class="mc" href="' + esc((m.hockey ? '/draft/v4' + m.page : m.page).replace(/index\.html$/, '')) + '" ' + lv + '><div class="t"><span>' + esc(m.lgn) + '</span><span>' + esc(m.day) + ', ' + esc(m.hm) + '</span></div>' +
         '<div class="tm"><div><img src="' + esc(m.hc) + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' + esc(m.hn) + '</div>' +
         '<div><img src="' + esc(m.ac) + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' + esc(m.an) + '</div></div><div class="pk">' + pk + '</div></a>';
+    };
+    box.innerHTML = [['Хоккей', true], ['Футбол', false]].map(function (g) {
+      var part = every.filter(function (m) { return m.hockey === g[1]; }).slice(0, 6);
+      return part.length ? '<h3 class="mg">' + g[0] + '</h3><div class="mrow">' + part.map(one).join('') + '</div>' : '';
     }).join('');
     var u = H.upd && H.upd(); if (u) $('#mupd').textContent = 'Вероятность модели и кэф линии · ' + u;
   }
@@ -117,7 +121,7 @@
     Object.keys(P).forEach(function (k) { seen[P[k].id] = 1; });
     (D ? D.picks : []).slice().sort(function (a, b) { return (b.posted || '') < (a.posted || '') ? -1 : 1; }).filter(function (p) { return !seen[p.id]; }).slice(0, 7).forEach(function (p) {
       var d = p.d.slice(0, 10), st = p.r === 'w' ? ['w', 'зашёл'] : p.r === 'l' ? ['l', 'не зашёл'] : p.r === 'p' ? ['', 'возврат'] : ['', 'ждёт матча'];
-      items.push({ at: p.posted || d, html: '<a class="pc" href="' + esc(p.url) + '" target="_blank" rel="noopener"><div class="t"><span>' + esc(LG[p.lg] || p.lg || '') + ' · ' + d.slice(8, 10) + '.' + d.slice(5, 7) + '</span><span>' + (p.kind === 'express' ? 'Экспресс' : 'Прогноз') + '</span></div>' +
+      items.push({ at: p.posted || d, html: '<a class="pc" href="' + esc(p.url) + '" target="_blank" rel="noopener"><div class="t"><span>' + esc(LG[p.lg] || p.lg || '') + ' · ' + d.slice(8, 10) + '.' + d.slice(5, 7) + '</span><span>' + (p.kind === 'express' ? 'Экспресс' : 'Мой прогноз') + '</span></div>' +
         '<h3>' + esc(p.h ? p.h + ' — ' + p.a : 'Экспресс') + '</h3><p class="bet">' + esc(p.bet || '') + (p.kef ? ' · кэф ' + num(p.kef, 2) : '') + '</p><span class="st ' + st[0] + '">' + st[1] + (p.sc ? ' · ' + esc(p.sc) : '') + '</span></a>' });
     });
     Object.keys(MT || {}).forEach(function (path) {
@@ -235,7 +239,7 @@
       });
     });
     // матчи и лента — по очереди (лента — сверху, как блог в тесте)
-    $$('#mlist > .mc').forEach(function (c, i) { gsap.from(c, { autoAlpha: 0, y: 40, scale: 0.95, duration: 0.7, ease: E, delay: (i % 4) * 0.08, scrollTrigger: { trigger: c, start: 'top 94%', once: true } }); });
+    $$('#mlist .mc').forEach(function (c, i) { gsap.from(c, { autoAlpha: 0, y: 40, scale: 0.95, duration: 0.7, ease: E, delay: (i % 4) * 0.08, scrollTrigger: { trigger: c, start: 'top 94%', once: true } }); });
     var fd = $$('#feed > .pc'); if (fd.length) gsap.from(fd, { autoAlpha: 0, y: -40, duration: 0.8, stagger: 0.18, ease: E, scrollTrigger: { trigger: '#feed', start: 'top 85%', once: true } });
     // итоги: карточки выезжают, цифры набегают, полоски заполняются, линия рисуется
     $$('#months .mo').forEach(function (c, i) {
