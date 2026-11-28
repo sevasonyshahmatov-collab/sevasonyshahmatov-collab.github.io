@@ -32,7 +32,8 @@ h1 em,h1 i,h1 span[class]{font-style:normal}
 .btn-tg,.hd .btn-tg,.gr-bot{background:var(--v5-acc)!important;color:var(--v5-acc-ink)!important;border-radius:8px!important}
 html[data-v5t="bw"] .btn-ink{background:#fff!important;color:#000!important}
 /* bw: цвет только у «зашло / не зашло» — убираем цветные плашки лиг и клубов */
-html[data-v5t="bw"] img[src*="/em/"],html[data-v5t="bw"] img[src*="/fc/"],html[data-v5t="bw"] img[src*="/lg/"]{filter:grayscale(1) contrast(1.05)}
+/* 28.11: эмблемы и логотипы — всегда в своих цветах, без фильтров (владелец: «никаких grayscale/filter») */
+html:root img:is([src*="/em/"],[src*="/fc/"],[src*="/lg/"],[src*="crest"],[src*="emb"]),html:root :is(.pp-ghost,.tmwm,.ce-img,.xi-bg,.mx-h2h span.lg img){filter:none!important}
 /* эмблемы — лёгкое увеличение при наведении (transform) */
 img[src*="/em/"],img[src*="/fc/"],img[src*="crest"]{transition:transform .45s cubic-bezier(.22,1,.36,1)}
 a:hover img[src*="/em/"],a:hover img[src*="/fc/"],li:hover img[src*="/em/"]{transform:scale(1.07)}
@@ -54,7 +55,7 @@ main table thead th{position:sticky;top:var(--jv-top);z-index:3;background:var(-
 html[data-v5t="bw"] main h1,html[data-v5t="bw"] main h1 *,html[data-v5t="bw"] main h2{color:#fff!important}
 /* клубы в фирменных цветах (27.11, skin/cc.js): эмблема без серого фильтра; тёмная — светлая обводка; заглушка — кружок цвета клуба */
 html:root img.v5-cc{filter:none!important}
-html:root img.v5-cc-dk{filter:drop-shadow(0 0 .6px rgba(255,255,255,.95)) drop-shadow(0 0 2px rgba(255,255,255,.45))!important}
+html:root img.v5-cc-dk{background:radial-gradient(circle,rgba(255,255,255,.22) 0 52%,rgba(255,255,255,0) 72%);border-radius:50%}   /* тёмная эмблема на чёрном: светлая подложка (не фильтр) */
 .v5-ccph{display:inline-flex;align-items:center;justify-content:center;flex:none;border-radius:50%;font:700 11px/1 "Oswald","Arial Narrow",sans-serif;letter-spacing:.02em;vertical-align:middle;box-sizing:border-box}
 .v5-ccph-dk{box-shadow:0 0 0 1.5px rgba(255,255,255,.75)}
 .v5-ccbar .v5-cct{box-shadow:inset 3px 0 0 var(--cc1);padding-left:9px!important}
