@@ -1,0 +1,122 @@
+/* v5 · дизайн-кит раздела «Хоккей» (тема bw, владелец 28.11: «премиально»). Шаг 1 — главная раздела ниже двух первых экранов.
+   Сетка отступов 8 px: 8 · 16 · 24 · 40 · 64 · 96 · 128. Шрифты — только уже подключённые (Oswald — заголовки и цифры, JV Text — текст).
+   Акцент один — var(--hx) варианта страницы (1 «Тех» — белый, 2 «Лёд» — холодный голубой). Анимации — только transform/opacity
+   (kit5.js: GSAP + ScrollTrigger + SplitText + Lenis); в лёгком режиме и при «уменьшить движение» — без анимаций, вид тот же. */
+html[data-hv]{--k-acc:var(--hx,#fff);--k-ink:#f5f5f5;--k-ink2:#a3a3a3;--k-ink3:#8a8a8a;--k-line:rgba(255,255,255,.1);--k-line2:rgba(255,255,255,.18);
+  --k-card:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));--k-r:20px;--k-r2:14px;
+  --k-s1:8px;--k-s2:16px;--k-s3:24px;--k-s4:40px;--k-s5:64px;--k-s6:96px;--k-s7:128px;--k-max:1240px;--k-gut:clamp(16px,4vw,40px)}
+html:not([data-hv]) .k-new{display:none!important}
+html[data-hv] #honest{display:none!important}                 /* заменён блоком «Открытые итоги» */
+
+/* секция, заголовки, текст */
+.k-sec{position:relative;padding:var(--k-s7) 0}
+.k-sec+.k-sec{padding-top:var(--k-s5)}
+.k-wrap{max-width:var(--k-max);margin:0 auto;padding:0 var(--k-gut)}
+.k-eyebrow{display:inline-flex;align-items:center;gap:10px;margin:0 0 var(--k-s3);font:700 12px/1 "JV Text",system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--k-ink2)}
+.k-eyebrow::before{content:"";width:28px;height:1px;background:var(--k-acc)}
+.k-h2{margin:0;font:600 clamp(40px,6.4vw,92px)/.95 "Oswald","Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:0;color:var(--k-ink);max-width:16ch}
+.k-h2 em{font-style:normal;color:var(--k-acc)}
+.k-lead{margin:var(--k-s3) 0 0;max-width:58ch;font:400 clamp(16px,1.35vw,19px)/1.55 "JV Text",system-ui,sans-serif;color:var(--k-ink2)}
+.k-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--k-s3);margin-bottom:var(--k-s5)}
+.k-link{display:inline-flex;align-items:center;gap:8px;font:700 15px/1 "JV Text",system-ui,sans-serif;color:var(--k-ink);text-decoration:none;padding-bottom:6px;border-bottom:1px solid var(--k-line2)}
+.k-link span{display:inline-block;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.k-link:hover span{transform:translateX(5px)}
+.k-hair{height:1px;background:linear-gradient(90deg,transparent,var(--k-line2) 20%,var(--k-line2) 80%,transparent);margin:0}
+
+/* карточки: тонкая рамка, мягкое скругление; при наведении — подъём и подсветка границы (только transform/opacity) */
+.k-card{position:relative;border-radius:var(--k-r);background:var(--k-card);border:1px solid var(--k-line);padding:var(--k-s4);transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.k-card::after{content:"";position:absolute;inset:-1px;border-radius:inherit;border:1px solid var(--k-acc);opacity:0;transition:opacity .45s ease;pointer-events:none;
+  box-shadow:0 0 0 1px rgba(255,255,255,.04),0 18px 60px -30px var(--k-acc)}
+@media (hover:hover){.k-card.k-hov:hover{transform:translateY(-4px)}.k-card.k-hov:hover::after{opacity:.55}}
+
+/* цифры: крупно и контрастно */
+.k-num{display:block;font:600 clamp(56px,9vw,140px)/.9 "Oswald","Arial Narrow",sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.01em;color:var(--k-ink)}
+.k-num small{font-size:.42em;color:var(--k-ink2);margin-left:.15em}
+.k-num.k-acc{color:var(--k-acc)}
+html[data-hv="1"] .k-num.k-acc{text-shadow:0 0 40px rgba(255,255,255,.28)}
+html[data-hv="2"] .k-num.k-acc{text-shadow:0 0 44px rgba(94,224,255,.3)}
+.k-cap{margin:var(--k-s2) 0 0;font:500 15px/1.45 "JV Text",system-ui,sans-serif;color:var(--k-ink2);max-width:26ch}
+
+/* «Открытые итоги» */
+.k-stats{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:var(--k-s3)}
+.k-stats .k-card{padding:var(--k-s5) var(--k-s4) var(--k-s4)}
+.k-stats .k-card:first-child{background:radial-gradient(120% 90% at 0% 0%,rgba(255,255,255,.07),transparent 55%),var(--k-card)}
+.k-lg{display:grid;grid-template-columns:1fr 1fr;gap:var(--k-s3);margin-top:var(--k-s3)}
+.k-lg .k-card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:var(--k-s3);padding:var(--k-s4)}
+.k-lg img{width:48px;height:48px;object-fit:contain}
+.k-lg h3{margin:0;font:600 28px/1 "Oswald","Arial Narrow",sans-serif;text-transform:uppercase;color:var(--k-ink)}
+.k-lg p{margin:8px 0 0;font:500 14px/1.45 "JV Text",system-ui,sans-serif;color:var(--k-ink2)}
+.k-lg b.k-pct{font:600 clamp(40px,4.6vw,64px)/1 "Oswald","Arial Narrow",sans-serif;font-variant-numeric:tabular-nums;color:var(--k-ink)}
+.k-note{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--k-s3);margin-top:var(--k-s4);padding-top:var(--k-s3);border-top:1px solid var(--k-line);color:var(--k-ink2);font:500 14px/1.5 "JV Text",system-ui,sans-serif}
+.k-bar{height:6px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:var(--k-s3)}
+.k-bar i{display:block;height:100%;width:100%;border-radius:inherit;background:var(--k-acc);transform-origin:0 50%}
+
+/* «Как появляется прогноз»: на компьютере заголовок закреплён (sticky), шаги подсвечиваются при прокрутке */
+.k-how{display:grid;grid-template-columns:5fr 7fr;gap:var(--k-s6)}
+.k-how-l{position:sticky;top:calc(var(--jv-top,64px) + 48px);align-self:start}
+.k-steps{list-style:none;margin:0;padding:0;display:grid;gap:var(--k-s3);counter-reset:k}
+.k-step{display:grid;grid-template-columns:auto 1fr;gap:var(--k-s3);padding:var(--k-s4)}
+.k-step b{font:600 44px/1 "Oswald","Arial Narrow",sans-serif;color:var(--k-acc);font-variant-numeric:tabular-nums}
+.k-step h3{margin:0 0 10px;font:600 26px/1.05 "Oswald","Arial Narrow",sans-serif;text-transform:uppercase;color:var(--k-ink)}
+.k-step p{margin:0;font:400 16px/1.55 "JV Text",system-ui,sans-serif;color:var(--k-ink2)}
+.v5-full .k-step{opacity:.38;transition:opacity .5s ease}
+.v5-full .k-step.k-on{opacity:1}
+
+/* «Последние прогнозы — как есть» */
+.k-ex{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--k-s3)}
+.k-ex .k-card{display:flex;flex-direction:column;gap:var(--k-s2);padding:var(--k-s3) var(--k-s3) var(--k-s3);text-decoration:none;color:inherit;min-height:250px}
+.k-ex-t{display:flex;justify-content:space-between;align-items:center;font:700 12px/1 "JV Text",system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--k-ink3)}
+.k-ex-m{display:grid;gap:10px}
+.k-ex-m div{display:flex;align-items:center;gap:10px;font:700 16px/1.2 "JV Text",system-ui,sans-serif;color:var(--k-ink)}
+.k-ex-m img{width:26px;height:26px;object-fit:contain}
+.k-ex-b{font:500 14px/1.45 "JV Text",system-ui,sans-serif;color:var(--k-ink2);flex:1}
+.k-ex-r{display:flex;align-items:center;justify-content:space-between;padding-top:var(--k-s2);border-top:1px solid var(--k-line)}
+.k-ex-r b{font:600 26px/1 "Oswald","Arial Narrow",sans-serif;color:var(--k-ink);font-variant-numeric:tabular-nums}
+.k-res{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font:800 12px/1 "JV Text",system-ui,sans-serif;letter-spacing:.04em}
+.k-res.w{background:rgba(34,197,94,.14);color:#4ade80}.k-res.l{background:rgba(239,68,68,.14);color:#f87171}.k-res.p{background:rgba(255,255,255,.08);color:var(--k-ink2)}
+.k-ex-go{font:700 13px/1 "JV Text",system-ui,sans-serif;color:var(--k-ink)}
+
+/* кнопки */
+.k-btn{position:relative;display:inline-flex;align-items:center;gap:12px;padding:18px 28px;border-radius:999px;background:var(--k-ink);color:#0a0a0a!important;font:800 16px/1 "JV Text",system-ui,sans-serif;text-decoration:none;isolation:isolate;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+html[data-hv="2"] .k-btn{background:var(--k-acc);color:#03161c!important}
+.k-btn::before{content:"";position:absolute;inset:-6px;border-radius:inherit;z-index:-1;background:radial-gradient(60% 120% at 50% 50%,var(--k-acc),transparent 70%);opacity:.18;transition:opacity .45s ease}
+.k-btn span{display:inline-block;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+@media (hover:hover){.k-btn:hover{transform:translateY(-2px)}.k-btn:hover::before{opacity:.42}.k-btn:hover span{transform:translateX(4px)}}
+html[data-hv] .k-btn.k-btn-g{background:transparent!important;color:var(--k-ink)!important;border:1px solid var(--k-line2)}
+.k-btn-g::before{display:none}
+.k-btn:focus-visible,.k-link:focus-visible,.k-card:focus-visible{outline:2px solid var(--k-acc);outline-offset:4px}
+
+/* блок «Аналитическая таблица» → бот-витрина */
+.k-cta{display:grid;grid-template-columns:1.3fr 1fr;gap:var(--k-s5);align-items:center;padding:var(--k-s6) var(--k-s5);overflow:hidden}
+.k-cta::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(60% 90% at 100% 0%,rgba(255,255,255,.08),transparent 60%);pointer-events:none}
+.k-cta ul{list-style:none;margin:var(--k-s4) 0 0;padding:0;display:grid;gap:14px}
+.k-cta li{display:flex;gap:12px;align-items:baseline;font:500 16px/1.5 "JV Text",system-ui,sans-serif;color:var(--k-ink2)}
+.k-cta li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--k-acc);transform:translateY(-2px)}
+.k-cta-r{display:grid;gap:var(--k-s2);justify-items:start}
+.k-small{font:500 13px/1.5 "JV Text",system-ui,sans-serif;color:var(--k-ink3)}
+
+/* прежние блоки ниже — в стиле кита */
+html[data-hv] #leagues,html[data-hv] #table,html[data-hv] #kupon{padding-top:var(--k-s5)!important;padding-bottom:var(--k-s5)!important}
+html[data-hv] #leagues h2,html[data-hv] #kupon h2,html[data-hv] #subscribe h2{font:600 clamp(36px,5vw,72px)/.95 "Oswald","Arial Narrow",sans-serif!important;text-transform:uppercase}
+html[data-hv] .kpb,html[data-hv] .tbl-plate{border-radius:var(--k-r)!important;border:1px solid var(--k-line)!important;border-left-width:1px!important;background:var(--k-card)!important}
+html[data-hv] #subscribe{padding:var(--k-s6) 0!important;background:none!important;border:0!important}
+html[data-hv] #subscribe .wrap{border:1px solid var(--k-line);border-radius:var(--k-r);padding:var(--k-s5) var(--k-gut);background:var(--k-card)}
+html[data-hv] #subscribe .btn-tg{border-radius:999px!important;padding:16px 26px!important}
+
+/* анимации появления (kit5.js) — стартовое состояние только в полном режиме и после загрузки библиотек */
+.k-anim [data-k-rv]{opacity:0;transform:translateY(28px)}
+.k-anim .k-split .k-ln{display:block;overflow:hidden}
+
+@media (max-width:1023px){
+  .k-sec{padding:var(--k-s6) 0}.k-stats{grid-template-columns:1fr 1fr}.k-stats .k-card:first-child{grid-column:1/-1}
+  .k-how{grid-template-columns:1fr;gap:var(--k-s4)}.k-how-l{position:static}.k-ex{grid-template-columns:1fr 1fr}
+  .k-cta{grid-template-columns:1fr;gap:var(--k-s4);padding:var(--k-s5) var(--k-s4)}
+  .v5-full .k-step{opacity:1}
+}
+@media (max-width:640px){
+  .k-sec{padding:var(--k-s5) 0}.k-head{margin-bottom:var(--k-s4)}.k-stats,.k-lg,.k-ex{grid-template-columns:1fr}
+  .k-card{padding:var(--k-s3)}.k-stats .k-card{padding:var(--k-s4) var(--k-s3) var(--k-s3)}.k-lg .k-card{padding:var(--k-s3);gap:var(--k-s2)}
+  .k-step{padding:var(--k-s3);gap:var(--k-s2)}.k-step b{font-size:34px}.k-ex .k-card{min-height:0}
+  .k-cta{padding:var(--k-s4) var(--k-s3)}.k-btn{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.k-card,.k-btn,.k-btn span,.k-link span,.k-step{transition:none!important}.k-anim [data-k-rv]{opacity:1!important;transform:none!important}}

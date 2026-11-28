@@ -126,7 +126,7 @@
   }
   function full() {
     var p = Promise.resolve();
-    ['gsap-3.15.1.min.js', 'ScrollTrigger-3.15.1.min.js', 'lenis-1.3.28.min.js'].forEach(function (f) { p = p.then(function () { return load(f); }); });
+    ['gsap-3.15.1.min.js', 'ScrollTrigger-3.15.1.min.js', 'SplitText-3.15.1.min.js', 'lenis-1.3.28.min.js'].forEach(function (f) { p = p.then(function () { return load(f); }); });
     p.then(function () {
       gsap.registerPlugin(ScrollTrigger);
       var lenis = new Lenis(); window.jvLenis = lenis;
@@ -138,6 +138,7 @@
         e.preventDefault(); lenis.scrollTo(el, { offset: -72 });
       }, true);
       counts(main);
+      document.dispatchEvent(new Event('v5:gsap'));   // дизайн-кит (kit5.js) — библиотеки готовы
       var pend; new MutationObserver(function () { clearTimeout(pend); pend = setTimeout(function () { counts(main); ScrollTrigger.refresh(); }, 300); }).observe(main, { childList: true, subtree: true });
     }).catch(function () {});
   }
